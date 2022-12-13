@@ -1,0 +1,12 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+*.bcf
+*.lof
+*.lot
+*.run.xml
+*.synctex.gz
+*.toc
+*.log
