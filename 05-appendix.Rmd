@@ -7,18 +7,337 @@ If you feel it necessary to include an appendix, it goes here.
 -->
 
 
-# The First Appendix
+# Testimony Transcripts
 
-This first appendix includes all of the R chunks of code that were hidden throughout the document (using the `include = FALSE` chunk tag) to help with readibility and/or setup.
+## Firearm Examiner
 
-**In the main Rmd file**
+Q: Please state your name. 
 
-```{r ref.label='include_packages', results='hide', echo = TRUE}
-```
+A: John Smith
 
-**In Chapter \@ref(ref-labels):**
+Q: Who do you work for? [@azvscelaya, pgs 6-7]
 
-```{r ref.label='include_packages_2', results='hide', echo = TRUE}
-```
+A: The local police department
+
+Q: What do you do for the police department? [@azvscelaya, pgs 6-7]
+
+A: I am a firearms examiner [@azvscelaya, pgs 6-7]
+
+Q: How long have you been doing that? [@azvscelaya, pgs 6-7]
+
+A: X amount of years
+
+Q: What is a firearms examiner? [@azvscelaya, pgs 6-7]
+
+A: A firearms examiner is someone who looks at cartridge cases and bullets to determine whether they were fired in a particular firearm.1
+Q: What training is required to become a firearms examiner with the local police department? [@azvscelaya, pgs 6-7]
+
+A: I received my bachelor’s degree in forensic science and in X year I transferred to the crime lab from the crime scene unit. [@azvscelaya, pgs 6-7] 
+I underwent a two-year training program, which was supervised by experienced firearms examiners [@flvssheppard, pgs 798-799]; 
+I’ve toured manufacturing facilities and saw how firearms and ammunition were produced; and I’ve attended several national and regional meetings of firearms examiners.[@azvscelaya, pgs 6-7]
+
+Q: And during the course of your career, were you tested in proficiency to make sure.. you were still conducting appropriate examinations? [@flvssheppard, pgs 798-799]
+
+A: Yes. I have undergone annual proficiency examinations.[@flvssheppard, pgs 798-799]
+
+Q: Is the local police department lab accredited? [@azvscelaya, pgs 6-7]
+
+A: Yes, it is accredited by ASCLID/LAB [@azvscelaya, pgs 6-7]
+
+Q: And in addition to what you just told us, do you have other qualifications? [@ilvsbanks, pg 2]
+
+A: Yes, I do.[@ilvsbanks, pg 2]
+
+Q: Can you tell us what those are? [@ilvsbanks, pg 2]
+
+A: Yes. I received training in the use of a bullet matching algorithm. 
+This is an algorithm that evaluates the characteristics of two fired bullets, in order to produce a score for the similarity of the bullets, where more similar bullets are more likely to have been fired from the same gun. 
+I attended a workshop on the algorithm on [DATE], held by CSAFE – Center for Statistics and Applications in Forensic Evidence. 
+This involved use of the algorithm alongside my personal judgement. 
+I found that my conclusion was reflected in the similarity score produced by the algorithm in all ## cases.
+
+Q: Where does the bullet matching algorithm come from? [@mivsjohnson, pg 5]
+
+A: It was created by _____. [@mivsjohnson, pg 5]
+
+Q: How long has the state police been using the bullet matching algorithm? [@mivsjohnson, pg 5]
+
+A: They have been using it since ###.
+
+Q: Have you testified in court previously regarding the bullet matching algorithm? [@mivsjohnson, pg 5]
+
+A: Yes, I have, approximately ## times. [@mivsjohnson, pg 5]
+
+Q: Have you, as a firearms examiner, have you testified about opinions, given your opinion about the results of your testing? [@mivsjohnson, pg 5]
+
+A: Yes, I have. [@mivsjohnson, pg 5]
+
+Prosecution: Your Honor, at this time I would ask that XXX be qualified as an expert in the field of firearms identification subject to cross examination. [@ilvsbanks, pg 4]
+
+Court: Any cross on their credentials? [@ilvsbanks, pg 4]
+
+Defense: No, Your Honor [@ilvsbanks, pg 4]
+
+Court: This witness is an expert in the area of firearms identification. 
+They can testify to their opinions as well as facts. 
+Go ahead.[@ilvsbanks, pg 4]
+
+Q: What work did you do on this case? [@azvscelaya, pg 8]
+
+A: I was asked to compare a bullet from the crime scene to a test fire from XX gun.[@azvscelaya, pg 8]
+
+Q: Did you examine how many lands and grooves the bullet had? [@azvscelaya, pgs 17-18]
+
+A: Yes. [@azvscelaya, pgs 17-18]
+
+Q: Can you explain for the jury what that means? [@azvscelaya, pgs 17-18]
+
+A: Yes... In the interior of a barrel there are raised portions called lands and depressed areas called grooves. 
+When a bullet passes down the barrel, a bullet will spin and that gives it stability and accuracy over a distance. 
+Those raised areas are designed by the manufacturer. 
+They’re cut into the barrel. 
+And each particular file has a different combination of lands and grooves.
+But essentially what those lands do will grip a bullet and spin it and as that bullet passes down the barrel, it scratches the random imperfections of that barrel into the bullet.[@azvscelaya, pgs 17-18]
+
+Q: Now, for these bullets, you counted up the lands and grooves and determined the direction of the twist, correct? [@azvscelaya, pgs 17-18]
+
+A: Yes. This bullet had six lands. And the interior of the barrel, the barrel will either twist right or it will twist left. 
+And this particular case, the barrel twists right. 
+And you can see that by looking at the bullet. 
+If you look at the base of the bullet, either it goes to the left or goes to the right.[@azvscelaya, pgs 17-18]
+
+---Test-fired bullets admitted into evidence---
+
+Q: Can you describe the process of obtaining these test-fired bullets?
+
+A: The test-fired bullets came from a test fire of XX gun.
+
+Q: You mentioned test firings, can you explain what that means? [@ilvsbanks, pg 6]
+
+A: In test firing first what I would do is make sure the firearm is safe to actually test fire. 
+Then I would use lab ammunition and I would test fire it, meaning that I’m creating a fired bullet. 
+Typically you do two at a time. 
+That way you have a fired bullet to compare to another fired bullet. [@ilvsbanks, pg 6]
+
+Q: Would you then have taken the test firings you created and did you compare those test firings to the fired evidence that you had also received? [@ilvsbanks, pg 6]
+
+A: Yes. First what I would do is compare my test shot to test shot.
+I’m looking for a detailed microscopic pattern. 
+Once I have done that then I would compare it to the fired evidence.[@ilvsbanks, pg 6]
+
+Q: And how about the number of lands and direction of twist for the test fires? [@azvscelaya, pg 19-20]
+
+A: It also had six lands, and twisted to the right [@azvscelaya, pg 19-20]
+
+Q: Okay. Now, did you compare the test-fired bullets to the fired evidence under the comparison microscope? [@azvscelaya, pg 19-20]
+
+A: Yes, I did. [@azvscelaya, pg 19-20]
+
+Q: What is your conclusion? [@azvscelaya, pg 19-20]
+
+A: I found that there were sufficient individualizing characteristics to conclude that the two bullets were fired from the same barrel. 
+
+Q: How were you able to conclude that? [@azvscelaya, pg 19-20]
+
+A: I placed them under the comparison microscope, and I roll the bullet around ‘til I can see the agreement in a particular area, unique surface contour that has sufficient agreement. 
+At that point, when I’ve seen that, I start to rotate the bullets around and I look at all the different lands and grooves, impressions, for that unique detail. 
+When I can see those, that agreement on multiple areas of the bullet, I identify the bullet as having sufficient agreement.[@azvsceyala, pg 19-20]
+
+Q: Did you use an algorithm to compare these bullets as well?
+
+A: Yes, I used the algorithm to compare the two test fires to each other. 
+I also used the algorithm to compare the better-marking test fire to the fired evidence that I received.
+
+Q: Could you explain how this algorithm compares bullets?
+
+A: The algorithm uses 3D measurements to make a comparison between the surface contours of each of the lands on each bullet. 
+These comparisons result in a match score between 0 and 1, where 1 indicates a clear match, and 0 indicates that there is not a match.
+The bullet is aligned based on the maximum agreement between the lands, and the average match score for the lands is computed. 
+This average score gives an overall match score for the entire bullet.
+
+Q: What was the match score between the two test-fired bullets?
+
+A: The match score was 0.9-.
+
+Q: What was the match score between the better-marked test fire bullet and the fired evidence?
+
+A: The match score was 0.XX.
+
+Q: What does this match score indicate about the bullets?
+
+A: The match score indicates that there is substantial similarity between the two bullets, which suggests that they were most likely fired from the same barrel.
+
+Q: Now, how many times have you compared bullets to determine if they were fired from the same gun? [@azvscelaya, pg 19-20]
+
+A: I’d say thousands. [@azvscelaya, pg 19-20]
+
+Q: And do you ever see two bullets that have agreement in every area of the bullet? [@azvscelaya, pg 19-20]
+
+A: No. 
+The firing process of a firearm is dynamic, kind of like a contained explosion. 
+When the firing pin hits the primer, which is basically the initiator, what gets it going, it will explode, bur the gun powder inside the casing, and the bullet will travel down the barrel, picking up the microscopic imperfections of the barrel, and the cartridge case will slam rearward against the support mechanism.
+During that dynamic process, each time it happens, a bullet will be marked slightly differently from one to the next. [@azvsceyala, pg 19-20]
+
+Q: When you reached a conclusion, did you write up a report? [@azvscelaya, pg 23]
+
+A: Yes, I did. [@azvscelaya, pg 23]
+
+Q: Is it the local police department’s protocol to have somebody else who’s a firearms tool mark examiner in your lab review that report, review your work, and determine if it’s correct? [@azvscelaya, pg 23]
+
+A: Yes. [@azvscelaya, pg 23]
+
+Q: That’s what we call peer review? [@azvscelaya, pg 23]
+
+A: Peer review, yes. [@azvscelaya, pg 23]
+
+Q: Thank you, no further questions. [@azvscelaya, pg 40]
+
+--Cross examination—-
+
+Q: Now, are you telling the jury today that in your opinion there’s only one gun in the entire world that could have produced the markings that you saw on these bullets? [@azvscelaya, pg 65]
+
+A: I’m saying that the probability that the two markings were made by different sources is so small that it is negligible. (NIJ Language) [@azvscelaya, pg 65]
+
+Q: Exclusive to any other gun? [@azvscelaya, pg 65]
+
+A: I obviously haven’t tested every other gun, but it is a practical impossibility. [@azvscelaya, pg 65]
+
+Q: That’s your opinion. And your opinion, by the way, is subjective, right, and it’s based on your experience? [@azvscelaya, pgs 72-73]
+
+A: Based on my training and experience, yes. [@azvscelaya, pgs 72-73]
+
+Q: Is there something fixed about the amount of what has to be found to constitute sufficient agreement? [@usvsharris, pgs 4459-4460]
+
+A: No, there is not a fixed amount or a numerical value. [@usvsharris, pgs 4459-4460]
+
+Q: How long did you say you’ve been trained in the bullet matching algorithm? [@mivsjohnson, pgs 19 - 21]
+
+A: Since XXX [@mivsjohnson, pgs 19 - 21]
+
+Q: Okay. So that’s fairly new; is that fair to say? [@mivsjohnson, pgs 19 - 21]
+
+A: It is still fairly new, yes. [@mivsjohnson, pgs 19 - 21]
+
+Q: The software uses modeling; is that correct? [@mivsjohnson, pgs 19 - 21]
+
+A: Yes, it does. [@mivsjohnson, pgs 19 - 21]
+
+Q: You, personally, don’t know the source code; is that correct? [@mivsjohnson, pgs 19 - 21]
+
+A: That’s correct.[@mivsjohnson, pgs 19 - 21]
+
+Q: And, in fact, you, personally, would not be able to tell us the specific math that goes into this program; is that fair to say? [@mivsjohnson, pgs 19 - 21]
+
+A: We did receive training on what the math is doing. [@mivsjohnson, pgs 19 - 21]
+
+
+The Court: Terry Smith, the jury has asked me to forward this question to you. Answer if you're able.
+To what percentage is the science accurate is the first question. And then I think the rest of that explanation of that question goes on to say, to determine that the bullets were fired from the same firearm, are you 100 percent sure? [@azvscelaya, pgs 100 -101]
+
+A: My opinion, I am 100 percent sure that these bullets were fired from this firearm. 
+There is a published error rate for firearms examiners. 
+The positive identification is less than two percent. 
+I believe it's about 1.5 to 1.9. That's just a general number that's out there.[@azvscelaya, pgs 100 -101]
+The false negative identification rate is less than three percent. [@chumbley2021]
+
+## Algorithm Expert
+
+Q: Please state your name.
+
+A: Adrian/Avery Jones
+
+Q: Who do you work for?
+
+A: XXX place
+
+Q: What is your current occupation?
+
+A: XXX
+
+Q: How long have you been doing that?
+
+A: X amount of years
+
+Q: What training is required to hold this occupation?
+
+A: I have a Ph.D. in XX, and have spent X time developing the bullet matching algorithm algorithms. 
+I have spent X years collaborating with firearms examiners during the development and rollout of this algorithm. 
+
+Q: Are you familiar with the bullet matching algorithm?
+
+A: Yes. I was involved in the development of the algorithm.
+
+Prosecution: Your Honor, at this time I would ask that XXX be qualified as an expert in the bullet matching algorithm subject to cross examination.
+Court: Any cross on their credentials? [@ilvsbanks, pg 4]
+
+Defense: No, Your Honor [@ilvsbanks, pg 4]
+
+Court: This witness is an expert in the area of the bullet matching algorithm. They can testify to their opinions as well as facts. [@ilvsbanks, pg 4]
+
+Q: How many times have you testified regarding this bullet matching algorithm?
+
+A: XX times.
+
+Q: Could you describe how this bullet matching algorithm compares bullets?
+
+A: Yes. For certain types of guns, the barrel will have lands and grooves, known as rifling. 
+This rifling spins the bullet in order to make its trajectory more stable. Due to the manufacturing process, this rifling can produce identifiable markings on the bullet, based on random differences between barrels. 
+Because of these random imperfections, the striation marks left on bullets can be compared in order to determine if it is likely that they were fired from the same gun. 
+
+The first step is to determine where the lands on the bullet are located. 
+These lands will be the sunken area that contains the striation marks between the smoother grooves. 
+3D scans are then taken for each land, and the ‘shoulders’, or area transitioning from the land to the groove, is excluded from the analysis.
+
+Next, a stable area of the 3D scan containing the striations is selected, and a cross-section of this area is used to show the striations along with the topology of the region. 
+A smoothing function is applied to remove some of the imaging noise from the 3D scan, leaving the striae intact. 
+A second smooth is subtracted from the striations in order to remove the curvature of the region, leaving only the striae – this is what we call a signature. 
+The signature for the two bullets being compared are aligned such that the best fit between the two signatures is achieved. 
+The striation marks between the two signatures are then compared by evaluating how many of the high points and low points correspond. 
+The algorithm can calculate the number of consecutively matching striations (CMS), or consecutively matching high points and low points – these are features used directly by some examiners to characterize the strength of a match. 
+It also calculates the cross correlation between the two signatures, which is a numerical measure of the similarity between the two lands ranging between –1 and 1. 
+
+These traits are combined using what is known as a random forest. 
+Each forest is composed of decision trees, which use a subset of the observed values in order to make a decision about whether or not the bullets constitute a match. 
+The other observations are held out in order to determine an error rate. 
+When the random forest makes a prediction, each decision tree “votes”, producing a numerical value between 0 and 1 corresponding to the percentage of trees which evaluate the features as being sufficiently similar to have come from the same source. 
+
+Q: Have you tested this algorithm?
+
+A: Yes. 
+This algorithm was tested and validated on a number of different test sets of bullet scans. 
+It was found that, as long as there are sufficient marks on the bullet, the algorithm could successfully distinguish between bullets fired by the same gun and those fired from different guns. 
+Examiners’ visual comparisons are also limited by the presence or absence of individualizing marks. 
+Two test sets were using consecutively rifled barrels, which should be the most difficult to assess, and it was shown that the algorithm could distinguish between the bullets fired from two separate guns with complete accuracy. 
+
+Q: Can this algorithm be used on XX bullets fired from an XX firearm, such as the firearm in question for this case?
+
+A: Yes, this algorithm can be used on these types of bullets, given that this type of firearm marks well.
+
+Q: Has this algorithm been published?
+
+A: Yes. The algorithm and its process has been discussed in peer reviewed journals such as Law, Probability, and Risk, The Annals of Applied Statistics, and Forensic Science International. 
+The algorithm is also open source, which means that the full source code, documentation, and numerical weights are available online for anyone to examine.
+
+
+--Cross examination—-
+
+Q: How long has the bullet matching algorithm been used in court cases? [@mivsjohnson, pgs 19 - 21]
+
+A: Since XXX
+
+Q: Okay. So that’s fairly new; is that fair to say? [@mivsjohnson, pgs 19 - 21]
+
+A: It is still fairly new, yes. [@mivsjohnson, pgs 19 - 21]
+
+Q: This algorithm requires some decision making on the part of the operator, such as how much the signature is smoothed and what part of the bullets are inputted into the system, correct?
+
+A: Yes, there are certain parameters which must be specified, but the system defaults are usually sufficient and have been validated with a number of different firearms and ammunition types. 
+There are also operating protocols for determining which parts of the bullet are scanned, so while this process is manual, there are clear criteria and the associated variability from scanning is well understood, and published in Forensic Science International. 
+
+Q: Can this algorithm be applied to all bullets? (gun specific/issues with damaged bullets)
+
+A: No, the algorithm only works on traditionally rifled bullets which are largely undamaged. 
+The algorithm has not been validated to work on seriously damaged or fragmented bullets.
+
 
 # The Second Appendix, for Fun
