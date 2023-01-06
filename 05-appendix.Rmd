@@ -141,7 +141,7 @@ Q: How were you able to conclude that? [@azvscelaya, pg 19-20]
 
 A: I placed them under the comparison microscope, and I roll the bullet around ‘til I can see the agreement in a particular area, unique surface contour that has sufficient agreement. 
 At that point, when I’ve seen that, I start to rotate the bullets around and I look at all the different lands and grooves, impressions, for that unique detail. 
-When I can see those, that agreement on multiple areas of the bullet, I identify the bullet as having sufficient agreement.[@azvsceyala, pg 19-20]
+When I can see those, that agreement on multiple areas of the bullet, I identify the bullet as having sufficient agreement.[@azvscelaya, pg 19-20]
 
 Q: Did you use an algorithm to compare these bullets as well?
 
@@ -241,6 +241,7 @@ I believe it's about 1.5 to 1.9. That's just a general number that's out there.[
 The false negative identification rate is less than three percent. [@chumbley2021]
 
 ## Algorithm Expert
+Inspired by @azvscelaya, @ilvsbanks, @mivsjohnson, @usvsharris, @flvssheppard, @hare2017automatic, @vanderplasComparisonThreeSimilarity2020, and @cyberposter. Should creates citations by line as above.
 
 Q: Please state your name.
 

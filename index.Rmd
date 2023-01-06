@@ -80,21 +80,30 @@ An early record of scientific bullet matching in the court system can be found i
 In an article entitled “Fingerprinting Bullets”, Stout describes the wrongful conviction and subsequent exoneration of a person accused of murder [@SaturdayEveningPost]. 
 The alleged gun was missing a land – leaving a distinctive pattern – while the bullet showed no such evidence [@SaturdayEveningPost]. 
 This trial is set as the motivation for Charles Waite to attempt to start a catalog of the manufacturing methods of guns by various companies around the country, which was soon exacerbated by the multitude of guns produced abroad, as well as “cheap knock-offs” with no clear record [@SaturdayEveningPosta].
-One of the issues listed in the article still resonates with an issue of today – that of disagreement among experts; this can be especially seen in the adversarial judicial system, where experts can testify on the side of the prosecution or the defense [@SaturdayEveningPost, 6]. 
-This in turn relates to the subjectivity of the field. Disagreement among experts concerning strength of evidence can also be found within a single lab, as demonstrated by @montani2019. 
-In this article, @montani2019 discuss the importance of independent verification, and how to present results when experts do not agree. 
-This issue is also seen across different laboratories, where one system may not allow an exclusion to be stated if the class characteristics match, while another system may not have such a limitation [@baldwin2014, 6]. 
+Throughout the development of firearm identification, methods have turned from attempting to match barrel markings to specific brands to matching barrels based on a more local bullet to bullet comparison. **Citation for not creating catalog of all bullets? Also issues with using large databases?**
 
-Subjectivity issues led to attempts to quantify bullet matching, as seen in @biasotti1959. 
+One of the issues listed in the article still resonates with an issue of today – that of disagreement among experts; this can be especially seen in the adversarial judicial system, where experts can testify on the side of the prosecution or the defense [@SaturdayEveningPost, 6]. 
+This in turn relates to the subjectivity of the field - there is no quantitative set of conditions for determining the strength of a bullet match, so it is possible for experts to come to different conclusions when evaluating the same evidence. 
+Disagreement among experts concerning strength of evidence can also be found within a single lab, as demonstrated by @montani2019. 
+In this article, @montani2019 discuss the importance of independent verification, and how to present results when experts do not agree.
+They suggest that, when experts disagree, a third expert should be consulted, and all conclusions should be documented and presented as evidence.
+
+There are also procedural issues which may lead to differing expert opinions across laboratories, where one system may not allow an exclusion to be stated if the class characteristics match, while another system may not have such a limitation [@baldwin2014, 6]. Without a standardized procedure, experts may reach the same strength of evidence when comparing two bullets, but must draw different conclusions based on the procedures of their laboratory. This results in inconsistencies in results based on location, which are compounded with inconsistencies that may arise due to the subjectivity of bullet comparisons. 
+
+Such subjectivity issues led to attempts to quantify bullet matching, as seen in @biasotti1959. 
 @biasotti1959 suggests that statistical methods can be used in order to determine whether or not two bullets were fired from the same gun. 
 He suggests that evaluation of individual striation marks is not sufficient, but counting the number of consecutively matching lines may provide enough information to distinguish between matching and non-matching bullets, in the case of the .38 Special Smith and Wesson revolvers used in this study [@biasotti1959, 37 – 47].
 @biasotti1959 hoped that such methods may lead to a statistical model for evaluating firearms (47). 
-This idea of using consecutively matching lines is used and extended in the bullet matching algorithm [@hare2017automatic, 2340]. 
-The idea of Consecutively Matching Striae was addressed again in @bunch2000. 
-I find it interesting that this article was published in 2000, yet there appears to be no progress since 1959 toward creating a completely standardized or quantifiable method of examination. 
-According to @AuimatagiHearing, consecutively matching striae is still used today by some examiners (pg 48). 
-The use of virtual comparisons allowed @chapnick2021 to investigate what examiners considered important when evaluating cartridge cases. 
+The idea of consecutively matching striae was addressed again in @bunch2000, but a completely standardized or quantifiable method of examination has yet to be developed.
+According to @AuimatagiHearing, consecutively matching striae is still used today by some examiners (pg 48). However, the use of consecutively matching striae has not been universally adopted. 
+@biasotti1959's idea of using consecutively matching lines is used and extended in the bullet matching algorithm developed by @hare2017automatic (2340), indicating that he was on the right track. 
+
+Outside of the attempts to quantify bullet comparisons with consecutively matching striae, research has been conducted to better understand the factors that drive firearms examiners to make their conclusions.
+The use of virtual comparisons allowed @chapnick2021 to investigate what examiners considered important when evaluating cartridge cases by including a feature to highlight important aspects of comparisons. 
 They found that examiners generally tended to highlight the same features when making match conclusions [@chapnick2021, 8].
+However, not all examiners who correctly identified the samples used irregularly shaped marks: the number was around 60%-70% [@chapnick2021, 6].
+This is far from a unanimous consensus on important features for determining a match. **There is no legend on their heatmaps, so it is difficult to tell what percentage marked certain areas**
+
 
 In recent years, the scientific validity of many forensic science methods have been called into question, as shown in @nationalresearchcouncilusStrengtheningForensicScience2009 and @pcast on feature comparison methods. @nationalresearchcouncilusStrengtheningForensicScience2009 mentions that subjectivity is involved in determining “sufficient agreement” among firearms [@nationalresearchcouncilusStrengtheningForensicScience2009, 155]. 
 Some issues outlined by @pcast is the circular nature of AFTE’s identification guidelines and a lack of appropriately designed error rate studies [@pcast, 104 – 112]. 
@@ -102,6 +111,7 @@ Similar to @nationalresearchcouncilusStrengtheningForensicScience2009, @pcast su
 These reports pointed out the lack of scientific validity found in the forensic sciences in general, as well as issues with firearms examination specifically. 
 @imwinkelried suggests that bullet identification is based more on personal experience instead of a scientific method. 
 These reports highlighted the lack of studies that produced accurate error rates, due to a multitude of issues, such as the reporting of inconclusives as well as simple design issues [@pcast, 104 - 112]. 
+For example, @chapnick2021 does not include inconclusive results as an error. They reported three errors (false positives) in their study, and reported a false negative error rate of 0%, ignoring the wide range of inconclusive decisions.
 There has also been a call to scale back conclusions that attest to “individualization”, due to the inability to tie a specific piece of evidence to a specific source, to the exclusion of all other sources [@nationalresearchcouncilusStrengtheningForensicScience2009, 7;@imwinkelried]. 
 There has been some resistance to scaling back conclusions, however, as demonstrated in a memo sent out by Jim Agar II, an FBI attorney, who stated that less conclusive language would not be truthful on the part of the firearm expert[@agarmemo]. 
 Prosecutors interviewed by Swofford and Champod also supported the use of match terms such as “Identification” and “Individualization”, instead of probabilistic terms, but two of the prosecutors also rejected the use of terms that convey “absolute certainty” [@swoffordProbabilisticReportingAlgorithms2022, 7]. 
