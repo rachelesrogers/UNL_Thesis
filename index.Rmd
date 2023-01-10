@@ -88,7 +88,9 @@ Disagreement among experts concerning strength of evidence can also be found wit
 In this article, @montani2019 discuss the importance of independent verification, and how to present results when experts do not agree.
 They suggest that, when experts disagree, a third expert should be consulted, and all conclusions should be documented and presented as evidence.
 
-There are also procedural issues which may lead to differing expert opinions across laboratories, where one system may not allow an exclusion to be stated if the class characteristics match, while another system may not have such a limitation [@baldwin2014, 6]. Without a standardized procedure, experts may reach the same strength of evidence when comparing two bullets, but must draw different conclusions based on the procedures of their laboratory. This results in inconsistencies in results based on location, which are compounded with inconsistencies that may arise due to the subjectivity of bullet comparisons. 
+There are also procedural issues which may lead to differing expert opinions across laboratories, where one system may not allow an exclusion to be stated if the class characteristics match, while another system may not have such a limitation [@baldwin2014, 6]. 
+Without a standardized procedure, experts may reach the same strength of evidence when comparing two bullets, but must draw different conclusions based on the procedures of their laboratory. 
+This results in inconsistencies in results based on location, which are compounded with inconsistencies that may arise due to the subjectivity of bullet comparisons. 
 
 Such subjectivity issues led to attempts to quantify bullet matching, as seen in @biasotti1959. 
 @biasotti1959 suggests that statistical methods can be used in order to determine whether or not two bullets were fired from the same gun. 
@@ -118,10 +120,13 @@ Due to these issues in firearms comparisons, both @nationalresearchcouncilusStre
 @pcast states the importance of the development of an objective method for firearms comparisons (113). 
 
 These reports also highlighted the lack of studies that produced accurate error rates due to a multitude of issues, such as the reporting of inconclusive decisions as well as simple design issues [@pcast, 104 - 112]. 
+This debate regarding scientific validity continues to this day, as @vanderplas2022 shows. 
+In this declaration, they discuss the current issues with error rate studies, in which they conclude that, until valid error rate studies have been conducted, they cannot support the use of firearms analysis in the courtroom [@vanderplas2022, 10].
 For example, @chapnick2021's report does not include inconclusive results as a potential source of error. 
 They reported three errors (false positives) in their study, and reported a false negative error rate of 0%, ignoring the wide range of inconclusive decisions.
 The issues of error rate calculation are addressed by @hofmannTreatmentInconclusivesAFTE2021, particularly with regards to whether or not inconclusive decisions are treated as errors in calculations (325). 
 They suggest to not consider inconclusive decisions errors for the calculation of examiner error rates, used in the lab setting; but to consider inconclusive decisions as errors for process error rates, used for determining if the evidence is relevant enough for judging the guilt of the suspect (343).
+
 @drorMisUseScientific2020 further describe this inconclusive issue as it pertains to the forensic sciences. 
 They differentiate between inconclusive decisions based on the amount of evidence; an examiner reaching an inconclusive decision when there is not sufficient evidence to reach a conclusion would be correct, whereas an examiner reaching an inconclusive decision when there is sufficient evidence to reach a conclusion would be incorrect (334). 
 By failing to distinguish between correct and incorrect inconclusive decisions, examiners may opt for the inconclusive choice on hard conclusive comparisons, resulting in error rates that are only valid for easy comparisons (336). 
@@ -131,37 +136,60 @@ Both inconclusive and conclusive results for the same analysis cannot be correct
 @drorMisUseScientific2020 indicate that this inconclusive issue is more prominent in studies than in casework, as inconclusive decisions are more common in error rate studies (336).
 However, this distinction between correct and incorrect decisions are not commonly made in studies, leading to inconclusive decisions contributing lowering the error rate in some studies.
 Without a sufficient way to separate correct and incorrect inconclusive decisions, these inconclusives will continue to pose an issue in the accurate computation of error rates.
+
 Other issues in the computation of error rates include the use of closed set studies (the source gun is always present, and examiners are asked to match across two sets - allowing for them to use a process of elimination to make matches), as opposed to open set studies (the source gun may not be present), where closed set studies result in significantly lower fates of inconclusive decisions and false positives [@pcast, 109].
+The Ames study is described by @pcast as an appropriate black box study [@baldwin2014, 11]. 
+@baldwin2014 found that most errors occurring in their study were produced by a small number of examiners, and that inconclusive decisions were also rather heterogeneous across examiners (16). 
 
 Some sources have called to scale back conclusions that attest to “individualization”, due to the inability to tie a specific piece of evidence to a specific source, to the exclusion of all other sources [@nationalresearchcouncilusStrengtheningForensicScience2009, 7;@imwinkelried]. 
 There has been some resistance to scaling back conclusions, however, as demonstrated in a memo sent out by Jim Agar II, an FBI attorney, who stated that less conclusive language would not be truthful on the part of the firearm expert [@agarmemo]. 
 This indicates that the scale to which firearm evidence is used in the courtroom is rather contentious, and individuals with different stakes are likely to have different views.
 These differing views are represented in @swoffordProbabilisticReportingAlgorithms2022. 
-They found that prosecutors interviewed by Swofford and Champod also supported the use of match terms such as “Identification” and “Individualization”, instead of probabilistic terms, but two of the prosecutors also rejected the use of terms that convey “absolute certainty” (7). **How did other stakeholders feel about the language?**
-While there is much depate over the language used in these conclusions, @garrett2013 found that the language used to describe the strength of the match had little effect on participants’ judgement of guilt. **Get specific examples of where there was/wasn't differences**
+They found that prosecutors interviewed by Swofford and Champod also supported the use of match terms such as “Identification” and “Individualization”, instead of probabilistic terms, but two of the prosecutors also rejected the use of terms that convey “absolute certainty” (7). All participants felt that that examiner testimony should accurately reflect scientific limitations, although there was not a consensus on whether this practice was in fact followed in the courtroom (19).
+In general, it seems that individuals want to guarantee that the information presented in the courtroom is accurate and valid, without giving too much weight to either the limitations or the categorical conclusion.
+However, there does not appear to be agreement on where the balancing point between these two factors are - somewhere between giving too much credit with a match of "absolute certainty", and introducing unfounded reasonable doubt by overstating the limitations.
+If accurate numerical information on error rates, or an objective method of evaluation that can be described to the court were available, it may be possible to have factual statements of limitations that both sides of the argument would find satisfactory.
 
-There has been some pushback against the conclusions of @pcast, as shown in @osacresponse. 
-This debate regarding scientific validity continues, as @vanderplas2022 shows. 
-In this declaration, they discuss the current issues with error rate studies, in which they conclude that, until valid error rate studies have been conducted, they cannot support the use of firearms analysis in the courtroom [@vanderplas2022, 10]. 
-There is also an issue with there being no national standard for labs, and the fact that the analysis is in itself subjective. 
-The Ames study is described by @pcast as an appropriate black box study [@baldwin2014, 11]. 
-@baldwin2014 found that most errors occurring in their study were produced by a small number of examiners, and that inconclusive decisions were also rather heterogeneous across examiners (16). 
-Errors in pattern recognition are not limited to forensics, and the need for an unbiased method for these methods is aptly demonstrated by the case of the Madrid bombing, in which the FBI incorrectly matched a latent fingerprint to the incorrect individual [@stacey]. @kassinForensicConfirmationBias2013 suggest that this incorrect conclusion may relate to confirmation bias, and outline other contributing factors, such as extraneous details, external pressures, and order of presentation. 
-While this example is based on fingerprint analysis, the same issues of subjectivity can be seen in bullet matching. One objective method introduced to the forensic sciences is a bullet matching 23, described in @hare2017automatic.
+The development of quantitative limitations and processes could simplify the balancing act to focus on the language used by experts when presenting evidence.
+While there is much debate over the language used in these conclusions, @garrett2013 found that the specific language used to describe the strength of the match (when a match was present) had little effect on participants’ judgement of guilt.
+@garrett2013 suggests that this lack of difference may relate to the overall view of firearms evidence as reliable, meaning that even a weak match is considered the same as a match (507).
+They also found some limiting effect of the expert admitting the possibility that their conclusion was made in error (507).
+Thus, perhaps the most important factor in finding a way to accurately portray evidence rests in moderating the reliability of experts through the use of accurate error rates.
+
+**Move paragraph closer to pcast and NRC discussions?**
+While many of these changes are suggested due to @pcast and @nationalresearchcouncilusStrengtheningForensicScience2009, the statements of these reports are not without debate. 
+There has been some pushback against the conclusions of @pcast, as shown in @osacresponse.
+@osacresponse argue that a false positive error rate is not necessary for determining foundational validity, and that closed set error rate studies are fine for calculating error rates.
+@osacresponse also suggests that @pcast ignores the importance of peer review in studies that instruct firearms examiners to work alone, and that black box studies may not properly reflect casework.
+@osacresponse argues that AFTE language is not circular - the basis of a practical impossibility is based on knowledge of best known non-matches conveyed through training. This again relates to the idea of decisions being based on "knowledge and experience", and does not counteract the subjective nature of this decision making.
+Despite these disagreements @osacresponse also promotes the use of more objective methods.
+
+Errors in pattern recognition are not limited to firearms comparisons. 
+The need for an unbiased method for these methods is aptly demonstrated by the case of the Madrid bombing, in which the FBI incorrectly matched a latent fingerprint to the incorrect individual [@stacey]. 
+@kassinForensicConfirmationBias2013 suggest that this incorrect conclusion may relate to confirmation bias, and outline other contributing factors, such as extraneous details, external pressures, and order of presentation. 
+While this example is based on fingerprint analysis, the same issues of subjectivity are present in bullet matching.
+One way to fix these issues of subjectivity is by developing a more objective method of evaluation.
+One objective method introduced to the forensic sciences is bullet matching algorithms, such as the one described in @hare2017automatic.
 
 This bullet matching algorithm was developed by @hare2017automatic and uses a random forest in order to determine a match score [@hare2017automatic, 2352]. 
-The algorithm proposed by @hare2017automatic can be described as follows: The algorithm first takes a 3D scan of the two bullets, then identifies a cross section. 
+The algorithm proposed by @hare2017automatic can be described as follows. 
+The algorithm first takes a 3D scan of the two bullet lands, then identifies a cross section. 
 This cross section is used in order to identify the signatures of the bullets, where there is a signature for each land. 
-First the shoulders must be removed from the cross section. Then a loess smoothing is applied twice in order to remove the curvature. 
+First the shoulders must be removed from the cross section. 
+Then a loess smoothing is applied twice in order to remove the curvature. 
 What is left is the bullet’s signature (which will show the peaks and valleys produced by the barrel of the gun). 
-The two signatures are compared using a variety of attributes, such as consecutively matching straie and the relative height of the peaks/valleys.
+The two signatures are compared using a variety of attributes, such as consecutively matching striae and the relative height of the peaks/valleys.
 A random forest is used to compare the two signatures and come up with a score for the land. 
 Lands are then aligned across the bullet for the maximal random forest score, and this number would be considered the match score. 
-In multiple tests, it was found that the algorithm is able to successfully distinguish between known matches and known non-matches [@vanderplasComparisonThreeSimilarity2020, 10]. 
-The use of an algorithm allows for quantification of bullet matching.  
+In multiple tests, it was found that the algorithm is able to successfully distinguish between known matches and known non-matches [@vanderplasComparisonThreeSimilarity2020, 10].
+The use of an algorithm allows for quantification of bullet matching, for cases where the algorithm has been verified.
+**Need More Description Above, Like Chapter 1**
 
-The main issue of presenting a quantitative method to jurors is making sure that the jurors understand the method and results well enough to make informed decisions in a presented case. 
-Algorithms can already be found in several other realms of forensic science in the courtroom, such as FRStat used in fingerprint analysis. The use of FRStat in the courtroom was studied by @garrettComparingCategoricalProbabilistic2018. 
+One roadblock in the use of quantitative methods in the forensic sciences is the necessity to explain such methods to jurors so that they can understand the method and results well enough to make informed decisions in court cases.
+Participants in @swoffordProbabilisticReportingAlgorithms2022 expressed concern that probabilistic reporting would be confusing and easily misinterpreted, when compared to the alternative of categorical reporting (18).
+In order to gauge how bullet matching algorithms may be perceived in the courtroom, we can turn to other disciplines that use algorithms - such as fingerprint and DNA analysis.
+@garrettComparingCategoricalProbabilistic2018 studied the use of FRStat for fingerprint matching in the courtroom. 
+**Stop**
 
 Likelihood ratios are often used to present quantitative evidence. 
 In fact, @afs2009 stated that opinions and conclusions should be expressed in likelihood ratios when outlining guidelines for forensic experts (163). 
