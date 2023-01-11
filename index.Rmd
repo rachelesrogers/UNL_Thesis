@@ -188,8 +188,17 @@ The use of an algorithm allows for quantification of bullet matching, for cases 
 One roadblock in the use of quantitative methods in the forensic sciences is the necessity to explain such methods to jurors so that they can understand the method and results well enough to make informed decisions in court cases.
 Participants in @swoffordProbabilisticReportingAlgorithms2022 expressed concern that probabilistic reporting would be confusing and easily misinterpreted, when compared to the alternative of categorical reporting (18).
 In order to gauge how bullet matching algorithms may be perceived in the courtroom, we can turn to other disciplines that use algorithms - such as fingerprint and DNA analysis.
-@garrettComparingCategoricalProbabilistic2018 studied the use of FRStat for fingerprint matching in the courtroom. 
-**Stop**
+@garrettComparingCategoricalProbabilistic2018 studied the use of FRStat for fingerprint matching in the courtroom.
+The FRStat language presented to the participants is as follows: "The probability of observing this amount of correspondence is approximately [XXX] times greater when the impressions are made by the same source rather than by different sources" [language from @DFSCLPInformation2018].
+@garrettComparingCategoricalProbabilistic2018 used ratios from 10 times greater to 100,000 times greater, and found that participants' likelihood that the subject committed the crime did not change significantly.
+This demonstrates that potential jurors may have trouble in accurately interpreting statistical results, such as likelihood ratios.
+In DNA research, @koehler2001 found that participants were more likely to believe the subject was the source of the DNA when presented with a probability instead of a frequency.
+When asked about how many individuals would match DNA in a population of 500,000, 60.7\% of participants who received a frequency and 42.1\% of individuals who received a probability answered correctly [@koehler2001, 503].
+Here, there is a significant difference at the 0.05 level.
+In either case, however, we can see that around half of the individuals were able to answer correctly.
+When asking these individuals to determine the guilt or innocence of a suspect, the percentage of participants who correctly interpreted the DNA results is relatively low.
+Jurors are also prone to find evidence to be weaker when frequencies are presented as whole number (1 out of 100,000) compared to a decimal number (0.1 out of 10,000), even though the frequencies represent the same value [@koehlerThinkingLowProbabilityEvents2004, 544]
+
 
 Likelihood ratios are often used to present quantitative evidence. 
 In fact, @afs2009 stated that opinions and conclusions should be expressed in likelihood ratios when outlining guidelines for forensic experts (163). 
