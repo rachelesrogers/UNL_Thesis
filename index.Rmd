@@ -186,29 +186,57 @@ The use of an algorithm allows for quantification of bullet matching, for cases 
 **Need More Description Above, Like Chapter 1**
 
 One roadblock in the use of quantitative methods in the forensic sciences is the necessity to explain such methods to jurors so that they can understand the method and results well enough to make informed decisions in court cases.
+One quantitative method that is often discussed is likelihood ratios.
+@afs2009 stated that opinions and conclusions should be expressed in likelihood ratios when outlining guidelines for forensic experts (163). 
+@EvaluatingLikelihoodRatio proposed a likelihood approach for a firearms method that uses congruently matching cells, in order to introduce a quantitative approach. 
+
 Participants in @swoffordProbabilisticReportingAlgorithms2022 expressed concern that probabilistic reporting would be confusing and easily misinterpreted, when compared to the alternative of categorical reporting (18).
 In order to gauge how bullet matching algorithms may be perceived in the courtroom, we can turn to other disciplines that use algorithms - such as fingerprint and DNA analysis.
 @garrettComparingCategoricalProbabilistic2018 studied the use of FRStat for fingerprint matching in the courtroom.
 The FRStat language presented to the participants is as follows: "The probability of observing this amount of correspondence is approximately [XXX] times greater when the impressions are made by the same source rather than by different sources" [language from @DFSCLPInformation2018].
 @garrettComparingCategoricalProbabilistic2018 used ratios from 10 times greater to 100,000 times greater, and found that participants' likelihood that the subject committed the crime did not change significantly.
 This demonstrates that potential jurors may have trouble in accurately interpreting statistical results, such as likelihood ratios.
+
 In DNA research, @koehler2001 found that participants were more likely to believe the subject was the source of the DNA when presented with a probability instead of a frequency.
 When asked about how many individuals would match DNA in a population of 500,000, 60.7\% of participants who received a frequency and 42.1\% of individuals who received a probability answered correctly [@koehler2001, 503].
 Here, there is a significant difference at the 0.05 level.
 In either case, however, we can see that around half of the individuals were able to answer correctly.
 When asking these individuals to determine the guilt or innocence of a suspect, the percentage of participants who correctly interpreted the DNA results is relatively low.
-Jurors are also prone to find evidence to be weaker when frequencies are presented as whole number (1 out of 100,000) compared to a decimal number (0.1 out of 10,000), even though the frequencies represent the same value [@koehlerThinkingLowProbabilityEvents2004, 544]
+Jurors are also prone to find evidence to be weaker when frequencies are presented as whole number (1 out of 100,000) compared to a decimal number (0.1 out of 10,000), even though the frequencies represent the same value [@koehlerThinkingLowProbabilityEvents2004, 544].
+These studies show that individuals struggle with interpreting numerical results, and assigning appropriate weight to likelihood ratios.
 
+In addressing these issues of interpretation, attempts have been made to assign a scale to be used alongside a likelihood ratio.
+This can be seen in the European recommendations for reporting forensic science [@ENFSIGuidelineEvaluative2016].
+A sample of phrasing from their recommended scale has been recreated in Table \@ref(tab:enfsi).
+Verbal values range from no support to extremely strong support, and correspond to a numerical output. 
+This type of scale would present jurors with both the quantitative result as well as a brief interpretation, so they are not solely relying on their own perception of what the likelihood ratio qualitatively means.
 
-Likelihood ratios are often used to present quantitative evidence. 
-In fact, @afs2009 stated that opinions and conclusions should be expressed in likelihood ratios when outlining guidelines for forensic experts (163). 
-@EvaluatingLikelihoodRatio proposed a likelihood approach for a firearms method that uses congruently matching cells, in order to introduce a quantitative approach. 
-The unfortunate issue with likelihoods is that people often struggle to understand and distinguish between various levels of likelihood, so their understanding is not great (SOURCE). 
-Attempts have been made to assign a scale to be used alongside a likelihood ratio, and this can be seen in the European recommendations for reporting forensic science [@ENFSIGuidelineEvaluative2016]. 
-@evett1998 suggests a likelihood ratio scale as well, with verbal values of “Limited support”, “Moderate support”, “Strong support”, and “Very strong support” (201). 
-It is suggested that the use of a likelihood ratio requires examiners to consider what they are including when weighing the strength of evidence, and provides a value that can be consistent across disciplines [@marquis2016, 4]. 
+--------------------------------------------------------------------------------------------------------------------------------
+  Likelihood Ratio                                 Verbal Equivalent
+------------------------- ------------------------------------------------------------------------------------------------------
+  1                         The forensic findings do not support one proposition over the other                    
+  
+  2 - 10                    The forensic findings provide weak support for the first proposition relative to the alternative                      
+  
+  10 - 100                  ...provide moderate support for the first proposition rather than the alternative                    
+  
+  100 - 1,000               ...provide moderately strong support for the first proposition rather than the alternative                    
+  
+  1,000 - 10,000            ...provide strong support for the first proposition rather than the alternative
+  
+  10,000 - 1,000,000        ...provide very strong support for the first proposition rather than the alternative
+  
+  1,000,000 and above       ...provide extremely strong support for the first proposition rather than the alternative
+------------------------- ------------------------------------------------------------------------------------------------------
+Table: (\#tab:enfsi) Sample language from @ENFSIGuidelineEvaluative2016 (pg 17)
+
+A similar scale is also suggested by @evett1998, with verbal values of “Limited support”, “Moderate support”, “Strong support”, and “Very strong support” (201). 
+These values approximately correspond to the scale above, but consists of fewer categories.
+
+While the use of quantitative results has its own merits in terms of consistency, these scales may also benefit forensic examiners.
+@marquis2016 suggest that the use of a likelihood ratio requires examiners to consider what they are including when weighing the strength of evidence, and provides a value that can be consistent across disciplines (4). 
 This quantitative approach, even while conducting a subjective evaluation, is meant to prevent examiners from being biased by information provided outside of their direct examination [@bunch2013, 223]. 
-It also asks examiners to consider both the null and alternative hypotheses, and may make it less likely for them to transpose the conditional [@marquis2016, 3;@evett1998.]. 
+The approach also asks examiners to consider both the null and alternative hypotheses, and may make it less likely for them to transpose the conditional [@marquis2016, 3;@evett1998]. **Define transposing the conditional and why this is a concern**
 @nordgaard2012 state that a likelihood ratio is necessary in order to compare the null and alternative hypotheses in a case, which is not accomplished by only considering a single probability (6). 
 
 Due to the difficulty interpreting a likelihood ratio, words can be used instead. 
