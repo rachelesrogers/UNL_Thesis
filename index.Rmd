@@ -185,6 +185,26 @@ In multiple tests, it was found that the algorithm is able to successfully disti
 The use of an algorithm allows for quantification of bullet matching, for cases where the algorithm has been verified.
 **Need More Description Above, Like Chapter 1**
 
+While the use of quantitative results has its own merits in terms of consistency, these likelihood ratios may also benefit forensic examiners.
+@marquis2016 suggest that the use of a likelihood ratio requires examiners to consider what they are including when weighing the strength of evidence, and provides a value that can be consistent across disciplines (4). 
+This quantitative approach, even while conducting a subjective evaluation, is meant to prevent examiners from being biased by information provided outside of their direct examination [@bunch2013, 223]. 
+The approach also asks examiners to consider both the null and alternative hypotheses, and may make it less likely for either the examiners or jurors to transpose the conditional [@evett1998;@marquis2016, 3].
+
+As an example of transposing the conditional, suppose an examiner were comparing a bullet from the suspect's gun to a bullet recovered from a crime scene.
+The examiner may find that there is significant agreement between the two bullets.
+They may then conclude that "the probability of seeing such significant agreement between the two bullets *given that another gun fired the bullet at the crime scene* is small".
+In this case, the examiner is making a statement regarding the amount of agreement between the two bullets.
+If the conditional is transposed, the statement would become "the probability that another gun fired the bullet at the crime scene *given the significant agreement between the two bullets* is small".
+Here, the conditional part of the statement has been switched, so that the examiner is making a statement regarding the gun being fired at the crime scene.
+By stating a likelihood ratio, such as "the bullet comparison provides strong support for the proposition that the two bullets came from the same gun rather than the proposition that the two bullets came from different guns", both the null and alternative hypothesis are clearly stated, and the focus of the statement is on the bullet comparison, rather than the gun's presence at the crime scene.
+**I am not sure if this explanation is clear and to the point.**
+
+As shown above, the likelihood ratio compares the null and alternative hypotheses in a case, which is not accomplished by considering a single probability [@nordgaard2012, 6]. 
+@meuwly2017a suggested guidelines for validating both score- and feature-based likelihood ratio methods.
+These which included validation criteria for all variables considered in a likelihood ratio, where validation criteria can be considered in several ways: a comparison with current “state of the art” methods, detection error trade-off graphs to measure discriminating power, and performing validation on a validation data set.
+With a path forward to validate likelihood ratios, this way of presenting quantitative results may gain more prominence in the courtroom. 
+**Not the best tie in**
+
 One roadblock in the use of quantitative methods in the forensic sciences is the necessity to explain such methods to jurors so that they can understand the method and results well enough to make informed decisions in court cases.
 One quantitative method that is often discussed is likelihood ratios.
 @afs2009 stated that opinions and conclusions should be expressed in likelihood ratios when outlining guidelines for forensic experts (163). 
@@ -232,25 +252,25 @@ Table: (\#tab:enfsi) Sample language from @ENFSIGuidelineEvaluative2016 (pg 17)
 
 A similar scale is also suggested by @evett1998, with verbal values of “Limited support”, “Moderate support”, “Strong support”, and “Very strong support” (201). 
 These values approximately correspond to the scale above, but consists of fewer categories.
-
-While the use of quantitative results has its own merits in terms of consistency, these scales may also benefit forensic examiners.
-@marquis2016 suggest that the use of a likelihood ratio requires examiners to consider what they are including when weighing the strength of evidence, and provides a value that can be consistent across disciplines (4). 
-This quantitative approach, even while conducting a subjective evaluation, is meant to prevent examiners from being biased by information provided outside of their direct examination [@bunch2013, 223]. 
-The approach also asks examiners to consider both the null and alternative hypotheses, and may make it less likely for them to transpose the conditional [@marquis2016, 3;@evett1998]. **Define transposing the conditional and why this is a concern**
-@nordgaard2012 state that a likelihood ratio is necessary in order to compare the null and alternative hypotheses in a case, which is not accomplished by only considering a single probability (6). 
-
-Due to the difficulty interpreting a likelihood ratio, words can be used instead. 
-However, verbal scales which may be used can suffer from inconsistency in interpretation. 
-For example, @budescu1985a asked individuals to assign probabilities to commonly used probabilistic words, such as “likely”, “unlikely”, “rarely”, and “never”. 
-Subjects were divided into groups, so that they would not receive paired words such as “unlikely” and “likely” (394). 
-They cite Lichtenstein and Newman, who found that the terms “quite likely” and “quite unlikely” had median values of 0.8 and 0.1, respectively; this indicates a lack of symmetry in the interpretation of some probabilistic terms (392). 
 @marquis2016 suggest against providing the full verbal scale to participants, because participants may use other terms on the scale in order to orient the likelihood ratio in comparison to the full scale (7). 
-When using a verbal scale for degree of similarity/support, @mattijssen2020. found that the between-subject and within-subject reliability was moderate to high (11). 
-However, for the 10 examiners in the study who regularly use likelihood ratios, @mattijssen2020 found that the degree of support were in general an overestimation (8). 
-@meuwly2017a suggested guidelines for validating likelihood ratio methods, which included validation criteria for all variables considered in a likelihood ratio, where validation criteria can be considered in several ways: a comparison with current “state of the art” methods, detection error tradeoff graphs to measure discriminating power, and performing validation on a validation dataset.
+However, the presence of the full scale may help jurors orient themselves to potential values of a likelihood ratio, especially if they are unfamiliar with potential values. 
+**Are these two sentences necessary?**
 
-This leads us to the next topic: combining the examiner’s opinion with the algorithm. 
-In @montani2019, they suggest presenting the algorithm as a “Second independent expert”. 
+While verbal scales are useful for interpretation, individuals may not always interpret them consistently.
+For example, @budescu1985a asked participants to rank common probabilistic words on three separate occasions.
+@budescu1985a found that individuals typically gave consistent rankings across time points, but there was variation in rankings between individuals.
+In an earlier study @lichtensteinEmpiricalScalingCommon1967 ask individuals to assign probabilities to probabilistic words.
+They found that eight of the eleven mirror terms (such as “quite likely” and “quite unlikely”) demonstrated asymmetry - positive terms (such as likely) scored lower than their mirrored negative terms (unlikely). For example, "quite likely" and "quite unlikely" had median values of 0.8 and 0.1, respectively [@lichtensteinEmpiricalScalingCommon1967, 564].
+Thus, verbal scales on their own may not be consistently interpreted by jurors, and should be presented alongside a quantitative result instead of as a standalone conclusion.
+
+@mattijssen2020 asked examiners to use a verbal scale for degree of similarity and support when digitally comparing cartridge cases.
+When using a verbal scale for degree of similarity/support, @mattijssen2020 found that the between-subject and within-subject reliability was moderate to high (11). 
+@mattijssen2020 asked 10 examiners who regularly used likelihood ratios to provide both a verbal degree of support along with a likelihood ratio.
+They found that the verbal degree of support were in general an overestimation when compared to the likelihood ratios (8). 
+While this is a small non-representative sample, it suggests that verbal scales do not always correspond to quantitative scales across subjects.
+
+Because of the possible discrepancy between quantitative and verbal scales, some authors have suggested a combination of the two methods.
+In a similar combination of computerized results and human interpretation, @montani2019 suggest presenting the algorithm as a “second independent expert” whose comparison and conclusion can be compared to the examiner's.**Stop** 
 @swoffordProbabilisticReportingAlgorithms2022 interviewed 15 individuals with a range of expertise in forensic science and the court system in order to assess their feelings about the use of algorithms and the presentation of probabilistic reporting, as opposed to categorical reporting and traditional analysis methods. 
 The three laboratory managers interviewed suggested using algorithms as a supplement to the forensic examiner [@swoffordProbabilisticReportingAlgorithms2022, 6]. 
 This suggestion is similar to @montani2019’s suggestion to view algorithms as another expert. 
