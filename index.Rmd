@@ -143,18 +143,24 @@ The Ames study is described by @pcast as an appropriate black box study [@baldwi
 
 Some sources have called to scale back conclusions that attest to “individualization”, due to the inability to tie a specific piece of evidence to a specific source, to the exclusion of all other sources [@nationalresearchcouncilusStrengtheningForensicScience2009, 7;@imwinkelried]. 
 There has been some resistance to scaling back conclusions, however, as demonstrated in a memo sent out by Jim Agar II, an FBI attorney, who stated that less conclusive language would not be truthful on the part of the firearm expert [@agarmemo]. 
+
+These differing views are represented in @swoffordProbabilisticReportingAlgorithms2022.
+@swoffordProbabilisticReportingAlgorithms2022 interviewed 15 individuals with a range of expertise in forensic science and the court system in order to assess their feelings about the use of algorithms and the presentation of probabilistic reporting, as opposed to categorical reporting and traditional analysis methods. 
+They found that prosecutors interviewed supported the use of match terms such as “Identification” and “Individualization”, instead of probabilistic terms, but two of the prosecutors also rejected the use of terms that convey “absolute certainty” (7). 
+All participants felt that that examiner testimony should accurately reflect scientific limitations, although there was not a consensus on whether this practice was in fact followed in the courtroom (19).
 This indicates that the scale to which firearm evidence is used in the courtroom is rather contentious, and individuals with different stakes are likely to have different views.
-These differing views are represented in @swoffordProbabilisticReportingAlgorithms2022. 
-They found that prosecutors interviewed by Swofford and Champod also supported the use of match terms such as “Identification” and “Individualization”, instead of probabilistic terms, but two of the prosecutors also rejected the use of terms that convey “absolute certainty” (7). All participants felt that that examiner testimony should accurately reflect scientific limitations, although there was not a consensus on whether this practice was in fact followed in the courtroom (19).
-In general, it seems that individuals want to guarantee that the information presented in the courtroom is accurate and valid, without giving too much weight to either the limitations or the categorical conclusion.
+
+In general, it seems that individuals want to guarantee that the information presented in the courtroom is accurate and valid, without causing too much imbalance between the limitations and the categorical conclusion.
 However, there does not appear to be agreement on where the balancing point between these two factors are - somewhere between giving too much credit with a match of "absolute certainty", and introducing unfounded reasonable doubt by overstating the limitations.
-If accurate numerical information on error rates, or an objective method of evaluation that can be described to the court were available, it may be possible to have factual statements of limitations that both sides of the argument would find satisfactory.
+If accurate numerical information on error rates, or an objective method of evaluation that can be described to the court were available, it may be possible to have factual statements of limitations that both sides of the argument would find satisfactory. 
+**I don't like this paragraph**
 
 The development of quantitative limitations and processes could simplify the balancing act to focus on the language used by experts when presenting evidence.
 While there is much debate over the language used in these conclusions, @garrett2013 found that the specific language used to describe the strength of the match (when a match was present) had little effect on participants’ judgement of guilt.
 @garrett2013 suggests that this lack of difference may relate to the overall view of firearms evidence as reliable, meaning that even a weak match is considered the same as a match (507).
 They also found some limiting effect of the expert admitting the possibility that their conclusion was made in error (507).
 Thus, perhaps the most important factor in finding a way to accurately portray evidence rests in moderating the reliability of experts through the use of accurate error rates.
+**Add something about the potential benefits of jury instructions**
 
 **Move paragraph closer to pcast and NRC discussions?**
 While many of these changes are suggested due to @pcast and @nationalresearchcouncilusStrengtheningForensicScience2009, the statements of these reports are not without debate. 
@@ -185,6 +191,14 @@ In multiple tests, it was found that the algorithm is able to successfully disti
 The use of an algorithm allows for quantification of bullet matching, for cases where the algorithm has been verified.
 **Need More Description Above, Like Chapter 1**
 
+In a similar combination of computerized results and human interpretation, @montani2019 suggest presenting the algorithm as a “second independent expert” whose comparison and conclusion can be compared to and presented alongside the examiner's.
+The three laboratory managers interviewed by @swoffordProbabilisticReportingAlgorithms2022 suggested using algorithms as a supplement to the forensic examiner (6), similar to @montani2019’s suggestion. 
+The three prosecutors varied in their feelings of algorithms in the courtroom: one thought that they would add unnecessary complications, while two suggested that the algorithms may be useful for the forensic expert [@swoffordProbabilisticReportingAlgorithms2022, 8]. 
+The three defense attorneys, as well as the three judges, also supported the use of algorithms as empirical evidence, while stating concerns of transparency [@swoffordProbabilisticReportingAlgorithms2022, 10-13]. 
+Three academic scholars also supported the use of algorithms, so long as the algorithms can be understood, have been validated, and do not include factors that may cause systematic biases [@swoffordProbabilisticReportingAlgorithms2022, 16]. 
+@swoffordProbabilisticReportingAlgorithms2022's study demonstrates the variety of opinions on algorithm implementation throughout forensic science. 
+Following @montani2019's recommendation, supplementing the decision of the forensic expert with an algorithm would allow for verification of results in two independent methods.
+
 While the use of quantitative results has its own merits in terms of consistency, these likelihood ratios may also benefit forensic examiners.
 @marquis2016 suggest that the use of a likelihood ratio requires examiners to consider what they are including when weighing the strength of evidence, and provides a value that can be consistent across disciplines (4). 
 This quantitative approach, even while conducting a subjective evaluation, is meant to prevent examiners from being biased by information provided outside of their direct examination [@bunch2013, 223]. 
@@ -209,7 +223,6 @@ One roadblock in the use of quantitative methods in the forensic sciences is the
 One quantitative method that is often discussed is likelihood ratios.
 @afs2009 stated that opinions and conclusions should be expressed in likelihood ratios when outlining guidelines for forensic experts (163). 
 @EvaluatingLikelihoodRatio proposed a likelihood approach for a firearms method that uses congruently matching cells, in order to introduce a quantitative approach. 
-
 Participants in @swoffordProbabilisticReportingAlgorithms2022 expressed concern that probabilistic reporting would be confusing and easily misinterpreted, when compared to the alternative of categorical reporting (18).
 In order to gauge how bullet matching algorithms may be perceived in the courtroom, we can turn to other disciplines that use algorithms - such as fingerprint and DNA analysis.
 @garrettComparingCategoricalProbabilistic2018 studied the use of FRStat for fingerprint matching in the courtroom.
@@ -269,19 +282,7 @@ When using a verbal scale for degree of similarity/support, @mattijssen2020 foun
 They found that the verbal degree of support were in general an overestimation when compared to the likelihood ratios (8). 
 While this is a small non-representative sample, it suggests that verbal scales do not always correspond to quantitative scales across subjects.
 
-Because of the possible discrepancy between quantitative and verbal scales, some authors have suggested a combination of the two methods.
-In a similar combination of computerized results and human interpretation, @montani2019 suggest presenting the algorithm as a “second independent expert” whose comparison and conclusion can be compared to the examiner's.**Stop** 
-@swoffordProbabilisticReportingAlgorithms2022 interviewed 15 individuals with a range of expertise in forensic science and the court system in order to assess their feelings about the use of algorithms and the presentation of probabilistic reporting, as opposed to categorical reporting and traditional analysis methods. 
-The three laboratory managers interviewed suggested using algorithms as a supplement to the forensic examiner [@swoffordProbabilisticReportingAlgorithms2022, 6]. 
-This suggestion is similar to @montani2019’s suggestion to view algorithms as another expert. 
-The three prosecutors varied in their feelings of algorithms in the courtroom: one thought that they would add unnecessary complications, while two suggested that the algorithms may be useful for the forensic expert [@swoffordProbabilisticReportingAlgorithms2022, 8]. 
-The three defense attorneys, as well as the three judges, also supported the use of algorithms as empirical evidence, while stating concerns of transparency [@swoffordProbabilisticReportingAlgorithms2022, 10-13]. 
-Three other academic scholars also supported the use of algorithms, so long as the algorithms can be understood, have been validated, and do not include factors that may cause systematic biases [@swoffordProbabilisticReportingAlgorithms2022, 16]. 
-As can be seen, there are various opinions of throughout the field, in terms of algorithms. 
-Several individuals have indicated the use of the algorithm as a supplement to the forensic expert, instead of as a replacement to the examiner.
-This use of both the expert and the algorithm is the approach used in our study.
-
-By combining the quantitative analysis with a verbal translation, it may be possible to present quantitative results in a manner that is understood by laypeople. 
+By combining the quantitative analysis with a verbal translation, it may be possible to present quantitative results in a manner that is understood consistently by laypeople. 
 This is kind of what we are looking at with the algorithm, where we combine the examiner’s analysis with the algorithm’s numbers, in the hope of presenting even stronger (and perhaps less biased) evidence. 
 Another aspect of this, however, is how the match language is presented. 
 Using our current standards, we went with the AFTE guidelines. 
