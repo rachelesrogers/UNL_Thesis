@@ -157,6 +157,7 @@ If accurate numerical information on error rates, or an objective method of eval
 
 The development of quantitative limitations and processes could simplify the balancing act to focus on the language used by experts when presenting evidence.
 While there is much debate over the language used in these conclusions, @garrett2013 found that the specific language used to describe the strength of the match (when a match was present) had little effect on participants’ judgement of guilt.
+@mcquistonsurrett2009 also found that there was not a significant difference in participants' view of the likelihood the defendant committed the crime when the examiner presented the conclusion as a match compared to presenting the conclusion as 'similar in all microscopic characteristics.'
 @garrett2013 suggests that this lack of difference may relate to the overall view of firearms evidence as reliable, meaning that even a weak match is considered the same as a match (507).
 They also found some limiting effect of the expert admitting the possibility that their conclusion was made in error (507).
 Thus, perhaps the most important factor in finding a way to accurately portray evidence rests in moderating the reliability of experts through the use of accurate error rates.
@@ -276,37 +277,56 @@ In an earlier study @lichtensteinEmpiricalScalingCommon1967 ask individuals to a
 They found that eight of the eleven mirror terms (such as “quite likely” and “quite unlikely”) demonstrated asymmetry - positive terms (such as likely) scored lower than their mirrored negative terms (unlikely). For example, "quite likely" and "quite unlikely" had median values of 0.8 and 0.1, respectively [@lichtensteinEmpiricalScalingCommon1967, 564].
 Thus, verbal scales on their own may not be consistently interpreted by jurors, and should be presented alongside a quantitative result instead of as a standalone conclusion.
 
+Verbal scales are also often used to record participant responses.
+Likert scales can be used to evaluate several factors, such as the reliability, understanding, and scientific quality of the forensics expert, the algorithm, and the testimony in general.
+It is therefore important to ensure that participants' views are accurately recorded with Likert type scales, which can vary in the number of categories used.
+Several researchers found that the 7-point scale may perform better or represent the participants’ true views than the 5-point scale [@joshiLikertScaleExplored2015;@finstadResponseInterpolationScale2010]. 
+Participants often preferred more categories, such as 7, 9, or 10 [@prestonOptimalNumberResponse2000;@komoritaNumberScalePoints1965]. 
+However, @prestonOptimalNumberResponse2000 found that reliability decreased with more than 10 categories. 
+This indicates that 7, 9, or 10 point scales should be adequate for reliable responses that accurately represent the participant.
+
+Reliability is important for both participant responses and the testimony that they are presented with.
 @mattijssen2020 asked examiners to use a verbal scale for degree of similarity and support when digitally comparing cartridge cases.
 When using a verbal scale for degree of similarity/support, @mattijssen2020 found that the between-subject and within-subject reliability was moderate to high (11). 
 @mattijssen2020 asked 10 examiners who regularly used likelihood ratios to provide both a verbal degree of support along with a likelihood ratio.
 They found that the verbal degree of support were in general an overestimation when compared to the likelihood ratios (8). 
 While this is a small non-representative sample, it suggests that verbal scales do not always correspond to quantitative scales across subjects.
-
 By combining the quantitative analysis with a verbal translation, it may be possible to present quantitative results in a manner that is understood consistently by laypeople. 
-This is kind of what we are looking at with the algorithm, where we combine the examiner’s analysis with the algorithm’s numbers, in the hope of presenting even stronger (and perhaps less biased) evidence. 
-Another aspect of this, however, is how the match language is presented. 
-Using our current standards, we went with the AFTE guidelines. 
-These have their own issues, as addressed in the @pcast report. 
-This mix of algorithm and examiner would also seem to be supported by @swoffordProbabilisticReportingAlgorithms2022, where they interviewed 15 people and asked them about opting for clearer probabilistic language over match language. 
-They mostly all expressed concerns about the interpretation of the probabilistic language, and many recommended a combination of both methods approach [@swoffordProbabilisticReportingAlgorithms2022]. 
-The prosecutors interviewed thought that match language was sufficient by itself, and didn’t see the need to complicate things with probabilistic language [@swoffordProbabilisticReportingAlgorithms2022, 8].
-@mcquistonsurrett2009 studied the use of match language versus probabilities. 
-They found that participants preferred match language over probabilities when determining the guilt of the defendant, but experts indicated that match language may be misleading [@mcquistonsurrett2009].
 
-The other really important topic for this research is, of course, demonstrative evidence. 
-Images can affect what people believe. 
-This is known as “truthiness” and is explored by Stephen Colbert in 2005 [@WordTruthinessColbert2005]. 
+This mix of quantitative language alongside more categorical terms is supported by subjects in @swoffordProbabilisticReportingAlgorithms2022. 
+They mostly all expressed concerns about the interpretation of the probabilistic language, and many recommended a combination of both methods [@swoffordProbabilisticReportingAlgorithms2022]. 
+The prosecutors interviewed thought that match language was sufficient by itself, and did not wish to complicate testimony with probabilistic language [@swoffordProbabilisticReportingAlgorithms2022, 8].
+@mcquistonsurrett2009 studied the use of match language versus probabilities with both judges and juries.
+Both groups assigned higher probabilities to the defendant committing the crime when presented with qualitative evaluation or single probability for the hair comparison, as compared to frequency methods of reporting.
+@mcquistonsurrett2009 found that participants were more sure of the guilt of the defendant when qualitative language was used as opposed to a subjective probability.
+While match language may give jurors more confidence, it may have the effect of shifting the consideration of evidence from the jury (who in a quantitative approach would need to determine whether or not they feel a likelihood ratio is large enough to indicate that the subject is the source) to the forensic expert, who can declare a match.
+
+Another important factor in jury decision making is demonstrative evidence. 
+Images can supply helpful context in the description of methods, but they may also introduce bias in the form of "truthiness."
+The quality of something *seeming* true is known as “truthiness” and was explored by Stephen Colbert in 2005 [@WordTruthinessColbert2005]. 
 In this video, Colbert talks about “thinking with your head vs. knowing with your heart”. 
-@bornsteinJuryDecisionMaking2011 also found this effect in the courtroom, as they state that jurors tend to remember evidence that align with their previous beliefs (65). 
-So when applying this concept to images, we would be saying that images make people feel like what is being said is true, even if the images do not provide any additional evidence. 
-In our study, we need to balance the benefit of providing additional information to the jury without increasing “truthiness”. 
-The impact of photos can be rather large, as investigated by @cardwellNonprobativePhotosRapidly2016. 
-They asked individuals to “give” or “take” food from an animal, represented by a word; subjects were later asked to identify whether or not they gave food to an animal – either accompanied by an image or not. 
-Individuals were more likely to say that they gave food to an animal if it were accompanied by an image [@cardwellNonprobativePhotosRapidly2016, 887]. 
-They found that this appeared to be true for positive associations, but not negative associations [@cardwellNonprobativePhotosRapidly2016, 883].
+So when applying this concept to images, we would be saying that images make people more likely feel like what is being said is true, even if the images do not provide any additional evidence. 
+Outside of images, @bornsteinJuryDecisionMaking2011 found a "truthiness" effect in the courtroom - jurors tend to remember evidence that align with their previous beliefs (65). 
+In the case of images in trials, it is important to balance the benefit of providing additional information to the jury via images without increasing “truthiness”. 
 
-In order to evaluate how participants feel about several factors, such as the reliability, understanding, and scientific quality of the forensics expert, the algorithm, and the testimony in general, several Likert scales were implemented. 
-In terms of Likert scales, several researchers found that the 7-point scale may perform better or represent the participants’ true views than the 5-point scale [@joshiLikertScaleExplored2015;@finstadResponseInterpolationScale2010]. 
-Participants often preferred more categories, such as 7, 9, or 10 [@prestonOptimalNumberResponse2000;@komoritaNumberScalePoints1965]. 
-@prestonOptimalNumberResponse2000 found that reliability decreased with more than 10 categories. 
-For our study, we use between a 7 and a 9 point scale, which appears to be acceptable.
+The impact of photos on an individual's perception can be rather large, as investigated by @cardwellNonprobativePhotosRapidly2016. 
+They asked individuals to “give” or “take” food from an animal, represented by a word. 
+Subjects were later asked to identify whether or not they gave food to an animal – either accompanied by an image or not. 
+Individuals were more likely to say that they gave food to an animal if it was accompanied by an image [@cardwellNonprobativePhotosRapidly2016, 887]. 
+They found that this appeared to be true for positive associations such as giving food, but not negative associations such as taking food [@cardwellNonprobativePhotosRapidly2016, 883].
+In this case, the use of images may make it easier for individuals to visualize a scenario (giving food), and thus makes them more likely to remember the event - whether it happened or not.
+
+In a study of perception, @mccabeSeeingBelievingEffect2008 presented a variety of graphics alongside articles relating to cognitive neuroscience.
+The presented graphics all contained the same information, which was already presented the article.
+They found that participants gave higher ratings of scientific reasoning to articles that included a brain image with activated areas, as opposed to a bar chart, topographical brain graphic, or no graphic.
+Participants were also more likely to agree with the conclusion of an article when the brain image was present, compared to when it was absent.
+Although the information presented in the articles did not change throughout these conditions, the brain image appears to add more "truthiness" to the articles, causing individuals to find them more scientific than articles with other graphics or no graphics.
+
+In the courtroom, studies have been conducted to evaluate the effect of images of the brain.
+@gurleyEffectsNeuroimagingBrain2008 studied the use of brain images when arguing the defendant is not guilty by reason of insanity. 
+In a study on introduction to psychology university students, they found that the inclusion of images showing a brain lesion increased the odds of the participants finding the defendant not guilty by reason of insanity.
+MRI scans were presented with additional information regarding impulse control for the damaged area, so the effect may not be caused by the images themselves but rather by the additional information.
+@schweitzerNeuroimagesEvidenceMens2011 investigated whether images of the brain presented alongside expert testimony with regards to a mental disorder.
+In this case, no additional information was provided alongside the neuroimage, allowing the effect of the image itself to be studied. 
+They found that the inclusion of neuroimages did not significantly effect the judgement of the participants.
+The influence of images on individuals remains unclear, and may be situationally dependent.
