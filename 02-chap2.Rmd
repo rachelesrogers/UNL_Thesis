@@ -19,3 +19,8 @@
      - Edit Distance?
        - Usually at the character level, not at the word level
        - Would need to determine what needs to be matched (I don't think most notes will be in nice sentence form)
+     - On another note - could we use something like TurnItIn to determine which pages of the transcript were the most impactful?
+       - Rabin-Karp algorithm?
+       - Levenshtein distance?
+       - http://users.csc.calpoly.edu/~dekhtyar/448-Spring2013/lectures/lec03.448.pdf
+       - Maybe start by sentence level in transcript, then search notes for close-ish matching text
