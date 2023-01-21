@@ -14,7 +14,7 @@
   - Needs to be in CSS for tab format of presenting the transcripts
   - Need to add labels for the gradient scale, because all pages will have a different legend
   - Change from relative frequency to a different type of frequency (review notes)
-     - Cosine Frequency?
+     - Cosine Similarity?
        - Jessica Recommended
      - Edit Distance?
        - Usually at the character level, not at the word level
