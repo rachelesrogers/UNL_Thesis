@@ -8,6 +8,10 @@
   - combating scale compression through jury instructions before deliberation
   - Fixing code design so to prevent copy/paste error
   - Changing Likert scales to quantitative scales to get more numerical differences
+  - Adding scenario id to database at beginning of test
   
 - We may want to clarify if the examiner used the algorithm before or after their initial comparison.
   - If the algorithm is used first, this would potentially be confounding
+- Current Issues:
+  - Trouble with class to get text bubble
+  - Trouble with fixing images to so scrolling is okay
