@@ -4,7 +4,8 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 
 # Jury Perception of Bullet Matching Algorithms and Demostrative Evidence {#rmd-basics}
 
-Importing did not work, due to several formatting errors
+- Importing did not work, due to several formatting errors
+- Graph completion time based on condition
 
 Book will not build if I delete/hide the prompt below
 
