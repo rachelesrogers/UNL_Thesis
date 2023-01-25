@@ -7,6 +7,10 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 - Importing did not work, due to several formatting errors
 - Need to import demographic dataset - are ProlificID's considered identifying information?
 - Excluded observation that took 26 hours (not registered in Prolific)
+- Figure out how to multiply blend
+- Maybe histograms comparing examiner and algorithm should be divided by conclusion
+- Make better parallel coordinate plots
+- Regenerate signature plots/grid for different line types (cannot distinguish in greyscale)
 
 Book will not build if I delete/hide the prompt below
 
