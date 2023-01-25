@@ -11,16 +11,17 @@
   - Using LaTex instead of ggplot: can set gradient through color outputted by ggplot, but have not played with transparency
   - Words can be equally spaced
   - Currently assigning a new color to each word - this is not efficient
-  - Needs to be in CSS for tab format of presenting the transcripts
-  - Need to add labels for the gradient scale, because all pages will have a different legend
-  - Change from relative frequency to a different type of frequency (review notes)
+  - Now in CSS for tab format
+  - Labels added with gradient scale
+  - Change from relative frequency to a different type of frequency
      - Cosine Similarity?
        - Jessica Recommended
      - Edit Distance?
        - Usually at the character level, not at the word level
-       - Would need to determine what needs to be matched (I don't think most notes will be in nice sentence form)
+       - Pay attention to what words/phrases show up often (not just final number)
      - On another note - could we use something like TurnItIn to determine which pages of the transcript were the most impactful?
        - Rabin-Karp algorithm?
        - Levenshtein distance?
        - http://users.csc.calpoly.edu/~dekhtyar/448-Spring2013/lectures/lec03.448.pdf
        - Maybe start by sentence level in transcript, then search notes for close-ish matching text
+       
