@@ -182,17 +182,20 @@ Of the 657 Prolific participants who started the survey, there were 336 female p
 The median age was 45. 
 Age and gender are shown in \@ref(fig:demographics).
 610 participants completed the survey, and 588 participants correctly answered both attention check questions.
-The division of correct answers on the attention check questions are shown in \@ref(tab:tbl-attentioncheck).
+The division of correct answers on the attention check questions are shown in \@ref(tab:attentioncheck).
 This is the number of participants who were considered for the following analysis.
 \chaircol{Charts may be useful here, again, only for your thesis and not for the actual publication - visuals are helpful but if space is limited then these types of visuals are the first to go to an appendix.}
 
 ```{r}
-#| label: demographics
-#| fig-cap: Demographic Information
-#| fig-width: 10
-#| fig-height: 4
-#| fig-align: center
-#| echo: false
+#| demographics,
+#| fig.cap= "Demographic Information",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
 
 ggplot(subset(demographics, !is.na(age)), aes(x = gender, y=age)) +
     geom_violin(position = position_dodge(1),
@@ -207,13 +210,13 @@ ggplot(subset(demographics, !is.na(age)), aes(x = gender, y=age)) +
 ```
 
 ```{r}
-#| label: tbl-attentioncheck
-#| tbl-cap: Attention Check Information
-#| tbl-width: 10
-#| tbl-height: 4
-#| tbl-align: center
-#| echo: false
-#| eval: true
+#| attentioncheck,
+#| tab.cap: "Attention Check Information",
+#| tab.width: 10,
+#| tab.height: 4,
+#| tab.align: "center",
+#| echo: FALSE,
+#| eval: TRUE
 merged_results_allresponses$gun_caliber<-NA
 merged_results_allresponses$gun_caliber[merged_results_allresponses$check1=="9mm"] <- "Caliber Correct"
 merged_results_allresponses$gun_caliber[merged_results_allresponses$check1!="9mm"] <- "Caliber Incorrect"
@@ -252,13 +255,15 @@ This may indicate that some individuals are distinguishing between evidence that
 The inconclusive decision resulted in a more spread out distribution that is practically the same for both the probability that the gun was at the crime scene and the probability that Cole committed the crime, with participants generally selecting values below 50%.  
 
 ```{r}
-#| label: probcompare
-#| fig-cap: Comparison of probabilities selected by participants for Cole and the gun
-#| fig-width: 10
-#| fig-height: 4
-#| fig-align: center
-#| echo: false
-#| eval: false
+#| probcompare,
+#| fig.cap= "Comparison of Probabilities Selected for Cole and the Gun",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
 merged_prob <-
   dplyr::select(merged_results, c("conclusion", "probability", "gunprob"))
 
@@ -286,12 +291,15 @@ Because the match score is on a scale of 0 - 1, this value could be misinterpret
 It does not appear that the participants are anchoring to this value, however, as the distributions do not appear to correspond more to the line when the algorithm is present. \chaircol{Let's choose contrasting colors here, if possible - red/blue, so the overlap is purple? }
 
 ```{r}
-#| label: probalgorithm
-#| fig-cap: Probability the gun was used in the crime, or that Cole committed the crime. Black lines indicate values produced by the algorithm
-#| fig-width: 10
-#| fig-height: 6
-#| fig-align: center
-#| echo: false
+#| probalgorithm,
+#| fig.cap= "Probability the gun was used in the crime, or that Cole committed the crime. Black lines indicate values produced by the algorithm",
+#| fig.width= 10,
+#| fig.height= 6,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
 
 merged_probcombine<- merged_results %>% 
   select(algorithm, gunprob, conclusion, probability) %>%
@@ -316,13 +324,15 @@ ggplot(merged_probcombine, aes(x = Probability, fill = algorithm)) +
 ```
 
 ```{r}
-#| label: Coleprobalgorithm
-#| fig-cap: Probability Cole committed the crime. Black lines indicate values produced by the algorithm
-#| fig-width: 10
-#| fig-height: 4
-#| fig-align: center
-#| echo: false
-#| eval: false
+#| Coleprobalgorithm,
+#| fig.cap= "Probability Cole committed the crime. Black lines indicate values produced by the algorithm",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
 
 ggplot(merged_results, aes(x = probability, fill = algorithm)) +
   geom_density(alpha = 0.5, color=NA) +
@@ -352,12 +362,15 @@ The same general trend of higher probability values for those who chose to convi
 However, in the case of the match condition, those who did not convict gave a generally higher probability that the gun was used in the crime than the probability that Cole committed the crime.
 
 ```{r}
-#| label: probguilt
-#| fig-cap: Probabilities based on whether the participants thought the defendant was guilty
-#| fig-width: 10
-#| fig-height: 5
-#| fig-align: center
-#| echo: false
+#| probguilt,
+#| fig.cap= "Probabilities based on whether the participants thought the defendant was guilty",
+#| fig.width= 10,
+#| fig.height= 5,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
 
 probplot <-
   ggplot(merged_results, aes(x = conclusion, y = probability, fill = guilty)) +
@@ -406,12 +419,12 @@ This trend was also reflected in the data for the algorithm expert, and can be s
 The lack of difference based on examiner decision, image, or algorithm (in the case of the firearms examiner) provides a hopeful indication that the credibility of expert witnesses is not necessarily swayed by the facts of the case or the presence of images, when their written testimony remains the same.
 
 ```{r}
-#| label: cred
-#| fig-cap: Histogram of Firearms Examiner Credibility
-#| fig-width: 7
-#| fig-height: 4
-#| fig-align: center
-#| echo: false
+#| cred,
+#| fig.cap: "Histogram of Firearms Examiner Credibility",
+#| fig.width: 7,
+#| fig.height: 4,
+#| fig.align: "center",
+#| echo: FALSE
 
 
 merged_results$firetestcred = factor(
@@ -486,13 +499,13 @@ As with the credibility condition, the majority of individuals selected the two 
 In the case of an inconclusive decision, the highest proportion of participants selected "Moderately reliable", while for the conclusive decisions, the highest proportion of participants selected "Extremely reliable".
 
 ```{r}
-#| label: caserel
-#| fig-cap: Histogram of overall case reliability
-#| fig-width: 7
-#| fig-height: 3
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| caserel,
+#| fig.cap: "Histogram of overall case reliability",
+#| fig.width: 7,
+#| fig.height: 3,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 df.overrel <- ddply(
   algorithm_results,
@@ -536,13 +549,13 @@ When the algorithm is absent, both the match and the non-match conditions appear
 As with previous responses, all other categories are sparsely populated.
 
 ```{r}
-#| label: genrel
-#| fig-cap: Histogram of perceived firearm reliability as a field
-#| fig-width: 7
-#| fig-height: 3
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| genrel,
+#| fig.cap: "Histogram of perceived firearm reliability as a field",
+#| fig.width: 7,
+#| fig.height: 3,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 merged_results$firerel = factor(
   merged_results$firerel,
@@ -582,13 +595,13 @@ When the algorithm is absent, the trend is fairly similar to that in the non-mat
 However, in the case that the algorithm was present, this trend was flipped: more participants chose "Moderately reliable" over "Extremely reliable". 
 
 ```{r}
-#| label: examrel
-#| fig-cap: Histogram of perceived firearm exam reliability
-#| fig-width: 7
-#| fig-height: 4
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| examrel,
+#| fig.cap: "Histogram of perceived firearm exam reliability"
+#| fig.width: 7,
+#| fig.height: 4,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 merged_results$examrel = factor(
   merged_results$examrel,
@@ -630,13 +643,13 @@ The responses were in many ways similar to those given in the case of general re
 Both also demonstrated a higher selection of "Weakly reliable" when individuals were presented with an inconclusive decision.
 
 ```{r}
-#| label: algrel
-#| fig-cap: Histogram of perceived algorithm reliability
-#| fig-width: 7
-#| fig-height: 3
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| algrel,
+#| fig.cap: "Histogram of perceived algorithm reliability",
+#| fig.width: 7,
+#| fig.height: 3,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 df.algrel <- ddply(
   algorithm_results,
@@ -689,13 +702,13 @@ Here, as before, those who received the inconclusive decision were more likely t
 A higher proportion of individuals selected "Extremely scientific" for conclusive decisions when the algorithm was presented compared to when the algorithm was absent.
 
 ```{r}
-#| label: gensci
-#| fig-cap: Histogram of perceived firearm scientificity as a field
-#| fig-width: 7
-#| fig-height: 4
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| gensci,
+#| fig.cap: "Histogram of perceived firearm scientificity as a field",
+#| fig.width: 7,
+#| fig.height: 4,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 merged_results$firesci = factor(
   merged_results$firesci,
@@ -735,13 +748,13 @@ When the algorithm was present, however, "Moderately scientific" became the most
 Results for conclusive categories are fairly similar across algorithm conditions, with a close split between "Moderately scientific" and "Extremely scientific".
 
 ```{r}
-#| label: examsci
-#| fig-cap: Histogram of perceived scientificity of the fiream examiner's bullet comparison
-#| fig-width: 7
-#| fig-height: 4
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| examsci,
+#| fig.cap: "Histogram of perceived scientificity of the bullet comparison of the firearm examiner",
+#| fig.width: 7,
+#| fig.height: 4,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 merged_results$examsci = factor(
   merged_results$examsci,
@@ -763,12 +776,11 @@ ggplot(subset(merged_results,!is.na(examsci)),
        aes(x = examsci, fill = algorithm)) +
   geom_bar(
     mapping = aes(y = ..prop.., group = algorithm),
-    position = position_dodge(preserve = "single"), color="black"
-  ) +
+    position = position_dodge(preserve = "single"), color="black") +
   #  geom_histogram(stat="count", position="dodge")+
   facet_grid(conclusion ~ ., labeller =  purrr::partial(label_both, sep = ":\n")) +
   ggtitle(
-    "How scientific do you think the firearms examiner's subjective opinion \n of the bullet comparison evidence is, in this case?"
+    "How scientific do you think the firearms examiner\'s subjective opinion \n of the bullet comparison evidence is, in this case?"
   ) +
   scale_fill_manual(values = c("grey20", "tomato")) +
   theme_bw()+
@@ -782,13 +794,13 @@ Here, all decisions had the highest proportion of respondents select "Extremely 
 The proportion selecting "Moderately scientific" was noticeably lower than the proportion selecting "Extremely scientific".
 
 ```{r}
-#| label: algsci
-#| fig-cap: Histogram of perceived algorithm scientificity in this case
-#| fig-width: 7
-#| fig-height: 3
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| algsci,
+#| fig.cap: "Histogram of perceived algorithm scientificity in this case",
+#| fig.width: 7,
+#| fig.height: 3,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 algorithm_results$algsci = factor(
   algorithm_results$algsci,
@@ -835,13 +847,13 @@ Those who did not receive the algorithm were more likely to select "I understood
 There was not a \chaircol{discernible} difference in responses based on the presence or absence of images.
 
 ```{r}
-#| label: expunder
-#| fig-cap: Histogram of understanding for the firearms examiner's explanation
-#| fig-width: 7
-#| fig-height: 4
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| expunder,
+#| fig.cap: "Histogram of understanding for the explanation of the firearms examiner"
+#| fig.width: 7,
+#| fig.height: 4,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 merged_results$expunder = factor(
   merged_results$expunder,
@@ -891,13 +903,13 @@ Those with an inconclusive condition had responses fairly evenly distributed acr
 As in the case without images, few individuals indicated that they understood less than half of the method. 
 
 ```{r}
-#| label: algunder
-#| fig-cap: Histogram of understanding for the algorithm explanation
-#| fig-width: 7
-#| fig-height: 3
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| algunder,
+#| fig.cap: "Histogram of understanding for the algorithm explanation",
+#| fig.width: 7,
+#| fig.height: 3,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 algorithm_results$algunder = factor(
   algorithm_results$algunder,
@@ -956,14 +968,13 @@ table(merged_results$unique)
 Individuals were also asked to rate the strength of evidence, both against Richard Cole and against the gun. 
 
 ```{r}
-#| label: strength
-#| fig-cap: Histogram of perceived strength of evidence against the defendant
-#| fig-width: 7
-#| fig-height: 3
-#| 
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| strength,
+#| fig.cap: "Histogram of perceived strength of evidence against the defendant",
+#| fig.width: 7,
+#| fig.height: 3,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 # How strong is the evidence that the defendant's gun was used to fire the shot in
              #       the convenience store, in your opinion?
 
@@ -1000,14 +1011,13 @@ When the examiner reached a non-match conclusion, individuals who also received 
 Alternatively, in the case of an inconclusive decision, individuals who did not receive the algorithm were more likely to select "not at all strong" compared to those who did receive the algorithm. 
 
 ```{r}
-#| label: gunstrength
-#| fig-cap: Histogram of perceived strength of evidence against the gun
-#| fig-width: 7
-#| fig-height: 3
-#| 
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| gunstrength,
+#| fig.cap: "Histogram of perceived strength of evidence against the gun",
+#| fig.width: 7,
+#| fig.height: 3,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 merged_results$gunstrength=factor(merged_results$gunstrength, levels =c("1 <br/> Not at all strong","2.0", "3.0",
                                                                   "4.0","5 <br/> Moderately strong",
@@ -1043,13 +1053,13 @@ ggplot(subset(merged_results, !is.na(gunstrength)), aes(x=gunstrength, fill = al
 When asked about the strength of evidence against the defendant's gun, there was no real difference between those who received the algorithm and those who did not (\@ref(fig:gunstrength)).
 
 ```{r}
-#| label: probstrength
-#| fig-cap: Probabilities based on participants' perceived strength of evidence.
-#| fig-width: 10
-#| fig-height: 4.5
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| probstrength,
+#| fig.cap: "Probabilities based on perceived strength of evidence.",
+#| fig.width: 10,
+#| fig.height: 4.5,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 strengthdat <- merged_results %>% 
   select(strength, probability, conclusion, gunstrength, algorithm, picture) %>%
@@ -1095,14 +1105,13 @@ Individuals were asked how often firearms examiners make mistakes when determini
 There does not appear to be a relationship between how often individuals felt firearms examiners made mistakes and factors such as conclusion, images, or the algorithm.
 
 ```{r}
-#| label: mistakes
-#| fig-cap: Histogram of perceived frequency of mistakes made by firearms examiners
-#| fig-width: 7
-#| fig-height: 3
-#| 
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| mistakes,
+#| fig.cap: "Histogram of perceived frequency of mistakes made by firearms examiners",
+#| fig.width: 7,
+#| fig.height: 3,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 merged_results$mistakes=factor(merged_results$mistakes, levels =c("Never","Rarely", "Occasionally",
                                                                   "Sometimes", "Frequently", "Usually", "Always"))
@@ -1133,14 +1142,13 @@ Note that these results only reflect the feelings of individuals who received th
 #### Histograms
 
 ```{r}
-#| label: histcred
-#| fig-cap: Histogram of perceived credibility of experts
-#| fig-width: 7
-#| fig-height: 3
-#| 
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| histcred,
+#| fig.cap: "Histogram of perceived credibility of experts",
+#| fig.width: 7,
+#| fig.height: 3,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 algtest_table<-table(merged_results$algtestcred)
 alg_df<-data.frame(algtest_table, question="algorithm")
@@ -1169,14 +1177,13 @@ In terms of credibility, as shown in \@ref(fig:histcred), the algorithm and the 
 As mentioned before, most participants limited their selection to the two highest categories - "Moderately credible" and "Extremely credible".
 
 ```{r}
-#| label: histrel
-#| fig-cap: Histogram of perceived reliability of evidence
-#| fig-width: 7
-#| fig-height: 3
-#| 
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| histrel,
+#| fig.cap: "Histogram of perceived reliability of evidence",
+#| fig.width: 7,
+#| fig.height: 3,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 algrel_table<-table(merged_results$algrel)
 algrel_df<-data.frame(algrel_table, question="algorithm")
@@ -1207,14 +1214,13 @@ There appears to be, however, a difference in the categories of "Moderately reli
 Individuals were more likely to select that the algorithm was "Weakly reliable", while they were less likely to select that the algorithm was "Moderately reliable", compared to the examiner.
 
 ```{r}
-#| label: histsci
-#| fig-cap: Histogram of perceived scientificity of evidence
-#| fig-width: 7
-#| fig-height: 3
-#| 
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| histsci,
+#| fig.cap: "Histogram of perceived scientificity of evidence",
+#| fig.width: 7,
+#| fig.height: 3,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 algsci_table<-table(merged_results$algsci)
 algsci_df<-data.frame(algsci_table, question="algorithm")
@@ -1245,14 +1251,13 @@ Accordingly, they were more likely to select "Moderately scientific" in the case
 No real difference can be seen in the lower values on the scale, due to few individuals selecting these categories.
 
 ```{r}
-#| label: histunder
-#| fig-cap: Histogram of participants' understanding
-#| fig-width: 7
-#| fig-height: 3
-#| 
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| histunder,
+#| fig.cap: "Histogram of participants\' understanding",
+#| fig.width: 7,
+#| fig.height: 3,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 algunder_table<-table(merged_results$algunder)
 algunder_df<-data.frame(algunder_table, question="algorithm")
@@ -1287,14 +1292,13 @@ Participants were more likely to select a 4 or 5 with regards to their understan
 #### Parallel Coordinate Plots
 
 ```{r}
-#| label: coordcred
-#| fig-cap: Plots of understanding and perceived expert credibility
-#| fig-width: 7
-#| fig-height: 6
-#| 
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| coordcred,
+#| fig.cap: "Plots of understanding and perceived expert credibility",
+#| fig.width: 7,
+#| fig.height: 6,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 algtestcred_reorder<- algorithm_results %>% mutate(algtestcred=fct_relevel(algtestcred, "Extremely noncredible","Moderately noncredible",
                                                                            "Weakly noncredible",
@@ -1370,14 +1374,13 @@ It can also be seen that there is a trend of individuals selecting a category lo
 This corresponds to \@ref(fig:histunder) in that individuals tend to give higher understanding ratings to the examiner's bullet comparison method than they did for the algorithm.
 
 ```{r}
-#| label: coordscirel
-#| fig-cap: Plots of perceived scientificity and reliability of methods
-#| fig-width: 7
-#| fig-height: 6
-#| 
-#| fig-align: center
-#| echo: false
-#| warning: false
+#| coordscirel,
+#| fig.cap: "Plots of perceived scientificity and reliability of methods",
+#| fig.width: 7,
+#| fig.height: 6,
+#| fig.align: "center",
+#| echo: FALSE,
+#| warning: FALSE
 
 sci_reorder<- algorithm_results %>% mutate(algsci=fct_relevel(algsci, "Extremely unscientific","Moderately unscientific","Weakly unscientific",
                                            "Neither scientific nor unscientific", "Weakly scientific", "Moderately scientific",
@@ -1435,8 +1438,8 @@ In terms of reliability, participants tended to choose one of the two highest ca
 Some participants switched between the two highest categories for the algorithm or the examiner, with similar numbers giving higher values to the algorithm and the examiner.  
 
 ```{r}
-#| echo: false
-#| warning: false
+#| echo: FALSE,
+#| warning: FALSE
 
 library(ggpcp)
 
