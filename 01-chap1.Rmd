@@ -211,10 +211,6 @@ ggplot(subset(demographics, !is.na(age)), aes(x = gender, y=age)) +
 
 ```{r}
 #| attentioncheck,
-#| tab.cap= "Attention Check Information",
-#| tab.width= 10,
-#| tab.height= 4,
-#| tab.align= "center",
 #| echo= FALSE,
 #| message= FALSE,
 #| eval= TRUE
@@ -227,7 +223,7 @@ merged_results_allresponses$question_reading[merged_results_allresponses$check2=
 merged_results_allresponses$question_reading[merged_results_allresponses$check2!="Moderately reliable"] <- "Reading Incorrect"
 
 dem_table<-table(merged_results_allresponses$gun_caliber, merged_results_allresponses$question_reading)
-kable(dem_table)
+kable(dem_table, caption="Attention Check Information")
 # ggplot(merged_results_allresponses) +
 #   ggmosaic::geom_mosaic(aes(x = product(gun_caliber), fill=question_reading))+
 #   ggtitle("Correct Answers") +
@@ -1553,8 +1549,7 @@ It may also effect how well ordered logistic regression models fit the data.
 @garrett2013 suggests that feelings of guilt may be reduced if the examiner admits that their conclusion may be in error.
 This effect may be diminished by adding a stronger cross examination, with special attention paid to error rate studies, or by asking participants to read critical articles (such as PCAST or information about the CSI effect) prior to reading the provided court testimony.
 
-- Importing did not work, due to several formatting errors
-- Need to import demographic dataset - are ProlificID's considered identifying information?
+- Need to import demographic dataset - are fingerprints considered identifying information?
 - Excluded observation that took 26 hours (not registered in Prolific)
 - Figure out how to multiply blend
 - Maybe histograms comparing examiner and algorithm should be divided by conclusion
