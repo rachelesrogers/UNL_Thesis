@@ -216,6 +216,7 @@ ggplot(subset(demographics, !is.na(age)), aes(x = gender, y=age)) +
 #| tab.height= 4,
 #| tab.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| eval= TRUE
 merged_results_allresponses$gun_caliber<-NA
 merged_results_allresponses$gun_caliber[merged_results_allresponses$check1=="9mm"] <- "Caliber Correct"
@@ -261,7 +262,7 @@ The inconclusive decision resulted in a more spread out distribution that is pra
 #| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
-#| eval= TRUE,
+#| eval= FALSE,
 #| warning= FALSE,
 #| message= FALSE
 merged_prob <-
@@ -424,6 +425,8 @@ The lack of difference based on examiner decision, image, or algorithm (in the c
 #| fig.width= 7,
 #| fig.height= 4,
 #| fig.align= "center",
+#| warning= FALSE,
+#| message= FALSE,
 #| echo= FALSE
 
 
@@ -505,6 +508,7 @@ In the case of an inconclusive decision, the highest proportion of participants 
 #| fig.height= 3,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 df.overrel <- ddply(
@@ -555,6 +559,7 @@ As with previous responses, all other categories are sparsely populated.
 #| fig.height= 3,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 merged_results$firerel = factor(
@@ -601,6 +606,7 @@ However, in the case that the algorithm was present, this trend was flipped: mor
 #| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 merged_results$examrel = factor(
@@ -649,6 +655,7 @@ Both also demonstrated a higher selection of "Weakly reliable" when individuals 
 #| fig.height= 3,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 df.algrel <- ddply(
@@ -708,6 +715,7 @@ A higher proportion of individuals selected "Extremely scientific" for conclusiv
 #| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 merged_results$firesci = factor(
@@ -754,6 +762,7 @@ Results for conclusive categories are fairly similar across algorithm conditions
 #| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 merged_results$examsci = factor(
@@ -801,6 +810,7 @@ The proportion selecting "Moderately scientific" was noticeably lower than the p
 #| fig.height= 3,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 algorithm_results$algsci = factor(
@@ -854,6 +864,7 @@ There was not a \chaircol{discernible} difference in responses based on the pres
 #| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 merged_results$expunder = factor(
@@ -910,6 +921,7 @@ As in the case without images, few individuals indicated that they understood le
 #| fig.height= 3,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 algorithm_results$algunder = factor(
@@ -975,6 +987,7 @@ Individuals were also asked to rate the strength of evidence, both against Richa
 #| fig.height= 3,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 # How strong is the evidence that the defendant's gun was used to fire the shot in
              #       the convenience store, in your opinion?
@@ -1018,6 +1031,7 @@ Alternatively, in the case of an inconclusive decision, individuals who did not 
 #| fig.height= 3,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 merged_results$gunstrength=factor(merged_results$gunstrength, levels =c("1 <br/> Not at all strong","2.0", "3.0",
@@ -1060,6 +1074,7 @@ When asked about the strength of evidence against the defendant's gun, there was
 #| fig.height= 4.5,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 strengthdat <- merged_results %>% 
@@ -1112,6 +1127,7 @@ There does not appear to be a relationship between how often individuals felt fi
 #| fig.height= 3,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 merged_results$mistakes=factor(merged_results$mistakes, levels =c("Never","Rarely", "Occasionally",
@@ -1149,6 +1165,7 @@ Note that these results only reflect the feelings of individuals who received th
 #| fig.height= 3,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 algtest_table<-table(merged_results$algtestcred)
@@ -1184,6 +1201,7 @@ As mentioned before, most participants limited their selection to the two highes
 #| fig.height= 3,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 algrel_table<-table(merged_results$algrel)
@@ -1221,6 +1239,7 @@ Individuals were more likely to select that the algorithm was "Weakly reliable",
 #| fig.height= 3,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 algsci_table<-table(merged_results$algsci)
@@ -1258,6 +1277,7 @@ No real difference can be seen in the lower values on the scale, due to few indi
 #| fig.height= 3,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 algunder_table<-table(merged_results$algunder)
@@ -1299,6 +1319,7 @@ Participants were more likely to select a 4 or 5 with regards to their understan
 #| fig.height= 6,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 algtestcred_reorder<- algorithm_results %>% mutate(algtestcred=fct_relevel(algtestcred, "Extremely noncredible","Moderately noncredible",
@@ -1381,6 +1402,7 @@ This corresponds to \@ref(fig:histunder) in that individuals tend to give higher
 #| fig.height= 6,
 #| fig.align= "center",
 #| echo= FALSE,
+#| message= FALSE,
 #| warning= FALSE
 
 sci_reorder<- algorithm_results %>% mutate(algsci=fct_relevel(algsci, "Extremely unscientific","Moderately unscientific","Weakly unscientific",
