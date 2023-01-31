@@ -1478,11 +1478,19 @@ library(ggpcp)
 
 algtestcred_reorder <- algorithm_results %>% mutate(conclusion = fct_relevel(conclusion, "NoMatch", "Inconclusive", "Match"))
 
+algtestcred_reorder <- algtestcred_reorder %>% mutate(algrel=fct_relevel(algrel, "Extremely unreliable","Moderately unreliable","Weakly unreliable", "Neither reliable nor unreliable", "Weakly reliable", "Moderately reliable",
+                                            "Extremely reliable"))
+
+algtestcred_reorder <- algtestcred_reorder %>% mutate(examrel=fct_relevel(examrel, "Extremely unreliable", "Moderately unreliable","Weakly unreliable","Neither reliable nor unreliable", "Weakly reliable", "Moderately reliable",
+                                            "Extremely reliable"))
+
 
 cred_data2 <- data.frame(
   algtestcred = algtestcred_reorder$algtestcred, 
   firetestcred = algtestcred_reorder$firetestcred, 
-  conclusion = algtestcred_reorder$conclusion
+  conclusion = algtestcred_reorder$conclusion,
+  examrel = algtestcred_reorder$examrel,
+  algrel = algtestcred_reorder$algrel
 )
 
 testcred_tab2 <- table(cred_data2)
@@ -1495,14 +1503,14 @@ testcred_df2 <- testcred_df2 %>%
 
 
 testcred_df2 %>%
-  pcp_select(algtestcred, firetestcred) %>%
+  pcp_select(algtestcred, firetestcred, examrel, algrel) %>%
   pcp_scale() %>%
   pcp_arrange() %>%
   ggplot(aes_pcp()) +
   geom_pcp(aes(colour = conclusion), alpha = 1, boxwidth = 0.1) +
   scale_colour_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
   guides(colour = guide_legend(override.aes = list(alpha = 1))) +
-  geom_pcp_boxes(fill = "transparent", color = "black", linewidth = 0.5) +
+  geom_pcp_boxes(fill = "transparent", color = "black", linewidth = 1)+
   geom_pcp_labels()
 
 
