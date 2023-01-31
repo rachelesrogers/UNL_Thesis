@@ -134,7 +134,7 @@ Jury eligibility was defined as US citizens over the age of majority in their st
 They were also required to have normal or corrected to normal vision, due to the images used in the study. 
 Participants were compensated with \$8.40 for completing the study, \chaircol{for an hourly compensation rate of about} \$27.79 (average completion time of approximately 18 minutes).  
 \chaircol{For your thesis, include a chart of completion time distribution, facetted by condition}
-\@ref(fig:completiontime) \authorcol{depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints, excluding one observation of 1569.266 minutes (26.15 hours), which did not register on Prolific. In general, it appears that those who received the algorithm condition took slightly more time on average than those who did not (mean values of 22.61 minutes and 16.10 minutes, respectively). This is unsurprising, given the increased length of the algorithm condition.}
+\@ref(fig:completiontime) \authorcol{depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints, excluding five observations greater than 75 minutes. In general, it appears that those who received the algorithm condition took slightly more time on average than those who did not (mean values of 22.61 minutes and 16.10 minutes, respectively). This is unsurprising, given the increased length of the algorithm condition.}
 
 ```{r}
 #| completiontime,
@@ -161,8 +161,11 @@ beginning_wend <- right_join(demographics, scenarios)
 beginning_wend$total_time <- NA
 beginning_wend$total_time <- beginning_wend$finish_time - beginning_wend$time
 beginning_wend$total_time_minutes <- beginning_wend$total_time/60
+#beginning_wend %>% filter(total_time_minutes > 75) %>% dim()
+beginning_wend$truncated_minutes <- beginning_wend$total_time_minutes
+beginning_wend[beginning_wend$total_time_minutes > 75,]$truncated_minutes <- Inf
 
-ggplot(subset(beginning_wend,total_time_minutes <1400), aes(x = total_time_minutes, fill=algorithm)) +
+ggplot(beginning_wend, aes(x = truncated_minutes, fill=algorithm)) +
     geom_density(alpha = 0.5, color=NA)+
   facet_grid(conclusion~picture, labeller =  purrr::partial(label_both, sep = ":\n"))+
   ggtitle("Histogram of Completion Time") +
@@ -1550,7 +1553,6 @@ It may also effect how well ordered logistic regression models fit the data.
 This effect may be diminished by adding a stronger cross examination, with special attention paid to error rate studies, or by asking participants to read critical articles (such as PCAST or information about the CSI effect) prior to reading the provided court testimony.
 
 - Need to import demographic dataset - are fingerprints considered identifying information?
-- Excluded observation that took 26 hours (not registered in Prolific)
 - Figure out how to multiply blend
 - Maybe histograms comparing examiner and algorithm should be divided by conclusion
 - Make better parallel coordinate plots
