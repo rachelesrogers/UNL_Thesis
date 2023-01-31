@@ -983,7 +983,7 @@ Individuals were also asked to rate the strength of evidence, both against Richa
 #| strength,
 #| fig.cap= "Histogram of perceived strength of evidence against the defendant",
 #| fig.width= 7,
-#| fig.height= 3,
+#| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
 #| message= FALSE,
@@ -1027,7 +1027,7 @@ Alternatively, in the case of an inconclusive decision, individuals who did not 
 #| gunstrength,
 #| fig.cap= "Histogram of perceived strength of evidence against the gun",
 #| fig.width= 7,
-#| fig.height= 3,
+#| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
 #| message= FALSE,
@@ -1161,17 +1161,18 @@ Note that these results only reflect the feelings of individuals who received th
 #| histcred,
 #| fig.cap= "Histogram of perceived credibility of experts",
 #| fig.width= 7,
-#| fig.height= 3,
+#| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
 #| message= FALSE,
 #| warning= FALSE
 
-algtest_table<-table(merged_results$algtestcred)
+algtest_table<-table(merged_results$algtestcred, merged_results$conclusion)
 alg_df<-data.frame(algtest_table, question="algorithm")
-firetest_table<-table(merged_results[merged_results$algorithm=="Yes",]$firetestcred)
+colnames(alg_df)[2] <- "conclusion"
+firetest_table<-table(merged_results[merged_results$algorithm=="Yes",]$firetestcred,merged_results[merged_results$algorithm=="Yes",]$conclusion)
 fire_df<- data.frame(firetest_table, question="firearm")
-
+colnames(fire_df)[2] <- "conclusion"
 test_df<-rbind(alg_df, fire_df)
 
 levels(test_df$Var1) <- gsub(" ", "\n", levels(test_df$Var1))
@@ -1184,6 +1185,7 @@ ggplot(test_df, aes(Var1, Freq, fill=question))+
   geom_bar(stat="identity", position=position_dodge(preserve = "single"), color="black")+
   ggtitle("How credible did you find the testimony of the ___ expert?")+
   scale_fill_manual(values = c("gray", "black")) +
+  facet_grid(conclusion~., labeller =  purrr::partial(label_both, sep = ":\n")) +
   theme_bw()+
   theme(axis.title.x = element_blank())
 
@@ -1197,16 +1199,18 @@ As mentioned before, most participants limited their selection to the two highes
 #| histrel,
 #| fig.cap= "Histogram of perceived reliability of evidence",
 #| fig.width= 7,
-#| fig.height= 3,
+#| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
 #| message= FALSE,
 #| warning= FALSE
 
-algrel_table<-table(merged_results$algrel)
+algrel_table<-table(merged_results$algrel, merged_results$conclusion)
 algrel_df<-data.frame(algrel_table, question="algorithm")
-examrel_table<-table(merged_results[merged_results$algorithm=="Yes",]$examrel)
+colnames(algrel_df)[2] <- "conclusion"
+examrel_table<-table(merged_results[merged_results$algorithm=="Yes",]$examrel, merged_results[merged_results$algorithm=="Yes",]$conclusion)
 examrel_df<- data.frame(examrel_table, question="examiner")
+colnames(examrel_df)[2] <- "conclusion"
 
 rel_df<-rbind(algrel_df, examrel_df)
 
@@ -1222,6 +1226,7 @@ ggplot(rel_df, aes(Var1, Freq, fill=question))+
   geom_bar(stat="identity", position=position_dodge(preserve = "single"), color="black")+
   ggtitle("How reliable do you think the ____ evidence is, in this case?")+
   scale_fill_manual(values = c("gray", "black")) +
+  facet_grid(conclusion~., labeller =  purrr::partial(label_both, sep = ":\n")) +
   theme_bw()+
   theme(axis.title.x = element_blank())
 
@@ -1235,16 +1240,18 @@ Individuals were more likely to select that the algorithm was "Weakly reliable",
 #| histsci,
 #| fig.cap= "Histogram of perceived scientificity of evidence",
 #| fig.width= 7,
-#| fig.height= 3,
+#| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
 #| message= FALSE,
 #| warning= FALSE
 
-algsci_table<-table(merged_results$algsci)
+algsci_table<-table(merged_results$algsci, merged_results$conclusion)
 algsci_df<-data.frame(algsci_table, question="algorithm")
-examsci_table<-table(merged_results[merged_results$algorithm=="Yes",]$examsci)
+colnames(algsci_df)[2] <- "conclusion"
+examsci_table<-table(merged_results[merged_results$algorithm=="Yes",]$examsci,merged_results[merged_results$algorithm=="Yes",]$conclusion)
 examsci_df<- data.frame(examsci_table, question="examiner")
+colnames(examsci_df)[2] <- "conclusion"
 
 sci_df<-rbind(algsci_df, examsci_df)
 
@@ -1258,6 +1265,7 @@ ggplot(sci_df, aes(Var1, Freq, fill=question))+
   geom_bar(stat="identity", position=position_dodge(preserve = "single"), color="black")+
   ggtitle("How scientific do you think the ____ evidence is, in this case?")+
   scale_fill_manual(values = c("gray", "black")) +
+  facet_grid(conclusion~., labeller =  purrr::partial(label_both, sep = ":\n")) +
   theme_bw()+
   theme(axis.title.x = element_blank())
 
@@ -1273,16 +1281,18 @@ No real difference can be seen in the lower values on the scale, due to few indi
 #| histunder,
 #| fig.cap= "Histogram of participants\' understanding",
 #| fig.width= 7,
-#| fig.height= 3,
+#| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
 #| message= FALSE,
 #| warning= FALSE
 
-algunder_table<-table(merged_results$algunder)
+algunder_table<-table(merged_results$algunder, merged_results$conclusion)
 algunder_df<-data.frame(algunder_table, question="algorithm")
-expunder_table<-table(merged_results[merged_results$algorithm=="Yes",]$expunder)
+colnames(algunder_df)[2] <- "conclusion"
+expunder_table<-table(merged_results[merged_results$algorithm=="Yes",]$expunder,merged_results[merged_results$algorithm=="Yes",]$conclusion)
 expunder_df<- data.frame(expunder_table, question="examiner")
+colnames(expunder_df)[2] <- "conclusion"
 
 under_df<-rbind(algunder_df, expunder_df)
 
@@ -1300,6 +1310,7 @@ ggplot(under_df, aes(Var1, Freq, fill=question))+
   ggtitle("Based on this testimony, how would you rate your understanding of the method
                   described for the ______?") +
   scale_fill_manual(values = c("gray", "black")) +
+  facet_grid(conclusion~., labeller =  purrr::partial(label_both, sep = ":\n")) +
   theme_bw()+
   theme(axis.title.x = element_blank())+ 
   scale_x_discrete(labels=c('1\nI\nunderstood\nnothing', '2', '3', '4', '5\nI\nunderstood\neverything'))
@@ -1554,7 +1565,6 @@ This effect may be diminished by adding a stronger cross examination, with speci
 
 - Need to import demographic dataset - are fingerprints considered identifying information?
 - Figure out how to multiply blend
-- Maybe histograms comparing examiner and algorithm should be divided by conclusion
 - Make better parallel coordinate plots
 - Regenerate signature plots/grid for different line types (cannot distinguish in greyscale)
 
