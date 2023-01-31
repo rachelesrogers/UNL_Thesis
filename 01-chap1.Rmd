@@ -55,9 +55,9 @@ Following PCAST's publication, many methods of statistical matching have been de
 In this study, the bullet matching algorithm used was developed by @hare2017automatic. 
 The algorithm can briefly be described as follows:
 
-1. A 3D scan is taken of each bullet land (containing striation marks to be compared), a stable cross-section is extracted, and shoulders (without relevant striation marks) are removed\chaircol{, as in} \@ref(fig:shoulder).
+1. A 3D scan is taken of each bullet land (containing striation marks to be compared), a stable cross-section is extracted, and shoulders (without relevant striation marks) are removed\chaircol{, as in} \@ref(fig:shoulder), \authorcol{an image from} @hare2017automatic.
 
-```{r shoulder, echo=FALSE, fig.cap="The land is shown in the center. Shoulders are shown outside of the vertical lines [@hare2017automatic]."}
+```{r shoulder, echo=FALSE, fig.cap="The land is shown in the center. Shoulders are shown outside of the vertical lines."}
 include_graphics(path = "images/shoulder.jpg")
 ```
 
@@ -327,7 +327,7 @@ ggplot(merged_probcombine, aes(x = Probability, fill = algorithm)) +
 #| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
-#| eval= TRUE,
+#| eval= FALSE,
 #| warning= FALSE,
 #| message= FALSE
 
