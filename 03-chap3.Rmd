@@ -22,6 +22,7 @@
    - Scientificity: can directly compare to each other, or have a non-scientific portion to compare to
      - Did you find the algorithm or the bullet comparison to be more scientific?
      - Compared to the case description, how would you rate the scientificity of the bullet comparison?
+   - How much would you be willing to bet that the crime scene bullet (did/did not) match Cole's gun?
   
 - We may want to clarify if the examiner used the algorithm before or after their initial comparison.
   - If the algorithm is used first, this would potentially be confounding
