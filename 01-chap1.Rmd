@@ -1472,10 +1472,9 @@ Some participants switched between the two highest categories for the algorithm 
 ```{r}
 #| echo= FALSE,
 #| warning= FALSE,
+#| message= FALSE,
 #| fig.width= 8,
 #| fig.height= 9,
-
-library(ggpcp)
 
 algtestcred_reorder <- algorithm_results %>% mutate(conclusion = fct_relevel(conclusion, "NoMatch", "Inconclusive", "Match"))
 
@@ -1511,72 +1510,22 @@ testcred_df2 <- testcred_df2 %>%
   select(-Freq)
 
 
-whole_pcp<- testcred_df2 %>%
-  pcp_select(algtestcred, firetestcred, algrel, examrel, algsci, examsci, algunder, expunder) %>%
+testcred_df2 %>%
+  pcp_select(algunder, algsci, algtestcred, algrel, examrel, firetestcred, examsci, expunder) %>%
   pcp_scale() %>%
   pcp_arrange() %>%
   ggplot(aes_pcp()) +
-  geom_pcp(aes(colour = conclusion), alpha = 0.75) +
-  scale_colour_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
+  scale_y_continuous(labels=c("low scores", "", "", "", "high scores"),
+                     breaks=c(0,0.25, .5,.75, 1)) +
+  geom_pcp( alpha = 0.75) +
+  scale_colour_manual(values = c("#FF8E00", "grey20")) +
   guides(colour = guide_legend(override.aes = list(alpha = 1))) +
   geom_pcp_boxes(fill = "transparent", color = "black", linewidth = 1)+
 #  geom_pcp_labels() +
+  facet_grid(conclusion~.)+
   theme_bw()+
   theme(legend.position="top") #aspect.ratio = 0.4, 
 
-cred_pcp <- testcred_df2 %>%
-  pcp_select(algtestcred, firetestcred) %>%
-  pcp_scale() %>%
-  pcp_arrange() %>%
-  ggplot(aes_pcp()) +
-  geom_pcp(aes(colour = conclusion), alpha = 0.75) +
-  scale_colour_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
-  guides(colour = guide_legend(override.aes = list(alpha = 1))) +
-  geom_pcp_boxes(fill = "transparent", color = "black", linewidth = 1)+
-#  geom_pcp_labels() +
-  theme_bw()+
-  theme(legend.position="none")
-
-rel_pcp<- testcred_df2 %>%
-  pcp_select(algrel, examrel) %>%
-  pcp_scale() %>%
-  pcp_arrange() %>%
-  ggplot(aes_pcp()) +
-  geom_pcp(aes(colour = conclusion), alpha = 0.75) +
-  scale_colour_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
-  guides(colour = guide_legend(override.aes = list(alpha = 1))) +
-  geom_pcp_boxes(fill = "transparent", color = "black", linewidth = 1)+
-#  geom_pcp_labels() +
-  theme_bw()+
-  theme(legend.position="none")
-
-sci_pcp<- testcred_df2 %>%
-  pcp_select(algsci, examsci) %>%
-  pcp_scale() %>%
-  pcp_arrange() %>%
-  ggplot(aes_pcp()) +
-  geom_pcp(aes(colour = conclusion), alpha = 0.75) +
-  scale_colour_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
-  guides(colour = guide_legend(override.aes = list(alpha = 1))) +
-  geom_pcp_boxes(fill = "transparent", color = "black", linewidth = 1)+
-#  geom_pcp_labels() +
-  theme_bw()+
-  theme(legend.position="none")
-
-under_pcp<- select(testcred_df2, c("conclusion","algunder","expunder") )%>%
-  pcp_select(algunder, expunder) %>%
-  pcp_scale() %>%
-  pcp_arrange() %>%
-  ggplot(aes_pcp()) +
-  geom_pcp(aes(colour = conclusion), alpha = 0.75) +
-  scale_colour_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
-  guides(colour = guide_legend(override.aes = list(alpha = 1))) +
-  geom_pcp_boxes(fill = "transparent", color = "black", linewidth = 1)+
-#  geom_pcp_labels() +
-  theme_bw()+
-  theme(legend.position="none")
-
-whole_pcp/((cred_pcp | rel_pcp)/(sci_pcp | under_pcp))
 
 ```
 
