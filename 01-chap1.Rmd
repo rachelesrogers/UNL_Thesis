@@ -164,13 +164,18 @@ beginning_wend$total_time_minutes <- beginning_wend$total_time/60
 beginning_wend$truncated_minutes <- beginning_wend$total_time_minutes
 beginning_wend[beginning_wend$total_time_minutes > 75,]$truncated_minutes <- Inf
 
+png(filename="images/completiontime.png",type = "cairo-png")
 ggplot(beginning_wend, aes(x = truncated_minutes, fill=algorithm)) +
-    geom_density(alpha = 0.5, color=NA) + #*blend("multiply") + #|> partition(vars(algorithm)) |> blend("multiply")+
+    geom_density(alpha=0.75, color=NA) |> partition(vars(algorithm)) |> blend("multiply")+
   facet_grid(conclusion~picture, labeller =  purrr::partial(label_both, sep = ":\n"))+
   ggtitle("Histogram of Completion Time") +
   xlab("Completion Time in Minutes")+
   scale_fill_manual(values = c("grey20", "tomato"))+
   theme_bw()
+hide<-dev.off()
+
+
+include_graphics(path = "images/completiontime.png")
 
 
 ```
@@ -307,8 +312,9 @@ merged_probcombine<- merged_results %>%
 merged_probcombine$Type <- factor(merged_probcombine$Type, levels = c("probability", "gunprob"), 
                   labels = c("Cole", "Gun"))
 
+png(filename="images/probalgorithm.png",type = "cairo-png")
 ggplot(merged_probcombine, aes(x = Probability, fill = algorithm)) +
-  geom_density(alpha = 0.5, color=NA) + #|> partition(vars(algorithm)) |> blend("multiply") +
+  geom_density(alpha = 0.75, color=NA) |> partition(vars(algorithm)) |> blend("multiply") +
   geom_vline(data = filter(merged_probcombine, conclusion == "NoMatch"),
              aes(xintercept = 3.4)) +
   geom_vline(data = filter(merged_probcombine, conclusion == "Inconclusive"),
@@ -319,6 +325,9 @@ ggplot(merged_probcombine, aes(x = Probability, fill = algorithm)) +
   facet_grid(Type ~ conclusion, labeller = label_both) +
   scale_fill_manual(values = c("grey20", "tomato"))+
   theme_bw()
+hide<-dev.off()
+
+include_graphics(path = "images/probalgorithm.png")
 
 ```
 
