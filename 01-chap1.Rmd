@@ -1593,12 +1593,11 @@ It may also effect how well ordered logistic regression models fit the data.
 @garrett2013 suggests that feelings of guilt may be reduced if the examiner admits that their conclusion may be in error.
 This effect may be diminished by adding a stronger cross examination, with special attention paid to error rate studies, or by asking participants to read critical articles (such as PCAST or information about the CSI effect) prior to reading the provided court testimony.
 
-- Need to import demographic dataset - are fingerprints considered identifying information?
-- Figure out how to multiply blend
-  - graphics issue?
+- Need to import demographic dataset
 - Make better parallel coordinate plots
   - Boxes don't appear for some plots
 - Regenerate signature plots/grid for different line types (cannot distinguish in greyscale)
+- Prosecutor's fallacy - what we are testing in the comparison of probability graph to given algorithmic score (Thompson et al)
 
 
 
