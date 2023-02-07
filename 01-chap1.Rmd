@@ -133,7 +133,7 @@ Jury eligibility was defined as US citizens over the age of majority in their st
 They were also required to have normal or corrected to normal vision, due to the images used in the study. 
 Participants were compensated with \$8.40 for completing the study, \chaircol{for an hourly compensation rate of about} \$27.79 (average completion time of approximately 18 minutes).  
 \chaircol{For your thesis, include a chart of completion time distribution, facetted by condition}
-\@ref(fig:completiontime) \authorcol{depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints, excluding five observations greater than 75 minutes. In general, it appears that those who received the algorithm condition took slightly more time on average than those who did not (mean values of 22.61 minutes and 16.10 minutes, respectively). This is unsurprising, given the increased length of the algorithm condition.}
+\@ref(fig:completiontime) \authorcol{depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints(n=574), excluding five observations greater than 75 minutes. In general, it appears that those who received the algorithm condition took slightly more time on average than those who did not (mean values of 22.61 minutes and 16.10 minutes, respectively). This is unsurprising, given the increased length of the algorithm condition.}
 
 ```{r}
 #| completiontime,
@@ -188,6 +188,7 @@ include_graphics(path = "images/completiontime.png")
 Of the 657 Prolific participants who started the survey, there were 336 female participants, 315 male participants, and 6 non-binary participants.
 The median age was 45. 
 Age and gender are shown in \@ref(fig:demographics).
+\authorcol{Three ages recorded as below 17 were excluded due to implausibility (ages of 0.2, 2, and 7).}
 610 participants completed the survey, and 588 participants correctly answered both attention check questions.
 The division of correct answers on the attention check questions are shown in \@ref(tab:attentioncheck).
 This is the number of participants who were considered for the following analysis.
@@ -204,7 +205,7 @@ This is the number of participants who were considered for the following analysi
 #| warning= FALSE,
 #| message= FALSE
 
-ggplot(subset(demographics, !is.na(age)), aes(x = gender, y=age)) +
+ggplot(subset(demographics, !is.na(age) & age > 17), aes(x = gender, y=age)) +
     geom_violin(position = position_dodge(1),
               draw_quantiles=c(.25, .5, .75),
               color = "black",
@@ -1598,6 +1599,7 @@ This effect may be diminished by adding a stronger cross examination, with speci
   - Boxes don't appear for some plots
 - Regenerate signature plots/grid for different line types (cannot distinguish in greyscale)
 - Prosecutor's fallacy - what we are testing in the comparison of probability graph to given algorithmic score (Thompson et al)
+- Ages below 18 were also excluded from images
 
 
 
