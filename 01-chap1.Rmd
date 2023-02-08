@@ -188,7 +188,7 @@ include_graphics(path = "images/completiontime.png")
 Of the 657 Prolific participants who started the survey, there were 336 female participants, 315 male participants, and 6 non-binary participants.
 The median age was 45. 
 Age and gender are shown in \@ref(fig:demographics).
-\authorcol{Three ages recorded as below 17 were excluded due to implausibility (ages of 0.2, 2, and 7).}
+\authorcol{Three ages recorded as below 17 were excluded due to implausibility (ages of 0.2, 2, and 7) and lack of study completion.}
 610 participants completed the survey, and 588 participants correctly answered both attention check questions.
 The division of correct answers on the attention check questions are shown in \@ref(tab:attentioncheck).
 This is the number of participants who were considered for the following analysis.
