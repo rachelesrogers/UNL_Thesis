@@ -27,5 +27,3 @@
   
 - We may want to clarify if the examiner used the algorithm before or after their initial comparison.
   - If the algorithm is used first, this would potentially be confounding
-- Current Issues:
-  - Two images for prosecutor/defense looks small
