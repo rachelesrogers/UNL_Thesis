@@ -17,13 +17,35 @@ library(ggpcp)
 library(ggblend)
 library(knitr)
 library(patchwork)
+```
 
+```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
+# demographics_fingerprints <-
+#   read_csv("data/demographic_results.csv")
+# 
+# demographics_fingerprints$clean_prints <- as.numeric(as.factor(demographics_fingerprints$fingerprint))
+# 
+# fingerprint_matching <- demographics_fingerprints %>% select(clean_prints, fingerprint)
+# 
+# merged_results_fingerprints <- read_csv("data/merged_results_wo_comments_w_allresults.csv")
+# 
+# merged_results_fingerprint_join <- left_join(merged_results_fingerprints, fingerprint_matching)
+# 
+# fingerprint_clean <- subset(demographics_fingerprints, select=-c(fingerprint))
+# merged_results_clean <- subset(merged_results_fingerprint_join, select=-c(fingerprint))
+# 
+# write.csv(fingerprint_clean, "data/demographic_clean.csv")
+# write.csv(merged_results_clean, "data/merged_results_clean.csv")
+
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, cache = F}
 
 # merged_results <-
 #   read_csv("../../merged_results_full_wo_comments.csv")
 #View(merged_results)
 
-merged_results_allresponses<-read_csv("data/merged_results_wo_comments_w_allresults.csv")
+merged_results_allresponses<-read_csv("data/merged_results_clean.csv")
 
 merged_results <- merged_results_allresponses %>% filter(check1 =="9mm" & check2 == "Moderately reliable")
 
@@ -32,7 +54,8 @@ merged_results$conclusion <-
          levels = c("NoMatch", "Inconclusive", "Match"))
 
 demographics <-
-  read_csv("data/demographic_results.csv")
+  read_csv("data/demographic_clean.csv")
+
 ```
 
 ## Background
@@ -146,15 +169,15 @@ Participants were compensated with \$8.40 for completing the study, \chaircol{fo
 #| warning= FALSE,
 #| message= FALSE
 
-fingerprint_freq<-table(merged_results_allresponses$fingerprint)
+fingerprint_freq<-table(merged_results_allresponses$clean_prints)
 
 freq_df <- data.frame(fingerprint_freq)
 single_fingerprint <- freq_df %>%
   filter(Freq == 1)
 
-scenarios <- merged_results_allresponses %>% dplyr::select(scenario_number, conclusion, fingerprint, 
+scenarios <- merged_results_allresponses %>% dplyr::select(scenario_number, conclusion, clean_prints, 
                                          algorithm, picture, time) %>%
-  filter(fingerprint %in% single_fingerprint$Var1) %>% rename(finish_time = time)
+  filter(clean_prints %in% single_fingerprint$Var1) %>% rename(finish_time = time)
 
 beginning_wend <- right_join(demographics, scenarios)
 beginning_wend$total_time <- NA
