@@ -341,4 +341,20 @@ A: No, the algorithm only works on traditionally rifled bullets which are largel
 The algorithm has not been validated to work on seriously damaged or fragmented bullets.
 
 
-# The Second Appendix, for Fun
+# Study 2 Changes
+
+## Jury Instructions
+
+You have heard testimony from Terry Smith and Adrian Jones who have testified to opinions and the reasons for their opinions. This opinion testimony is allowed because of the education or experience of this witness. 
+Such opinion testimony should be judged like any other testimony. 
+You may accept or reject it, and give it as much weight as you think it deserves, considering the witness's education and experience, the reasons given for the opinion, and all the other evidence in the case. [@14OpinionEvidence]
+
+## Images
+
+```{r judge, fig.cap="Judge"}
+include_graphics(path = "images/Judge.jpg")
+```
+
+```{r firearms, fig.cap="Forensic Scientist"}
+include_graphics(path = "images/Forensic Scientist.jpg")
+```
