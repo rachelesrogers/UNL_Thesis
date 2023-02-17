@@ -175,6 +175,7 @@ Errors in pattern recognition are not limited to firearms comparisons.
 The need for an unbiased method for these methods is aptly demonstrated by the case of the Madrid bombing, in which the FBI incorrectly matched a latent fingerprint to the incorrect individual [@stacey]. 
 @kassinForensicConfirmationBias2013 suggest that this incorrect conclusion may relate to confirmation bias, and outline other contributing factors, such as extraneous details, external pressures, and order of presentation. 
 While this example is based on fingerprint analysis, the same issues of subjectivity are present in bullet matching.
+\authorcol{In fact, in the Ninth Judicial Circuit Court, there are jury instructions regarding the need for juries to treat firearms and other 'expert' testimony in the same manner as other opinion testimony, in which they must decide how much weight the testimony should receive [@14OpinionEvidence]. @14OpinionEvidence also suggest to avoid labelling such testimony as expert testimony, since it may cause jurors to give the testimony undue weight.}
 One way to fix these issues of subjectivity is by developing a more objective method of evaluation.
 One objective method introduced to the forensic sciences is bullet matching algorithms, such as the one described in @hare2017automatic.
 
@@ -284,6 +285,7 @@ Several researchers found that the 7-point scale may perform better or represent
 Participants often preferred more categories, such as 7, 9, or 10 [@prestonOptimalNumberResponse2000;@komoritaNumberScalePoints1965]. 
 However, @prestonOptimalNumberResponse2000 found that reliability decreased with more than 10 categories. 
 This indicates that 7, 9, or 10 point scales should be adequate for reliable responses that accurately represent the participant.
+\authorcol{Other methods have also been used to evaluate participant responses, such as asking participants to give a likelihood ratio or a probability of guilt. We would also like to ask participants to bet, and compare how results differ between all of these recording methods.} @thompsonJurorsGiveAppropriate2013 \authorcol{asked rate the chance of jurors being guilty on a scale from 1 chance in 1 trillion he is guilty, to 999,999,999,999 chances in a trillion that he is guilty, with Impossible to be guilty and Certain to be guilty as the most extreme values. They compared results from participants to Bayesian conditional probabilities in order to consider how much weight participants were giving DNA evidence, and a variety of error rates.}
 
 Reliability is important for both participant responses and the testimony that they are presented with.
 @mattijssen2020 asked examiners to use a verbal scale for degree of similarity and support when digitally comparing cartridge cases.
