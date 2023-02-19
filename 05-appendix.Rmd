@@ -351,10 +351,10 @@ You may accept or reject it, and give it as much weight as you think it deserves
 
 ## Images
 
-```{r judge, fig.cap="Judge"}
+```{r judge, echo=FALSE, fig.cap="Judge", fig.height=7}
 include_graphics(path = "images/Judge.jpg")
 ```
 
-```{r firearms, fig.cap="Forensic Scientist"}
+```{r firearms, echo=FALSE, fig.cap="Forensic Scientist", fig.height=7}
 include_graphics(path = "images/Forensic Scientist.jpg")
 ```
