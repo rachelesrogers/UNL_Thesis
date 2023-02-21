@@ -176,7 +176,7 @@ Q: And do you ever see two bullets that have agreement in every area of the bull
 A: No. 
 The firing process of a firearm is dynamic, kind of like a contained explosion. 
 When the firing pin hits the primer, which is basically the initiator, what gets it going, it will explode, bur the gun powder inside the casing, and the bullet will travel down the barrel, picking up the microscopic imperfections of the barrel, and the cartridge case will slam rearward against the support mechanism.
-During that dynamic process, each time it happens, a bullet will be marked slightly differently from one to the next. [@azvsceyala, pg 19-20]
+During that dynamic process, each time it happens, a bullet will be marked slightly differently from one to the next. [@azvscelaya, pg 19-20]
 
 Q: When you reached a conclusion, did you write up a report? [@azvscelaya, pg 23]
 
@@ -343,18 +343,22 @@ The algorithm has not been validated to work on seriously damaged or fragmented 
 
 # Study 2 Changes
 
-## Jury Instructions
+## Cautions Against Expert Witnesses
+
+### Jury Instructions
 
 You have heard testimony from Terry Smith and Adrian Jones who have testified to opinions and the reasons for their opinions. This opinion testimony is allowed because of the education or experience of this witness. 
 Such opinion testimony should be judged like any other testimony. 
 You may accept or reject it, and give it as much weight as you think it deserves, considering the witness's education and experience, the reasons given for the opinion, and all the other evidence in the case. [@14OpinionEvidence]
 
+### Opinion Witness
+@14OpinionEvidence suggests that witnesses should not be qualified as experts, as it may cause the jury to place undue weight in their testimony. Instead, @PROPOSALSELIMINATEPREJUDICIAL implements the term "opinion witness" in the place of "expert witness". This practice has been adopted in our revised testimony, when qualifying the witness based on experience and education.
+
 ## Images
 
-```{r judge, echo=FALSE, fig.cap="Judge", fig.height=7}
-include_graphics(path = "images/Judge.jpg")
-```
+![Judge](images/Judge.jpg){height=30% width=20%}
 
-```{r firearms, echo=FALSE, fig.cap="Forensic Scientist", fig.height=7}
-include_graphics(path = "images/Forensic Scientist.jpg")
-```
+
+![Forensic Scientist](images/Forensic Scientist.jpg){height=30% width=20%}
+
+![Lawyer](images/Lawyer.jpg){height=30% width=20%}
