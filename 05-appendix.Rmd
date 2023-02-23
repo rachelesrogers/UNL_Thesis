@@ -356,9 +356,9 @@ You may accept or reject it, and give it as much weight as you think it deserves
 
 ## Images
 
-![Judge](images/Judge.jpg){height=30% width=20%}
+```{r judge_forensics, echo=FALSE, out.width=c("50%","50%")}
 
-
-![Forensic Scientist](images/Forensic Scientist.jpg){height=30% width=20%}
+knitr::include_graphics(c("images/Judge.jpg","images/Forensic Scientist.jpg"))
+```
 
 ![Lawyer](images/Lawyer.jpg){height=30% width=20%}
