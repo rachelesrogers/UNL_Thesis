@@ -165,7 +165,7 @@ They were also required to have normal or corrected to normal vision, due to the
 Participants were compensated with \$8.40 for completing the study, \chaircol{for an hourly compensation rate of about} \$27.79 (average completion time of approximately 18 minutes).  
 \authorcol {Individuals who did not include their Prolific identification number and an individual whose notes indicated that they had progressed far enough into the survey to get a separate scenario before restarting were excluded from analysis.}
 \chaircol{For your thesis, include a chart of completion time distribution, facetted by condition}
-\@ref(fig:completiontime) \authorcol{depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints(n=560), excluding five observations greater than 75 minutes. In general, it appears that those who received the algorithm condition took slightly more time on average than those who did not (mean values of 22.61 minutes and 16.10 minutes, respectively). This is unsurprising, given the increased length of the algorithm condition.}
+\@ref(fig:completiontime) \authorcol{depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints(n=559), excluding five observations greater than 75 minutes. In general, it appears that those who received the algorithm condition took slightly more time on average than those who did not (median values of 19.13 minutes and 13.72 minutes, respectively). This is unsurprising, given the increased length of the algorithm condition.}
 
 ```{r}
 #| completiontime,
@@ -183,11 +183,10 @@ fingerprint_freq<-table(merged_results_allresponses$clean_prints)
 freq_df <- data.frame(fingerprint_freq)
 single_fingerprint <- freq_df %>%
   filter(Freq == 1)
-
+#dim(single_fingerprint)
 scenarios <- merged_results_allresponses %>% dplyr::select(scenario_number, conclusion, clean_prints, 
                                          algorithm, picture, time) %>%
   filter(clean_prints %in% single_fingerprint$Var1) %>% rename(finish_time = time)
-
 beginning_wend <- right_join(demographics, scenarios)
 beginning_wend$total_time <- NA
 beginning_wend$total_time <- beginning_wend$finish_time - beginning_wend$time
@@ -195,6 +194,9 @@ beginning_wend$total_time_minutes <- beginning_wend$total_time/60
 #beginning_wend %>% filter(total_time_minutes > 75) %>% dim()
 beginning_wend$truncated_minutes <- beginning_wend$total_time_minutes
 beginning_wend[beginning_wend$total_time_minutes > 75,]$truncated_minutes <- Inf
+
+# median(beginning_wend[beginning_wend$algorithm=="Yes",]$total_time_minutes, na.rm=TRUE)
+# median(beginning_wend[beginning_wend$algorithm=="No",]$total_time_minutes, na.rm=TRUE)
 
 png(filename="images/completiontime.png",type = "cairo-png")
 ggplot(beginning_wend, aes(x = truncated_minutes, fill=algorithm)) +
@@ -221,7 +223,7 @@ Of the \authorcol{636} participants with Prolific ID's who started the survey, t
 The median age was \authorcol{45}. 
 Age and gender are shown in \@ref(fig:demographics).
 \authorcol{An age of 0.2 age was excluded due to implausability and lack of study completion.}
-\authorcol{592} participants completed the survey, and \authorcol{570} participants correctly answered both attention check questions.
+\authorcol{591} participants \authorcol{with a unique Prolific ID and without significant notes from a previous run through} completed the survey, and \authorcol{569} participants correctly answered both attention check questions.
 The division of correct answers on the attention check questions are shown in \@ref(tab:attentioncheck).
 This is the number of participants who were considered for the following analysis.
 \chaircol{Charts may be useful here, again, only for your thesis and not for the actual publication - visuals are helpful but if space is limited then these types of visuals are the first to go to an appendix.}
@@ -236,6 +238,13 @@ This is the number of participants who were considered for the following analysi
 #| eval= TRUE,
 #| warning= FALSE,
 #| message= FALSE
+
+# dim(demographics)
+# table(demographics$gender)
+# median(demographics$age, na.rm=TRUE)
+
+# dim(merged_results_allresponses)
+# dim(merged_results)
 
 ggplot(subset(demographics, !is.na(age) & age > 17), aes(x = gender, y=age)) +
     geom_violin(position = position_dodge(1),
