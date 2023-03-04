@@ -32,6 +32,10 @@ library(patchwork)
 # dim(merged_results_fingerprints)
 # 
 # merged_results_fingerprint_join <- left_join(merged_results_fingerprints, fingerprint_matching)
+# 
+# ## Identifying the print that had two sets of notes ##
+# merged_results_fingerprint_join[merged_results_fingerprint_join$fingerprint=="642d497661c84dac328438a2bf0709e4",]$clean_prints
+# 
 # dim(merged_results_fingerprint_join)
 # fingerprint_clean <- subset(demographics_fingerprints, select=-c(fingerprint))
 # merged_results_clean <- subset(merged_results_fingerprint_join, select=-c(fingerprint))
@@ -48,6 +52,9 @@ library(patchwork)
 #View(merged_results)
 
 merged_results_allresponses<-read_csv("data/merged_results_clean.csv")
+
+# Removing person who took notes for on the first page that did not correspond to their scenario number
+merged_results_allresponses <-merged_results_allresponses %>% subset(clean_prints!=231)
 
 merged_results <- merged_results_allresponses %>% filter(check1 =="9mm" & check2 == "Moderately reliable")
 
@@ -156,6 +163,7 @@ We selected options to recruit a representative sample of individuals located in
 Jury eligibility was defined as US citizens over the age of majority in their state who had not been convicted of a felony, were not active law enforcement, military, emergency response, or a judge, and who did not have a disability that would prevent them from serving on a jury. 
 They were also required to have normal or corrected to normal vision, due to the images used in the study. 
 Participants were compensated with \$8.40 for completing the study, \chaircol{for an hourly compensation rate of about} \$27.79 (average completion time of approximately 18 minutes).  
+\authorcol {Individuals who did not include their Prolific identification number and an individual whose notes indicated that they had progressed far enough into the survey to get a separate scenario before restarting were excluded from analysis.}
 \chaircol{For your thesis, include a chart of completion time distribution, facetted by condition}
 \@ref(fig:completiontime) \authorcol{depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints(n=560), excluding five observations greater than 75 minutes. In general, it appears that those who received the algorithm condition took slightly more time on average than those who did not (mean values of 22.61 minutes and 16.10 minutes, respectively). This is unsurprising, given the increased length of the algorithm condition.}
 
