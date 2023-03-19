@@ -75,17 +75,29 @@ library(huskydown)
 
 # Literature Review
 
+There are many forms of forensic evidence that have been generally accepted to be unique and identifying (without proof) for use in court cases.
+There are even some methods - such as bite mark analysis - that have been used in the courtroom as evidence, but would later be shown to not be scientifically valid [@pcast, 86].
+When a person's future hangs in the balance of such evidence, we must know that the type of evidence being presented is something that can be relied upon, and that the jury can weigh appropriately when reaching a conclusion.
+One way to assure that these goals are met is through the use of statistical methods in analysis, which allows for the quantification of comparisons and the establishment of accurate error rate calculations.
+However, these statistical methods have been held as more difficult for jurors to understand.
+By testing jury perception in bullet matching, and by developing tools for jury perception testing in general, we hope to expand what can be learned about jury perception in order to present statistical methods in a way that can e understood and used to make decisions by the wider public.
+Bullet matching has a history similar to mane realms of forensic evidence, and we have to statistically prove its use in the courtroom as reliable evidence.
+However, jurors must be able to treat the evidence with appropriate weight.
+
 The practice of bullet matching is based on the concept that rifling in a gun barrel can produce uniquely identifying marks on bullets fired from the gun, due to random variation [@pcast, 104]. 
-An early record of scientific bullet matching in the court system can be found in two issues of The Saturday Evening Post from 1925. 
-In an article entitled “Fingerprinting Bullets”, Stout describes the wrongful conviction and subsequent exoneration of a person accused of murder [@SaturdayEveningPost]. 
-The alleged gun was missing a land – leaving a distinctive pattern – while the bullet showed no such evidence [@SaturdayEveningPost]. 
-This trial is set as the motivation for Charles Waite to attempt to start a catalog of the manufacturing methods of guns by various companies around the country, which was soon exacerbated by the multitude of guns produced abroad, as well as “cheap knock-offs” with no clear record [@SaturdayEveningPosta].
-Throughout the development of firearm identification, methods have turned from attempting to match barrel markings to specific brands to matching barrels based on a more local bullet to bullet comparison. **Citation for not creating catalog of all bullets? Also issues with using large databases?**
+An early attempt to distinguish guns based on the rifling can be found in two issues of "The Saturday Evening Post" from 1925, in an article entitled “Fingerprinting Bullets".
+<!-- whose title demonstrates an acceptance of fingerprinting by the public that wouldn't be statistically valid until... -->
+Stout describes the wrongful conviction and subsequent exoneration of Stielow, who was accused of murder [@SaturdayEveningPost]. 
+At the trial where Stielow was found guilty, an expert for the prosecution stated that there were nine abnormalities on Stielow's gun that corresponded with marks on the fired bullet [@SaturdayEveningPost, 7].
+It was later found that the bullet found at the crime scene indicated the gun was missing a land – leaving a distinctive pattern – while the alleged gun showed no such evidence; the alleged gun also showed evidence of not being fired in more than 3 years [@SaturdayEveningPost]. 
+While this trial did not require 'uniquely identifying' marks to rule out the alleged weapon (only a mismatch in lands), it motivated Charles Waite to attempt to catalog the manufacturing methods of guns by various companies around the country, with the goal of connecting a gun to its manufacturer. 
+Waite soon encountered issues due to the multitude of guns produced abroad, as well as “cheap knock-offs” with no clear record, making it difficult to trace a gun or bullet to its manufacturer [@SaturdayEveningPosta].<!-- is this correct? -->
+While Waite's early attempt to match barrel markings to specific gun brands was focused on the creation of a database, more recent firearms identification methods have relied on the direct comparison of bullets, such as comparing fired evidence to a suspected gun.
 
 One of the issues listed in the article still resonates with an issue of today – that of disagreement among experts; this can be especially seen in the adversarial judicial system, where experts can testify on the side of the prosecution or the defense [@SaturdayEveningPost, 6]. 
-This in turn relates to the subjectivity of the field - there is no quantitative set of conditions for determining the strength of a bullet match, so it is possible for experts to come to different conclusions when evaluating the same evidence. 
+Because there is no quantitative set of conditions for determining the strength of a bullet match, it is possible for experts to come to different conclusions when evaluating the same evidence. 
 Disagreement among experts concerning strength of evidence can also be found within a single lab, as demonstrated by @montani2019. 
-In this article, @montani2019 discuss the importance of independent verification, and how to present results when experts do not agree.
+@montani2019 discuss the importance of independent verification, and how to present results when experts do not agree.
 They suggest that, when experts disagree, a third expert should be consulted, and all conclusions should be documented and presented as evidence.
 
 There are also procedural issues which may lead to differing expert opinions across laboratories, where one system may not allow an exclusion to be stated if the class characteristics match, while another system may not have such a limitation [@baldwin2014, 6]. 
