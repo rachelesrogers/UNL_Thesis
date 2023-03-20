@@ -326,20 +326,20 @@ They compared results from participants to Bayesian conditional probabilities ba
 Aside from result language or scales used, another important factor in jury decision making is demonstrative evidence. 
 Images can supply helpful context in describing complex forms of analysis, but they may also introduce bias in the form of "truthiness", a term introduced by Stephen Colbert.
 He described truthiness as the quality of something *seeming* true [@WordTruthinessColbert2005]. 
-In this video, Colbert talks about “thinking with your head vs. knowing with your heart”. 
-So when applying this concept to images, we would be saying that images make people more likely feel like what is being said is true, even if the images do not provide any additional evidence. 
-Outside of images, @bornsteinJuryDecisionMaking2011 found a "truthiness" effect in the courtroom - jurors tend to remember evidence that align with their previous beliefs (65). 
+In this video, Colbert talks about “thinking with your head vs. knowing with your heart”, where some information may feel true, regardless of the facts. 
+@bornsteinJuryDecisionMaking2011 found a "truthiness" effect in the courtroom - jurors tend to remember evidence that align with their previous beliefs (65). 
+When applying this concept to images, some images may make people more likely feel like what is being said is true, even if the images do not provide any additional evidence. 
 In the case of images in trials, it is important to balance the benefit of providing additional information to the jury via images without increasing “truthiness”. 
 
 The impact of photos on an individual's perception can be rather large, as investigated by @cardwellNonprobativePhotosRapidly2016. 
 They asked individuals to “give” or “take” food from an animal, represented by a word. 
 Subjects were later asked to identify whether or not they gave food to an animal – either accompanied by an image or not. 
 Individuals were more likely to say that they gave food to an animal if it was accompanied by an image [@cardwellNonprobativePhotosRapidly2016, 887]. 
-They found that this appeared to be true for positive associations such as giving food, but not negative associations such as taking food [@cardwellNonprobativePhotosRapidly2016, 883].
+They found that images had an effect for positive associations such as giving food, but not negative associations such as taking food [@cardwellNonprobativePhotosRapidly2016, 883].
 In this case, the use of images may make it easier for individuals to visualize a scenario (giving food), and thus makes them more likely to remember the event - whether it happened or not.
 
 In a study of perception, @mccabeSeeingBelievingEffect2008 presented a variety of graphics alongside articles relating to cognitive neuroscience.
-The presented graphics all contained the same information, which was already presented the article.
+The graphics all contained the same information, which was already presented the accompanying article.
 They found that participants gave higher ratings of scientific reasoning to articles that included a brain image with activated areas, as opposed to a bar chart, topographical brain graphic, or no graphic.
 Participants were also more likely to agree with the conclusion of an article when the brain image was present, compared to when it was absent.
 Although the information presented in the articles did not change throughout these conditions, the brain image appears to add more "truthiness" to the articles, causing individuals to find them more scientific than articles with other graphics or no graphics.
@@ -348,7 +348,12 @@ In the courtroom, studies have been conducted to evaluate the effect of images o
 @gurleyEffectsNeuroimagingBrain2008 studied the use of brain images when arguing the defendant is not guilty by reason of insanity. 
 In a study on introduction to psychology university students, they found that the inclusion of images showing a brain lesion increased the odds of the participants finding the defendant not guilty by reason of insanity.
 MRI scans were presented with additional information regarding impulse control for the damaged area, so the effect may not be caused by the images themselves but rather by the additional information.
-@schweitzerNeuroimagesEvidenceMens2011 investigated whether images of the brain presented alongside expert testimony with regards to a mental disorder.
+@schweitzerNeuroimagesEvidenceMens2011 investigated whether images of the brain presented alongside expert testimony with regards to a mental disorder effected the participant's verdict of the defendant's mental state.
 In this case, no additional information was provided alongside the neuroimage, allowing the effect of the image itself to be studied. 
 They found that the inclusion of neuroimages did not significantly effect the judgement of the participants.
 The influence of images on individuals remains unclear, and may be situationally dependent.
+
+In order to ensure that the US justice system is just, we must be confident that the evidence presented in the courtroom is scientifically valid, and that the evidence is presented in a way that gives jurors the ability to appropriately judge its strength. 
+This includes the use of accurate error rates as well as quantitative responses.
+One way to facilitate error rate calculation and quantitative results is through the use of algorithmic or statistical methods.
+These methods must, however, be explained in a manner that is understandable to those without a statistical background, while limiting any of the potentially biasing effects of "truthiness".
