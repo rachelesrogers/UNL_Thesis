@@ -146,6 +146,7 @@ This debate regarding scientific validity continues to this day, as @vanderplas2
 In this declaration, they discuss the current issues with error rate studies, in which they conclude that, until valid error rate studies have been conducted, they cannot support the use of firearms analysis in the courtroom [@vanderplas2022, 10].
 For example, @chapnick2021's report does not include inconclusive results as a potential source of error. 
 They reported three errors (false positives) in their study, and reported a false negative error rate of 0%, ignoring the wide range of inconclusive decisions.
+For known matches of participants from the US and Canada, 38 of 491 comparisons were reported as inconclusive, while 254 of 693 comparisons were reported as inconclusive for know non-matches [@chapnick2021, 6].
 The issues of error rate calculation are addressed by @hofmannTreatmentInconclusivesAFTE2021, particularly with regards to whether or not inconclusive decisions are treated as errors in calculations (325). 
 They suggest to not consider inconclusive decisions errors for the calculation of examiner error rates, used in the lab setting; but to consider inconclusive decisions as errors for process error rates, used for determining if the evidence is relevant enough for judging the guilt of the suspect (343).
 
