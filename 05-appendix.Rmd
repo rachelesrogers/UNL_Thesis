@@ -349,10 +349,10 @@ The algorithm has not been validated to work on seriously damaged or fragmented 
 
 You have heard testimony from Terry Smith and Adrian Jones who have testified to opinions and the reasons for their opinions. This opinion testimony is allowed because of the education or experience of this witness. 
 Such opinion testimony should be judged like any other testimony. 
-You may accept or reject it, and give it as much weight as you think it deserves, considering the witness's education and experience, the reasons given for the opinion, and all the other evidence in the case. [@14OpinionEvidence]
+You may accept or reject it, and give it as much weight as you think it deserves, considering the witness's education and experience, the reasons given for the opinion, and all the other evidence in the case. [@OpinionEvidence]
 
 ### Opinion Witness
-@14OpinionEvidence suggests that witnesses should not be qualified as experts, as it may cause the jury to place undue weight in their testimony. Instead, @PROPOSALSELIMINATEPREJUDICIAL implements the term "opinion witness" in the place of "expert witness". This practice has been adopted in our revised testimony, when qualifying the witness based on experience and education.
+@OpinionEvidence suggests that witnesses should not be qualified as experts, as it may cause the jury to place undue weight in their testimony. Instead, @PROPOSALSELIMINATEPREJUDICIAL implements the term "opinion witness" in the place of "expert witness". This practice has been adopted in our revised testimony, when qualifying the witness based on experience and education.
 
 ## Images
 

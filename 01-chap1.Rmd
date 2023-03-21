@@ -145,14 +145,14 @@ The first attention check asked participants to identify the caliber of bullet r
 The study includes three variables: use of the algorithm, use of demonstrative evidence (images), and conclusion (match, exclusion, or inconclusive). 
 In the case of the algorithm, two testimonies were presented: that of the firearms expert (Terry Smith), and that of the algorithm expert (Adrian Jones). 
 The firearms expert presented the algorithm results for the case alongside their own analysis, and suggests that the algorithm's results supports their conclusion. 
-By presenting the algorithm results with the interpretation suggested by the firearms expert, we hypothesized that potential jurors could use the firearms expert's explanation and conclusion to guide their understanding of the algorithm's results. 
+By presenting the algorithm results with the interpretation suggested by the firearms expert, we hoped that potential jurors could use the firearms expert's explanation and conclusion to guide their understanding of the algorithm's results. 
 The algorithm expert then describes in greater detail the algorithm's process, and its validity for this particular case. 
 When demonstrative evidence is present, images of rifling [@105mmTank2005;@gremi], a bullet comparison, and algorithm images (such as those shown above) were included alongside the testimony. 
 In terms of the conclusion: a "match" indicated agreement in individual and class characteristics; an "exclusion" indicated an agreement of class characteristics, but disagreement in individual characteristics; and an "inconclusive" indicated an agreement in class characteristics, but not enough agreement in individual characteristics to state that there was a match.  
 
 The number of survey questions that respondents received depended on the scenario; participants who received the algorithm were asked more questions than those who did not receive the algorithm. 
 For example, participants who did not receive the algorithm were asked about the reliability of the forensics examiner's bullet comparison and the reliability of the field of firearms as a whole. 
-Those who received the algorithm were asked about the reliability of the forensics examiner's bullet comparison, the reliability of the algorithm's comparison, the overall reliability in the case (which includes both the algorithm and the forensics expert), as well as the reliability of the field of firearms as a whole. 
+Those who received the algorithm were asked about the reliability of the forensics examiner's bullet comparison, the reliability of the algorithm's comparison, the overall reliability in the case (which includes both the algorithm comparison and the forensics expert's comparison), as well as the reliability of the field of firearms as a whole. 
 This same format was used when asking participants about credibility and scientificity.
 
 ### Prolific
@@ -161,10 +161,8 @@ Participants were recruited using Prolific, an online survey-taking website.
 We selected options to recruit a representative sample of individuals located in the United States, and asked that participants self-screen for jury eligibility before completing the survey. 
 Jury eligibility was defined as US citizens over the age of majority in their state who had not been convicted of a felony, were not active law enforcement, military, emergency response, or a judge, and who did not have a disability that would prevent them from serving on a jury. 
 They were also required to have normal or corrected to normal vision, due to the images used in the study. 
-Participants were compensated with \$8.40 for completing the study, \chaircol{for an hourly compensation rate of about} \$27.79 (average completion time of approximately 18 minutes).  
-\authorcol {Individuals who did not include their Prolific identification number and an individual whose notes indicated that they had progressed far enough into the survey to get a separate scenario before restarting were excluded from analysis.}
-\chaircol{For your thesis, include a chart of completion time distribution, facetted by condition}
-\@ref(fig:completiontime) \authorcol{depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints(n=559), excluding five observations greater than 75 minutes. In general, it appears that those who received the algorithm condition took slightly more time on average than those who did not (median values of 19.13 minutes and 13.72 minutes, respectively). This is unsurprising, given the increased length of the algorithm condition.}
+Participants were compensated with \$8.40 for completing the study, for an hourly compensation rate of about \$27.79 (average completion time of approximately 18 minutes).  
+Individuals who did not include their Prolific identification number and an individual whose notes indicated that they had progressed far enough into the survey to get a separate scenario before restarting were excluded from analysis.
 
 ```{r}
 #| completiontime,
@@ -182,7 +180,6 @@ fingerprint_freq<-table(merged_results_allresponses$clean_prints)
 freq_df <- data.frame(fingerprint_freq)
 single_fingerprint <- freq_df %>%
   filter(Freq == 1)
-#dim(single_fingerprint)
 scenarios <- merged_results_allresponses %>% dplyr::select(scenario_number, conclusion, clean_prints, 
                                          algorithm, picture, time) %>%
   filter(clean_prints %in% single_fingerprint$Var1) %>% rename(finish_time = time)
@@ -190,7 +187,7 @@ beginning_wend <- right_join(demographics, scenarios)
 beginning_wend$total_time <- NA
 beginning_wend$total_time <- beginning_wend$finish_time - beginning_wend$time
 beginning_wend$total_time_minutes <- beginning_wend$total_time/60
-#beginning_wend %>% filter(total_time_minutes > 75) %>% dim()
+dim_g_75 <- beginning_wend %>% filter(total_time_minutes > 75) %>% dim()
 beginning_wend$truncated_minutes <- beginning_wend$total_time_minutes
 beginning_wend[beginning_wend$total_time_minutes > 75,]$truncated_minutes <- Inf
 
@@ -212,20 +209,12 @@ include_graphics(path = "images/completiontime.png")
 
 
 ```
+Figure \@ref(fig:completiontime) depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints (n=`r dim(single_fingerprint)[1]`), excluding `r dim_g_75[1]` observations greater than 75 minutes. In general, it appears that those who received the algorithm condition took slightly more time on average than those who did not (median values of `r  round(median(beginning_wend[beginning_wend$algorithm=="Yes",]$total_time_minutes, na.rm=TRUE), digits=3)` minutes and `r round(median(beginning_wend[beginning_wend$algorithm=="No",]$total_time_minutes, na.rm=TRUE), digits=3)` minutes, respectively). This is unsurprising, given the increased length of the algorithm condition.
 
 
 ## Results
 
 ### Participants
-
-Of the \authorcol{636} participants with Prolific ID's who started the survey, there were \authorcol{324} female participants, \authorcol{307} male participants, and \authorcol{5} non-binary participants.
-The median age was \authorcol{45}. 
-Age and gender are shown in \@ref(fig:demographics).
-\authorcol{An age of 0.2 age was excluded due to implausability and lack of study completion.}
-\authorcol{591} participants \authorcol{with a unique Prolific ID and without significant notes from a previous run through} completed the survey, and \authorcol{569} participants correctly answered both attention check questions.
-The division of correct answers on the attention check questions are shown in \@ref(tab:attentioncheck).
-This is the number of participants who were considered for the following analysis.
-\chaircol{Charts may be useful here, again, only for your thesis and not for the actual publication - visuals are helpful but if space is limited then these types of visuals are the first to go to an appendix.}
 
 ```{r}
 #| demographics,
@@ -239,7 +228,8 @@ This is the number of participants who were considered for the following analysi
 #| message= FALSE
 
 # dim(demographics)
-# table(demographics$gender)
+ # table(demographics$gender)
+ # sum(demographics$gender=="Female")
 # median(demographics$age, na.rm=TRUE)
 
 # dim(merged_results_allresponses)
@@ -254,8 +244,14 @@ ggplot(subset(demographics, !is.na(age) & age > 17), aes(x = gender, y=age)) +
   ggtitle("Age by Gender") +
   theme_bw()
 
-
 ```
+Of the `r dim(demographics)[1]` participants with Prolific ID's who started the survey, there were `r sum(demographics$gender=="Female")` female participants, `r sum(demographics$gender=="Male")` male participants, and `r sum(demographics$gender=="Other/non-binary")` non-binary participants.
+The median age was `r median(demographics$age, na.rm=TRUE)`. 
+Age and gender are shown in Figure \@ref(fig:demographics).
+An age of 0.2 was excluded due to implausibility and lack of study completion.
+`r dim(merged_results_allresponses)[1]` participants eligible for analysis completed the survey, and `r dim(merged_results)[1]` participants correctly answered both attention check questions.
+The division of correct answers on the attention check questions are shown in Table \@ref(tab:attentioncheck).
+These `r dim(merged_results)[1]` participants were considered for the following analysis.
 
 ```{r}
 #| attentioncheck,
@@ -291,10 +287,9 @@ Strength of evidence was ranked on a 9-point Likert scale ("Not at all strong" t
 
 ### Probability
 
-There is a difference in the perceived probability that Cole committed the crime as well as the perceived probability that the gun was present at the crime scene based on the examiner's decision, as shown in \@ref(fig:probalgorithm). 
-The match condition resulted in high probabilities, while the non-match condition resulted in low probabilities, \chaircol{indicating that participants reacted to the examiner's testimony}. 
+There is a difference in the perceived probability that Cole committed the crime as well as the perceived probability that the gun was present at the crime scene based on the examiner's decision, as shown in Figure \@ref(fig:probalgorithm). 
+The match condition resulted in high probabilities, while the non-match condition resulted in low probabilities, indicating that participants reacted to the examiner's testimony. 
 A wider range of probability values were observed for the inconclusive decision, without the high peaks that were present for conclusive decisions. 
-The distribution of probabilities based on conclusion is shown in \@ref(fig:probalgorithm) \chaircol{XXX ???}. 
 Definite conclusions of match or not a match resulted in higher peaks at more extreme values for the probability that the gun was at the crime scene, compared with the probability that Cole committed the crime. 
 This may indicate that some individuals are distinguishing between evidence that the weapon was used and evidence against Cole. 
 The inconclusive decision resulted in a more spread out distribution that is practically the same for both the probability that the gun was at the crime scene and the probability that Cole committed the crime, with participants generally selecting values below 50%.  
@@ -332,12 +327,12 @@ In the case of the gun's involvement, values are more concentrated toward the hi
 There is no real difference between match distributions for the probability that Cole committed the crime. 
 The vertical lines indicate the match score presented by the algorithm (0.034 or 3.4% for the non-match condition, 0.34 or 34% for the inconclusive condition, and 0.989 or 98.9% for the match condition). 
 These are displayed in order to visually assess whether the subjects are anchoring to the given match score when assessing the probability of the gun being present at the crime scene. 
-Because the match score is on a scale of 0 - 1, this value could be misinterpreted as a probability for the gun being used in the crime. 
-It does not appear that the participants are anchoring to this value, however, as the distributions do not appear to correspond more to the line when the algorithm is present. \chaircol{Let's choose contrasting colors here, if possible - red/blue, so the overlap is purple? }
+Because the match score is on a scale of 0 to 1, this value could be misinterpreted as a probability for the gun being used in the crime. 
+It does not appear that the participants are anchoring to this value, however, as the distributions do not correspond more to the line when the algorithm is present.
 
 ```{r}
 #| probalgorithm,
-#| fig.cap= "Probability the gun was used in the crime, or that Cole committed the crime. Black lines indicate values produced by the algorithm",
+#| fig.cap= "Probability the gun was used in the crime, or that Cole committed the crime. Black lines indicate bullet match scores for the algorithm.",
 #| fig.width= 10,
 #| fig.height= 6,
 #| fig.align= "center",
@@ -397,7 +392,8 @@ ggplot(merged_results, aes(x = probability, fill = algorithm)) +
   theme_bw()
 
 table(merged_results$guilty, merged_results$conclusion)
-
+sum(merged_results$guilty=="Yes" & merged_results$conclusion=="NoMatch")
+sum(merged_results$conclusion=="NoMatch")
 ```
 
 #### Probability and Guilt
@@ -406,11 +402,10 @@ After reading the testimony, the participants were given the following question:
 "The State has the burden of proving beyond a reasonable doubt that the defendant is the person who committed the alleged crime. 
 If you are not convinced beyond a reasonable doubt that the defendant is the person who committed the alleged crime, you must find the defendant not guilty. 
 Would you convict this defendant, based on the evidence that you have heard?" 
-\authorcol{10/196} individuals in the non-match category, \authorcol{13/191} individuals in the inconclusive category, and \authorcol{112/183} individuals in the match category chose to convict. 
+`r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="NoMatch")` out of `r sum(merged_results$conclusion=="NoMatch")` individuals in the non-match category, `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Inconclusive")` out of `r sum(merged_results$conclusion=="Inconclusive")` individuals in the inconclusive category, and `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match")` out of `r sum(merged_results$conclusion=="Match")` individuals in the match category chose to convict, despite the bullet matching being the only evidence against Cole in the crime. 
 As \@ref(fig:probguilt) illustrates, across all categories individuals who chose to convict generally assigned a higher probability to Cole committing the crime than those who did not choose to convict. 
-For the match condition, 117 individuals chose to convict, while 74 individuals chose not to convict, despite the bullet matching being the only evidence against Cole in the crime. 
 The same general trend of higher probability values for those who chose to convict and lower probability values for those who chose not to convict is also seen for non-match and inconclusive conditions when discussing the probability that the gun was used in the crime. 
-However, in the case of the match condition, those who did not convict gave a generally higher probability that the gun was used in the crime than the probability that Cole committed the crime.
+However, in the case of the match condition, those who did not convict gave a generally higher probability that the gun was used in the crime than the probability that Cole committed the crime, resulting in comparable values (albeit with more variability) to those who chose to convict.
 
 ```{r}
 #| probguilt,
@@ -465,8 +460,8 @@ grid.arrange(probplot, gunplot, ncol = 2)
 ### Credibility
 
 Through all conditions, the level of credibility remained approximately the same for both the firearms examiner and the algorithm expert. 
-As \@ref(fig:cred) demonstrates, "Extremely Credible" was by far the most selected category for the firearms examiner, with some people selecting "Moderately Credible", while the other categories quickly drop off. 
-This trend was also reflected in the data for the algorithm expert, and can be seen in most histograms of this data (leading to a question of scale compression). 
+As Figure \@ref(fig:cred) demonstrates, "Extremely credible" was by far the most selected category for the firearms examiner, with some people selecting "Moderately credible", while the other categories quickly drop off in responses. 
+This trend was also reflected in the data for the algorithm expert, and can be seen in most histograms resulting from this study (leading to a question of scale compression). 
 The lack of difference based on examiner decision, image, or algorithm (in the case of the firearms examiner) provides a hopeful indication that the credibility of expert witnesses is not necessarily swayed by the facts of the case or the presence of images, when their written testimony remains the same.
 
 ```{r}
@@ -546,9 +541,9 @@ examcred
 ### Reliability
 
 
-In terms of reliability, participants appeared to find the case evidence less reliable when an inconclusive decision was given than they did when a conclusive decision was reached, as shown in \@ref(fig:caserel). 
-Note that this question was only answered by participants who received the algorithm condition. 
-As with the credibility condition, the majority of individuals selected the two highest conditions: "Moderately reliable" and "Extremely reliable" across all categories of conclusions. 
+In terms of reliability, participants appeared to find the case evidence less reliable when an inconclusive decision was given than they did when a conclusive decision was reached, as shown in Figure \@ref(fig:caserel). 
+Note that this question was only answered by participants who received the algorithm condition and is meant to encompass both the examiner's comparison and the algorithm comparison. 
+As with the credibility condition, the majority of individuals selected the two highest conditions, "Moderately reliable" and "Extremely reliable", across all categories of conclusions. 
 In the case of an inconclusive decision, the highest proportion of participants selected "Moderately reliable", while for the conclusive decisions, the highest proportion of participants selected "Extremely reliable".
 
 ```{r}
@@ -597,8 +592,8 @@ ggplot(df.overrel, aes(overrel, prop, fill = conclusion)) +
 
 Individuals were also asked to rate the general reliability of firearms evidence as a field (\@ref(fig:genrel)). 
 As with case reliability, those who received an inconclusive condition were more likely to select "Moderately reliable" than they were to select "Extremely reliable". 
-This trend is also shown in the non-match condition when the algorithm is present, as both of the highest categories appear to have a similar proportion of respondents. 
-However, it is not reflected in the match condition when the algorithm is absent. 
+This trend is also shown in the non-match condition when the algorithm is present. 
+However, it is not reflected in the match condition. 
 When the algorithm is absent, both the match and the non-match conditions appear to produce approximately equal proportions for the two highest categories of reliability. 
 As with previous responses, all other categories are sparsely populated.
 
@@ -694,7 +689,7 @@ ggplot(subset(merged_results,!is.na(examrel)),
 #  theme(plot.title=element_text(hjust=0.5))+
 ```
 
-Individuals who received the algorithm were also asked to rate algorithm reliability, \chaircol{responses are shown in} \@ref(fig:algrel). 
+Individuals who received the algorithm were also asked to rate algorithm reliability, responses are shown in Figure \@ref(fig:algrel). 
 The responses were in many ways similar to those given in the case of general reliability: those who received an inconclusive decision were more likely to give a lower reliability rating, and the two highest categories were by far the most selected. 
 Both also demonstrated a higher selection of "Weakly reliable" when individuals were presented with an inconclusive decision.
 
@@ -742,7 +737,7 @@ ggplot(df.algrel, aes(algrel, prop, fill = conclusion)) +
 
 ```
 
-In general, individuals appeared to give lower reliability ratings when an inconclusive decision was reached. 
+In most cases, individuals gave lower reliability ratings when an inconclusive decision was reached. 
 They also tended to select the two highest reliability categories, "Moderately reliable" and "Extremely reliable", regardless of other conditions.
 The presence or absence of images did not have a noticeable effect on reliability ratings. 
 The presence of the algorithm is related to a slight reduction in reliability ratings for the firearms examiner's personal bullet comparison, in the case of an inconclusive or match decision.
@@ -754,9 +749,9 @@ These results bore some similarity in responses to reliability across questions.
 As previously stated, images did not appear to have a large effect and the two highest categories were by far the most selected. 
 When asked about their rating of how scientific the evidence was in the case overall, those receiving the inconclusive condition were less likely to select "Extremely scientific" compared to their counterparts given conclusive conditions.  
 
-In terms of firearms evidence as a field, results are shown in \@ref(fig:gensci). 
+In terms of firearms evidence as a field, results are shown in Figure \@ref(fig:gensci). 
 Here, as before, those who received the inconclusive decision were more likely to select "Moderately scientific" over "Extremely scientific" for both cases of the algorithm. 
-A higher proportion of individuals selected "Extremely scientific" for conclusive decisions when the algorithm was presented compared to when the algorithm was absent.
+A higher proportion of individuals selected "Extremely scientific" for conclusive decisions when the algorithm was present compared to when the algorithm was absent.
 
 ```{r}
 #| gensci,
@@ -800,9 +795,9 @@ ggplot(subset(merged_results,!is.na(firesci)),
 
 ```
 
-For how scientific individuals found the examiner's comparison, the algorithm only seemed to have an effect when individuals were presented with an inconclusive decision (\@ref(fig:examsci)). 
+Regarding how scientific individuals found the examiner's comparison, the algorithm only seemed to have an effect when individuals were presented with an inconclusive decision (\@ref(fig:examsci)). 
 When the algorithm was not present, people were more likely to select "Extremely scientific", resulting in a proportion on par with conclusive results. 
-When the algorithm was present, however, "Moderately scientific" became the most popular choice for those who received an inconclusive decision, which reflects the general trend of the majority of participants selecting the second highest category for inconclusive results that was seen when previously discussing reliability and other questions of scientificity. 
+When the algorithm was present, however, "Moderately scientific" became the most popular choice for those who received an inconclusive decision, which reflects the general trend of the majority of participants selecting the second highest category for inconclusive results. 
 Results for conclusive categories are fairly similar across algorithm conditions, with a close split between "Moderately scientific" and "Extremely scientific".
 
 ```{r}
@@ -849,9 +844,10 @@ ggplot(subset(merged_results,!is.na(examsci)),
 
 ```
 
-Participants gave the algorithm a high rating in scientificity across all categories of conclusions, as shown in \@ref(fig:algsci). 
+Participants gave the algorithm a high rating in scientificity across all categories of conclusions, as shown in Figure \@ref(fig:algsci). 
 Here, all decisions had the highest proportion of respondents select "Extremely scientific". 
 The proportion selecting "Moderately scientific" was noticeably lower than the proportion selecting "Extremely scientific".
+The use of demonstrative evidence did not have a visible effect.
 
 ```{r}
 #| algsci,
@@ -895,7 +891,7 @@ ggplot(subset(algorithm_results,!is.na(algsci)),
 
 ```
 
-In summary, the algorithm is related an an increase of perceived scientificity for the field of firearm evidence as a whole when individuals were presented with a conclusive decision, and "Extremely scientific" was the most selected category when evaluating the scientificity of the algorithm evidence regardless of conclusion decision. 
+In summary, the algorithm is related an an increase of perceived scientificity for the field of firearm evidence as a whole when individuals were presented with a conclusive decision, and "Extremely scientific" was the most selected category when evaluating the scientificity of the algorithm evidence regardless of conclusion. 
 As for how individuals rated the scientificity of the algorithm expert's comparison, the algorithm only appeared to influence results for those who received the inconclusive condition. 
 Individuals who received the algorithm were more likely to select "Moderately scientific", while those who did not receive the algorithm were more likeley to select "Extremely scientific". 
 
@@ -904,8 +900,8 @@ Individuals who received the algorithm were more likely to select "Moderately sc
 Individuals were asked to rate their understanding of both the algorithm and the examiner's personal bullet comparison on a 5-point Likert scale. Most responses ranged from 3 ("I understood about half of the method") to 5 ("I understood everything"), leading to less scale compression than was seen in scales relating to credibility, reliability, and scientificity.  
 
 For the firearms examiner's personal comparison, few individuals selected that they understood less than half the method (\@ref(fig:expunder)). 
-Those who did not receive the algorithm were more likely to select "I understood everything" compared to those who did receive the algorithm, across all conclusion conditions. 
-There was not a \chaircol{discernible} difference in responses based on the presence or absence of images.
+Those who did not receive the algorithm were more likely to select "I understood everything" compared to those who did receive the algorithm, across all conclusions. 
+There was not a discernible difference in responses based on the presence or absence of images.
 
 ```{r}
 #| expunder,
@@ -962,7 +958,8 @@ When images were present, however, category selection appeared to relate to conc
 Those receiving the match condition were more likely to select 4 than other categories, meaning that they felt they understood more than half of the method but didn't understand everything. 
 Those receiving the non-match condition were more likely to select that they understood half of the method compared to other categories. 
 Those with an inconclusive condition had responses fairly evenly distributed across the top three categories, similar to when images were absent.
-As in the case without images, few individuals indicated that they understood less than half of the method. 
+As in the case without images, few individuals indicated that they understood less than half of the method.
+It is unclear what may have caused these differences in ratings of understanding.
 
 ```{r}
 #| algunder,
@@ -1015,20 +1012,18 @@ ggplot(subset(algorithm_results,!is.na(algunder)),
 
 ### Uniqueness
 
-Individuals were asked whether or not they thought that guns left unique markings on discharged bullets and casings \authorcol{after reviewing the testimony}. 
-Of the 588 responses, only 16 individuals indicated that they did not think guns left unique markings. 
+Individuals were asked whether or not they thought that guns left unique markings on discharged bullets and casings after reviewing the testimony. 
+Of the `r dim(merged_results)[1]` responses, only `r sum(merged_results$unique=="No")` individuals indicated that they did not think guns left unique markings. 
 These respondents were split across conditions. 
 Thus, respondents in this study overwhelmingly believe in the uniqueness of markings on discharged bullets. 
-Participants were asked to evaluate uniqueness after reading their provided testimony.\chaircol{This sentence is a bit out of place? What is the goal here?}\authorcol{Would responses be different if they were asked to evaluate uniqueness before reading the testimony?}
-
+<!-- Would responses be different if they were asked to evaluate uniqueness before reading the testimony? -->
 ```{r, eval=F, echo=F}
 
 table(merged_results$unique)
+sum(merged_results$unique=="No")
 ```
 
 ### Strength
-
-Individuals were also asked to rate the strength of evidence, both against Richard Cole and against the gun. 
 
 ```{r}
 #| strength,
@@ -1070,9 +1065,12 @@ ggplot(subset(merged_results, !is.na(strength)), aes(x=strength, fill = algorith
 
 ```
 
-When asked about the case against the defendant, shown in \@ref(fig:strength), there was a small difference in terms of the algorithm. 
+Individuals were also asked to rate the strength of evidence, both against Richard Cole and against the gun. 
+
+When asked about the case against the defendant, shown in Figure \@ref(fig:strength), there was a small difference in terms of the algorithm. 
 When the examiner reached a non-match conclusion, individuals who also received the algorithm were more likely to select the lowest category ("not at all strong") compared to those who did not receive the algorithm. 
-Alternatively, in the case of an inconclusive decision, individuals who did not receive the algorithm were more likely to select "not at all strong" compared to those who did receive the algorithm. 
+Alternatively, in the case of an inconclusive decision, individuals who did not receive the algorithm were more likely to select "not at all strong" compared to those who did receive the algorithm.
+For the match condition, responses were more widely distributed.
 
 ```{r}
 #| gunstrength,
@@ -1116,6 +1114,7 @@ ggplot(subset(merged_results, !is.na(gunstrength)), aes(x=gunstrength, fill = al
 ```
 
 When asked about the strength of evidence against the defendant's gun, there was no real difference between those who received the algorithm and those who did not (\@ref(fig:gunstrength)).
+The match condition resulted in a more concentrated distribution at higher strength values than were seen for the strength of evidence against Cole.
 
 ```{r}
 #| probstrength,
@@ -1150,7 +1149,7 @@ levels(strengthdat$scale) <-
               color = "black",
               alpha = 0.5,
               outlier.shape = NA) +
-  ggtitle("Probability Gun was used in the Crime") +
+  ggtitle("Probability __ was Involved in/Committed the Crime") +
   scale_color_manual("Strength of\nEvidence Against", values = c("orange", "purple"))+
   scale_fill_manual("Strength of\nEvidence Against", values = c("orange", "purple"))+
    theme_bw()+
@@ -1160,15 +1159,14 @@ levels(strengthdat$scale) <-
   scale_x_discrete(labels=c('1\nNot at\nall strong', '2', '3', '4', '5\nModerately\nstrong', '6', '7', '8', '9\nExtremely\nstrong'))
 ```
 
-We compared how individuals scored strength of evidence and the probability that they assigned to Cole committing the crime and the gun being present at the crime scene. 
-These results were largely consistent (\@ref(fig:probstrength)). 
+In comparing how individuals scored strength of evidence and the probability that they assigned to Cole committing the crime and the gun being present at the crime scene, the results were largely consistent (\@ref(fig:probstrength)). 
 In general, the probability assigned increases as the assigned strength of evidence increases, which is to be expected. 
 
 ### Mistakes
 
 Individuals were asked how often firearms examiners make mistakes when determining whether bullets were fired through the same gun, with a scale from "Never" to "Usually". 
-"Rarely" was by far the most selected category, as shown in \@ref(fig:mistakes). 
-There does not appear to be a relationship between how often individuals felt firearms examiners made mistakes and factors such as conclusion, images, or the algorithm.
+"Rarely" was by far the most selected category, as shown in Figure \@ref(fig:mistakes). 
+There does not appear to be a strong relationship between how often individuals felt firearms examiners made mistakes and factors such as conclusion, images, or the algorithm.
 
 ```{r}
 #| mistakes,
@@ -1202,11 +1200,11 @@ ggplot(subset(merged_results, !is.na(mistakes)), aes(x=mistakes, fill = conclusi
 ### Comparing Algorithm Values to Examiner Values 
 
 Participants who received the algorithm condition were asked to evaluate their feelings on the reliability, credibility, scientificity, and their understanding of both the algorithm method as well as the traditional bullet analysis method, as discussed in previous sections. 
-Results were compared both on an individual level as well as on a group level. 
+Results for both methods were compared on an individual level as well as on a group level. 
 The group level results are represented in histograms, while the individual level results are represented in parallel coordinates plots. 
 Note that these results only reflect the feelings of individuals who received the algorithm condition.
 
-#### Histograms
+#### Group Level Results
 
 ```{r}
 #| histcred,
@@ -1243,7 +1241,7 @@ ggplot(test_df, aes(Var1, Freq, fill=question))+
 
 ```
 
-In terms of credibility, as shown in \@ref(fig:histcred), the algorithm and the expert scored fairly similarly, with the algorithm expert resulting in slightly more individuals selecting "Extremely credible" than the firearms expert. 
+In terms of credibility, as shown in Figure \@ref(fig:histcred), the algorithm and the expert scored fairly similarly, with the algorithm expert resulting in slightly more individuals selecting "Extremely credible" than the firearms expert. 
 As mentioned before, most participants limited their selection to the two highest categories - "Moderately credible" and "Extremely credible".
 
 ```{r}
@@ -1283,7 +1281,7 @@ ggplot(rel_df, aes(Var1, Freq, fill=question))+
 
 ```
 
-For reliability, show in \@ref(fig:histrel), a similar number of individuals selected "Extremely reliable" for both the algorithm evidence and the examiner's comparison. 
+For reliability, show in Figure \@ref(fig:histrel), a similar number of individuals selected "Extremely reliable" for both the algorithm evidence and the examiner's comparison, with a larger proportion of individuals selecting "Extremely reliable" in the match condition when the algorithm is present. 
 There appears to be, however, a difference in the categories of "Moderately reliable" and "Weakly reliable". 
 Individuals were more likely to select that the algorithm was "Weakly reliable", while they were less likely to select that the algorithm was "Moderately reliable", compared to the examiner.
 
@@ -1323,9 +1321,9 @@ ggplot(sci_df, aes(Var1, Freq, fill=question))+
 
 ```
 
-Individuals generally saw the algorithm as more scientific than the expert, as shown in \@ref(fig:histsci). 
+Individuals generally saw the algorithm as more scientific than the expert, as shown in Figure \@ref(fig:histsci). 
 They were more likely to select "Extremely scientific" in the case of the algorithm when compared to the expert. 
-Accordingly, they were more likely to select "Moderately scientific" in the case of the examiner when compared to the algorithm. 
+Accordingly, they were less likely to select "Moderately scientific" in the case of the algorithm when compared to the examiner. 
 No real difference can be seen in the lower values on the scale, due to few individuals selecting these categories.
 
 ```{r}
@@ -1371,7 +1369,7 @@ ggplot(under_df, aes(Var1, Freq, fill=question))+
 Individuals rated their understanding of the examiner's bullet comparison higher than their understanding of the algorithm method, generally speaking (\@ref(fig:histunder)). 
 Participants were more likely to select a 4 or 5 with regards to their understanding of the examiner's comparison, while they were more likely to select a 3 or 4 with regards to their understanding of the algorithm method.
 
-#### Parallel Coordinate Plots
+#### Individual Level Results
 
 ```{r}
 #| coordcred,
@@ -1449,12 +1447,12 @@ grid.arrange(credplot, underplot, ncol = 2)
 
 
 ```
-\@ref(fig:coordcred) depicts parallel coordinate plots for participants' ratings of the credibility of the experts, as well as their understanding of the methods described in the testimony. 
+Figure \@ref(fig:coordcred) depicts parallel coordinate plots for participants' ratings of the credibility of the experts, as well as their understanding of the methods described in the testimony. 
 Higher values indicate higher scores in understanding and credibility. These plots map the frequency that individuals selected the shown combination of values for credibility or understanding. 
 In the case of credibility, we can see that most individuals selected the highest category of credibility for both the algorithm and the firearms expert. 
 In the case of understanding, individuals tended to select the two highest categories the most. 
-It can also be seen that there is a trend of individuals selecting a category lower for the algorithm compared to what they selected for the examiner. 
-This corresponds to \@ref(fig:histunder) in that individuals tend to give higher understanding ratings to the examiner's bullet comparison method than they did for the algorithm.
+It can also be seen that there is a trend of individuals selecting a category lower for the algorithm compared to what they selected for the examiner by the thicker downward line between categories 4 and 5, as well as between categories 4 and 3. 
+This corresponds to Figure \@ref(fig:histunder) in that individuals tend to give higher understanding ratings to the examiner's bullet comparison method than they did for the algorithm.
 
 ```{r}
 #| coordscirel,
@@ -1515,18 +1513,21 @@ grid.arrange(sciplot, relplot, ncol = 2)
 
 ```
 
-\@ref(fig:coordscirel) demonstrates the trends for selection for how scientific and reliable individuals felt the evidence was. 
+Figure \@ref(fig:coordscirel) demonstrates the trends for selection for how scientific and reliable individuals felt the evidence was. 
 In terms of how scientific individuals felt the evidence was, it appears that most participants selected the highest category for both the algorithm and the examiner. 
-Some participants selected the second highest category for the examiner, and the highest category for the algorithm. 
+Some participants selected the second highest category for the examiner, and the highest category for the algorithm.
+Others selected the second highest category in both cases.
 In terms of reliability, participants tended to choose one of the two highest categories for both the algorithm and the examiner. 
-Some participants switched between the two highest categories for the algorithm or the examiner, with similar numbers giving higher values to the algorithm and the examiner.  
+Some participants switched between the two highest categories for the algorithm or the examiner, in similar numbers.  
 
 ```{r}
+#| allpcp,
 #| echo= FALSE,
 #| warning= FALSE,
 #| message= FALSE,
 #| fig.width= 8,
 #| fig.height= 9,
+#| fig.cap = "Parallel Coordinate Plot for reliability, credibility, scientificity, and understanding"
 
 algtestcred_reorder <- algorithm_results %>% mutate(conclusion = fct_relevel(conclusion, "NoMatch", "Inconclusive", "Match"))
 
@@ -1569,19 +1570,19 @@ testcred_df2 %>%
   ggplot(aes_pcp()) +
   scale_y_continuous(labels=c("low scores", "", "", "", "high scores"),
                      breaks=c(0,0.25, .5,.75, 1)) +
-  geom_pcp( alpha = 0.75) +
-  scale_colour_manual(values = c("#FF8E00", "grey20")) +
+  geom_pcp(aes(color=conclusion), alpha = 0.75) +
+  scale_colour_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
   guides(colour = guide_legend(override.aes = list(alpha = 1))) +
   geom_pcp_boxes(fill = "transparent", color = "black", linewidth = 1)+
-#  geom_pcp_labels() +
-  facet_grid(conclusion~.)+
   theme_bw()
- # theme(legend.position="top") #aspect.ratio = 0.4, 
 
 
 ```
 
-These coordinate plots indicate that individuals tended to choose the same categories across variables, with most variation between categories resulting from individuals moving up or down a single category. 
+Figure \@ref(fig:allpcp) shows individual responses across all of the considered questions. 
+There were some individuals who selected the highest category for responses across the board, while others selected the highest response for all except their understanding of the algorithm. 
+In fact, algorithmic understanding seems to have the least consistent responses, based on the differences in the lines between algorithmic understanding and algorithmic scientificity. 
+These coordinate plots indicate that individuals tended to choose the same categories for the algorithm and the examiner across variables, with most variation between categories resulting from individuals moving up or down a single category. 
 Relatively few individuals changed their response by more than one category, when comparing between the algorithm and the expert. 
 These results generally reflect the trends shown in the histograms in the previous section.
 
@@ -1591,7 +1592,7 @@ These results generally reflect the trends shown in the histograms in the previo
 
 As can be seen in most graphics, scale compression was an issue with this study. 
 The vast majority of participants selected the two highest categories for questions rating how credible, reliable, and scientific the expert/method was. 
-This corresponds with @garrett2013's study of fingerprint match language, where they did not find a significant difference in the participants' feelings of guilt based on various match conclusions.
+This corresponds with @garrett2013's study of fingerprint match language, where they did not find a significant difference in the participants' feelings of guilt based on various match language.
 @garrett2013 hypothesized that this may relate to strong feelings reliability for fingerprint evidence, resulting in individuals viewing any match as automatically reliable (without the need for stronger language).
 People generally seemed to have less faith in inconclusive decisions. 
 They understood the examiner's comparison better than the algorithm comparison, which was expected given the statistical complexity of the algorithm procedure. 
@@ -1633,8 +1634,15 @@ Due to the nature of the online survey, any differences caused by these typos wo
 One of the most notable features of the histograms presented in this research is the overwhelming proportion of respondents that selected the two highest categories, whether it be in terms of reliability, credibility, or scientificity. 
 The concentration of responses in the two highest categories may obscure potential differences in treatments, simply due to the issue of overall trust in the system. 
 It may also effect how well ordered logistic regression models fit the data. 
-@garrett2013 suggests that feelings of guilt may be reduced if the examiner admits that their conclusion may be in error.
-This effect may be diminished by adding a stronger cross examination, with special attention paid to error rate studies, or by asking participants to read critical articles (such as PCAST or information about the CSI effect) prior to reading the provided court testimony.
+This effect may be diminished through the use of jury instruction, and not referring to the firearms examiner or the algorithm witness as experts (as suggested by @OpinionEvidence).
+
+Efforts are also being made to streamline the testimony into a single document, to prevent confounding typos.
+Because the written court testimony may be difficult to follow and may give witnesses an air of impartiality, future studies will include images for relevant actors, and color coded speech bubbles to clarify which side the witness is speaking for.
+We plan to develop a tool that can be used in testing courtroom scenarios, with versatile images for a variety of situations. These proposed changes can be seen in Appendix \@ref(study-2-changes).
+
+An additional response to the study that was recorded is participants' note sheets. 
+Many participants copied and pasted portions of the testimony into their note sheets for later reference.
+We plan to evaluate these note sheets, and develop a method for presenting the written notes alongside the testimony in order to produce a 'heat map' of the text that participants found relevant.
 
 
 
