@@ -127,18 +127,18 @@ In this study, potential jurors may encounter both the algorithm's match score a
 ### Demonstrative Evidence
 
 Images are often used to assist individuals in understanding non-image information. 
-However, images may have an effect of making a scenario more believable, as demonstrated \chaircol{in a study by} @cardwellNonprobativePhotosRapidly2016 \chaircol{which involved} "giving" or "taking" food from animals with or without images. 
+However, images may have an effect of making a scenario more believable, as demonstrated in a study by @cardwellNonprobativePhotosRapidly2016 which involved "giving" or "taking" food from animals with or without images. 
 Images are also mentioned as a factor that can influence how truthful individuals view statements in the courtroom - even if no new information is presented through the presence of the image [@kellermannTrialAdvocacyTruthiness2013].
-Therefore, the use of images in a courtroom should be studied for a compounding effect with regards to how subjects perceive the evidence presented - namely, if there is a difference in how reliable or credible they feel the experts are.
+Therefore, the use of images in a courtroom should be studied for an effect with regards to how subjects perceive the evidence presented - namely, if there is a difference in how reliable or credible they feel the experts are, based on the presence or absence of images.
 
 ## Methods
 
 ### Study Format
 
-Participants are presented with a short scenario based on @garrettMockJurorsEvaluation2020: A bullet is the only evidence recovered from an attempted convenience store robbery, and is tested against a gun found in Richard Cole's car in a routine traffic stop. 
+Participants are presented with a short scenario based on @garrettMockJurorsEvaluation2020: a bullet is the only evidence recovered from an attempted convenience store robbery, and is tested against a gun found in Richard Cole's car in a routine traffic stop. 
 Participants are then asked to read a transcript of mock court testimony, and rate their impression of the evidence presented, as well as their impression of the experts. 
 This document included expert testimony, cross examination, and questions from the jury conveyed through the judge regarding error rates. 
-The testimony was based on actual court testimony provided by forensics experts lawyers, and judges. \chaircol{XXX Add appendix with citations to specific trial transcripts} \authorcol{added to Thesis Document}
+The testimony was based on actual court testimony provided by forensics experts lawyers, and judges, shown in Appendix \@ref(testimony-transcripts).
 Two attention check questions were asked, in order to ensure that participants were reading both the testimony and the subsequent questions. 
 The first attention check asked participants to identify the caliber of bullet recovered from the crime scene, while the second attention check asked participants to select a specific value from a Likert scale.  
 
