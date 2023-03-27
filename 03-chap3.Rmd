@@ -11,13 +11,13 @@
   - Adding scenario id to database at beginning of test
 - Reliability: Questions regarding the consistency of the comparison?
   - How often to you think the firearms examiner (Terry Smith?) makes mistakes?
-     - 1 in [blank] bullet comparisons
+     - [blank] out of [blank] bullet comparisons
    - How often to you think the algorithm makes mistakes?
-     - 1 in [blank] bullet comparisons
+     - [blank] out of [blank] bullet comparisons
    - If other examiners were asked to make the same bullet comparison, how many do you believe would agree with the firearms examiner (Terry Smith?)
-     - [blank] in 1,000 examiners would agree with Smith's results of bullet comparison
+     - [blank] out of [blank] examiners would agree with Smith's results of bullet comparison
    - If the algorithm were re-run on the same bullet comparison, how many times do you believe the algorithm would agree with these results?
-       - [blank] in 1,000 runs would agree with the results of the bullet comparison
+       - [blank] out of [blank] runs would agree with the results of the bullet comparison
    - Credibility: Perhaps questions regarding the ability to testify? Or something on credentials, or comparison to another individual
    - Scientificity: can directly compare to each other, or have a non-scientific portion to compare to
      - Did you find the algorithm or the bullet comparison to be more scientific?
