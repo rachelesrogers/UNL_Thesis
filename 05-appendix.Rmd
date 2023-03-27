@@ -352,7 +352,24 @@ Such opinion testimony should be judged like any other testimony.
 You may accept or reject it, and give it as much weight as you think it deserves, considering the witness's education and experience, the reasons given for the opinion, and all the other evidence in the case. [@OpinionEvidence]
 
 ### Opinion Witness
+
 @OpinionEvidence suggests that witnesses should not be qualified as experts, as it may cause the jury to place undue weight in their testimony. Instead, @PROPOSALSELIMINATEPREJUDICIAL implements the term "opinion witness" in the place of "expert witness". This practice has been adopted in our revised testimony, when qualifying the witness based on experience and education.
+
+### Cross Examination
+
+The strength of evidence ("the probability that the two markings were made by different sources is so small that it is negligible") was moved from the cross examination to the direct examination, since this strength of evidnece should be introduced by the prosecution. Additional testimony regarding subjectivity was added to the cross examination as well, from [@usvsharris, 54]:
+
+Q: You have a criterion in you head, a subjective criterion, of what will constitute an identification. Is that correct?
+
+A: Yes.
+
+Q: All right. If we brought three more people in, would their subjective criterion in their head be identical to yours?
+
+A: They would look for that same sufficient agreement. However, based on their training and experience on difficult comparisons, they may or may not come to the same decision.
+
+Q: Right. But they also could reach the same decision but have a different subjective criterion than you. Is that fair?
+
+A: They may, possibly. I don't know. I can't speak for other examiners.
 
 ## Images
 
