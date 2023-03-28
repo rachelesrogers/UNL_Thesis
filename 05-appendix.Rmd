@@ -373,9 +373,24 @@ A: They may, possibly. I don't know. I can't speak for other examiners.
 
 ## Images
 
-```{r judge_forensics, echo=FALSE, out.width=c("50%","50%")}
+```{r demo_evidence, echo=FALSE, warning=FALSE}
+library(gridExtra)
+library(grid)
+library(jpeg)
 
-knitr::include_graphics(c("images/Judge.jpg","images/Forensic Scientist.jpg"))
+judge <- readJPEG("images/Judge.jpg")
+
+forensic_science <- readJPEG("images/Forensic Scientist.jpg")
+
+lawyer <- readJPEG("images/Lawyer.jpg")
+
+analyst <- readJPEG("images/Analyst.jpg")
+
+defendant <- readJPEG("images/Defendant.jpg")
+
+hazmat <- readJPEG("images/Hazmat worker.jpg")
+
+grid.arrange(rasterGrob(judge),rasterGrob(forensic_science),rasterGrob(lawyer),
+             rasterGrob(analyst),rasterGrob(defendant),rasterGrob(hazmat),
+             nrow=2, ncol=3)
 ```
-
-![Lawyer](images/Lawyer.jpg){height=30% width=20%}
