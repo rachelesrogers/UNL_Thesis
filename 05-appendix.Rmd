@@ -15,40 +15,40 @@ Q: Please state your name.
 
 A: John Smith
 
-Q: Who do you work for? [@azvscelaya, pgs 6-7]
+Q: Who do you work for? [@azvscelaya, 6-7]
 
 A: The local police department
 
-Q: What do you do for the police department? [@azvscelaya, pgs 6-7]
+Q: What do you do for the police department? [@azvscelaya, 6-7]
 
-A: I am a firearms examiner [@azvscelaya, pgs 6-7]
+A: I am a firearms examiner [@azvscelaya, 6-7]
 
-Q: How long have you been doing that? [@azvscelaya, pgs 6-7]
+Q: How long have you been doing that? [@azvscelaya, 6-7]
 
 A: X amount of years
 
-Q: What is a firearms examiner? [@azvscelaya, pgs 6-7]
+Q: What is a firearms examiner? [@azvscelaya, 6-7]
 
 A: A firearms examiner is someone who looks at cartridge cases and bullets to determine whether they were fired in a particular firearm.1
-Q: What training is required to become a firearms examiner with the local police department? [@azvscelaya, pgs 6-7]
+Q: What training is required to become a firearms examiner with the local police department? [@azvscelaya, 6-7]
 
-A: I received my bachelor’s degree in forensic science and in X year I transferred to the crime lab from the crime scene unit. [@azvscelaya, pgs 6-7] 
-I underwent a two-year training program, which was supervised by experienced firearms examiners [@flvssheppard, pgs 798-799]; 
-I’ve toured manufacturing facilities and saw how firearms and ammunition were produced; and I’ve attended several national and regional meetings of firearms examiners.[@azvscelaya, pgs 6-7]
+A: I received my bachelor’s degree in forensic science and in X year I transferred to the crime lab from the crime scene unit. [@azvscelaya, 6-7] 
+I underwent a two-year training program, which was supervised by experienced firearms examiners [@flvssheppard, 798-799]; 
+I’ve toured manufacturing facilities and saw how firearms and ammunition were produced; and I’ve attended several national and regional meetings of firearms examiners.[@azvscelaya, 6-7]
 
-Q: And during the course of your career, were you tested in proficiency to make sure.. you were still conducting appropriate examinations? [@flvssheppard, pgs 798-799]
+Q: And during the course of your career, were you tested in proficiency to make sure.. you were still conducting appropriate examinations? [@flvssheppard, 798-799]
 
-A: Yes. I have undergone annual proficiency examinations.[@flvssheppard, pgs 798-799]
+A: Yes. I have undergone annual proficiency examinations.[@flvssheppard, 798-799]
 
-Q: Is the local police department lab accredited? [@azvscelaya, pgs 6-7]
+Q: Is the local police department lab accredited? [@azvscelaya, 6-7]
 
-A: Yes, it is accredited by ASCLID/LAB [@azvscelaya, pgs 6-7]
+A: Yes, it is accredited by ASCLID/LAB [@azvscelaya, 6-7]
 
-Q: And in addition to what you just told us, do you have other qualifications? [@ilvsbanks, pg 2]
+Q: And in addition to what you just told us, do you have other qualifications? [@ilvsbanks, 2]
 
-A: Yes, I do.[@ilvsbanks, pg 2]
+A: Yes, I do.[@ilvsbanks, 2]
 
-Q: Can you tell us what those are? [@ilvsbanks, pg 2]
+Q: Can you tell us what those are? [@ilvsbanks, 2]
 
 A: Yes. I received training in the use of a bullet matching algorithm. 
 This is an algorithm that evaluates the characteristics of two fired bullets, in order to produce a score for the similarity of the bullets, where more similar bullets are more likely to have been fired from the same gun. 
@@ -56,55 +56,55 @@ I attended a workshop on the algorithm on [DATE], held by CSAFE – Center for S
 This involved use of the algorithm alongside my personal judgement. 
 I found that my conclusion was reflected in the similarity score produced by the algorithm in all ## cases.
 
-Q: Where does the bullet matching algorithm come from? [@mivsjohnson, pg 5]
+Q: Where does the bullet matching algorithm come from? [@mivsjohnson, 5]
 
-A: It was created by _____. [@mivsjohnson, pg 5]
+A: It was created by _____. [@mivsjohnson, 5]
 
-Q: How long has the state police been using the bullet matching algorithm? [@mivsjohnson, pg 5]
+Q: How long has the state police been using the bullet matching algorithm? [@mivsjohnson, 5]
 
 A: They have been using it since ###.
 
-Q: Have you testified in court previously regarding the bullet matching algorithm? [@mivsjohnson, pg 5]
+Q: Have you testified in court previously regarding the bullet matching algorithm? [@mivsjohnson, 5]
 
-A: Yes, I have, approximately ## times. [@mivsjohnson, pg 5]
+A: Yes, I have, approximately ## times. [@mivsjohnson, 5]
 
-Q: Have you, as a firearms examiner, have you testified about opinions, given your opinion about the results of your testing? [@mivsjohnson, pg 5]
+Q: Have you, as a firearms examiner, have you testified about opinions, given your opinion about the results of your testing? [@mivsjohnson, 5]
 
-A: Yes, I have. [@mivsjohnson, pg 5]
+A: Yes, I have. [@mivsjohnson, 5]
 
-Prosecution: Your Honor, at this time I would ask that XXX be qualified as an expert in the field of firearms identification subject to cross examination. [@ilvsbanks, pg 4]
+Prosecution: Your Honor, at this time I would ask that XXX be qualified as an expert in the field of firearms identification subject to cross examination. [@ilvsbanks, 4]
 
-Court: Any cross on their credentials? [@ilvsbanks, pg 4]
+Court: Any cross on their credentials? [@ilvsbanks, 4]
 
-Defense: No, Your Honor [@ilvsbanks, pg 4]
+Defense: No, Your Honor [@ilvsbanks, 4]
 
 Court: This witness is an expert in the area of firearms identification. 
 They can testify to their opinions as well as facts. 
-Go ahead.[@ilvsbanks, pg 4]
+Go ahead.[@ilvsbanks, 4]
 
-Q: What work did you do on this case? [@azvscelaya, pg 8]
+Q: What work did you do on this case? [@azvscelaya, 8]
 
-A: I was asked to compare a bullet from the crime scene to a test fire from XX gun.[@azvscelaya, pg 8]
+A: I was asked to compare a bullet from the crime scene to a test fire from XX gun.[@azvscelaya, 8]
 
-Q: Did you examine how many lands and grooves the bullet had? [@azvscelaya, pgs 17-18]
+Q: Did you examine how many lands and grooves the bullet had? [@azvscelaya, 17-18]
 
-A: Yes. [@azvscelaya, pgs 17-18]
+A: Yes. [@azvscelaya, 17-18]
 
-Q: Can you explain for the jury what that means? [@azvscelaya, pgs 17-18]
+Q: Can you explain for the jury what that means? [@azvscelaya, 17-18]
 
 A: Yes... In the interior of a barrel there are raised portions called lands and depressed areas called grooves. 
 When a bullet passes down the barrel, a bullet will spin and that gives it stability and accuracy over a distance. 
 Those raised areas are designed by the manufacturer. 
 They’re cut into the barrel. 
 And each particular file has a different combination of lands and grooves.
-But essentially what those lands do will grip a bullet and spin it and as that bullet passes down the barrel, it scratches the random imperfections of that barrel into the bullet.[@azvscelaya, pgs 17-18]
+But essentially what those lands do will grip a bullet and spin it and as that bullet passes down the barrel, it scratches the random imperfections of that barrel into the bullet.[@azvscelaya, 17-18]
 
-Q: Now, for these bullets, you counted up the lands and grooves and determined the direction of the twist, correct? [@azvscelaya, pgs 17-18]
+Q: Now, for these bullets, you counted up the lands and grooves and determined the direction of the twist, correct? [@azvscelaya, 17-18]
 
 A: Yes. This bullet had six lands. And the interior of the barrel, the barrel will either twist right or it will twist left. 
 And this particular case, the barrel twists right. 
 And you can see that by looking at the bullet. 
-If you look at the base of the bullet, either it goes to the left or goes to the right.[@azvscelaya, pgs 17-18]
+If you look at the base of the bullet, either it goes to the left or goes to the right.[@azvscelaya, 17-18]
 
 ---Test-fired bullets admitted into evidence---
 
@@ -112,36 +112,36 @@ Q: Can you describe the process of obtaining these test-fired bullets?
 
 A: The test-fired bullets came from a test fire of XX gun.
 
-Q: You mentioned test firings, can you explain what that means? [@ilvsbanks, pg 6]
+Q: You mentioned test firings, can you explain what that means? [@ilvsbanks, 6]
 
 A: In test firing first what I would do is make sure the firearm is safe to actually test fire. 
 Then I would use lab ammunition and I would test fire it, meaning that I’m creating a fired bullet. 
 Typically you do two at a time. 
-That way you have a fired bullet to compare to another fired bullet. [@ilvsbanks, pg 6]
+That way you have a fired bullet to compare to another fired bullet. [@ilvsbanks, 6]
 
-Q: Would you then have taken the test firings you created and did you compare those test firings to the fired evidence that you had also received? [@ilvsbanks, pg 6]
+Q: Would you then have taken the test firings you created and did you compare those test firings to the fired evidence that you had also received? [@ilvsbanks, 6]
 
 A: Yes. First what I would do is compare my test shot to test shot.
 I’m looking for a detailed microscopic pattern. 
-Once I have done that then I would compare it to the fired evidence.[@ilvsbanks, pg 6]
+Once I have done that then I would compare it to the fired evidence.[@ilvsbanks, 6]
 
-Q: And how about the number of lands and direction of twist for the test fires? [@azvscelaya, pg 19-20]
+Q: And how about the number of lands and direction of twist for the test fires? [@azvscelaya, 19-20]
 
-A: It also had six lands, and twisted to the right [@azvscelaya, pg 19-20]
+A: It also had six lands, and twisted to the right [@azvscelaya, 19-20]
 
-Q: Okay. Now, did you compare the test-fired bullets to the fired evidence under the comparison microscope? [@azvscelaya, pg 19-20]
+Q: Okay. Now, did you compare the test-fired bullets to the fired evidence under the comparison microscope? [@azvscelaya, 19-20]
 
-A: Yes, I did. [@azvscelaya, pg 19-20]
+A: Yes, I did. [@azvscelaya, 19-20]
 
-Q: What is your conclusion? [@azvscelaya, pg 19-20]
+Q: What is your conclusion? [@azvscelaya, 19-20]
 
 A: I found that there were sufficient individualizing characteristics to conclude that the two bullets were fired from the same barrel. 
 
-Q: How were you able to conclude that? [@azvscelaya, pg 19-20]
+Q: How were you able to conclude that? [@azvscelaya, 19-20]
 
 A: I placed them under the comparison microscope, and I roll the bullet around ‘til I can see the agreement in a particular area, unique surface contour that has sufficient agreement. 
 At that point, when I’ve seen that, I start to rotate the bullets around and I look at all the different lands and grooves, impressions, for that unique detail. 
-When I can see those, that agreement on multiple areas of the bullet, I identify the bullet as having sufficient agreement.[@azvscelaya, pg 19-20]
+When I can see those, that agreement on multiple areas of the bullet, I identify the bullet as having sufficient agreement.[@azvscelaya, 19-20]
 
 Q: Did you use an algorithm to compare these bullets as well?
 
@@ -167,77 +167,77 @@ Q: What does this match score indicate about the bullets?
 
 A: The match score indicates that there is substantial similarity between the two bullets, which suggests that they were most likely fired from the same barrel.
 
-Q: Now, how many times have you compared bullets to determine if they were fired from the same gun? [@azvscelaya, pg 19-20]
+Q: Now, how many times have you compared bullets to determine if they were fired from the same gun? [@azvscelaya, 19-20]
 
-A: I’d say thousands. [@azvscelaya, pg 19-20]
+A: I’d say thousands. [@azvscelaya, 19-20]
 
-Q: And do you ever see two bullets that have agreement in every area of the bullet? [@azvscelaya, pg 19-20]
+Q: And do you ever see two bullets that have agreement in every area of the bullet? [@azvscelaya, 19-20]
 
 A: No. 
 The firing process of a firearm is dynamic, kind of like a contained explosion. 
 When the firing pin hits the primer, which is basically the initiator, what gets it going, it will explode, bur the gun powder inside the casing, and the bullet will travel down the barrel, picking up the microscopic imperfections of the barrel, and the cartridge case will slam rearward against the support mechanism.
-During that dynamic process, each time it happens, a bullet will be marked slightly differently from one to the next. [@azvscelaya, pg 19-20]
+During that dynamic process, each time it happens, a bullet will be marked slightly differently from one to the next. [@azvscelaya, 19-20]
 
-Q: When you reached a conclusion, did you write up a report? [@azvscelaya, pg 23]
+Q: When you reached a conclusion, did you write up a report? [@azvscelaya, 23]
 
-A: Yes, I did. [@azvscelaya, pg 23]
+A: Yes, I did. [@azvscelaya, 23]
 
-Q: Is it the local police department’s protocol to have somebody else who’s a firearms tool mark examiner in your lab review that report, review your work, and determine if it’s correct? [@azvscelaya, pg 23]
+Q: Is it the local police department’s protocol to have somebody else who’s a firearms tool mark examiner in your lab review that report, review your work, and determine if it’s correct? [@azvscelaya, 23]
 
-A: Yes. [@azvscelaya, pg 23]
+A: Yes. [@azvscelaya, 23]
 
-Q: That’s what we call peer review? [@azvscelaya, pg 23]
+Q: That’s what we call peer review? [@azvscelaya, 23]
 
-A: Peer review, yes. [@azvscelaya, pg 23]
+A: Peer review, yes. [@azvscelaya, 23]
 
-Q: Thank you, no further questions. [@azvscelaya, pg 40]
+Q: Thank you, no further questions. [@azvscelaya, 40]
 
 --Cross examination—-
 
-Q: Now, are you telling the jury today that in your opinion there’s only one gun in the entire world that could have produced the markings that you saw on these bullets? [@azvscelaya, pg 65]
+Q: Now, are you telling the jury today that in your opinion there’s only one gun in the entire world that could have produced the markings that you saw on these bullets? [@azvscelaya, 65]
 
-A: I’m saying that the probability that the two markings were made by different sources is so small that it is negligible. (NIJ Language) [@azvscelaya, pg 65]
+A: I’m saying that the probability that the two markings were made by different sources is so small that it is negligible. [@dojcompare, 2] [@azvscelaya, 65]
 
-Q: Exclusive to any other gun? [@azvscelaya, pg 65]
+Q: Exclusive to any other gun? [@azvscelaya, 65]
 
-A: I obviously haven’t tested every other gun, but it is a practical impossibility. [@azvscelaya, pg 65]
+A: I obviously haven’t tested every other gun, but it is a practical impossibility. [@azvscelaya, 65]
 
-Q: That’s your opinion. And your opinion, by the way, is subjective, right, and it’s based on your experience? [@azvscelaya, pgs 72-73]
+Q: That’s your opinion. And your opinion, by the way, is subjective, right, and it’s based on your experience? [@azvscelaya, 72-73]
 
-A: Based on my training and experience, yes. [@azvscelaya, pgs 72-73]
+A: Based on my training and experience, yes. [@azvscelaya, 72-73]
 
-Q: Is there something fixed about the amount of what has to be found to constitute sufficient agreement? [@usvsharris, pgs 4459-4460]
+Q: Is there something fixed about the amount of what has to be found to constitute sufficient agreement? [@usvsharris, 4459-4460]
 
-A: No, there is not a fixed amount or a numerical value. [@usvsharris, pgs 4459-4460]
+A: No, there is not a fixed amount or a numerical value. [@usvsharris, 4459-4460]
 
-Q: How long did you say you’ve been trained in the bullet matching algorithm? [@mivsjohnson, pgs 19 - 21]
+Q: How long did you say you’ve been trained in the bullet matching algorithm? [@mivsjohnson, 19 - 21]
 
-A: Since XXX [@mivsjohnson, pgs 19 - 21]
+A: Since XXX [@mivsjohnson, 19 - 21]
 
-Q: Okay. So that’s fairly new; is that fair to say? [@mivsjohnson, pgs 19 - 21]
+Q: Okay. So that’s fairly new; is that fair to say? [@mivsjohnson, 19 - 21]
 
-A: It is still fairly new, yes. [@mivsjohnson, pgs 19 - 21]
+A: It is still fairly new, yes. [@mivsjohnson, 19 - 21]
 
-Q: The software uses modeling; is that correct? [@mivsjohnson, pgs 19 - 21]
+Q: The software uses modeling; is that correct? [@mivsjohnson, 19 - 21]
 
-A: Yes, it does. [@mivsjohnson, pgs 19 - 21]
+A: Yes, it does. [@mivsjohnson, 19 - 21]
 
-Q: You, personally, don’t know the source code; is that correct? [@mivsjohnson, pgs 19 - 21]
+Q: You, personally, don’t know the source code; is that correct? [@mivsjohnson, 19 - 21]
 
-A: That’s correct.[@mivsjohnson, pgs 19 - 21]
+A: That’s correct.[@mivsjohnson, 19 - 21]
 
-Q: And, in fact, you, personally, would not be able to tell us the specific math that goes into this program; is that fair to say? [@mivsjohnson, pgs 19 - 21]
+Q: And, in fact, you, personally, would not be able to tell us the specific math that goes into this program; is that fair to say? [@mivsjohnson, 19 - 21]
 
-A: We did receive training on what the math is doing. [@mivsjohnson, pgs 19 - 21]
+A: We did receive training on what the math is doing. [@mivsjohnson, 19 - 21]
 
 
 The Court: Terry Smith, the jury has asked me to forward this question to you. Answer if you're able.
-To what percentage is the science accurate is the first question. And then I think the rest of that explanation of that question goes on to say, to determine that the bullets were fired from the same firearm, are you 100 percent sure? [@azvscelaya, pgs 100 -101]
+To what percentage is the science accurate is the first question. And then I think the rest of that explanation of that question goes on to say, to determine that the bullets were fired from the same firearm, are you 100 percent sure? [@azvscelaya, 100 -101]
 
 A: My opinion, I am 100 percent sure that these bullets were fired from this firearm. 
 There is a published error rate for firearms examiners. 
 The positive identification is less than two percent. 
-I believe it's about 1.5 to 1.9. That's just a general number that's out there.[@azvscelaya, pgs 100 -101]
+I believe it's about 1.5 to 1.9. That's just a general number that's out there.[@azvscelaya, 100 -101]
 The false negative identification rate is less than three percent. [@chumbley2021]
 
 ## Algorithm Expert
@@ -269,11 +269,11 @@ Q: Are you familiar with the bullet matching algorithm?
 A: Yes. I was involved in the development of the algorithm.
 
 Prosecution: Your Honor, at this time I would ask that XXX be qualified as an expert in the bullet matching algorithm subject to cross examination.
-Court: Any cross on their credentials? [@ilvsbanks, pg 4]
+Court: Any cross on their credentials? [@ilvsbanks, 4]
 
-Defense: No, Your Honor [@ilvsbanks, pg 4]
+Defense: No, Your Honor [@ilvsbanks, 4]
 
-Court: This witness is an expert in the area of the bullet matching algorithm. They can testify to their opinions as well as facts. [@ilvsbanks, pg 4]
+Court: This witness is an expert in the area of the bullet matching algorithm. They can testify to their opinions as well as facts. [@ilvsbanks, 4]
 
 Q: How many times have you testified regarding this bullet matching algorithm?
 
@@ -322,13 +322,13 @@ The algorithm is also open source, which means that the full source code, docume
 
 --Cross examination—-
 
-Q: How long has the bullet matching algorithm been used in court cases? [@mivsjohnson, pgs 19 - 21]
+Q: How long has the bullet matching algorithm been used in court cases? [@mivsjohnson, 19 - 21]
 
 A: Since XXX
 
-Q: Okay. So that’s fairly new; is that fair to say? [@mivsjohnson, pgs 19 - 21]
+Q: Okay. So that’s fairly new; is that fair to say? [@mivsjohnson, 19 - 21]
 
-A: It is still fairly new, yes. [@mivsjohnson, pgs 19 - 21]
+A: It is still fairly new, yes. [@mivsjohnson, 19 - 21]
 
 Q: This algorithm requires some decision making on the part of the operator, such as how much the signature is smoothed and what part of the bullets are inputted into the system, correct?
 
