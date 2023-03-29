@@ -373,6 +373,8 @@ A: They may, possibly. I don't know. I can't speak for other examiners.
 
 ## Images
 
+In order to clarify the speakers in the testimony and create a more engaging environment, we commissioned character drawings to represent various actors that may be present in the courtroom. These characters' faces and clothing are largely exchangeable, allowing for a large combination of clothing and characteristics.
+
 ```{r demo_evidence, echo=FALSE, warning=FALSE}
 library(gridExtra)
 library(grid)
