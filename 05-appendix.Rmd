@@ -29,7 +29,8 @@ A: X amount of years
 
 Q: What is a firearms examiner? [@azvscelaya, 6-7]
 
-A: A firearms examiner is someone who looks at cartridge cases and bullets to determine whether they were fired in a particular firearm.1
+A: A firearms examiner is someone who looks at cartridge cases and bullets to determine whether they were fired in a particular firearm.
+
 Q: What training is required to become a firearms examiner with the local police department? [@azvscelaya, 6-7]
 
 A: I received my bachelor’s degree in forensic science and in X year I transferred to the crime lab from the crime scene unit. [@azvscelaya, 6-7] 
@@ -247,7 +248,7 @@ Q: Please state your name.
 
 A: Adrian/Avery Jones
 
-Q: Who do you work for?
+Q: Who do you work for? [@azvscelaya, 6-7]
 
 A: XXX place
 
@@ -255,11 +256,11 @@ Q: What is your current occupation?
 
 A: XXX
 
-Q: How long have you been doing that?
+Q: How long have you been doing that? [@azvscelaya, 6-7]
 
 A: X amount of years
 
-Q: What training is required to hold this occupation?
+Q: What training is required to hold this occupation? [@azvscelaya, 6-7]
 
 A: I have a Ph.D. in XX, and have spent X time developing the bullet matching algorithm algorithms. 
 I have spent X years collaborating with firearms examiners during the development and rollout of this algorithm. 
@@ -285,6 +286,7 @@ A: Yes. For certain types of guns, the barrel will have lands and grooves, known
 This rifling spins the bullet in order to make its trajectory more stable. Due to the manufacturing process, this rifling can produce identifiable markings on the bullet, based on random differences between barrels. 
 Because of these random imperfections, the striation marks left on bullets can be compared in order to determine if it is likely that they were fired from the same gun. 
 
+(Description based on @hare2017automatic)
 The first step is to determine where the lands on the bullet are located. 
 These lands will be the sunken area that contains the striation marks between the smoother grooves. 
 3D scans are then taken for each land, and the ‘shoulders’, or area transitioning from the land to the groove, is excluded from the analysis.
@@ -308,13 +310,14 @@ A: Yes.
 This algorithm was tested and validated on a number of different test sets of bullet scans. 
 It was found that, as long as there are sufficient marks on the bullet, the algorithm could successfully distinguish between bullets fired by the same gun and those fired from different guns. 
 Examiners’ visual comparisons are also limited by the presence or absence of individualizing marks. 
-Two test sets were using consecutively rifled barrels, which should be the most difficult to assess, and it was shown that the algorithm could distinguish between the bullets fired from two separate guns with complete accuracy. 
+Two test sets were using consecutively rifled barrels, which should be the most difficult to assess, and it was shown that the algorithm could distinguish between the bullets fired from two separate guns with complete accuracy. [@vanderplasComparisonThreeSimilarity2020]
 
 Q: Can this algorithm be used on XX bullets fired from an XX firearm, such as the firearm in question for this case?
+(Discussion of limitations [@mivsjohnson, 11])
 
 A: Yes, this algorithm can be used on these types of bullets, given that this type of firearm marks well.
 
-Q: Has this algorithm been published?
+Q: Has this algorithm been published? (@cyberposter for importance of publication)
 
 A: Yes. The algorithm and its process has been discussed in peer reviewed journals such as Law, Probability, and Risk, The Annals of Applied Statistics, and Forensic Science International. 
 The algorithm is also open source, which means that the full source code, documentation, and numerical weights are available online for anyone to examine.
@@ -330,7 +333,7 @@ Q: Okay. So that’s fairly new; is that fair to say? [@mivsjohnson, 19 - 21]
 
 A: It is still fairly new, yes. [@mivsjohnson, 19 - 21]
 
-Q: This algorithm requires some decision making on the part of the operator, such as how much the signature is smoothed and what part of the bullets are inputted into the system, correct?
+Q: This algorithm requires some decision making on the part of the operator, such as how much the signature is smoothed and what part of the bullets are inputted into the system, correct? (subjective aspects [@mivsjohnson, 21])
 
 A: Yes, there are certain parameters which must be specified, but the system defaults are usually sufficient and have been validated with a number of different firearms and ammunition types. 
 There are also operating protocols for determining which parts of the bullet are scanned, so while this process is manual, there are clear criteria and the associated variability from scanning is well understood, and published in Forensic Science International. 
