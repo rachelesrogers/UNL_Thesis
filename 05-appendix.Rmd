@@ -396,8 +396,10 @@ defendant <- readJPEG("images/Defendant.jpg")
 hazmat <- readJPEG("images/Hazmat worker.jpg")
 police <- readJPEG("images/Police Officer.jpg")
 
+inmate <- readJPEG("images/Inmate.jpg")
+
 grid.arrange(rasterGrob(judge),rasterGrob(forensic_science),rasterGrob(lawyer),
              rasterGrob(analyst),rasterGrob(defendant),rasterGrob(hazmat),
-             rasterGrob(police),
+             rasterGrob(police),rasterGrob(inmate),
              nrow=2, ncol=4)
 ```
