@@ -5,13 +5,13 @@
 
 - First attempt:
   - ggplot: allows for both a gradient and transparency to be added to words based on their frequency
-  - graphing words of the transcript resulted in ugly spacing
+  - graphing words of the transcript resulted in uneven spacing
   - Relative frequency was computed based on the number of times the word appeared on the page
 - Second attempt:
-  - Using LaTex instead of ggplot: can set gradient through color outputted by ggplot
+  - Using CSS instead of ggplot: can set gradient through color outputted by ggplot
   - Words can be equally spaced
-  - Currently assigning a new color to each word - this is not efficient
-  - Now in CSS for tab format
+  <!-- - Currently assigning a new color to each word - this is not efficient -->
+  <!-- - Now in CSS for tab format -->
   - Labels added with gradient scale
   - Change from relative frequency of individual words to average collocation frequency per word (with collocations of length 5)
      -Include fuzzy matching for indirect matches (typos/skipped words)

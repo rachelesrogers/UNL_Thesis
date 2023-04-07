@@ -131,10 +131,10 @@ In the case of bullet comparison studies, researchers ask examiners to make conc
 This issues is also reflected in @imwinkelried, who suggest that bullet identification is based more on personal experience than on the scientific method. 
 In plain terms, there is not a set standard for what constitutes sufficient agreement between compared evidence.
 
-In firearms evidence, there are two pieces of fired evidence that may be evaluated: the cartridge casing and the bullet itself. 
 ```{r structure, echo=FALSE, fig.cap="Image of bullet structure. 1 indicates the bullet, 2 indicates the cartridge casing, 3 indicates the powder, 4 indicates the head of the cartridge casing, and 5 indicates the primer.", out.width="50%", fig.align="center"}
 include_graphics(path = "images/Cartridge_cross_section.png")
 ```
+In firearms evidence, there are two pieces of fired evidence that may be evaluated: the cartridge casing and the bullet itself. 
 The structure of the bullet is shown in Figure \@ref(fig:structure), provided by @glrx.
 Striation marks are created on the bullet due to the rifling of the barrel, while the head of the cartridge casing is marked by the breech face.
 Procedural issues may also lead to differing expert opinions across laboratories; one system may not allow an exclusion to be documented if the class characteristics match, while another system may not have such a limitation [@baldwin2014, 6]. 
@@ -286,11 +286,12 @@ Three academic scholars supported the use of algorithms, so long as the algorith
 
 Quantitative methods of examination can lead to quantitative results.
 In this case, the quantitative results are in the form of a match score, but in other cases, results may be presented as a likelihood ratio. 
-For example, @EvaluatingLikelihoodRatio proposed a likelihood approach for a firearms method that uses congruently matching cells. 
+For example, @EvaluatingLikelihoodRatio proposed a likelihood approach for a cartridge case comparison method that uses congruently matching cells. 
 This is a change from the match language usually used by forensic examiners, but these likelihood ratios may have some benefit.
 @marquis2016 suggest that the use of a likelihood ratio requires examiners to consider what they are including when weighing the strength of evidence, and provides a value that can be consistent across disciplines (4). 
 This quantitative approach, even while conducting a subjective evaluation, is meant to prevent examiners from being biased by information provided outside of their direct examination [@bunch2013, 223]. 
 The approach also asks examiners to consider both the null and alternative hypotheses, and may make it less likely for either the examiners or jurors to transpose the conditional, which may happen in the case of reporting probabilities [@evett1998;@marquis2016, 3].
+<!-- Distinguishing between LRs and Bayes Factors - Danica Ommen paper I do not have access to -->
 
 As an example of transposing the conditional, suppose an examiner were comparing a bullet from the suspect's gun to a bullet recovered from the crime scene.
 The examiner may find that there is significant agreement between the two bullets.
@@ -301,6 +302,7 @@ Here, the conditional part of the statement has been switched, so that the exami
 By stating a likelihood ratio, such as "the bullet comparison provides strong support for the proposition that the two bullets came from the same gun rather than the proposition that the two bullets came from different guns", both the null and alternative hypothesis are clearly stated, and the focus of the statement is on the bullet comparison, rather than the gun's presence at the crime scene.
 
 As shown above, the likelihood ratio directly compares the null and alternative hypotheses in a case, which is not accomplished by considering a single probability [@nordgaard2012, 6]. 
+Likelihood ratios also allow for the integration of evidence from multiple sources, and individual likelihood ratios may be multiplied together to calculate an overall likelihood ratio.
 @meuwly2017a suggested guidelines for validating both score- and feature-based likelihood ratio methods, so this form of result presentation could be more widely accepted.
 These methods included validation criteria for all variables considered in a likelihood ratio, where validation criteria can be considered in several ways: a comparison with current “state of the art” methods, detection error trade-off graphs to measure discriminating power, and performing validation on a validation data set.
 
@@ -313,7 +315,7 @@ In order to gauge how quantitative methods are perceived in the courtroom, we ca
 @garrettComparingCategoricalProbabilistic2018 studied the use of FRStat for fingerprint matching in the courtroom.
 The FRStat language presented to the study participants is as follows: "The probability of observing this amount of correspondence is approximately [XXX] times greater when the impressions are made by the same source rather than by different sources" [language from @DFSCLPInformation2018].
 @garrettComparingCategoricalProbabilistic2018 used ratios from 10 times greater to 100,000 times greater, and found that the likelihood that the subject committed the crime according to the participants did not change significantly.
-This demonstrates that potential jurors may have trouble in accurately interpreting statistical results, such as likelihood ratios.
+This demonstrates that potential jurors may have trouble accurately interpreting statistical results, including likelihood ratios.
 
 In DNA research, @koehler2001 found that participants were more likely to believe the subject was the source of the DNA when presented with a probability instead of a frequency.
 When asked about how many individuals would match DNA for a given match proportion in a population of 500,000, 60.7\% of participants who received a frequency and 42.1\% of individuals who received a probability answered correctly [@koehler2001, 503].
@@ -352,12 +354,10 @@ These values approximately correspond to the scale above, but consists of fewer 
 However, this ability to orient relative to other values may assist jurors in accurately judging the strength of evidence presented.
 
 While verbal scales are useful for clarification, individuals may not always interpret them consistently.
-For example, @budescu1985a asked participants to rank common probabilistic words (such are "rarely" or "usually") on three separate occasions.
-@budescu1985a found that individuals typically gave consistent rankings across time points, but there was variation in rankings between individuals.
-In an earlier study @lichtensteinEmpiricalScalingCommon1967 ask individuals to assign numerical probabilities to probabilistic words.
-They found that eight of the eleven mirror terms (such as “quite likely” and “quite unlikely”) demonstrated asymmetry - positive terms (such as likely) scored lower than their mirrored negative terms (unlikely). For example, "quite likely" and "quite unlikely" had median values of 0.8 and 0.1, respectively [@lichtensteinEmpiricalScalingCommon1967, 564].
+For example, @budescu1985a asked participants to rank common probabilistic words (such are "rarely" or "usually") on three separate occasions, finding that individuals typically gave consistent rankings across time points, but there was variation in rankings between individuals.
+In an earlier study, @lichtensteinEmpiricalScalingCommon1967 asked individuals to assign numerical probabilities to probabilistic words, finding that eight of the eleven mirror terms (such as “quite likely” and “quite unlikely”) demonstrated asymmetry - positive terms (such as likely) scored lower than their mirrored negative terms (unlikely). For example, "quite likely" and "quite unlikely" had median values of 0.8 and 0.1, respectively [@lichtensteinEmpiricalScalingCommon1967, 564].
 
-The issue of consistency in scale interpretation is also found in examiners.
+Examiners also show evidence of inconsistency in scale interpretation.
 @mattijssen2020 asked examiners to use a verbal scale for degree of similarity and support when digitally comparing cartridge cases.
 When using a verbal scale for degree of similarity/support, @mattijssen2020 found that the between-subject and within-subject reliability was moderate to high (11). 
 @mattijssen2020 asked 10 examiners who regularly used likelihood ratios to provide both a verbal degree of support along with a likelihood ratio.
@@ -387,7 +387,7 @@ They compared results from participants to Bayesian conditional probabilities ba
 ### Demonstrative Evidence
 
 Aside from result language or scales used, another important factor in jury decision making is demonstrative evidence. 
-Images can supply helpful context in describing complex forms of analysis, but they may also introduce bias in the form of "truthiness", a term introduced by Stephen Colbert.
+Images can supply helpful context in describing complex forms of analysis, but they may also introduce bias in the form of "truthiness", a term introduced by comedian Stephen Colbert.
 He described truthiness as the quality of something *seeming* true [@WordTruthinessColbert2005]. 
 In this video, Colbert talks about “thinking with your head vs. knowing with your heart”, where some information may feel true, regardless of the facts. 
 @bornsteinJuryDecisionMaking2011 found a "truthiness" effect in the courtroom - jurors tend to remember evidence that align with their previous beliefs (65). 

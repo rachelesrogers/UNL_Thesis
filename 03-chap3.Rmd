@@ -1,4 +1,6 @@
-# Jury Perception Revisited: This Time with Chibis {#study2}
+# Jury Perception Revisited: This Time with Caricatures {#study2}
+
+<!--- Chibis -->
 
 - When reading a transcript, experts may seem impartial when they are in fact called by the prosecution
 - There are few to no visuals to keep track of who is speaking, and what characters are present in a scenario
@@ -7,23 +9,22 @@
 - Other changes:
   - combating scale compression through jury instructions before deliberation
   - Fixed code design so to prevent copy-paste error
-  - Changing Likert scales to quantitative scales to get more numerical differences
+  - Comparing Likert scales to quantitative scales
   - Adding scenario id to database at beginning of test
-- Reliability: Questions regarding the consistency of the comparison?
-  - How often to you think the firearms examiner (Terry Smith?) makes mistakes?
+- Reliability: Questions regarding the consistency of the comparison
+  - How often to you think the firearms examiner makes mistakes?
      - [blank] out of [blank] bullet comparisons
    - How often to you think the algorithm makes mistakes?
      - [blank] out of [blank] bullet comparisons
-   - If other examiners were asked to make the same bullet comparison, how many do you believe would agree with the firearms examiner (Terry Smith?)
+   - If other examiners were asked to make the same bullet comparison, how many do you believe would agree with the firearms examiner
      - [blank] out of [blank] examiners would agree with Smith's results of bullet comparison
    - If the algorithm were re-run on the same bullet comparison, how many times do you believe the algorithm would agree with these results?
        - [blank] out of [blank] runs would agree with the results of the bullet comparison
-   - Credibility: Perhaps questions regarding the ability to testify? Or something on credentials, or comparison to another individual
+   <!-- - Credibility: Perhaps questions regarding the ability to testify? Or something on credentials, or comparison to another individual -->
    - Scientificity: can directly compare to each other, or have a non-scientific portion to compare to
      - Did you find the algorithm or the bullet comparison to be more scientific?
-     - Compared to the case description, how would you rate the scientificity of the bullet comparison?
+     - Compared to the case description, how would you rate the scientificity of the bullet comparison
    - How much would you be willing to bet that the crime scene bullet (did/did not) match Cole's gun?
-     - look for references
   
-- We may want to clarify if the examiner used the algorithm before or after their initial comparison.
-  - If the algorithm is used first, this would potentially be confounding
+- Clarify if the examiner used the algorithm before or after their initial comparison.
+ <!-- - If the algorithm is used first, this would potentially be confounding -->
