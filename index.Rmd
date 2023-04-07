@@ -136,7 +136,7 @@ include_graphics(path = "images/Cartridge_cross_section.png")
 ```
 In firearms evidence, there are two pieces of fired evidence that may be evaluated: the cartridge casing and the bullet itself. 
 The structure of the bullet is shown in Figure \@ref(fig:structure), provided by @glrx.
-Striation marks are created on the bullet due to the rifling of the barrel, while the head of the cartridge casing is marked by the breech face.
+Striation marks are created on the bullet as it travels down the barrel due to rifling, defects, and impurities [@hare2017automatic], while the head of the cartridge casing is marked by the breech face and aperture sheer [@chapnick2021].
 Procedural issues may also lead to differing expert opinions across laboratories; one system may not allow an exclusion to be documented if the class characteristics match, while another system may not have such a limitation [@baldwin2014, 6]. 
 In their study, this led to 45 of 218 examiners labeling all different source comparisons as inconclusive, and 96 examiners labeling none of the comparisons as inconclusive [@baldwin2014, 16].
 Without a standardized procedure, experts evaluate the evidence similarly when comparing two bullets, but must draw different conclusions based on the procedures of their laboratory. 

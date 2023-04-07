@@ -1,7 +1,7 @@
 # Jury Perception Revisited: This Time with Caricatures {#study2}
 
 <!--- Chibis -->
-
+- Study 2 changes can be found in Appendix \@ref(study-2-changes)
 - When reading a transcript, experts may seem impartial when they are in fact called by the prosecution
 - There are few to no visuals to keep track of who is speaking, and what characters are present in a scenario
 - We wanted to develop a general tool that can be used in online courtroom studies, making it easier to track sides/speakers, and with versatility in terms of race/gender
