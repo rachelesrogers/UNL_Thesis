@@ -1596,7 +1596,7 @@ This corresponds with @garrett2013's study of fingerprint match language, where 
 @garrett2013 hypothesized that this may relate to strong feelings reliability for fingerprint evidence, resulting in individuals viewing any match as automatically reliable (without the need for stronger language).
 People generally seemed to have less faith in inconclusive decisions. 
 They understood the examiner's comparison better than the algorithm comparison, which was expected given the statistical complexity of the algorithm procedure. 
-Participants also found the algorithm to be more scientific than the examiner. 
+In general, participants also found the algorithm to be more scientific than the examiner, when presented with both methods. 
 The presence of images did not have a discernible effect in terms of credibility, reliability, or scientificity. 
 Participants' views of the credibility of the experts and the frequency with which firearms examiners make mistakes did not depend on the algorithm, images, or conclusion.  
 
