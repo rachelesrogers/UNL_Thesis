@@ -513,7 +513,7 @@ examcred <-
   ) +
   #geom_histogram(stat="count", position="dodge")+
   facet_grid(algorithm ~ ., labeller =  purrr::partial(label_both, sep = ":\n")) +
-  ggtitle("Examiner Testimony") +
+  ggtitle("How credible did you find the testimony of Terry Smith\n(the firearm examiner)?") +
   scale_fill_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
   theme_bw()+
   theme(axis.title.x = element_blank())
