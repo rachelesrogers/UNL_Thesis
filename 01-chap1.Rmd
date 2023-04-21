@@ -279,7 +279,7 @@ kable(dem_table, caption="Attention Check Information")
 
 Participants were asked a variety of questions in order to assess their thoughts and feelings on the case and the evidence presented. 
 Two questions related to probability: respondents were asked to provide a value for the probability that the gun was at the crime scene, and to provide a value for the probability that Richard Cole (the defendant) committed the crime. 
-Another question asked participants if they thought Cole was guilty of the crime. 
+Another question asked participants if they would convict Cole, based on the evidence. 
 Questions of credibility, reliability, and scientificity were assessed using a 7-point Likert scale (eg. "Extremely unscientific" to "Extremely scientific"). 
 Understanding was ranked on a 5-point Likert scale ("I understood nothing" to "I understood everything"). 
 Participants were also asked about uniqueness of firearm toolmarks, as a simple yes/no question. 
@@ -432,7 +432,7 @@ probplot <-
                alpha = 0.5,
                outlier.shape = NA) +
   ggtitle("Probability Cole Commited the Crime") +
-  scale_fill_manual(values = c("grey20", "plum1"))+
+  scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
   theme_bw()
 
 gunplot <-
@@ -449,7 +449,7 @@ gunplot <-
                alpha = 0.5,
                outlier.shape = NA) +
   ggtitle("Probability Gun was used in the Crime") +
-  scale_fill_manual(values = c("grey20", "plum1"))+
+  scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
   theme_bw()
 
 grid.arrange(probplot, gunplot, ncol = 2)
