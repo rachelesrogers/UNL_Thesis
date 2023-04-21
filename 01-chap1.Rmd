@@ -449,6 +449,7 @@ gunplot <-
                alpha = 0.5,
                outlier.shape = NA) +
   ggtitle("Probability Gun was used in the Crime") +
+  ylab("probability")+
   scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
   theme_bw()
 
