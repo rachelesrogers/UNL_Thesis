@@ -269,12 +269,12 @@ Thank you to all my people!
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-There are many forms of forensic evidence that have been generally accepted to be unique and identifying (without proof) for use in court cases.
+There are many forms of forensic evidence that have been generally accepted \authorcol{for use in court cases as} unique and identifying (without proof).
 There are even some methods - such as bite mark analysis - that have been used in the courtroom as evidence, but would later be shown to not be scientifically valid (PCAST, 2016, p. 86).
-When a person's future hangs in the balance of such evidence, we must know that the type of evidence being presented is something that can be relied upon, and that the jury can weigh it appropriately when reaching a conclusion.
+When a \authorcol{defendant's} future hangs in the balance of such evidence, we must know that the type of evidence being presented is something that can be relied upon, and that the jury can weigh it appropriately when reaching a conclusion.
 One way to assure that these goals are met is through the use of statistical methods in analysis, which allows for the quantification of comparisons and the establishment of accurate error rate calculations.
-However, these statistical methods have been held as more difficult for jurors to understand.
-By testing jury perception in bullet matching, and by developing tools for assessing jury perception, we hope to expand what can be learned about jury perception in order to present statistical methods in a way that can be understood and used to make decisions by the wider public.
+However, \authorcol{several studied have indicated that} these statistical methods \authorcol{are} more difficult for jurors to understand.
+By testing jury perception in bullet matching, and developing tools for assessing jury perception, we hope to expand what can be learned about jury perception in order to present statistical methods in a way that can be understood and used to make decisions by the wider public.
 Bullet matching has a history similar to many areas of forensic pattern evidence, and we have to statistically validate its use before it should be used in the courtroom or treated as reliable evidence.
 However, we must also establish that jurors can treat the evidence with appropriate weight.
 
@@ -282,6 +282,54 @@ However, we must also establish that jurors can treat the evidence with appropri
 \section{Bullet Matching Background}\label{bullet-matching-background}}
 
 The practice of bullet matching is based on the concept that rifling in a gun barrel can produce uniquely identifying marks on bullets fired from the gun, due to random variation (PCAST, 2016, p. 104).
+\authorcol{Rifling is defined as the spiral ridges in a gun barrel that stabalize the bullet, as shown in Figure} \ref{fig:rifling} \authorcol{, from} baku13 (2005).
+\authorcol{The raised areas are known as lands, while the depressed areas are known as grooves.}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/rifling} 
+
+}
+
+\caption{Cross section of a gun. The rifling is the spiral pattern of lands (raised portions) and grooves (indented portions).}\label{fig:rifling}
+\end{figure}
+
+\authorcol{When a bullet is fired, it travels down the gun barrel and marks from the rifling are scratched into the bullet's surface.}
+
+\authorcol{This results in indented areas that correspond to the land impressions, as shown in Figure} \ref{fig:fired} \authorcol{, provided by} Gremi-ch (2009).
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/fired_bullet} 
+
+}
+
+\caption{Fired bullet. Indented portion correspond to the gun lands.}\label{fig:fired}
+\end{figure}
+
+\authorcol{The diagram in Figure} \ref{fig:fireddiagram} from Hare, Hofmann, Carriquiry, et al. (2017) \authorcol{demonstrates the structure of these land and groove impressions on a bullet.}
+\authorcol{As there are multiple lands on a gun barrel, this results in multiple land impressions on a fired bullet.}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/bulletdiagram} 
+
+}
+
+\caption{Fired bullet. Indented portion correspond to the gun lands.}\label{fig:fireddiagram}
+\end{figure}
+
+Figure \ref{fig:microscope} depicts a comparison microscope, along with aligned striation marks between two bullets.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{images/microscope} 
+
+}
+
+\caption{Image of a comparison microscope and aligned bullets}\label{fig:microscope}
+\end{figure}
+
 An early attempt to distinguish guns based on the rifling can be found in two issues of ``The Saturday Evening Post'' from 1925, in an article entitled ``Fingerprinting Bullets''.
 Stout describes the wrongful conviction and subsequent exoneration of Stielow, who was accused of murder (Stout, 1925a).
 At the trial where Stielow was found guilty, an expert for the prosecution stated that there were nine abnormalities on Stielow's gun that corresponded with marks on the fired bullet (Stout, 1925a, p. 7).
@@ -317,7 +365,7 @@ In plain terms, there is not a set standard for what constitutes sufficient agre
 
 In firearms evidence, there are two pieces of fired evidence that may be evaluated: the cartridge casing and the bullet itself.
 The structure of the bullet is shown in Figure \ref{fig:structure}, provided by Glrx (2021).
-Striation marks are created on the bullet as it travels down the barrel due to rifling, defects, and impurities (Hare, Hofmann, Carriquiry, et al., 2017), while the head of the cartridge casing is marked by the breech face and aperture sheer (Chapnick et al., 2021).
+Striation marks are created on the bullet as it travels down the barrel due to rifling, defects, and impurities (Hare et al., 2017), while the head of the cartridge casing is marked by the breech face and aperture sheer (Chapnick et al., 2021).
 Procedural issues may also lead to differing expert opinions across laboratories; one system may not allow an exclusion to be documented if the class characteristics match, while another system may not have such a limitation (Baldwin, Bajic, Morris, \& Zamzow, 2014, p. 6).
 In their study, this led to 45 of 218 examiners labeling all different source comparisons as inconclusive, and 96 examiners labeling none of the comparisons as inconclusive (Baldwin et al., 2014, p. 16).
 Without a standardized procedure, experts evaluate the evidence similarly when comparing two bullets, but must draw different conclusions based on the procedures of their laboratory.
@@ -340,17 +388,6 @@ Biasotti (1959) suggests that statistical methods can be used in order to determ
 He concludes that evaluation of individual striation marks is not sufficient, but counting the number of consecutively matching lines may provide enough information to distinguish between matching and non-matching bullets, in the case of the .38 Special Smith and Wesson revolvers used in this study (Biasotti, 1959, p. 37 -- 47).
 Biasotti (1959) hoped that such methods may lead to a statistical model for evaluating firearms (47).
 The idea of consecutively matching striae (CMS) was addressed again in S. G. Bunch (2000), but a completely standardized or quantifiable method of examination has yet to be developed.
-Figure \ref{fig:microscope} depicts a comparison microscope, along with aligned striation marks between two bullets.
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth]{images/microscope} 
-
-}
-
-\caption{Image of a comparison microscope and aligned bullets}\label{fig:microscope}
-\end{figure}
-
 According to Weller (2021), consecutively matching striae is still used today by some examiners (pg 48). However, the use of consecutively matching striae has not been nationally adopted.
 Biasotti (1959)'s idea of using consecutively matching lines is used and extended in the bullet matching algorithm developed by Hare et al. (2017).
 
@@ -694,6 +731,7 @@ The algorithm can briefly be described as follows:
 \item
   Traits, such as consecutively matching striae and depth of grooves, are then used in a random forest to produce a match score (ranging from 0 to 1) for the lands.
   The random forest consists of decision trees that consider a combination of variables and responses in order to predict if two signatures were created by the same gun.
+  \authorcol{The decision trees in a random forest each consider a subset of variables and observations to decide whether or not the lands match.}
   The decisions of these trees are combined to produce the match score.
   Lands are then aligned across bullets in order to compute an overall match score for the bullets, as in \ref{fig:grid}.
 \end{enumerate}
@@ -732,6 +770,8 @@ Images are often used to assist individuals in understanding non-image informati
 However, images may have an effect of making a scenario more believable, as demonstrated in a study by Cardwell et al. (2016) which involved ``giving'' or ``taking'' food from animals with or without images.
 Images are also mentioned as a factor that can influence how truthful individuals view statements in the courtroom - even if no new information is presented through the presence of the image (Kellermann, 2013).
 Therefore, the use of images in a courtroom should be studied for an effect with regards to how subjects perceive the evidence presented - namely, if there is a difference in how reliable or credible they feel the experts are, based on the presence or absence of images.
+\authorcol{Because the images are intended to aid only in interpretation, we would hope for an increase in understanding across all other conditions, while reliability and credibilty stay the same.}
+\authorcol{However, based on previous research, it seems probable that the presence of images would increase the perceived reliability and credibility of the evidence and expert, respectively.}
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -746,7 +786,7 @@ The testimony was based on actual court testimony provided by forensics experts 
 Two attention check questions were asked, in order to ensure that participants were reading both the testimony and the subsequent questions.
 The first attention check asked participants to identify the caliber of bullet recovered from the crime scene, while the second attention check asked participants to select a specific value from a Likert scale.
 
-The study includes three variables: use of the algorithm, use of demonstrative evidence (images), and conclusion (match, exclusion, or inconclusive).
+The study includes three variables: \authorcol{presence or absence} of the algorithm, \authorcol{presence or absence} of demonstrative evidence (images), and conclusion (match, exclusion, or inconclusive).
 In the case of the algorithm, two testimonies were presented: that of the firearms expert (Terry Smith), and that of the algorithm expert (Adrian Jones).
 The firearms expert presented the algorithm results for the case alongside their own analysis, and suggests that the algorithm's results supports their conclusion.
 By presenting the algorithm results with the interpretation suggested by the firearms expert, we hoped that potential jurors could use the firearms expert's explanation and conclusion to guide their understanding of the algorithm's results.
@@ -763,6 +803,7 @@ This same format was used when asking participants about credibility and scienti
 \subsection{Prolific}\label{prolific}}
 
 Participants were recruited using Prolific, an online survey-taking website.
+\authorcol{From the Prolific website, participants were directed to a link containing our survey, created using RShiny.}
 We selected options to recruit a representative sample of individuals located in the United States, and asked that participants self-screen for jury eligibility before completing the survey.
 Jury eligibility was defined as US citizens over the age of majority in their state who had not been convicted of a felony, were not active law enforcement, military, emergency response, or a judge, and who did not have a disability that would prevent them from serving on a jury.
 They were also required to have normal or corrected to normal vision, due to the images used in the study.
@@ -783,6 +824,8 @@ Figure \ref{fig:completiontime} depicts completion times (from completion of the
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
+\authorcol{Due to scale compression, no statistical analysis was performed on this data.}
+
 \hypertarget{participants}{%
 \subsection{Participants}\label{participants}}
 
@@ -796,10 +839,12 @@ Figure \ref{fig:completiontime} depicts completion times (from completion of the
 \end{figure}
 
 Of the 636 participants with Prolific ID's who started the survey, there were 324 female participants, 307 male participants, and 5 non-binary participants.
+\authorcol{These participants are a representative sample (in terms of age, sex and ethnicity, based on census data) of Prolific participants who are located in the United States.}
 The median age was 45.
 Age and gender are shown in Figure \ref{fig:demographics}.
 An age of 0.2 was excluded due to implausibility and lack of study completion.
 591 participants eligible for analysis completed the survey, and 569 participants correctly answered both attention check questions.
+\authorcol{In two instances, participants reported being removed from the survey website prior to survey completion, which may have happened in other cases where the participants did not complete the survey.}
 The division of correct answers on the attention check questions are shown in Table \ref{tab:attentioncheck}.
 These 569 participants were considered for the following analysis.
 
@@ -911,7 +956,7 @@ In the case of an inconclusive decision, the highest proportion of participants 
 \caption{Histogram of overall case reliability}\label{fig:caserel}
 \end{figure}
 
-Individuals were also asked to rate the general reliability of firearms evidence as a field (\ref{fig:genrel}).
+Individuals were also asked to rate the general reliability of firearms evidence as a field (Figure \ref{fig:genrel}).
 As with case reliability, those who received an inconclusive condition were more likely to select ``Moderately reliable'' than they were to select ``Extremely reliable''.
 This trend is also shown in the non-match condition when the algorithm is present.
 However, it is not reflected in the match condition.
@@ -927,7 +972,7 @@ As with previous responses, all other categories are sparsely populated.
 \caption{Histogram of perceived firearm reliability as a field}\label{fig:genrel}
 \end{figure}
 
-In all conditions, participants were asked to rate the reliability of the examiner's subjective opinion of the firearm evidence (\ref{fig:examrel}).
+In all conditions, participants were asked to rate the reliability of the examiner's subjective opinion of the firearm evidence (Figure \ref{fig:examrel}).
 Participants from both the algorithm and non-algorithm groups gave similar reliability ratings in the non-match condition: most chose ``Moderately reliable'' or ``Extremely reliable'', with more choosing ``Extremely reliable''.
 For inconclusive and match conditions, there is a difference in proportions of which category is selected based on the presence or the absence of the algorithm.
 When the algorithm is absent, the trend is fairly similar to that in the non-match condition: between the two highest categories, the majority chose ``Extremely reliable''.
@@ -1018,7 +1063,7 @@ Individuals who received the algorithm were more likely to select ``Moderately s
 
 Individuals were asked to rate their understanding of both the algorithm and the examiner's personal bullet comparison on a 5-point Likert scale. Most responses ranged from 3 (``I understood about half of the method'') to 5 (``I understood everything''), leading to less scale compression than was seen in scales relating to credibility, reliability, and scientificity.
 
-For the firearms examiner's personal comparison, few individuals selected that they understood less than half the method (\ref{fig:expunder}).
+For the firearms examiner's personal comparison, few individuals selected that they understood less than half the method (Figure \ref{fig:expunder}).
 Those who did not receive the algorithm were more likely to select ``I understood everything'' compared to those who did receive the algorithm, across all conclusions.
 There was not a discernible difference in responses based on the presence or absence of images.
 
@@ -1031,7 +1076,7 @@ There was not a discernible difference in responses based on the presence or abs
 \caption{Histogram of understanding for the explanation of the firearms examiner}\label{fig:expunder}
 \end{figure}
 
-The results for the particpants' understanding of the algorithm description differs based on the presence or absence of images (\ref{fig:algunder}).
+The results for the particpants' understanding of the algorithm description differs based on the presence or absence of images (Figure \ref{fig:algunder}).
 When images are absent, participants selected values from ``I understood about half the method'' to ``I understood everything'' with a fairly uniform frequency, with a few participants selecting values in the lower categories.
 When images were present, however, category selection appeared to relate to conclusion.
 Those receiving the match condition were more likely to select 4 than other categories, meaning that they felt they understood more than half of the method but didn't understand everything.
@@ -1148,7 +1193,7 @@ As mentioned before, most participants limited their selection to the two highes
 \caption{Histogram of perceived reliability of evidence}\label{fig:histrel}
 \end{figure}
 
-For reliability, show in Figure \ref{fig:histrel}, a similar number of individuals selected ``Extremely reliable'' for both the algorithm evidence and the examiner's comparison, with a larger proportion of individuals selecting ``Extremely reliable'' in the match condition when the algorithm is present.
+For reliability, shown in Figure \ref{fig:histrel}, a similar number of individuals selected ``Extremely reliable'' for both the algorithm evidence and the examiner's comparison, with a larger proportion of individuals selecting ``Extremely reliable'' in the match condition when the algorithm is present.
 There appears to be, however, a difference in the categories of ``Moderately reliable'' and ``Weakly reliable''.
 Individuals were more likely to select that the algorithm was ``Weakly reliable'', while they were less likely to select that the algorithm was ``Moderately reliable'', compared to the examiner.
 
@@ -1813,7 +1858,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2023-04-20 22:23:53.
+This version of the thesis was generated on 2023-04-25 13:52:53.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -1828,7 +1873,7 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2023-04-20
+##  date     2023-04-25
 ##  pandoc   2.19.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------
@@ -1860,7 +1905,7 @@ The computational environment that was used to generate this version is as follo
 ##  ggblend      * 0.0.0.9000 2022-12-16 [1] Github (mjskay/ggblend@15e7544)
 ##  ggmosaic     * 0.3.3      2021-02-23 [1] CRAN (R 4.2.1)
 ##  ggpcp        * 0.2.0      2022-11-17 [1] Github (heike/ggpcp@f86c04e)
-##  ggplot2      * 3.4.0      2022-11-04 [1] CRAN (R 4.2.2)
+##  ggplot2      * 3.4.2      2023-04-03 [1] CRAN (R 4.2.3)
 ##  ggrepel        0.9.1      2021-01-15 [1] CRAN (R 4.2.1)
 ##  git2r          0.30.1     2022-03-16 [1] CRAN (R 4.2.1)
 ##  glue           1.6.2      2022-02-24 [1] CRAN (R 4.2.1)
@@ -1903,7 +1948,7 @@ The computational environment that was used to generate this version is as follo
 ##  readr        * 2.1.2      2022-01-30 [1] CRAN (R 4.2.1)
 ##  remotes        2.4.2      2021-11-30 [1] CRAN (R 4.2.1)
 ##  reshape        0.8.9      2022-04-12 [1] CRAN (R 4.2.1)
-##  rlang          1.0.6      2022-09-24 [1] CRAN (R 4.2.2)
+##  rlang          1.1.0      2023-03-14 [1] CRAN (R 4.2.3)
 ##  rmarkdown      2.20       2023-01-19 [1] CRAN (R 4.2.2)
 ##  rstudioapi     0.14       2022-08-22 [1] CRAN (R 4.2.1)
 ##  scales         1.2.1      2022-08-20 [1] CRAN (R 4.2.1)

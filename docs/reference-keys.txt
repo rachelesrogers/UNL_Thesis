@@ -1,5 +1,8 @@
-fig:structure
+fig:rifling
+fig:fired
+fig:fireddiagram
 fig:microscope
+fig:structure
 fig:signaturecompare
 fig:gridcompare
 tab:enfsi
