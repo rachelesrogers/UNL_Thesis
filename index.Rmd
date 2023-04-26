@@ -428,7 +428,7 @@ Images can supply helpful context in describing complex forms of analysis, but t
 He described truthiness as the quality of something *seeming* true [@WordTruthinessColbert2005]. 
 In this video, Colbert talks about “thinking with your head vs. knowing with your heart”, where some information may feel true, regardless of the facts. 
 @bornsteinJuryDecisionMaking2011 found a "truthiness" effect in the courtroom - jurors tend to remember evidence that align with their previous beliefs (65). 
-When applying this concept to images, some images may make people more likely feel like what is being said is true, even if the images do not provide any additional evidence. 
+\authorcol{This concept can apply to images that make people more likely to feel like a statement is true, even when they do not contribute new evidence.}
 @kellermannTrialAdvocacyTruthiness2013 suggests that the truthiness or "falsiness" of non-probative visual images should be carefully considered before using images in the courtroom "...both to prevent backfire effects and to capitalize on every possible tactic that can be used to persuade jurors..." (40).
 While the concept of truthiness can be used to benefit either side in an adversarial justice system, trial outcomes should be based on factual evidence, rather than feelings that evidence is factual.
 In the case of images in trials, it is important to balance the benefit of providing additional information to the jury via images without increasing truthiness. 
@@ -461,3 +461,5 @@ In order to ensure that the US justice system is just, we must be confident that
 This includes the use of accurate error rates as well as quantitative responses.
 One way to facilitate error rate calculation and quantitative results is through the use of algorithmic or statistical methods.
 These methods must, however, be explained in a manner that is understandable to those without a statistical background, while limiting any of the potentially biasing effects of "truthiness".
+
+<!-- Clarify purpose of chapter to the reader, and clean up organization/grammar -->
