@@ -1620,6 +1620,7 @@ As can be seen in most graphics, scale compression was an issue with this study.
 The vast majority of participants selected the two highest categories for questions rating how credible, reliable, and scientific the expert/method was. 
 This corresponds with @garrett2013's study of fingerprint match language, where they did not find a significant difference in the participants' feelings of guilt based on various match language.
 @garrett2013 hypothesized that this may relate to strong feelings reliability for fingerprint evidence, resulting in individuals viewing any match as automatically reliable (without the need for stronger language).
+\authorcol{In future studies, we will be evaluating different methods of response, aside from Likert scales, to study other formats that may yield less compressed results.}
 People generally seemed to have less faith in inconclusive decisions. 
 They understood the examiner's comparison better than the algorithm comparison, which was expected given the statistical complexity of the algorithm procedure. 
 In general, participants also found the algorithm to be more scientific than the examiner, when presented with both methods. 
@@ -1634,6 +1635,9 @@ These limitations are also mentioned by @garrettMockJurorsEvaluation2020.
 Participants were limited to those who participate in online survey-taking websites. 
 These participants may not be representative of the US population, due to differences in computer access or use, occupation, or other such factors. 
 These factors may have an effect on study responses.
+\authorcol{Another issue in representation results from the process of jury selection.}
+\authorcol{Because individuals are not randomly approved for serving on a jury, the jury itself is unlikely to be composed of a representative sample of American citizens.}
+<!-- Do more research on jury selection -->
 
 Testimony was presented in a written format, which is unlike the courtroom setting of spoken testimony, where the jurors can see the experts.
 However, the use of written testimony allowed for the use of gender-neutral names for the experts (Terry and Adrian), which may be more difficult to achieve in a courtroom or video setting. 
@@ -1650,6 +1654,7 @@ The act of deliberation may result in different evaluations for Likert scale que
 
 There were several typos that were not corrected for approximately the first half of the participants. 
 For all scenarios, the firearms examiner was referred to as Alex Smith in the questions, whereas the name was Terry Smith throughout the testimony. 
+\authorcol{Several participants noted this discrepancy in their feedback on the survey, allowing us to fix the typo before all surveys were completed.}
 "Convenience" was also misspelled in one question. 
 For exclusion testimonies, the name "Alex Smith" also occurred in the cross examination.
 In the case of non-algorithm inconclusive testimonies, the question: "Can you describe the process of obtaining these test fired bullets?" was missing, but the response: "The test-fired bullets came from a test fire of the gun recovered from the traffic stop." remained unchanged. 
