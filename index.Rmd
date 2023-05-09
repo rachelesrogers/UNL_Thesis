@@ -424,7 +424,7 @@ They compared results from participants to Bayesian conditional probabilities ba
 ### Demonstrative Evidence
 
 Aside from result language or scales used, another important factor in jury decision making is demonstrative evidence. 
-Images can supply helpful context in describing complex forms of analysis, but they may also introduce bias in the form of "truthiness", a term introduced by comedian Stephen Colbert.
+Images can supply helpful context in describing complex forms of analysis, but they may also introduce bias in the form of "truthiness", a\authorcol{n official} term introduced by comedian Stephen Colbert.
 He described truthiness as the quality of something *seeming* true [@WordTruthinessColbert2005]. 
 In this video, Colbert talks about “thinking with your head vs. knowing with your heart”, where some information may feel true, regardless of the facts. 
 @bornsteinJuryDecisionMaking2011 found a "truthiness" effect in the courtroom - jurors tend to remember evidence that align with their previous beliefs (65). 

@@ -22,6 +22,8 @@ library(patchwork)
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
 # demographics_fingerprints <-
 #   read_csv("data/demographic_results.csv")
+# demographics2_fingerprints<-
+#   read_csv("data/demographic_results2.csv")
 # dim(demographics_fingerprints)
 # demographics_fingerprints$clean_prints <- as.numeric(as.factor(demographics_fingerprints$fingerprint))
 # 
@@ -52,6 +54,7 @@ library(patchwork)
 #View(merged_results)
 
 merged_results_allresponses<-read_csv("data/merged_results_clean.csv")
+dim(merged_results_allresponses)
 
 # Removing person who took notes for on the first page that did not correspond to their scenario number
 merged_results_allresponses <-merged_results_allresponses %>% subset(clean_prints!=231)
@@ -1655,6 +1658,7 @@ The act of deliberation may result in different evaluations for Likert scale que
 There were several typos that were not corrected for approximately the first half of the participants. 
 For all scenarios, the firearms examiner was referred to as Alex Smith in the questions, whereas the name was Terry Smith throughout the testimony. 
 \authorcol{Several participants noted this discrepancy in their feedback on the survey, allowing us to fix the typo before all surveys were completed.}
+\authorcol{There did not appear to be confusion due to the typo on the part of the participants.}
 "Convenience" was also misspelled in one question. 
 For exclusion testimonies, the name "Alex Smith" also occurred in the cross examination.
 In the case of non-algorithm inconclusive testimonies, the question: "Can you describe the process of obtaining these test fired bullets?" was missing, but the response: "The test-fired bullets came from a test fire of the gun recovered from the traffic stop." remained unchanged. 
