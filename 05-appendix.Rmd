@@ -380,6 +380,26 @@ Q: You can't tell us anything about who shot the firearm, correct?
 
 A: That is correct.
 
+## Clarifying Sides
+
+To make sure individuals are clear on who the firearms examiner is testifying for, testimony was added related to the calling and the swearing in of the witness. The testimony below is from @mivsjohnson.
+
+Court: Your next witness, please.
+
+Prosecution: The People would call John Smith.
+
+Court: Hello.
+
+Smith: Hi
+
+Court: Would you raise your right hand for me? Do you sear the testimony you're about to give will be the truth, the whole truth, nothing but the truth, under penalty of perjury?
+
+Smith: I do.
+
+Court: Please be seated. State your full name for the record and spell your last name.
+
+Witness: My name in John Smith, last name S-m-i-t-h
+
 ## Images
 
 In order to clarify the speakers in the testimony and create a more engaging environment, we implemented character drawings (by Richy Meleus) to represent various actors that may be present in the courtroom. These characters' faces and clothing are largely exchangeable, allowing for a large combination of clothing and characteristics.
