@@ -54,7 +54,7 @@ library(patchwork)
 #View(merged_results)
 
 merged_results_allresponses<-read_csv("data/merged_results_clean.csv")
-dim(merged_results_allresponses)
+# dim(merged_results_allresponses)
 
 # Removing person who took notes for on the first page that did not correspond to their scenario number
 merged_results_allresponses <-merged_results_allresponses %>% subset(clean_prints!=231)
@@ -1036,7 +1036,17 @@ ggplot(subset(algorithm_results,!is.na(algunder)),
   theme(axis.title.x = element_blank())+ 
   scale_x_discrete(labels=c('1\nI\nunderstood\nnothing', '2', '3', '4', '5\nI\nunderstood\neverything'))
 
+```
 
+```{r}
+#| undertab,
+#| tab.cap= "Table of understanding for the algorithm explanation",
+#| tab.align= "center",
+#| echo= FALSE,
+#| message= FALSE,
+#| warning= FALSE
+kable(table(subset(algorithm_results,!is.na(algunder))$algunder,
+      subset(algorithm_results,!is.na(algunder))$conclusion))
 ```
 
 ### Uniqueness
