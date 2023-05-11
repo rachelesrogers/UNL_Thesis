@@ -692,10 +692,6 @@ These methods must, however, be explained in a manner that is understandable to 
 \hypertarget{study1}{%
 \chapter{Jury Perception of Bullet Matching Algorithms and Demostrative Evidence}\label{study1}}
 
-\begin{verbatim}
-## [1] 592  31
-\end{verbatim}
-
 \hypertarget{background}{%
 \section{Background}\label{background}}
 
@@ -1131,16 +1127,19 @@ It is unclear what may have caused these differences in ratings of understanding
 \caption{Histogram of understanding for the algorithm explanation}\label{fig:algunder}
 \end{figure}
 
-\begin{tabular}{l|r|r|r}
+\authorcol{To investigate this potential relationship further, Table} \ref{tab:undertb}
+\authorcol{was created. Because the counts are so small for the individual cells, the resemblence to a relationship based on conclusion is possibly due to random variation.}
+
+\begin{tabular}{>{\raggedright\arraybackslash}p{10em}|r|r|r}
 \hline
   & NoMatch & Inconclusive & Match\\
 \hline
 1
 I
 understood
-nothing & 1 & 0 & 0\\
+nothing & 0 & 0 & 0\\
 \hline
-2.0 & 5 & 7 & 4\\
+2.0 & 1 & 4 & 2\\
 \hline
 3
 I
@@ -1149,14 +1148,14 @@ about
 half
 of
 the
-method & 40 & 26 & 17\\
+method & 25 & 16 & 7\\
 \hline
-4.0 & 28 & 29 & 37\\
+4.0 & 14 & 16 & 27\\
 \hline
 5
 I
 understood
-everything & 24 & 24 & 17\\
+everything & 8 & 14 & 7\\
 \hline
 \end{tabular}
 
@@ -1950,7 +1949,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2023-05-10 11:27:48.
+This version of the thesis was generated on 2023-05-11 13:16:25.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -1965,7 +1964,7 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2023-05-10
+##  date     2023-05-11
 ##  pandoc   2.19.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------
@@ -2011,6 +2010,7 @@ The computational environment that was used to generate this version is as follo
 ##  huskydown    * 0.0.5      2022-12-13 [1] Github (benmarwick/huskydown@addb48e)
 ##  jpeg         * 0.1-10     2022-11-29 [1] CRAN (R 4.2.2)
 ##  jsonlite       1.8.4      2022-12-06 [1] CRAN (R 4.2.2)
+##  kableExtra   * 1.3.4      2021-02-20 [1] CRAN (R 4.2.2)
 ##  knitr        * 1.42       2023-01-25 [1] CRAN (R 4.2.2)
 ##  labeling       0.4.2      2020-10-20 [1] CRAN (R 4.2.0)
 ##  later          1.3.0      2021-08-18 [1] CRAN (R 4.2.1)
@@ -2043,11 +2043,14 @@ The computational environment that was used to generate this version is as follo
 ##  rlang          1.1.0      2023-03-14 [1] CRAN (R 4.2.3)
 ##  rmarkdown      2.20       2023-01-19 [1] CRAN (R 4.2.2)
 ##  rstudioapi     0.14       2022-08-22 [1] CRAN (R 4.2.1)
+##  rvest          1.0.3      2022-08-19 [1] CRAN (R 4.2.1)
 ##  scales         1.2.1      2022-08-20 [1] CRAN (R 4.2.1)
 ##  sessioninfo    1.2.2      2021-12-06 [1] CRAN (R 4.2.1)
 ##  shiny          1.7.4      2022-12-15 [1] CRAN (R 4.2.3)
 ##  stringi        1.7.8      2022-07-11 [1] CRAN (R 4.2.1)
 ##  stringr        1.5.0      2022-12-02 [1] CRAN (R 4.2.2)
+##  svglite        2.1.0      2022-02-03 [1] CRAN (R 4.2.1)
+##  systemfonts    1.0.4      2022-02-11 [1] CRAN (R 4.2.1)
 ##  tibble         3.1.8      2022-07-22 [1] CRAN (R 4.2.1)
 ##  tidyr        * 1.2.1      2022-09-08 [1] CRAN (R 4.2.1)
 ##  tidyselect     1.2.0      2022-10-10 [1] CRAN (R 4.2.2)
@@ -2058,8 +2061,10 @@ The computational environment that was used to generate this version is as follo
 ##  vctrs          0.5.2      2023-01-23 [1] CRAN (R 4.2.2)
 ##  viridisLite    0.4.1      2022-08-22 [1] CRAN (R 4.2.1)
 ##  vroom          1.5.7      2021-11-30 [1] CRAN (R 4.2.1)
+##  webshot        0.5.4      2022-09-26 [1] CRAN (R 4.2.2)
 ##  withr          2.5.0      2022-03-03 [1] CRAN (R 4.2.1)
 ##  xfun           0.37       2023-01-31 [1] CRAN (R 4.2.2)
+##  xml2           1.3.3      2021-11-30 [1] CRAN (R 4.2.1)
 ##  xtable         1.8-4      2019-04-21 [1] CRAN (R 4.2.1)
 ##  yaml           2.3.7      2023-01-23 [1] CRAN (R 4.2.2)
 ## 

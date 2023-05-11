@@ -17,6 +17,7 @@ library(ggpcp)
 library(ggblend)
 library(knitr)
 library(patchwork)
+library(kableExtra)
 ```
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
@@ -1037,16 +1038,15 @@ ggplot(subset(algorithm_results,!is.na(algunder)),
   scale_x_discrete(labels=c('1\nI\nunderstood\nnothing', '2', '3', '4', '5\nI\nunderstood\neverything'))
 
 ```
-
+\authorcol{To investigate this potential relationship further, Table} \@ref(tab:undertb)
+\authorcol{was created. Because the counts are so small for the individual cells, the resemblence to a relationship based on conclusion is possibly due to random variation.}
 ```{r}
-#| undertab,
-#| tab.cap= "Table of understanding for the algorithm explanation",
-#| tab.align= "center",
+#| undertb,
 #| echo= FALSE,
 #| message= FALSE,
 #| warning= FALSE
-kable(table(subset(algorithm_results,!is.na(algunder))$algunder,
-      subset(algorithm_results,!is.na(algunder))$conclusion))
+kable(table(subset(algorithm_results,!is.na(algunder) & picture=="Yes")$algunder,
+      subset(algorithm_results,!is.na(algunder) & picture=="Yes")$conclusion))%>% column_spec(1, width = "10em")
 ```
 
 ### Uniqueness
