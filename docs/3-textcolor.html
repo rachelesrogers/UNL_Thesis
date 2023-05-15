@@ -601,7 +601,101 @@ If the threshold is too small, the LCS method can identify words like “the” 
 If the threshold is too large, the LCS method may be unable to remove substrings when new text is inserted in the middle of the old text.
 Here, I tried several different character lengths: 40 characters, half the previous note length, a third of the previous note length, and a fourth of the previous note length plus 5 (to compensate for shorter strings).</p>
 <p>I also investigated the use of a hybrid method in the hope that the FNC method could be used as a quick way to clean the simplest cases of notes, while the LCS method could be used to clean up the notes that are less clear-cut.
-In order to determine which observations would need the second cleaning method, I created the plot below.</p>
+In order to determine which observations would need the second cleaning method, I created Figure <a href="3-textcolor.html#fig:errorplot">3.2</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:errorplot"></span>
+<img src="images/cleaningerror.jpg" alt="Error Comparison" width="\linewidth" />
+<p class="caption">
+Figure 3.2: Error Comparison
+</p>
+</div>
+<p>Here, the yellow circles indicate the FNC method with a 16 character threshold, while the black circles represent the LCS method with a threshold of 1/3 the previous character length.
+Larger circles indicate a larger amount of error when compared to the hand-cleaned notes.
+The y axis shows the edit distance computed between the current and previous notes for the FNC method, while the x axis indicates the length of the clean notes.
+The horizontal line is the 16 character threshold for the FNC method.
+As can be seen, most observations are located in the bottom left of the graph, and have relatively small circles.
+These are notes where the FNC method was effectively applied.
+In the observations above the threshold, most have a larger error when the FNC method is applied compared to the LCS method, with the exception of one observation in the top left.
+In that case, the error appeared to be equal for both methods.
+There is also a larger FNC method error for the observation on the bottom right of the graph.
+This was a case of duplicate text, resulting in abnormally long notes.
+This graph appears to show that and edit distance above the threshold of 16 for the FNC method and the length of the cleaned notes can be used as criterion for determining when the LCS method should be applied.
+I chose to set a threshold of 4 standard deviations above the mean note length for cleaned notes of the current page to constitute “unusually long” notes to apply the LCS method to.
+I chose 1/3 of the previous notes as the LCS threshold because the mean edit distance to the correct notes was comparable to the 1/4 + 5 character threshold, but it is more conservative for larger notes.</p>
+<table>
+<caption>Comparison of Note Cleaning Methods <span id="tab:cleancompare">Table 3.4: </span></caption>
+<thead>
+<tr class="header">
+<th>Methods</th>
+<th>Error</th>
+<th>SD</th>
+<th>Time (Minutes)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>FNC 1 Character</td>
+<td>498.965</td>
+<td>2769.826</td>
+<td>2.4</td>
+</tr>
+<tr class="even">
+<td>FNC 6 Character</td>
+<td>201.353</td>
+<td>1890.009</td>
+<td>2.5</td>
+</tr>
+<tr class="odd">
+<td>FNC 16 Character</td>
+<td>36.912</td>
+<td>411.252</td>
+<td>2.5</td>
+</tr>
+<tr class="even">
+<td>LCS 40 Character</td>
+<td>6.337</td>
+<td>35.497</td>
+<td>75.8</td>
+</tr>
+<tr class="odd">
+<td>LCS 1/2 Previous Notes</td>
+<td>7.288</td>
+<td>104.692</td>
+<td>85.7</td>
+</tr>
+<tr class="even">
+<td>LCS 1/3 Previous Notes</td>
+<td>3.064</td>
+<td>26.769</td>
+<td>76.3</td>
+</tr>
+<tr class="odd">
+<td>LCS 1/4 Previous Notes + 5</td>
+<td>2.823</td>
+<td>26.137</td>
+<td>73.6</td>
+</tr>
+<tr class="even">
+<td>Hybrid (FNC 16 and LCS 1/3)</td>
+<td>2.135</td>
+<td>24.625</td>
+<td>3.5</td>
+</tr>
+</tbody>
+</table>
+<p>The results of this study are shown in Table <a href="3-textcolor.html#tab:cleancompare">3.4</a>.
+Notably, the mean edit distance to the correct notes (or the error) is large for the FNC methods, with a high level of variation.
+However, the computation time is approximately 2.5 minutes.
+In the case of the LCS method, the error is much lower, but the computation time is above an hour.
+The hybrid method appears to combine the benefits of both of these methods.
+The error rate is on par with that of the LCS methods, while the time is only slightly above that of the FNC methods.
+The hybrid method was therefore implemented for the larger database.
+The flowchart in Figure <a href="3-textcolor.html#fig:flowchart">3.3</a> shows how this hybrid method can be applied.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:flowchart"></span>
+<img src="images/flowchart.jpg" alt="Hybrid Flowchart" width="\linewidth" />
+<p class="caption">
+Figure 3.3: Hybrid Flowchart
+</p>
+</div>
 </div>
 </div>
 </div>

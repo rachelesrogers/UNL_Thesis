@@ -41,6 +41,9 @@ tab:noteexample
 fig:lcs
 tab:dylcs
 tab:issues
+fig:errorplot
+tab:cleancompare
+fig:flowchart
 literature-review
 introduction
 bullet-matching-background
