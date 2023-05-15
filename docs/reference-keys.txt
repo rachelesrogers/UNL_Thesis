@@ -44,6 +44,9 @@ tab:issues
 fig:errorplot
 tab:cleancompare
 fig:flowchart
+fig:colcount
+fig:highlights
+tab:months
 literature-review
 introduction
 bullet-matching-background
@@ -93,6 +96,9 @@ data-cleaning
 first-n-character-fnc-method
 longest-common-substring-lcs-method
 hybrid-method
+note-analysis
+collocations
+fuzzy-matching
 notes
 study2
 testimony-transcripts

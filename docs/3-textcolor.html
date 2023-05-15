@@ -228,6 +228,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.3" data-path="3-textcolor.html"><a href="3-textcolor.html#methods-1"><i class="fa fa-check"></i><b>3.3</b> Methods</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="3-textcolor.html"><a href="3-textcolor.html#data-cleaning"><i class="fa fa-check"></i><b>3.3.1</b> Data Cleaning</a></li>
+<li class="chapter" data-level="3.3.2" data-path="3-textcolor.html"><a href="3-textcolor.html#note-analysis"><i class="fa fa-check"></i><b>3.3.2</b> Note Analysis</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="3-textcolor.html"><a href="3-textcolor.html#notes"><i class="fa fa-check"></i><b>3.4</b> Notes</a></li>
 </ul></li>
@@ -696,6 +697,275 @@ The flowchart in Figure <a href="3-textcolor.html#fig:flowchart">3.3</a> shows h
 Figure 3.3: Hybrid Flowchart
 </p>
 </div>
+</div>
+</div>
+<div id="note-analysis" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Note Analysis<a href="3-textcolor.html#note-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="collocations" class="section level4 hasAnchor" number="3.3.2.1">
+<h4><span class="header-section-number">3.3.2.1</span> Collocations<a href="3-textcolor.html#collocations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In order to analyze which areas of the text individuals focus on, we must first find a way to compare their notes to the written testimony.
+One way to do this comparison is through collocation analysis, which uses the frequency of strings of sequentially-appearing words (n-grams) in order to identify words that tend to ‘stick together’.
+For example, in the case of the phrase “The cat ran up the tree”, there would be three collocations of length 4: “The cat ran up”, “cat ran up the”, and “ran up the tree”.
+By matching the collocations that appear in the testimony to a frequency of the collocation from the given notepad, we would be able to get frequency values for all n-grams that occur in the testimony.</p>
+<p>In setting the size of the collocation, there are two important factors to keep in mind: the frequency with which a phrase appears in the testimony itself, and the number of words in a row that individuals may directly copy from the testimony.
+If the number of words considered in a collocation is too short, we may run into an issue of phrases occurring multiple times throughout the testimony, without having a way to distinguish which sections are of importance.
+For example, if we used a collocation of length two, a common phrase in the testimony would be “Richard Cole”.
+Because this phrase occurs so frequently in the testimony, it does not by itself tell us if there are particular portions of the testimony that individuals find important, even if we add weights to calculate the relative frequency.
+On the other hand, if we use a collocation of length 10, it is unlikely that a large amount of individuals would copy the exact 10-word phrase, which would result in fewer observations.
+In considering these two issues, we decided on a collocation size of 5.
+This would be long enough to avoid many common phrases such as “the bullet matching algorithm”, but short enough that individuals may copy the phrase down directly.
+The implementation of collocations used the ‘quanteda’ package, with guidance from a tutorial by Schweinberger.</p>
+<p>N-grams are identified in the testimony, and assigned ordered word numbers (so the first n-gram of length 5 will have words 1-5, the second will have words 2-6, and so on).
+These are then bound with collocations from the notes based on the sequence of 5 words, in order to assign a frequency to each n-gram.
+The average is then taken per word out of the possible words that the n-gram could have appeared in (for example, the first word can only appear in a single n-gram, so its average will be equal to the frequency of the first collocation).
+When multiple 5-grams appear in the same testimony page, the note frequency is divided by the number of appearances in the testimony in order to account for multiple occurrences.
+The table below shows the highest frequencies for the second page of the testimony:</p>
+<p>“In this case the defendant Richard Cole has been charged with willfully discharging a firearm in a place of business. This crime is a felony.
+Mr. Cole has pleaded not guilty to the charge.
+You will now hear a summary of the case.
+This summary was prepared by an objective court clerk.
+It describes all of the evidence that was presented at trial.”</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:colcount"></span>
+<img src="images/collocationcount.jpg" alt="Collocation Count for Page 2" width="\linewidth" />
+<p class="caption">
+Figure 3.4: Collocation Count for Page 2
+</p>
+</div>
+<p>The highlighted collocations in Figure <a href="3-textcolor.html#fig:colcount">3.4</a> show all of the collocations for the word “willfully” from the testimony above.
+The frequencies for ‘willfully’ can be averaged: <span class="math inline">\(\frac{121+93+91+76+75}{5}=91.2\)</span>.
+This number will correspond to the shading of the word “willfully” in the highlighted testimony of Figure <a href="3-textcolor.html#fig:highlights">3.5</a>.</p>
+<p>Note that the words have a gradient.
+This is to ensure a smooth transition between words in order to give an overall “highlight” effect, because we are interested in the important phrases in the testimony as opposed to the importance of individual words.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:highlights"></span>
+<img src="images/collocationanalysis.jpg" alt="Collocation Count for Page 2" width="\linewidth" />
+<p class="caption">
+Figure 3.5: Collocation Count for Page 2
+</p>
+</div>
+<p>In order to create this effect, we first implemented a graph of the testimony in ‘ggplot2’(Wickham) in order to assign color values to the frequencies.
+Then we used HTML gradient boxes, where the left color is that of the previous word, while the right color is based on the frequency of the current word.
+This results in a smooth transition between words.</p>
+</div>
+<div id="fuzzy-matching" class="section level4 hasAnchor" number="3.3.2.2">
+<h4><span class="header-section-number">3.3.2.2</span> Fuzzy Matching<a href="3-textcolor.html#fuzzy-matching" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In order to perform fuzzy matching on the indirect collocations from participants’ notes, I used ‘stringdist_join’ from the ‘fuzzyjoin’ R package (Robinson).
+This function conducts a join with the best matching observations from the second dataset.
+For example, consider asking young children to spell their birth month.
+This may result in a dataset like Table
+The results of this study are shown in Table <a href="3-textcolor.html#tab:months">3.5</a>.</p>
+<table>
+<caption>Dataset of misspelled months <span id="tab:months">Table 3.5: </span></caption>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Month</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Billy</td>
+<td>Mach</td>
+</tr>
+<tr class="even">
+<td>Jimmy</td>
+<td>Apil</td>
+</tr>
+<tr class="odd">
+<td>Frances</td>
+<td>Mae</td>
+</tr>
+<tr class="even">
+<td>Gary</td>
+<td>Febary</td>
+</tr>
+<tr class="odd">
+<td>Steve</td>
+<td>Octobr</td>
+</tr>
+<tr class="even">
+<td>Bobby</td>
+<td>Agust</td>
+</tr>
+<tr class="odd">
+<td>Tammy</td>
+<td>Febrey</td>
+</tr>
+<tr class="even">
+<td>Greg</td>
+<td>Agast</td>
+</tr>
+<tr class="odd">
+<td>Benny</td>
+<td>Jun</td>
+</tr>
+</tbody>
+</table>
+<p>We may then want to match the children’s written months to their correctly spelled counterparts.
+While ‘stringdist_join’ will give values for all matches between the two datasets, we can use group_by and slice_min to find the month that is closest to the misspelled value.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+month.x
+</th>
+<th style="text-align:left;">
+month.y
+</th>
+<th style="text-align:left;">
+name
+</th>
+<th style="text-align:right;">
+dist
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+June
+</td>
+<td style="text-align:left;">
+Jun
+</td>
+<td style="text-align:left;">
+Benny
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+March
+</td>
+<td style="text-align:left;">
+Mach
+</td>
+<td style="text-align:left;">
+Billy
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+August
+</td>
+<td style="text-align:left;">
+Agust
+</td>
+<td style="text-align:left;">
+Bobby
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+May
+</td>
+<td style="text-align:left;">
+Mae
+</td>
+<td style="text-align:left;">
+Frances
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+February
+</td>
+<td style="text-align:left;">
+Febary
+</td>
+<td style="text-align:left;">
+Gary
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+August
+</td>
+<td style="text-align:left;">
+Agast
+</td>
+<td style="text-align:left;">
+Greg
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+April
+</td>
+<td style="text-align:left;">
+Apil
+</td>
+<td style="text-align:left;">
+Jimmy
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+October
+</td>
+<td style="text-align:left;">
+Octobr
+</td>
+<td style="text-align:left;">
+Steve
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+February
+</td>
+<td style="text-align:left;">
+Febrey
+</td>
+<td style="text-align:left;">
+Tammy
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+</tbody>
+</table>
+<p>In Table <a href="#tab:fuzzymonth"><strong>??</strong></a> above, “month.x” is the correctly spelled month, “month.y” is the children’s spellings, and “dist” is the edit distance between the two words.
+This same concept is applied to the notepad dataset.
+In this case, the transcript of the testimony is considered the “correct” version, and the participants’ collocations that do not directly match are considered the misspellings.
+This method finds the closest transcript collocation to the written collocation, with a maximum edit distance of 99 for collocations to still be considered a match.</p>
+<p>Because the intent of the participant is more clear with simple typos (such as a single letter change) than with larger differences (such as the changing of multiple words), the count for these fuzzily matched observations are weighted based on the edit distance.
+Specifically, a weight of <span class="math inline">\(\frac{1}{dist+0.25}\)</span> is used, where <span class="math inline">\(dist\)</span> represents the edit distance (between 1 and 99).
+An edit distance of 0 would receive a weight of 1, since fuzzy matching need not be applied.
+Another factor in the calculation is the number of matches per ‘misspelled’ collocation.
+To return to the month example, if an individual were to spell a month “Jur”, the edit distance to both “June” and “July” is 2.
+It is then unclear which month the person was born in, but they most likely meant June or July.
+Similarly, some collocation notes had the same edit distance for multiple transcript collocations.
+In these cases, the frequency of the ‘misspelled’ collocation notes are split evenly between the closest transcript collocations.
+This results in a total fuzzy frequency per transcript collocation of:</p>
+<p><span class="math display">\[
+\sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i}
+\]</span>
+where <span class="math inline">\(x_i\)</span> is the count for note collocation <span class="math inline">\(i\)</span>, <span class="math inline">\(d_i\)</span> is the distance between the transcript collocation and the ‘misspelled’ collocation <span class="math inline">\(i\)</span>, and <span class="math inline">\(c_i\)</span> is the number of transcript collocation matches for note collocation <span class="math inline">\(i\)</span>.
+This quantity is then added to the count of direct collocation matches calculated in the previous section.</p>
 </div>
 </div>
 </div>
