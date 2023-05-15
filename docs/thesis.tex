@@ -1796,7 +1796,11 @@ Benny & Jun \\
 We may then want to match the children's written months to their correctly spelled counterparts.
 While `stringdist\_join' will give values for all matches between the two datasets, we can use group\_by and slice\_min to find the month that is closest to the misspelled value.
 
-\begin{tabular}{l|l|l|r}
+\begin{table}
+
+\caption{\label{tab:fuzzymonth}Fuzzy Match by Month}
+\centering
+\begin{tabular}[t]{l|l|l|r}
 \hline
 month.x & month.y & name & dist\\
 \hline
@@ -1819,6 +1823,7 @@ October & Octobr & Steve & 1\\
 February & Febrey & Tammy & 3\\
 \hline
 \end{tabular}
+\end{table}
 
 In Table \ref{tab:fuzzymonth} above, ``month.x'' is the correctly spelled month, ``month.y'' is the children's spellings, and ``dist'' is the edit distance between the two words.
 This same concept is applied to the notepad dataset.
@@ -2391,7 +2396,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2023-05-15 16:34:00.
+This version of the thesis was generated on 2023-05-15 16:49:39.
 
 The computational environment that was used to generate this version is as follows:
 

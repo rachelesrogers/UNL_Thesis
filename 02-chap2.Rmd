@@ -374,7 +374,7 @@ fuzzy_matches <-stringdist_join(months, classroom,
     group_by(name) %>%
     slice_min(order_by=dist, n=1)
 
-kable(fuzzy_matches) # %>%
+kable(fuzzy_matches, caption="Fuzzy Match by Month") # %>%
 #  kable_styling(position = "center")
 
 ```

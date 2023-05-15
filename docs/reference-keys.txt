@@ -47,6 +47,7 @@ fig:flowchart
 fig:colcount
 fig:highlights
 tab:months
+tab:fuzzymonth
 literature-review
 introduction
 bullet-matching-background

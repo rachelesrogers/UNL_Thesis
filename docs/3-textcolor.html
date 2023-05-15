@@ -803,6 +803,9 @@ The results of this study are shown in Table <a href="3-textcolor.html#tab:month
 <p>We may then want to match the children’s written months to their correctly spelled counterparts.
 While ‘stringdist_join’ will give values for all matches between the two datasets, we can use group_by and slice_min to find the month that is closest to the misspelled value.</p>
 <table>
+<caption>
+<span id="tab:fuzzymonth">Table 3.6: </span>Fuzzy Match by Month
+</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -948,7 +951,7 @@ Tammy
 </tr>
 </tbody>
 </table>
-<p>In Table <a href="#tab:fuzzymonth"><strong>??</strong></a> above, “month.x” is the correctly spelled month, “month.y” is the children’s spellings, and “dist” is the edit distance between the two words.
+<p>In Table <a href="3-textcolor.html#tab:fuzzymonth">3.6</a> above, “month.x” is the correctly spelled month, “month.y” is the children’s spellings, and “dist” is the edit distance between the two words.
 This same concept is applied to the notepad dataset.
 In this case, the transcript of the testimony is considered the “correct” version, and the participants’ collocations that do not directly match are considered the misspellings.
 This method finds the closest transcript collocation to the written collocation, with a maximum edit distance of 99 for collocations to still be considered a match.</p>
