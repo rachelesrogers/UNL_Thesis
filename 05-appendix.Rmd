@@ -429,3 +429,8 @@ grid.arrange(rasterGrob(judge),rasterGrob(forensic_science),rasterGrob(lawyer),
              rasterGrob(police),rasterGrob(inmate),
              nrow=2, ncol=4)
 ```
+
+```{r jury, echo=FALSE, warning=FALSE}
+
+include_graphics("images/Jury.jpg")
+```

@@ -1567,12 +1567,77 @@ e & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
 \bottomrule()
 \end{longtable}
 
-The Longest Common Substring method is able to handle the issues found in the First n Character method, which is demonstrated in the table below.
+The Longest Common Substring method is able to handle the issues found in the First n Character method, which is demonstrated in Table \ref{tab:issues}.
 If notes are deleted, the LCS method can identify the substring from the previous notes, despite the large edit distance that would prevent removal in the First n Character method.
 If new notes are inserted in the middle of previous notes, the First n Character method would compare the Page 1's notes with the red text of the Page 2 notes shown in the second row, resulting in an edit distance that would prevent removal.
 With the LCS method, the first substring ``The cat ran'' could be identified and removed, then in a second iteration, the second substring of ``up the tree'' can also be removed, leaving only the new text.
 In the case of duplication, the First n Character method would be able to identify the first iteration of text that matches Page 1 and remove it; but it would not be able to identify the second occurrence of the text.
 As before, the LCS method would be able to identify both instances through two iterations, and remove all Page 1 text.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1860}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1860}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2093}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2093}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2093}}@{}}
+\caption{LCS Comparison for FNC Issues \label{tab:issues}}\tabularnewline
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Issue
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Page 1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Page 2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+LCS
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Edit Distance
+\end{minipage} \\
+\midrule()
+\endfirsthead
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Issue
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Page 1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Page 2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+LCS
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Edit Distance
+\end{minipage} \\
+\midrule()
+\endhead
+Deletion & The cat ran up the tree & The cat ran & The cat ran & 12 \\
+Insertion & The cat ran up the tree & \textcolor{red}{The cat ran, chased by a} dog, up the tree & (The cat ran)(up the tree) & 11 \\
+Duplication & The cat ran up the tree & \textcolor{red}{The cat ran up the tree} The cat ran up the tree & (The cat ran up the tree)(The cat ran up the tree) & 0 \\
+\bottomrule()
+\end{longtable}
+
+While the LCS method is able to solve the issues related to the First N Character method, it has some issues of its own.
+If the testimony itself contains duplicate text, such as the text related to swearing in witnesses, the LCS method would remove the new text that corresponds to the later testimony.
+The other issue with the LCS method is the time required when it is applied to the entire testimony.
+In the validation study described below, the LCS method took approximately 30 times as long as the FNC method.
+
+\hypertarget{hybrid-method}{%
+\subsubsection{Hybrid Method}\label{hybrid-method}}
+
+In order to compare the two methods described above, I cleaned a subset of the survey response notes to have a ``correct'' baseline with which to calculate error rates.
+This dataset consists of 561 pages of `notes' (including blanks) with 35 unique participants.
+30 participants were randomly selected from the larger dataset, while 5 participants were selected based on demonstrated issues with data cleaning.
+The 5 selected participants included an individual who deleted almost all of the beginning notes; two individuals who pasted new notes in the middle of old notes; an individual who duplicated notes; and an individual who included the algorithm expert's trial confirmation as well as the forensic scientist's - duplicate text that should be included as the new notes.
+
+For the FNC method, the length of the previous notes is compared to the beginning of the current page's notes.
+If the edit distance is below a certain threshold, these notes are removed.
+In this case, I changed the threshold with values of 0 character difference, 5 character difference, and 15 character difference (set as less than 1, less than 6, and less than 16).
+In the case of LCS, a threshold must be picked for the minimum matching substring length to be considered `previous notes' and removed.
+If the threshold is too small, the LCS method can identify words like ``the'' as matching previous testimony to be removed.
+If the threshold is too large, the LCS method may be unable to remove substrings when new text is inserted in the middle of the old text.
+Here, I tried several different character lengths: 40 characters, half the previous note length, a third of the previous note length, and a fourth of the previous note length plus 5 (to compensate for shorter strings).
+
+I also investigated the use of a hybrid method in the hope that the FNC method could be used as a quick way to clean the simplest cases of notes, while the LCS method could be used to clean up the notes that are less clear-cut.
+In order to determine which observations would need the second cleaning method, I created the plot below.
 
 \hypertarget{notes}{%
 \section{Notes}\label{notes}}
@@ -2110,6 +2175,8 @@ In order to clarify the speakers in the testimony and create a more engaging env
 
 \includegraphics[width=\linewidth]{thesis_files/figure-latex/demo_evidence-1}
 
+\includegraphics[width=\linewidth]{images/Jury}
+
 \hypertarget{colophon}{%
 \chapter*{Colophon}\label{colophon}}
 \addcontentsline{toc}{chapter}{Colophon}
@@ -2122,7 +2189,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2023-05-15 12:45:36.
+This version of the thesis was generated on 2023-05-15 13:01:37.
 
 The computational environment that was used to generate this version is as follows:
 

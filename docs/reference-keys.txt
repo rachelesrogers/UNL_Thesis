@@ -40,6 +40,7 @@ fig:allpcp
 tab:noteexample
 fig:lcs
 tab:dylcs
+tab:issues
 literature-review
 introduction
 bullet-matching-background
@@ -88,6 +89,7 @@ methods-1
 data-cleaning
 first-n-character-fnc-method
 longest-common-substring-lcs-method
+hybrid-method
 notes
 study2
 testimony-transcripts
