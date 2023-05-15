@@ -25,6 +25,7 @@ fig:examsci
 fig:algsci
 fig:expunder
 fig:algunder
+tab:undertb
 fig:strength
 fig:gunstrength
 fig:probstrength
@@ -36,6 +37,8 @@ fig:histunder
 fig:coordcred
 fig:coordscirel
 fig:allpcp
+tab:unnamed-chunk-35
+fig:lcs
 literature-review
 introduction
 bullet-matching-background
@@ -78,6 +81,13 @@ summary-of-results
 limitations
 future-research
 textcolor
+introduction-1
+background-1
+methods-1
+data-cleaning
+first-n-character-fnc-method
+longest-common-substring-lcs-method
+notes
 study2
 testimony-transcripts
 firearm-examiner

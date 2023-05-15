@@ -1044,9 +1044,11 @@ ggplot(subset(algorithm_results,!is.na(algunder)),
 #| undertb,
 #| echo= FALSE,
 #| message= FALSE,
-#| warning= FALSE
+#| eval= TRUE
 kable(table(subset(algorithm_results,!is.na(algunder) & picture=="Yes")$algunder,
-      subset(algorithm_results,!is.na(algunder) & picture=="Yes")$conclusion))%>% column_spec(1, width = "10em")
+      subset(algorithm_results,!is.na(algunder) & picture=="Yes")$conclusion),
+      caption = "Understanding Frequency")%>% 
+  column_spec(1, width = "10em")
 ```
 
 ### Uniqueness

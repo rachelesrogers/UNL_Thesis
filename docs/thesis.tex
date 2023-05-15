@@ -1130,7 +1130,11 @@ It is unclear what may have caused these differences in ratings of understanding
 \authorcol{To investigate this potential relationship further, Table} \ref{tab:undertb}
 \authorcol{was created. Because the counts are so small for the individual cells, the resemblence to a relationship based on conclusion is possibly due to random variation.}
 
-\begin{tabular}{>{\raggedright\arraybackslash}p{10em}|r|r|r}
+\begin{table}
+
+\caption{\label{tab:undertb}Understanding Frequency}
+\centering
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{10em}|r|r|r}
 \hline
   & NoMatch & Inconclusive & Match\\
 \hline
@@ -1158,6 +1162,7 @@ understood
 everything & 8 & 14 & 7\\
 \hline
 \end{tabular}
+\end{table}
 
 \hypertarget{uniqueness}{%
 \subsection{Uniqueness}\label{uniqueness}}
@@ -1403,6 +1408,156 @@ We plan to evaluate these note sheets, and develop a method for presenting the w
 
 \hypertarget{textcolor}{%
 \chapter{Text analysis with Transcripts}\label{textcolor}}
+
+\hypertarget{introduction-1}{%
+\section{Introduction}\label{introduction-1}}
+
+When conducting studies that rely on participants reading a longer document, researchers may be interested in determining what portions of the document participants find worth noting.
+This could provide useful information about areas of interest by creating a type of heat map for the document.
+When the study document consists of multiple pages and notes are recorded sequentially, the problem then becomes twofold: first the participants' notes must be cleaned so that the recorded text corresponds to the current page, then a method must be developed to match the frequency of the participants' notes to the study document.
+
+In order to clean the notes, two different methods are considered and then combined: the First n Character method and the Longest Common Substring method.
+The First n Character method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
+This method was developed specifically for this document comparison.
+The Longest Common Substring method, on the other hand, searches for common text between two sequential pages to be removed.
+After the notes are cleaned, sequences of 5 words (collocations) are used to find areas of the testimony that participants focus on.
+For indirect matches, such as typos, weights are applied to these fuzzy matches to contribute to the total count.
+
+This method was applied to notes taken from a recent study.
+Dr.~Vanderplas and I conducted a study on jury perception, in which participants were asked to read over a testimony transcript and answer some questions related to the scenarios.
+Participants were supplied with a notepad in order to take notes throughout the testimony.
+We are interested in comparing this notepad to the given testimony, in order to determine which portions of the testimony the participants found to be worth recording the most.
+Portions of the testimony that bear the most similarity to the collective notes will be more highlighted than testimony that appears less frequently in the collective notes.
+The method outlined above resulted in scenario testimonies that indicate where participants copied notes.
+
+\hypertarget{background-1}{%
+\section{Background}\label{background-1}}
+
+For data cleaning, a previous page's notes are matched to the next page's notes in order to remove duplicate text.
+This can be thought of as a form of pattern matching.
+There are plenty of examples of pattern matching in text analysis - such as Baeza-Yates and Gonnet, and Landau and Vishkin.
+These papers rely on a set pattern to be found in the reference text, with a defined number of differences allowed between the pattern and the text.
+According th Baeza-Yates and Gonnet, many algorithmic methods have been developed to solve this problem, with allowances for mismatches between the reference text and the pattern.
+A similar allowance for differences is present in Landau and Vishkin, where differences are defined as either insertions, deletions, or substitutions.
+This definition of differences is the same definition that is used in computing Levenshtein distance, also known as edit distance (Levenshtein).
+Levenshtein considered the issue of insertions, deletions, and substitutions with binary code.
+This concept has later been extended to include more extensive strings, as demonstrated by Konstantinidis.
+The edit distance can be used to determine the extent of matching text when comparing two sequential note sheets, in order to identify if a portion of notes should be removed.
+
+One thing that differentiates this problem from other text analysis methods is that there is no set in stone pattern - while the analysis is based on the previous page of notes, individuals do not always keep the previous page of notes the same - some delete parts, and some add new information in the middle.
+Thus, the goal is to not only find and remove only exact matches of the entire previous note sheet, but to also remove previous notes - whether they be shorter or discontinuous.
+While evaluating edit distance is useful when finding direct matches, the Longest Common Substring (LCS) method can be used to find pieces of notes that match between pages, so that this repeated text can be removed.
+
+Landau and Vishkin's discussion of pattern matching with k differences includes both a dynamic programming approach, as well as the construction of suffix trees.
+These methods correspond to those proposed for finding the Longest Common Substring between two sequences.
+This problem has been used to compare biological sequences (Crochemore et al.).
+An early solution for finding the longest common substring involves the construction of a suffix tree (Charalampopoulos et al.).
+The suffix tree method is described by Gusfield; in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leafs consist of the string's terminal character: \$ is used avoid recurrence with previous characters in the string.
+While I have located a package on Github that utilizes the suffix tree for LCS (Lang), I have been unable to successfully download the package.
+Another solution implemented by Bielow et al.~in a CRAN R package uses dynamic programming, which involves the construction of a matrix that records the length of a matching string at character \(i\) for string 1 (in the \(i\)th row), and character \(j\) for string 2 (in the \(j\)th column).
+Because the dynamic programming method has an R implementation, it is utilized for this analysis.
+The comparison between suffix tree and dynamic programming methods will be evaluated in a future analysis.
+
+Once the participants' notes are cleaned, they must be compared to the study transcript.
+In the realm of non-fixed pattern matching, there are plagiarism recognition methods (such as TurnItIn).
+In these cases, a portion of a student's text is cross referenced with published or online references, in order to determine if the text was copied.
+Because this type of correspondence is on a larger level than individual words, collocation analysis is used.
+While collocations traditionally refer to words that occur more frequently together - such as ``white house''(Merriam-Webster), tools for collocation analysis helpfully provide the frequency of occurrence for strings of a specified length (Schweinberger).
+In a reference to algorithmic detection of plagiarism in computer programs, Parker and Hamblen describe an algorithm that uses the character differences in order to compare how similar programs are.
+Other algorithms they discuss use code-specific features such as number of operators, lines of comments, and number of various loop statements.
+Because we are only concerned with the content of the notes, there is little information to be gained from formatting, as there is in plagiarism detection in programs.
+However, character differences can effectively be used to indicate similarity between participants' notes and the study testimony.
+This is useful in situation where individuals do not copy the notes directly.
+In these cases, fuzzy matching can be used to find the testimony collocation that is the most similar to the participants' written notes.
+This approximate string matching allows for matching strings that do not correspond directly (Gusfield), which would allow for matching up participants' inexact notes with the closest testimony collocation.
+
+\hypertarget{methods-1}{%
+\section{Methods}\label{methods-1}}
+
+\hypertarget{data-cleaning}{%
+\subsection{Data Cleaning}\label{data-cleaning}}
+
+Table \ref{tab:noteexample} is an example of what sequential notes may look like, taken from the second and third pages of a study participant's notes.
+Because participants are provided with the same continuous notepad throughout the study, the database records each page as a ``screenshot'' of what is written on their notes when they advance to the next page - this provides cumulative notes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{comments }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/clean\_notes.csv"}\NormalTok{)}
+\CommentTok{\# length(unique(subset(comments, notes !=}
+\CommentTok{\# \textquotesingle{}\textquotesingle{})$clean\_prints)) val\_prints \textless{}{-}}
+\CommentTok{\# sample(unique(subset(comments, notes !=}
+\CommentTok{\# \textquotesingle{}\textquotesingle{})$clean\_prints), size=30, replace=FALSE)}
+\CommentTok{\# val\_prints \textless{}{-} c(val\_prints, 503, 359, 39,}
+\CommentTok{\# 368, 547) val\_dataset \textless{}{-} comments \%\textgreater{}\%}
+\CommentTok{\# subset(clean\_prints \%in\% val\_prints)}
+\CommentTok{\# write.csv(val\_dataset,}
+\CommentTok{\# \textquotesingle{}validation\_dataset.csv\textquotesingle{}) dim(val\_dataset)}
+
+\NormalTok{test\_comments }\OtherTok{\textless{}{-}}\NormalTok{ comments[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, ]}
+
+\FunctionTok{kable}\NormalTok{(test\_comments }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{filter}\NormalTok{(page\_count }\SpecialCharTok{==} \DecValTok{2} \SpecialCharTok{|}\NormalTok{ page\_count }\SpecialCharTok{==} \DecValTok{3}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{    dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(page\_count, notes), }\AttributeTok{caption =} \StringTok{"Participant Note Example"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{column\_spec}\NormalTok{(}\DecValTok{2}\NormalTok{, }\AttributeTok{width =} \StringTok{"30em"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-35}Participant Note Example}
+\centering
+\begin{tabular}[t]{r|>{\raggedright\arraybackslash}p{30em}}
+\hline
+page\_count & notes\\
+\hline
+2 & Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony.\\
+\hline
+3 & Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony. 
+
+police officer pulled over Richard Cole for speeding. During a search of the Defendant's vehicle, the detective located a 9mm handgun, which was legally licensed to the Defendant.\\
+\hline
+\end{tabular}
+\end{table}
+
+In order to appropriately clean the notes, the duplicated text (``Richard Cole - has been charted with willfully discharging a firearm in a place of business. This crime is a felony.'') needs to be removed from the third page, to leave only notes that correspond to the third page's testimony.
+
+\hypertarget{first-n-character-fnc-method}{%
+\subsubsection{First n Character (FNC) Method}\label{first-n-character-fnc-method}}
+
+In scenarios such as the table above, a straightforward method for note cleaning would be to measure the length of the previous page's notes (n), and compare the previous notes to the first n characters in the current pages notes via edit distance.
+The edit distance is the number of characters that would need to be changed in order to transform the first string into the second string.
+This includes insertions, deletions, and substitutions(in the case of the ``adist'' function from the R Core Team).
+For example, ``Hat'' and ``Hot'' would have an edit distance of 1, because the strings match if the ``a'' is turned into an ``o''.
+Similarly, ``Over there'' and ``there'' would have an edit distance of 5, since 5 characters are deleted (the letters in ``Over'' plus an additional space).
+If the edit distance is small (indicating a correspondence to the previous page's notes), the first n characters can be removed.
+If we consider the table is above, it is clear to see how this method can be applied.
+The page 2 notes perfectly line up with the first two lines in the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
+Thus, by removing this beginning section, we would be left with the notes that are unique to page 3 - namely, the last two lines.
+
+This method works well when participants take notes sequentially.
+In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
+When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
+The first n character method would not be able to appropriately clean these notes.
+
+\hypertarget{longest-common-substring-lcs-method}{%
+\subsubsection{Longest Common Substring (LCS) Method}\label{longest-common-substring-lcs-method}}
+
+Another method for matching text between two different sets of notes is the Longest Common Substring (LCS).
+This method searches two strings for the longest sequence of sequential characters that they have in common, which is then returned.
+For example, in Figure \ref{fig:lcs}, the LCS between the two strings is ``the cat enjoys napping''.
+In the process of note cleaning, this would be the string that is removed from the second page of notes, resulting in ``When it is quiet'' as the cleaned (non-repeated) notes.
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{images/svg_graph} 
+
+}
+
+\caption{Longest Common Substring Diagram}\label{fig:lcs}
+\end{figure}
+
+\hypertarget{notes}{%
+\section{Notes}\label{notes}}
 
 \begin{itemize}
 \item
@@ -1949,7 +2104,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2023-05-11 13:16:25.
+This version of the thesis was generated on 2023-05-15 11:26:46.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -1964,112 +2119,149 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2023-05-11
+##  date     2023-05-15
 ##  pandoc   2.19.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------
-##  package      * version    date (UTC) lib source
-##  assertthat     0.2.1      2019-03-21 [1] CRAN (R 4.2.1)
-##  bit            4.0.4      2020-08-04 [1] CRAN (R 4.2.1)
-##  bit64          4.0.5      2020-08-30 [1] CRAN (R 4.2.1)
-##  bookdown       0.32       2023-01-17 [1] CRAN (R 4.2.2)
-##  cachem         1.0.6      2021-08-19 [1] CRAN (R 4.2.1)
-##  callr          3.7.3      2022-11-02 [1] CRAN (R 4.2.2)
-##  cli            3.4.1      2022-09-23 [1] CRAN (R 4.2.2)
-##  colorspace     2.0-3      2022-02-21 [1] CRAN (R 4.2.1)
-##  crayon         1.5.2      2022-09-29 [1] CRAN (R 4.2.2)
-##  data.table     1.14.2     2021-09-27 [1] CRAN (R 4.2.1)
-##  DBI            1.1.3      2022-06-18 [1] CRAN (R 4.2.1)
-##  devtools     * 2.4.5      2022-10-11 [1] CRAN (R 4.2.2)
-##  digest         0.6.29     2021-12-01 [1] CRAN (R 4.2.1)
-##  dplyr        * 1.0.10     2022-09-01 [1] CRAN (R 4.2.1)
-##  ellipsis       0.3.2      2021-04-29 [1] CRAN (R 4.2.1)
-##  evaluate       0.20       2023-01-17 [1] CRAN (R 4.2.2)
-##  fansi          1.0.4      2023-01-22 [1] CRAN (R 4.2.2)
-##  farver         2.1.1      2022-07-06 [1] CRAN (R 4.2.1)
-##  fastmap        1.1.0      2021-01-25 [1] CRAN (R 4.2.1)
-##  forcats      * 0.5.2      2022-08-19 [1] CRAN (R 4.2.1)
-##  formatR        1.12       2022-03-31 [1] CRAN (R 4.2.2)
-##  fs             1.5.2      2021-12-08 [1] CRAN (R 4.2.1)
-##  generics       0.1.3      2022-07-05 [1] CRAN (R 4.2.1)
-##  GGally       * 2.1.2      2021-06-21 [1] CRAN (R 4.2.2)
-##  ggblend      * 0.0.0.9000 2022-12-16 [1] Github (mjskay/ggblend@15e7544)
-##  ggmosaic     * 0.3.3      2021-02-23 [1] CRAN (R 4.2.1)
-##  ggpcp        * 0.2.0      2022-11-17 [1] Github (heike/ggpcp@f86c04e)
-##  ggplot2      * 3.4.2      2023-04-03 [1] CRAN (R 4.2.3)
-##  ggrepel        0.9.1      2021-01-15 [1] CRAN (R 4.2.1)
-##  git2r          0.30.1     2022-03-16 [1] CRAN (R 4.2.1)
-##  glue           1.6.2      2022-02-24 [1] CRAN (R 4.2.1)
-##  gridExtra    * 2.3        2017-09-09 [1] CRAN (R 4.2.1)
-##  gtable         0.3.1      2022-09-01 [1] CRAN (R 4.2.1)
-##  hms            1.1.2      2022-08-19 [1] CRAN (R 4.2.1)
-##  htmltools      0.5.4      2022-12-07 [1] CRAN (R 4.2.2)
-##  htmlwidgets    1.6.1      2023-01-07 [1] CRAN (R 4.2.2)
-##  httpuv         1.6.5      2022-01-05 [1] CRAN (R 4.2.1)
-##  httr           1.4.5      2023-02-24 [1] CRAN (R 4.2.2)
-##  huskydown    * 0.0.5      2022-12-13 [1] Github (benmarwick/huskydown@addb48e)
-##  jpeg         * 0.1-10     2022-11-29 [1] CRAN (R 4.2.2)
-##  jsonlite       1.8.4      2022-12-06 [1] CRAN (R 4.2.2)
-##  kableExtra   * 1.3.4      2021-02-20 [1] CRAN (R 4.2.2)
-##  knitr        * 1.42       2023-01-25 [1] CRAN (R 4.2.2)
-##  labeling       0.4.2      2020-10-20 [1] CRAN (R 4.2.0)
-##  later          1.3.0      2021-08-18 [1] CRAN (R 4.2.1)
-##  lazyeval       0.2.2      2019-03-15 [1] CRAN (R 4.2.1)
-##  lifecycle      1.0.3      2022-10-07 [1] CRAN (R 4.2.2)
-##  magrittr       2.0.3      2022-03-30 [1] CRAN (R 4.2.1)
-##  memoise        2.0.1      2021-11-26 [1] CRAN (R 4.2.1)
-##  mime           0.12       2021-09-28 [1] CRAN (R 4.2.0)
-##  miniUI         0.1.1.1    2018-05-18 [1] CRAN (R 4.2.1)
-##  munsell        0.5.0      2018-06-12 [1] CRAN (R 4.2.1)
-##  patchwork    * 1.1.2      2022-08-19 [1] CRAN (R 4.2.1)
-##  pillar         1.8.1      2022-08-19 [1] CRAN (R 4.2.1)
-##  pkgbuild       1.4.0      2022-11-27 [1] CRAN (R 4.2.2)
-##  pkgconfig      2.0.3      2019-09-22 [1] CRAN (R 4.2.1)
-##  pkgload        1.3.2      2022-11-16 [1] CRAN (R 4.2.2)
-##  plotly         4.10.0     2021-10-09 [1] CRAN (R 4.2.1)
-##  plyr         * 1.8.7      2022-03-24 [1] CRAN (R 4.2.1)
-##  prettyunits    1.1.1      2020-01-24 [1] CRAN (R 4.2.1)
-##  processx       3.7.0      2022-07-07 [1] CRAN (R 4.2.1)
-##  profvis        0.3.7      2020-11-02 [1] CRAN (R 4.2.1)
-##  promises       1.2.0.1    2021-02-11 [1] CRAN (R 4.2.1)
-##  ps             1.7.1      2022-06-18 [1] CRAN (R 4.2.1)
-##  purrr          0.3.5      2022-10-06 [1] CRAN (R 4.2.2)
-##  R6             2.5.1      2021-08-19 [1] CRAN (R 4.2.1)
-##  RColorBrewer   1.1-3      2022-04-03 [1] CRAN (R 4.2.0)
-##  Rcpp           1.0.9      2022-07-08 [1] CRAN (R 4.2.1)
-##  readr        * 2.1.2      2022-01-30 [1] CRAN (R 4.2.1)
-##  remotes        2.4.2      2021-11-30 [1] CRAN (R 4.2.3)
-##  reshape        0.8.9      2022-04-12 [1] CRAN (R 4.2.1)
-##  rlang          1.1.0      2023-03-14 [1] CRAN (R 4.2.3)
-##  rmarkdown      2.20       2023-01-19 [1] CRAN (R 4.2.2)
-##  rstudioapi     0.14       2022-08-22 [1] CRAN (R 4.2.1)
-##  rvest          1.0.3      2022-08-19 [1] CRAN (R 4.2.1)
-##  scales         1.2.1      2022-08-20 [1] CRAN (R 4.2.1)
-##  sessioninfo    1.2.2      2021-12-06 [1] CRAN (R 4.2.1)
-##  shiny          1.7.4      2022-12-15 [1] CRAN (R 4.2.3)
-##  stringi        1.7.8      2022-07-11 [1] CRAN (R 4.2.1)
-##  stringr        1.5.0      2022-12-02 [1] CRAN (R 4.2.2)
-##  svglite        2.1.0      2022-02-03 [1] CRAN (R 4.2.1)
-##  systemfonts    1.0.4      2022-02-11 [1] CRAN (R 4.2.1)
-##  tibble         3.1.8      2022-07-22 [1] CRAN (R 4.2.1)
-##  tidyr        * 1.2.1      2022-09-08 [1] CRAN (R 4.2.1)
-##  tidyselect     1.2.0      2022-10-10 [1] CRAN (R 4.2.2)
-##  tzdb           0.3.0      2022-03-28 [1] CRAN (R 4.2.1)
-##  urlchecker     1.0.1      2021-11-30 [1] CRAN (R 4.2.1)
-##  usethis      * 2.1.6      2022-05-25 [1] CRAN (R 4.2.2)
-##  utf8           1.2.3      2023-01-31 [1] CRAN (R 4.2.2)
-##  vctrs          0.5.2      2023-01-23 [1] CRAN (R 4.2.2)
-##  viridisLite    0.4.1      2022-08-22 [1] CRAN (R 4.2.1)
-##  vroom          1.5.7      2021-11-30 [1] CRAN (R 4.2.1)
-##  webshot        0.5.4      2022-09-26 [1] CRAN (R 4.2.2)
-##  withr          2.5.0      2022-03-03 [1] CRAN (R 4.2.1)
-##  xfun           0.37       2023-01-31 [1] CRAN (R 4.2.2)
-##  xml2           1.3.3      2021-11-30 [1] CRAN (R 4.2.1)
-##  xtable         1.8-4      2019-04-21 [1] CRAN (R 4.2.1)
-##  yaml           2.3.7      2023-01-23 [1] CRAN (R 4.2.2)
+##  ! package            * version    date (UTC) lib source
+##    ade4                 1.7-22     2023-02-06 [1] CRAN (R 4.2.2)
+##    assertthat           0.2.1      2019-03-21 [1] CRAN (R 4.2.1)
+##    backports            1.4.1      2021-12-13 [1] CRAN (R 4.2.0)
+##    bit                  4.0.4      2020-08-04 [1] CRAN (R 4.2.1)
+##    bit64                4.0.5      2020-08-30 [1] CRAN (R 4.2.1)
+##    bookdown             0.32       2023-01-17 [1] CRAN (R 4.2.2)
+##    broom                1.0.0      2022-07-01 [1] CRAN (R 4.2.1)
+##    cachem               1.0.6      2021-08-19 [1] CRAN (R 4.2.1)
+##    callr                3.7.3      2022-11-02 [1] CRAN (R 4.2.2)
+##    cellranger           1.1.0      2016-07-27 [1] CRAN (R 4.2.1)
+##    checkmate            2.1.0      2022-04-21 [1] CRAN (R 4.2.1)
+##    cli                  3.4.1      2022-09-23 [1] CRAN (R 4.2.2)
+##    colorspace           2.0-3      2022-02-21 [1] CRAN (R 4.2.1)
+##    crayon               1.5.2      2022-09-29 [1] CRAN (R 4.2.2)
+##    data.table           1.14.2     2021-09-27 [1] CRAN (R 4.2.1)
+##    DBI                  1.1.3      2022-06-18 [1] CRAN (R 4.2.1)
+##    dbplyr               2.2.1      2022-06-27 [1] CRAN (R 4.2.1)
+##    devtools           * 2.4.5      2022-10-11 [1] CRAN (R 4.2.2)
+##    DiagrammeR         * 1.0.9      2022-03-05 [1] CRAN (R 4.2.3)
+##    digest               0.6.29     2021-12-01 [1] CRAN (R 4.2.1)
+##    dplyr              * 1.0.10     2022-09-01 [1] CRAN (R 4.2.1)
+##    ellipsis             0.3.2      2021-04-29 [1] CRAN (R 4.2.1)
+##    evaluate             0.20       2023-01-17 [1] CRAN (R 4.2.2)
+##    fansi                1.0.4      2023-01-22 [1] CRAN (R 4.2.2)
+##    farver               2.1.1      2022-07-06 [1] CRAN (R 4.2.1)
+##    fastmap              1.1.0      2021-01-25 [1] CRAN (R 4.2.1)
+##    fastmatch            1.1-3      2021-07-23 [1] CRAN (R 4.2.0)
+##    forcats            * 0.5.2      2022-08-19 [1] CRAN (R 4.2.1)
+##    formatR              1.12       2022-03-31 [1] CRAN (R 4.2.2)
+##    fs                   1.5.2      2021-12-08 [1] CRAN (R 4.2.1)
+##    gargle               1.2.0      2021-07-02 [1] CRAN (R 4.2.1)
+##    generics             0.1.3      2022-07-05 [1] CRAN (R 4.2.1)
+##    GGally             * 2.1.2      2021-06-21 [1] CRAN (R 4.2.2)
+##    ggblend            * 0.0.0.9000 2022-12-16 [1] Github (mjskay/ggblend@15e7544)
+##    ggdendro             0.1.23     2022-02-16 [1] CRAN (R 4.2.2)
+##    ggmosaic           * 0.3.3      2021-02-23 [1] CRAN (R 4.2.1)
+##    ggpcp              * 0.2.0      2022-11-17 [1] Github (heike/ggpcp@f86c04e)
+##    ggplot2            * 3.4.2      2023-04-03 [1] CRAN (R 4.2.3)
+##    ggrepel            * 0.9.1      2021-01-15 [1] CRAN (R 4.2.1)
+##    git2r                0.30.1     2022-03-16 [1] CRAN (R 4.2.1)
+##    glue                 1.6.2      2022-02-24 [1] CRAN (R 4.2.1)
+##    googledrive          2.0.0      2021-07-08 [1] CRAN (R 4.2.1)
+##    googlesheets4        1.0.1      2022-08-13 [1] CRAN (R 4.2.1)
+##    gridExtra          * 2.3        2017-09-09 [1] CRAN (R 4.2.1)
+##    gtable               0.3.1      2022-09-01 [1] CRAN (R 4.2.1)
+##    haven                2.5.1      2022-08-22 [1] CRAN (R 4.2.1)
+##    hms                  1.1.2      2022-08-19 [1] CRAN (R 4.2.1)
+##    htmlTable            2.4.1      2022-07-07 [1] CRAN (R 4.2.1)
+##    htmltools            0.5.4      2022-12-07 [1] CRAN (R 4.2.2)
+##    htmlwidgets          1.6.1      2023-01-07 [1] CRAN (R 4.2.2)
+##    httpuv               1.6.5      2022-01-05 [1] CRAN (R 4.2.1)
+##    httr                 1.4.5      2023-02-24 [1] CRAN (R 4.2.2)
+##    huskydown          * 0.0.5      2022-12-13 [1] Github (benmarwick/huskydown@addb48e)
+##    jpeg               * 0.1-10     2022-11-29 [1] CRAN (R 4.2.2)
+##    jsonlite             1.8.4      2022-12-06 [1] CRAN (R 4.2.2)
+##    kableExtra         * 1.3.4      2021-02-20 [1] CRAN (R 4.2.2)
+##    knitr              * 1.42       2023-01-25 [1] CRAN (R 4.2.2)
+##    labeling             0.4.2      2020-10-20 [1] CRAN (R 4.2.0)
+##    later                1.3.0      2021-08-18 [1] CRAN (R 4.2.1)
+##    lattice              0.20-45    2021-09-22 [2] CRAN (R 4.2.1)
+##    lazyeval             0.2.2      2019-03-15 [1] CRAN (R 4.2.1)
+##    lifecycle            1.0.3      2022-10-07 [1] CRAN (R 4.2.2)
+##    lubridate            1.8.0      2021-10-07 [1] CRAN (R 4.2.1)
+##    magrittr             2.0.3      2022-03-30 [1] CRAN (R 4.2.1)
+##    MASS                 7.3-57     2022-04-22 [2] CRAN (R 4.2.1)
+##    Matrix               1.5-3      2022-11-11 [1] CRAN (R 4.2.2)
+##    memoise              2.0.1      2021-11-26 [1] CRAN (R 4.2.1)
+##    mime                 0.12       2021-09-28 [1] CRAN (R 4.2.0)
+##    miniUI               0.1.1.1    2018-05-18 [1] CRAN (R 4.2.1)
+##    modelr               0.1.9      2022-08-19 [1] CRAN (R 4.2.1)
+##    munsell              0.5.0      2018-06-12 [1] CRAN (R 4.2.1)
+##    nsyllable            1.0.1      2022-02-28 [1] CRAN (R 4.2.2)
+##    patchwork          * 1.1.2      2022-08-19 [1] CRAN (R 4.2.1)
+##    pillar               1.8.1      2022-08-19 [1] CRAN (R 4.2.1)
+##    pkgbuild             1.4.0      2022-11-27 [1] CRAN (R 4.2.2)
+##    pkgconfig            2.0.3      2019-09-22 [1] CRAN (R 4.2.1)
+##    pkgload              1.3.2      2022-11-16 [1] CRAN (R 4.2.2)
+##    plotly               4.10.0     2021-10-09 [1] CRAN (R 4.2.1)
+##    plyr               * 1.8.7      2022-03-24 [1] CRAN (R 4.2.1)
+##    prettyunits          1.1.1      2020-01-24 [1] CRAN (R 4.2.1)
+##    processx             3.7.0      2022-07-07 [1] CRAN (R 4.2.1)
+##    profvis              0.3.7      2020-11-02 [1] CRAN (R 4.2.1)
+##    promises             1.2.0.1    2021-02-11 [1] CRAN (R 4.2.1)
+##    ps                   1.7.1      2022-06-18 [1] CRAN (R 4.2.1)
+##    PTXQC              * 1.0.14     2022-09-20 [1] CRAN (R 4.2.2)
+##    purrr              * 0.3.5      2022-10-06 [1] CRAN (R 4.2.2)
+##    quanteda           * 3.2.4      2022-12-08 [1] CRAN (R 4.2.2)
+##    quanteda.textstats * 0.96       2022-09-19 [1] CRAN (R 4.2.2)
+##    R6                   2.5.1      2021-08-19 [1] CRAN (R 4.2.1)
+##    R6P                  0.3.0      2022-10-02 [1] CRAN (R 4.2.2)
+##    RColorBrewer         1.1-3      2022-04-03 [1] CRAN (R 4.2.0)
+##    Rcpp                 1.0.9      2022-07-08 [1] CRAN (R 4.2.1)
+##  D RcppParallel         5.1.6      2023-01-09 [1] CRAN (R 4.2.2)
+##    readr              * 2.1.2      2022-01-30 [1] CRAN (R 4.2.1)
+##    readtext           * 0.81       2021-07-14 [1] CRAN (R 4.2.2)
+##    readxl               1.4.1      2022-08-17 [1] CRAN (R 4.2.1)
+##    remotes              2.4.2      2021-11-30 [1] CRAN (R 4.2.3)
+##    reprex               2.0.2      2022-08-17 [1] CRAN (R 4.2.1)
+##    reshape              0.8.9      2022-04-12 [1] CRAN (R 4.2.1)
+##    reshape2             1.4.4      2020-04-09 [1] CRAN (R 4.2.1)
+##    rlang                1.1.0      2023-03-14 [1] CRAN (R 4.2.3)
+##    rmarkdown            2.20       2023-01-19 [1] CRAN (R 4.2.2)
+##    rstudioapi           0.14       2022-08-22 [1] CRAN (R 4.2.1)
+##    rvest                1.0.3      2022-08-19 [1] CRAN (R 4.2.1)
+##    scales               1.2.1      2022-08-20 [1] CRAN (R 4.2.1)
+##    seqinr               4.2-23     2022-11-28 [1] CRAN (R 4.2.2)
+##    sessioninfo          1.2.2      2021-12-06 [1] CRAN (R 4.2.1)
+##    shiny                1.7.4      2022-12-15 [1] CRAN (R 4.2.3)
+##    stopwords            2.3        2021-10-28 [1] CRAN (R 4.2.2)
+##    stringdist         * 0.9.10     2022-11-07 [1] CRAN (R 4.2.2)
+##    stringi            * 1.7.8      2022-07-11 [1] CRAN (R 4.2.1)
+##    stringr            * 1.5.0      2022-12-02 [1] CRAN (R 4.2.2)
+##    svglite              2.1.0      2022-02-03 [1] CRAN (R 4.2.1)
+##    systemfonts          1.0.4      2022-02-11 [1] CRAN (R 4.2.1)
+##    tibble             * 3.1.8      2022-07-22 [1] CRAN (R 4.2.1)
+##    tidyr              * 1.2.1      2022-09-08 [1] CRAN (R 4.2.1)
+##    tidyselect           1.2.0      2022-10-10 [1] CRAN (R 4.2.2)
+##    tidyverse          * 1.3.2      2022-07-18 [1] CRAN (R 4.2.1)
+##    tzdb                 0.3.0      2022-03-28 [1] CRAN (R 4.2.1)
+##    UpSetR               1.4.0      2019-05-22 [1] CRAN (R 4.2.2)
+##    urlchecker           1.0.1      2021-11-30 [1] CRAN (R 4.2.1)
+##    usethis            * 2.1.6      2022-05-25 [1] CRAN (R 4.2.2)
+##    utf8                 1.2.3      2023-01-31 [1] CRAN (R 4.2.2)
+##    vctrs                0.5.2      2023-01-23 [1] CRAN (R 4.2.2)
+##    viridisLite          0.4.1      2022-08-22 [1] CRAN (R 4.2.1)
+##    visNetwork           2.1.0      2021-09-29 [1] CRAN (R 4.2.1)
+##    vroom                1.5.7      2021-11-30 [1] CRAN (R 4.2.1)
+##    webshot              0.5.4      2022-09-26 [1] CRAN (R 4.2.2)
+##    withr                2.5.0      2022-03-03 [1] CRAN (R 4.2.1)
+##    xfun                 0.37       2023-01-31 [1] CRAN (R 4.2.2)
+##    xml2                 1.3.3      2021-11-30 [1] CRAN (R 4.2.1)
+##    xtable               1.8-4      2019-04-21 [1] CRAN (R 4.2.1)
+##    yaml                 2.3.7      2023-01-23 [1] CRAN (R 4.2.2)
 ## 
 ##  [1] C:/Users/rrogers9/AppData/Local/R/win-library/4.2
 ##  [2] C:/Program Files/R/R-4.2.1/library
+## 
+##  D -- DLL MD5 mismatch, broken installation.
 ## 
 ## ----------------------------------------------------------
 \end{verbatim}
