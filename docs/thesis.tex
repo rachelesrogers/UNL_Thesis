@@ -1480,31 +1480,9 @@ This approximate string matching allows for matching strings that do not corresp
 Table \ref{tab:noteexample} is an example of what sequential notes may look like, taken from the second and third pages of a study participant's notes.
 Because participants are provided with the same continuous notepad throughout the study, the database records each page as a ``screenshot'' of what is written on their notes when they advance to the next page - this provides cumulative notes.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{comments }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/clean\_notes.csv"}\NormalTok{)}
-\CommentTok{\# length(unique(subset(comments, notes !=}
-\CommentTok{\# \textquotesingle{}\textquotesingle{})$clean\_prints)) val\_prints \textless{}{-}}
-\CommentTok{\# sample(unique(subset(comments, notes !=}
-\CommentTok{\# \textquotesingle{}\textquotesingle{})$clean\_prints), size=30, replace=FALSE)}
-\CommentTok{\# val\_prints \textless{}{-} c(val\_prints, 503, 359, 39,}
-\CommentTok{\# 368, 547) val\_dataset \textless{}{-} comments \%\textgreater{}\%}
-\CommentTok{\# subset(clean\_prints \%in\% val\_prints)}
-\CommentTok{\# write.csv(val\_dataset,}
-\CommentTok{\# \textquotesingle{}validation\_dataset.csv\textquotesingle{}) dim(val\_dataset)}
-
-\NormalTok{test\_comments }\OtherTok{\textless{}{-}}\NormalTok{ comments[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, ]}
-
-\FunctionTok{kable}\NormalTok{(test\_comments }\SpecialCharTok{\%\textgreater{}\%}
-    \FunctionTok{filter}\NormalTok{(page\_count }\SpecialCharTok{==} \DecValTok{2} \SpecialCharTok{|}\NormalTok{ page\_count }\SpecialCharTok{==} \DecValTok{3}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{    dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(page\_count, notes), }\AttributeTok{caption =} \StringTok{"Participant Note Example"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
-    \FunctionTok{column\_spec}\NormalTok{(}\DecValTok{2}\NormalTok{, }\AttributeTok{width =} \StringTok{"30em"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{table}
 
-\caption{\label{tab:unnamed-chunk-35}Participant Note Example}
+\caption{\label{tab:noteexample}Participant Note Example}
 \centering
 \begin{tabular}[t]{r|>{\raggedright\arraybackslash}p{30em}}
 \hline
@@ -1555,6 +1533,46 @@ In the process of note cleaning, this would be the string that is removed from t
 
 \caption{Longest Common Substring Diagram}\label{fig:lcs}
 \end{figure}
+
+The PTXQC package (Bielow et al.) implements LCS using dynamic programming, as opposed to the suffix tree method (which has not been implemented in CRAN).
+Their dynamic programming process is described below.
+This method creates an empty matrix, where the number of rows correspond to the length of the first string, and the number of columns correspond to the length of the second string.
+Thus, the first cell would correspond to the first character of both strings, and so on.
+If the characters match and it is the first row or column, then the cell gets a value of 1.
+If the characters match and it is not the first row or column, the the cell receives the value of the (i-1,j-1) cell plus one.
+The first string's index for the substring of the longest length is saved.
+This process is shown in Table \ref{tab:dylcs}, with two strings: ``cabbacced'' and ``bbacccade''.
+The diagonal of numbers in red indicate the longest substring, beginning with `b' and ending with `c'
+Thus, ``bbacc'' is identified as the LCS.
+
+\begin{longtable}[]{@{}llllllllll@{}}
+\caption{Dynamic Programming for LCS \label{tab:dylcs}}\tabularnewline
+\toprule()
+\_ & c & a & b & b & a & c & c & e & d \\
+\midrule()
+\endfirsthead
+\toprule()
+\_ & c & a & b & b & a & c & c & e & d \\
+\midrule()
+\endhead
+b & 0 & 0 & \textcolor{red}{1} & 1 & 0 & 0 & 0 & 0 & 0 \\
+b & 0 & 0 & 1 & \textcolor{red}{2} & 0 & 0 & 0 & 0 & 0 \\
+a & 0 & 1 & 0 & 0 & \textcolor{red}{3} & 0 & 0 & 0 & 0 \\
+c & 1 & 0 & 0 & 0 & 0 & \textcolor{red}{4} & 1 & 0 & 0 \\
+c & 1 & 0 & 0 & 0 & 0 & 1 & \textcolor{red}{5} & 0 & 0 \\
+c & 1 & 0 & 0 & 0 & 0 & 1 & 2 & 0 & 0 \\
+a & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+d & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+e & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+\bottomrule()
+\end{longtable}
+
+The Longest Common Substring method is able to handle the issues found in the First n Character method, which is demonstrated in the table below.
+If notes are deleted, the LCS method can identify the substring from the previous notes, despite the large edit distance that would prevent removal in the First n Character method.
+If new notes are inserted in the middle of previous notes, the First n Character method would compare the Page 1's notes with the red text of the Page 2 notes shown in the second row, resulting in an edit distance that would prevent removal.
+With the LCS method, the first substring ``The cat ran'' could be identified and removed, then in a second iteration, the second substring of ``up the tree'' can also be removed, leaving only the new text.
+In the case of duplication, the First n Character method would be able to identify the first iteration of text that matches Page 1 and remove it; but it would not be able to identify the second occurrence of the text.
+As before, the LCS method would be able to identify both instances through two iterations, and remove all Page 1 text.
 
 \hypertarget{notes}{%
 \section{Notes}\label{notes}}
@@ -2104,7 +2122,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2023-05-15 11:26:46.
+This version of the thesis was generated on 2023-05-15 12:45:36.
 
 The computational environment that was used to generate this version is as follows:
 

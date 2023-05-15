@@ -332,28 +332,11 @@ This approximate string matching allows for matching strings that do not corresp
 <h2><span class="header-section-number">3.3</span> Methods<a href="3-textcolor.html#methods-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="data-cleaning" class="section level3 hasAnchor" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Data Cleaning<a href="3-textcolor.html#data-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Table <a href="#tab:noteexample"><strong>??</strong></a> is an example of what sequential notes may look like, taken from the second and third pages of a study participant’s notes.
+<p>Table <a href="3-textcolor.html#tab:noteexample">3.1</a> is an example of what sequential notes may look like, taken from the second and third pages of a study participant’s notes.
 Because participants are provided with the same continuous notepad throughout the study, the database records each page as a “screenshot” of what is written on their notes when they advance to the next page - this provides cumulative notes.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="3-textcolor.html#cb2-1" aria-hidden="true" tabindex="-1"></a>comments <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/clean_notes.csv&quot;</span>)</span>
-<span id="cb2-2"><a href="3-textcolor.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># length(unique(subset(comments, notes !=</span></span>
-<span id="cb2-3"><a href="3-textcolor.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;&#39;)$clean_prints)) val_prints &lt;-</span></span>
-<span id="cb2-4"><a href="3-textcolor.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># sample(unique(subset(comments, notes !=</span></span>
-<span id="cb2-5"><a href="3-textcolor.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;&#39;)$clean_prints), size=30, replace=FALSE)</span></span>
-<span id="cb2-6"><a href="3-textcolor.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># val_prints &lt;- c(val_prints, 503, 359, 39,</span></span>
-<span id="cb2-7"><a href="3-textcolor.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 368, 547) val_dataset &lt;- comments %&gt;%</span></span>
-<span id="cb2-8"><a href="3-textcolor.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># subset(clean_prints %in% val_prints)</span></span>
-<span id="cb2-9"><a href="3-textcolor.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># write.csv(val_dataset,</span></span>
-<span id="cb2-10"><a href="3-textcolor.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;validation_dataset.csv&#39;) dim(val_dataset)</span></span>
-<span id="cb2-11"><a href="3-textcolor.html#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="3-textcolor.html#cb2-12" aria-hidden="true" tabindex="-1"></a>test_comments <span class="ot">&lt;-</span> comments[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, ]</span>
-<span id="cb2-13"><a href="3-textcolor.html#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="3-textcolor.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(test_comments <span class="sc">%&gt;%</span></span>
-<span id="cb2-15"><a href="3-textcolor.html#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(page_count <span class="sc">==</span> <span class="dv">2</span> <span class="sc">|</span> page_count <span class="sc">==</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-16"><a href="3-textcolor.html#cb2-16" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(page_count, notes), <span class="at">caption =</span> <span class="st">&quot;Participant Note Example&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-17"><a href="3-textcolor.html#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">column_spec</span>(<span class="dv">2</span>, <span class="at">width =</span> <span class="st">&quot;30em&quot;</span>)</span></code></pre></div>
 <table>
 <caption>
-<span id="tab:unnamed-chunk-35">Table 3.1: </span>Participant Note Example
+<span id="tab:noteexample">Table 3.1: </span>Participant Note Example
 </caption>
 <thead>
 <tr>
@@ -414,6 +397,149 @@ In the process of note cleaning, this would be the string that is removed from t
 Figure 3.1: Longest Common Substring Diagram
 </p>
 </div>
+<p>The PTXQC package (Bielow et al.) implements LCS using dynamic programming, as opposed to the suffix tree method (which has not been implemented in CRAN).
+Their dynamic programming process is described below.
+This method creates an empty matrix, where the number of rows correspond to the length of the first string, and the number of columns correspond to the length of the second string.
+Thus, the first cell would correspond to the first character of both strings, and so on.
+If the characters match and it is the first row or column, then the cell gets a value of 1.
+If the characters match and it is not the first row or column, the the cell receives the value of the (i-1,j-1) cell plus one.
+The first string’s index for the substring of the longest length is saved.
+This process is shown in Table <a href="3-textcolor.html#tab:dylcs">3.2</a>, with two strings: “cabbacced” and “bbacccade”.
+The diagonal of numbers in red indicate the longest substring, beginning with ‘b’ and ending with ‘c’
+Thus, “bbacc” is identified as the LCS.</p>
+<table>
+<caption>Dynamic Programming for LCS <span id="tab:dylcs">Table 3.2: </span></caption>
+<thead>
+<tr class="header">
+<th>_</th>
+<th>c</th>
+<th>a</th>
+<th>b</th>
+<th>b</th>
+<th>a</th>
+<th>c</th>
+<th>c</th>
+<th>e</th>
+<th>d</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>b</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>b</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>a</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>c</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>c</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>c</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>a</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>d</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>e</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>The Longest Common Substring method is able to handle the issues found in the First n Character method, which is demonstrated in the table below.
+If notes are deleted, the LCS method can identify the substring from the previous notes, despite the large edit distance that would prevent removal in the First n Character method.
+If new notes are inserted in the middle of previous notes, the First n Character method would compare the Page 1’s notes with the red text of the Page 2 notes shown in the second row, resulting in an edit distance that would prevent removal.
+With the LCS method, the first substring “The cat ran” could be identified and removed, then in a second iteration, the second substring of “up the tree” can also be removed, leaving only the new text.
+In the case of duplication, the First n Character method would be able to identify the first iteration of text that matches Page 1 and remove it; but it would not be able to identify the second occurrence of the text.
+As before, the LCS method would be able to identify both instances through two iterations, and remove all Page 1 text.</p>
 </div>
 </div>
 </div>

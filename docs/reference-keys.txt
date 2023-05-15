@@ -37,8 +37,9 @@ fig:histunder
 fig:coordcred
 fig:coordscirel
 fig:allpcp
-tab:unnamed-chunk-35
+tab:noteexample
 fig:lcs
+tab:dylcs
 literature-review
 introduction
 bullet-matching-background

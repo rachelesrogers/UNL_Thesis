@@ -149,7 +149,7 @@ Thus, the first cell would correspond to the first character of both strings, an
 If the characters match and it is the first row or column, then the cell gets a value of 1.
 If the characters match and it is not the first row or column, the the cell receives the value of the (i-1,j-1) cell plus one.
 The first string's index for the substring of the longest length is saved.
-This process is shown in the table below, with two strings: "cabbacced" and "bbacccade".
+This process is shown in Table \@ref(tab:dylcs), with two strings: "cabbacced" and "bbacccade".
 The diagonal of numbers in red indicate the longest substring, beginning with 'b' and ending with 'c'
 Thus, "bbacc" is identified as the LCS.
 
@@ -164,6 +164,8 @@ c | 1 | 0 | 0 | 0 | 0 | 1 | 2 | 0 | 0
 a | 0 | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0
 d | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1
 e | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0
+
+: Dynamic Programming for LCS (\#tab:dylcs)
 
 The Longest Common Substring method is able to handle the issues found in the First n Character method, which is demonstrated in the table below.
 If notes are deleted, the LCS method can identify the substring from the previous notes, despite the large edit distance that would prevent removal in the First n Character method.
