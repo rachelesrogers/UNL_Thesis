@@ -230,10 +230,21 @@ div.csl-indent {
 <li class="chapter" data-level="3.3.1" data-path="3-textcolor.html"><a href="3-textcolor.html#data-cleaning"><i class="fa fa-check"></i><b>3.3.1</b> Data Cleaning</a></li>
 <li class="chapter" data-level="3.3.2" data-path="3-textcolor.html"><a href="3-textcolor.html#note-analysis"><i class="fa fa-check"></i><b>3.3.2</b> Note Analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="3-textcolor.html"><a href="3-textcolor.html#notes"><i class="fa fa-check"></i><b>3.4</b> Notes</a></li>
+<li class="chapter" data-level="3.4" data-path="3-textcolor.html"><a href="3-textcolor.html#results-1"><i class="fa fa-check"></i><b>3.4</b> Results</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="3-textcolor.html"><a href="3-textcolor.html#the-data"><i class="fa fa-check"></i><b>3.4.1</b> The Data</a></li>
+<li class="chapter" data-level="3.4.2" data-path="3-textcolor.html"><a href="3-textcolor.html#data-cleaning-1"><i class="fa fa-check"></i><b>3.4.2</b> Data Cleaning</a></li>
+<li class="chapter" data-level="3.4.3" data-path="3-textcolor.html"><a href="3-textcolor.html#final-output"><i class="fa fa-check"></i><b>3.4.3</b> Final Output</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="3-textcolor.html"><a href="3-textcolor.html#discussion-1"><i class="fa fa-check"></i><b>3.5</b> Discussion</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="3-textcolor.html"><a href="3-textcolor.html#conclusion-1"><i class="fa fa-check"></i><b>3.5.1</b> Conclusion</a></li>
+<li class="chapter" data-level="3.5.2" data-path="3-textcolor.html"><a href="3-textcolor.html#future-research-1"><i class="fa fa-check"></i><b>3.5.2</b> Future Research</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="3-textcolor.html"><a href="3-textcolor.html#notes"><i class="fa fa-check"></i><b>3.6</b> Notes</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-study2.html"><a href="4-study2.html"><i class="fa fa-check"></i><b>4</b> Jury Perception Revisited: This Time with Caricatures</a></li>
-<li class="chapter" data-level="" data-path="conclusion-1.html"><a href="conclusion-1.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="" data-path="conclusion-2.html"><a href="conclusion-2.html"><i class="fa fa-check"></i>Conclusion</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A-testimony-transcripts.html"><a href="A-testimony-transcripts.html"><i class="fa fa-check"></i><b>A</b> Testimony Transcripts</a>
 <ul>
@@ -970,10 +981,150 @@ This results in a total fuzzy frequency per transcript collocation of:</p>
 where <span class="math inline">\(x_i\)</span> is the count for note collocation <span class="math inline">\(i\)</span>, <span class="math inline">\(d_i\)</span> is the distance between the transcript collocation and the ‘misspelled’ collocation <span class="math inline">\(i\)</span>, and <span class="math inline">\(c_i\)</span> is the number of transcript collocation matches for note collocation <span class="math inline">\(i\)</span>.
 This quantity is then added to the count of direct collocation matches calculated in the previous section.</p>
 </div>
+<div id="standardization" class="section level4 hasAnchor" number="3.3.2.3">
+<h4><span class="header-section-number">3.3.2.3</span> Standardization<a href="3-textcolor.html#standardization" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The testimony analyzed comes from a 2x2x3 factorial design (presence or absence of images, presence or absence of the algorithm, and the conclusion: match, inconclusive, or not a match).
+Due to this design, the testimony diverges and merges in several places.
+For clarity, when the testimony corresponds, the frequency for all scenarios are considered together.
+However, when the testimony diverges, each scenario is considered separately.
+In order to consistently evaluate the frequencies throughout the testimonies, the final frequency count was standardized by the number of scenarios included.
+This would result in collocations with a final frequency weight of:</p>
+<p><span class="math display">\[
+(z+\sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i})\frac{1}{ks}
+\]</span></p>
+<p>In this case, <span class="math inline">\(z\)</span> is the count of direct matches; <span class="math inline">\(\sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i}\)</span> is the weighted fuzzy match count as defined above; <span class="math inline">\(k\)</span> is the number of times the collocation re-occurs in the transcript page itself; and <span class="math inline">\(s\)</span> is the number of scenarios included in the frequency count.</p>
 </div>
 </div>
-<div id="notes" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> Notes<a href="3-textcolor.html#notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="results-1" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Results<a href="3-textcolor.html#results-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-data" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> The Data<a href="3-textcolor.html#the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Our study consisted of 560 uniquely recorded participants.
+Of these 560 participants, 430 recorded something on the notepad.
+This has resulted in 10,329 pages of notes with at least something recorded.
+For individuals who clicked through the survey multiple times but submitted a single result, the notes correspond to the closest time less than their submission time for observation per page number.
+Note pages that corresponded to the questions (and not the testimony) were removed; this was above page 10 in conditions without the algorithm and page 19 in conditions with the algorithm.</p>
+</div>
+<div id="data-cleaning-1" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Data Cleaning<a href="3-textcolor.html#data-cleaning-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>On the complete dataset, the hybrid method took a total of 19.33 minutes.
+This again demonstrates the time benefit of the hybrid method over the Longest Common Substring method - it took less time to clean the complete dataset with the hybrid method than it took to evaluate the reduced dataset with the LCS method.
+The data cleaning resulted in a total of 2371 note pages with some text recorded.
+This is much smaller than the uncleaned total of 10,329 note pages, demonstrating a significant reduction in the note size (as is expected when removing the previous page’s notes).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:notecount"></span>
+<img src="images/freq_barchart.jpg" alt="Number of Notes Taken Per Page" width="\linewidth" />
+<p class="caption">
+Figure 3.6: Number of Notes Taken Per Page
+</p>
+</div>
+<p>Figure <a href="3-textcolor.html#fig:notecount">3.6</a> consists of the number of participants who took notes based on the page number.
+In both the algorithm and the non-algorithm scenario, more individuals took notes on the first two pages of the testimony compared to the rest of the testimony.
+However, the plot shows that individuals took notes throughout the testimony.</p>
+</div>
+<div id="final-output" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Final Output<a href="3-textcolor.html#final-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This final note analysis, which includes fuzzy matching, is attached as “Collocation_Comment_Analysis.html”.
+In visually comparing the highlighted transcripts for fuzzy matches to those without fuzzy matching, the results appear to be fairly similar.
+While the fuzzy matching did increase the frequency number, the overall trends remained the same for the dataset.
+This can be seen in Table <a href="3-textcolor.html#tab:nonfuzzycount">3.7</a>.
+The ranking of the collocations remains fairly consistent, aside from differences that can be seen in collocations that had the same non-fuzzy count.</p>
+<table>
+<caption>Table of Collocation Frequencies <span id="tab:nonfuzzycount">Table 3.7: </span></caption>
+<thead>
+<tr class="header">
+<th>collocation</th>
+<th>nonfuzzy count</th>
+<th>fuzzy count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>discharging a firearm in a</td>
+<td>134</td>
+<td>151.19</td>
+</tr>
+<tr class="even">
+<td>firearm in a place of</td>
+<td>133</td>
+<td>139.43</td>
+</tr>
+<tr class="odd">
+<td>a firearm in a place</td>
+<td>130</td>
+<td>137.01</td>
+</tr>
+<tr class="even">
+<td>in a place of business</td>
+<td>129</td>
+<td>136.70</td>
+</tr>
+<tr class="odd">
+<td>willfully discharging a firearm in</td>
+<td>121</td>
+<td>136.33</td>
+</tr>
+<tr class="even">
+<td>with willfully discharging a firearm</td>
+<td>93</td>
+<td>107.52</td>
+</tr>
+<tr class="odd">
+<td>charged with willfully discharging a</td>
+<td>91</td>
+<td>101.56</td>
+</tr>
+<tr class="even">
+<td>been charged with willfully discharging</td>
+<td>76</td>
+<td>83.24</td>
+</tr>
+<tr class="odd">
+<td>has been charged with willfully</td>
+<td>75</td>
+<td>78.75</td>
+</tr>
+<tr class="even">
+<td>cole has been charged with</td>
+<td>74</td>
+<td>76.12</td>
+</tr>
+<tr class="odd">
+<td>a place of business this</td>
+<td>74</td>
+<td>88.34</td>
+</tr>
+</tbody>
+</table>
+<p>The standardized frequency values remain fairly consistent throughout the testimony.
+Some areas that individuals focused on were the crime and its extent (in terms of injury), the qualifications/process of the firearms examiner, and the results from the analysis.
+While this type of analysis may allow us to determine the areas that participants copied into their notes, it does not indicate why the participants found this testimony worth copying.
+This may either indicate areas that participants saw as interesting or confusing, or a mixture of both.
+The functions for data cleaning and collocation plotting are included in “Comment_Functions.R”, and the script for creating the final note analysis is “Collocation Comment Analysis.qmd”.</p>
+</div>
+</div>
+<div id="discussion-1" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Discussion<a href="3-textcolor.html#discussion-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conclusion-1" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Conclusion<a href="3-textcolor.html#conclusion-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Overall, this process appears to effectively clean and display notes with the desired highlight format.
+For sequential notes, such as this case, the First N Character method manages to clean the notes in most cases.
+In the cases where the FNC method is ineffective (when the edit distance is above the threshold or the clean notes are unusually long), the Longest Common Substring method can be applied.
+This process was demonstrated in a dataset of 35 participants, and showed a significant note reduction on the full dataset.</p>
+<p>After the notes are cleaned, collocations can be used to determine what phrases participants decided to copy into their notes.
+The length of the collocation was chosen to be long enough to avoid commonly repeated phrases, but short enough that participants may directly copy the phrase into their notes.
+Notes that were not directly copied were included with weights proportional to edit distance through the use of fuzzy matching.
+The final output qualitatively indicates which portions of testimony participants find relevant to copy.</p>
+</div>
+<div id="future-research-1" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Future Research<a href="3-textcolor.html#future-research-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the future, I also want to find an implementation of suffix trees to more effectively implement the LCS method.
+Once these data cleaning methods have been streamlined, I plan to create R packages for both the cleaning of sequential notes and for the visualization of transcript notes.
+Another application of this type of analysis may be used in the evaluation of student note taking.</p>
+</div>
+</div>
+<div id="notes" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Notes<a href="3-textcolor.html#notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>Participants of the first study were allowed to take notes while reading through the transcripts, which are saved by page number</p></li>
 <li><p>We would like to use this to highlight which parts of the testimonies the participants found to be important</p></li>

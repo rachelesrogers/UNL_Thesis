@@ -48,6 +48,8 @@ fig:colcount
 fig:highlights
 tab:months
 tab:fuzzymonth
+fig:notecount
+tab:nonfuzzycount
 literature-review
 introduction
 bullet-matching-background
@@ -100,6 +102,14 @@ hybrid-method
 note-analysis
 collocations
 fuzzy-matching
+standardization
+results-1
+the-data
+data-cleaning-1
+final-output
+discussion-1
+conclusion-1
+future-research-1
 notes
 study2
 testimony-transcripts

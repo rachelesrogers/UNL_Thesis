@@ -1846,6 +1846,117 @@ This results in a total fuzzy frequency per transcript collocation of:
 where \(x_i\) is the count for note collocation \(i\), \(d_i\) is the distance between the transcript collocation and the `misspelled' collocation \(i\), and \(c_i\) is the number of transcript collocation matches for note collocation \(i\).
 This quantity is then added to the count of direct collocation matches calculated in the previous section.
 
+\hypertarget{standardization}{%
+\subsubsection{Standardization}\label{standardization}}
+
+The testimony analyzed comes from a 2x2x3 factorial design (presence or absence of images, presence or absence of the algorithm, and the conclusion: match, inconclusive, or not a match).
+Due to this design, the testimony diverges and merges in several places.
+For clarity, when the testimony corresponds, the frequency for all scenarios are considered together.
+However, when the testimony diverges, each scenario is considered separately.
+In order to consistently evaluate the frequencies throughout the testimonies, the final frequency count was standardized by the number of scenarios included.
+This would result in collocations with a final frequency weight of:
+
+\[
+(z+\sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i})\frac{1}{ks}
+\]
+
+In this case, \(z\) is the count of direct matches; \(\sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i}\) is the weighted fuzzy match count as defined above; \(k\) is the number of times the collocation re-occurs in the transcript page itself; and \(s\) is the number of scenarios included in the frequency count.
+
+\hypertarget{results-1}{%
+\section{Results}\label{results-1}}
+
+\hypertarget{the-data}{%
+\subsection{The Data}\label{the-data}}
+
+Our study consisted of 560 uniquely recorded participants.
+Of these 560 participants, 430 recorded something on the notepad.
+This has resulted in 10,329 pages of notes with at least something recorded.
+For individuals who clicked through the survey multiple times but submitted a single result, the notes correspond to the closest time less than their submission time for observation per page number.
+Note pages that corresponded to the questions (and not the testimony) were removed; this was above page 10 in conditions without the algorithm and page 19 in conditions with the algorithm.
+
+\hypertarget{data-cleaning-1}{%
+\subsection{Data Cleaning}\label{data-cleaning-1}}
+
+On the complete dataset, the hybrid method took a total of 19.33 minutes.
+This again demonstrates the time benefit of the hybrid method over the Longest Common Substring method - it took less time to clean the complete dataset with the hybrid method than it took to evaluate the reduced dataset with the LCS method.
+The data cleaning resulted in a total of 2371 note pages with some text recorded.
+This is much smaller than the uncleaned total of 10,329 note pages, demonstrating a significant reduction in the note size (as is expected when removing the previous page's notes).
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{images/freq_barchart} 
+
+}
+
+\caption{Number of Notes Taken Per Page}\label{fig:notecount}
+\end{figure}
+
+Figure \ref{fig:notecount} consists of the number of participants who took notes based on the page number.
+In both the algorithm and the non-algorithm scenario, more individuals took notes on the first two pages of the testimony compared to the rest of the testimony.
+However, the plot shows that individuals took notes throughout the testimony.
+
+\hypertarget{final-output}{%
+\subsection{Final Output}\label{final-output}}
+
+This final note analysis, which includes fuzzy matching, is attached as ``Collocation\_Comment\_Analysis.html''.
+In visually comparing the highlighted transcripts for fuzzy matches to those without fuzzy matching, the results appear to be fairly similar.
+While the fuzzy matching did increase the frequency number, the overall trends remained the same for the dataset.
+This can be seen in Table \ref{tab:nonfuzzycount}.
+The ranking of the collocations remains fairly consistent, aside from differences that can be seen in collocations that had the same non-fuzzy count.
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{Table of Collocation Frequencies \label{tab:nonfuzzycount}}\tabularnewline
+\toprule()
+collocation & nonfuzzy count & fuzzy count \\
+\midrule()
+\endfirsthead
+\toprule()
+collocation & nonfuzzy count & fuzzy count \\
+\midrule()
+\endhead
+discharging a firearm in a & 134 & 151.19 \\
+firearm in a place of & 133 & 139.43 \\
+a firearm in a place & 130 & 137.01 \\
+in a place of business & 129 & 136.70 \\
+willfully discharging a firearm in & 121 & 136.33 \\
+with willfully discharging a firearm & 93 & 107.52 \\
+charged with willfully discharging a & 91 & 101.56 \\
+been charged with willfully discharging & 76 & 83.24 \\
+has been charged with willfully & 75 & 78.75 \\
+cole has been charged with & 74 & 76.12 \\
+a place of business this & 74 & 88.34 \\
+\bottomrule()
+\end{longtable}
+
+The standardized frequency values remain fairly consistent throughout the testimony.
+Some areas that individuals focused on were the crime and its extent (in terms of injury), the qualifications/process of the firearms examiner, and the results from the analysis.
+While this type of analysis may allow us to determine the areas that participants copied into their notes, it does not indicate why the participants found this testimony worth copying.
+This may either indicate areas that participants saw as interesting or confusing, or a mixture of both.
+The functions for data cleaning and collocation plotting are included in ``Comment\_Functions.R'', and the script for creating the final note analysis is ``Collocation Comment Analysis.qmd''.
+
+\hypertarget{discussion-1}{%
+\section{Discussion}\label{discussion-1}}
+
+\hypertarget{conclusion-1}{%
+\subsection{Conclusion}\label{conclusion-1}}
+
+Overall, this process appears to effectively clean and display notes with the desired highlight format.
+For sequential notes, such as this case, the First N Character method manages to clean the notes in most cases.
+In the cases where the FNC method is ineffective (when the edit distance is above the threshold or the clean notes are unusually long), the Longest Common Substring method can be applied.
+This process was demonstrated in a dataset of 35 participants, and showed a significant note reduction on the full dataset.
+
+After the notes are cleaned, collocations can be used to determine what phrases participants decided to copy into their notes.
+The length of the collocation was chosen to be long enough to avoid commonly repeated phrases, but short enough that participants may directly copy the phrase into their notes.
+Notes that were not directly copied were included with weights proportional to edit distance through the use of fuzzy matching.
+The final output qualitatively indicates which portions of testimony participants find relevant to copy.
+
+\hypertarget{future-research-1}{%
+\subsection{Future Research}\label{future-research-1}}
+
+In the future, I also want to find an implementation of suffix trees to more effectively implement the LCS method.
+Once these data cleaning methods have been streamlined, I plan to create R packages for both the cleaning of sequential notes and for the visualization of transcript notes.
+Another application of this type of analysis may be used in the evaluation of student note taking.
+
 \hypertarget{notes}{%
 \section{Notes}\label{notes}}
 
@@ -1963,8 +2074,8 @@ This quantity is then added to the count of direct collocation matches calculate
   Clarify if the examiner used the algorithm before or after their initial comparison.
 \end{itemize}
 
-\hypertarget{conclusion-1}{%
-\chapter*{Conclusion}\label{conclusion-1}}
+\hypertarget{conclusion-2}{%
+\chapter*{Conclusion}\label{conclusion-2}}
 \addcontentsline{toc}{chapter}{Conclusion}
 
 If we don't want Conclusion to have a chapter number next to it, we can add the \texttt{\{-\}} attribute.
@@ -2396,7 +2507,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2023-05-15 16:49:39.
+This version of the thesis was generated on 2023-05-16 11:36:58.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -2411,7 +2522,7 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2023-05-15
+##  date     2023-05-16
 ##  pandoc   2.19.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------
