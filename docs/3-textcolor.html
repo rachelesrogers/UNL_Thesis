@@ -307,38 +307,38 @@ The method outlined above resulted in scenario testimonies that indicate where p
 <h2><span class="header-section-number">3.2</span> Background<a href="3-textcolor.html#background-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For data cleaning, a previous page’s notes are matched to the next page’s notes in order to remove duplicate text.
 This can be thought of as a form of pattern matching.
-There are plenty of examples of pattern matching in text analysis - such as Baeza-Yates and Gonnet, and Landau and Vishkin.
+There are plenty of examples of pattern matching in text analysis - such as <span class="citation">Baeza-Yates &amp; Gonnet (1992)</span> and <span class="citation">Landau &amp; Vishkin (1988)</span>.
 These papers rely on a set pattern to be found in the reference text, with a defined number of differences allowed between the pattern and the text.
-According th Baeza-Yates and Gonnet, many algorithmic methods have been developed to solve this problem, with allowances for mismatches between the reference text and the pattern.
-A similar allowance for differences is present in Landau and Vishkin, where differences are defined as either insertions, deletions, or substitutions.
-This definition of differences is the same definition that is used in computing Levenshtein distance, also known as edit distance (Levenshtein).
+According th <span class="citation">Baeza-Yates &amp; Gonnet (1992)</span>, many algorithmic methods have been developed to solve this problem, with allowances for mismatches between the reference text and the pattern.
+A similar allowance for differences is present in <span class="citation">Landau &amp; Vishkin (1988)</span>, where differences are defined as either insertions, deletions, or substitutions.
+This definition of differences is the same definition that is used in computing Levenshtein distance, also known as edit distance (<span class="citation">Levenshtein (1966)</span>).
 Levenshtein considered the issue of insertions, deletions, and substitutions with binary code.
-This concept has later been extended to include more extensive strings, as demonstrated by Konstantinidis.
+This concept has later been extended to include more extensive strings, as demonstrated by <span class="citation">Konstantinidis (2005)</span>.
 The edit distance can be used to determine the extent of matching text when comparing two sequential note sheets, in order to identify if a portion of notes should be removed.</p>
 <p>One thing that differentiates this problem from other text analysis methods is that there is no set in stone pattern - while the analysis is based on the previous page of notes, individuals do not always keep the previous page of notes the same - some delete parts, and some add new information in the middle.
 Thus, the goal is to not only find and remove only exact matches of the entire previous note sheet, but to also remove previous notes - whether they be shorter or discontinuous.
 While evaluating edit distance is useful when finding direct matches, the Longest Common Substring (LCS) method can be used to find pieces of notes that match between pages, so that this repeated text can be removed.</p>
-<p>Landau and Vishkin’s discussion of pattern matching with k differences includes both a dynamic programming approach, as well as the construction of suffix trees.
+<p><span class="citation">Landau &amp; Vishkin (1988)</span>’s discussion of pattern matching with k differences includes both a dynamic programming approach, as well as the construction of suffix trees.
 These methods correspond to those proposed for finding the Longest Common Substring between two sequences.
-This problem has been used to compare biological sequences (Crochemore et al.).
-An early solution for finding the longest common substring involves the construction of a suffix tree (Charalampopoulos et al.).
-The suffix tree method is described by Gusfield; in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leafs consist of the string’s terminal character: $ is used avoid recurrence with previous characters in the string.
-While I have located a package on Github that utilizes the suffix tree for LCS (Lang), I have been unable to successfully download the package.
-Another solution implemented by Bielow et al. in a CRAN R package uses dynamic programming, which involves the construction of a matrix that records the length of a matching string at character <span class="math inline">\(i\)</span> for string 1 (in the <span class="math inline">\(i\)</span>th row), and character <span class="math inline">\(j\)</span> for string 2 (in the <span class="math inline">\(j\)</span>th column).
+This problem has been used to compare biological sequences (<span class="citation">Crochemore, Iliopoulos, Langiu, &amp; Mignosi (2017)</span>).
+An early solution for finding the longest common substring involves the construction of a suffix tree (<span class="citation">Charalampopoulos, Kociumaka, Pissis, &amp; Radoszewski (2021)</span>).
+The suffix tree method is described by <span class="citation">Gusfield (1997)</span>; in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leafs consist of the string’s terminal character: $ is used avoid recurrence with previous characters in the string.
+While I have located a package on Github that utilizes the suffix tree for LCS (<span class="citation">Lang (2019)</span>), I have been unable to successfully download the package.
+Another solution implemented by <span class="citation">Bielow, Mastrobuoni, &amp; Kempa (2016)</span> in a CRAN R package uses dynamic programming, which involves the construction of a matrix that records the length of a matching string at character <span class="math inline">\(i\)</span> for string 1 (in the <span class="math inline">\(i\)</span>th row), and character <span class="math inline">\(j\)</span> for string 2 (in the <span class="math inline">\(j\)</span>th column).
 Because the dynamic programming method has an R implementation, it is utilized for this analysis.
 The comparison between suffix tree and dynamic programming methods will be evaluated in a future analysis.</p>
 <p>Once the participants’ notes are cleaned, they must be compared to the study transcript.
 In the realm of non-fixed pattern matching, there are plagiarism recognition methods (such as TurnItIn).
 In these cases, a portion of a student’s text is cross referenced with published or online references, in order to determine if the text was copied.
 Because this type of correspondence is on a larger level than individual words, collocation analysis is used.
-While collocations traditionally refer to words that occur more frequently together - such as “white house”(Merriam-Webster), tools for collocation analysis helpfully provide the frequency of occurrence for strings of a specified length (Schweinberger).
-In a reference to algorithmic detection of plagiarism in computer programs, Parker and Hamblen describe an algorithm that uses the character differences in order to compare how similar programs are.
+While collocations traditionally refer to words that occur more frequently together - such as “white house”(<span class="citation">Merriam-Webster (2023)</span>), tools for collocation analysis helpfully provide the frequency of occurrence for strings of a specified length (<span class="citation">Schweinberger (2022)</span>).
+In a reference to algorithmic detection of plagiarism in computer programs, <span class="citation">Parker &amp; Hamblen (1989)</span> describe an algorithm that uses the character differences in order to compare how similar programs are.
 Other algorithms they discuss use code-specific features such as number of operators, lines of comments, and number of various loop statements.
 Because we are only concerned with the content of the notes, there is little information to be gained from formatting, as there is in plagiarism detection in programs.
 However, character differences can effectively be used to indicate similarity between participants’ notes and the study testimony.
 This is useful in situation where individuals do not copy the notes directly.
 In these cases, fuzzy matching can be used to find the testimony collocation that is the most similar to the participants’ written notes.
-This approximate string matching allows for matching strings that do not correspond directly (Gusfield), which would allow for matching up participants’ inexact notes with the closest testimony collocation.</p>
+This approximate string matching allows for matching strings that do not correspond directly (<span class="citation">Gusfield (1997)</span>), which would allow for matching up participants’ inexact notes with the closest testimony collocation.</p>
 </div>
 <div id="methods-1" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Methods<a href="3-textcolor.html#methods-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -409,7 +409,7 @@ In the process of note cleaning, this would be the string that is removed from t
 Figure 3.1: Longest Common Substring Diagram
 </p>
 </div>
-<p>The PTXQC package (Bielow et al.) implements LCS using dynamic programming, as opposed to the suffix tree method (which has not been implemented in CRAN).
+<p>The PTXQC package (<span class="citation">Bielow et al. (2016)</span>) implements LCS using dynamic programming, as opposed to the suffix tree method (which has not been implemented in CRAN).
 Their dynamic programming process is described below.
 This method creates an empty matrix, where the number of rows correspond to the length of the first string, and the number of columns correspond to the length of the second string.
 Thus, the first cell would correspond to the first character of both strings, and so on.
@@ -753,17 +753,16 @@ This is to ensure a smooth transition between words in order to give an overall 
 Figure 3.5: Collocation Count for Page 2
 </p>
 </div>
-<p>In order to create this effect, we first implemented a graph of the testimony in ‘ggplot2’(Wickham) in order to assign color values to the frequencies.
+<p>In order to create this effect, we first implemented a graph of the testimony in ‘ggplot2’(<span class="citation">Wickham (2016)</span>) in order to assign color values to the frequencies.
 Then we used HTML gradient boxes, where the left color is that of the previous word, while the right color is based on the frequency of the current word.
 This results in a smooth transition between words.</p>
 </div>
 <div id="fuzzy-matching" class="section level4 hasAnchor" number="3.3.2.2">
 <h4><span class="header-section-number">3.3.2.2</span> Fuzzy Matching<a href="3-textcolor.html#fuzzy-matching" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>In order to perform fuzzy matching on the indirect collocations from participants’ notes, I used ‘stringdist_join’ from the ‘fuzzyjoin’ R package (Robinson).
+<p>In order to perform fuzzy matching on the indirect collocations from participants’ notes, I used ‘stringdist_join’ from the ‘fuzzyjoin’ R package (<span class="citation">Robinson (2020)</span>).
 This function conducts a join with the best matching observations from the second dataset.
 For example, consider asking young children to spell their birth month.
-This may result in a dataset like Table
-The results of this study are shown in Table <a href="3-textcolor.html#tab:months">3.5</a>.</p>
+This may result in a dataset like Table <a href="3-textcolor.html#tab:months">3.5</a>.</p>
 <table>
 <caption>Dataset of misspelled months <span id="tab:months">Table 3.5: </span></caption>
 <thead>
