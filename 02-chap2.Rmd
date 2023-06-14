@@ -419,8 +419,8 @@ In this case, $z$ is the count of direct matches; $\sum_{i=1}^n\frac{x_i}{(d_i+0
 
 ### The Data
 
-Our study consisted of 560 uniquely recorded participants.
-Of these 560 participants, 430 recorded something on the notepad.
+Our study consisted of 559 uniquely recorded participants.
+Of these 559 participants, 430 recorded something on the notepad.
 This has resulted in 10,329 pages of notes with at least something recorded.
 For individuals who clicked through the survey multiple times but submitted a single result, the notes correspond to the closest time less than their submission time for observation per page number.
 Note pages that corresponded to the questions (and not the testimony) were removed; this was above page 10 in conditions without the algorithm and page 19 in conditions with the algorithm.
