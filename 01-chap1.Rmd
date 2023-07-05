@@ -1409,6 +1409,8 @@ ggplot(under_df, aes(Var1, Freq, fill=question))+
 ```
 Individuals rated their understanding of the examiner's bullet comparison higher than their understanding of the algorithm method, generally speaking (\@ref(fig:histunder)). 
 Participants were more likely to select a 4 or 5 with regards to their understanding of the examiner's comparison, while they were more likely to select a 3 or 4 with regards to their understanding of the algorithm method.
+While these questions gauge how well participants believe they understand the given concepts, @dunningFlawedSelfAssessmentImplications2004 indicate that individuals are not unbiased judges of their own understanding.
+
 
 #### Individual Level Results
 
