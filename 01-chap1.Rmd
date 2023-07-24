@@ -1654,7 +1654,7 @@ These participants may not be representative of the US population, due to differ
 These factors may have an effect on study responses.
 \authorcol{Another issue in representation results from the process of jury selection.}
 \authorcol{Because individuals are not randomly approved for serving on a jury, the jury itself is unlikely to be composed of a representative sample of American citizens.}
-<!-- Do more research on jury selection -->
+@abramsonJurySelectionWeeds2018 \authorcol{argue that selection for jury duty does not result in a representative sample due to some courts' reliance solely on voter registration records for contacting eligible jurors, as well as large non response and non deliverable issues that are more prevalent in African American and Hispanic communities when compared to non-Hispanic White communities.}
 
 Testimony was presented in a written format, which is unlike the courtroom setting of spoken testimony, where the jurors can see the experts.
 However, the use of written testimony allowed for the use of gender-neutral names for the experts (Terry and Adrian), which may be more difficult to achieve in a courtroom or video setting. 
