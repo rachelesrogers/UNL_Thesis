@@ -34,13 +34,13 @@
   \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
   \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
   \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-  \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+  \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
   \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
   \newcommand{\BuiltInTok}[1]{#1}
   \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
   \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
   \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-  \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
   \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
   \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
   \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -48,7 +48,7 @@
   \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
   \newcommand{\ExtensionTok}[1]{#1}
   \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-  \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
   \newcommand{\ImportTok}[1]{#1}
   \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
   \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -57,7 +57,7 @@
   \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
   \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
   \newcommand{\RegionMarkerTok}[1]{#1}
-  \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+  \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
   \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
   \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
   \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -584,22 +584,24 @@ It also offers a numerical scale that may encourage consistency across examiner 
   >{\centering\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2016}}
   >{\centering\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.7984}}@{}}
 \caption{\label{tab:enfsi} Sample language from ENFSI (2016) (17)}\tabularnewline
-\toprule()
+\toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
 Likelihood Ratio
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Verbal Equivalent
 \end{minipage} \\
-\midrule()
+\midrule\noalign{}
 \endfirsthead
-\toprule()
+\toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
 Likelihood Ratio
 \end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Verbal Equivalent
 \end{minipage} \\
-\midrule()
+\midrule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 1 & The forensic findings do not support one proposition over the other \\
 2 - 10 & The forensic findings provide weak support for the first proposition relative to the alternative \\
 10 - 100 & \ldots provide moderate support for the first proposition rather than the alternative \\
@@ -607,7 +609,6 @@ Verbal Equivalent
 1,000 - 10,000 & \ldots provide strong support for the first proposition rather than the alternative \\
 10,000 - 1,000,000 & \ldots provide very strong support for the first proposition rather than the alternative \\
 1,000,000 and above & \ldots provide extremely strong support for the first proposition rather than the alternative \\
-\bottomrule()
 \end{longtable}
 
 A similar scale is also suggested by Evett (1998), with verbal values of ``Limited support'', ``Moderate support'', ``Strong support'', and ``Very strong support'' (201).
@@ -1368,6 +1369,7 @@ These participants may not be representative of the US population, due to differ
 These factors may have an effect on study responses.
 \authorcol{Another issue in representation results from the process of jury selection.}
 \authorcol{Because individuals are not randomly approved for serving on a jury, the jury itself is unlikely to be composed of a representative sample of American citizens.}
+Abramson (2018) \authorcol{argue that selection for jury duty does not result in a representative sample due to some courts' reliance solely on voter registration records for contacting eligible jurors, as well as large non response and non deliverable issues that are more prevalent in African American and Hispanic communities when compared to non-Hispanic White communities.}
 
 Testimony was presented in a written format, which is unlike the courtroom setting of spoken testimony, where the jurors can see the experts.
 However, the use of written testimony allowed for the use of gender-neutral names for the experts (Terry and Adrian), which may be more difficult to achieve in a courtroom or video setting.
@@ -1548,14 +1550,16 @@ Thus, ``bbacc'' is identified as the LCS.
 
 \begin{longtable}[]{@{}llllllllll@{}}
 \caption{Dynamic Programming for LCS \label{tab:dylcs}}\tabularnewline
-\toprule()
+\toprule\noalign{}
 \_ & c & a & b & b & a & c & c & e & d \\
-\midrule()
+\midrule\noalign{}
 \endfirsthead
-\toprule()
+\toprule\noalign{}
 \_ & c & a & b & b & a & c & c & e & d \\
-\midrule()
+\midrule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 b & 0 & 0 & \textcolor{red}{1} & 1 & 0 & 0 & 0 & 0 & 0 \\
 b & 0 & 0 & 1 & \textcolor{red}{2} & 0 & 0 & 0 & 0 & 0 \\
 a & 0 & 1 & 0 & 0 & \textcolor{red}{3} & 0 & 0 & 0 & 0 \\
@@ -1565,7 +1569,6 @@ c & 1 & 0 & 0 & 0 & 0 & 1 & 2 & 0 & 0 \\
 a & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
 d & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
 e & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-\bottomrule()
 \end{longtable}
 
 The Longest Common Substring method is able to handle the issues found in the First n Character method, which is demonstrated in Table \ref{tab:issues}.
@@ -1582,7 +1585,7 @@ As before, the LCS method would be able to identify both instances through two i
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2093}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2093}}@{}}
 \caption{LCS Comparison for FNC Issues \label{tab:issues}}\tabularnewline
-\toprule()
+\toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Issue
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -1594,9 +1597,9 @@ LCS
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Edit Distance
 \end{minipage} \\
-\midrule()
+\midrule\noalign{}
 \endfirsthead
-\toprule()
+\toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Issue
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -1608,12 +1611,13 @@ LCS
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Edit Distance
 \end{minipage} \\
-\midrule()
+\midrule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 Deletion & The cat ran up the tree & The cat ran & The cat ran & 12 \\
 Insertion & The cat ran up the tree & \textcolor{red}{The cat ran, chased by a} dog, up the tree & (The cat ran)(up the tree) & 11 \\
 Duplication & The cat ran up the tree & \textcolor{red}{The cat ran up the tree} The cat ran up the tree & (The cat ran up the tree)(The cat ran up the tree) & 0 \\
-\bottomrule()
 \end{longtable}
 
 While the LCS method is able to solve the issues related to the First N Character method, it has some issues of its own.
@@ -1665,14 +1669,16 @@ I chose 1/3 of the previous notes as the LCS threshold because the mean edit dis
 
 \begin{longtable}[]{@{}llll@{}}
 \caption{Comparison of Note Cleaning Methods \label{tab:cleancompare}}\tabularnewline
-\toprule()
+\toprule\noalign{}
 Methods & Error & SD & Time (Minutes) \\
-\midrule()
+\midrule\noalign{}
 \endfirsthead
-\toprule()
+\toprule\noalign{}
 Methods & Error & SD & Time (Minutes) \\
-\midrule()
+\midrule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 FNC 1 Character & 498.965 & 2769.826 & 2.4 \\
 FNC 6 Character & 201.353 & 1890.009 & 2.5 \\
 FNC 16 Character & 36.912 & 411.252 & 2.5 \\
@@ -1681,7 +1687,6 @@ LCS 1/2 Previous Notes & 7.288 & 104.692 & 85.7 \\
 LCS 1/3 Previous Notes & 3.064 & 26.769 & 76.3 \\
 LCS 1/4 Previous Notes + 5 & 2.823 & 26.137 & 73.6 \\
 Hybrid (FNC 16 and LCS 1/3) & 2.135 & 24.625 & 3.5 \\
-\bottomrule()
 \end{longtable}
 
 The results of this study are shown in Table \ref{tab:cleancompare}.
@@ -1773,14 +1778,16 @@ This may result in a dataset like Table \ref{tab:months}.
 
 \begin{longtable}[]{@{}ll@{}}
 \caption{Dataset of misspelled months \label{tab:months}}\tabularnewline
-\toprule()
+\toprule\noalign{}
 Name & Month \\
-\midrule()
+\midrule\noalign{}
 \endfirsthead
-\toprule()
+\toprule\noalign{}
 Name & Month \\
-\midrule()
+\midrule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 Billy & Mach \\
 Jimmy & Apil \\
 Frances & Mae \\
@@ -1790,7 +1797,6 @@ Bobby & Agust \\
 Tammy & Febrey \\
 Greg & Agast \\
 Benny & Jun \\
-\bottomrule()
 \end{longtable}
 
 We may then want to match the children's written months to their correctly spelled counterparts.
@@ -1906,14 +1912,16 @@ The ranking of the collocations remains fairly consistent, aside from difference
 
 \begin{longtable}[]{@{}lll@{}}
 \caption{Table of Collocation Frequencies \label{tab:nonfuzzycount}}\tabularnewline
-\toprule()
+\toprule\noalign{}
 collocation & nonfuzzy count & fuzzy count \\
-\midrule()
+\midrule\noalign{}
 \endfirsthead
-\toprule()
+\toprule\noalign{}
 collocation & nonfuzzy count & fuzzy count \\
-\midrule()
+\midrule\noalign{}
 \endhead
+\bottomrule\noalign{}
+\endlastfoot
 discharging a firearm in a & 134 & 151.19 \\
 firearm in a place of & 133 & 139.43 \\
 a firearm in a place & 130 & 137.01 \\
@@ -1925,7 +1933,6 @@ been charged with willfully discharging & 76 & 83.24 \\
 has been charged with willfully & 75 & 78.75 \\
 cole has been charged with & 74 & 76.12 \\
 a place of business this & 74 & 88.34 \\
-\bottomrule()
 \end{longtable}
 
 The standardized frequency values remain fairly consistent throughout the testimony.
@@ -1997,15 +2004,40 @@ Another application of this type of analysis may be used in the evaluation of st
 \hypertarget{study2}{%
 \chapter{Jury Perception Revisited: This Time with Caricatures}\label{study2}}
 
+\hypertarget{background-2}{%
+\section{Background}\label{background-2}}
+
+\hypertarget{study-1}{%
+\subsection{Study 1}\label{study-1}}
+
+The results from the initial study found in Chapter \ref{study1} call into question the use of Likert response scales in this scenario, as well as the use of a transcript testimony format.
+
+Responses pertaining to the credibility of the expert, as well as the reliability and scientificity of the evidence, suffered from scale compression when a Likert scale was used - participants indicated overall confidence in credibility, reliability, and scientificity by mainly selecting the two highest categories of each scale.
+This lack of variation in scale responses makes it difficult to discern potential differences between treatment conditions.
+Due to this difficulty, we conducted a micro study in order to compare various response types, in order to determine substitute questions that may be more sensitive to scenario differences.
+
+Some participants left confused comments with regards to who the witnesses were testifying for.
+The transcript format may lend an air of impartiality to the witnesses, when they are in fact testifying for a specific side in the case.
+Also, the format of the testimony transcripts does not clearly identify the speaker with each line, instead using ``Q:'' and ``A:'' in most cases, as shown in Appendix \ref{study-2-changes}.
+This lack of visuals for tracking speakers is not representative of the courtroom setting, and may have contributed to the confusion expressed by a participant.
+Due to this potential issue, we strove to develop a general tool that can be used in online courtroom studies, making it easier to track sides/speakers, and with versatility in terms of race/gender
+
+\hypertarget{micro-study-on-response-type}{%
+\section{Micro Study on Response Type}\label{micro-study-on-response-type}}
+
+\hypertarget{methods-2}{%
+\subsection{Methods}\label{methods-2}}
+
+\hypertarget{study-format-1}{%
+\subsubsection{Study Format}\label{study-format-1}}
+
+\hypertarget{notes-1}{%
+\section{Notes}\label{notes-1}}
+
+The transcript for the second study can be found in Appendix \ref{study-2-changes}.
+
 \begin{itemize}
-\item
-  Study 2 changes can be found in Appendix \ref{study-2-changes}
-\item
-  When reading a transcript, experts may seem impartial when they are in fact called by the prosecution
-\item
-  There are few to no visuals to keep track of who is speaking, and what characters are present in a scenario
-\item
-  We wanted to develop a general tool that can be used in online courtroom studies, making it easier to track sides/speakers, and with versatility in terms of race/gender
+\tightlist
 \item
   Other changes:
 
@@ -2507,7 +2539,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2023-07-05 12:59:01.
+This version of the thesis was generated on 2023-08-15 15:19:06.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -2522,145 +2554,124 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2023-07-05
-##  pandoc   2.19.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
+##  date     2023-08-15
+##  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------
-##  ! package            * version    date (UTC) lib source
-##    ade4                 1.7-22     2023-02-06 [1] CRAN (R 4.2.2)
-##    assertthat           0.2.1      2019-03-21 [1] CRAN (R 4.2.1)
-##    backports            1.4.1      2021-12-13 [1] CRAN (R 4.2.0)
-##    bit                  4.0.4      2020-08-04 [1] CRAN (R 4.2.1)
-##    bit64                4.0.5      2020-08-30 [1] CRAN (R 4.2.1)
-##    bookdown             0.32       2023-01-17 [1] CRAN (R 4.2.2)
-##    broom                1.0.0      2022-07-01 [1] CRAN (R 4.2.1)
-##    cachem               1.0.6      2021-08-19 [1] CRAN (R 4.2.1)
-##    callr                3.7.3      2022-11-02 [1] CRAN (R 4.2.2)
-##    cellranger           1.1.0      2016-07-27 [1] CRAN (R 4.2.1)
-##    checkmate            2.1.0      2022-04-21 [1] CRAN (R 4.2.1)
-##    cli                  3.4.1      2022-09-23 [1] CRAN (R 4.2.2)
-##    colorspace           2.0-3      2022-02-21 [1] CRAN (R 4.2.1)
-##    crayon               1.5.2      2022-09-29 [1] CRAN (R 4.2.2)
-##    data.table           1.14.2     2021-09-27 [1] CRAN (R 4.2.1)
-##    DBI                  1.1.3      2022-06-18 [1] CRAN (R 4.2.1)
-##    dbplyr               2.2.1      2022-06-27 [1] CRAN (R 4.2.1)
-##    devtools           * 2.4.5      2022-10-11 [1] CRAN (R 4.2.2)
-##    DiagrammeR         * 1.0.9      2022-03-05 [1] CRAN (R 4.2.3)
-##    digest               0.6.29     2021-12-01 [1] CRAN (R 4.2.1)
-##    dplyr              * 1.0.10     2022-09-01 [1] CRAN (R 4.2.1)
-##    ellipsis             0.3.2      2021-04-29 [1] CRAN (R 4.2.1)
-##    evaluate             0.20       2023-01-17 [1] CRAN (R 4.2.2)
-##    fansi                1.0.4      2023-01-22 [1] CRAN (R 4.2.2)
-##    farver               2.1.1      2022-07-06 [1] CRAN (R 4.2.1)
-##    fastmap              1.1.0      2021-01-25 [1] CRAN (R 4.2.1)
-##    fastmatch            1.1-3      2021-07-23 [1] CRAN (R 4.2.0)
-##    forcats            * 0.5.2      2022-08-19 [1] CRAN (R 4.2.1)
-##    formatR              1.12       2022-03-31 [1] CRAN (R 4.2.2)
-##    fs                   1.5.2      2021-12-08 [1] CRAN (R 4.2.1)
-##    fuzzyjoin          * 0.1.6      2020-05-15 [1] CRAN (R 4.2.3)
-##    gargle               1.2.0      2021-07-02 [1] CRAN (R 4.2.1)
-##    generics             0.1.3      2022-07-05 [1] CRAN (R 4.2.1)
-##    GGally             * 2.1.2      2021-06-21 [1] CRAN (R 4.2.2)
-##    ggblend            * 0.0.0.9000 2022-12-16 [1] Github (mjskay/ggblend@15e7544)
-##    ggdendro             0.1.23     2022-02-16 [1] CRAN (R 4.2.2)
-##    ggmosaic           * 0.3.3      2021-02-23 [1] CRAN (R 4.2.1)
-##    ggpcp              * 0.2.0      2022-11-17 [1] Github (heike/ggpcp@f86c04e)
-##    ggplot2            * 3.4.2      2023-04-03 [1] CRAN (R 4.2.3)
-##    ggrepel            * 0.9.1      2021-01-15 [1] CRAN (R 4.2.1)
-##    git2r                0.30.1     2022-03-16 [1] CRAN (R 4.2.1)
-##    glue                 1.6.2      2022-02-24 [1] CRAN (R 4.2.1)
-##    googledrive          2.0.0      2021-07-08 [1] CRAN (R 4.2.1)
-##    googlesheets4        1.0.1      2022-08-13 [1] CRAN (R 4.2.1)
-##    gridExtra          * 2.3        2017-09-09 [1] CRAN (R 4.2.1)
-##    gtable               0.3.1      2022-09-01 [1] CRAN (R 4.2.1)
-##    haven                2.5.1      2022-08-22 [1] CRAN (R 4.2.1)
-##    hms                  1.1.2      2022-08-19 [1] CRAN (R 4.2.1)
-##    htmlTable            2.4.1      2022-07-07 [1] CRAN (R 4.2.1)
-##    htmltools            0.5.4      2022-12-07 [1] CRAN (R 4.2.2)
-##    htmlwidgets          1.6.1      2023-01-07 [1] CRAN (R 4.2.2)
-##    httpuv               1.6.5      2022-01-05 [1] CRAN (R 4.2.1)
-##    httr                 1.4.5      2023-02-24 [1] CRAN (R 4.2.2)
-##    huskydown          * 0.0.5      2022-12-13 [1] Github (benmarwick/huskydown@addb48e)
-##    jpeg               * 0.1-10     2022-11-29 [1] CRAN (R 4.2.2)
-##    jsonlite             1.8.4      2022-12-06 [1] CRAN (R 4.2.2)
-##    kableExtra         * 1.3.4      2021-02-20 [1] CRAN (R 4.2.2)
-##    knitr              * 1.42       2023-01-25 [1] CRAN (R 4.2.2)
-##    labeling             0.4.2      2020-10-20 [1] CRAN (R 4.2.0)
-##    later                1.3.0      2021-08-18 [1] CRAN (R 4.2.1)
-##    lattice              0.20-45    2021-09-22 [2] CRAN (R 4.2.1)
-##    lazyeval             0.2.2      2019-03-15 [1] CRAN (R 4.2.1)
-##    lifecycle            1.0.3      2022-10-07 [1] CRAN (R 4.2.2)
-##    lubridate            1.8.0      2021-10-07 [1] CRAN (R 4.2.1)
-##    magrittr             2.0.3      2022-03-30 [1] CRAN (R 4.2.1)
-##    MASS                 7.3-57     2022-04-22 [2] CRAN (R 4.2.1)
-##    Matrix               1.5-3      2022-11-11 [1] CRAN (R 4.2.2)
-##    memoise              2.0.1      2021-11-26 [1] CRAN (R 4.2.1)
-##    mime                 0.12       2021-09-28 [1] CRAN (R 4.2.0)
-##    miniUI               0.1.1.1    2018-05-18 [1] CRAN (R 4.2.1)
-##    modelr               0.1.9      2022-08-19 [1] CRAN (R 4.2.1)
-##    munsell              0.5.0      2018-06-12 [1] CRAN (R 4.2.1)
-##    nsyllable            1.0.1      2022-02-28 [1] CRAN (R 4.2.2)
-##    patchwork          * 1.1.2      2022-08-19 [1] CRAN (R 4.2.1)
-##    pillar               1.9.0      2023-03-22 [1] CRAN (R 4.2.3)
-##    pkgbuild             1.4.0      2022-11-27 [1] CRAN (R 4.2.2)
-##    pkgconfig            2.0.3      2019-09-22 [1] CRAN (R 4.2.1)
-##    pkgload              1.3.2      2022-11-16 [1] CRAN (R 4.2.2)
-##    plotly               4.10.0     2021-10-09 [1] CRAN (R 4.2.1)
-##    plyr               * 1.8.7      2022-03-24 [1] CRAN (R 4.2.1)
-##    prettyunits          1.1.1      2020-01-24 [1] CRAN (R 4.2.1)
-##    processx             3.7.0      2022-07-07 [1] CRAN (R 4.2.1)
-##    profvis              0.3.7      2020-11-02 [1] CRAN (R 4.2.1)
-##    promises             1.2.0.1    2021-02-11 [1] CRAN (R 4.2.1)
-##    ps                   1.7.1      2022-06-18 [1] CRAN (R 4.2.1)
-##    PTXQC              * 1.0.14     2022-09-20 [1] CRAN (R 4.2.2)
-##    purrr              * 0.3.5      2022-10-06 [1] CRAN (R 4.2.2)
-##    quanteda           * 3.2.4      2022-12-08 [1] CRAN (R 4.2.2)
-##    quanteda.textstats * 0.96       2022-09-19 [1] CRAN (R 4.2.2)
-##    R6                   2.5.1      2021-08-19 [1] CRAN (R 4.2.1)
-##    R6P                  0.3.0      2022-10-02 [1] CRAN (R 4.2.2)
-##    RColorBrewer         1.1-3      2022-04-03 [1] CRAN (R 4.2.0)
-##    Rcpp                 1.0.9      2022-07-08 [1] CRAN (R 4.2.1)
-##  D RcppParallel         5.1.6      2023-01-09 [1] CRAN (R 4.2.2)
-##    readr              * 2.1.2      2022-01-30 [1] CRAN (R 4.2.1)
-##    readtext           * 0.81       2021-07-14 [1] CRAN (R 4.2.2)
-##    readxl               1.4.1      2022-08-17 [1] CRAN (R 4.2.1)
-##    remotes              2.4.2      2021-11-30 [1] CRAN (R 4.2.3)
-##    reprex               2.0.2      2022-08-17 [1] CRAN (R 4.2.1)
-##    reshape              0.8.9      2022-04-12 [1] CRAN (R 4.2.1)
-##    reshape2             1.4.4      2020-04-09 [1] CRAN (R 4.2.1)
-##    rlang                1.1.0      2023-03-14 [1] CRAN (R 4.2.3)
-##    rmarkdown            2.20       2023-01-19 [1] CRAN (R 4.2.2)
-##    rstudioapi           0.14       2022-08-22 [1] CRAN (R 4.2.1)
-##    rvest                1.0.3      2022-08-19 [1] CRAN (R 4.2.1)
-##    scales               1.2.1      2022-08-20 [1] CRAN (R 4.2.1)
-##    seqinr               4.2-23     2022-11-28 [1] CRAN (R 4.2.2)
-##    sessioninfo          1.2.2      2021-12-06 [1] CRAN (R 4.2.1)
-##    shiny                1.7.4      2022-12-15 [1] CRAN (R 4.2.3)
-##    stopwords            2.3        2021-10-28 [1] CRAN (R 4.2.2)
-##    stringdist         * 0.9.10     2022-11-07 [1] CRAN (R 4.2.2)
-##    stringi            * 1.7.8      2022-07-11 [1] CRAN (R 4.2.1)
-##    stringr            * 1.5.0      2022-12-02 [1] CRAN (R 4.2.2)
-##    svglite              2.1.0      2022-02-03 [1] CRAN (R 4.2.1)
-##    systemfonts          1.0.4      2022-02-11 [1] CRAN (R 4.2.1)
-##    tibble             * 3.1.8      2022-07-22 [1] CRAN (R 4.2.1)
-##    tidyr              * 1.2.1      2022-09-08 [1] CRAN (R 4.2.1)
-##    tidyselect           1.2.0      2022-10-10 [1] CRAN (R 4.2.2)
-##    tidyverse          * 1.3.2      2022-07-18 [1] CRAN (R 4.2.1)
-##    tzdb                 0.3.0      2022-03-28 [1] CRAN (R 4.2.1)
-##    UpSetR               1.4.0      2019-05-22 [1] CRAN (R 4.2.2)
-##    urlchecker           1.0.1      2021-11-30 [1] CRAN (R 4.2.1)
-##    usethis            * 2.1.6      2022-05-25 [1] CRAN (R 4.2.2)
-##    utf8                 1.2.3      2023-01-31 [1] CRAN (R 4.2.2)
-##    vctrs                0.5.2      2023-01-23 [1] CRAN (R 4.2.2)
-##    viridisLite          0.4.1      2022-08-22 [1] CRAN (R 4.2.1)
-##    visNetwork           2.1.0      2021-09-29 [1] CRAN (R 4.2.1)
-##    vroom                1.5.7      2021-11-30 [1] CRAN (R 4.2.1)
-##    webshot              0.5.4      2022-09-26 [1] CRAN (R 4.2.2)
-##    withr                2.5.0      2022-03-03 [1] CRAN (R 4.2.1)
-##    xfun                 0.37       2023-01-31 [1] CRAN (R 4.2.2)
-##    xml2                 1.3.3      2021-11-30 [1] CRAN (R 4.2.1)
-##    xtable               1.8-4      2019-04-21 [1] CRAN (R 4.2.1)
-##    yaml                 2.3.7      2023-01-23 [1] CRAN (R 4.2.2)
+##  ! package            * version date (UTC) lib source
+##    assertthat           0.2.1   2019-03-21 [1] CRAN (R 4.3.1)
+##    bit                  4.0.5   2022-11-15 [1] CRAN (R 4.3.1)
+##    bit64                4.0.5   2020-08-30 [1] CRAN (R 4.3.1)
+##    bookdown             0.34    2023-05-09 [1] CRAN (R 4.3.1)
+##    cachem               1.0.6   2021-08-19 [1] CRAN (R 4.2.1)
+##    callr                3.7.3   2022-11-02 [1] CRAN (R 4.3.1)
+##    cli                  3.4.1   2022-09-23 [1] CRAN (R 4.2.2)
+##    colorspace           2.0-3   2022-02-21 [1] CRAN (R 4.2.1)
+##    crayon               1.5.2   2022-09-29 [1] CRAN (R 4.3.1)
+##    data.table           1.14.2  2021-09-27 [1] CRAN (R 4.2.1)
+##    devtools           * 2.4.5   2022-10-11 [1] CRAN (R 4.3.1)
+##    DiagrammeR         * 1.0.10  2023-05-18 [1] CRAN (R 4.3.1)
+##    digest               0.6.29  2021-12-01 [1] CRAN (R 4.2.1)
+##    dplyr              * 1.1.2   2023-04-20 [1] CRAN (R 4.2.3)
+##    ellipsis             0.3.2   2021-04-29 [1] CRAN (R 4.2.1)
+##    evaluate             0.21    2023-05-05 [1] CRAN (R 4.3.1)
+##    fansi                1.0.4   2023-01-22 [1] CRAN (R 4.2.2)
+##    farver               2.1.1   2022-07-06 [1] CRAN (R 4.3.1)
+##    fastmap              1.1.0   2021-01-25 [1] CRAN (R 4.2.1)
+##    fastmatch            1.1-3   2021-07-23 [1] CRAN (R 4.3.0)
+##    forcats            * 1.0.0   2023-01-29 [1] CRAN (R 4.3.1)
+##    formatR              1.14    2023-01-17 [1] CRAN (R 4.3.1)
+##    fs                   1.6.3   2023-07-20 [1] CRAN (R 4.2.3)
+##    fuzzyjoin          * 0.1.6   2020-05-15 [1] CRAN (R 4.3.1)
+##    generics             0.1.3   2022-07-05 [1] CRAN (R 4.3.1)
+##    GGally             * 2.1.2   2021-06-21 [1] CRAN (R 4.3.1)
+##    ggblend            * 0.1.0   2023-05-22 [1] CRAN (R 4.3.1)
+##    ggmosaic           * 0.3.3   2021-02-23 [1] CRAN (R 4.3.1)
+##    ggpcp              * 0.2.0   2022-11-28 [1] CRAN (R 4.3.1)
+##    ggplot2            * 3.4.2   2023-04-03 [1] CRAN (R 4.3.1)
+##    ggrepel            * 0.9.3   2023-02-03 [1] CRAN (R 4.3.1)
+##    git2r                0.32.0  2023-04-12 [1] CRAN (R 4.3.1)
+##    glue                 1.6.2   2022-02-24 [1] CRAN (R 4.2.1)
+##    gridExtra          * 2.3     2017-09-09 [1] CRAN (R 4.3.1)
+##    gtable               0.3.3   2023-03-21 [1] CRAN (R 4.3.1)
+##    hms                  1.1.3   2023-03-21 [1] CRAN (R 4.3.1)
+##    htmltools            0.5.4   2022-12-07 [1] CRAN (R 4.2.2)
+##    htmlwidgets          1.6.2   2023-03-17 [1] CRAN (R 4.3.1)
+##    httpuv               1.6.5   2022-01-05 [1] CRAN (R 4.2.1)
+##    httr                 1.4.6   2023-05-08 [1] CRAN (R 4.3.1)
+##    huskydown          * 0.0.5   2022-12-13 [1] Github (benmarwick/huskydown@addb48e)
+##    jpeg               * 0.1-10  2022-11-29 [1] CRAN (R 4.3.0)
+##    jsonlite             1.8.4   2022-12-06 [1] CRAN (R 4.2.2)
+##    kableExtra         * 1.3.4   2021-02-20 [1] CRAN (R 4.2.3)
+##    knitr              * 1.43    2023-05-25 [1] CRAN (R 4.3.1)
+##    labeling             0.4.2   2020-10-20 [1] CRAN (R 4.3.0)
+##    later                1.3.0   2021-08-18 [1] CRAN (R 4.2.1)
+##    lattice              0.20-45 2021-09-22 [2] CRAN (R 4.2.1)
+##    lazyeval             0.2.2   2019-03-15 [1] CRAN (R 4.2.1)
+##    lifecycle            1.0.3   2022-10-07 [1] CRAN (R 4.3.1)
+##    lubridate          * 1.9.2   2023-02-10 [1] CRAN (R 4.3.1)
+##    magrittr             2.0.3   2022-03-30 [1] CRAN (R 4.2.1)
+##    Matrix               1.6-0   2023-07-08 [1] CRAN (R 4.3.1)
+##    memoise              2.0.1   2021-11-26 [1] CRAN (R 4.3.1)
+##    mime                 0.12    2021-09-28 [1] CRAN (R 4.2.0)
+##    miniUI               0.1.1.1 2018-05-18 [1] CRAN (R 4.3.1)
+##    munsell              0.5.0   2018-06-12 [1] CRAN (R 4.3.1)
+##    nsyllable            1.0.1   2022-02-28 [1] CRAN (R 4.3.1)
+##    patchwork          * 1.1.2   2022-08-19 [1] CRAN (R 4.3.1)
+##    pillar               1.9.0   2023-03-22 [1] CRAN (R 4.3.1)
+##    pkgbuild             1.4.2   2023-06-26 [1] CRAN (R 4.3.1)
+##    pkgconfig            2.0.3   2019-09-22 [1] CRAN (R 4.3.1)
+##    pkgload              1.3.2.1 2023-07-08 [1] CRAN (R 4.3.1)
+##    plotly               4.10.2  2023-06-03 [1] CRAN (R 4.3.1)
+##    plyr               * 1.8.8   2022-11-11 [1] CRAN (R 4.3.1)
+##    prettyunits          1.1.1   2020-01-24 [1] CRAN (R 4.3.1)
+##    processx             3.7.0   2022-07-07 [1] CRAN (R 4.2.1)
+##    profvis              0.3.7   2020-11-02 [1] CRAN (R 4.2.1)
+##    promises             1.2.0.1 2021-02-11 [1] CRAN (R 4.2.1)
+##    ps                   1.7.1   2022-06-18 [1] CRAN (R 4.2.1)
+##    purrr              * 1.0.1   2023-01-10 [1] CRAN (R 4.2.3)
+##    quanteda           * 3.3.1   2023-05-18 [1] CRAN (R 4.3.1)
+##    quanteda.textstats * 0.96.2  2023-04-27 [1] CRAN (R 4.3.1)
+##    R6                   2.5.1   2021-08-19 [1] CRAN (R 4.3.1)
+##    RColorBrewer         1.1-3   2022-04-03 [1] CRAN (R 4.3.0)
+##    Rcpp                 1.0.9   2022-07-08 [1] CRAN (R 4.2.1)
+##  D RcppParallel         5.1.7   2023-02-27 [1] CRAN (R 4.3.1)
+##    readr              * 2.1.4   2023-02-10 [1] CRAN (R 4.3.1)
+##    readtext           * 0.90    2023-06-03 [1] CRAN (R 4.3.1)
+##    remotes              2.4.2   2021-11-30 [1] CRAN (R 4.3.1)
+##    reshape              0.8.9   2022-04-12 [1] CRAN (R 4.3.1)
+##    rlang                1.1.0   2023-03-14 [1] CRAN (R 4.2.3)
+##    rmarkdown            2.20    2023-01-19 [1] CRAN (R 4.2.2)
+##    rstudioapi           0.15.0  2023-07-07 [1] CRAN (R 4.3.1)
+##    rvest                1.0.3   2022-08-19 [1] CRAN (R 4.3.1)
+##    scales               1.2.1   2022-08-20 [1] CRAN (R 4.3.1)
+##    sessioninfo          1.2.2   2021-12-06 [1] CRAN (R 4.3.1)
+##    shiny                1.7.4.1 2023-07-06 [1] CRAN (R 4.3.1)
+##    stopwords            2.3     2021-10-28 [1] CRAN (R 4.3.1)
+##    stringdist         * 0.9.10  2022-11-07 [1] CRAN (R 4.3.0)
+##    stringi            * 1.7.8   2022-07-11 [1] CRAN (R 4.2.1)
+##    stringr            * 1.5.0   2022-12-02 [1] CRAN (R 4.3.1)
+##    svglite              2.1.1   2023-01-10 [1] CRAN (R 4.3.1)
+##    systemfonts          1.0.4   2022-02-11 [1] CRAN (R 4.3.1)
+##    tibble             * 3.2.1   2023-03-20 [1] CRAN (R 4.2.3)
+##    tidyr              * 1.2.1   2022-09-08 [1] CRAN (R 4.2.1)
+##    tidyselect           1.2.0   2022-10-10 [1] CRAN (R 4.3.1)
+##    tidyverse          * 2.0.0   2023-02-22 [1] CRAN (R 4.3.1)
+##    timechange           0.2.0   2023-01-11 [1] CRAN (R 4.3.1)
+##    tzdb                 0.4.0   2023-05-12 [1] CRAN (R 4.3.1)
+##    urlchecker           1.0.1   2021-11-30 [1] CRAN (R 4.3.1)
+##    usethis            * 2.2.2   2023-07-06 [1] CRAN (R 4.3.1)
+##    utf8                 1.2.3   2023-01-31 [1] CRAN (R 4.2.2)
+##    vctrs                0.6.3   2023-06-14 [1] CRAN (R 4.2.3)
+##    viridisLite          0.4.2   2023-05-02 [1] CRAN (R 4.3.1)
+##    visNetwork           2.1.2   2022-09-29 [1] CRAN (R 4.3.1)
+##    vroom                1.6.3   2023-04-28 [1] CRAN (R 4.3.1)
+##    webshot              0.5.5   2023-06-26 [1] CRAN (R 4.3.1)
+##    withr                2.5.0   2022-03-03 [1] CRAN (R 4.3.1)
+##    xfun                 0.39    2023-04-20 [1] CRAN (R 4.2.3)
+##    xml2                 1.3.5   2023-07-06 [1] CRAN (R 4.3.1)
+##    xtable               1.8-4   2019-04-21 [1] CRAN (R 4.3.1)
+##    yaml                 2.3.7   2023-01-23 [1] CRAN (R 4.2.2)
 ## 
 ##  [1] C:/Users/rrogers9/AppData/Local/R/win-library/4.2
 ##  [2] C:/Program Files/R/R-4.2.1/library
@@ -2684,6 +2695,9 @@ The computational environment that was used to generate this version is as follo
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-abramsonJurySelectionWeeds2018}{}}%
+Abramson, J. (2018). Jury {Selection} in the {Weeds}: {Whither} the {Democratic} {Shore}? \emph{University of Michigan Journal of Law Reform}, (52.1), 1. http://doi.org/\href{https://doi.org/10.36646/mjlr.52.1.jury}{10.36646/mjlr.52.1.jury}
+
 \leavevmode\vadjust pre{\hypertarget{ref-agarmemo}{}}%
 Agar II, J. (2021). Dealing with {Alternative} {Firearms} {Opinion} {Terminology}. Retrieved from \url{https://s3.documentcloud.org/documents/21200515/dealing-with-alternate-firearms-opinion-terminology.pdf}
 
@@ -2769,7 +2783,7 @@ Garrett, B., Scurich, N., \& Crozier, W. E. (2020). Mock jurors' evaluation of f
 Glrx. (2021). Cartridge cross section. Retrieved from \url{https://commons.wikimedia.org/wiki/File:Cartridge_cross_section.svg}
 
 \leavevmode\vadjust pre{\hypertarget{ref-gremi}{}}%
-Gremi-ch. (2009). English: {A} 5.66x45mm (.223 rem.) Boat tailed {FMJ} spitzer bullet laying on a ruler with a scale in centimeter. Retrieved from \url{https://commons.wikimedia.org/wiki/File:GP90-bullet.JPG?uselang=fr}
+Gremi-ch. (2009). English: {A} 5.66x45mm (.223 rem.) boat tailed {FMJ} spitzer bullet laying on a ruler with a scale in centimeter. Retrieved from \url{https://commons.wikimedia.org/wiki/File:GP90-bullet.JPG?uselang=fr}
 
 \leavevmode\vadjust pre{\hypertarget{ref-gurleyEffectsNeuroimagingBrain2008}{}}%
 Gurley, J. R., \& Marcus, D. K. (2008). The effects of neuroimaging and brain injury on insanity defenses. \emph{Behavioral Sciences \& the Law}, \emph{26}(1), 85--97. http://doi.org/\href{https://doi.org/10.1002/bsl.797}{10.1002/bsl.797}

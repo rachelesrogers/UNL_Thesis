@@ -1,10 +1,35 @@
 # Jury Perception Revisited: This Time with Caricatures {#study2}
 
-<!--- Chibis -->
-- Study 2 changes can be found in Appendix \@ref(study-2-changes)
-- When reading a transcript, experts may seem impartial when they are in fact called by the prosecution
-- There are few to no visuals to keep track of who is speaking, and what characters are present in a scenario
-- We wanted to develop a general tool that can be used in online courtroom studies, making it easier to track sides/speakers, and with versatility in terms of race/gender
+## Background
+
+
+### Study 1
+
+The results from the initial study found in Chapter \@ref(study1) call into question the use of Likert response scales in this scenario, as well as the use of a transcript testimony format.
+
+Responses pertaining to the credibility of the expert, as well as the reliability and scientificity of the evidence, suffered from scale compression when a Likert scale was used - participants indicated overall confidence in credibility, reliability, and scientificity by mainly selecting the two highest categories of each scale.
+This lack of variation in scale responses makes it difficult to discern potential differences between treatment conditions.
+Due to this difficulty, we conducted a micro study in order to compare various response types, in order to determine substitute questions that may be more sensitive to scenario differences.
+
+Some participants left confused comments with regards to who the witnesses were testifying for.
+The transcript format may lend an air of impartiality to the witnesses, when they are in fact testifying for a specific side in the case.
+Also, the format of the testimony transcripts does not clearly identify the speaker with each line, instead using "Q:" and "A:" in most cases, as shown in Appendix \@ref(study-2-changes).
+This lack of visuals for tracking speakers is not representative of the courtroom setting, and may have contributed to the confusion expressed by a participant.
+Due to this potential issue, we strove to develop a general tool that can be used in online courtroom studies, making it easier to track sides/speakers, and with versatility in terms of race/gender
+
+
+
+## Micro Study on Response Type
+
+### Methods
+
+#### Study Format
+
+
+## Notes
+
+The transcript for the second study can be found in Appendix \@ref(study-2-changes).
+
 
 - Other changes:
   - combating scale compression through jury instructions before deliberation

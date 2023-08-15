@@ -15,7 +15,7 @@ require(quanteda.corpora)
 library(purrr)
 library(ggrepel)
 library(stringi)
-library(PTXQC)
+#library(PTXQC)
 library(DiagrammeR)
 library(fuzzyjoin)
 
