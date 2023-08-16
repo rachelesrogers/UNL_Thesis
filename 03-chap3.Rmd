@@ -22,7 +22,11 @@ Due to this potential issue, we strove to develop a general tool that can be use
 
 In order to minimize the chance of confounding typos as seen in Study 1, one master file is used with all lines of testimony, labelled by the scenario in which the testimony occurs.
 Thus, there is no longer multiple files of repeated text.
-Unique identification is used throughout the database files instead of relying on unique fingerprints, so the demographics section can more easilty be linked to the final results.
+Unique identification is used throughout the database files instead of relying on unique fingerprints, so the demographics section can more easily be linked to the final results.
+
+### Study Visualization
+
+
 
 ## Micro Study on Response Type
 

@@ -434,3 +434,12 @@ grid.arrange(rasterGrob(judge),rasterGrob(forensic_science),rasterGrob(lawyer),
 
 include_graphics("images/Jury.jpg")
 ```
+
+These images were placed in their respective speech bubbles in order to indicate the speaker, with color coding to indicate which side witnesses were testifying for: the prosecution's side had warmer colors, the defense had cooler colors, and the judge was a neutral grey. 
+
+```{r screenshots, echo=FALSE, warning=FALSE}
+
+include_graphics("images/Study2_Screenshot.jpg")
+
+include_graphics("images/Study2_Screenshot2.jpg")
+```
