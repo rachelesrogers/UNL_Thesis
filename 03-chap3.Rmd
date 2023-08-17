@@ -26,7 +26,12 @@ Unique identification is used throughout the database files instead of relying o
 
 ### Study Visualization
 
-
+Appendix \@ref(study-2-changes) shows the characters that have been developed for this study, as well as a screenshot of the study format.
+These characters were drawn so that the clothes and heads can be interchanged, providing a wide variety of characters for potential scenarios.
+One difficulty in including drawn figures with realistic skin tones and figures is the influence of perceived race or gender on the participants' judgements.
+@ImplicitRaceAttitudes found a relationship between implicit racial bias and the perceived trustworthiness of individuals based on images of black and white males.
+They also found that 80% of participants exhibited pro-white implicit bias.
+Because of this potential bias introduced by visual figures, we plan to conduct a study in order to determine how these figures are perceived.
 
 ## Micro Study on Response Type
 
