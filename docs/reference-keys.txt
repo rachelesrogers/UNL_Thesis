@@ -50,6 +50,7 @@ tab:months
 tab:fuzzymonth
 fig:notecount
 tab:nonfuzzycount
+fig:completiontime2
 literature-review
 introduction
 bullet-matching-background
@@ -119,6 +120,7 @@ micro-study-on-response-type
 methods-2
 study-format-1
 prolific-1
+results-2
 notes-1
 testimony-transcripts
 firearm-examiner

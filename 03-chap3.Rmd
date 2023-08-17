@@ -63,7 +63,7 @@ The format of the numeric likelihood question depends on the participant's opini
 If the participant thought that the defendant was guilty, they were asked to provide the likelihood that the defendant was innocent.
 If the participant thought that the defendant was innocent, they were asked to provide the likelihood that the defendant was guilty.
 In both cases, the numerator had to be less than or equal to the denominator.
-Similarly, if individuals thought that the defendant was guilty, they were asked how much they were willing to be that the defendant was guilty, if hypothetically researchers provided them with $50 and they would double their money if they were correct, and vice versa.
+Similarly, if individuals thought that the defendant was guilty, they were asked how much they were willing to be that the defendant was guilty, if hypothetically researchers provided them with \$50 and they would double their money if they were correct, and vice versa.
 A final new question was open ended, and asked participants to provide their opinion of the defendant.
 
 Individuals were first asked to provide their opinion of the defendant, their conviction decision, and their personal opinion of the guilt of the defendant.
@@ -84,6 +84,37 @@ microstudy_clean <- microstudy %>% dplyr::filter(check=="9mm")
 Participants were recruited in a similar manner as Study 1 in terms of the representative sample and self-screened jury requirements through Prolific.
 In the first part of the study, some individuals encountered technical issues.
 These technical issues appeared to happen to more individuals in the match condition compared to the non match condition, with a total of `r sum(microstudy$conclusion.x=="Match")` individuals in the match condition and `r sum(microstudy$conclusion.x=="NoMatch")` participants in the non-match condition, for a total of `r dim(microstudy)[1]` participants.
+Participants were paid \$4.00 with a median completion time of 14 minutes and 47 seconds according to Prolific, for an average reward of \$16.23 per hour.
+Figure \@ref(fig:completiontime2) shows the time spent after the completion of the first demographics page to the completion of the final results page.
+Because it does not include the informed consent and the time to complete the first demographics page, its time estimates appear to be less than those found via Prolific.
+
+
+```{r}
+#| completiontime2,
+#| fig.cap= "Completion Time by Condition",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+microstudy$completion_time <- microstudy$actual_time3-microstudy$actual_time1
+
+ggplot(microstudy, aes(x = completion_time, fill=conclusion.x)) +
+    geom_density(alpha=0.75, color=NA) +
+  ggtitle("Histogram of Completion Time") +
+  xlab("Completion Time in Minutes")+
+  scale_fill_manual(name="Conclusion", values = c("#FF8E00", "#037AC7"))+
+  theme_bw()
+
+
+```
+
+### Results
+
+
 
 ## Notes
 
