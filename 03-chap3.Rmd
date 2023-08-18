@@ -266,6 +266,9 @@ ggplot(microstudy_clean) +
 Figure \@ref(fig:betting) indicates how much participants said they would be willing to bet that the defendant was either guilty or innocent, if provided with \$50.
 If the participant indicated that they thought the defendant was innocent, they were asked how much they would be willing to bet that the defendant was innocent, and vice versa.
 Two individuals did not answer the question, while three individuals selected values larger than 50: two in the non-match condition who thought Cole was innocent (\$58 and \$100), and one in the match condition who thought Cole was guilty (\$100).
+This figure indicates that most people who thought Cole was innocent in the non-match condition were willing to bet the full amount.
+It also appears that people tended to select values around multiples of 5, and those in the match condition selected less extreme values (for both those who thought the defendant was guilty and those who thought the defendant was innocent) than what is seen in those with the non-match condition who thought the defendant was innocent.
+In this way, the betting response is similar both to the strength of evidence response and the probability of committing the crime response.
 
 ```{r}
 #| betting,
@@ -297,6 +300,56 @@ ggplot(microstudy_clean) +
 
 
 ```
+
+The remaining questions relate to the likelihood that the defendant committed the crime.
+One question, shown in Figure \@ref(fig:fixedlike), allowed participants to select the likelihood that the defendant committed the crime from a multiple choice scale.
+Based on the scale used, this question remained the same regardless of the participant's opinion on the guilt of the defendant.
+This scale does not provide a linear distance between intervals, but instead changes by multiples of 10 in the denominator (ex. one category is 1 in 10, and the next category is 1 in 100).
+The exception is the endpoints, which are "Impossible to be guilty" and "Certain to be guilty", as well as the midpoint of 1 chance in 2.
+In this case, the non-match scale is not encountering the ceiling or floor effect that has been seen in previous scales, as participants did not overwhelmingly select the lowest value.
+Instead, participants are distributed mainly throughout the lower half of the scale, while those in the match condition tended to be a little closer to the center.
+Thus, the multiple choice likelihood scale appears to have less scale compression than seen previously in the other response types.
+
+```{r}
+#| fixedlike,
+#| fig.cap= "Multiple Choice Likelihood",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+microstudy_clean$fixed_like = factor(
+  microstudy_clean$fixed_like,
+  levels = c(
+    "Impossible that he is guilty",
+    "About 1 chance in 10,000",
+    "About 1 chance in 1,000",
+    "About 1 chance in 100",
+    "About 1 chance in 10",
+    "1 chance in 2 (fifty-fifty chance)",
+    "About 9 chances in 10",
+    "About 99 chances in 100",
+    "About 999 chances in 1,000",
+    "About 9,999 chances in 10,000",
+    "Certain to be guilty"
+  )
+)
+
+ggplot(microstudy_clean) +
+  geom_bar(aes(x=fixed_like, fill=conclusion.x), position="dodge") +
+  ggtitle("What is the Likelihood that the Defendant is Guilty?") +
+  scale_fill_manual(values = c("grey80","seagreen"), name="Condition")+
+  ylab("Count")+
+  xlab("Likelihood")+
+  theme_bw()+
+  scale_x_discrete(labels = wrap_format(10))
+
+
+```
+
 
 #### Scale Comparison
 
