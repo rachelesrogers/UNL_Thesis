@@ -114,7 +114,42 @@ ggplot(microstudy, aes(x = completion_time, fill=conclusion.x)) +
 
 ### Results
 
+#### Participants
 
+```{r}
+#| demographics2,
+#| fig.cap= "Demographic Information",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+microstudy$age = factor(
+  microstudy$age,
+  levels = c(
+    "18 - 25",
+    "26 - 35",
+    "36 - 45",
+    "46 - 55",
+    "56 - 65",
+    "Over 65"
+  )
+)
+
+  ggplot(microstudy,
+         aes(x = age, fill = gender)) +
+  geom_bar(mapping = aes(y = after_stat(count), group = gender),
+           position = position_dodge(preserve = "single"), color="black") +
+  #  geom_histogram(stat="count", position="dodge")+
+  ggtitle("Algorithm Expert Testimony") +
+  scale_fill_manual(values = c("#E69F00", "#009E73", "#F0E442")) +
+  theme_bw()+
+  theme(axis.title.x = element_blank())
+
+```
 
 ## Notes
 

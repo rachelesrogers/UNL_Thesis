@@ -51,6 +51,7 @@ tab:fuzzymonth
 fig:notecount
 tab:nonfuzzycount
 fig:completiontime2
+fig:demographics2
 literature-review
 introduction
 bullet-matching-background
@@ -121,6 +122,7 @@ methods-2
 study-format-1
 prolific-1
 results-2
+participants-1
 notes-1
 testimony-transcripts
 firearm-examiner
