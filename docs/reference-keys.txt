@@ -53,6 +53,9 @@ tab:nonfuzzycount
 fig:completiontime2
 fig:demographics2
 fig:strength2
+fig:prob2
+fig:opinionguilt
+fig:betting
 literature-review
 introduction
 bullet-matching-background
@@ -124,7 +127,7 @@ study-format-1
 prolific-1
 results-2
 participants-1
-scale-compression
+questions-from-study-1
 scale-comparison
 notes-1
 testimony-transcripts

@@ -158,7 +158,10 @@ microstudy$age = factor(
   theme(axis.title.x = element_blank())
 
 ```
-#### Scale Compression
+#### Questions from Study 1
+
+`r round(sum(microstudy_clean$guilty=="Yes" & microstudy_clean$conclusion.x=="Match")/sum(microstudy_clean$conclusion.x=="Match")*100, 2)`\% (or `r sum(microstudy_clean$guilty=="Yes" & microstudy_clean$conclusion.x=="Match")` out of `r sum(microstudy_clean$conclusion.x=="Match")`) individuals who received the match condition chose to convict, while `r round(sum(microstudy_clean$guilty=="Yes" & microstudy_clean$conclusion.x=="NoMatch")/sum(microstudy_clean$conclusion.x=="NoMatch")*100, 2)`\% (or `r sum(microstudy_clean$guilty=="Yes" & microstudy_clean$conclusion.x=="NoMatch")` out of `r sum(microstudy_clean$conclusion.x=="NoMatch")`) participants who received the non-match condition chose to convict.
+This is a slightly lower proportion of individuals choosing to convict than that seen in the Match condition in the original study, although there is no algorithm present in this case.
 
 Figure \@ref(fig:strength2) shows participant responses to the strength of evidence in this study.
 As can be seen, those in the non-match category tended to choose the smallest value for the strength of evidence ("Not at all strong"), while in the case of the match condition, individuals tended to distribute their views of the strength of evidence more evenly.
@@ -199,6 +202,98 @@ ggplot(microstudy_clean) +
   xlab("Strength")+
   theme_bw()+
   scale_x_discrete(labels = wrap_format(10))
+
+
+```
+
+Figure \@ref(fig:prob2) demonstrates the participants' selected probabilities that the defendant committed the crime.
+As in the case of the strength of evidence, the graph resembles the probability graph found in Study 1, where there is a higher peak of extreme values for the non-match conditions than for the match condition.
+There does not appear to be much difference in the density curves based on the visibility of the probability scale.
+
+```{r}
+#| prob2,
+#| fig.cap= "Probability Cole Committed Crime",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+colors <-  c("Hidden"="red", "Visible"="grey")
+
+ggplot(microstudy_clean) +
+  geom_density(alpha=0.75, aes(x=prob_hide, fill="Hidden")) +
+  geom_density(alpha=0.75, aes(x=prob_vis, fill="Visible")) +
+  ggtitle("Probability Cole Commited the Crime") +
+  scale_fill_manual(values = colors, name="Probability")+
+  ylab("Density")+
+  xlab("Probability")+
+  facet_grid(.~conclusion.x)+
+  theme_bw()
+
+
+```
+
+`r round(sum(microstudy_clean$opinion_guilt=="Yes" & microstudy_clean$conclusion.x=="Match")/sum(microstudy_clean$conclusion.x=="Match")*100, 2)`\% (or `r sum(microstudy_clean$opinion_guilt=="Yes" & microstudy_clean$conclusion.x=="Match")` out of `r sum(microstudy_clean$conclusion.x=="Match")`) individuals who received the match condition thought the defendant was guilty, while `r round(sum(microstudy_clean$guilty=="Yes" & microstudy_clean$conclusion.x=="NoMatch")/sum(microstudy_clean$conclusion.x=="NoMatch")*100, 2)`\% (or `r sum(microstudy_clean$guilty=="Yes" & microstudy_clean$conclusion.x=="NoMatch")` out of `r sum(microstudy_clean$conclusion.x=="NoMatch")`) participants who received the non-match condition thought the defendant was guilty.
+Figure \@ref(fig:opinionguilt) shows the comparison between the participant's decision to convict and their personal opinion.
+Approximately half of the participant in the match condition who chose not to convict thought the defendant was in fact guilty.
+
+```{r}
+#| opinionguilt,
+#| fig.cap= "Comparison of opinions of guilt and choice to convict",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+
+ggplot(microstudy_clean) +
+  geom_bar(aes(x=guilty, fill=opinion_guilt), position="dodge") +
+  ggtitle("") +
+  scale_fill_manual(values = c("#D81B60","#004D40"), name="Opinion", labels=c("Innocent","Guilty"))+
+  ylab("Count")+
+  xlab("Convict?")+
+  facet_grid(.~conclusion.x)+
+  theme_bw()
+
+```
+
+Figure \@ref(fig:betting) indicates how much participants said they would be willing to bet that the defendant was either guilty or innocent, if provided with \$50.
+If the participant indicated that they thought the defendant was innocent, they were asked how much they would be willing to bet that the defendant was innocent, and vice versa.
+Two individuals did not answer the question, while three individuals selected values larger than 50: two in the non-match condition who thought Cole was innocent (\$58 and \$100), and one in the match condition who thought Cole was guilty (\$100).
+
+```{r}
+#| betting,
+#| fig.cap= "If the researchers provided 50 dollars, how much would you be willing to bet?",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+microstudy_clean$bet<- NA
+
+microstudy_clean[!is.na(microstudy_clean$guilt_bet),]$bet<- 
+  microstudy_clean[!is.na(microstudy_clean$guilt_bet),]$guilt_bet
+
+microstudy_clean[!is.na(microstudy_clean$innocent_bet),]$bet<- microstudy_clean[!is.na(microstudy_clean$innocent_bet),]$innocent_bet
+
+ggplot(microstudy_clean) +
+  geom_histogram(alpha=0.75, aes(x=bet, fill=opinion_guilt), position="dodge") +
+  ggtitle("How much would you bet that the Defendant is...") +
+  scale_fill_manual(values = c("#D81B60","#004D40"), name="", labels=c("Innocent","Guilty"))+
+  ylab("Count")+
+  xlab("Bet Amount")+
+  xlim(c(0,50))+
+  facet_grid(.~conclusion.x)+
+  theme_bw()
 
 
 ```
