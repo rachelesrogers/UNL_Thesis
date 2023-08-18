@@ -116,6 +116,13 @@ ggplot(microstudy, aes(x = completion_time, fill=conclusion.x)) +
 
 #### Participants
 
+Of the `r dim(microstudy)[1]` participants, `r sum(microstudy$gender=="Male")` participants identified as male, `r sum(microstudy$gender=="Female")` participants identified as female, and `r sum(microstudy$gender=="Other/non-binary")` participants identified as other or non-binary. 
+The categories of "Male" and "Female" are currently more associated with sex than with gender, and this categorization will be relabeled in future studies.
+The median age category was 46 - 55.
+Individuals were asked a single attention check question with regards to the caliber of gun used in the attempted robbery.
+`r dim(microstudy_clean)[1]` participants passed the attention check, meaning that only `r sum(microstudy$check!="9mm")` participants failed the attention check, and will not be included in the analysis.
+
+
 ```{r}
 #| demographics2,
 #| fig.cap= "Demographic Information",
