@@ -18,6 +18,7 @@ library(ggblend)
 library(knitr)
 library(patchwork)
 library(kableExtra)
+library(scales)
 ```
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
