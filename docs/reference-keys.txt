@@ -59,6 +59,9 @@ fig:betting
 fig:fixedlike
 fig:freelike
 fig:freelike10
+fig:likecomp1
+fig:likecomp1scale
+fig:likecomp2
 literature-review
 introduction
 bullet-matching-background

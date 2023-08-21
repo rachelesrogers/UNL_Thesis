@@ -436,6 +436,153 @@ Questions of how much a participant is willing to bet may also depend on their p
 \authorcol{There is a source for making decisions for others somewhere, and it may have had something to do with betting or something to do with plea deals. TBD}
 Because individuals may be influenced by which scale they see first, the order of the questions were randomized and recorded, so that the orders can be compared.
 
+Figure \@ref(fig:likecomp1) shows the comparison of the multiple choice likelihood responses to the numeric likelihood responses, in the case that the participants thought the defendant was innocent.
+Because these individuals thought that the defendant was innocent, there are few responses higher than a "fifty-fifty chance".
+The red dots represent the actual value represented by the multiple choice likelihood (for example, the red dot for "About 1 chance in 10" is located at the y-value of 0.10).
+This allows for comparison on the consistency between the multiple choice and the numeric scales.
+For values of "1 chance in 2" and "About 1 chance in 10", the responses seem fairly consistent - however, it is difficult to tell if these values are consistent for smaller values, because they are seen as small on the linear scale.
+
+```{r}
+#| likecomp1,
+#| fig.cap= "Innocent Likelihood Comparison",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+
+set_values <- data.frame(fixed_like=c(    "Impossible that he is guilty",
+                                          "About 1 chance in 10,000",
+                                          "About 1 chance in 1,000",
+                                          "About 1 chance in 100",
+                                          "About 1 chance in 10",
+                                          "1 chance in 2 (fifty-fifty chance)",
+                                          "About 9 chances in 10",
+                                          "About 99 chances in 100",
+                                          "About 999 chances in 1,000",
+                                          "About 9,999 chances in 10,000",
+                                          "Certain to be guilty"),
+                         value=c(0,1/10000,1/1000,1/100,1/10,0.5,9/10,99/100,999/1000,9999/10000,1))
+clean_results_merged<- dplyr::left_join(microstudy_clean, set_values)
+clean_results_merged$fixed_like = factor(
+  microstudy_clean$fixed_like,
+  levels = c(
+    "Impossible that he is guilty",
+    "About 1 chance in 10,000",
+    "About 1 chance in 1,000",
+    "About 1 chance in 100",
+    "About 1 chance in 10",
+    "1 chance in 2 (fifty-fifty chance)",
+    "About 9 chances in 10",
+    "About 99 chances in 100",
+    "About 999 chances in 1,000",
+    "About 9,999 chances in 10,000",
+    "Certain to be guilty"
+  )
+)
+ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
+  geom_point(aes(y=value),color="red",size=5,alpha=0.5)+
+  ggtitle("Likelihood for those who thought Cole was innocent") +
+  geom_jitter(aes(y=(guilt_free_num/guilt_free_denom)),
+    # position = position_jitterdodge(
+    #   jitter.width = 0.2,
+    #   #jitter.height = 0.4,
+    #   dodge.width = 1
+    # ),
+    size = 1
+  ) +
+  geom_boxplot(aes(y=(guilt_free_num/guilt_free_denom)),
+               position = position_dodge(1),
+               alpha = 0.5,
+               outlier.shape = NA)+ 
+  ylab("Open Response Likelihood")+
+  xlab("Closed Response Likelihood")+
+#  scale_y_continuous(trans='log10')+
+  scale_x_discrete(labels = wrap_format(10))
+
+```
+
+This transformation is shown in Figure \@ref(fig:likecomp1scale).
+From this transformed scale, there still appears to be consistency between when participants choose their own likelihood numerically and when they were offered a multiple choice.
+There does, however, appear to be a difference in those who selected "Impossible that he is guilty" from the multiple choice scale.
+Many of the numerical responses appear to be more consistent to "About 1 chance in 10,000" than the value of 0 that would indicate impossibility.
+
+```{r}
+#| likecomp1scale,
+#| fig.cap= "Innocent Likelihood Comparison Log 10 Scale",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
+  geom_point(aes(y=value),color="red",size=5,alpha=0.5)+
+  ggtitle("Likelihood for those who thought Cole was innocent") +
+  geom_jitter(aes(y=(guilt_free_num/guilt_free_denom)),
+    # position = position_jitterdodge(
+    #   jitter.width = 0.2,
+    #   #jitter.height = 0.4,
+    #   dodge.width = 1
+    # ),
+    size = 1
+  ) +
+  geom_boxplot(aes(y=(guilt_free_num/guilt_free_denom)),
+               position = position_dodge(1),
+               alpha = 0.5,
+               outlier.shape = NA)+ 
+  ylab("Open Response Likelihood")+
+  xlab("Closed Response Likelihood")+
+  scale_y_continuous(trans='log10')+
+  scale_x_discrete(labels = wrap_format(10))
+
+```
+
+This same procedure can be repeated for those who thought the defendant was guilty, as shown in Figure \@ref(fig:likecomp2).
+In this case, because individuals who thought the defendant was guilty were asked to supply the likelihood that the defendant did not commit the crime, their numerical likelihood was changed to the likelihood that the defendant did commit the crime by subtracting their likelihood from 1.
+In a reverse of the likelihood for those who thought Cole was innocent, in this case most responses are at or above "1 chance in 2".
+Even without a transformation, it can be seen that there is a large spread of those who selected "Certain to be guilty", and that those who selected "fifty-fifty chance" tended to select higher likelihoods of guilt when they were free to choose their own response, while those who selected "About 9 chances in 10" tended to align well between the numerical and multiple choice options.
+
+The reduced consistency seen in the guilty likelihood may related to the change in the question wording, where the multiple choice question considers the likelihood of guilt, while their numeric likelihood considered the likelihood of innocence.
+
+```{r}
+#| likecomp2,
+#| fig.cap= "Guilty Likelihood Comparison",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
+  geom_point(aes(y=value),color="red",size=5,alpha=0.5)+
+  ggtitle("Likelihood for those who thought Cole was guilty") +
+  geom_jitter(aes(y=(1-innocent_free_num/innocent_free_denom)),
+             # position = position_jitterdodge(
+             #   jitter.width = 0.2,
+             #   #jitter.height = 0.4,
+             #   dodge.width = 1
+             # ),
+             size = 1
+  ) +
+  geom_boxplot(aes(y=(1-innocent_free_num/innocent_free_denom)),
+               position = position_dodge(1),
+               alpha = 0.5,
+               outlier.shape = NA)+ 
+  ylab("Open Response Likelihood")+
+  xlab("Closed Response Likelihood")+
+  scale_x_discrete(labels = wrap_format(10))
+
+```
+
+
 ## Notes
 
 
