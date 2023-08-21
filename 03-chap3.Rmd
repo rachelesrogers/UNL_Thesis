@@ -621,6 +621,111 @@ ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
 
 ```
 
+```{r}
+#| likeprobcon,
+#| fig.cap= "Probability and Likelihood Comparison",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+microstudy_clean$likelihood_rev<- NA
+
+microstudy_clean[!is.na(microstudy_clean$innocent_free_num) &
+                !is.na(microstudy_clean$innocent_free_denom),]$likelihood_rev<-1-(
+  microstudy_clean[!is.na(microstudy_clean$innocent_free_num) &
+                  !is.na(microstudy_clean$innocent_free_denom),]$innocent_free_num/
+  microstudy_clean[!is.na(microstudy_clean$innocent_free_num) & 
+                  !is.na(microstudy_clean$innocent_free_denom),]$innocent_free_denom)
+
+microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
+                !is.na(microstudy_clean$guilt_free_denom),]$likelihood_rev<-
+  microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
+                  !is.na(microstudy_clean$guilt_free_denom),]$guilt_free_num/
+  microstudy_clean[!is.na(microstudy_clean$guilt_free_num) & 
+                  !is.na(microstudy_clean$guilt_free_denom),]$guilt_free_denom
+
+
+ggplot(microstudy_clean, aes(x=likelihood_rev, color=opinion_guilt, y=prob_vis)) +
+  geom_jitter(alpha=0.75) +
+  ggtitle("Probability vs Likelihood") +
+  scale_color_manual(values = c("#D81B60","#004D40"), name="Opinion", labels=c("Innocent","Guilty"))+
+  ylab("Visible Probability")+
+  xlab("Likelihood of Committing Crime")+
+  facet_grid(.~conclusion.x)+
+  theme_bw()
+
+```
+
+Figure \@ref(fig:likeprobcon) shows a comparison of the perceived probability that the defendant committed the crime compared to the perceived likelihood that the defendant is guilty.
+In the case of the match condition, it can be seen that many individuals assigned a high probability that the defendant committed the crime which corresponded to a high likelihood of guilt, as shown by the cluster of observations in the top right corner of the graph.
+Similarly, in the non-match condition, many individuals gave a low probability that the individual committed the crime and a low likelihood that the defendant was guilty.
+The correlation between the two responses is `r round(cor(microstudy_clean[!is.na(microstudy_clean$likelihood_rev),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$likelihood_rev),]$likelihood_rev),2)`,
+which indicates a fairly strong linear correspondence.
+
+##### Probability Comparison
+
+Figure \@ref(fig:probcomp) shows the correspondence between the visible and hidden probabilities.
+The values appear to be fairly 1:1.
+In the case of the match condition, there appears to be a congregation of values at 90% when the scale is visible.
+This is also reflected in the non-match condition, where there is a group of observations at 10%.
+Otherwise, the observations appear to correspond fairly well.
+The correlation between the probabilities is `r round(cor(microstudy_clean$prob_hide, microstudy_clean$prob_vis),2)`, indicating a strong relationship.
+
+```{r}
+#| probcomp,
+#| fig.cap= "Probability and Likelihood Comparison",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+ggplot(microstudy_clean, aes(x=prob_hide, color=opinion_guilt, y=prob_vis)) +
+  geom_jitter(alpha=0.75) +
+  ggtitle("Visible and Hidden Probability Comparison") +
+  scale_color_manual(values = c("#D81B60","#004D40"), name="Opinion", labels=c("Guilty","Innocent"))+
+  ylab("Visible Probability")+
+  xlab("Hidden Probability")+
+  scale_y_continuous(breaks = seq(0, 100, by = 10))+
+  facet_grid(.~conclusion.x)+
+  theme_bw()
+
+```
+
+Figure \@ref(fig:probbet) compares the amount that individuals were willing to bet to their assigned probability that the defendant had committed the crime.
+This graph is similar to the comparison between likelihood and probability in that there is not an incredibly straightforward correspondence.
+In both conditions, the bets are distributed throughout the graph, and correlation values can be calculated.
+
+```{r}
+#| probbet,
+#| fig.cap= "Probability and Likelihood Comparison",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+ggplot(microstudy_clean, aes(x=bet, color=opinion_guilt, y=prob_vis)) +
+  geom_jitter(alpha=0.75) +
+  ggtitle("Betting and Probability Comparison") +
+  scale_color_manual(values = c("#004D40","#D81B60"), name="Bet Defendant is...", labels=c("Innocent","Guilty"))+
+  ylab("Visible Probability")+
+  xlab("Amount (Dollars)")+
+  scale_y_continuous(breaks = seq(0, 100, by = 10))+
+  facet_grid(.~conclusion.x)+
+  xlim(c(0,50))+
+  theme_bw()
+
+```
+
 ## Notes
 
 

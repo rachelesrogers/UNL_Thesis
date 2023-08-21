@@ -63,6 +63,9 @@ fig:likecomp1
 fig:likecomp1scale
 fig:likecomp2
 fig:likeprob
+fig:likeprobcon
+fig:probcomp
+fig:probbet
 literature-review
 introduction
 bullet-matching-background
@@ -137,6 +140,7 @@ participants-1
 questions-from-study-1
 scale-comparison
 likelihood-comparison
+probability-comparison
 notes-1
 testimony-transcripts
 firearm-examiner
