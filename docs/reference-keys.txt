@@ -57,6 +57,8 @@ fig:prob2
 fig:opinionguilt
 fig:betting
 fig:fixedlike
+fig:freelike
+fig:freelike10
 literature-review
 introduction
 bullet-matching-background

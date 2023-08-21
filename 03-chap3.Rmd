@@ -350,8 +350,91 @@ ggplot(microstudy_clean) +
 
 ```
 
+A final question asks individuals to provide a numerical likelihood that the defendant is either innocent or guilty, depending on their expressed opinion.
+If the participant thought that the defendant was innocent, they were asked to supply the likelihood that the defendant was guilty, and vice versa.
+Their responses were limited so that the numerator was smaller than the denominator, resulting in a range of 0 to 1.
+These results are shown in Figure \@ref(fig:freelike).
+As seen in previous graphs, in the case of the non-match condition, those who thought the defendant was innocent gave small likelihoods that the defendant had in fact committed the crime.
+Note that this graph consists of the density in each group.
+In the case of the match condition, those who thought the defendant was guilty tended to give lower likelihoods that the defendant had in fact committed the crime, although it is not as extreme as the non-match condition case.
+
+```{r}
+#| freelike,
+#| fig.cap= "Free Response Likelihood",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+microstudy_clean$likelihood<- NA
+
+microstudy_clean[!is.na(microstudy_clean$innocent_free_num) &
+                !is.na(microstudy_clean$innocent_free_denom),]$likelihood<-
+  microstudy_clean[!is.na(microstudy_clean$innocent_free_num) &
+                  !is.na(microstudy_clean$innocent_free_denom),]$innocent_free_num/
+  microstudy_clean[!is.na(microstudy_clean$innocent_free_num) & 
+                  !is.na(microstudy_clean$innocent_free_denom),]$innocent_free_denom
+
+microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
+                !is.na(microstudy_clean$guilt_free_denom),]$likelihood<-
+  microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
+                  !is.na(microstudy_clean$guilt_free_denom),]$guilt_free_num/
+  microstudy_clean[!is.na(microstudy_clean$guilt_free_num) & 
+                  !is.na(microstudy_clean$guilt_free_denom),]$guilt_free_denom
+
+ggplot(microstudy_clean) +
+  geom_density(alpha=0.75, aes(x=likelihood, fill=opinion_guilt), position="dodge") +
+  ggtitle("What is the likelihood that the defendant is...") +
+  scale_fill_manual(values = c("#D81B60","#004D40"), name="", labels=c("Guilty","Innocent"))+
+ # ylab("Count")+
+  xlab("Likelihood")+
+  facet_grid(.~conclusion.x)+
+  #scale_x_continuous(trans='log10')+
+  theme_bw()
+
+
+```
+
+Based on the results shown in Figure \@ref(fig:fixedlike), it seems that the results from this free likelihood scale may benefit from a transformation of the scale.
+The log scale transformation is shown in \@ref(fig:freelike10).
+This scale transformation shifted the observations from the far left side of the graph to the right side of the graph.
+The distribution of the scale is more spread out than that shown in Figure \@ref(fig:freelike), and may lend itself better to analysis.
+
+```{r}
+#| freelike10,
+#| fig.cap= "Free Response Likelihood, Log 10 Scale",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+ggplot(microstudy_clean) +
+  geom_density(alpha=0.75, aes(x=likelihood, fill=opinion_guilt), position="dodge") +
+  ggtitle("What is the likelihood that the defendant is...") +
+  scale_fill_manual(values = c("#D81B60","#004D40"), name="", labels=c("Guilty","Innocent"))+
+ # ylab("Count")+
+  xlab("Likelihood")+
+  facet_grid(.~conclusion.x)+
+  scale_x_continuous(trans='log10')+
+  theme_bw()
+
+
+```
 
 #### Scale Comparison
+
+Consistency across response types is another important aspect of this study.
+If different question types result in responses that are inconsistent, it would be difficult to tell which questions truly capture the attitudes of the participants, in order to most accurately answer the research questions.
+As mentioned in the previous literature review, there have been studies to suggest that individuals may struggle with the interpretation of likelihood scales.
+Questions of how much a participant is willing to bet may also depend on their personal feel for risk, and betting hypothetical money may have different results than betting real money, or betting money for someone else.
+\authorcol{There is a source for making decisions for others somewhere, and it may have had something to do with betting or something to do with plea deals. TBD}
+Because individuals may be influenced by which scale they see first, the order of the questions were randomized and recorded, so that the orders can be compared.
 
 ## Notes
 

@@ -2199,8 +2199,46 @@ Thus, the multiple choice likelihood scale appears to have less scale compressio
 \caption{Multiple Choice Likelihood}\label{fig:fixedlike}
 \end{figure}
 
+A final question asks individuals to provide a numerical likelihood that the defendant is either innocent or guilty, depending on their expressed opinion.
+If the participant thought that the defendant was innocent, they were asked to supply the likelihood that the defendant was guilty, and vice versa.
+Their responses were limited so that the numerator was smaller than the denominator, resulting in a range of 0 to 1.
+These results are shown in Figure \ref{fig:freelike}.
+As seen in previous graphs, in the case of the non-match condition, those who thought the defendant was innocent gave small likelihoods that the defendant had in fact committed the crime.
+Note that this graph consists of the density in each group.
+In the case of the match condition, those who thought the defendant was guilty tended to give lower likelihoods that the defendant had in fact committed the crime, although it is not as extreme as the non-match condition case.
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/freelike-1} 
+
+}
+
+\caption{Free Response Likelihood}\label{fig:freelike}
+\end{figure}
+
+Based on the results shown in Figure \ref{fig:fixedlike}, it seems that the results from this free likelihood scale may benefit from a transformation of the scale.
+The log scale transformation is shown in \ref{fig:freelike10}.
+This scale transformation shifted the observations from the far left side of the graph to the right side of the graph.
+The distribution of the scale is more spread out than that shown in Figure \ref{fig:freelike}, and may lend itself better to analysis.
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/freelike10-1} 
+
+}
+
+\caption{Free Response Likelihood, Log 10 Scale}\label{fig:freelike10}
+\end{figure}
+
 \hypertarget{scale-comparison}{%
 \subsubsection{Scale Comparison}\label{scale-comparison}}
+
+Consistency across response types is another important aspect of this study.
+If different question types result in responses that are inconsistent, it would be difficult to tell which questions truly capture the attitudes of the participants, in order to most accurately answer the research questions.
+As mentioned in the previous literature review, there have been studies to suggest that individuals may struggle with the interpretation of likelihood scales.
+Questions of how much a participant is willing to bet may also depend on their personal feel for risk, and betting hypothetical money may have different results than betting real money, or betting money for someone else.
+\authorcol{There is a source for making decisions for others somewhere, and it may have had something to do with betting or something to do with plea deals. TBD}
+Because individuals may be influenced by which scale they see first, the order of the questions were randomized and recorded, so that the orders can be compared.
 
 \hypertarget{notes-1}{%
 \section{Notes}\label{notes-1}}
@@ -2699,7 +2737,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2023-08-18 13:16:05.
+This version of the thesis was generated on 2023-08-21 11:44:24.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -2714,7 +2752,7 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2023-08-18
+##  date     2023-08-21
 ##  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------
