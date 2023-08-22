@@ -658,13 +658,35 @@ ggplot(microstudy_clean, aes(x=likelihood_rev, color=opinion_guilt, y=prob_vis))
   facet_grid(.~conclusion.x)+
   theme_bw()
 
+microstudy_clean$innocent_likelihood<- NA
+
+microstudy_clean[!is.na(microstudy_clean$innocent_free_num) &
+                !is.na(microstudy_clean$innocent_free_denom),]$innocent_likelihood<-(
+  microstudy_clean[!is.na(microstudy_clean$innocent_free_num) &
+                  !is.na(microstudy_clean$innocent_free_denom),]$innocent_free_num/
+  microstudy_clean[!is.na(microstudy_clean$innocent_free_num) & 
+                  !is.na(microstudy_clean$innocent_free_denom),]$innocent_free_denom)
+
+microstudy_clean$guilt_likelihood<- NA
+
+microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
+                !is.na(microstudy_clean$guilt_free_denom),]$guilt_likelihood<-
+  microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
+                  !is.na(microstudy_clean$guilt_free_denom),]$guilt_free_num/
+  microstudy_clean[!is.na(microstudy_clean$guilt_free_num) & 
+                  !is.na(microstudy_clean$guilt_free_denom),]$guilt_free_denom
+
 ```
 
 Figure \@ref(fig:likeprobcon) shows a comparison of the perceived probability that the defendant committed the crime compared to the perceived likelihood that the defendant is guilty.
 In the case of the match condition, it can be seen that many individuals assigned a high probability that the defendant committed the crime which corresponded to a high likelihood of guilt, as shown by the cluster of observations in the top right corner of the graph.
 Similarly, in the non-match condition, many individuals gave a low probability that the individual committed the crime and a low likelihood that the defendant was guilty.
-The correlation between the two responses is `r round(cor(microstudy_clean[!is.na(microstudy_clean$likelihood_rev),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$likelihood_rev),]$likelihood_rev),2)`,
-which indicates a fairly strong linear correspondence.
+The correlation between the probability and the chances of guilt is `r round(cor(microstudy_clean[!is.na(microstudy_clean$guilt_likelihood),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$guilt_likelihood),]$guilt_likelihood),2)`,
+while the correlation between the probability and the chances of innocence is `r round(cor(microstudy_clean[!is.na(microstudy_clean$innocent_likelihood),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$innocent_likelihood),]$innocent_likelihood),2)`.
+While there is a fairly strong correlation in the case of chances of guilt and probability, the correlation between the probability and the chances of innocence is weak.
+This weak correspondence can be seen in the "Guilty" opinion observations in the graph above
+When the likelihoods are combined into a single variable, values can be seen across the entire probability scale.
+The correlation between the probability and the combined likelihood responses is `r round(cor(microstudy_clean[!is.na(microstudy_clean$likelihood_rev),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$likelihood_rev),]$likelihood_rev),2)`, which appears to be fairly strong.
 
 ##### Probability Comparison
 
@@ -699,12 +721,12 @@ ggplot(microstudy_clean, aes(x=prob_hide, color=opinion_guilt, y=prob_vis)) +
 ```
 
 Figure \@ref(fig:probbet) compares the amount that individuals were willing to bet to their assigned probability that the defendant had committed the crime.
-This graph is similar to the comparison between likelihood and probability in that there is not an incredibly straightforward correspondence.
-In both conditions, the bets are distributed throughout the graph, and correlation values can be calculated.
+In this case, there is not a straightforward correspondence.
+The correlation is `r round(cor(microstudy_clean[!is.na(microstudy_clean$guilt_bet),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$guilt_bet),]$guilt_bet),2)` in the case that the participants were asked to bet on if the defendant committed the crime, and `r round(cor(microstudy_clean[!is.na(microstudy_clean$innocent_bet),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$innocent_bet),]$innocent_bet),2)` when participants were asked to bet on if the defendant did not commit the crime (where the betting procedure is as explained earlier).
 
 ```{r}
 #| probbet,
-#| fig.cap= "Probability and Likelihood Comparison",
+#| fig.cap= "Betting and Probability Comparison",
 #| fig.width= 10,
 #| fig.height= 4,
 #| fig.align= "center",
