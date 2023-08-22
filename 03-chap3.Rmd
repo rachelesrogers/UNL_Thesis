@@ -289,13 +289,14 @@ microstudy_clean[!is.na(microstudy_clean$guilt_bet),]$bet<-
 microstudy_clean[!is.na(microstudy_clean$innocent_bet),]$bet<- microstudy_clean[!is.na(microstudy_clean$innocent_bet),]$innocent_bet
 
 ggplot(microstudy_clean) +
-  geom_histogram(alpha=0.75, aes(x=bet, fill=opinion_guilt), position="dodge") +
+  geom_histogram(aes(x=bet, fill=opinion_guilt), binwidth=5, color="black",
+           position = position_dodge(preserve = "single")) +
   ggtitle("How much would you bet that the Defendant is...") +
   scale_fill_manual(values = c("#D81B60","#004D40"), name="", labels=c("Innocent","Guilty"))+
   ylab("Count")+
   xlab("Bet Amount")+
   xlim(c(0,50))+
-  facet_grid(.~conclusion.x)+
+  facet_grid(conclusion.x~.)+
   theme_bw()
 
 
@@ -584,6 +585,39 @@ ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
 
 ```
 
+```{r}
+#| likecomp2scale,
+#| fig.cap= "Guilty Likelihood Comparison",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= FALSE,
+#| warning= FALSE,
+#| message= FALSE
+
+ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
+  geom_point(aes(y=value),color="red",size=5,alpha=0.5)+
+  ggtitle("Likelihood for those who thought Cole was guilty") +
+  geom_jitter(aes(y=(1-innocent_free_num/innocent_free_denom)),
+             # position = position_jitterdodge(
+             #   jitter.width = 0.2,
+             #   #jitter.height = 0.4,
+             #   dodge.width = 1
+             # ),
+             size = 1
+  ) +
+  geom_boxplot(aes(y=(1-innocent_free_num/innocent_free_denom)),
+               position = position_dodge(1),
+               alpha = 0.5,
+               outlier.shape = NA)+ 
+    scale_y_continuous(trans='sqrt')+
+  ylab("Open Response Likelihood")+
+  xlab("Closed Response Likelihood")+
+  scale_x_discrete(labels = wrap_format(10))
+
+```
+
 Similar to the figures above, a comparison graph can be made to compare the multiple choice likelihood values to the probability scales. 
 This scale comparison is shown in Figure \@ref(fig:likeprob).
 In the case of the probabilities, individuals were only able to select integers between 0 and 100, meaning that this scale would not translate to the more extreme values of the multiple choice likelihood scale (outside of the values of "About 1 in 100" and "About 99 in 100").
@@ -709,13 +743,15 @@ The correlation between the probabilities is `r round(cor(microstudy_clean$prob_
 #| message= FALSE
 
 ggplot(microstudy_clean, aes(x=prob_hide, color=opinion_guilt, y=prob_vis)) +
-  geom_jitter(alpha=0.75) +
+  geom_jitter(alpha=0.5) +
   ggtitle("Visible and Hidden Probability Comparison") +
   scale_color_manual(values = c("#D81B60","#004D40"), name="Opinion", labels=c("Guilty","Innocent"))+
   ylab("Visible Probability")+
   xlab("Hidden Probability")+
   scale_y_continuous(breaks = seq(0, 100, by = 10))+
   facet_grid(.~conclusion.x)+
+  coord_fixed(ratio=1)+
+  geom_abline(intercept = 0, slope = 1)+
   theme_bw()
 
 ```
@@ -723,6 +759,7 @@ ggplot(microstudy_clean, aes(x=prob_hide, color=opinion_guilt, y=prob_vis)) +
 Figure \@ref(fig:probbet) compares the amount that individuals were willing to bet to their assigned probability that the defendant had committed the crime.
 In this case, there is not a straightforward correspondence.
 The correlation is `r round(cor(microstudy_clean[!is.na(microstudy_clean$guilt_bet),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$guilt_bet),]$guilt_bet),2)` in the case that the participants were asked to bet on if the defendant committed the crime, and `r round(cor(microstudy_clean[!is.na(microstudy_clean$innocent_bet),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$innocent_bet),]$innocent_bet),2)` when participants were asked to bet on if the defendant did not commit the crime (where the betting procedure is as explained earlier).
+This correlation is lower than seen between probability and the chance of committing the crime when both of the chances were combined.
 
 ```{r}
 #| probbet,
