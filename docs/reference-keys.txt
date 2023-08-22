@@ -139,7 +139,7 @@ results-2
 participants-1
 questions-from-study-1
 scale-comparison
-likelihood-comparison
+chance-comparison
 probability-comparison
 notes-1
 testimony-transcripts

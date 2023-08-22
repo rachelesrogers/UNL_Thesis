@@ -58,16 +58,17 @@ In addition to a question regarding whether or not the participant would choose 
 This provides a second threshold for assessing the strength of evidence, aside from the "beyond a reasonable doubt" standard.
 Two different questions were asked with regards to the chances that the defendant committed the crime. 
 One was in a multiple choice format, with extreme values of "Impossible to be guilty" and "Certain to be guilty", and intermediate values ranging from "About 1 chance in 10,000" to "About 9,999 chances in 10,000" with denominator values changing by a decimal place for each choice, and a middle value of "1 chance in 2".
+This format was taken from @thompsonLayUnderstanding's study of DNA, which consisted of larger scaled values (up to 1 in 10 million).
 The second question allowed participants to select both the numerator and denominator: "About ___ chance(s) in ___".
-The format of the numeric likelihood question depends on the participant's opinion of guilt.
-If the participant thought that the defendant was guilty, they were asked to provide the likelihood that the defendant was innocent.
-If the participant thought that the defendant was innocent, they were asked to provide the likelihood that the defendant was guilty.
+The format of the numeric chance of guilt question depends on the participant's opinion of guilt.
+If the participant thought that the defendant was guilty, they were asked to provide the chance that the defendant was innocent.
+If the participant thought that the defendant was innocent, they were asked to provide the chance that the defendant was guilty.
 In both cases, the numerator had to be less than or equal to the denominator.
 Similarly, if individuals thought that the defendant was guilty, they were asked how much they were willing to be that the defendant was guilty, if hypothetically researchers provided them with \$50 and they would double their money if they were correct, and vice versa.
 A final new question was open ended, and asked participants to provide their opinion of the defendant.
 
 Individuals were first asked to provide their opinion of the defendant, their conviction decision, and their personal opinion of the guilt of the defendant.
-All other questions were randomized in a way that guaranteed the two probability questions and the two likelihood questions were not asked directly following each other.
+All other questions were randomized in a way that guaranteed the two probability questions and the two chance questions were not asked directly following each other.
 
 
 #### Prolific
@@ -302,18 +303,18 @@ ggplot(microstudy_clean) +
 
 ```
 
-The remaining questions relate to the likelihood that the defendant committed the crime.
-One question, shown in Figure \@ref(fig:fixedlike), allowed participants to select the likelihood that the defendant committed the crime from a multiple choice scale.
+The remaining questions relate to the chance that the defendant committed the crime.
+One question, shown in Figure \@ref(fig:fixedlike), allowed participants to select the chance that the defendant committed the crime from a multiple choice scale.
 Based on the scale used, this question remained the same regardless of the participant's opinion on the guilt of the defendant.
 This scale does not provide a linear distance between intervals, but instead changes by multiples of 10 in the denominator (ex. one category is 1 in 10, and the next category is 1 in 100).
 The exception is the endpoints, which are "Impossible to be guilty" and "Certain to be guilty", as well as the midpoint of 1 chance in 2.
 In this case, the non-match scale is not encountering the ceiling or floor effect that has been seen in previous scales, as participants did not overwhelmingly select the lowest value.
 Instead, participants are distributed mainly throughout the lower half of the scale, while those in the match condition tended to be a little closer to the center.
-Thus, the multiple choice likelihood scale appears to have less scale compression than seen previously in the other response types.
+Thus, the multiple choice chance scale appears to have less scale compression than seen previously in the other response types.
 
 ```{r}
 #| fixedlike,
-#| fig.cap= "Multiple Choice Likelihood",
+#| fig.cap= "Multiple Choice Chance",
 #| fig.width= 10,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -341,27 +342,27 @@ microstudy_clean$fixed_like = factor(
 
 ggplot(microstudy_clean) +
   geom_bar(aes(x=fixed_like, fill=conclusion.x), position="dodge") +
-  ggtitle("What is the Likelihood that the Defendant is Guilty?") +
+  ggtitle("What is the Chance that the Defendant is Guilty?") +
   scale_fill_manual(values = c("grey80","seagreen"), name="Condition")+
   ylab("Count")+
-  xlab("Likelihood")+
+  xlab("Chance")+
   theme_bw()+
   scale_x_discrete(labels = wrap_format(10))
 
 
 ```
 
-A final question asks individuals to provide a numerical likelihood that the defendant is either innocent or guilty, depending on their expressed opinion.
-If the participant thought that the defendant was innocent, they were asked to supply the likelihood that the defendant was guilty, and vice versa.
+A final question asks individuals to provide a numerical chance that the defendant is either innocent or guilty, depending on their expressed opinion.
+If the participant thought that the defendant was innocent, they were asked to supply the chance that the defendant was guilty, and vice versa.
 Their responses were limited so that the numerator was smaller than the denominator, resulting in a range of 0 to 1.
 These results are shown in Figure \@ref(fig:freelike).
-As seen in previous graphs, in the case of the non-match condition, those who thought the defendant was innocent gave small likelihoods that the defendant had in fact committed the crime.
+As seen in previous graphs, in the case of the non-match condition, those who thought the defendant was innocent gave small chances that the defendant had in fact committed the crime.
 Note that this graph consists of the density in each group.
-In the case of the match condition, those who thought the defendant was guilty tended to give lower likelihoods that the defendant had in fact committed the crime, although it is not as extreme as the non-match condition case.
+In the case of the match condition, those who thought the defendant was guilty tended to give lower chances that the defendant had in fact committed the crime, although it is not as extreme as the non-match condition case.
 
 ```{r}
 #| freelike,
-#| fig.cap= "Free Response Likelihood",
+#| fig.cap= "Free Response Chance",
 #| fig.width= 10,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -388,10 +389,10 @@ microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
 
 ggplot(microstudy_clean) +
   geom_density(alpha=0.75, aes(x=likelihood, fill=opinion_guilt), position="dodge") +
-  ggtitle("What is the likelihood that the defendant is...") +
+  ggtitle("What is the chance that the defendant is...") +
   scale_fill_manual(values = c("#D81B60","#004D40"), name="", labels=c("Guilty","Innocent"))+
  # ylab("Count")+
-  xlab("Likelihood")+
+  xlab("Chance")+
   facet_grid(.~conclusion.x)+
   #scale_x_continuous(trans='log10')+
   theme_bw()
@@ -399,14 +400,14 @@ ggplot(microstudy_clean) +
 
 ```
 
-Based on the results shown in Figure \@ref(fig:fixedlike), it seems that the results from this free likelihood scale may benefit from a transformation of the scale.
+Based on the results shown in Figure \@ref(fig:fixedlike), it seems that the results from this free chance scale may benefit from a transformation of the scale.
 The log scale transformation is shown in \@ref(fig:freelike10).
 This scale transformation shifted the observations from the far left side of the graph to the right side of the graph.
 The distribution of the scale is more spread out than that shown in Figure \@ref(fig:freelike), and may lend itself better to analysis.
 
 ```{r}
 #| freelike10,
-#| fig.cap= "Free Response Likelihood, Log 10 Scale",
+#| fig.cap= "Free Response Chance, Log 10 Scale",
 #| fig.width= 10,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -417,10 +418,10 @@ The distribution of the scale is more spread out than that shown in Figure \@ref
 
 ggplot(microstudy_clean) +
   geom_density(alpha=0.75, aes(x=likelihood, fill=opinion_guilt), position="dodge") +
-  ggtitle("What is the likelihood that the defendant is...") +
+  ggtitle("What is the chance that the defendant is...") +
   scale_fill_manual(values = c("#D81B60","#004D40"), name="", labels=c("Guilty","Innocent"))+
  # ylab("Count")+
-  xlab("Likelihood")+
+  xlab("Chance")+
   facet_grid(.~conclusion.x)+
   scale_x_continuous(trans='log10')+
   theme_bw()
@@ -430,24 +431,24 @@ ggplot(microstudy_clean) +
 
 #### Scale Comparison
 
-##### Likelihood Comparison
+##### Chance Comparison
 
 Consistency across response types is another important aspect of this study.
 If different question types result in responses that are inconsistent, it would be difficult to tell which questions truly capture the attitudes of the participants, in order to most accurately answer the research questions.
-As mentioned in the previous literature review, there have been studies to suggest that individuals may struggle with the interpretation of likelihood scales.
+As mentioned in the previous literature review, there have been studies to suggest that individuals may struggle with the interpretation of chance scales.
 Questions of how much a participant is willing to bet may also depend on their personal feel for risk, and betting hypothetical money may have different results than betting real money, or betting money for someone else.
 \authorcol{There is a source for making decisions for others somewhere, and it may have had something to do with betting or something to do with plea deals. TBD}
 Because individuals may be influenced by which scale they see first, the order of the questions were randomized and recorded, so that the orders can be compared.
 
-Figure \@ref(fig:likecomp1) shows the comparison of the multiple choice likelihood responses to the numeric likelihood responses, in the case that the participants thought the defendant was innocent.
+Figure \@ref(fig:likecomp1) shows the comparison of the multiple choice chance responses to the numeric chance responses, in the case that the participants thought the defendant was innocent.
 Because these individuals thought that the defendant was innocent, there are few responses higher than a "fifty-fifty chance".
-The red dots represent the actual value represented by the multiple choice likelihood (for example, the red dot for "About 1 chance in 10" is located at the y-value of 0.10).
+The red dots represent the actual value represented by the multiple choice chance (for example, the red dot for "About 1 chance in 10" is located at the y-value of 0.10).
 This allows for comparison on the consistency between the multiple choice and the numeric scales.
 For values of "1 chance in 2" and "About 1 chance in 10", the responses seem fairly consistent - however, it is difficult to tell if these values are consistent for smaller values, because they are seen as small on the linear scale.
 
 ```{r}
 #| likecomp1,
-#| fig.cap= "Innocent Likelihood Comparison",
+#| fig.cap= "Innocent Chance Comparison",
 #| fig.width= 10,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -488,7 +489,7 @@ clean_results_merged$fixed_like = factor(
 )
 ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
   geom_point(aes(y=value),color="red",size=5,alpha=0.5)+
-  ggtitle("Likelihood for those who thought Cole was innocent") +
+  ggtitle("Chance for those who thought Cole was innocent") +
   geom_jitter(aes(y=(guilt_free_num/guilt_free_denom)),
     # position = position_jitterdodge(
     #   jitter.width = 0.2,
@@ -501,21 +502,21 @@ ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
                position = position_dodge(1),
                alpha = 0.5,
                outlier.shape = NA)+ 
-  ylab("Open Response Likelihood")+
-  xlab("Closed Response Likelihood")+
+  ylab("Open Response Chance")+
+  xlab("Closed Response Chance")+
 #  scale_y_continuous(trans='log10')+
   scale_x_discrete(labels = wrap_format(10))
 
 ```
 
 This transformation is shown in Figure \@ref(fig:likecomp1scale).
-From this transformed scale, there still appears to be consistency between when participants choose their own likelihood numerically and when they were offered a multiple choice.
+From this transformed scale, there still appears to be consistency between when participants choose their own chance numerically and when they were offered a multiple choice.
 There does, however, appear to be a difference in those who selected "Impossible that he is guilty" from the multiple choice scale.
 Many of the numerical responses appear to be more consistent to "About 1 chance in 10,000" than the value of 0 that would indicate impossibility.
 
 ```{r}
 #| likecomp1scale,
-#| fig.cap= "Innocent Likelihood Comparison Log 10 Scale",
+#| fig.cap= "Innocent Chance Comparison Log 10 Scale",
 #| fig.width= 10,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -526,7 +527,7 @@ Many of the numerical responses appear to be more consistent to "About 1 chance 
 
 ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
   geom_point(aes(y=value),color="red",size=5,alpha=0.5)+
-  ggtitle("Likelihood for those who thought Cole was innocent") +
+  ggtitle("Chance for those who thought Cole was innocent") +
   geom_jitter(aes(y=(guilt_free_num/guilt_free_denom)),
     # position = position_jitterdodge(
     #   jitter.width = 0.2,
@@ -539,23 +540,23 @@ ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
                position = position_dodge(1),
                alpha = 0.5,
                outlier.shape = NA)+ 
-  ylab("Open Response Likelihood")+
-  xlab("Closed Response Likelihood")+
+  ylab("Open Response Chance")+
+  xlab("Closed Response Chance")+
   scale_y_continuous(trans='log10')+
   scale_x_discrete(labels = wrap_format(10))
 
 ```
 
 This same procedure can be repeated for those who thought the defendant was guilty, as shown in Figure \@ref(fig:likecomp2).
-In this case, because individuals who thought the defendant was guilty were asked to supply the likelihood that the defendant did not commit the crime, their numerical likelihood was changed to the likelihood that the defendant did commit the crime by subtracting their likelihood from 1.
-In a reverse of the likelihood for those who thought Cole was innocent, in this case most responses are at or above "1 chance in 2".
-Even without a transformation, it can be seen that there is a large spread of those who selected "Certain to be guilty", and that those who selected "fifty-fifty chance" tended to select higher likelihoods of guilt when they were free to choose their own response, while those who selected "About 9 chances in 10" tended to align well between the numerical and multiple choice options.
+In this case, because individuals who thought the defendant was guilty were asked to supply the chance that the defendant did not commit the crime, their numerical chance was changed to the chance that the defendant did commit the crime by subtracting their provided chance estimate from 1.
+In a reverse of the chance for those who thought Cole was innocent, in this case most responses are at or above "1 chance in 2".
+Even without a transformation, it can be seen that there is a large spread of those who selected "Certain to be guilty", and that those who selected "fifty-fifty chance" tended to select higher chances of guilt when they were free to choose their own response, while those who selected "About 9 chances in 10" tended to align well between the numerical and multiple choice options.
 
-The reduced consistency seen in the guilty likelihood may related to the change in the question wording, where the multiple choice question considers the likelihood of guilt, while their numeric likelihood considered the likelihood of innocence.
+The reduced consistency seen in the guilty chance may related to the change in the question wording, where the multiple choice question considers the chance of guilt, while their numeric chance considered the chance of innocence.
 
 ```{r}
 #| likecomp2,
-#| fig.cap= "Guilty Likelihood Comparison",
+#| fig.cap= "Guilty Chance Comparison",
 #| fig.width= 10,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -566,7 +567,7 @@ The reduced consistency seen in the guilty likelihood may related to the change 
 
 ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
   geom_point(aes(y=value),color="red",size=5,alpha=0.5)+
-  ggtitle("Likelihood for those who thought Cole was guilty") +
+  ggtitle("Chance for those who thought Cole was guilty") +
   geom_jitter(aes(y=(1-innocent_free_num/innocent_free_denom)),
              # position = position_jitterdodge(
              #   jitter.width = 0.2,
@@ -579,15 +580,15 @@ ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
                position = position_dodge(1),
                alpha = 0.5,
                outlier.shape = NA)+ 
-  ylab("Open Response Likelihood")+
-  xlab("Closed Response Likelihood")+
+  ylab("Open Response Chance")+
+  xlab("Closed Response Chance")+
   scale_x_discrete(labels = wrap_format(10))
 
 ```
 
 ```{r}
 #| likecomp2scale,
-#| fig.cap= "Guilty Likelihood Comparison",
+#| fig.cap= "Guilty Chance Comparison",
 #| fig.width= 10,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -598,7 +599,7 @@ ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
 
 ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
   geom_point(aes(y=value),color="red",size=5,alpha=0.5)+
-  ggtitle("Likelihood for those who thought Cole was guilty") +
+  ggtitle("Chance for those who thought Cole was guilty") +
   geom_jitter(aes(y=(1-innocent_free_num/innocent_free_denom)),
              # position = position_jitterdodge(
              #   jitter.width = 0.2,
@@ -612,20 +613,20 @@ ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
                alpha = 0.5,
                outlier.shape = NA)+ 
     scale_y_continuous(trans='sqrt')+
-  ylab("Open Response Likelihood")+
-  xlab("Closed Response Likelihood")+
+  ylab("Open Response Chance")+
+  xlab("Closed Response Chance")+
   scale_x_discrete(labels = wrap_format(10))
 
 ```
 
-Similar to the figures above, a comparison graph can be made to compare the multiple choice likelihood values to the probability scales. 
+Similar to the figures above, a comparison graph can be made to compare the multiple choice chance values to the probability scales. 
 This scale comparison is shown in Figure \@ref(fig:likeprob).
-In the case of the probabilities, individuals were only able to select integers between 0 and 100, meaning that this scale would not translate to the more extreme values of the multiple choice likelihood scale (outside of the values of "About 1 in 100" and "About 99 in 100").
-For values that can map from the probability scale to the likelihood scale, the values appear to be more spread out than those in the numerical likelihood scale, and those who selected "About 1 chance in 10" on the multiple choice scale tended to select larger likelihoods.
+In the case of the probabilities, individuals were only able to select integers between 0 and 100, meaning that this scale would not translate to the more extreme values of the multiple choice chance scale (outside of the values of "About 1 in 100" and "About 99 in 100").
+For values that can map from the probability scale to the chance scale, the values appear to be more spread out than those in the numerical chance scale, and those who selected "About 1 chance in 10" on the multiple choice scale tended to select larger chances.
 
 ```{r}
 #| likeprob,
-#| fig.cap= "Probability and Likelihood Comparison",
+#| fig.cap= "Probability and Chance Comparison",
 #| fig.width= 10,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -636,7 +637,7 @@ For values that can map from the probability scale to the likelihood scale, the 
 
 ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
   geom_point(aes(y=value),color="red",size=5,alpha=0.5)+
-  ggtitle("Probability vs. Likelihood That Cole is Guilty") +
+  ggtitle("Probability vs. Chance That Cole is Guilty") +
   geom_jitter(aes(y=(prob_vis/100)),
              # position = position_jitterdodge(
              #   jitter.width = 0.2,
@@ -650,14 +651,14 @@ ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
                alpha = 0.5,
                outlier.shape = NA)+ 
   ylab("Visible Probability")+
-  xlab("Closed Response Likelihood")+
+  xlab("Closed Response Chance")+
   scale_x_discrete(labels = wrap_format(10))
 
 ```
 
 ```{r}
 #| likeprobcon,
-#| fig.cap= "Probability and Likelihood Comparison",
+#| fig.cap= "Probability and Chance Comparison",
 #| fig.width= 10,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -685,10 +686,10 @@ microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
 
 ggplot(microstudy_clean, aes(x=likelihood_rev, color=opinion_guilt, y=prob_vis)) +
   geom_jitter(alpha=0.75) +
-  ggtitle("Probability vs Likelihood") +
+  ggtitle("Probability vs Chance") +
   scale_color_manual(values = c("#D81B60","#004D40"), name="Opinion", labels=c("Innocent","Guilty"))+
   ylab("Visible Probability")+
-  xlab("Likelihood of Committing Crime")+
+  xlab("Chance of Committing Crime")+
   facet_grid(.~conclusion.x)+
   theme_bw()
 
@@ -712,15 +713,15 @@ microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
 
 ```
 
-Figure \@ref(fig:likeprobcon) shows a comparison of the perceived probability that the defendant committed the crime compared to the perceived likelihood that the defendant is guilty.
-In the case of the match condition, it can be seen that many individuals assigned a high probability that the defendant committed the crime which corresponded to a high likelihood of guilt, as shown by the cluster of observations in the top right corner of the graph.
-Similarly, in the non-match condition, many individuals gave a low probability that the individual committed the crime and a low likelihood that the defendant was guilty.
+Figure \@ref(fig:likeprobcon) shows a comparison of the perceived probability that the defendant committed the crime compared to the perceived chance that the defendant is guilty.
+In the case of the match condition, it can be seen that many individuals assigned a high probability that the defendant committed the crime which corresponded to a high chance of guilt, as shown by the cluster of observations in the top right corner of the graph.
+Similarly, in the non-match condition, many individuals gave a low probability that the individual committed the crime and a low chance that the defendant was guilty.
 The correlation between the probability and the chances of guilt is `r round(cor(microstudy_clean[!is.na(microstudy_clean$guilt_likelihood),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$guilt_likelihood),]$guilt_likelihood),2)`,
 while the correlation between the probability and the chances of innocence is `r round(cor(microstudy_clean[!is.na(microstudy_clean$innocent_likelihood),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$innocent_likelihood),]$innocent_likelihood),2)`.
 While there is a fairly strong correlation in the case of chances of guilt and probability, the correlation between the probability and the chances of innocence is weak.
 This weak correspondence can be seen in the "Guilty" opinion observations in the graph above
-When the likelihoods are combined into a single variable, values can be seen across the entire probability scale.
-The correlation between the probability and the combined likelihood responses is `r round(cor(microstudy_clean[!is.na(microstudy_clean$likelihood_rev),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$likelihood_rev),]$likelihood_rev),2)`, which appears to be fairly strong.
+When the chances are combined into a single variable, values can be seen across the entire probability scale.
+The correlation between the probability and the combined chance responses is `r round(cor(microstudy_clean[!is.na(microstudy_clean$likelihood_rev),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$likelihood_rev),]$likelihood_rev),2)`, which appears to be fairly strong.
 
 ##### Probability Comparison
 
@@ -733,7 +734,7 @@ The correlation between the probabilities is `r round(cor(microstudy_clean$prob_
 
 ```{r}
 #| probcomp,
-#| fig.cap= "Probability and Likelihood Comparison",
+#| fig.cap= "Probability and Chance Comparison",
 #| fig.width= 10,
 #| fig.height= 4,
 #| fig.align= "center",
