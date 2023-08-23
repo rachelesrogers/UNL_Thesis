@@ -64,6 +64,7 @@ fig:likecomp1scale
 fig:likecomp2
 fig:likeprob
 fig:likeprobcon
+fig:likeconvict
 fig:probcomp
 fig:probbet
 literature-review

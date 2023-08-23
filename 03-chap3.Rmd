@@ -685,7 +685,7 @@ microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
 
 
 ggplot(microstudy_clean, aes(x=likelihood_rev, color=opinion_guilt, y=prob_vis)) +
-  geom_jitter(alpha=0.75) +
+  geom_jitter(alpha=0.5) +
   ggtitle("Probability vs Chance") +
   scale_color_manual(values = c("#D81B60","#004D40"), name="Opinion", labels=c("Innocent","Guilty"))+
   ylab("Visible Probability")+
@@ -722,6 +722,34 @@ While there is a fairly strong correlation in the case of chances of guilt and p
 This weak correspondence can be seen in the "Guilty" opinion observations in the graph above
 When the chances are combined into a single variable, values can be seen across the entire probability scale.
 The correlation between the probability and the combined chance responses is `r round(cor(microstudy_clean[!is.na(microstudy_clean$likelihood_rev),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$likelihood_rev),]$likelihood_rev),2)`, which appears to be fairly strong.
+
+Figure \@ref(fig:likeconvict) demonstrates the relationship between likelihood, probability, and the decision to convict.
+In the non-match case, few individuals chose to convict.
+In the match condition, those who chose to convict selected a probability above 50%, and tended to select values in the top right corner, which appears to be consistent with their conviction choice.
+The clustering of values at around 1 on the chance scale may be due to compression in higher numbers, much like what was seen on the multiple choice question.
+
+
+```{r}
+#| likeconvict,
+#| fig.cap= "Probability and Conviction Decision",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+ggplot(microstudy_clean, aes(x=likelihood_rev, color=guilty, y=prob_vis)) +
+  geom_jitter(alpha=0.85) +
+  ggtitle("Probability vs Chance") +
+  scale_color_manual(values = c("grey20", "plum1"), name="Convict?")+
+  ylab("Visible Probability")+
+  xlab("Chance of Committing Crime")+
+  facet_grid(.~conclusion.x)+
+  theme_bw()
+
+```
 
 ##### Probability Comparison
 
