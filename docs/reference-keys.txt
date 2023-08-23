@@ -67,6 +67,10 @@ fig:likeprobcon
 fig:likeconvict
 fig:probcomp
 fig:probbet
+fig:probincome
+fig:convictsincome
+fig:incomebet
+fig:probeduc
 literature-review
 introduction
 bullet-matching-background
@@ -142,6 +146,9 @@ questions-from-study-1
 scale-comparison
 chance-comparison
 probability-comparison
+demographic-comparison
+income
+education
 notes-1
 testimony-transcripts
 firearm-examiner

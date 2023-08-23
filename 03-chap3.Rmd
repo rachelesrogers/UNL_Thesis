@@ -814,6 +814,184 @@ ggplot(microstudy_clean, aes(x=bet, color=opinion_guilt, y=prob_vis)) +
 
 ```
 
+#### Demographic Comparison
+
+Demographic information, such as income, race, gender, and education level, was collected on the participants.
+This demographic information can be compared with the participants' responses.
+
+##### Income
+Figure \@ref(fig:probincome) explores a potential relationship between income and believed probability that the defendant committed the crime.
+While there are generally low probabilities across all income levels for the non-match condition, in the match condition there appears to be higher probabilities on the higher and lower ends of the income scale, with lower assigned probabilities for those in the middle of the income scale for those who did not choose to convict.
+
+```{r}
+#| probincome,
+#| fig.cap= "Income and Probability Comparison",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+microstudy_clean$income = factor(
+  microstudy_clean$income,
+  levels = c(
+    "Less than $10,000",
+    "$10,000 - $19,999",
+    "$20,000 - $29,999",
+    "$30,000 - $39,999",
+    "$40,000 - $49,999",
+    "$50,000 - $59,999",
+    "$60,000 - $69,999",
+    "$70,000 - $79,999",
+    "$80,000 - $89,999",
+    "$90,000 - $99,999",
+    "$100,000 - $149,999",
+    "More than $150,000"
+  )
+)
+
+ggplot(microstudy_clean, aes(x = income, y = prob_vis, fill = guilty)) +
+  geom_point(
+    position = position_jitterdodge(
+      jitter.width = 0.2,
+      jitter.height = 0.4,
+      dodge.width = 1
+    ),
+    size = 0.5
+  ) +
+  geom_boxplot(position = position_dodge(1),
+               alpha = 0.5,
+               outlier.shape = NA) +
+  ggtitle("Probability Cole Commited the Crime Compared with Income") +
+  facet_grid(conclusion.x~.)+
+  scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
+  ylab("Visible Probability")+
+  xlab("Income")+
+  scale_x_discrete(labels = wrap_format(10))+
+  theme_bw()
+
+```
+
+Bases on Figure \@ref(fig:convictsincome), some individuals in the match condition chose to convict across all income levels.
+There does not appear to be a clear trend between conviction choice and income.
+While two income amounts (\$30,000 - \$39,999 and \$100,000 - \$149,999) consisted of individuals who chose to convict more than they chose not to convict, this trend is not demonstrated in any other income categories.
+In the case of the non-match condition, the individuals who did choose to convict came from different income brackets.
+
+```{r}
+#| convictsincome,
+#| fig.cap= "Income and Conviction Comparison",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+ggplot(microstudy_clean) +
+  geom_bar(aes(x=income, fill=guilty), position = position_dodge(preserve = "single")) +
+  ggtitle("") +
+  scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
+  ylab("Count")+
+  xlab("Convict?")+
+  facet_grid(conclusion.x~.)+
+  scale_x_discrete(labels = wrap_format(10))+
+  theme_bw()
+
+```
+
+One may expect income to make a difference in how much individuals choose to bet on their opinion in the case, either in the amount of risk an individual is willing to take or in their desire to keep hypothetical money.
+This does not appear to be the case, however, based on Figure \@ref(fig:incomebet).
+As discussed earlier, many participants in the non-match condition were willing to bet the full amount that the defendant was innocent.
+This is reflected across most income categories as well.
+In the case of the match condition, we saw earlier that participants were not as extreme in their bets as is seen in the non-match condition.
+This trend is also reflected in the boxplots, with a fairly similar distribution of both the innocent and guilty bets across all income categories.
+
+```{r}
+#| incomebet,
+#| fig.cap= "Income and Betting Comparison",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+ggplot(microstudy_clean, aes(x = income, y = bet, fill = opinion_guilt)) +
+  geom_point(
+    position = position_jitterdodge(
+      jitter.width = 0.2,
+      jitter.height = 0.4,
+      dodge.width = 1
+    ),
+    size = 0.5
+  ) +
+  geom_boxplot(position = position_dodge(1),
+               alpha = 0.5,
+               outlier.shape = NA) +
+  ggtitle("Amount Bet Compared with Income") +
+  facet_grid(conclusion.x~.)+
+  scale_fill_manual(values = c("#D81B60","#004D40"), name="Bet Defendant is...", labels=c("Guilty","Innocent"))+
+  ylab("Visible Probability")+
+  xlab("Income")+
+  scale_x_discrete(labels = wrap_format(10))+
+  ylim(c(0,50))+
+  theme_bw()
+
+```
+
+##### Education
+
+```{r}
+#| probeduc,
+#| fig.cap= "Education Level and Probability Comparison",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+microstudy_clean$educ = factor(
+  microstudy_clean$educ,
+  levels = c(
+    "Less than high school",
+    "High school graduate",
+    "Some college",
+    "2 year degree",
+    "4 year degree",
+    "Professional degree",
+    "Doctorate"
+  )
+)
+
+ggplot(microstudy_clean, aes(x = educ, y = prob_vis, fill = guilty)) +
+  geom_point(
+    position = position_jitterdodge(
+      jitter.width = 0.2,
+      jitter.height = 0.4,
+      dodge.width = 1
+    ),
+    size = 0.5
+  ) +
+  geom_boxplot(position = position_dodge(1),
+               alpha = 0.5,
+               outlier.shape = NA) +
+  ggtitle("Probability Cole Commited the Crime Compared with Income") +
+  facet_grid(conclusion.x~.)+
+  scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
+  ylab("Visible Probability")+
+  xlab("Education")+
+  scale_x_discrete(labels = wrap_format(10))+
+  theme_bw()
+
+```
+
+
 ## Notes
 
 
