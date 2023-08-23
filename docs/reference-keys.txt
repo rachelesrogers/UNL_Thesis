@@ -65,6 +65,8 @@ fig:likecomp2
 fig:likeprob
 fig:likeprobcon
 fig:likeconvict
+fig:strengthchance
+fig:coordstrcat
 fig:probcomp
 fig:probbet
 fig:probincome

@@ -751,6 +751,70 @@ ggplot(microstudy_clean, aes(x=likelihood_rev, color=guilty, y=prob_vis)) +
 
 ```
 
+@mattijssen2020 compared likelihood and strength of evidence ratings from 10 examiners who regularly used likelihood scales.
+While this sample size is rather small, they found that examiners tended to give higher verbal degrees of support than they should have, based on their likelihood ratio.
+A similar effect can be investigated in the potential jurors of this study, when asked to rate the strength of evidence in the case as compared to their perceived chance that the defendant committed the crime.
+
+```{r}
+#| strengthchance,
+#| fig.cap= "Strength of Evidence and Numerical Chance of Committing the Crime",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+
+ggplot(microstudy_clean, aes(x = strength, y = prob_vis, fill = opinion_guilt)) +
+  geom_point(
+    position = position_jitterdodge(
+      jitter.width = 0.2,
+      jitter.height = 0,
+      dodge.width = 1
+    ),
+    size = 0.5
+  ) +
+  geom_boxplot(position = position_dodge(1),
+               alpha = 0.5,
+               outlier.shape = NA) +
+  ggtitle("Probability Cole Commited the Crime Compared with Income") +
+  facet_grid(conclusion.x~.)+
+  scale_fill_manual(values = c("#D81B60","#004D40"), name="Opinion: Guilty?")+
+  ylab("Visible Probability")+
+  xlab("Strength of Evidence")+
+  scale_x_discrete(labels = wrap_format(10))+
+  theme_bw()
+
+```
+
+```{r}
+#| coordstrcat,
+#| fig.cap= "Plots of perceived strength of evidence and categorical likelihood",
+#| fig.width= 7,
+#| fig.height= 6,
+#| fig.align= "center",
+#| echo= FALSE,
+#| message= FALSE,
+#| warning= FALSE
+
+
+strlike_tab<-table(microstudy_clean$strength, microstudy_clean$fixed_like, microstudy_clean$conclusion.x)
+strlike_df<-as.data.frame(strlike_tab)
+colnames(strlike_df) <- c("Strength", "Chances", "Conclusion", "Freq")
+
+ggparcoord(data=subset(strlike_df, Freq != 0), columns=c("Strength","Chances"), order=c(1,2,3,4,5,6,7,8,9), scale="globalminmax")+
+  geom_line(aes(linewidth=Freq, alpha=Freq))+ 
+  ggtitle("Strength of Evidence Vs Chances of Committing the Crime")+
+  facet_grid(.~Conclusion, drop=FALSE)
+
+
+
+
+
+```
+
 ##### Probability Comparison
 
 Figure \@ref(fig:probcomp) shows the correspondence between the visible and hidden probabilities.
