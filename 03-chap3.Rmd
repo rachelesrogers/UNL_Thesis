@@ -84,6 +84,8 @@ microstudy_clean <- microstudy %>% dplyr::filter(check=="9mm")
 
 Participants were recruited in a similar manner as Study 1 in terms of the representative sample and self-screened jury requirements through Prolific.
 In the first part of the study, some individuals encountered technical issues.
+Some of these technical issues, relating to the recording of a unique id or "fingerprint" were resolved, as some browsers have moved to prevent fingerprint recording.
+However, some individuals continued having technical issues directly after the informed consent (before reading any testimony), and we have not yet been able to resolve this problem.
 These technical issues appeared to happen to more individuals in the match condition compared to the non match condition, with a total of `r sum(microstudy$conclusion.x=="Match")` individuals in the match condition and `r sum(microstudy$conclusion.x=="NoMatch")` participants in the non-match condition, for a total of `r dim(microstudy)[1]` participants.
 Participants were paid \$4.00 with a median completion time of 14 minutes and 47 seconds according to Prolific, for an average reward of \$16.23 per hour.
 Figure \@ref(fig:completiontime2) shows the time spent after the completion of the first demographics page to the completion of the final results page.
