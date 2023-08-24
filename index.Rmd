@@ -398,7 +398,11 @@ When using a verbal scale for degree of similarity/support, @mattijssen2020 foun
 @mattijssen2020 asked 10 examiners who regularly used likelihood ratios to provide both a verbal degree of support along with a likelihood ratio.
 They found that the verbal degrees of support were in general an overestimation when compared to the likelihood ratios (8). 
 While this is a small non-representative sample, it suggests that verbal scales do not always correspond to quantitative scales across subjects.
-By combining the quantitative analysis with a verbal translation, it may be possible to present quantitative results in a manner that is understood consistently by laypeople. 
+@thompsonLayUnderstanding investigated the amount of weight participants gave either DNA or shoeprint evidence when it was presented as a likelihood ratio, verbal equivalent, or random match probability.
+While individuals updated their response as expected when the strength of evidence was changed in all cases of the DNA condition, participants did not produce significantly different estimates when shoe print evidence was presented as a likelihood ratio or verbal equivalent, but they did produce different estimates in the case of the random match probability.
+These results indicate that participants may weigh evidence differently depending on the presentation method.
+@thompsonLayUnderstanding hypothesize that the difference between the DNA results and the shoe print results may stem from the perception of DNA analysis as highly scientific.
+By combining the quantitative analysis with a verbal translation, it may be possible to present quantitative results in a manner that is understood consistently by laypeople.
 
 This mix of quantitative language alongside more categorical terms is supported by subjects in @swoffordProbabilisticReportingAlgorithms2022. 
 Almost all participants expressed concerns about the interpretation of the probabilistic language, and many recommended a combination of both methods [@swoffordProbabilisticReportingAlgorithms2022]. 
@@ -458,7 +462,10 @@ Other methods have also been used to evaluate participant responses, such as ask
 They compared results from participants to Bayesian conditional probabilities based on provided likelihoods of a match and error rates in order to consider how much weight participants were giving DNA evidence.
 <!-- Describe results/findings -->
 
-In another study of the relationship between how examiners present evidence (likelihood ratio, verbal equivalent, or random match probability), @thompsonLayUnderstanding applies the same multiple choice scale for selecting the chance that the defendant committed the crime.
+In another study of the relationship between how examiners present evidence (likelihood ratio, verbal equivalent, or random match probability), @thompsonLayUnderstanding applies the same multiple choice scale for selecting the chance that the defendant committed the crime for half of the participants, while the other half of the participants were asked to supply how many more times likely it was that the defendant was guilty as compared to not guilty, or vice versa (based on a response scale found in @martire2013).
+The likelihood statement was worded as follows: "Based on the available evidence I believe it is ___ times more likely that Mr. Kelly is guilty than not guilty." (@thompsonLayUnderstanding, 5).
+In comparing responses from these two scales, @thompsonLayUnderstanding found that individuals were more likely to give higher estimates on the categorical log scale than when they were asked to provide a likelihood - resulting in the categorical log scale being more consistent with the expected result when using Bayesian methods of calculation.
+This indicates an inconsistency in results based on the response method used.
 
 
 ## Conclusion
