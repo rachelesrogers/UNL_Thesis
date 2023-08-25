@@ -73,6 +73,8 @@ fig:probincome
 fig:convictsincome
 fig:incomebet
 fig:probeduc
+fig:convictseduc
+fig:educbet
 literature-review
 introduction
 bullet-matching-background

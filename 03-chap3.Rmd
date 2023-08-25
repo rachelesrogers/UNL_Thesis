@@ -973,7 +973,7 @@ ggplot(microstudy_clean) +
   ggtitle("") +
   scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
   ylab("Count")+
-  xlab("Convict?")+
+  xlab("Income")+
   facet_grid(conclusion.x~.)+
   scale_x_discrete(labels = wrap_format(10))+
   theme_bw()
@@ -1007,7 +1007,7 @@ ggplot(microstudy_clean, aes(x = income, y = bet, fill = opinion_guilt)) +
     ),
     size = 0.5
   ) +
-  geom_boxplot(position = position_dodge(1),
+  geom_boxplot(position = position_dodge(preserve = "single"),
                alpha = 0.5,
                outlier.shape = NA) +
   ggtitle("Amount Bet Compared with Income") +
@@ -1022,6 +1022,9 @@ ggplot(microstudy_clean, aes(x = income, y = bet, fill = opinion_guilt)) +
 ```
 
 ##### Education
+
+Figure \@ref(fig:probeduc) shows the education level along with the participants' probability that the defendant committed the crime.
+In this case, there does not appear to be a relationship between education level and probability, as the boxplots for probability are similarly distributed across education levels.
 
 ```{r}
 #| probeduc,
@@ -1056,7 +1059,7 @@ ggplot(microstudy_clean, aes(x = educ, y = prob_vis, fill = guilty)) +
     ),
     size = 0.5
   ) +
-  geom_boxplot(position = position_dodge(1),
+  geom_boxplot(position = position_dodge(preserve = "single"),
                alpha = 0.5,
                outlier.shape = NA) +
   ggtitle("Probability Cole Commited the Crime Compared with Income") +
@@ -1069,6 +1072,70 @@ ggplot(microstudy_clean, aes(x = educ, y = prob_vis, fill = guilty)) +
 
 ```
 
+Figure \@ref(fig:convictseduc) shows the relationship between the decision to convict and education level.
+As before, there doesn't appear to be much of a relationship between education level and conviction decision.
+In the match condition, individuals chose to convict across all educational categories.
+
+```{r}
+#| convictseduc,
+#| fig.cap= "Education and Conviction Comparison",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+ggplot(microstudy_clean) +
+  geom_bar(aes(x=educ, fill=guilty), position = position_dodge(preserve = "single")) +
+  ggtitle("") +
+  scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
+  ylab("Count")+
+  xlab("Education")+
+  facet_grid(conclusion.x~.)+
+  scale_x_discrete(labels = wrap_format(10))+
+  theme_bw()
+
+```
+
+Figure \@ref(fig:educbet) shows the relationship between the betting and the education level.
+There does not appear to be a trend between the education level and the amount that participants were willing to bet.
+Based on these graphs, it does not appear that there is a relationship between education level and responses.
+
+```{r}
+#| educbet,
+#| fig.cap= "Education and Betting Comparison",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+ggplot(microstudy_clean, aes(x = educ, y = bet, fill = opinion_guilt)) +
+  geom_point(
+    position = position_jitterdodge(
+      jitter.width = 0.2,
+      jitter.height = 0.4,
+      dodge.width = 1
+    ),
+    size = 0.5
+  ) +
+  geom_boxplot(position = position_dodge(preserve = "single"),
+               alpha = 0.5,
+               outlier.shape = NA) +
+  ggtitle("Amount Bet Compared with Income") +
+  facet_grid(conclusion.x~.)+
+  scale_fill_manual(values = c("#D81B60","#004D40"), name="Bet Defendant is...", labels=c("Guilty","Innocent"))+
+  ylab("Visible Probability")+
+  xlab("Education")+
+  scale_x_discrete(labels = wrap_format(10))+
+  ylim(c(0,50))+
+  theme_bw()
+
+```
 
 ## Notes
 
