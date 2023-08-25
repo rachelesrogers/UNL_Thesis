@@ -2081,7 +2081,7 @@ In addition to a question regarding whether or not the participant would choose 
 This provides a second threshold for assessing the strength of evidence, aside from the ``beyond a reasonable doubt'' standard.
 Two different questions were asked with regards to the chances that the defendant committed the crime.
 One was in a multiple choice format, with extreme values of ``Impossible to be guilty'' and ``Certain to be guilty'', and intermediate values ranging from ``About 1 chance in 10,000'' to ``About 9,999 chances in 10,000'' with denominator values changing by a decimal place for each choice, and a middle value of ``1 chance in 2''.
-This format was taken from Thompson \& Newman (2015)'s study of DNA, which consisted of larger scaled values (up to 1 in 10 million).
+This format was taken from Thompson \& Newman (2015)'s study of DNA, which consisted of larger scaled values in the denominator (up to 1 in 10 million).
 The second question allowed participants to select both the numerator and denominator: ``About \_\_\_ chance(s) in \_\_\_``.
 The format of the numeric chance of guilt question depends on the participant's opinion of guilt.
 If the participant thought that the defendant was guilty, they were asked to provide the chance that the defendant was innocent.
@@ -2352,23 +2352,6 @@ The clustering of values at around 1 on the chance scale may be due to compressi
 \caption{Probability and Conviction Decision}\label{fig:likeconvict}
 \end{figure}
 
-Mattijssen et al. (2020) compared likelihood and strength of evidence ratings from 10 examiners who regularly used likelihood scales.
-While this sample size is rather small, they found that examiners tended to give higher verbal degrees of support than they should have, based on their likelihood ratio.
-A similar effect can be investigated in the potential jurors of this study, when asked to rate the strength of evidence in the case as compared to their perceived chance that the defendant committed the crime.
-
-Figure \ref{fig:strengthprob} shows the relationship between the strength of evidence compared to the probability that the defendant committed the crime.
-In the match condition, there is a generally increasing correspondence between the perceived strength of evidence and the participants' predicted probability that the defendant committed the crime.
-This corresponsence is less clear in the non-match condition.
-
-\begin{figure}
-
-{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/strengthprob-1} 
-
-}
-
-\caption{Strength of Evidence and Numerical Chance of Committing the Crime}\label{fig:strengthprob}
-\end{figure}
-
 Figure \ref{fig:coordstrcat} shows the relationship between individuals' ratings of the strength of evidence, and the categorical selection of the chance that the defendant committed the crime.
 The left graph is for the non-match condition, while the right graph is for the match condition.
 Both strength of evidence and the chances of committing the crime have weaker/less of a chance of committing the crime on the bottom, and stronger/more chance of committing the crime at the top.
@@ -2386,6 +2369,20 @@ Because of the variety of responses in the chance that the defendant committed t
 }
 
 \caption{Plots of perceived strength of evidence and categorical likelihood}\label{fig:coordstrcat}
+\end{figure}
+
+In their study, Thompson et al. (2013) compared the given chances that the defendant committed a crime to the decision to convict, and found a threshold of about 9 chances in 10, where participants who selected 9 chances in 10 or a higher chance amount were more likely to select a guilty verdict, while those below 9 chances in 10 were more likely to select a not guilty verdict.
+Figure \ref{fig:convictlike} depicts the results for our study.
+Here, participants cross the threshold of being more likely to convict when they select ``About 99 chances in 100'' in the match condition, or ``About 999 chances in 1,000'' in the non-match condition.
+This threshold is one category larger than what was seen by Thompson et al. (2013).
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/convictlike-1} 
+
+}
+
+\caption{Multiple Choice Chance and Conviction Choice}\label{fig:convictlike}
 \end{figure}
 
 \hypertarget{probability-comparison}{%
@@ -2419,6 +2416,23 @@ This correlation is lower than seen between probability and the chance of commit
 }
 
 \caption{Betting and Probability Comparison}\label{fig:probbet}
+\end{figure}
+
+Mattijssen et al. (2020) compared likelihood and strength of evidence ratings from 10 examiners who regularly used likelihood scales.
+While this sample size is rather small, they found that examiners tended to give higher verbal degrees of support than they should have, based on their likelihood ratio.
+A similar effect can be investigated in the potential jurors of this study, when asked to rate the strength of evidence in the case as compared to their perceived probability that the defendant committed the crime.
+
+Figure \ref{fig:strengthprob} shows the relationship between the strength of evidence compared to the probability that the defendant committed the crime.
+In the match condition, there is a generally increasing correspondence between the perceived strength of evidence and the participants' predicted probability that the defendant committed the crime.
+This corresponsence is less clear in the non-match condition.
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/strengthprob-1} 
+
+}
+
+\caption{Strength of Evidence and Numerical Chance of Committing the Crime}\label{fig:strengthprob}
 \end{figure}
 
 \hypertarget{demographic-comparison}{%
@@ -2511,6 +2525,27 @@ Based on these graphs, it does not appear that there is a relationship between e
 }
 
 \caption{Education and Betting Comparison}\label{fig:educbet}
+\end{figure}
+
+\hypertarget{order-of-the-questions}{%
+\subsubsection{Order of the Questions}\label{order-of-the-questions}}
+
+The order of the questions was assigned through the use of a random sampler, which was re-sampled if the questions of the chance or guilt or the questions regarding probability were placed side by side.
+This is because it is possible that the participants would be influenced by the values they chose on the first scale when choosing a value for the second scale.
+
+Figure \ref{fig:chanceorder} shows the number of participants who received each condition.
+In the case of the non-match condition, the counts for each question category appears to be rather even.
+However, in the case of the match condition, there is a large discrepancy in which probability question individuals received first.
+There are 68 participants in the match condition who saw the visible probability question first, and 47 participants in the match condition who saw the hidden probability question first.
+This provides a difference of 21 participants.
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/chanceorder-1} 
+
+}
+
+\caption{Order of Chance and Probability Questions}\label{fig:chanceorder}
 \end{figure}
 
 \hypertarget{notes-1}{%
@@ -3010,7 +3045,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2023-08-25 10:30:59.
+This version of the thesis was generated on 2023-08-25 13:45:13.
 
 The computational environment that was used to generate this version is as follows:
 

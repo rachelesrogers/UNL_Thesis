@@ -65,16 +65,18 @@ fig:likecomp2
 fig:likeprob
 fig:likeprobcon
 fig:likeconvict
-fig:strengthprob
 fig:coordstrcat
+fig:convictlike
 fig:probcomp
 fig:probbet
+fig:strengthprob
 fig:probincome
 fig:convictsincome
 fig:incomebet
 fig:probeduc
 fig:convictseduc
 fig:educbet
+fig:chanceorder
 literature-review
 introduction
 bullet-matching-background
@@ -154,6 +156,7 @@ probability-comparison
 demographic-comparison
 income
 education
+order-of-the-questions
 notes-1
 testimony-transcripts
 firearm-examiner
