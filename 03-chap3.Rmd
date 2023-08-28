@@ -787,7 +787,7 @@ ggparcoord(data=subset(strlike_df, Freq != 0), columns=c("Strength","Chances"), 
 
 ```
 
-In their study, @thompsonJurorsGiveAppropriate2013 compared the given chances that the defendant committed a crime to the decision to convict in their first experiment, and found a threshold of about 9 chances in 10, where participants who selected 9 chances in 10 or a higher chance amount were more likely to select a guilty verdict, while those below 9 chances in 10 were more likely to select a not guilty verdict.
+In their study, @thompsonJurorsGiveAppropriate2013 compared the given chances that the defendant committed a crime to the decision to convict, and found a threshold of about 9 chances in 10, where participants who selected 9 chances in 10 or a higher chance amount were more likely to select a guilty verdict, while those below 9 chances in 10 were more likely to select a not guilty verdict.
 Figure \@ref(fig:convictlike) depicts the results for our study.
 Here, participants cross the threshold of being more likely to convict when they select "About 99 chances in 100" in the match condition, or "About 999 chances in 1,000" in the non-match condition.
 This threshold is one category larger than what was seen by @thompsonJurorsGiveAppropriate2013.
