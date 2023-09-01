@@ -1093,7 +1093,7 @@ ggplot(microstudy_clean, aes(x = educ, y = prob_vis, fill = guilty)) +
   geom_boxplot(position = position_dodge(preserve = "single"),
                alpha = 0.5,
                outlier.shape = NA) +
-  ggtitle("Probability Cole Commited the Crime Compared with Income") +
+  ggtitle("Probability Cole Commited the Crime Compared with Education") +
   facet_grid(conclusion.x~.)+
   scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
   ylab("Visible Probability")+
@@ -1157,7 +1157,7 @@ ggplot(microstudy_clean, aes(x = educ, y = bet, fill = opinion_guilt)) +
   geom_boxplot(position = position_dodge(preserve = "single"),
                alpha = 0.5,
                outlier.shape = NA) +
-  ggtitle("Amount Bet Compared with Income") +
+  ggtitle("Amount Bet Compared with Education") +
   facet_grid(conclusion.x~.)+
   scale_fill_manual(values = c("#D81B60","#004D40"), name="Bet Defendant is...", labels=c("Guilty","Innocent"))+
   ylab("Visible Probability")+
@@ -1236,6 +1236,114 @@ probplot <- ggplot(microstudy_clean) +
 chanceplot + probplot
 
 
+```
+
+```{r}
+#| echo= FALSE,
+#| eval= FALSE,
+#| warning= FALSE,
+#| message= FALSE
+
+ggplot(microstudy_clean) +
+  geom_bar(aes(x=first_chance), position = position_dodge(preserve = "single")) +
+  ggtitle("") +
+  ylab("Count")+
+  xlab("First Chance Question")+
+  facet_grid(conclusion.x~first_probability)+
+  scale_x_discrete(labels = wrap_format(10))+
+  theme_bw()
+
+
+```
+
+```{r}
+#| echo= FALSE,
+#| eval= FALSE,
+#| warning= FALSE,
+#| message= FALSE
+
+microstudy_clean$first_question <- substring(microstudy_clean$order, 1, 1)
+microstudy_clean$second_question <- substring(microstudy_clean$order, 2, 2)
+microstudy_clean$third_question <- substring(microstudy_clean$order, 3, 3)
+microstudy_clean$fourth_question <- substring(microstudy_clean$order, 4, 4)
+microstudy_clean$fifth_question <- substring(microstudy_clean$order, 5, 5)
+microstudy_clean$sixth_question <- substring(microstudy_clean$order, 6, 6)
+microstudy_clean$seventh_question <- substring(microstudy_clean$order, 7, 7)
+
+first <- ggplot(microstudy_clean) +
+  geom_bar(aes(x=first_question), position = position_dodge(preserve = "single")) +
+  ggtitle("") +
+  ylab("Count")+
+  facet_grid(.~conclusion.x)+
+  theme_bw()
+
+second <- ggplot(microstudy_clean) +
+  geom_bar(aes(x=second_question), position = position_dodge(preserve = "single")) +
+  ggtitle("") +
+  ylab("Count")+
+  facet_grid(.~conclusion.x)+
+  theme_bw()
+
+third <- ggplot(microstudy_clean) +
+  geom_bar(aes(x=third_question), position = position_dodge(preserve = "single")) +
+  ggtitle("") +
+  ylab("Count")+
+  facet_grid(.~conclusion.x)+
+  theme_bw()
+
+fourth <- ggplot(microstudy_clean) +
+  geom_bar(aes(x=fourth_question), position = position_dodge(preserve = "single")) +
+  ggtitle("") +
+  ylab("Count")+
+  facet_grid(.~conclusion.x)+
+  theme_bw()
+
+fifth <- ggplot(microstudy_clean) +
+  geom_bar(aes(x=fifth_question), position = position_dodge(preserve = "single")) +
+  ggtitle("") +
+  ylab("Count")+
+  facet_grid(.~conclusion.x)+
+  theme_bw()
+
+sixth <- ggplot(microstudy_clean) +
+  geom_bar(aes(x=sixth_question), position = position_dodge(preserve = "single")) +
+  ggtitle("") +
+  ylab("Count")+
+  facet_grid(.~conclusion.x)+
+  theme_bw()
+
+seventh <- ggplot(microstudy_clean) +
+  geom_bar(aes(x=seventh_question), position = position_dodge(preserve = "single")) +
+  ggtitle("") +
+  ylab("Count")+
+  facet_grid(.~conclusion.x)+
+  theme_bw()
+
+first/second/third
+
+fourth/fifth/sixth/seventh
+
+chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$first_question))
+chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$second_question))
+chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$third_question))
+chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$fourth_question))
+chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$fifth_question))
+chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$sixth_question))
+
+chisq.test(table(microstudy_clean$first_chance, microstudy_clean$conclusion.x))
+chisq.test(table(microstudy_clean$first_probability, microstudy_clean$conclusion.x))
+
+#Significant difference in conclusion
+chisq.test(table(microstudy_clean$conclusion.x))
+
+#borderline significant
+chisq.test(table(microstudy_clean$seventh_question, microstudy_clean$conclusion.x))
+
+#Significant when only looking at the match condition - not true for other numbers
+chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$seventh_question))
+
+#borderline significant when only looking at the match condition
+chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$first_probability))
 ```
 
 ## Notes
