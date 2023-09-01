@@ -1340,10 +1340,53 @@ chisq.test(table(microstudy_clean$conclusion.x))
 chisq.test(table(microstudy_clean$seventh_question, microstudy_clean$conclusion.x))
 
 #Significant when only looking at the match condition - not true for other numbers
+# The betting question (4) and strength question (7) are less represented
 chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$seventh_question))
 
 #borderline significant when only looking at the match condition
 chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$first_probability))
+```
+
+#### Gun Comfort
+
+Participants were asked to rate how comfortable they are with guns.
+Figure \@ref(fig:convictscomfort) shows the relationship between choice to convict and comfort with guns.
+There does not appear to be a big trend in conviction rate.
+
+```{r}
+#| convictscomfort,
+#| fig.cap= "Gun Comfort and Conviction Comparison",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+microstudy_clean$guncomfort = factor(
+  microstudy_clean$guncomfort,
+  levels = c(
+    "Extremely Uncomfortable",
+    "Moderately Uncomfortable",
+    "Slightly Uncomfortable",
+    "Neither Comfortable nor Uncomfortable",
+    "Slightly Comfortable",
+    "Moderately Comfortable",
+    "Extremely Comfortable"
+  )
+)
+
+ggplot(microstudy_clean) +
+  geom_bar(aes(x=guncomfort, fill=guilty), position = position_dodge(preserve = "single")) +
+  ggtitle("") +
+  scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
+  ylab("Count")+
+  xlab("Gun Comfort")+
+  facet_grid(conclusion.x~.)+
+  scale_x_discrete(labels = wrap_format(10))+
+  theme_bw()
+
 ```
 
 ## Notes
