@@ -11,6 +11,7 @@ Responses pertaining to the credibility of the expert, as well as the reliabilit
 This lack of variation in scale responses makes it difficult to discern potential differences between treatment conditions.
 Due to this difficulty, we conducted a micro study in order to compare various response types, in order to determine substitute questions that may be more sensitive to scenario differences.
 Additional changes include the addition of jury instructions on the part of the judge, instructing members of the jury to treat the firearms examiner and algorithm developer as they would any other witness.
+Unfortunately, the jury instructions were not present in the initial microstudy.
 Additional cross examination testimony with regards to the firearms examiner's inability to specifically tie the defendant to the crime scene is included as well.
 The transcript for the second study can be found in Appendix \@ref(study-2-changes).
 
