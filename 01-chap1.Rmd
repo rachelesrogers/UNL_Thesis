@@ -17,7 +17,7 @@ library(ggpcp)
 library(ggblend)
 library(knitr)
 library(patchwork)
-library(kableExtra)
+#library(kableExtra)
 library(scales)
 ```
 
@@ -1048,8 +1048,9 @@ ggplot(subset(algorithm_results,!is.na(algunder)),
 #| eval= TRUE
 kable(table(subset(algorithm_results,!is.na(algunder) & picture=="Yes")$algunder,
       subset(algorithm_results,!is.na(algunder) & picture=="Yes")$conclusion),
-      caption = "Understanding Frequency")%>% 
-  column_spec(1, width = "10em")
+      caption = "Understanding Frequency")
+# %>% 
+#   column_spec(1, width = "10em")
 ```
 
 ### Uniqueness

@@ -160,6 +160,9 @@ education
 order-of-the-questions
 gun-comfort
 notes-1
+finalstudy
+introduction-2
+methods-3
 testimony-transcripts
 firearm-examiner
 algorithm-expert

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>CHAPTER 3 Text analysis with Transcripts | JURY PERCEPTION OF EXPLAINABLE MACHINE LEARNING AND DEMONSTRATIVE EVIDENCE</title>
   <meta name="description" content="CHAPTER 3 Text analysis with Transcripts | JURY PERCEPTION OF EXPLAINABLE MACHINE LEARNING AND DEMONSTRATIVE EVIDENCE" />
-  <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="CHAPTER 3 Text analysis with Transcripts | JURY PERCEPTION OF EXPLAINABLE MACHINE LEARNING AND DEMONSTRATIVE EVIDENCE" />
   <meta property="og:type" content="book" />
@@ -61,8 +61,6 @@ div.abstract{
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -262,7 +260,11 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="4-study2.html"><a href="4-study2.html#notes-1"><i class="fa fa-check"></i><b>4.3</b> Notes</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="conclusion-2.html"><a href="conclusion-2.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="chapter" data-level="5" data-path="5-finalstudy.html"><a href="5-finalstudy.html"><i class="fa fa-check"></i><b>5</b> Conclusion - Initial Study Revisited</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="5-finalstudy.html"><a href="5-finalstudy.html#introduction-2"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="5-finalstudy.html"><a href="5-finalstudy.html#methods-3"><i class="fa fa-check"></i><b>5.2</b> Methods</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="A-testimony-transcripts.html"><a href="A-testimony-transcripts.html"><i class="fa fa-check"></i><b>A</b> Testimony Transcripts</a>
 <ul>
@@ -365,39 +367,29 @@ This approximate string matching allows for matching strings that do not corresp
 <p>Table <a href="3-textcolor.html#tab:noteexample">3.1</a> is an example of what sequential notes may look like, taken from the second and third pages of a study participant’s notes.
 Because participants are provided with the same continuous notepad throughout the study, the database records each page as a “screenshot” of what is written on their notes when they advance to the next page - this provides cumulative notes.</p>
 <table>
-<caption>
-<span id="tab:noteexample">Table 3.1: </span>Participant Note Example
-</caption>
+<caption><span id="tab:noteexample">Table 3.1: </span>Participant Note Example</caption>
+<colgroup>
+<col width="3%" />
+<col width="96%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:right;">
-page_count
-</th>
-<th style="text-align:left;">
-notes
-</th>
+<tr class="header">
+<th align="right">page_count</th>
+<th align="left">notes</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;width: 30em; ">
-Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony.
-</td>
+<tr class="odd">
+<td align="right">2</td>
+<td align="left">Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony.</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;width: 30em; ">
-<p>Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony.</p>
-police officer pulled over Richard Cole for speeding. During a search of the Defendant’s vehicle, the detective located a 9mm handgun, which was legally licensed to the Defendant.
-</td>
+<tr class="even">
+<td align="right">3</td>
+<td align="left">Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony.</td>
 </tr>
 </tbody>
 </table>
+<p>police officer pulled over Richard Cole for speeding. During a search of the Defendant’s vehicle, the detective located a 9mm handgun, which was legally licensed to the Defendant. |</p>
 <p>In order to appropriately clean the notes, the duplicated text (“Richard Cole - has been charted with willfully discharging a firearm in a place of business. This crime is a felony.”) needs to be removed from the third page, to leave only notes that correspond to the third page’s testimony.</p>
 <div id="first-n-character-fnc-method" class="section level4 hasAnchor" number="3.3.1.1">
 <h4><span class="header-section-number">3.3.1.1</span> First n Character (FNC) Method<a href="3-textcolor.html#first-n-character-fnc-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -831,151 +823,69 @@ This may result in a dataset like Table <a href="3-textcolor.html#tab:months">3.
 <p>We may then want to match the children’s written months to their correctly spelled counterparts.
 While ‘stringdist_join’ will give values for all matches between the two datasets, we can use group_by and slice_min to find the month that is closest to the misspelled value.</p>
 <table>
-<caption>
-<span id="tab:fuzzymonth">Table 3.6: </span>Fuzzy Match by Month
-</caption>
+<caption><span id="tab:fuzzymonth">Table 3.6: </span>Fuzzy Match by Month</caption>
 <thead>
-<tr>
-<th style="text-align:left;">
-month.x
-</th>
-<th style="text-align:left;">
-month.y
-</th>
-<th style="text-align:left;">
-name
-</th>
-<th style="text-align:right;">
-dist
-</th>
+<tr class="header">
+<th align="left">month.x</th>
+<th align="left">month.y</th>
+<th align="left">name</th>
+<th align="right">dist</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-June
-</td>
-<td style="text-align:left;">
-Jun
-</td>
-<td style="text-align:left;">
-Benny
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="odd">
+<td align="left">June</td>
+<td align="left">Jun</td>
+<td align="left">Benny</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-March
-</td>
-<td style="text-align:left;">
-Mach
-</td>
-<td style="text-align:left;">
-Billy
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td align="left">March</td>
+<td align="left">Mach</td>
+<td align="left">Billy</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-August
-</td>
-<td style="text-align:left;">
-Agust
-</td>
-<td style="text-align:left;">
-Bobby
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="odd">
+<td align="left">August</td>
+<td align="left">Agust</td>
+<td align="left">Bobby</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-May
-</td>
-<td style="text-align:left;">
-Mae
-</td>
-<td style="text-align:left;">
-Frances
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td align="left">May</td>
+<td align="left">Mae</td>
+<td align="left">Frances</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-February
-</td>
-<td style="text-align:left;">
-Febary
-</td>
-<td style="text-align:left;">
-Gary
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td align="left">February</td>
+<td align="left">Febary</td>
+<td align="left">Gary</td>
+<td align="right">2</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-August
-</td>
-<td style="text-align:left;">
-Agast
-</td>
-<td style="text-align:left;">
-Greg
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="even">
+<td align="left">August</td>
+<td align="left">Agast</td>
+<td align="left">Greg</td>
+<td align="right">2</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-April
-</td>
-<td style="text-align:left;">
-Apil
-</td>
-<td style="text-align:left;">
-Jimmy
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="odd">
+<td align="left">April</td>
+<td align="left">Apil</td>
+<td align="left">Jimmy</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-October
-</td>
-<td style="text-align:left;">
-Octobr
-</td>
-<td style="text-align:left;">
-Steve
-</td>
-<td style="text-align:right;">
-1
-</td>
+<tr class="even">
+<td align="left">October</td>
+<td align="left">Octobr</td>
+<td align="left">Steve</td>
+<td align="right">1</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-February
-</td>
-<td style="text-align:left;">
-Febrey
-</td>
-<td style="text-align:left;">
-Tammy
-</td>
-<td style="text-align:right;">
-3
-</td>
+<tr class="odd">
+<td align="left">February</td>
+<td align="left">Febrey</td>
+<td align="left">Tammy</td>
+<td align="right">3</td>
 </tr>
 </tbody>
 </table>

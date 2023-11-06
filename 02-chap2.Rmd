@@ -6,7 +6,7 @@ library(knitr)
 library(tidyverse)
 library(stringdist)
 library(dplyr)
-library(kableExtra)
+#library(kableExtra)
 library(ggplot2)
 library(readtext)
 require(quanteda)
@@ -102,7 +102,8 @@ comments <- read.csv("data/clean_notes.csv")
 
 test_comments <-comments[1:4,]
 
-kable(test_comments %>% filter(page_count==2 | page_count==3) %>% dplyr::select(page_count, notes), caption="Participant Note Example") %>% column_spec(2, width = "30em")
+kable(test_comments %>% filter(page_count==2 | page_count==3) %>% dplyr::select(page_count, notes), caption="Participant Note Example") 
+# %>% column_spec(2, width = "30em")
 ```
 
 In order to appropriately clean the notes, the duplicated text ("Richard Cole - has been charted with willfully discharging a firearm in a place of business. This crime is a felony.") needs to be removed from the third page, to leave only notes that correspond to the third page's testimony.
