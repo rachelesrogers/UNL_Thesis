@@ -1,8 +1,21 @@
-# Conclusion {-}
+# Conclusion - Initial Study Revisited {#finalstudy}
 
-If we don't want Conclusion to have a chapter number next to it, we can add the `{-}` attribute.
+## Introduction
 
-**More info**
+The initial goal of this research was to investigate how a bullet matching algorithm or demonstrative evidence may affect juror perception of the courtroom evidence and procedure.
+In the course of this investigation, we encountered two issues: confusion based on the transcript-based testimony format and Likert scale compression.
+In order to address these issues, we redesigned the study format to include cartoons and color-coded speech bubbles for clarity, and conducted a survey investigating response type.
+We also designed a method for analyzing participant notes that were taken while reading through the testimony, to create a 'heatmap' of areas of text that participants found to be important.
 
-And here's some other random info: the first paragraph after a chapter title or section head _shouldn't be_ indented, because indents are to tell the reader that you're starting a new paragraph. Since that's obvious after a chapter or section title, proper typesetting doesn't add an indent there.
+These diverging avenues of investigation have again merged for a final study.
+The new cartoon study format seemed to alleviate the confusion that came from the initial transcript format, the response type study indicates that phrasing questions in terms of chance (i.e. "1 chance in 10 that...") reduced/eliminated(?) the scale compression seen in Likert scales, and the text analysis provides useful information about what participants found worth copying into their notes.
+In consolidating the information learned from these sub-studies, we returned to the initial study with significant changes designed to assist in elucidating the relationship between the inclusion of an algorithm in courtroom testimony and juror perception.
+
+## Methods
+
+The same initial study scenario is used, as explained in Chapter \@ref(study1): Richard Cole is accused of attempted robbery, and the only evidence presented to study participants is the bullet comparison between the bullet recovered from the scene and Cole's gun.
+Independent variables include the examiner's conclusion (match/not a match/inconclusive), the use of demonstrative evidence, such as images (yes/no), and the use of the bullet matching algorithm, with additional testimony from an algorithm expert (yes/no).
+The study was reformatted to resemble the format of the response type study - including cartoons, speech bubbles, color-coding, and jury instructions.
+This also involved streamlining the testimony transcript to come from a single document, in order to reduce the chance of confounding typos.
+Questions with regard to reliability, scientificity, and credibility were re-worded from Likert scale format to chance format.
 
