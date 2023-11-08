@@ -144,7 +144,7 @@ Therefore, the use of images in a courtroom should be studied for an effect with
 ### Study Format
 
 \authorcol{First,} participants are presented with a short scenario based on @garrettMockJurorsEvaluation2020: a bullet is the only evidence recovered from an attempted convenience store robbery, and is tested against a gun found in Richard Cole's car in a routine traffic stop. 
-\authorcol{Participants are informed that the court clerk was unable to identify the robber because they were wearing a ski mask, and that the testimony presented represented all relevant information.}
+\authorcol{Participants are informed that the store clerk was unable to identify the robber because they were wearing a ski mask, and that the testimony presented represented all relevant information.}
 \authorcol{They were also advised that they would be unable to re-read testimony, and a notepad was provided for their convenience.}
 Participants are then asked to read a transcript of mock court testimony, and rate their impression of the evidence presented, as well as their impression of the experts. 
 This document included expert testimony, cross examination, and questions from the jury conveyed through the judge regarding error rates. 

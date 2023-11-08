@@ -818,6 +818,34 @@ ggplot(microstudy_clean) +
 
 
 ```
+Figure \@ref(fig:opinionlike) demonstrates the relationship between the chance scale and the participant's opinion of the guilt of the defendant.
+In this case, individuals thought the defendant committed the crime if they were above the "fifty-fifty chance" value for the match condition, showing a lower threshold for their opinion of guilt than seen in Figure \@ref(fig:convictlike), when they were asked for their conviction choice.
+Individuals who selected the "fifty-fifty chance" appear to be fairly evenly split on their opinion of the guilt of the defendant in the match condition.
+
+```{r}
+#| opinionlike,
+#| fig.cap= "Multiple Choice Chance and Opinion of Guilt",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+
+ggplot(microstudy_clean) +
+  geom_bar(aes(x=fixed_like, fill=opinion_guilt), position=position_dodge(preserve = "single")) +
+  ggtitle("What is the Chance that the Defendant is Guilty?") +
+  scale_fill_manual(values = c("grey20", "plum1"), name="Guilty?")+
+  ylab("Count")+
+  xlab("Chance")+
+  theme_bw()+
+  facet_grid(conclusion.x~.)+
+  scale_x_discrete(labels = wrap_format(10))
+
+
+```
 
 ##### Probability Comparison
 
