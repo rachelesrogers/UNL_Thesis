@@ -1431,6 +1431,7 @@ ggplot(microstudy_clean) +
    - If the algorithm were re-run on the same bullet comparison, how many times do you believe the algorithm would agree with these results?
        - [blank] out of [blank] runs would agree with the results of the bullet comparison
    <!-- - Credibility: Perhaps questions regarding the ability to testify? Or something on credentials, or comparison to another individual -->
+   - What if we used a blank slider for credibility/scientificity?
    - Scientificity: can directly compare to each other, or have a non-scientific portion to compare to
      - Did you find the algorithm or the bullet comparison to be more scientific?
      - Compared to the case description, how would you rate the scientificity of the bullet comparison

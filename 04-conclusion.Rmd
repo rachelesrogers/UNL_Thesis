@@ -49,7 +49,7 @@ They are asked if they would choose to convict, based on the 'beyond a reasonabl
 Unlike the initial study, participants are also asked if they personally believe that the defendant is guilty.
 As demonstrated in Chapter \@ref(study2), these two questions can act in conjunction to judge how participants perceive the strength of evidence in the case - those who personally believe the defendant was guilty but choose not to convict are placing the evidential strength somewhere between enough evidence to sway their personal belief, but not enough evidence to say the defendant is guilty 'beyond a reasonable doubt'.
 Because of the scale compression found in Likert scales in the initial study, the questions regarding the strength of evidence, the credibility of the examiners, the reliability and scientificity of the evidence, and the understanding of the procedures were changed.
-Instead, questions were formed in terms of chance scales, as described in Chapter \@ref(study2) 
+Instead, questions were formed in terms of chance scales, as described in Chapter \@ref(study2). 
 <!-- **[TO BE DEVELOPED]**. -->
 Chapter \@ref(study2) also demonstrates some of the limitations of asking participants to give a probability that the defendant committed the crime - in the match condition, responses are clustered at the end of the scale. 
 <!-- **[LOOK INTO A WAY TO CHANGE THE SCALING ON THE SLIDER?]** -->
