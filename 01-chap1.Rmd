@@ -534,39 +534,60 @@ algorithm_results$algtestcred = factor(
 
 levels(merged_results$firetestcred) <-
   gsub(" ", "\n", levels(merged_results$firetestcred))
-
-examcred <-
-  ggplot(subset(merged_results,!is.na(firetestcred)),
-         aes(x = firetestcred, fill = conclusion)) +
-  geom_bar(
-    mapping = aes(y =after_stat(prop), group = conclusion),
-    position = position_dodge(preserve = "single"), color="black"
-  ) +
-  #geom_histogram(stat="count", position="dodge")+
-  facet_grid(algorithm ~ ., labeller =  purrr::partial(label_both, sep = ":\n")) +
-  ggtitle("How credible did you find the testimony of Terry Smith\n(the firearm examiner)?") +
-  scale_fill_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
-  theme_bw()+
-  theme(axis.title.x = element_blank())
-  
-
-levels(algorithm_results$algtestcred) <-
-  gsub(" ", "\n", levels(algorithm_results$algtestcred))
-
-algcred <-
-  ggplot(subset(algorithm_results,!is.na(algtestcred)),
-         aes(x = algtestcred, fill = conclusion)) +
-  geom_bar(mapping = aes(y = after_stat(prop), group = conclusion),
-           position = "dodge", color="black") +
-  #  geom_histogram(stat="count", position="dodge")+
-  facet_grid(picture ~ ., labeller = label_both) +
-  ggtitle("Algorithm Expert Testimony") +
-  scale_fill_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
-  theme_bw()+
-  theme(axis.title.x = element_blank())
+# 
+# examcred <-
+#   ggplot(subset(merged_results,!is.na(firetestcred)),
+#          aes(x = firetestcred, fill = conclusion)) +
+#   geom_bar(
+#     mapping = aes(y =after_stat(prop), group = conclusion),
+#     position = position_dodge(preserve = "single"), color="black"
+#   ) +
+#   #geom_histogram(stat="count", position="dodge")+
+#   facet_grid(algorithm ~ ., labeller =  purrr::partial(label_both, sep = ":\n")) +
+#   ggtitle("How credible did you find the testimony of Terry Smith\n(the firearm examiner)?") +
+#   scale_fill_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
+#   theme_bw()+
+#   theme(axis.title.x = element_blank())
+#   
+# 
+# levels(algorithm_results$algtestcred) <-
+#   gsub(" ", "\n", levels(algorithm_results$algtestcred))
+# 
+# algcred <-
+#   ggplot(subset(algorithm_results,!is.na(algtestcred)),
+#          aes(x = algtestcred, fill = conclusion)) +
+#   geom_bar(mapping = aes(y = after_stat(prop), group = conclusion),
+#            position = "dodge", color="black") +
+#   #  geom_histogram(stat="count", position="dodge")+
+#   facet_grid(picture ~ ., labeller = label_both) +
+#   ggtitle("Algorithm Expert Testimony") +
+#   scale_fill_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
+#   theme_bw()+
+#   theme(axis.title.x = element_blank())
 
 #grid.arrange(examcred, algcred, ncol=2)
-examcred
+# examcred
+
+
+merged_results %>% 
+  filter(!is.na(firetestcred)) %>%
+  group_by(conclusion, algorithm, picture, firetestcred) %>%
+  count() %>%
+  group_by(conclusion, algorithm, picture) %>%
+  mutate(prop = n/sum(n)) %>%
+ggplot(aes(x = picture, fill = firetestcred)) +
+  geom_col(
+    mapping = aes(y =prop),
+    position = position_stack(), color="black"
+  ) +
+  coord_flip() +
+  facet_grid(algorithm~conclusion, labeller = label_both) +
+  ggtitle("How credible did you find the testimony of Terry Smith (the firearm examiner)?") +
+  scale_fill_manual("", values = c("#8c510a", "#d8b365", "#f6e8c3", "#f5f5f5", "#c7eae5","#5ab4ac", "#01665e")) +
+  theme_bw()+
+  theme(legend.position = "bottom", legend.direction = "horizontal") + 
+  ylab("Proportion of responses") + 
+    guides(fill = guide_legend(nrow = 1, reverse = TRUE))
 ```
 
 ### Reliability
@@ -587,16 +608,16 @@ In the case of an inconclusive decision, the highest proportion of participants 
 #| message= FALSE,
 #| warning= FALSE
 
-df.overrel <- ddply(
-  algorithm_results,
-  .(conclusion),
-  summarise,
-  prop = prop.table(table(overrel)),
-  overrel = names(table(overrel))
-)
+# df.overrel <- ddply(
+#   algorithm_results,
+#   .(conclusion),
+#   summarise,
+#   prop = prop.table(table(overrel)),
+#   overrel = names(table(overrel))
+# )
 
-df.overrel$overrel = factor(
-  df.overrel$overrel,
+merged_results$overrel = factor(
+  merged_results$overrel,
   levels = c(
     "Extremely unreliable",
     "Moderately unreliable",
@@ -610,14 +631,35 @@ df.overrel$overrel = factor(
 
 #Reorder factors (match/inconclusive/nomatch)
 #gsub on axis (replace spaces with new lines)
-levels(df.overrel$overrel) <-
-  gsub(" ", "\n", levels(df.overrel$overrel))
-ggplot(df.overrel, aes(overrel, prop, fill = conclusion)) +
-  geom_bar(stat = "identity", position = position_dodge(preserve = "single"), color="black") +
+levels(merged_results$overrel) <-
+  gsub(" ", "\n", levels(merged_results$overrel))
+# ggplot(df.overrel, aes(overrel, prop, fill = conclusion)) +
+#   geom_bar(stat = "identity", position = position_dodge(preserve = "single"), color="black") +
+#   ggtitle("How reliable do you think the firearm evidence in this case is?") +
+#   scale_fill_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
+#   theme_bw()+
+#   theme(axis.title.x = element_blank())
+
+merged_results %>% 
+  filter(!is.na(overrel)) %>%
+  group_by(conclusion, algorithm, picture, overrel) %>%
+  count() %>%
+  group_by(conclusion, algorithm, picture) %>%
+  mutate(prop = n/sum(n)) %>%
+ggplot(aes(x = picture, fill = overrel)) +
+  geom_col(
+    mapping = aes(y =prop),
+    position = position_stack(), color="black"
+  ) +
+  coord_flip() +
+  facet_grid(algorithm~conclusion, labeller = label_both) +
   ggtitle("How reliable do you think the firearm evidence in this case is?") +
-  scale_fill_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
+  scale_fill_manual("", values = c("#d77227", "#fc8d59", "#fee090", "#ffffbf", "#e0f3f8","#91bfdb", "#4575b4")) +
   theme_bw()+
-  theme(axis.title.x = element_blank())
+  theme(legend.position = "bottom", legend.direction = "horizontal") + 
+  ylab("Proportion of responses") + 
+    guides(fill = guide_legend(nrow = 1, reverse = TRUE))
+
 
 ```
 
@@ -632,7 +674,7 @@ As with previous responses, all other categories are sparsely populated.
 #| genrel,
 #| fig.cap= "Histogram of perceived firearm reliability as a field",
 #| fig.width= 7,
-#| fig.height= 3,
+#| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
 #| message= FALSE,
@@ -654,19 +696,41 @@ merged_results$firerel = factor(
 levels(merged_results$firerel) <-
   gsub(" ", "\n", levels(merged_results$firerel))
 
-ggplot(subset(merged_results,!is.na(firerel)),
-       aes(x = firerel, fill = conclusion)) +
-  geom_bar(
-    mapping = aes(y = after_stat(prop), group = conclusion),
-    position = position_dodge(preserve = "single"), color="black"
+# ggplot(subset(merged_results,!is.na(firerel)),
+#        aes(x = firerel, fill = conclusion)) +
+#   geom_bar(
+#     mapping = aes(y = after_stat(prop), group = conclusion),
+#     position = position_dodge(preserve = "single"), color="black"
+#   ) +
+#   #  geom_histogram(stat="count", position="dodge")+
+#   facet_grid(algorithm ~ ., labeller = label_both) +
+#   ggtitle("In general, how reliable do you think firearm evidence is?") +
+#   scale_fill_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
+#   theme_bw()+
+#   theme(axis.title.x = element_blank())
+
+merged_results %>% 
+  filter(!is.na(firerel)) %>%
+  group_by(conclusion, algorithm, picture, firerel) %>%
+  count() %>%
+  group_by(conclusion, algorithm, picture) %>%
+  mutate(prop = n/sum(n)) %>%
+ggplot(aes(x = picture, fill = firerel)) +
+  geom_col(
+    mapping = aes(y =prop),
+    position = position_stack(), color="black"
   ) +
-  #  geom_histogram(stat="count", position="dodge")+
-  facet_grid(algorithm ~ ., labeller = label_both) +
+  coord_flip() +
+  facet_grid(algorithm~conclusion, labeller = label_both) +
   ggtitle("In general, how reliable do you think firearm evidence is?") +
-  scale_fill_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
+  scale_fill_manual("", values = c("#d77227", "#fc8d59", "#fee090", "#ffffbf", "#e0f3f8","#91bfdb", "#4575b4")) +
   theme_bw()+
-  theme(axis.title.x = element_blank())
+  theme(legend.position = "bottom", legend.direction = "horizontal") + 
+  ylab("Proportion of responses") + 
+    guides(fill = guide_legend(nrow = 1, reverse = TRUE))
+
 ```
+
 
 
 In all conditions, participants were asked to rate the reliability of the examiner's subjective opinion of the firearm evidence (Figure \@ref(fig:examrel)).
@@ -701,23 +765,44 @@ merged_results$examrel = factor(
 levels(merged_results$examrel) <-
   gsub(" ", "\n", levels(merged_results$examrel))
 
-ggplot(subset(merged_results,!is.na(examrel)),
-       aes(x = examrel, fill = algorithm)) +
-  geom_bar(
-    mapping = aes(y = ..prop.., group = algorithm),
-    position = position_dodge(preserve = "single"), color="black"
-  ) +
-  #  geom_histogram(stat="count", position="dodge")+
-  facet_grid(conclusion ~ ., labeller =  purrr::partial(label_both, sep = ":\n")) +
-  ggtitle(
-    "How reliable do you think the firearms examiner's subjective opinion \n of the bullet comparison is, in this case?"
-  ) +
-  scale_fill_manual(values = c("grey20", "tomato")) +
-  theme_bw()+
-  theme(axis.title.x = element_blank())
+# ggplot(subset(merged_results,!is.na(examrel)),
+#        aes(x = examrel, fill = algorithm)) +
+#   geom_bar(
+#     mapping = aes(y = ..prop.., group = algorithm),
+#     position = position_dodge(preserve = "single"), color="black"
+#   ) +
+#   #  geom_histogram(stat="count", position="dodge")+
+#   facet_grid(conclusion ~ ., labeller =  purrr::partial(label_both, sep = ":\n")) +
+#   ggtitle(
+#     "How reliable do you think the firearms examiner's subjective opinion \n of the bullet comparison is, in this case?"
+#   ) +
+#   scale_fill_manual(values = c("grey20", "tomato")) +
+#   theme_bw()+
+#   theme(axis.title.x = element_blank())
 
 ## Cannot center title: faceting variable error
 #  theme(plot.title=element_text(hjust=0.5))+
+
+merged_results %>% 
+  filter(!is.na(examrel)) %>%
+  group_by(conclusion, algorithm, picture, examrel) %>%
+  count() %>%
+  group_by(conclusion, algorithm, picture) %>%
+  mutate(prop = n/sum(n)) %>%
+ggplot(aes(x = picture, fill = examrel)) +
+  geom_col(
+    mapping = aes(y =prop),
+    position = position_stack(), color="black"
+  ) +
+  coord_flip() +
+  facet_grid(algorithm~conclusion, labeller = label_both) +
+  ggtitle("How reliable do you think the firearms examiner's subjective opinion \n of the bullet comparison is, in this case?") +
+  scale_fill_manual("", values = c("#d77227", "#fc8d59", "#fee090", "#ffffbf", "#e0f3f8","#91bfdb", "#4575b4")) +
+  theme_bw()+
+  theme(legend.position = "bottom", legend.direction = "horizontal") + 
+  ylab("Proportion of responses") + 
+    guides(fill = guide_legend(nrow = 1, reverse = TRUE))
+
 ```
 
 Individuals who received the algorithm were also asked to rate algorithm reliability, responses are shown in Figure \@ref(fig:algrel). 
@@ -734,16 +819,39 @@ Both also demonstrated a higher selection of "Weakly reliable" when individuals 
 #| message= FALSE,
 #| warning= FALSE
 
-df.algrel <- ddply(
-  algorithm_results,
-  .(conclusion),
-  summarise,
-  prop = prop.table(table(algrel)),
-  algrel = names(table(algrel))
-)
+# df.algrel <- ddply(
+#   algorithm_results,
+#   .(conclusion),
+#   summarise,
+#   prop = prop.table(table(algrel)),
+#   algrel = names(table(algrel))
+# )
+# 
+# df.algrel$algrel = factor(
+#   df.algrel$algrel,
+#   levels = c(
+#     "Extremely unreliable",
+#     "Moderately unreliable",
+#     "Weakly unreliable",
+#     "Neither reliable nor unreliable",
+#     "Weakly reliable",
+#     "Moderately reliable",
+#     "Extremely reliable"
+#   )
+# )
+# 
+# levels(df.algrel$algrel) <-
+#   gsub(" ", "\n", levels(df.algrel$algrel))
 
-df.algrel$algrel = factor(
-  df.algrel$algrel,
+# ggplot(df.algrel, aes(algrel, prop, fill = conclusion)) +
+#   geom_bar(stat = "identity", position = position_dodge(preserve = "single"), color="black") +
+#   ggtitle("How reliable do you think the firearm algorithm evidence is,\n in this case?") +
+#   scale_fill_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
+#   theme_bw()+
+#   theme(axis.title.x = element_blank())
+
+merged_results$algrel = factor(
+  merged_results$algrel,
   levels = c(
     "Extremely unreliable",
     "Moderately unreliable",
@@ -755,15 +863,28 @@ df.algrel$algrel = factor(
   )
 )
 
-levels(df.algrel$algrel) <-
-  gsub(" ", "\n", levels(df.algrel$algrel))
+levels(merged_results$algrel) <-
+  gsub(" ", "\n", levels(merged_results$algrel))
 
-ggplot(df.algrel, aes(algrel, prop, fill = conclusion)) +
-  geom_bar(stat = "identity", position = position_dodge(preserve = "single"), color="black") +
+merged_results %>% 
+  filter(!is.na(algrel)) %>%
+  group_by(conclusion, algorithm, picture, algrel) %>%
+  count() %>%
+  group_by(conclusion, algorithm, picture) %>%
+  mutate(prop = n/sum(n)) %>%
+ggplot(aes(x = picture, fill = algrel)) +
+  geom_col(
+    mapping = aes(y =prop),
+    position = position_stack(), color="black"
+  ) +
+  coord_flip() +
+  facet_grid(algorithm~conclusion, labeller = label_both) +
   ggtitle("How reliable do you think the firearm algorithm evidence is,\n in this case?") +
-  scale_fill_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
+  scale_fill_manual("", values = c("#d77227", "#fc8d59", "#fee090", "#ffffbf", "#e0f3f8","#91bfdb", "#4575b4")) +
   theme_bw()+
-  theme(axis.title.x = element_blank())
+  theme(legend.position = "bottom", legend.direction = "horizontal") + 
+  ylab("Proportion of responses") + 
+    guides(fill = guide_legend(nrow = 1, reverse = TRUE))
 
 
 ```
