@@ -9,6 +9,13 @@ We also designed a method for analyzing participant notes that were taken while 
 
 These diverging avenues of investigation have again merged for a final study.
 The new cartoon study format seemed to alleviate the confusion that came from the initial transcript format, the response type study indicates that phrasing questions in terms of chance (i.e. "1 chance in 10 that...") reduced/eliminated(?) the scale compression seen in Likert scales, and the text analysis provides useful information about what participants found worth copying into their notes.
+\authorcol{While some scales can be rephrased in terms of chance, others, such as how scientific the approach is, were more difficult to reframe.
+These questions also suffered from scale compression, which may result from an issue of calibration.
+While a continuous scale would potentially alleviate the limiting effect of categories, the issue of calibration may still remain: individuals may still choose a cluster of high values on the continuous scale.
+The process of scale calibration can be seen in the game} *Wavelength* [@wavelength].
+\authorcol{In this game, one team member tries to get the rest of the team to select values on a continuous scale.
+Individuals attempt to calibrate their scales to each other through discussion, sometimes setting end points that they reference to.
+We wish to have a similar process without discussion, by giving participants end points to compare their experience to in terms of scientificity.}]
 In consolidating the information learned from these sub-studies, we returned to the initial study with significant changes designed to assist in elucidating the relationship between the inclusion of an algorithm in courtroom testimony and juror perception.
 
 ## Methods
