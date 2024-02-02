@@ -393,7 +393,8 @@ Because participants are provided with the same continuous notepad throughout th
 </tbody>
 </table>
 <p>police officer pulled over Richard Cole for speeding. During a search of the Defendant’s vehicle, the detective located a 9mm handgun, which was legally licensed to the Defendant. |</p>
-<p>In order to appropriately clean the notes, the duplicated text (“Richard Cole - has been charted with willfully discharging a firearm in a place of business. This crime is a felony.”) needs to be removed from the third page, to leave only notes that correspond to the third page’s testimony.</p>
+<p>In order to appropriately clean the notes, the duplicated text (“Richard Cole - has been charted with willfully discharging a firearm in a place of business. This crime is a felony.”) needs to be removed from the third page, to leave only notes that correspond to the third page’s testimony.
+The functions used in this data cleaning are included in the <code>seqstrclean</code> package <span class="citation">(Rogers &amp; VanderPlas, 2024b)</span>.</p>
 <div id="first-n-character-fnc-method" class="section level4 hasAnchor" number="3.3.1.1">
 <h4><span class="header-section-number">3.3.1.1</span> First n Character (FNC) Method<a href="3-textcolor.html#first-n-character-fnc-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In scenarios such as the table above, a straightforward method for note cleaning would be to measure the length of the previous page’s notes (n), and compare the previous notes to the first n characters in the current pages notes via edit distance.
@@ -730,7 +731,8 @@ Figure 3.3: Hybrid Flowchart
 <p>In order to analyze which areas of the text individuals focus on, we must first find a way to compare their notes to the written testimony.
 One way to do this comparison is through collocation analysis, which uses the frequency of strings of sequentially-appearing words (n-grams) in order to identify words that tend to ‘stick together’.
 For example, in the case of the phrase “The cat ran up the tree”, there would be three collocations of length 4: “The cat ran up”, “cat ran up the”, and “ran up the tree”.
-By matching the collocations that appear in the testimony to a frequency of the collocation from the given notepad, we would be able to get frequency values for all n-grams that occur in the testimony.</p>
+By matching the collocations that appear in the testimony to a frequency of the collocation from the given notepad, we would be able to get frequency values for all n-grams that occur in the testimony.
+The functions for creating highlighted text can be found in the package <code>highlightr</code> <span class="citation">(Rogers &amp; VanderPlas, 2024a)</span>.</p>
 <p>In setting the size of the collocation, there are two important factors to keep in mind: the frequency with which a phrase appears in the testimony itself, and the number of words in a row that individuals may directly copy from the testimony.
 If the number of words considered in a collocation is too short, we may run into an issue of phrases occurring multiple times throughout the testimony, without having a way to distinguish which sections are of importance.
 For example, if we used a collocation of length two, a common phrase in the testimony would be “Richard Cole”.
@@ -1049,7 +1051,6 @@ The final output qualitatively indicates which portions of testimony participant
 <div id="future-research-1" class="section level3 hasAnchor" number="3.5.2">
 <h3><span class="header-section-number">3.5.2</span> Future Research<a href="3-textcolor.html#future-research-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the future, I also want to find an implementation of suffix trees to more effectively implement the LCS method.
-Once these data cleaning methods have been streamlined, I plan to create R packages for both the cleaning of sequential notes and for the visualization of transcript notes.
 Another application of this type of analysis may be used in the evaluation of student note taking.</p>
 </div>
 </div>
