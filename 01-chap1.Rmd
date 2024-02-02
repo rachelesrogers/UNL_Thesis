@@ -931,18 +931,38 @@ merged_results$firesci = factor(
 levels(merged_results$firesci) <-
   gsub(" ", "\n", levels(merged_results$firesci))
 
-ggplot(subset(merged_results,!is.na(firesci)),
-       aes(x = firesci, fill = algorithm)) +
-  geom_bar(
-    mapping = aes(y = ..prop.., group = algorithm),
-    position = position_dodge(preserve = "single"), color="black"
+# ggplot(subset(merged_results,!is.na(firesci)),
+#        aes(x = firesci, fill = algorithm)) +
+#   geom_bar(
+#     mapping = aes(y = ..prop.., group = algorithm),
+#     position = position_dodge(preserve = "single"), color="black"
+#   ) +
+#   #  geom_histogram(stat="count", position="dodge")+
+#   facet_grid(conclusion ~ ., labeller =  purrr::partial(label_both, sep = ":\n")) +
+#   ggtitle("In general, how scientific do you think the firearm evidence is?") +
+#   scale_fill_manual(values = c("grey20", "tomato")) +
+#   theme_bw()+
+#   theme(axis.title.x = element_blank())
+
+merged_results %>% 
+  filter(!is.na(firesci)) %>%
+  group_by(conclusion, algorithm, picture, firesci) %>%
+  count() %>%
+  group_by(conclusion, algorithm, picture) %>%
+  mutate(prop = n/sum(n)) %>%
+ggplot(aes(x = picture, fill = firesci)) +
+  geom_col(
+    mapping = aes(y =prop),
+    position = position_stack(), color="black"
   ) +
-  #  geom_histogram(stat="count", position="dodge")+
-  facet_grid(conclusion ~ ., labeller =  purrr::partial(label_both, sep = ":\n")) +
+  coord_flip() + 
+  facet_grid(algorithm~conclusion, labeller = label_both) +
   ggtitle("In general, how scientific do you think the firearm evidence is?") +
-  scale_fill_manual(values = c("grey20", "tomato")) +
-  theme_bw()+
-  theme(axis.title.x = element_blank())
+  scale_fill_manual("", values = c("#b35806", "#f1a340", "#fee0b6", "#f7f7f7", "#d8daeb","#998ec3", "#542788")) +
+  theme_bw() + 
+  theme(legend.position = "bottom", legend.direction = "horizontal") + 
+  ylab("Proportion of responses") + 
+    guides(fill = guide_legend(nrow = 1, reverse = TRUE))
 
 
 ```
@@ -978,21 +998,41 @@ merged_results$examsci = factor(
 levels(merged_results$examsci) <-
   gsub(" ", "\n", levels(merged_results$examsci))
 
-ggplot(subset(merged_results,!is.na(examsci)),
-       aes(x = examsci, fill = algorithm)) +
-  geom_bar(
-    mapping = aes(y = ..prop.., group = algorithm),
-    position = position_dodge(preserve = "single"), color="black"
-  ) +
-  #  geom_histogram(stat="count", position="dodge")+
-  facet_grid(conclusion ~ ., labeller =  purrr::partial(label_both, sep = ":\n")) +
-  ggtitle(
-    "How scientific do you think the firearms examiner\'s subjective opinion \n of the bullet comparison evidence is, in this case?"
-  ) +
-  scale_fill_manual(values = c("grey20", "tomato")) +
-  theme_bw()+
-  theme(axis.title.x = element_blank())
+# ggplot(subset(merged_results,!is.na(examsci)),
+#        aes(x = examsci, fill = algorithm)) +
+#   geom_bar(
+#     mapping = aes(y = ..prop.., group = algorithm),
+#     position = position_dodge(preserve = "single"), color="black"
+#   ) +
+#   #  geom_histogram(stat="count", position="dodge")+
+#   facet_grid(conclusion ~ ., labeller =  purrr::partial(label_both, sep = ":\n")) +
+#   ggtitle(
+#     "How scientific do you think the firearms examiner\'s subjective opinion \n of the bullet comparison evidence is, in this case?"
+#   ) +
+#   scale_fill_manual(values = c("grey20", "tomato")) +
+#   theme_bw()+
+#   theme(axis.title.x = element_blank())
 
+
+merged_results %>% 
+  filter(!is.na(examsci)) %>%
+  group_by(conclusion, algorithm, picture, examsci) %>%
+  count() %>%
+  group_by(conclusion, algorithm, picture) %>%
+  mutate(prop = n/sum(n)) %>%
+ggplot(aes(x = picture, fill = examsci)) +
+  geom_col(
+    mapping = aes(y =prop),
+    position = position_stack(), color="black"
+  ) +
+  coord_flip() + 
+  facet_grid(algorithm~conclusion, labeller = label_both) +
+  ggtitle("How scientific do you think the firearms examiner\'s subjective opinion \n of the bullet comparison evidence is, in this case?") +
+  scale_fill_manual("", values = c("#b35806", "#f1a340", "#fee0b6", "#f7f7f7", "#d8daeb","#998ec3", "#542788")) +
+  theme_bw() + 
+  theme(legend.position = "bottom", legend.direction = "horizontal") + 
+  ylab("Proportion of responses") + 
+    guides(fill = guide_legend(nrow = 1, reverse = TRUE))
 
 ```
 
@@ -1011,8 +1051,37 @@ The use of demonstrative evidence did not have a visible effect.
 #| message= FALSE,
 #| warning= FALSE
 
-algorithm_results$algsci = factor(
-  algorithm_results$algsci,
+# algorithm_results$algsci = factor(
+#   algorithm_results$algsci,
+#   levels = c(
+#     "Extremely unscientific",
+#     "Moderately unscientific",
+#     "Weakly unscientific",
+#     "Neither scientific nor unscientific",
+#     "Weakly scientific",
+#     "Moderately scientific",
+#     "Extremely scientific"
+#   )
+# )
+# 
+# levels(algorithm_results$algsci) <-
+#   gsub(" ", "\n", levels(algorithm_results$algsci))
+
+# ggplot(subset(algorithm_results,!is.na(algsci)),
+#        aes(x = algsci, fill = conclusion)) +
+#   geom_bar(
+#     mapping = aes(y = ..prop.., group = conclusion),
+#     position = position_dodge(preserve = "single"), color="black"
+#   ) +
+#   #  geom_histogram(stat="count", position="dodge")+
+#   facet_grid(picture ~ ., labeller = label_both) +
+#   ggtitle("How scientific do you think the firearm algorithm evidence is, \n in this case?") +
+#   scale_fill_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
+#   theme_bw()+
+#   theme(axis.title.x = element_blank())
+
+merged_results$algsci = factor(
+  merged_results$algsci,
   levels = c(
     "Extremely unscientific",
     "Moderately unscientific",
@@ -1024,21 +1093,28 @@ algorithm_results$algsci = factor(
   )
 )
 
-levels(algorithm_results$algsci) <-
-  gsub(" ", "\n", levels(algorithm_results$algsci))
+levels(merged_results$algsci) <-
+  gsub(" ", "\n", levels(merged_results$algsci))
 
-ggplot(subset(algorithm_results,!is.na(algsci)),
-       aes(x = algsci, fill = conclusion)) +
-  geom_bar(
-    mapping = aes(y = ..prop.., group = conclusion),
-    position = position_dodge(preserve = "single"), color="black"
+merged_results %>% 
+  filter(!is.na(algsci)) %>%
+  group_by(conclusion, algorithm, picture, algsci) %>%
+  count() %>%
+  group_by(conclusion, algorithm, picture) %>%
+  mutate(prop = n/sum(n)) %>%
+ggplot(aes(x = picture, fill = algsci)) +
+  geom_col(
+    mapping = aes(y =prop),
+    position = position_stack(), color="black"
   ) +
-  #  geom_histogram(stat="count", position="dodge")+
-  facet_grid(picture ~ ., labeller = label_both) +
+  coord_flip() + 
+  facet_grid(algorithm~conclusion, labeller = label_both) +
   ggtitle("How scientific do you think the firearm algorithm evidence is, \n in this case?") +
-  scale_fill_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
-  theme_bw()+
-  theme(axis.title.x = element_blank())
+  scale_fill_manual("", values = c("#b35806", "#f1a340", "#fee0b6", "#f7f7f7", "#d8daeb","#998ec3", "#542788")) +
+  theme_bw() + 
+  theme(legend.position = "bottom", legend.direction = "horizontal") + 
+  ylab("Proportion of responses") + 
+    guides(fill = guide_legend(nrow = 1, reverse = TRUE))
 
 
 ```
