@@ -1141,46 +1141,69 @@ There was not a discernible difference in responses based on the presence or abs
 #| message= FALSE,
 #| warning= FALSE
 
-merged_results$expunder = factor(
-  merged_results$expunder,
-  levels = c(
-    "1 <br/> I understood nothing",
-    "2.0",
-    "3 <br/> I understood about half of the method",
-    "4.0",
-    "5 <br/> I understood everything"
-  )
-)
+# merged_results$expunder = factor(
+#   merged_results$expunder,
+#   levels = c(
+#     "1 <br/> I understood nothing",
+#     "2.0",
+#     "3 <br/> I understood about half of the method",
+#     "4.0",
+#     "5 <br/> I understood everything"
+#   )
+# )
+# 
+# levels(merged_results$expunder) <-
+#   gsub("<br/>", "", levels(merged_results$expunder))
+# 
+# levels(merged_results$expunder) <-
+#   gsub("  ", " ", levels(merged_results$expunder))
+# 
+# levels(merged_results$expunder) <-
+#   gsub(" ", "\n", levels(merged_results$expunder))
+# 
+# ggplot(subset(merged_results,!is.na(expunder)),
+#        aes(x = expunder, fill = algorithm)) +
+#   geom_bar(
+#     mapping = aes(y = ..prop.., group = algorithm),
+#     position = position_dodge(preserve = "single"), color="black"
+#   ) +
+#   #  geom_histogram(stat="count", position="dodge")+
+#   facet_grid(conclusion ~ ., labeller =  purrr::partial(label_both, sep = ":\n")) +
+#   ggtitle(
+#     "Based on this testimony, how would you rate your understanding of \n the method described for the examiner's personal bullet comparison?"
+#   ) +
+#   scale_fill_manual(values = c("grey20", "tomato")) +
+#   theme_bw()+
+#   theme(axis.title.x = element_blank())+ 
+#   scale_x_discrete(labels=c('1\nI\nunderstood\nnothing', '2', '3', '4', '5\nI\nunderstood\neverything'))
 
-levels(merged_results$expunder) <-
-  gsub("<br/>", "", levels(merged_results$expunder))
 
-levels(merged_results$expunder) <-
-  gsub("  ", " ", levels(merged_results$expunder))
-
-levels(merged_results$expunder) <-
-  gsub(" ", "\n", levels(merged_results$expunder))
-
-ggplot(subset(merged_results,!is.na(expunder)),
-       aes(x = expunder, fill = algorithm)) +
-  geom_bar(
-    mapping = aes(y = ..prop.., group = algorithm),
-    position = position_dodge(preserve = "single"), color="black"
-  ) +
-  #  geom_histogram(stat="count", position="dodge")+
-  facet_grid(conclusion ~ ., labeller =  purrr::partial(label_both, sep = ":\n")) +
-  ggtitle(
-    "Based on this testimony, how would you rate your understanding of \n the method described for the examiner's personal bullet comparison?"
-  ) +
-  scale_fill_manual(values = c("grey20", "tomato")) +
-  theme_bw()+
-  theme(axis.title.x = element_blank())+ 
-  scale_x_discrete(labels=c('1\nI\nunderstood\nnothing', '2', '3', '4', '5\nI\nunderstood\neverything'))
-
+histunderdata <- merged_results %>%
+  pivot_longer(c(algunder, expunder), names_to = "Question", values_to = "Understanding") %>%
+  mutate(Question = stringr::str_replace_all(Question, c("algunder" = "Algorithm", "expunder" = "Examiner"))) %>%
+  filter(!(Question =="Algorithm" & algorithm == "No")) %>%
+  group_by(conclusion, picture, Question, algorithm, Understanding) %>%
+  count() %>%
+  group_by(conclusion, picture, Question, algorithm) %>%
+  mutate(prop = n/sum(n)) %>%
+  mutate(Understanding = stringr::str_remove(Understanding, "<br/>|.0") %>%
+           stringr::str_remove(., "I understood "))
+histunderdata %>%
+  filter(algorithm == "Yes") %>%
+ggplot(aes(x = Question, fill = Understanding)) + 
+  geom_col(aes(y = prop), position = "stack", color = "black") + 
+  facet_grid(picture~conclusion, labeller = "label_both") + 
+  coord_flip() + 
+  scale_fill_manual("I understood", values = c("#d01c8b", "#f1b6da", "#f7f7f7", "#b8e186", "#4dac26")) + 
+  theme_bw() + 
+  ylab("Proportion") +
+  theme(legend.position = "bottom", legend.direction = "horizontal") + 
+  ylab("Proportion of responses") + 
+  guides(fill = guide_legend(nrow = 1, reverse = TRUE))
 
 ```
 
-The results for the particpants' understanding of the algorithm description differs based on the presence or absence of images (Figure \@ref(fig:algunder)).
+The results for the particpants' understanding of the algorithm description differs based on the presence or absence of images (Figure \@ref(fig:expunder)).
 When images are absent, participants selected values from "I understood about half the method" to "I understood everything" with a fairly uniform frequency, with a few participants selecting values in the lower categories. 
 When images were present, however, category selection appeared to relate to conclusion. 
 Those receiving the match condition were more likely to select 4 than other categories, meaning that they felt they understood more than half of the method but didn't understand everything. 
@@ -1197,7 +1220,8 @@ It is unclear what may have caused these differences in ratings of understanding
 #| fig.align= "center",
 #| echo= FALSE,
 #| message= FALSE,
-#| warning= FALSE
+#| warning= FALSE,
+#| eval = FALSE
 
 algorithm_results$algunder = factor(
   algorithm_results$algunder,
@@ -1249,6 +1273,41 @@ kable(table(subset(algorithm_results,!is.na(algunder) & picture=="Yes")$algunder
 # %>% 
 #   column_spec(1, width = "10em")
 ```
+```{r}
+#| examunder,
+#| fig.cap= "Histogram of understanding for the firearms examiner's explanation",
+#| fig.width= 7,
+#| fig.height= 3,
+#| fig.align= "center",
+#| echo= FALSE,
+#| message= FALSE,
+#| warning= FALSE,
+#| eval = FALSE
+
+merged_results <- merged_results %>%
+  mutate(expunder = stringr::str_remove(expunder, "<br/>") %>%
+           stringr::str_remove("\\n") %>%
+           stringr::str_remove("I understood ") %>%
+           stringr::str_remove("\\.0") %>%
+           stringr::str_replace("\\s{2,}", " "))
+
+merged_results %>%
+  filter(!is.na(expunder)) %>%
+  group_by(conclusion, algorithm, picture, expunder) %>%
+  count() %>%
+  group_by(conclusion, algorithm, picture) %>%
+  mutate(prop = n/sum(n)) %>%
+  ggplot(aes(x = picture, fill = expunder)) + 
+  geom_col(aes(y = prop, position = "stack"),  color="black") + 
+  coord_flip() + 
+  scale_fill_manual("I understood", values = c("#d01c8b", "#f1b6da", "#f7f7f7", "#b8e186", "#4dac26")) + 
+  theme_bw() + 
+  theme(legend.position = "bottom", legend.direction = "horizontal") + 
+  ylab("Proportion of responses") + 
+  guides(fill = guide_legend(nrow = 1, reverse = TRUE)) + 
+  facet_grid(algorithm ~ conclusion, labeller = label_both)
+```
+
 
 ### Uniqueness
 

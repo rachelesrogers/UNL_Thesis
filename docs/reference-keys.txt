@@ -24,7 +24,6 @@ fig:gensci
 fig:examsci
 fig:algsci
 fig:expunder
-fig:algunder
 tab:undertb
 fig:strength
 fig:gunstrength
