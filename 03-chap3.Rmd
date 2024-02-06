@@ -429,12 +429,13 @@ As shown in Table \@ref(tab:opinionchance), those who thought the defendant was 
 #| eval= TRUE
 
 library(knitr)
-library(kableExtra)
+# library(kableExtra)
 table(microstudy_clean$chance_of, microstudy_clean$guilt_opinion) %>%
 kable(col.names=c("Innocent", "Guilty"), align="lcc",
-      caption = "Participants who chose to express Chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant.") %>%
-  add_header_above(c("Chances of:"=1,"Opinion"=2), align=c("l","c")) %>%
-  kable_styling()
+      caption = "Participants who chose to express Chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant.") 
+# %>%
+#   add_header_above(c("Chances of:"=1,"Opinion"=2), align=c("l","c")) %>%
+#   kable_styling()
 
 ```
 
