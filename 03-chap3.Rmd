@@ -1,29 +1,28 @@
-# Jury Perception Revisited: This Time with Caricatures {#study2}
+# An Investigation of Response Types {#study2}
 
 ## Background
 
 
 ### Study 1 and Scale Compression
 
-The results from the initial study found in Chapter \@ref(study1) call into question the use of Likert response scales in this scenario, as well as the use of a transcript testimony format.
+The results from the initial study found in Chapter \@ref(study1) call into question the use of Likert response scales when evaluation jury perception of firearms experts, as well as the use of a transcript testimony format.
 
 Responses pertaining to the credibility of the expert, as well as the reliability and scientificity of the evidence, suffered from scale compression when a Likert scale was used - participants indicated overall confidence in credibility, reliability, and scientificity by mainly selecting the two highest categories of each scale.
 This lack of variation in scale responses makes it difficult to discern potential differences between treatment conditions.
-Due to this difficulty, we conducted a micro study in order to compare various response types, in order to determine substitute questions that may be more sensitive to scenario differences.
-Additional changes include the addition of jury instructions on the part of the judge, instructing members of the jury to treat the firearms examiner and algorithm developer as they would any other witness.
-Unfortunately, the jury instructions were not present in the initial microstudy.
+Due to this difficulty, we conducted a micro study comparing various response types, in order to determine substitute questions that may be more sensitive to scenario differences.
+Additional changes include the addition of jury instructions on the part of the judge, instructing members of the jury to treat the firearms examiner as they would any other witness and removing the use of the term "expert".
 Additional cross examination testimony with regards to the firearms examiner's inability to specifically tie the defendant to the crime scene is included as well.
 The transcript for the second study can be found in Appendix \@ref(study-2-changes).
 
-Some participants left confused comments with regards to who the witnesses were testifying for.
-The transcript format may lend an air of impartiality to the witnesses, when they are in fact testifying for a specific side in the case.
-Also, the format of the testimony transcripts does not clearly identify the speaker with each line, instead using "Q:" and "A:" in most cases, as shown in Appendix \@ref(study-2-changes).
+In the initial study, some participants were confused about who the witnesses were testifying for.
+This may be due to the testimony format, which does not clearly identify the speaker with each line, instead using "Q:" and "A:" in most cases, as shown in Appendix \@ref(study-2-changes).
 This lack of visuals for tracking speakers is not representative of the courtroom setting, and may have contributed to the confusion expressed by a participant.
-Due to this potential issue, we strove to develop a general tool that can be used in online courtroom studies, making it easier to track speakers, and with versatility in terms of individual characteristics.
+The transcript format may also lend an air of impartiality to the witnesses due to the relatively unclear identity of the individual asking the questions.
+Due to this potential issue, we strove to develop a general tool that can be used in online courtroom studies to provide visual representation of relevant actors, making it easier to track speakers, and with versatility in terms of individual characteristics.
 
-In order to minimize the chance of confounding typos as seen in Study 1, one master file is used with all lines of testimony, labelled by the scenario in which the testimony occurs.
+In order to minimize the chance of confounding typos as seen in Study 1, we used one master file with all lines of testimony, labelled by the scenario in which the testimony occurs.
 Thus, there is no longer multiple files of repeated text.
-Unique identification is used throughout the database files instead of relying on unique fingerprints, so the demographics section can more easily be linked to the final results.
+We also use unique identification throughout the database files in the form of Prolific ID's and a random number assigned to the participant instead of relying on unique fingerprints, so the demographics section can more easily be linked to the final results.
 
 ### Study Visualization
 
@@ -32,65 +31,58 @@ These characters were drawn so that the clothes and heads can be interchanged, p
 One difficulty in including drawn figures with realistic skin tones and figures is the influence of perceived race or gender on the participants' judgements.
 @ImplicitRaceAttitudes found a relationship between implicit racial bias and the perceived trustworthiness of individuals based on images of black and white males.
 They also found that 80% of participants exhibited pro-white implicit bias.
-Because of this potential bias introduced by visual figures, we plan to conduct a study in order to determine how these figures are perceived.
-
-## Micro Study on Response Type
+Because of this potential bias introduced by visual figures, we plan to conduct a study in order to determine how these figures are perceived at a later time.
+For the current study, the same figures are used consistently across all conditions to prevent a confounding effect.
 
 To investigate a which response type may be most informative for this study and to troubleshoot the use of figures and speech bubble format, we conducted a smaller micro study using various response types.
 
-### Methods
+## Methods
 
-#### Study Format
+### Study Format
 
-Participants were presented with the same scenario described in Study 1.
-In this case, however, the only factor that was changed was the conclusion of the firearms examiner: either a match or not a match.
+Participants were presented with the same scenario described in Chapter \@ref(study1): participants read a trial transcript regarding an attempted convenience store robbery, where the only evidence presented is a bullet comparison between the defendant's gun and a bullet recovered from the scene of the crime (a scenario from @garrettMockJurorsEvaluation2020).
+In this case, however, the only factor that was changed was the conclusion of the firearms examiner: either an indentification or exclusion.
 In all conditions, the algorithm was absent and there were no images.
-The testimony largely followed that of Study 1, aside from differences in the format and additional testimony described above.
-In this case, it was also explicitly state that the testimony did not reflect all evidence presented in the case, because in the non match condition there may not be enough evidence to bring the case to trial.
+The testimony largely followed that of Chapter \@ref(study1), aside from differences in the format and additional testimony described above.
+In this case, it was also explicitly stated that the testimony did not reflect all evidence presented in the case, because in the exclusion condition there may not be enough evidence to bring the case to trial.
 
 At the end of the testimony, the participants were asked a variety of questions regarding the strength of evidence in the case.
-Questions of probability, strength of evidence, and decision to convict were also asked in Study 1.
-They were asked to evaluate the probability that the defendant committed the crime, both with a visible probability scale (allowing the participants to select the exact probability value) and with a non-visible scale (only the numbers of 0 and 100 were available on the extremes of the scale).
+Questions of probability, strength of evidence, and decision to convict were repeated from the Chapter \@ref(study1) study.
+Participants were asked to evaluate the probability that the defendant committed the crime, both with a visible probability scale (allowing the participants to select the exact probability integer) and with a non-visible scale (only the numbers of 0 and 100 were available on the extremes of the scale).
 The strength of evidence was a Likert scale with values from "Not at all strong" to "Extremely strong" with nine points.
 In terms of conviction, participants were reminded of the decision criterion of "beyond a reasonable doubt" when making a decision in a criminal trial, and asked if they would choose to convict.
 
-New questions for this micro study asked for individuals to give their opinion of the guilt of the defendant, as well as assessing the chances that the defendant committed the crime, how much they would be willing to bet that the defendant was either innocent or guilty, and their opinion of the defendant.
+New questions for this micro study asked individuals to give their opinion of the guilt of the defendant, as well as assessing the chances that the defendant committed the crime, how much they would be willing to bet that the defendant was either innocent or guilty, and their opinion of the defendant.
 In addition to a question regarding whether or not the participant would choose to convict, we also asked the participants to give their personal opinion on the guilt of the defendant.
 This provides a second threshold for assessing the strength of evidence, aside from the "beyond a reasonable doubt" standard.
 Two different questions were asked with regards to the chances that the defendant committed the crime. 
 One was in a multiple choice format, with extreme values of "Impossible to be guilty" and "Certain to be guilty", and intermediate values ranging from "About 1 chance in 10,000" to "About 9,999 chances in 10,000" with denominator values changing by a decimal place for each choice, and a middle value of "1 chance in 2".
 This format was taken from @thompsonLayUnderstanding's study of DNA, which consisted of larger scaled values in the denominator (up to 1 in 10 million).
-The second question allowed participants to select both the numerator and denominator: "About ___ chance(s) in ___".
-The format of the numeric chance of guilt question depends on the participant's opinion of guilt.
-If the participant thought that the defendant was guilty, they were asked to provide the chance that the defendant was innocent.
-If the participant thought that the defendant was innocent, they were asked to provide the chance that the defendant was guilty.
+The second question allowed participants to select both the numerator and denominator: "About ___ chance(s) in ___ that the defendant is (innocent/guilty)", where participants were able to select to express the value as innocence or guilt.
 In both cases, the numerator had to be less than or equal to the denominator.
-Similarly, if individuals thought that the defendant was guilty, they were asked how much they were willing to be that the defendant was guilty, if hypothetically researchers provided them with \$50 and they would double their money if they were correct, and vice versa.
+Individuals who thought that the defendant was guilty were asked how much they were willing to bet that the defendant was guilty, if hypothetically researchers provided them with \$50 and they would double their money if they were correct, and vice versa.
 A final new question was open ended, and asked participants to provide their opinion of the defendant.
 
-Individuals were first asked to provide their opinion of the defendant, their conviction decision, and their personal opinion of the guilt of the defendant.
+We first asked individuals to provide their opinion of the defendant, their conviction decision, and their personal opinion of the guilt of the defendant.
 All other questions were randomized in a way that guaranteed the two probability questions and the two chance questions were not asked directly following each other.
 
 
-#### Prolific
+### Prolific
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
-
 library(readr)
-microstudy <- read_csv("data/microstudy_cleanish_results.csv")
+library(scales)
+microstudy <- read_csv("data/mircrostudy_response_redo_clean.csv")
 
 microstudy_clean <- microstudy %>% dplyr::filter(check=="9mm")
 
 ```
 
 Participants were recruited in a similar manner as Study 1 in terms of the representative sample and self-screened jury requirements through Prolific.
-In the first part of the study, some individuals encountered technical issues.
-Some of these technical issues, relating to the recording of a unique id or "fingerprint" were resolved, as some browsers have moved to prevent fingerprint recording.
-However, some individuals continued having technical issues directly after the informed consent (before reading any testimony), and we have not yet been able to resolve this problem.
-These technical issues appeared to happen to more individuals in the match condition compared to the non match condition, with a total of `r sum(microstudy$conclusion.x=="Match")` individuals in the match condition and `r sum(microstudy$conclusion.x=="NoMatch")` participants in the non-match condition, for a total of `r dim(microstudy)[1]` participants.
-Participants were paid \$4.00 with a median completion time of 14 minutes and 47 seconds according to Prolific, for an average reward of \$16.23 per hour.
-Figure \@ref(fig:completiontime2) shows the time spent after the completion of the first demographics page to the completion of the final results page.
-Because it does not include the informed consent and the time to complete the first demographics page, its time estimates appear to be less than those found via Prolific.
+Participants were paid \$4.07 with a median completion time of 15 minutes and 15 seconds according to Prolific, for an average reward of \$16.01 per hour.
+There were 300 paid participants who completed the survey, 22 individuals who decided to not complete the survey ("returned"), and 8 participants who did not complete the survey before Prolific's cutoff time ("Timed-out")
+<!-- Figure \@ref(fig:completiontime2) shows the time spent after the completion of the first demographics page to the completion of the final results page. -->
+<!-- Because it does not include the informed consent and the time to complete the first demographics page, its time estimates appear to be less than those found via Prolific. -->
 
 
 ```{r}
@@ -100,7 +92,7 @@ Because it does not include the informed consent and the time to complete the fi
 #| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
-#| eval= TRUE,
+#| eval= FALSE,
 #| warning= FALSE,
 #| message= FALSE
 
@@ -116,16 +108,17 @@ ggplot(microstudy, aes(x = completion_time, fill=conclusion.x)) +
 
 ```
 
-### Results
+## Results
 
-#### Participants
+### Participants
 
-Of the `r dim(microstudy)[1]` participants, `r sum(microstudy$gender=="Male")` participants identified as male, `r sum(microstudy$gender=="Female")` participants identified as female, and `r sum(microstudy$gender=="Other/non-binary")` participants identified as other or non-binary. 
-The categories of "Male" and "Female" are currently more associated with sex than with gender, and this categorization will be relabeled in future studies.
-The median age category was 46 - 55.
+Of the `r dim(microstudy)[1]` participants, `r sum(microstudy$gender=="Man")` participants were men, `r sum(microstudy$gender=="Women")` participants were women, and `r sum(microstudy$gender=="Other/non-binary")` participants identified as other or non-binary. 
+The median age category was `r median(microstudy$age)`.
 Age and gender are shown in Figure \@ref(fig:demographics2).
 Individuals were asked a single attention check question with regards to the caliber of gun used in the attempted robbery.
 `r dim(microstudy_clean)[1]` participants passed the attention check, meaning that only `r sum(microstudy$check!="9mm")` participants failed the attention check, and will not be included in the analysis.
+There were `r sum(microstudy_clean$conclusion=="Match")` participants in the match condition, and `r sum(microstudy_clean$conclusion=="NoMatch")` participants in the elimination condition who passed the attention check.
+We adjusted the probability of receiving each condition throughout the survey to ensure categories were relatively equal.
 
 
 ```{r}
@@ -150,21 +143,22 @@ microstudy$age = factor(
     "Over 65"
   )
 )
+microstudy$gender = factor(microstudy$gender,
+                           levels=c("Other/non-binary", "Man", "Woman"))
 
   ggplot(microstudy,
          aes(x = age, fill = gender)) +
-  geom_bar(mapping = aes(y = after_stat(count), group = gender),
-           position = position_dodge(preserve = "single"), color="black") +
+  geom_bar(mapping = aes(y = after_stat(count), group = gender), color="black") +
   #  geom_histogram(stat="count", position="dodge")+
-  ggtitle("Algorithm Expert Testimony") +
+  ggtitle("Age and Gender of Participants") +
   scale_fill_manual(values = c("#E69F00", "#009E73", "#F0E442")) +
   theme_bw()+
   theme(axis.title.x = element_blank())
 
 ```
-#### Questions from Study 1
+### Questions from Study 1
 
-`r round(sum(microstudy_clean$guilty=="Yes" & microstudy_clean$conclusion.x=="Match")/sum(microstudy_clean$conclusion.x=="Match")*100, 2)`\% (or `r sum(microstudy_clean$guilty=="Yes" & microstudy_clean$conclusion.x=="Match")` out of `r sum(microstudy_clean$conclusion.x=="Match")`) individuals who received the match condition chose to convict, while `r round(sum(microstudy_clean$guilty=="Yes" & microstudy_clean$conclusion.x=="NoMatch")/sum(microstudy_clean$conclusion.x=="NoMatch")*100, 2)`\% (or `r sum(microstudy_clean$guilty=="Yes" & microstudy_clean$conclusion.x=="NoMatch")` out of `r sum(microstudy_clean$conclusion.x=="NoMatch")`) participants who received the non-match condition chose to convict.
+`r round(sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="Match")/sum(microstudy_clean$conclusion=="Match")*100, 2)`\% (or `r sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="Match")` out of `r sum(microstudy_clean$conclusion=="Match")`) individuals who received the match condition chose to convict, while `r round(sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="NoMatch")/sum(microstudy_clean$conclusion=="NoMatch")*100, 2)`\% (or `r sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="NoMatch")` out of `r sum(microstudy_clean$conclusion=="NoMatch")`) participants who received the non-match condition chose to convict.
 This is a slightly lower proportion of individuals choosing to convict than that seen in the Match condition in the original study, although there is no algorithm present in this case.
 
 Figure \@ref(fig:strength2) shows participant responses to the strength of evidence in this study.
@@ -183,23 +177,23 @@ While not as dramatic as the scale compression for questions of reliability, cre
 #| warning= FALSE,
 #| message= FALSE
 
-microstudy_clean$strength = factor(
-  microstudy_clean$strength,
+microstudy_clean$evidence_strength = factor(
+  microstudy_clean$evidence_strength,
   levels = c(
-    "1 <br/> Not at all strong",
+    "1 Not at all strong",
     "2",
     "3",
     "4",
-    "5 <br/> Moderately strong",
+    "5 Moderately strong",
     "6",
     "7",
     "8",
-    "9 <br/> Extremely strong"
+    "9 Extremely strong"
   )
 )
 
 ggplot(microstudy_clean) +
-  geom_bar(aes(x=strength, fill=conclusion.x), position="dodge") +
+  geom_bar(aes(x=evidence_strength, fill=conclusion), position="dodge") +
   ggtitle("What is the Strength of Evidence against the Defendant?") +
   scale_fill_manual(values = c("grey80","seagreen"), name="Condition")+
   ylab("Count")+
@@ -228,19 +222,19 @@ There does not appear to be much difference in the density curves based on the v
 colors <-  c("Hidden"="red", "Visible"="grey")
 
 ggplot(microstudy_clean) +
-  geom_density(alpha=0.75, aes(x=prob_hide, fill="Hidden")) +
-  geom_density(alpha=0.75, aes(x=prob_vis, fill="Visible")) +
+  geom_density(alpha=0.75, aes(x=as.numeric(hidden_probability), fill="Hidden")) +
+  geom_density(alpha=0.75, aes(x=as.numeric(visible_probability), fill="Visible")) +
   ggtitle("Probability Cole Commited the Crime") +
   scale_fill_manual(values = colors, name="Probability")+
   ylab("Density")+
   xlab("Probability")+
-  facet_grid(.~conclusion.x)+
+  facet_grid(.~conclusion)+
   theme_bw()
 
 
 ```
 
-`r round(sum(microstudy_clean$opinion_guilt=="Yes" & microstudy_clean$conclusion.x=="Match")/sum(microstudy_clean$conclusion.x=="Match")*100, 2)`\% (or `r sum(microstudy_clean$opinion_guilt=="Yes" & microstudy_clean$conclusion.x=="Match")` out of `r sum(microstudy_clean$conclusion.x=="Match")`) individuals who received the match condition thought the defendant was guilty, while `r round(sum(microstudy_clean$guilty=="Yes" & microstudy_clean$conclusion.x=="NoMatch")/sum(microstudy_clean$conclusion.x=="NoMatch")*100, 2)`\% (or `r sum(microstudy_clean$guilty=="Yes" & microstudy_clean$conclusion.x=="NoMatch")` out of `r sum(microstudy_clean$conclusion.x=="NoMatch")`) participants who received the non-match condition thought the defendant was guilty.
+`r round(sum(microstudy_clean$guilt_opinion=="Yes" & microstudy_clean$conclusion=="Match")/sum(microstudy_clean$conclusion=="Match")*100, 2)`\% (or `r sum(microstudy_clean$guilt_opinion=="Yes" & microstudy_clean$conclusion=="Match")` out of `r sum(microstudy_clean$conclusion=="Match")`) individuals who received the match condition thought the defendant was guilty, while `r round(sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="NoMatch")/sum(microstudy_clean$conclusion=="NoMatch")*100, 2)`\% (or `r sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="NoMatch")` out of `r sum(microstudy_clean$conclusion=="NoMatch")`) participants who received the non-match condition thought the defendant was guilty.
 Figure \@ref(fig:opinionguilt) shows the comparison between the participant's decision to convict and their personal opinion.
 Approximately half of the participant in the match condition who chose not to convict thought the defendant was in fact guilty.
 
@@ -257,12 +251,12 @@ Approximately half of the participant in the match condition who chose not to co
 
 
 ggplot(microstudy_clean) +
-  geom_bar(aes(x=guilty, fill=opinion_guilt), position="dodge") +
+  geom_bar(aes(x=convict, fill=guilt_opinion), position="dodge") +
   ggtitle("") +
   scale_fill_manual(values = c("#D81B60","#004D40"), name="Opinion", labels=c("Innocent","Guilty"))+
   ylab("Count")+
   xlab("Convict?")+
-  facet_grid(.~conclusion.x)+
+  facet_grid(.~conclusion)+
   theme_bw()
 
 ```
@@ -285,22 +279,15 @@ In this way, the betting response is similar both to the strength of evidence re
 #| warning= FALSE,
 #| message= FALSE
 
-microstudy_clean$bet<- NA
-
-microstudy_clean[!is.na(microstudy_clean$guilt_bet),]$bet<- 
-  microstudy_clean[!is.na(microstudy_clean$guilt_bet),]$guilt_bet
-
-microstudy_clean[!is.na(microstudy_clean$innocent_bet),]$bet<- microstudy_clean[!is.na(microstudy_clean$innocent_bet),]$innocent_bet
-
 ggplot(microstudy_clean) +
-  geom_histogram(aes(x=bet, fill=opinion_guilt), binwidth=5, color="black",
+  geom_histogram(aes(x=betting, fill=guilt_opinion), binwidth=5, color="black",
            position = position_dodge(preserve = "single")) +
   ggtitle("How much would you bet that the Defendant is...") +
   scale_fill_manual(values = c("#D81B60","#004D40"), name="", labels=c("Innocent","Guilty"))+
   ylab("Count")+
   xlab("Bet Amount")+
   xlim(c(0,50))+
-  facet_grid(conclusion.x~.)+
+  facet_grid(conclusion~.)+
   theme_bw()
 
 
@@ -326,8 +313,8 @@ Thus, the multiple choice chance scale appears to have less scale compression th
 #| warning= FALSE,
 #| message= FALSE
 
-microstudy_clean$fixed_like = factor(
-  microstudy_clean$fixed_like,
+microstudy_clean$chances_fixed = factor(
+  microstudy_clean$chances_fixed,
   levels = c(
     "Impossible that he is guilty",
     "About 1 chance in 10,000",
@@ -344,7 +331,7 @@ microstudy_clean$fixed_like = factor(
 )
 
 ggplot(microstudy_clean) +
-  geom_bar(aes(x=fixed_like, fill=conclusion.x), position="dodge") +
+  geom_bar(aes(x=chances_fixed, fill=conclusion), position="dodge") +
   ggtitle("What is the Chance that the Defendant is Guilty?") +
   scale_fill_manual(values = c("grey80","seagreen"), name="Condition")+
   ylab("Count")+
@@ -362,6 +349,8 @@ These results are shown in Figure \@ref(fig:freelike).
 As seen in previous graphs, in the case of the non-match condition, those who thought the defendant was innocent gave small chances that the defendant had in fact committed the crime.
 Note that this graph consists of the density in each group.
 In the case of the match condition, those who thought the defendant was guilty tended to give lower chances that the defendant had in fact committed the crime, although it is not as extreme as the non-match condition case.
+\authorcol{Those who thought the defendant was innocent were more likely to favor inputting chance values in terms of innocence, while those who thought the defendant was guilty showed no clear preference.}
+
 
 ```{r}
 #| freelike,
@@ -374,32 +363,27 @@ In the case of the match condition, those who thought the defendant was guilty t
 #| warning= FALSE,
 #| message= FALSE
 
-microstudy_clean$likelihood<- NA
+microstudy_clean <- microstudy_clean %>% 
+  separate(numeric_chance, c("chance_of", "numerator", "denominator"))
 
-microstudy_clean[!is.na(microstudy_clean$innocent_free_num) &
-                !is.na(microstudy_clean$innocent_free_denom),]$likelihood<-
-  microstudy_clean[!is.na(microstudy_clean$innocent_free_num) &
-                  !is.na(microstudy_clean$innocent_free_denom),]$innocent_free_num/
-  microstudy_clean[!is.na(microstudy_clean$innocent_free_num) & 
-                  !is.na(microstudy_clean$innocent_free_denom),]$innocent_free_denom
-
-microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
-                !is.na(microstudy_clean$guilt_free_denom),]$likelihood<-
-  microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
-                  !is.na(microstudy_clean$guilt_free_denom),]$guilt_free_num/
-  microstudy_clean[!is.na(microstudy_clean$guilt_free_num) & 
-                  !is.na(microstudy_clean$guilt_free_denom),]$guilt_free_denom
+microstudy_clean$num_chance <- as.numeric(microstudy_clean$numerator)/as.numeric(microstudy_clean$denominator)
 
 ggplot(microstudy_clean) +
-  geom_density(alpha=0.75, aes(x=likelihood, fill=opinion_guilt), position="dodge") +
+  geom_density(alpha=0.75, aes(x=num_chance, fill=chance_of), position="dodge") +
   ggtitle("What is the chance that the defendant is...") +
   scale_fill_manual(values = c("#D81B60","#004D40"), name="", labels=c("Guilty","Innocent"))+
  # ylab("Count")+
   xlab("Chance")+
-  facet_grid(.~conclusion.x)+
+  facet_grid(.~conclusion)+
   #scale_x_continuous(trans='log10')+
   theme_bw()
 
+
+```
+
+```{r}
+
+table(microstudy_clean$chance_of, microstudy_clean$guilt_opinion)
 
 ```
 
@@ -420,21 +404,21 @@ The distribution of the scale is more spread out than that shown in Figure \@ref
 #| message= FALSE
 
 ggplot(microstudy_clean) +
-  geom_density(alpha=0.75, aes(x=likelihood, fill=opinion_guilt), position="dodge") +
+  geom_density(alpha=0.75, aes(x=num_chance, fill=guilt_opinion), position="dodge") +
   ggtitle("What is the chance that the defendant is...") +
   scale_fill_manual(values = c("#D81B60","#004D40"), name="", labels=c("Guilty","Innocent"))+
  # ylab("Count")+
   xlab("Chance")+
-  facet_grid(.~conclusion.x)+
+  facet_grid(.~conclusion)+
   scale_x_continuous(trans='log10')+
   theme_bw()
 
 
 ```
 
-#### Scale Comparison
+### Scale Comparison
 
-##### Chance Comparison
+#### Chance Comparison
 
 Consistency across response types is another important aspect of this study.
 If different question types result in responses that are inconsistent, it would be difficult to tell which questions truly capture the attitudes of the participants, in order to most accurately answer the research questions.
@@ -461,21 +445,22 @@ For values of "1 chance in 2" and "About 1 chance in 10", the responses seem fai
 #| message= FALSE
 
 
-set_values <- data.frame(fixed_like=c(    "Impossible that he is guilty",
-                                          "About 1 chance in 10,000",
-                                          "About 1 chance in 1,000",
-                                          "About 1 chance in 100",
-                                          "About 1 chance in 10",
-                                          "1 chance in 2 (fifty-fifty chance)",
-                                          "About 9 chances in 10",
-                                          "About 99 chances in 100",
-                                          "About 999 chances in 1,000",
-                                          "About 9,999 chances in 10,000",
-                                          "Certain to be guilty"),
+set_values <- 
+  data.frame(chances_fixed=c("Impossible that he is guilty",
+                             "About 1 chance in 10,000",
+                             "About 1 chance in 1,000",
+                             "About 1 chance in 100",
+                             "About 1 chance in 10",
+                             "1 chance in 2 (fifty-fifty chance)",
+                             "About 9 chances in 10",
+                             "About 99 chances in 100",
+                             "About 999 chances in 1,000",
+                             "About 9,999 chances in 10,000",
+                             "Certain to be guilty"),
                          value=c(0,1/10000,1/1000,1/100,1/10,0.5,9/10,99/100,999/1000,9999/10000,1))
 clean_results_merged<- dplyr::left_join(microstudy_clean, set_values)
-clean_results_merged$fixed_like = factor(
-  microstudy_clean$fixed_like,
+clean_results_merged$chances_fixed = factor(
+  microstudy_clean$chances_fixed,
   levels = c(
     "Impossible that he is guilty",
     "About 1 chance in 10,000",
@@ -490,25 +475,21 @@ clean_results_merged$fixed_like = factor(
     "Certain to be guilty"
   )
 )
-ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
+ggplot(subset(clean_results_merged, chance_of=="guilty"), aes(x=chances_fixed))+ #,fill=conclusion
   geom_point(aes(y=value),color="red",size=5,alpha=0.5)+
-  ggtitle("Chance for those who thought Cole was innocent") +
-  geom_jitter(aes(y=(guilt_free_num/guilt_free_denom)),
-    # position = position_jitterdodge(
-    #   jitter.width = 0.2,
-    #   #jitter.height = 0.4,
-    #   dodge.width = 1
-    # ),
+  ggtitle("Chances of Guilt") +
+  geom_jitter(aes(y=num_chance),
     size = 1
   ) +
-  geom_boxplot(aes(y=(guilt_free_num/guilt_free_denom)),
+  geom_boxplot(aes(y=num_chance),
                position = position_dodge(1),
                alpha = 0.5,
                outlier.shape = NA)+ 
   ylab("Open Response Chance")+
   xlab("Closed Response Chance")+
-#  scale_y_continuous(trans='log10')+
   scale_x_discrete(labels = wrap_format(10))
+
+# Somehow 3 people got values over 1
 
 ```
 
@@ -528,18 +509,13 @@ Many of the numerical responses appear to be more consistent to "About 1 chance 
 #| warning= FALSE,
 #| message= FALSE
 
-ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
+ggplot(subset(clean_results_merged, chance_of=="guilty"), aes(x=chances_fixed))+ #,fill=conclusion
   geom_point(aes(y=value),color="red",size=5,alpha=0.5)+
-  ggtitle("Chance for those who thought Cole was innocent") +
-  geom_jitter(aes(y=(guilt_free_num/guilt_free_denom)),
-    # position = position_jitterdodge(
-    #   jitter.width = 0.2,
-    #   #jitter.height = 0.4,
-    #   dodge.width = 1
-    # ),
+  ggtitle("Chances of Guilt") +
+  geom_jitter(aes(y=num_chance),
     size = 1
   ) +
-  geom_boxplot(aes(y=(guilt_free_num/guilt_free_denom)),
+  geom_boxplot(aes(y=num_chance),
                position = position_dodge(1),
                alpha = 0.5,
                outlier.shape = NA)+ 
@@ -568,24 +544,20 @@ The reduced consistency seen in the guilty chance may related to the change in t
 #| warning= FALSE,
 #| message= FALSE
 
-ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
-  geom_point(aes(y=value),color="red",size=5,alpha=0.5)+
-  ggtitle("Chance for those who thought Cole was guilty") +
-  geom_jitter(aes(y=(1-innocent_free_num/innocent_free_denom)),
-             # position = position_jitterdodge(
-             #   jitter.width = 0.2,
-             #   #jitter.height = 0.4,
-             #   dodge.width = 1
-             # ),
-             size = 1
+ggplot(subset(clean_results_merged, chance_of=="innocent"), aes(x=chances_fixed))+ #,fill=conclusion
+  geom_point(aes(y=1-value),color="red",size=5,alpha=0.5)+
+  ggtitle("Chances of Innocence") +
+  geom_jitter(aes(y=num_chance),
+    size = 1
   ) +
-  geom_boxplot(aes(y=(1-innocent_free_num/innocent_free_denom)),
+  geom_boxplot(aes(y=num_chance),
                position = position_dodge(1),
                alpha = 0.5,
                outlier.shape = NA)+ 
   ylab("Open Response Chance")+
   xlab("Closed Response Chance")+
-  scale_x_discrete(labels = wrap_format(10))
+  scale_x_discrete(labels = wrap_format(10))+
+  ylim(c(0,1))
 
 ```
 
@@ -600,25 +572,21 @@ ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
 #| warning= FALSE,
 #| message= FALSE
 
-ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
-  geom_point(aes(y=value),color="red",size=5,alpha=0.5)+
-  ggtitle("Chance for those who thought Cole was guilty") +
-  geom_jitter(aes(y=(1-innocent_free_num/innocent_free_denom)),
-             # position = position_jitterdodge(
-             #   jitter.width = 0.2,
-             #   #jitter.height = 0.4,
-             #   dodge.width = 1
-             # ),
-             size = 1
+ggplot(subset(clean_results_merged, chance_of=="innocent"), aes(x=chances_fixed))+ #,fill=conclusion
+  geom_point(aes(y=1-value),color="red",size=5,alpha=0.5)+
+  ggtitle("Chances of Innocence") +
+  geom_jitter(aes(y=num_chance),
+    size = 1
   ) +
-  geom_boxplot(aes(y=(1-innocent_free_num/innocent_free_denom)),
+  geom_boxplot(aes(y=num_chance),
                position = position_dodge(1),
                alpha = 0.5,
                outlier.shape = NA)+ 
-    scale_y_continuous(trans='sqrt')+
   ylab("Open Response Chance")+
   xlab("Closed Response Chance")+
-  scale_x_discrete(labels = wrap_format(10))
+  scale_x_discrete(labels = wrap_format(10))+
+  scale_y_continuous(trans="sqrt")+
+  ylim(c(0,1))
 
 ```
 
@@ -638,10 +606,10 @@ For values that can map from the probability scale to the chance scale, the valu
 #| warning= FALSE,
 #| message= FALSE
 
-ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
+ggplot(clean_results_merged, aes(x=chances_fixed))+ #,fill=conclusion
   geom_point(aes(y=value),color="red",size=5,alpha=0.5)+
   ggtitle("Probability vs. Chance That Cole is Guilty") +
-  geom_jitter(aes(y=(prob_vis/100)),
+  geom_jitter(aes(y=(visible_probability/100)),
              # position = position_jitterdodge(
              #   jitter.width = 0.2,
              #   #jitter.height = 0.4,
@@ -649,7 +617,7 @@ ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
              # ),
              size = 1
   ) +
-  geom_boxplot(aes(y=(prob_vis/100)),
+  geom_boxplot(aes(y=(visible_probability/100)),
                position = position_dodge(1),
                alpha = 0.5,
                outlier.shape = NA)+ 
@@ -670,61 +638,24 @@ ggplot(clean_results_merged, aes(x=fixed_like))+ #,fill=conclusion
 #| warning= FALSE,
 #| message= FALSE
 
-microstudy_clean$likelihood_rev<- NA
-
-microstudy_clean[!is.na(microstudy_clean$innocent_free_num) &
-                !is.na(microstudy_clean$innocent_free_denom),]$likelihood_rev<-1-(
-  microstudy_clean[!is.na(microstudy_clean$innocent_free_num) &
-                  !is.na(microstudy_clean$innocent_free_denom),]$innocent_free_num/
-  microstudy_clean[!is.na(microstudy_clean$innocent_free_num) & 
-                  !is.na(microstudy_clean$innocent_free_denom),]$innocent_free_denom)
-
-microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
-                !is.na(microstudy_clean$guilt_free_denom),]$likelihood_rev<-
-  microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
-                  !is.na(microstudy_clean$guilt_free_denom),]$guilt_free_num/
-  microstudy_clean[!is.na(microstudy_clean$guilt_free_num) & 
-                  !is.na(microstudy_clean$guilt_free_denom),]$guilt_free_denom
-
-
-ggplot(microstudy_clean, aes(x=likelihood_rev, color=opinion_guilt, y=prob_vis)) +
+ggplot(microstudy_clean, aes(x=num_chance, color=conclusion, y=visible_probability)) +
   geom_jitter(alpha=0.5) +
   ggtitle("Probability vs Chance") +
-  scale_color_manual(values = c("#D81B60","#004D40"), name="Opinion", labels=c("Innocent","Guilty"))+
+  scale_color_manual(values = c("#037AC7","#FF8E00"), name="Conclusion")+
   ylab("Visible Probability")+
   xlab("Chance of Committing Crime")+
-  facet_grid(.~conclusion.x)+
-  theme_bw()
-
-microstudy_clean$innocent_likelihood<- NA
-
-microstudy_clean[!is.na(microstudy_clean$innocent_free_num) &
-                !is.na(microstudy_clean$innocent_free_denom),]$innocent_likelihood<-(
-  microstudy_clean[!is.na(microstudy_clean$innocent_free_num) &
-                  !is.na(microstudy_clean$innocent_free_denom),]$innocent_free_num/
-  microstudy_clean[!is.na(microstudy_clean$innocent_free_num) & 
-                  !is.na(microstudy_clean$innocent_free_denom),]$innocent_free_denom)
-
-microstudy_clean$guilt_likelihood<- NA
-
-microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
-                !is.na(microstudy_clean$guilt_free_denom),]$guilt_likelihood<-
-  microstudy_clean[!is.na(microstudy_clean$guilt_free_num) &
-                  !is.na(microstudy_clean$guilt_free_denom),]$guilt_free_num/
-  microstudy_clean[!is.na(microstudy_clean$guilt_free_num) & 
-                  !is.na(microstudy_clean$guilt_free_denom),]$guilt_free_denom
+  facet_grid(.~chance_of, labeller = "label_both")+
+  theme_bw()+
+  xlim(c(0,1))
 
 ```
 
 Figure \@ref(fig:likeprobcon) shows a comparison of the perceived probability that the defendant committed the crime compared to the perceived chance that the defendant is guilty.
 In the case of the match condition, it can be seen that many individuals assigned a high probability that the defendant committed the crime which corresponded to a high chance of guilt, as shown by the cluster of observations in the top right corner of the graph.
 Similarly, in the non-match condition, many individuals gave a low probability that the individual committed the crime and a low chance that the defendant was guilty.
-The correlation between the probability and the chances of guilt is `r round(cor(microstudy_clean[!is.na(microstudy_clean$guilt_likelihood),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$guilt_likelihood),]$guilt_likelihood),2)`,
-while the correlation between the probability and the chances of innocence is `r round(cor(microstudy_clean[!is.na(microstudy_clean$innocent_likelihood),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$innocent_likelihood),]$innocent_likelihood),2)`.
-While there is a fairly strong correlation in the case of chances of guilt and probability, the correlation between the probability and the chances of innocence is weak.
-This weak correspondence can be seen in the "Guilty" opinion observations in the graph above
-When the chances are combined into a single variable, values can be seen across the entire probability scale.
-The correlation between the probability and the combined chance responses is `r round(cor(microstudy_clean[!is.na(microstudy_clean$likelihood_rev),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$likelihood_rev),]$likelihood_rev),2)`, which appears to be fairly strong.
+The correlation between the probability and the chances of guilt is `r round(cor(microstudy_clean[!is.na(microstudy_clean$num_chance) & microstudy_clean$chance_of=="guilty",]$visible_probability, microstudy_clean[!is.na(microstudy_clean$num_chance) & microstudy_clean$chance_of=="guilty",]$num_chance),2)`,
+while the correlation between the probability and the chances of innocence is `r round(cor(microstudy_clean[!is.na(microstudy_clean$num_chance) & microstudy_clean$chance_of=="innocent",]$visible_probability, microstudy_clean[!is.na(microstudy_clean$num_chance) & microstudy_clean$chance_of=="innocent",]$num_chance),2)`.
+While there is a fairly strong correlation in the case of chances of guilt and probability, the correlation between the probability and the chances of innocence is weaker.
 
 Figure \@ref(fig:likeconvict) demonstrates the relationship between likelihood, probability, and the decision to convict.
 In the non-match case, few individuals chose to convict.
@@ -743,14 +674,16 @@ The clustering of values at around 1 on the chance scale may be due to compressi
 #| warning= FALSE,
 #| message= FALSE
 
-ggplot(microstudy_clean, aes(x=likelihood_rev, color=guilty, y=prob_vis)) +
-  geom_jitter(alpha=0.85) +
+
+ggplot(microstudy_clean, aes(x=num_chance, color=convict, y=visible_probability)) +
+  geom_jitter(alpha=0.75) +
   ggtitle("Probability vs Chance") +
   scale_color_manual(values = c("grey20", "plum1"), name="Convict?")+
   ylab("Visible Probability")+
   xlab("Chance of Committing Crime")+
-  facet_grid(.~conclusion.x)+
-  theme_bw()
+  facet_grid(.~chance_of, labeller = "label_both")+
+  theme_bw()+
+  xlim(c(0,1))
 
 ```
 
@@ -775,8 +708,9 @@ Because of the variety of responses in the chance that the defendant committed t
 #| message= FALSE,
 #| warning= FALSE
 
+library(GGally)
 
-strlike_tab<-table(microstudy_clean$strength, microstudy_clean$fixed_like, microstudy_clean$conclusion.x)
+strlike_tab<-table(microstudy_clean$evidence_strength, microstudy_clean$chances_fixed, microstudy_clean$conclusion)
 strlike_df<-as.data.frame(strlike_tab)
 colnames(strlike_df) <- c("Strength", "Chances", "Conclusion", "Freq")
 
@@ -807,13 +741,13 @@ This threshold is one category larger than what was seen by @thompsonJurorsGiveA
 
 
 ggplot(microstudy_clean) +
-  geom_bar(aes(x=fixed_like, fill=guilty), position=position_dodge(preserve = "single")) +
+  geom_bar(aes(x=chances_fixed, fill=convict), position=position_dodge(preserve = "single")) +
   ggtitle("What is the Chance that the Defendant is Guilty?") +
   scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
   ylab("Count")+
   xlab("Chance")+
   theme_bw()+
-  facet_grid(conclusion.x~.)+
+  facet_grid(conclusion~.)+
   scale_x_discrete(labels = wrap_format(10))
 
 
@@ -835,26 +769,26 @@ Individuals who selected the "fifty-fifty chance" appear to be fairly evenly spl
 
 
 ggplot(microstudy_clean) +
-  geom_bar(aes(x=fixed_like, fill=opinion_guilt), position=position_dodge(preserve = "single")) +
+  geom_bar(aes(x=chances_fixed, fill=guilt_opinion), position=position_dodge(preserve = "single")) +
   ggtitle("What is the Chance that the Defendant is Guilty?") +
   scale_fill_manual(values = c("grey20", "plum1"), name="Guilty?")+
   ylab("Count")+
   xlab("Chance")+
   theme_bw()+
-  facet_grid(conclusion.x~.)+
+  facet_grid(conclusion~.)+
   scale_x_discrete(labels = wrap_format(10))
 
 
 ```
 
-##### Probability Comparison
+#### Probability Comparison
 
 Figure \@ref(fig:probcomp) shows the correspondence between the visible and hidden probabilities.
 The values appear to be fairly 1:1.
 In the case of the match condition, there appears to be a congregation of values at 90% when the scale is visible.
 This is also reflected in the non-match condition, where there is a group of observations at 10%.
 Otherwise, the observations appear to correspond fairly well.
-The correlation between the probabilities is `r round(cor(microstudy_clean$prob_hide, microstudy_clean$prob_vis),2)`, indicating a strong relationship.
+The correlation between the probabilities is `r round(cor(as.numeric(microstudy_clean$hidden_probability), microstudy_clean$visible_probability, use="complete.obs"),2)`, indicating a strong relationship.
 
 ```{r}
 #| probcomp,
@@ -867,14 +801,14 @@ The correlation between the probabilities is `r round(cor(microstudy_clean$prob_
 #| warning= FALSE,
 #| message= FALSE
 
-ggplot(microstudy_clean, aes(x=prob_hide, color=opinion_guilt, y=prob_vis)) +
+ggplot(microstudy_clean, aes(x=as.numeric(hidden_probability), color=guilt_opinion, y=visible_probability)) +
   geom_jitter(alpha=0.5) +
   ggtitle("Visible and Hidden Probability Comparison") +
-  scale_color_manual(values = c("#D81B60","#004D40"), name="Opinion", labels=c("Guilty","Innocent"))+
+  scale_color_manual(values = c("#D81B60","#004D40"), name="Opinion", labels=c("Innocent","Guilty"))+
   ylab("Visible Probability")+
   xlab("Hidden Probability")+
   scale_y_continuous(breaks = seq(0, 100, by = 10))+
-  facet_grid(.~conclusion.x)+
+  facet_grid(.~conclusion)+
   coord_fixed(ratio=1)+
   geom_abline(intercept = 0, slope = 1)+
   theme_bw()
@@ -883,7 +817,7 @@ ggplot(microstudy_clean, aes(x=prob_hide, color=opinion_guilt, y=prob_vis)) +
 
 Figure \@ref(fig:probbet) compares the amount that individuals were willing to bet to their assigned probability that the defendant had committed the crime.
 In this case, there is not a straightforward correspondence.
-The correlation is `r round(cor(microstudy_clean[!is.na(microstudy_clean$guilt_bet),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$guilt_bet),]$guilt_bet),2)` in the case that the participants were asked to bet on if the defendant committed the crime, and `r round(cor(microstudy_clean[!is.na(microstudy_clean$innocent_bet),]$prob_vis, microstudy_clean[!is.na(microstudy_clean$innocent_bet),]$innocent_bet),2)` when participants were asked to bet on if the defendant did not commit the crime (where the betting procedure is as explained earlier).
+The correlation is `r round(cor(microstudy_clean[!is.na(microstudy_clean$betting) & microstudy_clean$guilt_opinion=="Yes",]$visible_probability, microstudy_clean[!is.na(microstudy_clean$betting) & microstudy_clean$guilt_opinion=="Yes",]$betting),2)` in the case that the participants were asked to bet on if the defendant committed the crime, and `r round(cor(microstudy_clean[!is.na(microstudy_clean$betting) & microstudy_clean$guilt_opinion=="No",]$visible_probability, microstudy_clean[!is.na(microstudy_clean$betting) & microstudy_clean$guilt_opinion=="No",]$betting),2)` when participants were asked to bet on if the defendant did not commit the crime (where the betting procedure is as explained earlier).
 This correlation is lower than seen between probability and the chance of committing the crime when both of the chances were combined.
 
 ```{r}
@@ -897,14 +831,14 @@ This correlation is lower than seen between probability and the chance of commit
 #| warning= FALSE,
 #| message= FALSE
 
-ggplot(microstudy_clean, aes(x=bet, color=opinion_guilt, y=prob_vis)) +
+ggplot(microstudy_clean, aes(x=betting, color=guilt_opinion, y=visible_probability)) +
   geom_jitter(alpha=0.75) +
   ggtitle("Betting and Probability Comparison") +
   scale_color_manual(values = c("#004D40","#D81B60"), name="Bet Defendant is...", labels=c("Innocent","Guilty"))+
   ylab("Visible Probability")+
   xlab("Amount (Dollars)")+
   scale_y_continuous(breaks = seq(0, 100, by = 10))+
-  facet_grid(.~conclusion.x)+
+  facet_grid(.~conclusion)+
   xlim(c(0,50))+
   theme_bw()
 
@@ -930,7 +864,7 @@ This corresponsence is less clear in the non-match condition.
 #| message= FALSE
 
 
-ggplot(microstudy_clean, aes(x = strength, y = prob_vis, fill = opinion_guilt)) +
+ggplot(microstudy_clean, aes(x = evidence_strength, y = visible_probability, fill = guilt_opinion)) +
   geom_point(
     position = position_jitterdodge(
       jitter.width = 0.2,
@@ -943,7 +877,7 @@ ggplot(microstudy_clean, aes(x = strength, y = prob_vis, fill = opinion_guilt)) 
                alpha = 0.5,
                outlier.shape = NA) +
   ggtitle("Probability Cole Commited the Crime Compared with Strength of Evidence") +
-  facet_grid(conclusion.x~.)+
+  facet_grid(conclusion~.)+
   scale_fill_manual(values = c("#D81B60","#004D40"), name="Opinion: Guilty?")+
   ylab("Visible Probability")+
   xlab("Strength of Evidence")+
@@ -952,12 +886,12 @@ ggplot(microstudy_clean, aes(x = strength, y = prob_vis, fill = opinion_guilt)) 
 
 ```
 
-#### Demographic Comparison
+### Demographic Comparison
 
 Demographic information, such as income, race, gender, and education level, was collected on the participants.
 This demographic information can be compared with the participants' responses.
 
-##### Income
+#### Income
 Figure \@ref(fig:probincome) explores a potential relationship between income and believed probability that the defendant committed the crime.
 While there are generally low probabilities across all income levels for the non-match condition, in the match condition there appears to be higher probabilities on the higher and lower ends of the income scale, with lower assigned probabilities for those in the middle of the income scale for those who did not choose to convict.
 
@@ -990,7 +924,7 @@ microstudy_clean$income = factor(
   )
 )
 
-ggplot(microstudy_clean, aes(x = income, y = prob_vis, fill = guilty)) +
+ggplot(microstudy_clean, aes(x = income, y = visible_probability, fill = convict)) +
   geom_point(
     position = position_jitterdodge(
       jitter.width = 0.2,
@@ -1003,7 +937,7 @@ ggplot(microstudy_clean, aes(x = income, y = prob_vis, fill = guilty)) +
                alpha = 0.5,
                outlier.shape = NA) +
   ggtitle("Probability Cole Commited the Crime Compared with Income") +
-  facet_grid(conclusion.x~.)+
+  facet_grid(conclusion~.)+
   scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
   ylab("Visible Probability")+
   xlab("Income")+
@@ -1029,12 +963,12 @@ In the case of the non-match condition, the individuals who did choose to convic
 #| message= FALSE
 
 ggplot(microstudy_clean) +
-  geom_bar(aes(x=income, fill=guilty), position = position_dodge(preserve = "single")) +
+  geom_bar(aes(x=income, fill=convict), position = position_dodge(preserve = "single")) +
   ggtitle("") +
   scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
   ylab("Count")+
   xlab("Income")+
-  facet_grid(conclusion.x~.)+
+  facet_grid(conclusion~.)+
   scale_x_discrete(labels = wrap_format(10))+
   theme_bw()
 
@@ -1058,7 +992,7 @@ This trend is also reflected in the boxplots, with a fairly similar distribution
 #| warning= FALSE,
 #| message= FALSE
 
-ggplot(microstudy_clean, aes(x = income, y = bet, fill = opinion_guilt)) +
+ggplot(microstudy_clean, aes(x = income, y = betting, fill = guilt_opinion)) +
   geom_point(
     position = position_jitterdodge(
       jitter.width = 0.2,
@@ -1071,7 +1005,7 @@ ggplot(microstudy_clean, aes(x = income, y = bet, fill = opinion_guilt)) +
                alpha = 0.5,
                outlier.shape = NA) +
   ggtitle("Amount Bet Compared with Income") +
-  facet_grid(conclusion.x~.)+
+  facet_grid(conclusion~.)+
   scale_fill_manual(values = c("#D81B60","#004D40"), name="Bet Defendant is...", labels=c("Guilty","Innocent"))+
   ylab("Visible Probability")+
   xlab("Income")+
@@ -1081,7 +1015,7 @@ ggplot(microstudy_clean, aes(x = income, y = bet, fill = opinion_guilt)) +
 
 ```
 
-##### Education
+#### Education
 
 Figure \@ref(fig:probeduc) shows the education level along with the participants' probability that the defendant committed the crime.
 In this case, there does not appear to be a relationship between education level and probability, as the boxplots for probability are similarly distributed across education levels.
@@ -1097,8 +1031,8 @@ In this case, there does not appear to be a relationship between education level
 #| warning= FALSE,
 #| message= FALSE
 
-microstudy_clean$educ = factor(
-  microstudy_clean$educ,
+microstudy_clean$education = factor(
+  microstudy_clean$education,
   levels = c(
     "Less than high school",
     "High school graduate",
@@ -1110,7 +1044,7 @@ microstudy_clean$educ = factor(
   )
 )
 
-ggplot(microstudy_clean, aes(x = educ, y = prob_vis, fill = guilty)) +
+ggplot(microstudy_clean, aes(x = education, y = visible_probability, fill = convict)) +
   geom_point(
     position = position_jitterdodge(
       jitter.width = 0.2,
@@ -1123,7 +1057,7 @@ ggplot(microstudy_clean, aes(x = educ, y = prob_vis, fill = guilty)) +
                alpha = 0.5,
                outlier.shape = NA) +
   ggtitle("Probability Cole Commited the Crime Compared with Education") +
-  facet_grid(conclusion.x~.)+
+  facet_grid(conclusion~.)+
   scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
   ylab("Visible Probability")+
   xlab("Education")+
@@ -1148,12 +1082,12 @@ In the match condition, individuals chose to convict across all educational cate
 #| message= FALSE
 
 ggplot(microstudy_clean) +
-  geom_bar(aes(x=educ, fill=guilty), position = position_dodge(preserve = "single")) +
+  geom_bar(aes(x=education, fill=convict), position = position_dodge(preserve = "single")) +
   ggtitle("") +
   scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
   ylab("Count")+
   xlab("Education")+
-  facet_grid(conclusion.x~.)+
+  facet_grid(conclusion~.)+
   scale_x_discrete(labels = wrap_format(10))+
   theme_bw()
 
@@ -1174,7 +1108,7 @@ Based on these graphs, it does not appear that there is a relationship between e
 #| warning= FALSE,
 #| message= FALSE
 
-ggplot(microstudy_clean, aes(x = educ, y = bet, fill = opinion_guilt)) +
+ggplot(microstudy_clean, aes(x = education, y = betting, fill = guilt_opinion)) +
   geom_point(
     position = position_jitterdodge(
       jitter.width = 0.2,
@@ -1187,7 +1121,7 @@ ggplot(microstudy_clean, aes(x = educ, y = bet, fill = opinion_guilt)) +
                alpha = 0.5,
                outlier.shape = NA) +
   ggtitle("Amount Bet Compared with Education") +
-  facet_grid(conclusion.x~.)+
+  facet_grid(conclusion~.)+
   scale_fill_manual(values = c("#D81B60","#004D40"), name="Bet Defendant is...", labels=c("Guilty","Innocent"))+
   ylab("Visible Probability")+
   xlab("Education")+
@@ -1197,186 +1131,186 @@ ggplot(microstudy_clean, aes(x = educ, y = bet, fill = opinion_guilt)) +
 
 ```
 
-#### Order of the Questions
+<!-- #### Order of the Questions -->
 
-The order of the questions was assigned through the use of a random sampler, which was re-sampled if the questions of the chance or guilt or the questions regarding probability were placed side by side.
-This is because it is possible that the participants would be influenced by the values they chose on the first scale when choosing a value for the second scale.
+<!-- The order of the questions was assigned through the use of a random sampler, which was re-sampled if the questions of the chance or guilt or the questions regarding probability were placed side by side. -->
+<!-- This is because it is possible that the participants would be influenced by the values they chose on the first scale when choosing a value for the second scale. -->
 
-```{r}
-#| echo= FALSE,
-#| eval= TRUE,
-#| warning= FALSE,
-#| message= FALSE
+<!-- ```{r} -->
+<!-- #| echo= FALSE, -->
+<!-- #| eval= TRUE, -->
+<!-- #| warning= FALSE, -->
+<!-- #| message= FALSE -->
 
-microstudy_clean$first_chance <- NA
-microstudy_clean$first_probability<- NA
+<!-- microstudy_clean$first_chance <- NA -->
+<!-- microstudy_clean$first_probability<- NA -->
 
-microstudy_clean$freechance_position <- unlist(gregexpr("2", microstudy_clean$order))
-microstudy_clean$fixedchance_position <- unlist(gregexpr("3", microstudy_clean$order))
-microstudy_clean$probhide_position <- unlist(gregexpr("5", microstudy_clean$order))
-microstudy_clean$probvis_position <- unlist(gregexpr("6", microstudy_clean$order))
+<!-- microstudy_clean$freechance_position <- unlist(gregexpr("2", microstudy_clean$order)) -->
+<!-- microstudy_clean$fixedchance_position <- unlist(gregexpr("3", microstudy_clean$order)) -->
+<!-- microstudy_clean$probhide_position <- unlist(gregexpr("5", microstudy_clean$order)) -->
+<!-- microstudy_clean$probvis_position <- unlist(gregexpr("6", microstudy_clean$order)) -->
 
-microstudy_clean[microstudy_clean$freechance_position < microstudy_clean$fixedchance_position,]$first_chance <- "Numeric"
+<!-- microstudy_clean[microstudy_clean$freechance_position < microstudy_clean$fixedchance_position,]$first_chance <- "Numeric" -->
 
-microstudy_clean[microstudy_clean$freechance_position > microstudy_clean$fixedchance_position,]$first_chance <- "Multiple Choice"
+<!-- microstudy_clean[microstudy_clean$freechance_position > microstudy_clean$fixedchance_position,]$first_chance <- "Multiple Choice" -->
 
-microstudy_clean[microstudy_clean$probhide_position < microstudy_clean$probvis_position,]$first_probability <- "Hidden"
+<!-- microstudy_clean[microstudy_clean$probhide_position < microstudy_clean$probvis_position,]$first_probability <- "Hidden" -->
 
-microstudy_clean[microstudy_clean$probhide_position > microstudy_clean$probvis_position,]$first_probability <- "Visible"
+<!-- microstudy_clean[microstudy_clean$probhide_position > microstudy_clean$probvis_position,]$first_probability <- "Visible" -->
 
-```
+<!-- ``` -->
 
-Figure \@ref(fig:chanceorder) shows the number of participants who received each condition.
-In the case of the non-match condition, the counts for each question category appears to be rather even.
-However, in the case of the match condition, there is a large discrepancy in which probability question individuals received first.
-There are `r sum(microstudy_clean$conclusion.x=="Match" & microstudy_clean$first_probability=="Visible")` participants in the match condition who saw the visible probability question first, and `r sum(microstudy_clean$conclusion.x=="Match" & microstudy_clean$first_probability=="Hidden")` participants in the match condition who saw the hidden probability question first.
-This provides a difference of `r sum(microstudy_clean$conclusion.x=="Match" & microstudy_clean$first_probability=="Visible") - sum(microstudy_clean$conclusion.x=="Match" & microstudy_clean$first_probability=="Hidden")` participants.
-
-
-```{r}
-#| chanceorder,
-#| fig.cap= "Order of Chance and Probability Questions",
-#| fig.width= 10,
-#| fig.height= 4,
-#| fig.align= "center",
-#| echo= FALSE,
-#| eval= TRUE,
-#| warning= FALSE,
-#| message= FALSE
-
-chanceplot <- ggplot(microstudy_clean) +
-  geom_bar(aes(x=first_chance), position = position_dodge(preserve = "single")) +
-  ggtitle("") +
-  ylab("Count")+
-  xlab("First Chance Question")+
-  facet_grid(conclusion.x~.)+
-  scale_x_discrete(labels = wrap_format(10))+
-  theme_bw()
-
-probplot <- ggplot(microstudy_clean) +
-  geom_bar(aes(x=first_probability), position = position_dodge(preserve = "single")) +
-  ggtitle("") +
-  ylab("Count")+
-  xlab("First Probability Question")+
-  facet_grid(conclusion.x~.)+
-  scale_x_discrete(labels = wrap_format(10))+
-  theme_bw()
-
-chanceplot + probplot
+<!-- Figure \@ref(fig:chanceorder) shows the number of participants who received each condition. -->
+<!-- In the case of the non-match condition, the counts for each question category appears to be rather even. -->
+<!-- However, in the case of the match condition, there is a large discrepancy in which probability question individuals received first. -->
+<!-- There are `r sum(microstudy_clean$conclusion.x=="Match" & microstudy_clean$first_probability=="Visible")` participants in the match condition who saw the visible probability question first, and `r sum(microstudy_clean$conclusion.x=="Match" & microstudy_clean$first_probability=="Hidden")` participants in the match condition who saw the hidden probability question first. -->
+<!-- This provides a difference of `r sum(microstudy_clean$conclusion.x=="Match" & microstudy_clean$first_probability=="Visible") - sum(microstudy_clean$conclusion.x=="Match" & microstudy_clean$first_probability=="Hidden")` participants. -->
 
 
-```
+<!-- ```{r} -->
+<!-- #| chanceorder, -->
+<!-- #| fig.cap= "Order of Chance and Probability Questions", -->
+<!-- #| fig.width= 10, -->
+<!-- #| fig.height= 4, -->
+<!-- #| fig.align= "center", -->
+<!-- #| echo= FALSE, -->
+<!-- #| eval= TRUE, -->
+<!-- #| warning= FALSE, -->
+<!-- #| message= FALSE -->
 
-```{r}
-#| echo= FALSE,
-#| eval= FALSE,
-#| warning= FALSE,
-#| message= FALSE
+<!-- chanceplot <- ggplot(microstudy_clean) + -->
+<!--   geom_bar(aes(x=first_chance), position = position_dodge(preserve = "single")) + -->
+<!--   ggtitle("") + -->
+<!--   ylab("Count")+ -->
+<!--   xlab("First Chance Question")+ -->
+<!--   facet_grid(conclusion.x~.)+ -->
+<!--   scale_x_discrete(labels = wrap_format(10))+ -->
+<!--   theme_bw() -->
 
-ggplot(microstudy_clean) +
-  geom_bar(aes(x=first_chance), position = position_dodge(preserve = "single")) +
-  ggtitle("") +
-  ylab("Count")+
-  xlab("First Chance Question")+
-  facet_grid(conclusion.x~first_probability)+
-  scale_x_discrete(labels = wrap_format(10))+
-  theme_bw()
+<!-- probplot <- ggplot(microstudy_clean) + -->
+<!--   geom_bar(aes(x=first_probability), position = position_dodge(preserve = "single")) + -->
+<!--   ggtitle("") + -->
+<!--   ylab("Count")+ -->
+<!--   xlab("First Probability Question")+ -->
+<!--   facet_grid(conclusion.x~.)+ -->
+<!--   scale_x_discrete(labels = wrap_format(10))+ -->
+<!--   theme_bw() -->
+
+<!-- chanceplot + probplot -->
 
 
-```
+<!-- ``` -->
 
-```{r}
-#| echo= FALSE,
-#| eval= FALSE,
-#| warning= FALSE,
-#| message= FALSE
+<!-- ```{r} -->
+<!-- #| echo= FALSE, -->
+<!-- #| eval= FALSE, -->
+<!-- #| warning= FALSE, -->
+<!-- #| message= FALSE -->
 
-microstudy_clean$first_question <- substring(microstudy_clean$order, 1, 1)
-microstudy_clean$second_question <- substring(microstudy_clean$order, 2, 2)
-microstudy_clean$third_question <- substring(microstudy_clean$order, 3, 3)
-microstudy_clean$fourth_question <- substring(microstudy_clean$order, 4, 4)
-microstudy_clean$fifth_question <- substring(microstudy_clean$order, 5, 5)
-microstudy_clean$sixth_question <- substring(microstudy_clean$order, 6, 6)
-microstudy_clean$seventh_question <- substring(microstudy_clean$order, 7, 7)
+<!-- ggplot(microstudy_clean) + -->
+<!--   geom_bar(aes(x=first_chance), position = position_dodge(preserve = "single")) + -->
+<!--   ggtitle("") + -->
+<!--   ylab("Count")+ -->
+<!--   xlab("First Chance Question")+ -->
+<!--   facet_grid(conclusion.x~first_probability)+ -->
+<!--   scale_x_discrete(labels = wrap_format(10))+ -->
+<!--   theme_bw() -->
 
-first <- ggplot(microstudy_clean) +
-  geom_bar(aes(x=first_question), position = position_dodge(preserve = "single")) +
-  ggtitle("") +
-  ylab("Count")+
-  facet_grid(.~conclusion.x)+
-  theme_bw()
 
-second <- ggplot(microstudy_clean) +
-  geom_bar(aes(x=second_question), position = position_dodge(preserve = "single")) +
-  ggtitle("") +
-  ylab("Count")+
-  facet_grid(.~conclusion.x)+
-  theme_bw()
+<!-- ``` -->
 
-third <- ggplot(microstudy_clean) +
-  geom_bar(aes(x=third_question), position = position_dodge(preserve = "single")) +
-  ggtitle("") +
-  ylab("Count")+
-  facet_grid(.~conclusion.x)+
-  theme_bw()
+<!-- ```{r} -->
+<!-- #| echo= FALSE, -->
+<!-- #| eval= FALSE, -->
+<!-- #| warning= FALSE, -->
+<!-- #| message= FALSE -->
 
-fourth <- ggplot(microstudy_clean) +
-  geom_bar(aes(x=fourth_question), position = position_dodge(preserve = "single")) +
-  ggtitle("") +
-  ylab("Count")+
-  facet_grid(.~conclusion.x)+
-  theme_bw()
+<!-- microstudy_clean$first_question <- substring(microstudy_clean$order, 1, 1) -->
+<!-- microstudy_clean$second_question <- substring(microstudy_clean$order, 2, 2) -->
+<!-- microstudy_clean$third_question <- substring(microstudy_clean$order, 3, 3) -->
+<!-- microstudy_clean$fourth_question <- substring(microstudy_clean$order, 4, 4) -->
+<!-- microstudy_clean$fifth_question <- substring(microstudy_clean$order, 5, 5) -->
+<!-- microstudy_clean$sixth_question <- substring(microstudy_clean$order, 6, 6) -->
+<!-- microstudy_clean$seventh_question <- substring(microstudy_clean$order, 7, 7) -->
 
-fifth <- ggplot(microstudy_clean) +
-  geom_bar(aes(x=fifth_question), position = position_dodge(preserve = "single")) +
-  ggtitle("") +
-  ylab("Count")+
-  facet_grid(.~conclusion.x)+
-  theme_bw()
+<!-- first <- ggplot(microstudy_clean) + -->
+<!--   geom_bar(aes(x=first_question), position = position_dodge(preserve = "single")) + -->
+<!--   ggtitle("") + -->
+<!--   ylab("Count")+ -->
+<!--   facet_grid(.~conclusion.x)+ -->
+<!--   theme_bw() -->
 
-sixth <- ggplot(microstudy_clean) +
-  geom_bar(aes(x=sixth_question), position = position_dodge(preserve = "single")) +
-  ggtitle("") +
-  ylab("Count")+
-  facet_grid(.~conclusion.x)+
-  theme_bw()
+<!-- second <- ggplot(microstudy_clean) + -->
+<!--   geom_bar(aes(x=second_question), position = position_dodge(preserve = "single")) + -->
+<!--   ggtitle("") + -->
+<!--   ylab("Count")+ -->
+<!--   facet_grid(.~conclusion.x)+ -->
+<!--   theme_bw() -->
 
-seventh <- ggplot(microstudy_clean) +
-  geom_bar(aes(x=seventh_question), position = position_dodge(preserve = "single")) +
-  ggtitle("") +
-  ylab("Count")+
-  facet_grid(.~conclusion.x)+
-  theme_bw()
+<!-- third <- ggplot(microstudy_clean) + -->
+<!--   geom_bar(aes(x=third_question), position = position_dodge(preserve = "single")) + -->
+<!--   ggtitle("") + -->
+<!--   ylab("Count")+ -->
+<!--   facet_grid(.~conclusion.x)+ -->
+<!--   theme_bw() -->
 
-first/second/third
+<!-- fourth <- ggplot(microstudy_clean) + -->
+<!--   geom_bar(aes(x=fourth_question), position = position_dodge(preserve = "single")) + -->
+<!--   ggtitle("") + -->
+<!--   ylab("Count")+ -->
+<!--   facet_grid(.~conclusion.x)+ -->
+<!--   theme_bw() -->
 
-fourth/fifth/sixth/seventh
+<!-- fifth <- ggplot(microstudy_clean) + -->
+<!--   geom_bar(aes(x=fifth_question), position = position_dodge(preserve = "single")) + -->
+<!--   ggtitle("") + -->
+<!--   ylab("Count")+ -->
+<!--   facet_grid(.~conclusion.x)+ -->
+<!--   theme_bw() -->
 
-chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$first_question))
-chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$second_question))
-chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$third_question))
-chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$fourth_question))
-chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$fifth_question))
-chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$sixth_question))
+<!-- sixth <- ggplot(microstudy_clean) + -->
+<!--   geom_bar(aes(x=sixth_question), position = position_dodge(preserve = "single")) + -->
+<!--   ggtitle("") + -->
+<!--   ylab("Count")+ -->
+<!--   facet_grid(.~conclusion.x)+ -->
+<!--   theme_bw() -->
 
-chisq.test(table(microstudy_clean$first_chance, microstudy_clean$conclusion.x))
-chisq.test(table(microstudy_clean$first_probability, microstudy_clean$conclusion.x))
+<!-- seventh <- ggplot(microstudy_clean) + -->
+<!--   geom_bar(aes(x=seventh_question), position = position_dodge(preserve = "single")) + -->
+<!--   ggtitle("") + -->
+<!--   ylab("Count")+ -->
+<!--   facet_grid(.~conclusion.x)+ -->
+<!--   theme_bw() -->
 
-#Significant difference in conclusion
-chisq.test(table(microstudy_clean$conclusion.x))
+<!-- first/second/third -->
 
-#borderline significant
-chisq.test(table(microstudy_clean$seventh_question, microstudy_clean$conclusion.x))
+<!-- fourth/fifth/sixth/seventh -->
 
-#Significant when only looking at the match condition - not true for other numbers
-# The betting question (4) and strength question (7) are less represented
-chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$seventh_question))
+<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$first_question)) -->
+<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$second_question)) -->
+<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$third_question)) -->
+<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$fourth_question)) -->
+<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$fifth_question)) -->
+<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$sixth_question)) -->
 
-#borderline significant when only looking at the match condition
-chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$first_probability))
-```
+<!-- chisq.test(table(microstudy_clean$first_chance, microstudy_clean$conclusion.x)) -->
+<!-- chisq.test(table(microstudy_clean$first_probability, microstudy_clean$conclusion.x)) -->
 
-#### Gun Comfort
+<!-- #Significant difference in conclusion -->
+<!-- chisq.test(table(microstudy_clean$conclusion.x)) -->
+
+<!-- #borderline significant -->
+<!-- chisq.test(table(microstudy_clean$seventh_question, microstudy_clean$conclusion.x)) -->
+
+<!-- #Significant when only looking at the match condition - not true for other numbers -->
+<!-- # The betting question (4) and strength question (7) are less represented -->
+<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$seventh_question)) -->
+
+<!-- #borderline significant when only looking at the match condition -->
+<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$first_probability)) -->
+<!-- ``` -->
+
+### Gun Comfort
 
 Participants were asked to rate how comfortable they are with guns.
 Figure \@ref(fig:convictscomfort) shows the relationship between choice to convict and comfort with guns.
@@ -1407,12 +1341,12 @@ microstudy_clean$guncomfort = factor(
 )
 
 ggplot(microstudy_clean) +
-  geom_bar(aes(x=guncomfort, fill=guilty), position = position_dodge(preserve = "single")) +
+  geom_bar(aes(x=guncomfort, fill=convict), position = position_dodge(preserve = "single")) +
   ggtitle("") +
   scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
   ylab("Count")+
   xlab("Gun Comfort")+
-  facet_grid(conclusion.x~.)+
+  facet_grid(conclusion~.)+
   scale_x_discrete(labels = wrap_format(10))+
   theme_bw()
 

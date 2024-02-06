@@ -49,7 +49,6 @@ tab:months
 tab:fuzzymonth
 fig:notecount
 tab:nonfuzzycount
-fig:completiontime2
 fig:demographics2
 fig:strength2
 fig:prob2
@@ -76,7 +75,6 @@ fig:incomebet
 fig:probeduc
 fig:convictseduc
 fig:educbet
-fig:chanceorder
 fig:convictscomfort
 literature-review
 introduction
@@ -144,7 +142,6 @@ study2
 background-2
 study-1-and-scale-compression
 study-visualization
-micro-study-on-response-type
 methods-2
 study-format-1
 prolific-1
@@ -157,7 +154,6 @@ probability-comparison
 demographic-comparison
 income
 education
-order-of-the-questions
 gun-comfort
 notes-1
 finalstudy
