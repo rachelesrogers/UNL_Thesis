@@ -56,7 +56,7 @@ fig:opinionguilt
 fig:betting
 fig:fixedlike
 fig:freelike
-tab:opinionchance
+fig:opinionchanceplot
 fig:likecomp1
 fig:likecomp1scale
 fig:likecomp2

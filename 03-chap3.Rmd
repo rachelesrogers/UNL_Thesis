@@ -399,9 +399,9 @@ microstudy_clean <- microstudy_clean %>%
 microstudy_clean$num_chance <- as.numeric(microstudy_clean$numerator)/as.numeric(microstudy_clean$denominator)
 
 ggplot(microstudy_clean) +
-  geom_density(alpha=0.75, aes(x=num_chance, fill=chance_of), position="dodge") +
+  geom_density(alpha=0.5, aes(x=num_chance, fill=chance_of), position="dodge") +
   ggtitle("What is the chance that the defendant is...") +
-  scale_fill_manual(values = c("#D81B60","#004D40"), name="", labels=c("Guilty","Innocent"))+
+  scale_fill_manual(values = c("#CC79A7" ,"#D55E00"), name="", labels=c("Guilty","Innocent"))+
  # ylab("Count")+
   xlab("Chance")+
   facet_grid(.~conclusion)+
@@ -419,23 +419,47 @@ These results are shown in Figure \@ref(fig:freelike).
 As seen in previous graphs, in the case of the elimination condition, individuals gave small values for the chance that the defendant had in fact committed the crime, resulting in a sharp peak.
 Alternatively, individuals were less extreme when they expressed their opinion as the chance that the defendant did not commit the crime.
 In the case of the identification condition, those who expressed their opinions as either guilt or innocence gave similar results, resulting in symmetry between the two distributions.
-As shown in Table \@ref(tab:opinionchance), those who thought the defendant was innocent were more likely to favor inputting chance values in terms of innocence, while those who thought the defendant was guilty showed no clear preference.
+As shown in Figure \@ref(fig:opinionchanceplot), those who thought the defendant was innocent were more likely to favor inputting chance values in terms of innocence, while those who thought the defendant was guilty showed no clear preference.
+The default value of the question is "innocent", with the option of switching to "guilty".
+
+```{r}
+#| opinionchanceplot,
+#| fig.cap= "Participants who chose to express chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant.",
+#| fig.width= 6,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+library(ggmosaic)
+ggplot(microstudy_clean)+
+  geom_mosaic(aes(x=product(chance_of, guilt_opinion),
+                  fill=chance_of))+
+  theme_bw()+
+  scale_fill_manual(values = c("#CC79A7" ,"#D55E00"), name="Chance of:", labels=c("Guilt","Innocence"))+
+  ggtitle("Opinion of Guilt vs. Choice to Express Chance")+
+  xlab("Guilty?")+
+  theme(axis.text.y = element_blank(), axis.ticks.y=element_blank(),
+        axis.title.y = element_blank())
+
+```
 
 
 ```{r}
 #| opinionchance,
 #| echo= FALSE,
 #| message= FALSE,
-#| eval= TRUE
+#| eval= FALSE
 
 library(knitr)
 # library(kableExtra)
 table(microstudy_clean$chance_of, microstudy_clean$guilt_opinion) %>%
 kable(col.names=c("Innocent", "Guilty"), align="lcc",
-      caption = "Participants who chose to express Chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant.") 
-# %>%
-#   add_header_above(c("Chances of:"=1,"Opinion"=2), align=c("l","c")) %>%
-#   kable_styling()
+      caption = "Participants who chose to express Chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant.") %>%
+  add_header_above(c("Chances of:"=1,"Opinion"=2), align=c("l","c")) %>%
+  kable_styling()
 
 ```
 

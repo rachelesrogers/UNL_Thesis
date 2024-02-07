@@ -2225,22 +2225,17 @@ These results are shown in Figure \ref{fig:freelike}.
 As seen in previous graphs, in the case of the elimination condition, individuals gave small values for the chance that the defendant had in fact committed the crime, resulting in a sharp peak.
 Alternatively, individuals were less extreme when they expressed their opinion as the chance that the defendant did not commit the crime.
 In the case of the identification condition, those who expressed their opinions as either guilt or innocence gave similar results, resulting in symmetry between the two distributions.
-As shown in Table \ref{tab:opinionchance}, those who thought the defendant was innocent were more likely to favor inputting chance values in terms of innocence, while those who thought the defendant was guilty showed no clear preference.
+As shown in Figure \ref{fig:opinionchanceplot}, those who thought the defendant was innocent were more likely to favor inputting chance values in terms of innocence, while those who thought the defendant was guilty showed no clear preference.
+The default value of the question is ``innocent'', with the option of switching to ``guilty''.
 
-\begin{table}
+\begin{figure}
 
-\caption{\label{tab:opinionchance}Participants who chose to express Chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant.}
-\centering
-\begin{tabular}[t]{l|l|c}
-\hline
-  & Innocent & Guilty\\
-\hline
-guilty & 66 & 65\\
-\hline
-innocent & 113 & 55\\
-\hline
-\end{tabular}
-\end{table}
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/opinionchanceplot-1} 
+
+}
+
+\caption{Participants who chose to express chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant.}\label{fig:opinionchanceplot}
+\end{figure}
 
 \hypertarget{scale-comparison}{%
 \subsection{Scale Comparison}\label{scale-comparison}}
@@ -3104,7 +3099,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-02-06 16:15:23.329082.
+This version of the thesis was generated on 2024-02-07 10:51:57.503792.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -3119,7 +3114,7 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2024-02-06
+##  date     2024-02-07
 ##  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------
@@ -3127,7 +3122,7 @@ The computational environment that was used to generate this version is as follo
 ##    assertthat           0.2.1   2019-03-21 [1] CRAN (R 4.3.1)
 ##    bit                  4.0.5   2022-11-15 [1] CRAN (R 4.3.1)
 ##    bit64                4.0.5   2020-08-30 [1] CRAN (R 4.3.1)
-##    bookdown             0.35    2023-08-09 [1] CRAN (R 4.3.1)
+##    bookdown             0.37    2023-12-01 [1] CRAN (R 4.3.2)
 ##    cachem               1.0.8   2023-05-01 [1] CRAN (R 4.3.1)
 ##    callr                3.7.3   2022-11-02 [1] CRAN (R 4.3.1)
 ##    cli                  3.6.1   2023-03-23 [1] CRAN (R 4.3.1)
@@ -3139,7 +3134,7 @@ The computational environment that was used to generate this version is as follo
 ##    digest               0.6.33  2023-07-07 [1] CRAN (R 4.3.1)
 ##    dplyr              * 1.1.3   2023-09-03 [1] CRAN (R 4.3.1)
 ##    ellipsis             0.3.2   2021-04-29 [1] CRAN (R 4.3.1)
-##    evaluate             0.22    2023-09-29 [1] CRAN (R 4.3.1)
+##    evaluate             0.23    2023-11-01 [1] CRAN (R 4.3.2)
 ##    fansi                1.0.4   2023-01-22 [1] CRAN (R 4.3.1)
 ##    farver               2.1.1   2022-07-06 [1] CRAN (R 4.3.1)
 ##    fastmap              1.1.1   2023-02-24 [1] CRAN (R 4.3.1)
@@ -3153,29 +3148,29 @@ The computational environment that was used to generate this version is as follo
 ##    ggblend            * 0.1.0   2023-05-22 [1] CRAN (R 4.3.1)
 ##    ggmosaic           * 0.3.3   2021-02-23 [1] CRAN (R 4.3.1)
 ##    ggpcp              * 0.2.0   2022-11-28 [1] CRAN (R 4.3.1)
-##    ggplot2            * 3.4.3   2023-08-14 [1] CRAN (R 4.3.1)
+##    ggplot2            * 3.4.4   2023-10-12 [1] CRAN (R 4.3.2)
 ##    ggrepel            * 0.9.3   2023-02-03 [1] CRAN (R 4.3.1)
 ##    git2r                0.32.0  2023-04-12 [1] CRAN (R 4.3.1)
 ##    glue                 1.6.2   2022-02-24 [1] CRAN (R 4.3.1)
 ##    gridExtra          * 2.3     2017-09-09 [1] CRAN (R 4.3.1)
 ##    gtable               0.3.4   2023-08-21 [1] CRAN (R 4.3.1)
 ##    hms                  1.1.3   2023-03-21 [1] CRAN (R 4.3.1)
-##    htmltools            0.5.6   2023-08-10 [1] CRAN (R 4.3.1)
+##    htmltools            0.5.7   2023-11-03 [1] CRAN (R 4.3.2)
 ##    htmlwidgets          1.6.2   2023-03-17 [1] CRAN (R 4.3.1)
 ##    httpuv               1.6.11  2023-05-11 [1] CRAN (R 4.3.1)
 ##    httr                 1.4.7   2023-08-15 [1] CRAN (R 4.3.1)
 ##    huskydown          * 0.0.5   2023-10-04 [1] Github (benmarwick/huskydown@addb48e)
 ##    jpeg               * 0.1-10  2022-11-29 [1] CRAN (R 4.3.0)
-##    jsonlite             1.8.7   2023-06-29 [1] CRAN (R 4.3.1)
+##    jsonlite             1.8.8   2023-12-04 [1] CRAN (R 4.3.2)
 ##    knitr              * 1.44    2023-09-11 [1] CRAN (R 4.3.1)
 ##    labeling             0.4.3   2023-08-29 [1] CRAN (R 4.3.1)
 ##    later                1.3.1   2023-05-02 [1] CRAN (R 4.3.1)
-##    lattice              0.21-8  2023-04-05 [2] CRAN (R 4.3.1)
+##    lattice              0.22-5  2023-10-24 [1] CRAN (R 4.3.2)
 ##    lazyeval             0.2.2   2019-03-15 [1] CRAN (R 4.3.1)
-##    lifecycle            1.0.3   2022-10-07 [1] CRAN (R 4.3.1)
+##    lifecycle            1.0.4   2023-11-07 [1] CRAN (R 4.3.2)
 ##    lubridate          * 1.9.2   2023-02-10 [1] CRAN (R 4.3.1)
 ##    magrittr             2.0.3   2022-03-30 [1] CRAN (R 4.3.1)
-##    Matrix               1.6-1.1 2023-09-18 [1] CRAN (R 4.3.1)
+##    Matrix               1.6-5   2024-01-11 [1] CRAN (R 4.3.2)
 ##    memoise              2.0.1   2021-11-26 [1] CRAN (R 4.3.1)
 ##    mime                 0.12    2021-09-28 [1] CRAN (R 4.3.0)
 ##    miniUI               0.1.1.1 2018-05-18 [1] CRAN (R 4.3.1)
@@ -3190,6 +3185,7 @@ The computational environment that was used to generate this version is as follo
 ##    plyr               * 1.8.8   2022-11-11 [1] CRAN (R 4.3.1)
 ##    prettyunits          1.2.0   2023-09-24 [1] CRAN (R 4.3.1)
 ##    processx             3.8.2   2023-06-30 [1] CRAN (R 4.3.1)
+##    productplots         0.1.1   2016-07-02 [1] CRAN (R 4.3.1)
 ##    profvis              0.3.8   2023-05-02 [1] CRAN (R 4.3.1)
 ##    promises             1.2.1   2023-08-10 [1] CRAN (R 4.3.1)
 ##    ps                   1.7.5   2023-04-18 [1] CRAN (R 4.3.1)
@@ -3207,13 +3203,13 @@ The computational environment that was used to generate this version is as follo
 ##    rlang                1.1.1   2023-04-28 [1] CRAN (R 4.3.1)
 ##    rmarkdown            2.25    2023-09-18 [1] CRAN (R 4.3.1)
 ##    rstudioapi           0.15.0  2023-07-07 [1] CRAN (R 4.3.1)
-##    scales             * 1.2.1   2022-08-20 [1] CRAN (R 4.3.1)
+##    scales             * 1.3.0   2023-11-28 [1] CRAN (R 4.3.2)
 ##    sessioninfo          1.2.2   2021-12-06 [1] CRAN (R 4.3.1)
-##    shiny                1.7.5   2023-08-12 [1] CRAN (R 4.3.1)
+##    shiny                1.8.0   2023-11-17 [1] CRAN (R 4.3.2)
 ##    stopwords            2.3     2021-10-28 [1] CRAN (R 4.3.1)
 ##    stringdist         * 0.9.10  2022-11-07 [1] CRAN (R 4.3.0)
 ##    stringi            * 1.7.12  2023-01-11 [1] CRAN (R 4.3.0)
-##    stringr            * 1.5.0   2022-12-02 [1] CRAN (R 4.3.1)
+##    stringr            * 1.5.1   2023-11-14 [1] CRAN (R 4.3.2)
 ##    tibble             * 3.2.1   2023-03-20 [1] CRAN (R 4.3.1)
 ##    tidyr              * 1.3.0   2023-01-24 [1] CRAN (R 4.3.1)
 ##    tidyselect           1.2.0   2022-10-10 [1] CRAN (R 4.3.1)
