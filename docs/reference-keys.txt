@@ -59,7 +59,10 @@ fig:freelike
 fig:opinionchanceplot
 fig:likecomp1
 fig:likecomp1scale
+fig:likecomp1scalerev
 fig:likecomp2
+fig:likecomp2scale
+fig:likecomp2scalerev
 fig:likeprob
 fig:likeprobcon
 fig:likeconvict
@@ -150,7 +153,8 @@ participants-1
 questions-from-study-1
 new-study-questions
 scale-comparison
-chance-comparison
+numeric-and-multiple-choice-chance-comparison
+probability-and-chance-scale-comparison
 probability-comparison
 demographic-comparison
 income
