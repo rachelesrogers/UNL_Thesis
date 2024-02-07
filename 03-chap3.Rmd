@@ -498,7 +498,7 @@ ggplot(microstudy_clean) +
 
 Consistency across response types is another important aspect of this study.
 If different question types result in responses that are inconsistent, it would be difficult to tell which questions truly capture the attitudes of the participants, in order to most accurately answer the research questions.
-As mentioned in the previous literature review, there have been studies to suggest that individuals may struggle with the interpretation of chance scales.
+As mentioned in the Chapter \@ref(litreview), there have been studies to suggest that individuals may struggle with the interpretation of chance scales.
 Questions of how much a participant is willing to bet may also depend on their personal feel for risk, and betting hypothetical money may have different results than betting real money, or betting money for someone else.
 \authorcol{There is a source for making decisions for others somewhere, and it may have had something to do with betting or something to do with plea deals. TBD}
 Because individuals may be influenced by which scale they see first, the order of the questions were randomized and recorded, so that the orders can be compared.

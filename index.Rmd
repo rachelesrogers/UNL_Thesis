@@ -92,7 +92,7 @@ library(jpeg)
 
 <!-- # Introduction {.unnumbered} -->
 
-# Literature Review
+# Literature Review {#litreview}
 
 ## Introduction
 

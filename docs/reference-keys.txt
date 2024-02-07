@@ -76,7 +76,7 @@ fig:probeduc
 fig:convictseduc
 fig:educbet
 fig:convictscomfort
-literature-review
+litreview
 introduction
 bullet-matching-background
 issues-in-pattern-analysis
