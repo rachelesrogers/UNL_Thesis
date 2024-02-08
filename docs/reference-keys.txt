@@ -63,9 +63,9 @@ fig:likecomp1scalerev
 fig:likecomp2
 fig:likecomp2scale
 fig:likecomp2scalerev
+fig:onevaluesmosaic
 fig:likeprob
 fig:likeprobcon
-fig:likeconvict
 fig:coordstrcat
 fig:convictlike
 fig:opinionlike
@@ -160,6 +160,7 @@ demographic-comparison
 income
 education
 gun-comfort
+conclusion-2
 notes-1
 finalstudy
 introduction-2
