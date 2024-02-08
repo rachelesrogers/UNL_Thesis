@@ -63,7 +63,6 @@ fig:likecomp1scalerev
 fig:likecomp2
 fig:likecomp2scale
 fig:likecomp2scalerev
-fig:onevaluesmosaic
 fig:likeprob
 fig:likeprobcon
 fig:coordstrcat

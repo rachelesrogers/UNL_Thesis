@@ -605,12 +605,17 @@ However, many individuals did not show consistent choices between scales - parti
 #   ylim(c(0,1))+
 #   scale_y_log10()
 
+clean_results_merged$chance_wo_0 <- clean_results_merged$num_chance
+
+clean_results_merged <- clean_results_merged %>%
+    mutate(chance_wo_0 = ifelse(chance_wo_0 == 0, .Machine$double.eps, chance_wo_0))
+
 ggplot(subset(clean_results_merged, chance_of=="guilty" & 
               chances_fixed %in% c("Impossible that he is guilty", 
                                    "About 1 chance in 10,000", 
                                    "About 1 chance in 1,000",
                                    "About 1 chance in 100",
-                                   "About 1 chance in 10")), aes(x=num_chance, fill=chances_fixed))+
+                                   "About 1 chance in 10")), aes(x=chance_wo_0, fill=chances_fixed))+
   ggtitle("Chances of Guilt") +
   ylab("Count")+
   xlab("Open Response Chance")+
@@ -622,6 +627,7 @@ ggplot(subset(clean_results_merged, chance_of=="guilty" &
   geom_vline(aes(xintercept=1/10000), color="#1E88E5", size=1)+
   geom_vline(aes(xintercept=1/1000), color="#FFC107", size=1)+
   geom_vline(aes(xintercept=1/100), color="#004D40", size=1)+
+  geom_vline(aes(xintercept=.Machine$double.eps), color="#D81B60", size=1)+
   geom_vline(aes(xintercept=1/10), color="#CCA785", size=1)
 
 ```
@@ -631,6 +637,7 @@ In order to visualize these compressed values, the numerical chance selected by 
 Thus, values can be interpreted as the chance that the defendant was innocent, even though participants chose to express their values in terms of guilt.
 The lines indicate the numerical equivalent to the multiple choice wording, if expressed in terms of innocence.
 While those selecting "About 9 chances in 10" were fairly consistent with the expected value, there is a fair amount of inconsistency between participants' multiple choice selection and their numerical values for all other categories.
+Those who selected "Certain to be guilty" tended to choose guilt values of 1 (or, alternatively, chance of innocence values of 0).
 
 ```{r}
 #| likecomp1scalerev,
@@ -643,12 +650,17 @@ While those selecting "About 9 chances in 10" were fairly consistent with the ex
 #| warning= FALSE,
 #| message= FALSE
 
+clean_results_merged$chance_subtracted <- 1 - clean_results_merged$num_chance
+
+clean_results_merged <- clean_results_merged %>%
+    mutate(chance_subtracted = ifelse(chance_subtracted == 0, .Machine$double.eps, chance_subtracted))
+
 ggplot(subset(clean_results_merged, chance_of=="guilty" & 
               chances_fixed %in% c("Certain to be guilty", 
                                    "About 9,999 chances in 10,000", 
                                    "About 999 chances in 1,000",
                                    "About 99 chances in 100",
-                                   "About 9 chances in 10")), aes(x=1-num_chance, fill=chances_fixed))+
+                                   "About 9 chances in 10")), aes(x=chance_subtracted, fill=chances_fixed))+
   ggtitle("Chances of Innocence") +
   ylab("Count")+
   xlab("1 - Open Response Chance of Guilt")+
@@ -660,6 +672,7 @@ ggplot(subset(clean_results_merged, chance_of=="guilty" &
   geom_vline(aes(xintercept=1/10000), color="#FE6100", size=1)+
   geom_vline(aes(xintercept=1/1000), color="#DC267F", size=1)+
   geom_vline(aes(xintercept=1/100), color="#785EF0", size=1)+
+  geom_vline(aes(xintercept=.Machine$double.eps), color="#FFB000", size=1)+
   geom_vline(aes(xintercept=1/10), color="#648FFF", size=1)
 
 ```
@@ -703,6 +716,7 @@ ggplot(subset(clean_results_merged, chance_of=="innocent"), aes(x=chances_fixed)
 This appearance confusion is reinforced in Figure \@ref(fig:likecomp2scale), displaying the values corresponding to the lower half of the multiple choice scale. 
 As in Figure \@ref(fig:likecomp1scalerev), I have reversed the numeric values so a log transformation can be used to better visualize the data.
 The only multiple choice value that shows some consistency with the numeric counterpoints is "About 1 chance in 10", while for all other multiple choice options participants tended to provide a lower chance of numerical innocence than their multiple choice selection would indicate.
+Those who selected "Impossible that he is guilty" also tended to select chance of guilt values at 0, also demonstrating consistency (although several individuals also chose "Impossible that he is guilty" and assigned higher chances of guilt).
 
 ```{r}
 #| likecomp2scale,
@@ -737,7 +751,7 @@ ggplot(subset(clean_results_merged, chance_of=="innocent" &
                                    "About 1 chance in 1,000",
                                    "About 1 chance in 100",
                                    "About 1 chance in 10")),
-       aes(x=1-num_chance, fill=chances_fixed))+
+       aes(x=chance_subtracted, fill=chances_fixed))+
   ggtitle("Chances of Guilt") +
   ylab("Count")+
   xlab("1 - Open Response Chance of Innocence")+
@@ -749,6 +763,7 @@ ggplot(subset(clean_results_merged, chance_of=="innocent" &
   geom_vline(aes(xintercept=1/10000), color="#1E88E5", size=1)+
   geom_vline(aes(xintercept=1/1000), color="#FFC107", size=1)+
   geom_vline(aes(xintercept=1/100), color="#004D40", size=1)+
+    geom_vline(aes(xintercept=.Machine$double.eps), color="#D81B60", size=1)+
   geom_vline(aes(xintercept=1/10), color="#CCA785", size=1)
 
 ```
@@ -774,7 +789,7 @@ ggplot(subset(clean_results_merged, chance_of=="innocent" &
                                    "About 9,999 chances in 10,000", 
                                    "About 999 chances in 1,000",
                                    "About 99 chances in 100",
-                                   "About 9 chances in 10")), aes(x=num_chance, fill=chances_fixed))+
+                                   "About 9 chances in 10")), aes(x=chance_wo_0, fill=chances_fixed))+
   ggtitle("Chances of Innocence") +
   ylab("Count")+
   xlab("Open Response Chance of Innocence")+
@@ -786,19 +801,10 @@ ggplot(subset(clean_results_merged, chance_of=="innocent" &
   geom_vline(aes(xintercept=1/10000), color="#FE6100", size=1)+
   geom_vline(aes(xintercept=1/1000), color="#DC267F", size=1)+
   geom_vline(aes(xintercept=1/100), color="#785EF0", size=1)+
+    geom_vline(aes(xintercept=.Machine$double.eps), color="#FFB000", size=1)+
   geom_vline(aes(xintercept=1/10), color="#648FFF", size=1)
 
 ```
-
-\authorcol{An issue with the use of the log scale is the presence of 0's, when the scale is not reversed, and 1's when the scale is reversed.}
-There was a single individual who chose a chance of 0: this person thought that the chance of the defendant committing the crime was 0, and chose "Impossible that he is guilty", demonstrating alignment in chance choices.
-There were `r sum(clean_results_merged$num_chance==1)` individuals, on the other hand, who chose a chance value of 1.
-These individuals, along with their multiple choice chance decisions, are depicted in Figure \@ref(fig:onevaluesmosaic).
-For a numerical chance value of 1, the corresponding multiple choice value would be "Impossible that he is guilty" when expressing the chance of innocence, and "Certain to be guilty" when expressing the chance of guilt.
-These were the most populated selections on the scale.
-Two individuals selected that the defendant was "Certain to be guilty" or had "About 9,999 chances in 10,000" of being guilty while indicating that the chance of innocence was 1 - showing a potential reversal of the scale when participants express their numerical conclusions in terms of innocence.
-Approximately half of the individuals who chose to indicate that the numeric chance was 1 did not select the corresponding extreme value in the multiple choice scale, and instead chose a value somewhere in the middle.
-
 
 ```{r}
 #| onevaluesmosaic,
@@ -807,7 +813,7 @@ Approximately half of the individuals who chose to indicate that the numeric cha
 #| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
-#| eval= TRUE,
+#| eval= FALSE,
 #| warning= FALSE,
 #| message= FALSE
 
