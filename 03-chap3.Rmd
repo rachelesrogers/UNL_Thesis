@@ -666,14 +666,14 @@ ggplot(subset(clean_results_merged, chance_of=="guilty" &
   xlab("1 - Open Response Chance of Guilt")+
   geom_histogram(alpha=0.5)+
   facet_grid(chances_fixed~.)+
-  scale_fill_manual(values=c("#648FFF","#785EF0","#DC267F","#FE6100", "#FFB000"))+
+  scale_fill_manual(values=c("#CC79A7","#D55E00","#009E73","#F0E442", "#A4A3B3"))+
   theme_bw()+
    scale_x_log10()+
-  geom_vline(aes(xintercept=1/10000), color="#FE6100", size=1)+
-  geom_vline(aes(xintercept=1/1000), color="#DC267F", size=1)+
-  geom_vline(aes(xintercept=1/100), color="#785EF0", size=1)+
-  geom_vline(aes(xintercept=.Machine$double.eps), color="#FFB000", size=1)+
-  geom_vline(aes(xintercept=1/10), color="#648FFF", size=1)
+  geom_vline(aes(xintercept=1/10000), color="#F0E442", size=1)+
+  geom_vline(aes(xintercept=1/1000), color="#009E73", size=1)+
+  geom_vline(aes(xintercept=1/100), color="#D55E00", size=1)+
+  geom_vline(aes(xintercept=.Machine$double.eps), color="#A4A3B3", size=1)+
+  geom_vline(aes(xintercept=1/10), color="#CC79A7", size=1)
 
 ```
 
@@ -795,14 +795,14 @@ ggplot(subset(clean_results_merged, chance_of=="innocent" &
   xlab("Open Response Chance of Innocence")+
   geom_histogram(alpha=0.5)+
   facet_grid(chances_fixed~.)+
-  scale_fill_manual(values=c("#648FFF","#785EF0","#DC267F","#FE6100", "#FFB000"))+
+  scale_fill_manual(values=c("#CC79A7","#D55E00","#009E73","#F0E442", "#A4A3B3"))+
   theme_bw()+
    scale_x_log10()+
-  geom_vline(aes(xintercept=1/10000), color="#FE6100", size=1)+
-  geom_vline(aes(xintercept=1/1000), color="#DC267F", size=1)+
-  geom_vline(aes(xintercept=1/100), color="#785EF0", size=1)+
-    geom_vline(aes(xintercept=.Machine$double.eps), color="#FFB000", size=1)+
-  geom_vline(aes(xintercept=1/10), color="#648FFF", size=1)
+  geom_vline(aes(xintercept=1/10000), color="#F0E442", size=1)+
+  geom_vline(aes(xintercept=1/1000), color="#009E73", size=1)+
+  geom_vline(aes(xintercept=1/100), color="#D55E00", size=1)+
+    geom_vline(aes(xintercept=.Machine$double.eps), color="#A4A3B3", size=1)+
+  geom_vline(aes(xintercept=1/10), color="#CC79A7", size=1)
 
 ```
 
