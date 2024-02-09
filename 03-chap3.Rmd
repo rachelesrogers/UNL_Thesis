@@ -573,8 +573,9 @@ For values of "1 chance in 2", "About 1 chance in 10", and "About 9 chances in 1
 
 
 Figure \@ref(fig:likecomp1scale) demonstrates the lower half of the multiple choice scale, when the x axis is transformed by log 10.
-The lines indicate the numerical equivalent to the multiple choice wording.
+The lines indicate the numerical equivalent to the multiple choice wording, including a black line for the unpictured category of "1 chance in 2 (fifty-fifty chance)".
 From this transformed scale, there still appears to be some consistency between when participants choose their own chance numerically and when they were offered a multiple choice.
+This can be seen in the graph when the observations are inside the boundaries that align with its multiple choice category - meaning that it is not beyond the category.
 However, many individuals did not show consistent choices between scales - particularly in the "About 1 chance in 10,000" condition and the "About 1 chance in 100" condition, where several numerical choices would have better aligned with different selections in the multiple choice section, as demonstrated by the closeness of several observations to other lines.
 
 ```{r}
@@ -623,12 +624,14 @@ ggplot(subset(clean_results_merged, chance_of=="guilty" &
   facet_grid(chances_fixed~.)+
   scale_fill_manual(values=c("#D81B60","#1E88E5","#FFC107","#004D40", "#CCA785"))+
   theme_bw()+
-  scale_x_log10()+
+  scale_x_log10(breaks=c(1/10000, 1/1000,
+                              1/100, 1/10, 0.5), labels=label_number(drop0trailing=TRUE))+
   geom_vline(aes(xintercept=1/10000), color="#1E88E5", size=1)+
   geom_vline(aes(xintercept=1/1000), color="#FFC107", size=1)+
   geom_vline(aes(xintercept=1/100), color="#004D40", size=1)+
   geom_vline(aes(xintercept=.Machine$double.eps), color="#D81B60", size=1)+
-  geom_vline(aes(xintercept=1/10), color="#CCA785", size=1)
+  geom_vline(aes(xintercept=1/10), color="#CCA785", size=1)+
+  geom_vline(aes(xintercept=0.5), color="black", size=1)
 
 ```
 
@@ -650,6 +653,8 @@ Those who selected "Certain to be guilty" tended to choose guilt values of 1 (or
 #| warning= FALSE,
 #| message= FALSE
 
+library(scales)
+
 clean_results_merged$chance_subtracted <- 1 - clean_results_merged$num_chance
 
 clean_results_merged <- clean_results_merged %>%
@@ -668,12 +673,14 @@ ggplot(subset(clean_results_merged, chance_of=="guilty" &
   facet_grid(chances_fixed~.)+
   scale_fill_manual(values=c("#CC79A7","#D55E00","#009E73","#F0E442", "#A4A3B3"))+
   theme_bw()+
-   scale_x_log10()+
+   scale_x_log10(breaks=c(1/10000, 1/1000,
+                              1/100, 1/10, 0.5), labels=label_number(drop0trailing=TRUE))+
   geom_vline(aes(xintercept=1/10000), color="#F0E442", size=1)+
   geom_vline(aes(xintercept=1/1000), color="#009E73", size=1)+
   geom_vline(aes(xintercept=1/100), color="#D55E00", size=1)+
   geom_vline(aes(xintercept=.Machine$double.eps), color="#A4A3B3", size=1)+
-  geom_vline(aes(xintercept=1/10), color="#CC79A7", size=1)
+  geom_vline(aes(xintercept=1/10), color="#CC79A7", size=1)+
+  geom_vline(aes(xintercept=0.5), color="black", size=1)
 
 ```
 
@@ -715,7 +722,8 @@ ggplot(subset(clean_results_merged, chance_of=="innocent"), aes(x=chances_fixed)
 
 This appearance confusion is reinforced in Figure \@ref(fig:likecomp2scale), displaying the values corresponding to the lower half of the multiple choice scale. 
 As in Figure \@ref(fig:likecomp1scalerev), I have reversed the numeric values so a log transformation can be used to better visualize the data.
-The only multiple choice value that shows some consistency with the numeric counterpoints is "About 1 chance in 10", while for all other multiple choice options participants tended to provide a lower chance of numerical innocence than their multiple choice selection would indicate.
+The only multiple choice value that shows some consistency with the numeric counterpoints is "About 1 chance in 10", while for all other multiple choice options participants tended to provide a lower chance of numerical innocence than their multiple choice selection would indicate (shown by values further right on the scale).
+In two cases, for those who selected "About 1 chance in 100" and "About 1 chance in 1,000" of guilt, the most popular category is above a fifty-fifty chance, indicating confusion on the scale.
 Those who selected "Impossible that he is guilty" also tended to select chance of guilt values at 0, also demonstrating consistency (although several individuals also chose "Impossible that he is guilty" and assigned higher chances of guilt).
 
 ```{r}
@@ -759,12 +767,14 @@ ggplot(subset(clean_results_merged, chance_of=="innocent" &
   facet_grid(chances_fixed~.)+
   scale_fill_manual(values=c("#D81B60","#1E88E5","#FFC107","#004D40", "#CCA785"))+
   theme_bw()+
-   scale_x_log10()+
+   scale_x_log10(breaks=c(1/10000, 1/1000,
+                              1/100, 1/10, 0.5), labels=label_number(drop0trailing=TRUE))+
   geom_vline(aes(xintercept=1/10000), color="#1E88E5", size=1)+
   geom_vline(aes(xintercept=1/1000), color="#FFC107", size=1)+
   geom_vline(aes(xintercept=1/100), color="#004D40", size=1)+
     geom_vline(aes(xintercept=.Machine$double.eps), color="#D81B60", size=1)+
-  geom_vline(aes(xintercept=1/10), color="#CCA785", size=1)
+  geom_vline(aes(xintercept=1/10), color="#CCA785", size=1)+
+  geom_vline(aes(xintercept=0.5), color="black", size=1)
 
 ```
 
@@ -797,12 +807,14 @@ ggplot(subset(clean_results_merged, chance_of=="innocent" &
   facet_grid(chances_fixed~.)+
   scale_fill_manual(values=c("#CC79A7","#D55E00","#009E73","#F0E442", "#A4A3B3"))+
   theme_bw()+
-   scale_x_log10()+
+   scale_x_log10(breaks=c(1/10000, 1/1000,
+                              1/100, 1/10, 0.5), labels=label_number(drop0trailing=TRUE))+
   geom_vline(aes(xintercept=1/10000), color="#F0E442", size=1)+
   geom_vline(aes(xintercept=1/1000), color="#009E73", size=1)+
   geom_vline(aes(xintercept=1/100), color="#D55E00", size=1)+
     geom_vline(aes(xintercept=.Machine$double.eps), color="#A4A3B3", size=1)+
-  geom_vline(aes(xintercept=1/10), color="#CC79A7", size=1)
+  geom_vline(aes(xintercept=1/10), color="#CC79A7", size=1)+
+  geom_vline(aes(xintercept=0.5), color="black", size=1)
 
 ```
 
