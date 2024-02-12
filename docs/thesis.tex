@@ -2345,6 +2345,7 @@ Although this consistency is not as present in the other categories, they are cl
 The comparison of multiple choice chance and visible probability scales is shown in Figure \ref{fig:likeprob}.
 In the case of the probabilities, individuals were only able to select integers between 0 and 100, meaning that this scale would not translate to the more extreme values of the multiple choice chance scale (outside of the values of ``About 1 in 100'' and ``About 99 in 100'').
 While there is some discrepancy between choice selection, particularly in participants who selected a lower chance that the defendant is guilty, responses seem to overall be consistent.
+Probability values tend toward the middle, pulling away from the extreme values on the probability scale that would correspond to their multiple choice chance answers.
 Those who selected high probability values but low multiple choice chance values expressed that their opinion was that the defendant was guilty.
 This indicates that their selected probability value is more consistent with their opinion than the multiple choice chance value.
 In this case, it seems that a few individuals may have found the use of the chance scale to be more confusing than the probability scale.
@@ -2357,6 +2358,40 @@ In this case, it seems that a few individuals may have found the use of the chan
 
 \caption{Probability and Chance Comparison}\label{fig:likeprob}
 \end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/probchancescale1-1} 
+
+}
+
+\caption{Guilt Probability Comparison Log 10 Scale}\label{fig:probchancescale1}
+\end{figure}
+
+Figure \ref{fig:probchancescale1} shows the log-transformed comparison of probability values and the participant's multiple choice chance decision.
+If participants were consistent in their choices of chance category and visible probability, we would expect that individuals selecting ``About 1 chance in 1,000'' or lower would exclusively select probability of guilt values of 1\% or 0\%, because 1\% corresponds to ``About 1 chance in 100''.
+While most individuals in the ``Impossible he is guilty'' category did select 0\%, this prediction does not hold true for the other categories.
+In the case of ``About 1 chance in 10,000'', approximately an equal number of individuals selected values between 1\% and 10\%, as did those who selected the ``About 1 chance in 1,000'' and ``About 1 chance in 100'' categories.
+While this is expected in ``About 1 chance in 100'', the estimate appears to be high for ``About 1 chance in 1,000'' and ``About 1 chance in 10,000''.
+Those in the ``About 1 chance in 10'' category selected relatively expected probabilities, demonstrating that this issue mostly affects the extreme values.
+While 50\% was the most popular (and default) value on the visible probability scale (selected by 33 participants), the next two most popular values are 0\% and 1\% (both selected by 21 participants).
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/probchancescale2-1} 
+
+}
+
+\caption{Guilt Probability Comparison Log 10 Scale, where probability values were subtracted from 1}\label{fig:probchancescale2}
+\end{figure}
+
+Figure \ref{fig:probchancescale2} is similar to Figure \ref{fig:probchancescale1} in its less-frequent-than-expected choice of extreme values, and the accurate alignment of the most extreme (``Certain to be guilty'') and least extreme (``About 9 chances in 10'') categories.
+Those who selected ``About 99 chances in 100'' of guilt tended to favor close to a 10\% probability of innocence (by selecting a 90\% probability of guilt), as opposed to the expected 1\% probability of innocence (or 99\% probability of guilt); the same can be said for those who selected ``About 999 chances in 1,000'' that the defendant is guilty.
+Individuals who selected the ``About 9,999 chances in 10,000'' favored 99\% probability of guilt (or 1\% probability of innocence).
+
+Overall, Figures \ref{fig:probchancescale1} and \ref{fig:probchancescale2} demonstrate some inconsistency between selected multiple choice scale and participants' assigned probability.
+Results in both cases generally indicate consistent beliefs in guilt: By far most individuals who selected a multiple choice chance value corresponding to the defendant being more likely to be guilty than innocent selected a corresponding probability value in the same range (i.e.~less than a 50\% probability of being innocent), and vice versa.
+However, the inconsistency in the scales is present in the form of magnitude: participants tended to select less extreme probability values than was indicated by their multiple choice chance selections.
 
 \begin{figure}
 
@@ -3157,7 +3192,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-02-09 09:15:54.130068.
+This version of the thesis was generated on 2024-02-12 11:05:11.50518.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -3172,7 +3207,7 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2024-02-09
+##  date     2024-02-12
 ##  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------

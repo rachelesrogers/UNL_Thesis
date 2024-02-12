@@ -844,6 +844,7 @@ ggplot(subset(clean_results_merged, num_chance==1))+
 The comparison of multiple choice chance and visible probability scales is shown in Figure \@ref(fig:likeprob).
 In the case of the probabilities, individuals were only able to select integers between 0 and 100, meaning that this scale would not translate to the more extreme values of the multiple choice chance scale (outside of the values of "About 1 in 100" and "About 99 in 100").
 While there is some discrepancy between choice selection, particularly in participants who selected a lower chance that the defendant is guilty, responses seem to overall be consistent.
+Probability values tend toward the middle, pulling away from the extreme values on the probability scale that would correspond to their multiple choice chance answers.
 Those who selected high probability values but low multiple choice chance values expressed that their opinion was that the defendant was guilty.
 This indicates that their selected probability value is more consistent with their opinion than the multiple choice chance value.
 In this case, it seems that a few individuals may have found the use of the chance scale to be more confusing than the probability scale.
@@ -862,7 +863,7 @@ In this case, it seems that a few individuals may have found the use of the chan
 ggplot(clean_results_merged, aes(x=chances_fixed))+ #,fill=conclusion
   geom_point(aes(y=value),color="red",size=5,alpha=0.5)+
   ggtitle("Probability vs. Chance That Cole is Guilty") +
-  geom_jitter(aes(y=(visible_probability/100), color=guilt_opinion),
+  geom_jitter(aes(y=(as.numeric(hidden_probability)/100), color=guilt_opinion),
              # position = position_jitterdodge(
              #   jitter.width = 0.2,
              #   #jitter.height = 0.4,
@@ -870,16 +871,115 @@ ggplot(clean_results_merged, aes(x=chances_fixed))+ #,fill=conclusion
              # ),
              size = 1
   ) +
-  geom_boxplot(aes(y=(visible_probability/100)),
+  geom_boxplot(aes(y=(as.numeric(hidden_probability)/100)),
                position = position_dodge(1),
                alpha = 0.5,
                outlier.shape = NA)+ 
-  ylab("Visible Probability")+
+  ylab("Hidden Probability")+
   xlab("Closed Response Chance")+
   scale_color_manual(values = c("#D81B60","#004D40"), name="Opinion", labels=c("Innocent","Guilty"))+
   scale_x_discrete(labels = wrap_format(10))
 
 ```
+
+```{r}
+#| probchancescale1,
+#| fig.cap= "Guilt Probability Comparison Log 10 Scale",
+#| fig.width= 10,
+#| fig.height= 9,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+clean_results_merged$prob_wo_0 <- as.numeric(clean_results_merged$visible_probability)/100
+
+clean_results_merged <- clean_results_merged %>%
+    mutate(prob_wo_0 = ifelse(prob_wo_0 == 0, .Machine$double.eps, prob_wo_0))
+
+ggplot(subset(clean_results_merged, 
+              chances_fixed %in% c("Impossible that he is guilty", 
+                                   "About 1 chance in 10,000", 
+                                   "About 1 chance in 1,000",
+                                   "About 1 chance in 100",
+                                   "About 1 chance in 10")), aes(x=prob_wo_0, fill=chances_fixed))+
+  ggtitle("Probability of Guilt") +
+  ylab("Count")+
+  xlab("Visible Probability")+
+  geom_histogram(alpha=0.5)+
+  facet_grid(chances_fixed~.)+
+  scale_fill_manual(values=c("#D81B60","#1E88E5","#FFC107","#004D40", "#CCA785"))+
+  theme_bw()+
+  scale_x_log10(breaks=c(1/10000, 1/1000,
+                              1/100, 1/10, 0.5), labels=label_number(drop0trailing=TRUE))+
+  geom_vline(aes(xintercept=1/10000), color="#1E88E5", size=1)+
+  geom_vline(aes(xintercept=1/1000), color="#FFC107", size=1)+
+  geom_vline(aes(xintercept=1/100), color="#004D40", size=1)+
+  geom_vline(aes(xintercept=.Machine$double.eps), color="#D81B60", size=1)+
+  geom_vline(aes(xintercept=1/10), color="#CCA785", size=1)+
+  geom_vline(aes(xintercept=0.5), color="black", size=1)
+
+# sort(table(clean_results_merged$visible_probability))
+
+```
+
+Figure \@ref(fig:probchancescale1) shows the log-transformed comparison of probability values and the participant's multiple choice chance decision. 
+If participants were consistent in their choices of chance category and visible probability, we would expect that individuals selecting "About 1 chance in 1,000" or lower would exclusively select probability of guilt values of 1\% or 0\%, because 1\% corresponds to "About 1 chance in 100".
+While most individuals in the "Impossible he is guilty" category did select 0\%, this prediction does not hold true for the other categories.
+In the case of "About 1 chance in 10,000", approximately an equal number of individuals selected values between 1\% and 10\%, as did those who selected the "About 1 chance in 1,000" and "About 1 chance in 100" categories.
+While this is expected in "About 1 chance in 100", the estimate appears to be high for "About 1 chance in 1,000" and "About 1 chance in 10,000".
+Those in the "About 1 chance in 10" category selected relatively expected probabilities, demonstrating that this issue mostly affects the extreme values.
+While 50\% was the most popular (and default) value on the visible probability scale (selected by 33 participants), the next two most popular values are 0\% and 1\% (both selected by 21 participants).
+
+```{r}
+#| probchancescale2,
+#| fig.cap= "Guilt Probability Comparison Log 10 Scale, where probability values were subtracted from 1",
+#| fig.width= 10,
+#| fig.height= 9,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+clean_results_merged$prob_subtracted <- 1 - (clean_results_merged$visible_probability/100)
+
+clean_results_merged <- clean_results_merged %>%
+    mutate(prob_subtracted = ifelse(prob_subtracted == 0, .Machine$double.eps, prob_subtracted))
+
+ggplot(subset(clean_results_merged,
+              chances_fixed %in% c("Certain to be guilty", 
+                                   "About 9,999 chances in 10,000", 
+                                   "About 999 chances in 1,000",
+                                   "About 99 chances in 100",
+                                   "About 9 chances in 10")), aes(x=prob_subtracted, fill=chances_fixed))+
+  ggtitle("Probability of Innocence") +
+  ylab("Count")+
+  xlab("1 - Visible Probability of Guilt")+
+  geom_histogram(alpha=0.5)+
+  facet_grid(chances_fixed~.)+
+  scale_fill_manual(values=c("#CC79A7","#D55E00","#009E73","#F0E442", "#A4A3B3"))+
+  theme_bw()+
+   scale_x_log10(breaks=c(1/10000, 1/1000,
+                              1/100, 1/10, 0.5), labels=label_number(drop0trailing=TRUE))+
+  geom_vline(aes(xintercept=1/10000), color="#F0E442", size=1)+
+  geom_vline(aes(xintercept=1/1000), color="#009E73", size=1)+
+  geom_vline(aes(xintercept=1/100), color="#D55E00", size=1)+
+  geom_vline(aes(xintercept=.Machine$double.eps), color="#A4A3B3", size=1)+
+  geom_vline(aes(xintercept=1/10), color="#CC79A7", size=1)+
+  geom_vline(aes(xintercept=0.5), color="black", size=1)
+
+```
+
+Figure \@ref(fig:probchancescale2) is similar to Figure \@ref(fig:probchancescale1) in its less-frequent-than-expected choice of extreme values, and the accurate alignment of the most extreme ("Certain to be guilty") and least extreme ("About 9 chances in 10") categories.
+Those who selected "About 99 chances in 100" of guilt tended to favor close to a 10\% probability of innocence (by selecting a 90\% probability of guilt), as opposed to the expected 1\% probability of innocence (or 99\% probability of guilt); the same can be said for those who selected "About 999 chances in 1,000" that the defendant is guilty.
+Individuals who selected the "About 9,999 chances in 10,000" favored 99\% probability of guilt (or 1\% probability of innocence).
+
+Overall, Figures \@ref(fig:probchancescale1) and \@ref(fig:probchancescale2) demonstrate some inconsistency between selected multiple choice scale and participants' assigned probability.
+Results in both cases generally indicate consistent beliefs in guilt: By far most individuals who selected a multiple choice chance value corresponding to the defendant being more likely to be guilty than innocent selected a corresponding probability value in the same range (i.e. less than a 50\% probability of being innocent), and vice versa.
+However, the inconsistency in the scales is present in the form of magnitude: participants tended to select less extreme probability values than was indicated by their multiple choice chance selections.
+
 
 ```{r}
 #| likeprobcon,
