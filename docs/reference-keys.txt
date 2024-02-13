@@ -49,6 +49,7 @@ tab:months
 tab:fuzzymonth
 fig:notecount
 tab:nonfuzzycount
+fig:completiontime2
 fig:demographics2
 fig:strength2
 fig:prob2

@@ -74,35 +74,39 @@ library(readr)
 library(scales)
 microstudy <- read_csv("data/mircrostudy_response_redo_clean.csv")
 
-microstudy_clean <- microstudy %>% dplyr::filter(check=="9mm")
+# Removing record with unusually low completion time
+microstudy_clean <- microstudy %>% 
+  dplyr::filter(check=="9mm", round(randomnumber,5) != 12.59938)
+
+prolific_data <- read_csv("data/microstudy_redo_prolific_clean.csv")
+
+approved_prolific <- prolific_data %>% dplyr::filter(Status == "APPROVED")
 
 ```
 
 Participants were recruited in a similar manner as Study 1 in terms of the representative sample and self-screened jury requirements through Prolific.
 Participants were paid \$4.07 with a median completion time of 15 minutes and 15 seconds according to Prolific, for an average reward of \$16.01 per hour.
 There were 300 paid participants who completed the survey, 22 individuals who decided to not complete the survey ("returned"), and 8 participants who did not complete the survey before Prolific's cutoff time ("Timed-out").
-<!-- Figure \@ref(fig:completiontime2) shows the time spent after the completion of the first demographics page to the completion of the final results page. -->
-<!-- Because it does not include the informed consent and the time to complete the first demographics page, its time estimates appear to be less than those found via Prolific. -->
+Figure \@ref(fig:completiontime2) shows the time spent on the survey, according to Prolific.
+One individual took `r round(min(approved_prolific$'Time taken'/60), 2)` minutes to complete the survey, which is an unusually short amount of time (the next smallest time was `r round(head(sort(approved_prolific$'Time taken'/60))[2], 2)` minutes).
+While this completion time is within three standard deviations of the mean (mean = `r round(mean(approved_prolific$'Time taken'/60), 2)`, sd = `r round(sd(approved_prolific$'Time taken'/60), 2)`) and does not fall within Prolific's criterion for rejection, we do not feel that this participant would have had adequate time to appropriately complete the survey, and have removed them from analysis.
 
 
 ```{r}
 #| completiontime2,
-#| fig.cap= "Completion Time by Condition",
+#| fig.cap= "Prolific Completion Time",
 #| fig.width= 10,
 #| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
-#| eval= FALSE,
+#| eval= TRUE,
 #| warning= FALSE,
 #| message= FALSE
 
-microstudy$completion_time <- microstudy$actual_time3-microstudy$actual_time1
-
-ggplot(microstudy, aes(x = completion_time, fill=conclusion.x)) +
-    geom_density(alpha=0.75, color=NA) +
-  ggtitle("Histogram of Completion Time") +
+ggplot(subset(prolific_data, Status=="APPROVED"), aes(x = `Time taken`/60)) +
+    geom_histogram(alpha=0.75) +
+  ggtitle("Completion Time") +
   xlab("Completion Time in Minutes")+
-  scale_fill_manual(name="Conclusion", values = c("#FF8E00", "#037AC7"))+
   theme_bw()
 
 
@@ -168,7 +172,7 @@ merged_results <- merged_results_allresponses %>% filter(check1 =="9mm" & check2
 match_convict_compare <- prop.test(x=c(sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="Match"),sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")), n=c(sum(microstudy_clean$conclusion=="Match"), sum(merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")),alternative="two.sided")
 ```
 
-There were some procedurial changes made to this study compared to the original study that may influence results; namely, more detailed cross examination and the inclusion of jury instructions.
+There were some procedural changes made to this study compared to the original study that may influence results; namely, more detailed cross examination and the inclusion of jury instructions.
 Another significant difference between the two studies is the time frame - notably, in this microstudy, a participant commented that they had recently read an article about the unreliability of firearms evidence.
 More widespread criticism of firearms examination may lead to lower feelings of reliability.
 
