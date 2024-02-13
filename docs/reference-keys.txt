@@ -161,8 +161,8 @@ demographic-comparison
 income
 education
 gun-comfort
+notepad-analysis
 conclusion-2
-notes-1
 finalstudy
 introduction-2
 methods-3

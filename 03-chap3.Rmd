@@ -1684,7 +1684,7 @@ ggplot(microstudy_clean, aes(x = education, y = betting, fill = guilt_opinion)) 
 <!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$first_probability)) -->
 <!-- ``` -->
 
-### Gun Comfort
+#### Gun Comfort
 
 Participants were asked to rate how comfortable they are with guns.
 Figure \@ref(fig:convictscomfort) shows the relationship between choice to convict and comfort with guns.
@@ -1727,6 +1727,12 @@ ggplot(microstudy_clean) +
 
 ```
 
+### Notepad Analysis
+
+While the notepad analysis for this study still needs to be conducted, analysis of preliminary results indicate that individuals were less likely to directly copy testimony compared to the first study.
+This may be due to the change in format - the use of speech bubbles breaks up the text, which may prevent highlighting the entire page of testimony.
+Due to this potential change, the potential length of the collocation may need to be shortened.
+
 ## Conclusion
 
 Several things can be determined through this exploration of response type.
@@ -1735,24 +1741,24 @@ The amount that participants were willing to bet was also compressed around the 
 The chance scales were less compressed, with the best results from the multiple choice scale.
 Individuals who chose to numerically express chance of innocence as opposed to chance of guilt demonstrated more of a tendency to reverse the scale.
 
-## Notes
+<!-- ## Notes -->
 
 
-- Reliability: Questions regarding the consistency of the comparison
-  - How often to you think the firearms examiner makes mistakes?
-     - [blank] out of [blank] bullet comparisons
-   - How often to you think the algorithm makes mistakes?
-     - [blank] out of [blank] bullet comparisons
-   - If other examiners were asked to make the same bullet comparison, how many do you believe would agree with the firearms examiner
-     - [blank] out of [blank] examiners would agree with Smith's results of bullet comparison
-   - If the algorithm were re-run on the same bullet comparison, how many times do you believe the algorithm would agree with these results?
-       - [blank] out of [blank] runs would agree with the results of the bullet comparison
-   <!-- - Credibility: Perhaps questions regarding the ability to testify? Or something on credentials, or comparison to another individual -->
-   - What if we used a blank slider for credibility/scientificity?
-   - Scientificity: can directly compare to each other, or have a non-scientific portion to compare to
-     - Did you find the algorithm or the bullet comparison to be more scientific?
-     - Compared to the case description, how would you rate the scientificity of the bullet comparison
-   - How much would you be willing to bet that the crime scene bullet (did/did not) match Cole's gun?
-  
-- Clarify if the examiner used the algorithm before or after their initial comparison.
- <!-- - If the algorithm is used first, this would potentially be confounding -->
+<!-- - Reliability: Questions regarding the consistency of the comparison -->
+<!--   - How often to you think the firearms examiner makes mistakes? -->
+<!--      - [blank] out of [blank] bullet comparisons -->
+<!--    - How often to you think the algorithm makes mistakes? -->
+<!--      - [blank] out of [blank] bullet comparisons -->
+<!--    - If other examiners were asked to make the same bullet comparison, how many do you believe would agree with the firearms examiner -->
+<!--      - [blank] out of [blank] examiners would agree with Smith's results of bullet comparison -->
+<!--    - If the algorithm were re-run on the same bullet comparison, how many times do you believe the algorithm would agree with these results? -->
+<!--        - [blank] out of [blank] runs would agree with the results of the bullet comparison -->
+<!--    <!-- - Credibility: Perhaps questions regarding the ability to testify? Or something on credentials, or comparison to another individual --> -->
+<!--    - What if we used a blank slider for credibility/scientificity? -->
+<!--    - Scientificity: can directly compare to each other, or have a non-scientific portion to compare to -->
+<!--      - Did you find the algorithm or the bullet comparison to be more scientific? -->
+<!--      - Compared to the case description, how would you rate the scientificity of the bullet comparison -->
+<!--    - How much would you be willing to bet that the crime scene bullet (did/did not) match Cole's gun? -->
+
+<!-- - Clarify if the examiner used the algorithm before or after their initial comparison. -->
+<!--  <!-- - If the algorithm is used first, this would potentially be confounding --> -->
