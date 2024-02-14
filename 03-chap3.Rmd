@@ -72,6 +72,7 @@ All other questions were randomized in a way that guaranteed the two probability
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 library(readr)
 library(scales)
+library(ggridges)
 microstudy <- read_csv("data/mircrostudy_response_redo_clean.csv")
 
 # Removing record with unusually low completion time
@@ -585,8 +586,8 @@ However, many individuals did not show consistent choices between scales - parti
 ```{r}
 #| likecomp1scale,
 #| fig.cap= "Guilt Chance Comparison Log 10 Scale",
-#| fig.width= 10,
-#| fig.height= 9,
+#| fig.width= 12,
+#| fig.height= 5,
 #| fig.align= "center",
 #| echo= FALSE,
 #| eval= TRUE,
@@ -620,22 +621,23 @@ ggplot(subset(clean_results_merged, chance_of=="guilty" &
                                    "About 1 chance in 10,000", 
                                    "About 1 chance in 1,000",
                                    "About 1 chance in 100",
-                                   "About 1 chance in 10")), aes(x=chance_wo_0, fill=chances_fixed))+
+                                   "About 1 chance in 10")), aes(x=chance_wo_0, fill=chances_fixed, y=chances_fixed))+
   ggtitle("Chances of Guilt") +
   ylab("Count")+
   xlab("Open Response Chance")+
-  geom_histogram(alpha=0.5)+
-  facet_grid(chances_fixed~.)+
+  geom_density_ridges(alpha=0.5)+
   scale_fill_manual(values=c("#D81B60","#1E88E5","#FFC107","#004D40", "#CCA785"))+
   theme_bw()+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position="none")+
   scale_x_log10(breaks=c(1/10000, 1/1000,
                               1/100, 1/10, 0.5), labels=label_number(drop0trailing=TRUE))+
-  geom_vline(aes(xintercept=1/10000), color="#1E88E5", size=1)+
-  geom_vline(aes(xintercept=1/1000), color="#FFC107", size=1)+
-  geom_vline(aes(xintercept=1/100), color="#004D40", size=1)+
-  geom_vline(aes(xintercept=.Machine$double.eps), color="#D81B60", size=1)+
-  geom_vline(aes(xintercept=1/10), color="#CCA785", size=1)+
-  geom_vline(aes(xintercept=0.5), color="black", size=1)
+  geom_vline(aes(xintercept=1/10000), color="#1E88E5")+
+  geom_vline(aes(xintercept=1/1000), color="#FFC107")+
+  geom_vline(aes(xintercept=1/100), color="#004D40")+
+  geom_vline(aes(xintercept=.Machine$double.eps), color="#D81B60")+
+  geom_vline(aes(xintercept=1/10), color="#CCA785")+
+  geom_vline(aes(xintercept=0.5), color="black")+
+  scale_y_discrete(labels = wrap_format(15))
 
 ```
 
@@ -649,15 +651,13 @@ Those who selected "Certain to be guilty" tended to choose guilt values of 1 (or
 ```{r}
 #| likecomp1scalerev,
 #| fig.cap= "Guilt Chance Comparison Log 10 Scale, where values were subtracted from 1",
-#| fig.width= 10,
-#| fig.height= 9,
+#| fig.width= 12,
+#| fig.height= 5,
 #| fig.align= "center",
 #| echo= FALSE,
 #| eval= TRUE,
 #| warning= FALSE,
 #| message= FALSE
-
-library(scales)
 
 clean_results_merged$chance_subtracted <- 1 - clean_results_merged$num_chance
 
@@ -669,22 +669,23 @@ ggplot(subset(clean_results_merged, chance_of=="guilty" &
                                    "About 9,999 chances in 10,000", 
                                    "About 999 chances in 1,000",
                                    "About 99 chances in 100",
-                                   "About 9 chances in 10")), aes(x=chance_subtracted, fill=chances_fixed))+
+                                   "About 9 chances in 10")), aes(x=chance_subtracted, fill=chances_fixed, y=chances_fixed))+
   ggtitle("Chances of Innocence") +
   ylab("Count")+
   xlab("1 - Open Response Chance of Guilt")+
-  geom_histogram(alpha=0.5)+
-  facet_grid(chances_fixed~.)+
+  geom_density_ridges(alpha=0.5)+
   scale_fill_manual(values=c("#CC79A7","#D55E00","#009E73","#F0E442", "#A4A3B3"))+
   theme_bw()+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position="none")+
    scale_x_log10(breaks=c(1/10000, 1/1000,
                               1/100, 1/10, 0.5), labels=label_number(drop0trailing=TRUE))+
-  geom_vline(aes(xintercept=1/10000), color="#F0E442", size=1)+
-  geom_vline(aes(xintercept=1/1000), color="#009E73", size=1)+
-  geom_vline(aes(xintercept=1/100), color="#D55E00", size=1)+
-  geom_vline(aes(xintercept=.Machine$double.eps), color="#A4A3B3", size=1)+
-  geom_vline(aes(xintercept=1/10), color="#CC79A7", size=1)+
-  geom_vline(aes(xintercept=0.5), color="black", size=1)
+  geom_vline(aes(xintercept=1/10000), color="#F0E442")+
+  geom_vline(aes(xintercept=1/1000), color="#009E73")+
+  geom_vline(aes(xintercept=1/100), color="#D55E00")+
+  geom_vline(aes(xintercept=.Machine$double.eps), color="#A4A3B3")+
+  geom_vline(aes(xintercept=1/10), color="#CC79A7")+
+  geom_vline(aes(xintercept=0.5), color="black")+
+  scale_y_discrete(labels = wrap_format(15))
 
 ```
 
@@ -733,8 +734,8 @@ Those who selected "Impossible that he is guilty" also tended to select chance o
 ```{r}
 #| likecomp2scale,
 #| fig.cap= "Innocence Chance Comparison Log 10 Scale, where values were subtracted from 1",
-#| fig.width= 10,
-#| fig.height= 9,
+#| fig.width= 12,
+#| fig.height= 5,
 #| fig.align= "center",
 #| echo= FALSE,
 #| eval= TRUE,
@@ -763,22 +764,23 @@ ggplot(subset(clean_results_merged, chance_of=="innocent" &
                                    "About 1 chance in 1,000",
                                    "About 1 chance in 100",
                                    "About 1 chance in 10")),
-       aes(x=chance_subtracted, fill=chances_fixed))+
+       aes(x=chance_subtracted, 
+           fill=chances_fixed, y = chances_fixed))+
+  geom_density_ridges(alpha=0.5)+
   ggtitle("Chances of Guilt") +
   ylab("Count")+
   xlab("1 - Open Response Chance of Innocence")+
-  geom_histogram(alpha=0.5)+
-  facet_grid(chances_fixed~.)+
   scale_fill_manual(values=c("#D81B60","#1E88E5","#FFC107","#004D40", "#CCA785"))+
   theme_bw()+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position="none")+
    scale_x_log10(breaks=c(1/10000, 1/1000,
                               1/100, 1/10, 0.5), labels=label_number(drop0trailing=TRUE))+
-  geom_vline(aes(xintercept=1/10000), color="#1E88E5", size=1)+
-  geom_vline(aes(xintercept=1/1000), color="#FFC107", size=1)+
-  geom_vline(aes(xintercept=1/100), color="#004D40", size=1)+
-    geom_vline(aes(xintercept=.Machine$double.eps), color="#D81B60", size=1)+
-  geom_vline(aes(xintercept=1/10), color="#CCA785", size=1)+
-  geom_vline(aes(xintercept=0.5), color="black", size=1)
+  geom_vline(aes(xintercept=1/10000), color="#1E88E5")+
+  geom_vline(aes(xintercept=1/1000), color="#FFC107")+
+  geom_vline(aes(xintercept=1/100), color="#004D40")+
+    geom_vline(aes(xintercept=.Machine$double.eps), color="#D81B60")+
+  geom_vline(aes(xintercept=1/10), color="#CCA785")+
+  geom_vline(aes(xintercept=0.5), color="black")
 
 ```
 
@@ -790,8 +792,8 @@ Although this consistency is not as present in the other categories, they are cl
 ```{r}
 #| likecomp2scalerev,
 #| fig.cap= "Innocence Chance Comparison Log 10 Scale",
-#| fig.width= 10,
-#| fig.height= 9,
+#| fig.width= 12,
+#| fig.height= 5,
 #| fig.align= "center",
 #| echo= FALSE,
 #| eval= TRUE,
@@ -803,22 +805,22 @@ ggplot(subset(clean_results_merged, chance_of=="innocent" &
                                    "About 9,999 chances in 10,000", 
                                    "About 999 chances in 1,000",
                                    "About 99 chances in 100",
-                                   "About 9 chances in 10")), aes(x=chance_wo_0, fill=chances_fixed))+
+                                   "About 9 chances in 10")), aes(x=chance_wo_0, fill=chances_fixed, y=chances_fixed))+
+    geom_density_ridges(alpha=0.5)+
   ggtitle("Chances of Innocence") +
   ylab("Count")+
   xlab("Open Response Chance of Innocence")+
-  geom_histogram(alpha=0.5)+
-  facet_grid(chances_fixed~.)+
   scale_fill_manual(values=c("#CC79A7","#D55E00","#009E73","#F0E442", "#A4A3B3"))+
   theme_bw()+
+      theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position="none")+
    scale_x_log10(breaks=c(1/10000, 1/1000,
                               1/100, 1/10, 0.5), labels=label_number(drop0trailing=TRUE))+
-  geom_vline(aes(xintercept=1/10000), color="#F0E442", size=1)+
-  geom_vline(aes(xintercept=1/1000), color="#009E73", size=1)+
-  geom_vline(aes(xintercept=1/100), color="#D55E00", size=1)+
-    geom_vline(aes(xintercept=.Machine$double.eps), color="#A4A3B3", size=1)+
-  geom_vline(aes(xintercept=1/10), color="#CC79A7", size=1)+
-  geom_vline(aes(xintercept=0.5), color="black", size=1)
+  geom_vline(aes(xintercept=1/10000), color="#F0E442")+
+  geom_vline(aes(xintercept=1/1000), color="#009E73")+
+  geom_vline(aes(xintercept=1/100), color="#D55E00")+
+    geom_vline(aes(xintercept=.Machine$double.eps), color="#A4A3B3")+
+  geom_vline(aes(xintercept=1/10), color="#CC79A7")+
+  geom_vline(aes(xintercept=0.5), color="black")
 
 ```
 
@@ -1219,6 +1221,8 @@ ggplot(microstudy_clean, aes(x=betting,
   facet_grid(.~guilt_opinion, labeller="label_both")+
   xlim(c(0,50))+
   theme_bw()
+
+# Log transformed contours - maybe polygon approach
 
 ```
 
