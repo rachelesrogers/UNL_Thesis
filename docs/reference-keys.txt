@@ -142,7 +142,6 @@ final-output
 discussion-1
 conclusion-1
 future-research-1
-notes
 study2
 background-2
 study-1-and-scale-compression

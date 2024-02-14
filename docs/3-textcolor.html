@@ -244,7 +244,6 @@ div.csl-indent {
 <li class="chapter" data-level="3.5.1" data-path="3-textcolor.html"><a href="3-textcolor.html#conclusion-1"><i class="fa fa-check"></i><b>3.5.1</b> Conclusion</a></li>
 <li class="chapter" data-level="3.5.2" data-path="3-textcolor.html"><a href="3-textcolor.html#future-research-1"><i class="fa fa-check"></i><b>3.5.2</b> Future Research</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="3-textcolor.html"><a href="3-textcolor.html#notes"><i class="fa fa-check"></i><b>3.6</b> Notes</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-study2.html"><a href="4-study2.html"><i class="fa fa-check"></i><b>4</b> An Investigation of Response Types</a>
 <ul>
@@ -965,7 +964,7 @@ However, the plot shows that individuals took notes throughout the testimony.</p
 </div>
 <div id="final-output" class="section level3 hasAnchor" number="3.4.3">
 <h3><span class="header-section-number">3.4.3</span> Final Output<a href="3-textcolor.html#final-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>This final note analysis, which includes fuzzy matching, is attached as “Collocation_Comment_Analysis.html”.
+<p>This final note analysis, which includes fuzzy matching, can be found at <a href="https://rachelesrogers.github.io/Presentations/Collocations/Collocation%20Comment%20Analysis.html" class="uri">https://rachelesrogers.github.io/Presentations/Collocations/Collocation%20Comment%20Analysis.html</a>.
 In visually comparing the highlighted transcripts for fuzzy matches to those without fuzzy matching, the results appear to be fairly similar.
 While the fuzzy matching did increase the frequency number, the overall trends remained the same for the dataset.
 This can be seen in Table <a href="3-textcolor.html#tab:nonfuzzycount">3.7</a>.
@@ -1059,33 +1058,10 @@ The final output qualitatively indicates which portions of testimony participant
 </div>
 <div id="future-research-1" class="section level3 hasAnchor" number="3.5.2">
 <h3><span class="header-section-number">3.5.2</span> Future Research<a href="3-textcolor.html#future-research-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In the future, I also want to find an implementation of suffix trees to more effectively implement the LCS method.
-Another application of this type of analysis may be used in the evaluation of student note taking.</p>
-</div>
-</div>
-<div id="notes" class="section level2 hasAnchor" number="3.6">
-<h2><span class="header-section-number">3.6</span> Notes<a href="3-textcolor.html#notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li><p>Participants of the first study were allowed to take notes while reading through the transcripts, which are saved by page number</p></li>
-<li><p>We would like to use this to highlight which parts of the testimonies the participants found to be important</p></li>
-<li><p>First attempt:</p>
-<ul>
-<li>ggplot: allows for both a gradient and transparency to be added to words based on their frequency</li>
-<li>graphing words of the transcript resulted in uneven spacing</li>
-<li>Relative frequency was computed based on the number of times the word appeared on the page</li>
-</ul></li>
-<li><p>Second attempt:</p>
-<ul>
-<li>Using CSS instead of ggplot: can set gradient through color outputted by ggplot</li>
-<li>Words can be equally spaced
-<!-- - Currently assigning a new color to each word - this is not efficient -->
-<!-- - Now in CSS for tab format --></li>
-<li>Labels added with gradient scale</li>
-<li>Change from relative frequency of individual words to average collocation frequency per word (with collocations of length 5)
--Include fuzzy matching for indirect matches (typos/skipped words)</li>
-</ul></li>
-</ul>
+<p>In the future, I also want to find an implementation to more effectively implement the LCS method.
+Another application of this type of analysis may be used in the evaluation of student note taking or Wikipedia article edits.</p>
 
+</div>
 </div>
 </div>
             </section>
