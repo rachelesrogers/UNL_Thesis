@@ -44,8 +44,8 @@ library(scales)
 # fingerprint_clean <- subset(demographics_fingerprints, select=-c(fingerprint))
 # merged_results_clean <- subset(merged_results_fingerprint_join, select=-c(fingerprint))
 # 
-# write.csv(fingerprint_clean, "data/demographic_clean.csv")
-# write.csv(merged_results_clean, "data/merged_results_clean.csv")
+# write.csv(fingerprint_clean, "data/study1_demographic_clean.csv")
+# write.csv(merged_results_clean, "data/study1_merged_results_clean.csv")
 
 ```
 
@@ -55,7 +55,7 @@ library(scales)
 #   read_csv("../../merged_results_full_wo_comments.csv")
 #View(merged_results)
 
-merged_results_allresponses<-read_csv("data/merged_results_clean.csv")
+merged_results_allresponses<-read_csv("data/study1_merged_results_clean.csv")
 # dim(merged_results_allresponses)
 
 # Removing person who took notes for on the first page that did not correspond to their scenario number
@@ -68,7 +68,7 @@ merged_results$conclusion <-
          levels = c("NoMatch", "Inconclusive", "Match"))
 
 demographics <-
-  read_csv("data/demographic_clean.csv")
+  read_csv("data/study1_demographic_clean.csv")
 
 ```
 

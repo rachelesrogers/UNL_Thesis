@@ -164,7 +164,7 @@ We adjusted the probability of receiving each condition throughout the survey to
 ### Questions from Study 1
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
-merged_results_allresponses<-read_csv("data/merged_results_clean.csv")
+merged_results_allresponses<-read_csv("data/study1_merged_results_clean.csv")
 
 merged_results_allresponses <-merged_results_allresponses %>% subset(clean_prints!=231)
 

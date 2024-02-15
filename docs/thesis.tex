@@ -1420,9 +1420,17 @@ We plan to evaluate these note sheets, and develop a method for presenting the w
 \hypertarget{introduction-1}{%
 \section{Introduction}\label{introduction-1}}
 
-When conducting studies that rely on participants reading a longer document, researchers may be interested in determining what portions of the document participants found notable.
-In order to analyze the results of a user study, we must accomplish two tasks: first the participants' notes must be cleaned so that the recorded text corresponds to the current page, then a method must be developed to match the frequency of the participants' notes to the study document.
-In order to clean the notes, two different methods are considered and then combined: the First n Character method and the Longest Common Substring method.
+Note taking is commonly used when individuals are provided with a large amount of information that they may want to reference later.
+These notes can act as a guide in terms of what items of information the note taker found most important.
+By fluidly connecting notes from multiple note takers to the information presented, one may be able to discover the most `noteworthy' pieces of information, and compare the perception of the note takers to the goal of the presenter.
+To this end, we have designed a method for highlighting presented information, in the form of a transcript, to correspond to the notes of participants in order to form a `heatmap' for the information that participants found worth recording. This method can provide valuable information about what participants chose to, or not to, record.
+There were two important steps to this process: the text cleaning of cumulative notes, and the mapping of phrase frequency to form a `heatmap'.
+In this case, participants took notes on a single notepad, but their notes were saved multiple times throughout the study as they were presented with new information.
+By isolating the notes taken at each time point through text cleaning, we can isolate notes corresponding to the presentation of specific information.
+This was accomplished through a combination of two methods (First N Character and Longest Common Substring) used to identify which notes have been added, presumably corresponding to the new information.
+These individualized notes can then be mapped to the information presented through the use of collocations, or phrases of a set length.
+Once the frequency with which each phrase of information appears in participant notes is calculated, this frequency can be mapped to a corresponding color to create a highlighting gradient that illuminates areas of participant focus.
+This method was developed and tested on a trial transcript study designed to assess juror perceptions of the use of algorithms and demonstrative evidence in the courtroom.
 
 \hypertarget{literature-review}{%
 \subsection{Literature Review}\label{literature-review}}
@@ -1431,115 +1439,81 @@ In order to clean the notes, two different methods are considered and then combi
 \subsubsection{First N Character Method}\label{first-n-character-method}}
 
 The First n Character method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
-This method was developed specifically for this document comparison.
-
-For data cleaning, a previous page's notes are matched to the next page's notes in order to remove duplicate text.
-This can be thought of as a form of pattern matching.
+I developed this method specifically for the cleaning of sequential notes.
+In this process, a previous page's notes are matched to the next page's notes in order to remove duplicate text.
+This is a form of pattern matching.
 There are plenty of examples of pattern matching in text analysis - such as Baeza-Yates \& Gonnet (1992) and Landau \& Vishkin (1988).
 These papers rely on a set pattern to be found in the reference text, with a defined number of differences allowed between the pattern and the text.
 According to Baeza-Yates \& Gonnet (1992), many algorithmic methods have been developed to solve this problem, with allowances for mismatches between the reference text and the pattern.
 A similar allowance for differences is present in Landau \& Vishkin (1988), where differences are defined as either insertions, deletions, or substitutions.
-This definition of differences is the same definition that is used in computing Levenshtein distance, also known as edit distance (Levenshtein (1966)).
+This definition of differences is the same definition that is used in computing Levenshtein distance, also known as edit distance (Levenshtein, 1966).
 Levenshtein considered the issue of insertions, deletions, and substitutions with binary code.
 This concept has later been extended to include more extensive strings, as demonstrated by Konstantinidis (2005).
 The edit distance can be used to determine the extent of matching text when comparing two sequential note sheets, in order to identify if a portion of notes should be removed.
 
-One thing that differentiates this problem from other text analysis methods is that there is no set pattern - while the analysis is based on the previous page of notes, individuals do not always keep the previous page of notes the same - some delete parts, and some add new information in the middle.
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1296}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1481}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2963}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1481}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2778}}@{}}
+\caption{Transformations used to calculate Edit Distance \label{tab:edist}}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Word 1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Word 2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Transformation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Method
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Edit Distance
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Word 1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Word 2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Transformation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Method
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Edit Distance
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Hat & Hot & a → o & substitution & 1 \\
+Hello there & there & \textbf{Hello} & deletion & 5 \\
+meow & homeowner & \textcolor{red}{ho}meow\textcolor{red}{ner} & insertion & 5 \\
+Shire & Shareholder & i → a + \textcolor{red}{holder} & substitution and insertion & 7 \\
+\end{longtable}
+
+The edit distance is the number of characters that would need to be changed in order to transform the first string into the second string.
+This includes insertions, deletions, and substitutions, in the case of the ``adist'' function (R Core Team, 2023).
+These different transformations are shown in Table \ref{tab:edist}.
+For example, ``Hat'' and ``Hot'' would have an edit distance of 1, because the strings match if the ``a'' is turned into an ``o''.
+This is an example of substitution.
+Similarly, ``Hello there'' and ``there'' would have an edit distance of 6, since 6 characters are deleted (the letters in ``Hello'' plus an additional space).
+Finally, ``meow'' and ``homeowner'' would have an edit distance of 5, because 5 characters are added.
+These operations can also be combined in edit distance calculations.
+For example, going from ``Shire'' to ``Shareholder'' would require both a substitution and insertion.
+
+Although edit distance can be used to calculate the similarity between notes, there is no set pattern that guarantees removal.
+While the analysis is based on the previous page of notes, individuals do not always keep the previous page of notes the same - some delete parts, and some add new information in the middle.
 Instead of only aiming to remove exact matches of the previous note sheet, we must factor in partial and discontinuous notes as well.
 
 \hypertarget{longest-common-substring-method}{%
 \subsubsection{Longest Common Substring Method}\label{longest-common-substring-method}}
 
-While evaluating edit distance is useful when finding direct matches, the Longest Common Substring (LCS) method can be used to find pieces of notes that match between pages, so that this repeated text can be removed.
-The Longest Common Substring method searches for common text between two sequential pages to be removed.
+Whereas calculating edit distance between two pages of notes is useful when finding notes that wholly match the previous page, the Longest Common Substring (LCS) method can be used to find pieces of notes that match between pages, so that this repeated text can be removed.
+LCS accomplishes this goal through searching for common text between two sequential pages to be removed.
 
-Landau \& Vishkin (1988)'s discussion of pattern matching with k differences includes both a dynamic programming approach, as well as the construction of suffix trees.
-These methods correspond to those proposed for finding the Longest Common Substring between two sequences.
-This problem has been used to compare biological sequences (Crochemore, Iliopoulos, Langiu, \& Mignosi (2017)).
-A solution implemented by Bielow, Mastrobuoni, \& Kempa (2016) in a CRAN R package uses dynamic programming, which involves the construction of a matrix that records the length of a matching string at character \(i\) for string 1 (in the \(i\)th row), and character \(j\) for string 2 (in the \(j\)th column).
-Because the dynamic programming method has an R implementation, it is utilized for this analysis.
-
-\hypertarget{collocation-analysis}{%
-\subsubsection{Collocation Analysis}\label{collocation-analysis}}
-
-After the notes are cleaned, sequences of 5 words (collocations) are used to find areas of the testimony that participants focus on.
-For indirect matches, such as typos, weights are applied to these fuzzy matches to contribute to the total count.
-
-While collocations traditionally refer to words that occur more frequently together - such as ``white house''(Merriam-Webster (2023)), tools for collocation analysis helpfully provide the frequency of occurrence for strings of a specified length (Schweinberger (2022)).
-In a reference to algorithmic detection of plagiarism in computer programs, Parker \& Hamblen (1989) describe an algorithm that uses the character differences in order to compare how similar programs are.
-Other algorithms they discuss use code-specific features such as number of operators, lines of comments, and number of various loop statements.
-Because we are only concerned with the content of the notes, there is little information to be gained from formatting, as there is in plagiarism detection in programs.
-
-\hypertarget{fuzzy-matching}{%
-\subsubsection{Fuzzy Matching}\label{fuzzy-matching}}
-
-Character differences can effectively be used to indicate similarity between participants' notes and the study testimony.
-This is useful in situation where individuals do not copy the notes directly.
-In these cases, fuzzy matching can be used to find the testimony collocation that is the most similar to the participants' written notes.
-This approximate string matching allows for matching strings that do not correspond directly (Gusfield (1997)), which allows for matching up participants' inexact notes with the closest testimony collocation.
-
-\hypertarget{case-study}{%
-\subsection{Case Study}\label{case-study}}
-
-This method was applied to notes taken from a recent study.
-Dr.~Vanderplas and I conducted a study on jury perception, in which participants were asked to read over a testimony transcript and answer some questions related to the scenarios.
-Participants were supplied with a notepad in order to take notes throughout the testimony.
-We are interested in comparing this notepad to the given testimony, in order to determine which portions of the testimony the participants found to be worth recording the most.
-Portions of the testimony that bear the most similarity to the collective notes will be more highlighted than testimony that appears less frequently in the collective notes.
-The method outlined above resulted in scenario testimonies that indicate where participants copied notes.
-
-\hypertarget{methods-1}{%
-\section{Methods}\label{methods-1}}
-
-\hypertarget{data-cleaning}{%
-\subsection{Data Cleaning}\label{data-cleaning}}
-
-Table \ref{tab:noteexample} is an example of what sequential notes may look like, taken from the second and third pages of a study participant's notes.
-Because participants are provided with the same continuous notepad throughout the study, the database records each page as a ``screenshot'' of what is written on their notes when they advance to the next page - this provides cumulative notes.
-
-\begin{table}
-
-\caption{\label{tab:noteexample}Participant Note Example}
-\centering
-\begin{tabular}[t]{r|l}
-\hline
-page\_count & notes\\
-\hline
-2 & Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony.\\
-\hline
-3 & Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony. 
-
-police officer pulled over Richard Cole for speeding. During a search of the Defendant's vehicle, the detective located a 9mm handgun, which was legally licensed to the Defendant.\\
-\hline
-\end{tabular}
-\end{table}
-
-In order to appropriately clean the notes, the duplicated text (``Richard Cole - has been charted with willfully discharging a firearm in a place of business. This crime is a felony.'') needs to be removed from the third page, to leave only notes that correspond to the third page's testimony.
-A generalized version of the functions used in this data cleaning are included in the \texttt{seqstrclean} package (Rogers \& VanderPlas, 2024b).
-
-\hypertarget{first-n-character-fnc-method}{%
-\subsubsection{First n Character (FNC) Method}\label{first-n-character-fnc-method}}
-
-In scenarios such as the table above, a straightforward method for note cleaning would be to measure the length of the previous page's notes (n), and compare the previous notes to the first n characters in the current pages notes via edit distance.
-The edit distance is the number of characters that would need to be changed in order to transform the first string into the second string.
-This includes insertions, deletions, and substitutions(in the case of the ``adist'' function from the R Core Team).
-For example, ``Hat'' and ``Hot'' would have an edit distance of 1, because the strings match if the ``a'' is turned into an ``o''.
-Similarly, ``Over there'' and ``there'' would have an edit distance of 5, since 5 characters are deleted (the letters in ``Over'' plus an additional space).
-If the edit distance is small (indicating a correspondence to the previous page's notes), the first n characters can be removed.
-If we consider the table is above, it is clear to see how this method can be applied.
-The page 2 notes perfectly line up with the first two lines in the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
-Thus, by removing this beginning section, we would be left with the notes that are unique to page 3 - namely, the last two lines.
-
-This method works well when participants take notes sequentially.
-In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
-When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
-The first n character method cannot appropriately clean these notes.
-
-\hypertarget{longest-common-substring-lcs-method}{%
-\subsubsection{Longest Common Substring (LCS) Method}\label{longest-common-substring-lcs-method}}
-
-Another method for matching text between two different sets of notes is the Longest Common Substring (LCS).
-This method searches two strings for the longest sequence of sequential characters that they have in common, which is then returned.
 For example, in Figure \ref{fig:lcs}, the LCS between the two strings is ``the cat enjoys napping''.
 In the process of note cleaning, this would be the string that is removed from the second page of notes, resulting in ``When it is quiet'' as the cleaned (non-repeated) notes.
 
@@ -1552,8 +1526,15 @@ In the process of note cleaning, this would be the string that is removed from t
 \caption{Longest Common Substring Diagram}\label{fig:lcs}
 \end{figure}
 
-The PTXQC package (Bielow et al. (2016)) implements LCS using dynamic programming, as opposed to the suffix tree method (which has not been implemented in CRAN).
-Their dynamic programming process is described below.
+Landau \& Vishkin (1988)'s discussion of pattern matching with k differences includes both a dynamic programming approach, as well as the construction of suffix trees.
+\authorcol{In the dynamic programming approach, results are recorded in a table or matrix form, while the suffix tree approach organizes text into a tree format for performing calculations} (Keng, 2006).
+These methods correspond to those proposed for finding the Longest Common Substring between two sequences.
+This problem has been used to compare biological sequences (Crochemore, Iliopoulos, Langiu, \& Mignosi (2017)).
+An early solution for finding the longest common substring involves the construction of a suffix tree (Charalampopoulos, Kociumaka, Pissis, \& Radoszewski (2021)).
+The suffix tree method is described by Gusfield (1997); in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leaves consist of the string's terminal character: \$ is used avoid recurrence with previous characters in the string.
+
+A solution implemented by Bielow, Mastrobuoni, \& Kempa (2016) in a CRAN R package uses dynamic programming, which involves the construction of a matrix that records the length of a matching string at character \(i\) for string 1 (in the \(i\)th row), and character \(j\) for string 2 (in the \(j\)th column).
+Because the dynamic programming method has an R implementation, it is utilized for this analysis.
 This method creates an empty matrix, where the number of rows correspond to the length of the first string, and the number of columns correspond to the length of the second string.
 Thus, the first cell would correspond to the first character of both strings, and so on.
 If the characters match and it is the first row or column, then the cell gets a value of 1.
@@ -1585,6 +1566,136 @@ a & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
 d & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
 e & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
 \end{longtable}
+
+\hypertarget{collocation-analysis}{%
+\subsubsection{Collocation Analysis}\label{collocation-analysis}}
+
+After the notes are cleaned, sequences of 5 words (collocations) are used to find areas of the testimony that participants focus on.
+For indirect matches, such as typos, weights are applied to these fuzzy matches to contribute to the total count.
+
+While collocations traditionally refer to words that occur more frequently together - such as ``white house''(Merriam-Webster (2023)), tools for collocation analysis helpfully provide the frequency of occurrence for strings of a specified length (Schweinberger (2022)).
+In a reference to algorithmic detection of plagiarism in computer programs, Parker \& Hamblen (1989) describe an algorithm that uses the character differences in order to compare how similar programs are.
+Other algorithms they discuss use code-specific features such as number of operators, lines of comments, and number of various loop statements.
+Because we are only concerned with the content of the notes, there is little information to be gained from formatting, as there is in plagiarism detection in programs.
+
+\hypertarget{fuzzy-matching}{%
+\subsubsection{Fuzzy Matching}\label{fuzzy-matching}}
+
+Character differences can effectively be used to indicate similarity between participants' notes and the study testimony.
+This is useful in situation where individuals do not copy the notes directly.
+In these cases, fuzzy matching can be used to find the testimony collocation that is the most similar to the participants' written notes.
+This approximate string matching allows for matching strings that do not correspond directly (Gusfield (1997)), which allows for matching up participants' inexact notes with the closest testimony collocation.
+
+In order to perform fuzzy matching on the indirect collocations from participants' notes, I used `stringdist\_join' from the `fuzzyjoin' R package (Robinson, 2020).
+This function conducts a join with the best matching observations from the second dataset.
+For example, consider asking young children to spell their birth month.
+This may result in a dataset like Table \ref{tab:months}.
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{Dataset of misspelled months \label{tab:months}}\tabularnewline
+\toprule\noalign{}
+Name & Month \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Name & Month \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Billy & Mach \\
+Jimmy & Apil \\
+Frances & Mae \\
+Gary & Febary \\
+Steve & Octobr \\
+Bobby & Agust \\
+Tammy & Febrey \\
+Greg & Agast \\
+Benny & Jun \\
+\end{longtable}
+
+We may then want to match the children's written months to their correctly spelled counterparts.
+While `stringdist\_join' will give values for all matches between the two datasets, we can use group\_by and slice\_min to find the month that is closest to the misspelled value.
+
+\begin{table}
+
+\caption{\label{tab:fuzzymonth}Fuzzy Match by Month}
+\centering
+\begin{tabular}[t]{l|l|l|r}
+\hline
+month.x & month.y & name & dist\\
+\hline
+June & Jun & Benny & 1\\
+\hline
+March & Mach & Billy & 1\\
+\hline
+August & Agust & Bobby & 1\\
+\hline
+May & Mae & Frances & 1\\
+\hline
+February & Febary & Gary & 2\\
+\hline
+August & Agast & Greg & 2\\
+\hline
+April & Apil & Jimmy & 1\\
+\hline
+October & Octobr & Steve & 1\\
+\hline
+February & Febrey & Tammy & 3\\
+\hline
+\end{tabular}
+\end{table}
+
+In Table \ref{tab:fuzzymonth} above, ``month.x'' is the correctly spelled month, ``month.y'' is the children's spellings, and ``dist'' is the edit distance between the two words.
+This same concept is applied to the notepad dataset.
+In this case, the transcript of the testimony is considered the ``correct'' version, and the participants' collocations that do not directly match are considered the misspellings.
+This method finds the closest transcript collocation to the written collocation, with a maximum edit distance of 99 for collocations to still be considered a match.
+
+\hypertarget{implementation}{%
+\section{Implementation}\label{implementation}}
+
+\hypertarget{data-cleaning}{%
+\subsection{Data Cleaning}\label{data-cleaning}}
+
+Table \ref{tab:noteexample} is an example of what sequential notes may look like, taken from the second and third pages of a study participant's notes.
+Because participants are provided with the same continuous notepad throughout the study, the database records each page as a ``screenshot'' of what is written on their notes when they advance to the next page - this provides cumulative notes.
+
+\begin{table}
+
+\caption{\label{tab:noteexample}Participant Note Example}
+\centering
+\begin{tabular}[t]{r|l}
+\hline
+page\_count & notes\\
+\hline
+2 & Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony.\\
+\hline
+3 & Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony. 
+
+police officer pulled over Richard Cole for speeding. During a search of the Defendant's vehicle, the detective located a 9mm handgun, which was legally licensed to the Defendant.\\
+\hline
+\end{tabular}
+\end{table}
+
+In order to appropriately clean the notes, the duplicated text (``Richard Cole - has been charted with willfully discharging a firearm in a place of business. This crime is a felony.'') needs to be removed from the third page, to leave only notes that correspond to the third page's testimony.
+A generalized version of the functions used in this data cleaning are included in the \texttt{seqstrclean} package (Rogers \& VanderPlas, 2024b).
+
+\hypertarget{first-n-character-fnc-method}{%
+\subsubsection{First n Character (FNC) Method}\label{first-n-character-fnc-method}}
+
+In scenarios such as the table above, a straightforward method for note cleaning would be to measure the length of the previous page's notes (n), and compare the previous notes to the first n characters in the current pages notes via edit distance.
+If the edit distance is small (indicating a correspondence to the previous page's notes), the first n characters can be removed.
+If we consider the table is above, it is clear to see how this method can be applied.
+The page 2 notes perfectly line up with the first two lines in the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
+Thus, by removing this beginning section, we would be left with the notes that are unique to page 3 - namely, the last two lines.
+
+This method works well when participants take notes sequentially.
+In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
+When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
+The first n character method cannot appropriately clean these notes.
+
+\hypertarget{longest-common-substring-lcs-method}{%
+\subsubsection{Longest Common Substring (LCS) Method}\label{longest-common-substring-lcs-method}}
 
 The Longest Common Substring method is able to handle the issues found in the First n Character method, which is demonstrated in Table \ref{tab:issues}.
 If notes are deleted, the LCS method can identify the substring from the previous notes, despite the large edit distance that would prevent removal in the First n Character method.
@@ -1780,77 +1891,12 @@ This is to ensure a smooth transition between words in order to give an overall 
 \caption{Collocation Count for Page 2}\label{fig:highlights}
 \end{figure}
 
-In order to create this effect, we first implemented a graph of the testimony in `ggplot2'(Wickham (2016)) in order to assign color values to the frequencies.
+In order to create this effect, we first implemented a graph of the testimony in `ggplot2' (Wickham, 2016) in order to assign color values to the frequencies.
 Then we used HTML gradient boxes, where the left color is that of the previous word, while the right color is based on the frequency of the current word.
 This results in a smooth transition between words.
 
 \hypertarget{fuzzy-matching-1}{%
 \subsubsection{Fuzzy Matching}\label{fuzzy-matching-1}}
-
-In order to perform fuzzy matching on the indirect collocations from participants' notes, I used `stringdist\_join' from the `fuzzyjoin' R package (Robinson (2020)).
-This function conducts a join with the best matching observations from the second dataset.
-For example, consider asking young children to spell their birth month.
-This may result in a dataset like Table \ref{tab:months}.
-
-\begin{longtable}[]{@{}ll@{}}
-\caption{Dataset of misspelled months \label{tab:months}}\tabularnewline
-\toprule\noalign{}
-Name & Month \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-Name & Month \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Billy & Mach \\
-Jimmy & Apil \\
-Frances & Mae \\
-Gary & Febary \\
-Steve & Octobr \\
-Bobby & Agust \\
-Tammy & Febrey \\
-Greg & Agast \\
-Benny & Jun \\
-\end{longtable}
-
-We may then want to match the children's written months to their correctly spelled counterparts.
-While `stringdist\_join' will give values for all matches between the two datasets, we can use group\_by and slice\_min to find the month that is closest to the misspelled value.
-
-\begin{table}
-
-\caption{\label{tab:fuzzymonth}Fuzzy Match by Month}
-\centering
-\begin{tabular}[t]{l|l|l|r}
-\hline
-month.x & month.y & name & dist\\
-\hline
-June & Jun & Benny & 1\\
-\hline
-March & Mach & Billy & 1\\
-\hline
-August & Agust & Bobby & 1\\
-\hline
-May & Mae & Frances & 1\\
-\hline
-February & Febary & Gary & 2\\
-\hline
-August & Agast & Greg & 2\\
-\hline
-April & Apil & Jimmy & 1\\
-\hline
-October & Octobr & Steve & 1\\
-\hline
-February & Febrey & Tammy & 3\\
-\hline
-\end{tabular}
-\end{table}
-
-In Table \ref{tab:fuzzymonth} above, ``month.x'' is the correctly spelled month, ``month.y'' is the children's spellings, and ``dist'' is the edit distance between the two words.
-This same concept is applied to the notepad dataset.
-In this case, the transcript of the testimony is considered the ``correct'' version, and the participants' collocations that do not directly match are considered the misspellings.
-This method finds the closest transcript collocation to the written collocation, with a maximum edit distance of 99 for collocations to still be considered a match.
 
 Because the intent of the participant is more clear with simple typos (such as a single letter change) than with larger differences (such as the changing of multiple words), the count for these fuzzily matched observations are weighted based on the edit distance.
 Specifically, a weight of \(\frac{1}{dist+0.25}\) is used, where \(dist\) represents the edit distance (between 1 and 99).
@@ -1884,8 +1930,15 @@ This would result in collocations with a final frequency weight of:
 
 In this case, \(z\) is the count of direct matches; \(\sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i}\) is the weighted fuzzy match count as defined above; \(k\) is the number of times the collocation re-occurs in the transcript page itself; and \(s\) is the number of scenarios included in the frequency count.
 
-\hypertarget{results-1}{%
-\section{Results}\label{results-1}}
+\hypertarget{case-study}{%
+\section{Case Study}\label{case-study}}
+
+This method was applied to notes taken from a recent study.
+Dr.~Vanderplas and I conducted a study on jury perception, in which participants were asked to read over a testimony transcript and answer some questions related to the scenarios.
+Participants were supplied with a notepad in order to take notes throughout the testimony.
+We are interested in comparing this notepad to the given testimony, in order to determine which portions of the testimony the participants found to be worth recording the most.
+Portions of the testimony that bear the most similarity to the collective notes will be more highlighted than testimony that appears less frequently in the collective notes.
+The method outlined above resulted in scenario testimonies that indicate where participants copied notes.
 
 \hypertarget{the-data}{%
 \subsection{The Data}\label{the-data}}
@@ -1955,7 +2008,6 @@ The standardized frequency values remain fairly consistent throughout the testim
 Some areas that individuals focused on were the crime and its extent (in terms of injury), the qualifications/process of the firearms examiner, and the results from the analysis.
 While this type of analysis may allow us to determine the areas that participants copied into their notes, it does not indicate why the participants found this testimony worth copying.
 This may either indicate areas that participants saw as interesting or confusing, or a mixture of both.
-The functions for data cleaning and collocation plotting are included in ``Comment\_Functions.R'', and the script for creating the final note analysis is ``Collocation Comment Analysis.qmd''.
 
 \hypertarget{discussion-1}{%
 \section{Discussion}\label{discussion-1}}
@@ -1973,10 +2025,12 @@ The length of the collocation was chosen to be long enough to avoid commonly rep
 Notes that were not directly copied were included with weights proportional to edit distance through the use of fuzzy matching.
 The final output qualitatively indicates which portions of testimony participants find relevant to copy.
 
-\hypertarget{future-research-1}{%
-\subsection{Future Research}\label{future-research-1}}
-
-In the future, I also want to find an implementation to more effectively implement the LCS method.
+This new method opens up new avenues for user studies and analyses.
+While this method was developed for a specific use case, it has diverse applications, including education, social science, and more.
+These methods are being developed into R packages to be used by other
+researchers in transcript analysis.
+Future studies may investigate the application of this notepad in a variety of scenarios, such as course notes or collaborative note
+taking.
 Another application of this type of analysis may be used in the evaluation of student note taking or Wikipedia article edits.
 
 \hypertarget{study2}{%
@@ -2020,8 +2074,8 @@ For the current study, the same figures are used consistently across all conditi
 
 To investigate a which response type may be most informative for this study and to troubleshoot the use of figures and speech bubble format, we conducted a smaller micro study using various response types.
 
-\hypertarget{methods-2}{%
-\section{Methods}\label{methods-2}}
+\hypertarget{methods-1}{%
+\section{Methods}\label{methods-1}}
 
 \hypertarget{study-format-1}{%
 \subsection{Study Format}\label{study-format-1}}
@@ -2071,8 +2125,8 @@ While this completion time is within three standard deviations of the mean (mean
 \caption{Prolific Completion Time}\label{fig:completiontime2}
 \end{figure}
 
-\hypertarget{results-2}{%
-\section{Results}\label{results-2}}
+\hypertarget{results-1}{%
+\section{Results}\label{results-1}}
 
 \hypertarget{participants-1}{%
 \subsection{Participants}\label{participants-1}}
@@ -2656,8 +2710,8 @@ Individuals attempt to calibrate their scales to each other through discussion, 
 We wish to have a similar process without discussion, by giving participants end points to compare their experience to in terms of scientificity.}{]}
 In consolidating the information learned from these sub-studies, we returned to the initial study with significant changes designed to assist in elucidating the relationship between the inclusion of an algorithm in courtroom testimony and juror perception.
 
-\hypertarget{methods-3}{%
-\section{Methods}\label{methods-3}}
+\hypertarget{methods-2}{%
+\section{Methods}\label{methods-2}}
 
 The same initial study scenario is used, as explained in Chapter \ref{study1}: Richard Cole is accused of attempted robbery, and the only evidence presented to study participants is the bullet comparison between the bullet recovered from the scene and Cole's gun.
 Independent variables include the examiner's conclusion (match/not a match/inconclusive), the use of demonstrative evidence, such as images (yes/no), and the use of the bullet matching algorithm, with additional testimony from an algorithm expert (yes/no).
@@ -3129,7 +3183,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-02-15 10:40:51.01293.
+This version of the thesis was generated on 2024-02-15 14:31:02.226046.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -3324,6 +3378,9 @@ Cardwell, B. A., Henkel, L. A., Garry, M., Newman, E. J., \& Foster, J. L. (2016
 \leavevmode\vadjust pre{\hypertarget{ref-chapnick2021}{}}%
 Chapnick, C., Weller, T. J., Duez, P., Meschke, E., Marshall, J., \& Lilien, R. (2021). Results of the {3D} {Virtual} {Comparison} {Microscopy} {Error} {Rate} ({VCMER}) {Study} for firearm forensics. \emph{Journal of Forensic Sciences}, \emph{66}(2), 557--570. http://doi.org/\href{https://doi.org/gn65cf}{gn65cf}
 
+\leavevmode\vadjust pre{\hypertarget{ref-charalampopoulos2021}{}}%
+Charalampopoulos, P., Kociumaka, T., Pissis, S. P., \& Radoszewski, J. (2021, May). Faster {Algorithms} for {Longest} {Common} {Substring}. arXiv. http://doi.org/\href{https://doi.org/10.48550/arXiv.2105.03106}{10.48550/arXiv.2105.03106}
+
 \leavevmode\vadjust pre{\hypertarget{ref-chumbley2021}{}}%
 Chumbley, L. S., Morris, M. D., Bajic, S. J., Zamzow, D., Smith, E., Monson, K., \& Peters, G. (2021, July). Accuracy, {Repeatability}, and {Reproducibility} of {Firearm} {Comparisons} {Part} 1: {Accuracy}. arXiv. http://doi.org/\href{https://doi.org/10.48550/arXiv.2108.04030}{10.48550/arXiv.2108.04030}
 
@@ -3399,6 +3456,9 @@ Kassin, S. M., Dror, I. E., \& Kukucka, J. (2013). The forensic confirmation bia
 \leavevmode\vadjust pre{\hypertarget{ref-kellermannTrialAdvocacyTruthiness2013}{}}%
 Kellermann, K. (2013). Trial advocacy: {Truthiness}, falsiness, and nothingness. \emph{The Jury Expert}, \emph{25}(5), 38.
 
+\leavevmode\vadjust pre{\hypertarget{ref-dynamicvstree}{}}%
+Keng, L. H. (2006). \emph{Approximate string matching with dynamic programming and suffix trees} (Master's thesis). University of North Florida School of Computing.
+
 \leavevmode\vadjust pre{\hypertarget{ref-koehler2001}{}}%
 Koehler, J. J. (2001). When are people persuaded by {DNA} match statistics? \emph{Law and Human Behavior}, \emph{25}(5), 493--513. http://doi.org/\href{https://doi.org/d82kvn}{d82kvn}
 
@@ -3470,6 +3530,9 @@ Perlin, M. W. (2012). Commonwealth of {Pennsylvania} v. {Kevin James Foley}. Cyb
 
 \leavevmode\vadjust pre{\hypertarget{ref-prestonOptimalNumberResponse2000}{}}%
 Preston, C. C., \& Colman, A. M. (2000). Optimal number of response categories in rating scales: Reliability, validity, discriminating power, and respondent preferences. \emph{Acta Psychologica}, \emph{104}. http://doi.org/\href{https://doi.org/10.1016/S0001-6918(99)00050-5}{10.1016/S0001-6918(99)00050-5}
+
+\leavevmode\vadjust pre{\hypertarget{ref-utils}{}}%
+R Core Team. (2023). \emph{R: A language and environment for statistical computing}. Vienna, Austria: R Foundation for Statistical Computing. Retrieved from \url{https://www.R-project.org/}
 
 \leavevmode\vadjust pre{\hypertarget{ref-PROPOSALSELIMINATEPREJUDICIAL}{}}%
 Richey, C. R. (1994). PROPOSALS TO ELIMINATE PREJUDICIAL EFFECT. \emph{154 {F}.{R}.{D}. 537}. Retrieved from \url{https://www.casemine.com/judgement/us/59148521add7b049344c1b28}
