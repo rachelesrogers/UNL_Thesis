@@ -125,7 +125,12 @@ limitations
 future-research
 textcolor
 introduction-1
-background-1
+literature-review
+first-n-character-method
+longest-common-substring-method
+collocation-analysis
+fuzzy-matching
+case-study
 methods-1
 data-cleaning
 first-n-character-fnc-method
@@ -133,7 +138,7 @@ longest-common-substring-lcs-method
 hybrid-method
 note-analysis
 collocations
-fuzzy-matching
+fuzzy-matching-1
 standardization
 results-1
 the-data
@@ -143,7 +148,7 @@ discussion-1
 conclusion-1
 future-research-1
 study2
-background-2
+background-1
 study-1-and-scale-compression
 study-visualization
 methods-2

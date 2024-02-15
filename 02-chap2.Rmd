@@ -23,16 +23,65 @@ library(fuzzyjoin)
 
 ## Introduction
 
-When conducting studies that rely on participants reading a longer document, researchers may be interested in determining what portions of the document participants find worth noting.
-This could provide useful information about areas of interest by creating a type of heat map for the document.
-When the study document consists of multiple pages and notes are recorded sequentially, the problem then becomes twofold: first the participants' notes must be cleaned so that the recorded text corresponds to the current page, then a method must be developed to match the frequency of the participants' notes to the study document.
-
+When conducting studies that rely on participants reading a longer document, researchers may be interested in determining what portions of the document participants found notable.
+In order to analyze the results of a user study, we must accomplish two tasks: first the participants' notes must be cleaned so that the recorded text corresponds to the current page, then a method must be developed to match the frequency of the participants' notes to the study document.
 In order to clean the notes, two different methods are considered and then combined: the First n Character method and the Longest Common Substring method.
+
+### Literature Review
+#### First N Character Method
 The First n Character method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
 This method was developed specifically for this document comparison.
-The Longest Common Substring method, on the other hand, searches for common text between two sequential pages to be removed.
+
+For data cleaning, a previous page's notes are matched to the next page's notes in order to remove duplicate text.
+This can be thought of as a form of pattern matching.
+There are plenty of examples of pattern matching in text analysis - such as @baeza-yates and @landau1988. 
+These papers rely on a set pattern to be found in the reference text, with a defined number of differences allowed between the pattern and the text. 
+According to @baeza-yates, many algorithmic methods have been developed to solve this problem, with allowances for mismatches between the reference text and the pattern.
+A similar allowance for differences is present in @landau1988, where differences are defined as either insertions, deletions, or substitutions.
+This definition of differences is the same definition that is used in computing Levenshtein distance, also known as edit distance (@levenshtein).
+Levenshtein considered the issue of insertions, deletions, and substitutions with binary code.
+This concept has later been extended to include more extensive strings, as demonstrated by @konstantinidis2005.
+The edit distance can be used to determine the extent of matching text when comparing two sequential note sheets, in order to identify if a portion of notes should be removed.
+
+One thing that differentiates this problem from other text analysis methods is that there is no set pattern - while the analysis is based on the previous page of notes, individuals do not always keep the previous page of notes the same - some delete parts, and some add new information in the middle. 
+Instead of only aiming to remove exact matches of the previous note sheet, we must factor in partial and discontinuous notes as well.
+
+
+#### Longest Common Substring Method
+
+While evaluating edit distance is useful when finding direct matches, the Longest Common Substring (LCS) method can be used to find pieces of notes that match between pages, so that this repeated text can be removed.
+The Longest Common Substring method searches for common text between two sequential pages to be removed.
+
+@landau1988's discussion of pattern matching with k differences includes both a dynamic programming approach, as well as the construction of suffix trees.
+These methods correspond to those proposed for finding the Longest Common Substring between two sequences.
+This problem has been used to compare biological sequences (@crochemore2017).
+<!-- An early solution for finding the longest common substring involves the construction of a suffix tree (@charalampopoulos2021). -->
+<!-- The suffix tree method is described by @gusfield1997; in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leafs consist of the string's terminal character: \$ is used avoid recurrence with previous characters in the string. -->
+<!-- While I have located a package on Github that utilizes the suffix tree for LCS (@OmegahatRlibstreeSuffix), I have been unable to successfully download the package. -->
+A solution implemented by @ptxqc in a CRAN R package uses dynamic programming, which involves the construction of a matrix that records the length of a matching string at character $i$ for string 1 (in the $i$th row), and character $j$ for string 2 (in the $j$th column).
+Because the dynamic programming method has an R implementation, it is utilized for this analysis.
+<!-- The comparison between suffix tree and dynamic programming methods will be evaluated in a future analysis. -->
+
+
+
+#### Collocation Analysis
+
 After the notes are cleaned, sequences of 5 words (collocations) are used to find areas of the testimony that participants focus on.
 For indirect matches, such as typos, weights are applied to these fuzzy matches to contribute to the total count. 
+
+While collocations traditionally refer to words that occur more frequently together - such as "white house"(@DefinitionCOLLOCATION2023), tools for collocation analysis helpfully provide the frequency of occurrence for strings of a specified length (@collocationpage). 
+In a reference to algorithmic detection of plagiarism in computer programs, @parker1989 describe an algorithm that uses the character differences in order to compare how similar programs are.
+Other algorithms they discuss use code-specific features such as number of operators, lines of comments, and number of various loop statements.
+Because we are only concerned with the content of the notes, there is little information to be gained from formatting, as there is in plagiarism detection in programs.
+
+#### Fuzzy Matching
+
+Character differences can effectively be used to indicate similarity between participants' notes and the study testimony.
+This is useful in situation where individuals do not copy the notes directly.
+In these cases, fuzzy matching can be used to find the testimony collocation that is the most similar to the participants' written notes.
+This approximate string matching allows for matching strings that do not correspond directly (@gusfield1997), which allows for matching up participants' inexact notes with the closest testimony collocation.
+
+### Case Study
 
 This method was applied to notes taken from a recent study.
 Dr. Vanderplas and I conducted a study on jury perception, in which participants were asked to read over a testimony transcript and answer some questions related to the scenarios. 
@@ -40,46 +89,6 @@ Participants were supplied with a notepad in order to take notes throughout the 
 We are interested in comparing this notepad to the given testimony, in order to determine which portions of the testimony the participants found to be worth recording the most.
 Portions of the testimony that bear the most similarity to the collective notes will be more highlighted than testimony that appears less frequently in the collective notes.
 The method outlined above resulted in scenario testimonies that indicate where participants copied notes.
-
-## Background
-
-For data cleaning, a previous page's notes are matched to the next page's notes in order to remove duplicate text.
-This can be thought of as a form of pattern matching.
-There are plenty of examples of pattern matching in text analysis - such as @baeza-yates and @landau1988. 
-These papers rely on a set pattern to be found in the reference text, with a defined number of differences allowed between the pattern and the text. 
-According th @baeza-yates, many algorithmic methods have been developed to solve this problem, with allowances for mismatches between the reference text and the pattern.
-A similar allowance for differences is present in @landau1988, where differences are defined as either insertions, deletions, or substitutions.
-This definition of differences is the same definition that is used in computing Levenshtein distance, also known as edit distance (@levenshtein).
-Levenshtein considered the issue of insertions, deletions, and substitutions with binary code.
-This concept has later been extended to include more extensive strings, as demonstrated by @konstantinidis2005.
-The edit distance can be used to determine the extent of matching text when comparing two sequential note sheets, in order to identify if a portion of notes should be removed.
-
-One thing that differentiates this problem from other text analysis methods is that there is no set in stone pattern - while the analysis is based on the previous page of notes, individuals do not always keep the previous page of notes the same - some delete parts, and some add new information in the middle. 
-Thus, the goal is to not only find and remove only exact matches of the entire previous note sheet, but to also remove previous notes - whether they be shorter or discontinuous.
-While evaluating edit distance is useful when finding direct matches, the Longest Common Substring (LCS) method can be used to find pieces of notes that match between pages, so that this repeated text can be removed.
-
-@landau1988's discussion of pattern matching with k differences includes both a dynamic programming approach, as well as the construction of suffix trees.
-These methods correspond to those proposed for finding the Longest Common Substring between two sequences.
-This problem has been used to compare biological sequences (@crochemore2017).
-An early solution for finding the longest common substring involves the construction of a suffix tree (@charalampopoulos2021).
-The suffix tree method is described by @gusfield1997; in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leafs consist of the string's terminal character: \$ is used avoid recurrence with previous characters in the string.
-While I have located a package on Github that utilizes the suffix tree for LCS (@OmegahatRlibstreeSuffix), I have been unable to successfully download the package.
-Another solution implemented by @ptxqc in a CRAN R package uses dynamic programming, which involves the construction of a matrix that records the length of a matching string at character $i$ for string 1 (in the $i$th row), and character $j$ for string 2 (in the $j$th column).
-Because the dynamic programming method has an R implementation, it is utilized for this analysis.
-The comparison between suffix tree and dynamic programming methods will be evaluated in a future analysis.
-
-Once the participants' notes are cleaned, they must be compared to the study transcript.
-In the realm of non-fixed pattern matching, there are plagiarism recognition methods (such as TurnItIn).
-In these cases, a portion of a student's text is cross referenced with published or online references, in order to determine if the text was copied.
-Because this type of correspondence is on a larger level than individual words, collocation analysis is used.
-While collocations traditionally refer to words that occur more frequently together - such as "white house"(@DefinitionCOLLOCATION2023), tools for collocation analysis helpfully provide the frequency of occurrence for strings of a specified length (@collocationpage). 
-In a reference to algorithmic detection of plagiarism in computer programs, @parker1989 describe an algorithm that uses the character differences in order to compare how similar programs are.
-Other algorithms they discuss use code-specific features such as number of operators, lines of comments, and number of various loop statements.
-Because we are only concerned with the content of the notes, there is little information to be gained from formatting, as there is in plagiarism detection in programs.
-However, character differences can effectively be used to indicate similarity between participants' notes and the study testimony.
-This is useful in situation where individuals do not copy the notes directly.
-In these cases, fuzzy matching can be used to find the testimony collocation that is the most similar to the participants' written notes.
-This approximate string matching allows for matching strings that do not correspond directly (@gusfield1997), which would allow for matching up participants' inexact notes with the closest testimony collocation.
 
 ## Methods
 
@@ -107,7 +116,7 @@ kable(test_comments %>% filter(page_count==2 | page_count==3) %>% dplyr::select(
 ```
 
 In order to appropriately clean the notes, the duplicated text ("Richard Cole - has been charted with willfully discharging a firearm in a place of business. This crime is a felony.") needs to be removed from the third page, to leave only notes that correspond to the third page's testimony.
-The functions used in this data cleaning are included in the `seqstrclean` package [@seqstrclean].
+A generalized version of the functions used in this data cleaning are included in the `seqstrclean` package [@seqstrclean].
 
 #### First n Character (FNC) Method
 
@@ -124,7 +133,7 @@ Thus, by removing this beginning section, we would be left with the notes that a
 This method works well when participants take notes sequentially.
 In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
 When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
-The first n character method would not be able to appropriately clean these notes.
+The first n character method cannot appropriately clean these notes.
 
 #### Longest Common Substring (LCS) Method
 
