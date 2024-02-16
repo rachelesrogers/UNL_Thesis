@@ -1650,7 +1650,8 @@ This method finds the closest transcript collocation to the written collocation.
 \hypertarget{data-cleaning}{%
 \subsection{Data Cleaning}\label{data-cleaning}}
 
-Table \ref{tab:noteexample} is an example of what sequential notes may look like, taken from the second and third pages of a study participant's notes.
+The FNC and LCS methods for sequential notepad cleaning were first tested on a subset of notes resulting from a jury perception survey.
+In this study, participants were provided with a notepad to record information while reading through mock trial testimony.
 Because participants are provided with the same continuous notepad throughout the study, the database records each page as a ``screenshot'' of what is written on their notes when they advance to the next page - this provides cumulative notes.
 
 \begin{table}
@@ -1661,31 +1662,37 @@ Because participants are provided with the same continuous notepad throughout th
 \hline
 page\_count & notes\\
 \hline
-2 & Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony.\\
+2 & discharge firearm in business- felony, not guilty\\
 \hline
-3 & Richard Cole - has been charged with willfully discharging a firearm in a place of business. This crime is a felony. 
+3 & discharge firearm in business- felony, not guilty
 
-police officer pulled over Richard Cole for speeding. During a search of the Defendant's vehicle, the detective located a 9mm handgun, which was legally licensed to the Defendant.\\
+ski mask. no money, no injuries.  9mm, arrested after confiscated and testing.\\
 \hline
 \end{tabular}
 \end{table}
 
-In order to appropriately clean the notes, the duplicated text (``Richard Cole - has been charted with willfully discharging a firearm in a place of business. This crime is a felony.'') needs to be removed from the third page, to leave only notes that correspond to the third page's testimony.
+In order to compare the FNC and LCS methods described above, I cleaned a subset of the survey response notes to have a ``correct'' baseline with which to calculate error rates.
+This dataset consists of 561 pages of `notes' (including 66 blanks) with 35 unique participants.
+30 participants were randomly selected from the larger dataset, while 5 participants were selected based on demonstrated issues with data cleaning.
+The 5 selected participants included an individual who deleted almost all of the beginning notes; two individuals who pasted new notes in the middle of old notes; an individual who duplicated notes; and an individual who included the algorithm expert's trial confirmation as well as the forensic scientist's - duplicate text that should be included as the new notes.
+Table \ref{tab:noteexample} is an example of what sequential notes may look like, taken from the second and third pages of a study participant's notes.
+
+In order to appropriately clean the notes, the duplicated text (``discharge firearm in business- felony, not guilty'') needs to be removed from the third page, to leave only notes that correspond to the third page's testimony.
 A generalized version of the functions used in this data cleaning are included in the \texttt{seqstrclean} package (Rogers \& VanderPlas, 2024b).
 
 \hypertarget{first-n-character-fnc-method}{%
 \subsubsection{First n Character (FNC) Method}\label{first-n-character-fnc-method}}
 
-In scenarios such as the table above, a straightforward method for note cleaning would be to measure the length of the previous page's notes (n), and compare the previous notes to the first n characters in the current pages notes via edit distance.
+In scenarios such as Table \ref{tab:noteexample}, a straightforward method for note cleaning would be to measure the length of the previous page's notes (n), and compare the previous notes to the first n characters in the current pages' notes via edit distance.
 If the edit distance is small (indicating a correspondence to the previous page's notes), the first n characters can be removed.
-If we consider the table is above, it is clear to see how this method can be applied.
-The page 2 notes perfectly line up with the first two lines in the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
-Thus, by removing this beginning section, we would be left with the notes that are unique to page 3 - namely, the last two lines.
+If we consider Table \ref{tab:noteexample}, it is clear to see how this method can be applied.
+The page 2 notes perfectly line up with the first line in the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
+Thus, by removing this beginning section, we would be left with the notes that are unique to page 3 - namely, ``ski mask. no money, no injuries. 9mm, arrested after confiscated and testing.''
 
 This method works well when participants take notes sequentially.
 In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
 When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
-The first n character method cannot appropriately clean these notes.
+The first n character method cannot appropriately clean these notes, as shown in Table \ref{tab:issues}.
 
 \hypertarget{longest-common-substring-lcs-method}{%
 \subsubsection{Longest Common Substring (LCS) Method}\label{longest-common-substring-lcs-method}}
@@ -1741,16 +1748,10 @@ Duplication & The cat ran up the tree & \textcolor{red}{The cat ran up the tree}
 
 While the LCS method is able to solve the issues related to the First N Character method, it has some issues of its own.
 If the testimony itself contains duplicate text, such as the text related to swearing in witnesses, the LCS method would remove the new text that corresponds to the later testimony.
-The other issue with the LCS method is the time required when it is applied to the entire testimony.
-In the validation study described below, the LCS method took approximately 30 times as long as the FNC method.
+The other issue with the LCS method is the greater computational complexity.
 
 \hypertarget{hybrid-method}{%
 \subsubsection{Hybrid Method}\label{hybrid-method}}
-
-In order to compare the two methods described above, I cleaned a subset of the survey response notes to have a ``correct'' baseline with which to calculate error rates.
-This dataset consists of 561 pages of `notes' (including blanks) with 35 unique participants.
-30 participants were randomly selected from the larger dataset, while 5 participants were selected based on demonstrated issues with data cleaning.
-The 5 selected participants included an individual who deleted almost all of the beginning notes; two individuals who pasted new notes in the middle of old notes; an individual who duplicated notes; and an individual who included the algorithm expert's trial confirmation as well as the forensic scientist's - duplicate text that should be included as the new notes.
 
 For the FNC method, the length of the previous notes is compared to the beginning of the current page's notes.
 If the edit distance is below a certain threshold, these notes are removed.
@@ -1812,6 +1813,7 @@ The results of this study are shown in Table \ref{tab:cleancompare}.
 Notably, the mean edit distance to the correct notes (or the error) is large for the FNC methods, with a high level of variation.
 However, the computation time is approximately 2.5 minutes.
 In the case of the LCS method, the error is much lower, but the computation time is above an hour.
+In the validation study described below, the LCS method took approximately 30 times as long as the FNC method.
 The hybrid method appears to combine the benefits of both of these methods.
 The error rate is on par with that of the LCS methods, while the time is only slightly above that of the FNC methods.
 The hybrid method was therefore implemented for the larger database.
@@ -3177,7 +3179,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-02-16 11:55:03.261998.
+This version of the thesis was generated on 2024-02-16 12:37:08.087929.
 
 The computational environment that was used to generate this version is as follows:
 

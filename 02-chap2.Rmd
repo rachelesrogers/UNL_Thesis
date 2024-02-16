@@ -210,11 +210,12 @@ This method finds the closest transcript collocation to the written collocation.
 
 ### Data Cleaning
 
-Table \@ref(tab:noteexample) is an example of what sequential notes may look like, taken from the second and third pages of a study participant's notes. 
+The FNC and LCS methods for sequential notepad cleaning were first tested on a subset of notes resulting from a jury perception survey.
+In this study, participants were provided with a notepad to record information while reading through mock trial testimony.
 Because participants are provided with the same continuous notepad throughout the study, the database records each page as a "screenshot" of what is written on their notes when they advance to the next page - this provides cumulative notes.
 
 ```{r noteexample, echo=FALSE, message=FALSE, warning=FALSE}
-comments <- read.csv("data/study1_clean_notes.csv")
+comments <- read.csv("data/validation_dataset.csv")
 # length(unique(subset(comments, notes != "")$clean_prints))
 # val_prints <- sample(unique(subset(comments, notes != "")$clean_prints), size=30, replace=FALSE)
 # 
@@ -236,21 +237,29 @@ kable(test_comments %>% filter(page_count==2 | page_count==3) %>% dplyr::select(
 
 ```
 
-In order to appropriately clean the notes, the duplicated text ("Richard Cole - has been charted with willfully discharging a firearm in a place of business. This crime is a felony.") needs to be removed from the third page, to leave only notes that correspond to the third page's testimony.
+In order to compare the FNC and LCS methods described above, I cleaned a subset of the survey response notes to have a "correct" baseline with which to calculate error rates.
+This dataset consists of `r dim(comments)[1]` pages of 'notes' (including `r sum(comments$notes=="")` blanks) with 35 unique participants. 
+30 participants were randomly selected from the larger dataset, while 5 participants were selected based on demonstrated issues with data cleaning. 
+The 5 selected participants included an individual who deleted almost all of the beginning notes; two individuals who pasted new notes in the middle of old notes; an individual who duplicated notes; and an individual who included the algorithm expert's trial confirmation as well as the forensic scientist's - duplicate text that should be included as the new notes.
+Table \@ref(tab:noteexample) is an example of what sequential notes may look like, taken from the second and third pages of a study participant's notes. 
+
+In order to appropriately clean the notes, the duplicated text ("discharge firearm in business- felony, not guilty") needs to be removed from the third page, to leave only notes that correspond to the third page's testimony.
 A generalized version of the functions used in this data cleaning are included in the `seqstrclean` package [@seqstrclean].
 
 #### First n Character (FNC) Method
 
-In scenarios such as the table above, a straightforward method for note cleaning would be to measure the length of the previous page's notes (n), and compare the previous notes to the first n characters in the current pages notes via edit distance. 
+In scenarios such as Table \@ref(tab:noteexample), a straightforward method for note cleaning would be to measure the length of the previous page's notes (n), and compare the previous notes to the first n characters in the current pages' notes via edit distance. 
 If the edit distance is small (indicating a correspondence to the previous page's notes), the first n characters can be removed.
-If we consider the table is above, it is clear to see how this method can be applied.
-The page 2 notes perfectly line up with the first two lines in the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
-Thus, by removing this beginning section, we would be left with the notes that are unique to page 3 - namely, the last two lines.
+If we consider Table \@ref(tab:noteexample), it is clear to see how this method can be applied.
+The page 2 notes perfectly line up with the first line in the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
+Thus, by removing this beginning section, we would be left with the notes that are unique to page 3 - namely, "ski mask. no money, no injuries. 9mm, arrested after confiscated and testing."
+The threshold of allowable disagreement between two strings can be controlled through setting the maximum allowable edit distance.
+For this method comparison, I changed the threshold with values of 0 character difference, 5 character difference, and 15 character difference (set as less than 1, less than 6, and less than 16).
 
 This method works well when participants take notes sequentially.
 In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
 When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
-The first n character method cannot appropriately clean these notes.
+The first n character method cannot appropriately clean these notes, as shown in Table \@ref(tab:issues).
 
 #### Longest Common Substring (LCS) Method
 
@@ -260,6 +269,10 @@ If new notes are inserted in the middle of previous notes, the First n Character
 With the LCS method, the first substring "The cat ran" could be identified and removed, then in a second iteration, the second substring of "up the tree" can also be removed, leaving only the new text.
 In the case of duplication, the First n Character method would be able to identify the first iteration of text that matches Page 1 and remove it; but it would not be able to identify the second occurrence of the text.
 As before, the LCS method would be able to identify both instances through two iterations, and remove all Page 1 text.
+In the case of LCS, a threshold must be picked for the minimum matching substring length to be considered 'previous notes' and removed.
+If the threshold is too small, the LCS method can identify words like "the" as matching previous testimony to be removed.
+If the threshold is too large, the LCS method may be unable to remove substrings when new text is inserted in the middle of the old text.
+Here, I tried several different character lengths: 40 characters, half the previous note length, a third of the previous note length, and a fourth of the previous note length plus 5 (to compensate for shorter strings).
 
 Issue | Page 1 | Page 2 | LCS | Edit Distance
 --------|--------|---------|---------|---------
@@ -271,23 +284,9 @@ Duplication | The cat ran up the tree | \textcolor{red}{The cat ran up the tree}
 
 While the LCS method is able to solve the issues related to the First N Character method, it has some issues of its own.
 If the testimony itself contains duplicate text, such as the text related to swearing in witnesses, the LCS method would remove the new text that corresponds to the later testimony.
-The other issue with the LCS method is the time required when it is applied to the entire testimony.
-In the validation study described below, the LCS method took approximately 30 times as long as the FNC method.
+The other issue with the LCS method is the greater computational complexity.
 
 #### Hybrid Method
-
-In order to compare the two methods described above, I cleaned a subset of the survey response notes to have a "correct" baseline with which to calculate error rates.
-This dataset consists of 561 pages of 'notes' (including blanks) with 35 unique participants. 
-30 participants were randomly selected from the larger dataset, while 5 participants were selected based on demonstrated issues with data cleaning. 
-The 5 selected participants included an individual who deleted almost all of the beginning notes; two individuals who pasted new notes in the middle of old notes; an individual who duplicated notes; and an individual who included the algorithm expert's trial confirmation as well as the forensic scientist's - duplicate text that should be included as the new notes.
-
-For the FNC method, the length of the previous notes is compared to the beginning of the current page's notes. 
-If the edit distance is below a certain threshold, these notes are removed. 
-In this case, I changed the threshold with values of 0 character difference, 5 character difference, and 15 character difference (set as less than 1, less than 6, and less than 16).
-In the case of LCS, a threshold must be picked for the minimum matching substring length to be considered 'previous notes' and removed.
-If the threshold is too small, the LCS method can identify words like "the" as matching previous testimony to be removed.
-If the threshold is too large, the LCS method may be unable to remove substrings when new text is inserted in the middle of the old text.
-Here, I tried several different character lengths: 40 characters, half the previous note length, a third of the previous note length, and a fourth of the previous note length plus 5 (to compensate for shorter strings).
 
 I also investigated the use of a hybrid method in the hope that the FNC method could be used as a quick way to clean the simplest cases of notes, while the LCS method could be used to clean up the notes that are less clear-cut.
 In order to determine which observations would need the second cleaning method, I created Figure \@ref(fig:errorplot).
@@ -307,17 +306,17 @@ include_graphics(path = "images/cleaningerror.jpg")
 
 Here, the yellow circles indicate the FNC method with a 16 character threshold, while the black circles represent the LCS method with a threshold of 1/3 the previous character length.
 Larger circles indicate a larger amount of error when compared to the hand-cleaned notes.
-The y axis shows the edit distance computed between the current and previous notes for the FNC method, while the x axis indicates the length of the clean notes.
+The y-axis shows the edit distance computed between the current and previous notes for the FNC method, while the x-axis indicates the length of the clean notes.
 The horizontal line is the 16 character threshold for the FNC method.
-As can be seen, most observations are located in the bottom left of the graph, and have relatively small circles.
-These are notes where the FNC method was effectively applied.
+As can be seen, most observations are located in the bottom left of the graph, below the FNC threshold, and have relatively small circles.
+These are notes where the FNC method was effectively applied, meaning that the edit distance was small enough to remove duplicated text at the beginning of the document.
 In the observations above the threshold, most have a larger error when the FNC method is applied compared to the LCS method, with the exception of one observation in the top left.
 In that case, the error appeared to be equal for both methods.
 There is also a larger FNC method error for the observation on the bottom right of the graph.
 This was a case of duplicate text, resulting in abnormally long notes.
-This graph appears to show that and edit distance above the threshold of 16 for the FNC method and the length of the cleaned notes can be used as criterion for determining when the LCS method should be applied.
-I chose to set a threshold of 4 standard deviations above the mean note length for cleaned notes of the current page to constitute "unusually long" notes to apply the LCS method to.
-I chose 1/3 of the previous notes as the LCS threshold because the mean edit distance to the correct notes was comparable to the 1/4 + 5 character threshold, but it is more conservative for larger notes.
+This graph shows that and edit distance the FNC method's threshold and the length of the cleaned notes can be used as criterion for determining when the LCS method should be applied.
+I chose to set a threshold of 4 standard deviations above the mean note length for cleaned notes of the page of interest to constitute "unusually long" notes to apply the LCS method to.
+I chose 1/3 of the previous notes as the LCS threshold because the mean edit distance to the correct notes was comparable to the 1/4 + 5 character threshold, but it is more conservative for larger notes (as can be seen in Table \@ref(tab:cleancompare)).
 
 Methods | Error | SD | Time (Minutes)
 --------|--------|---------|---------
@@ -335,11 +334,10 @@ Hybrid (FNC 16 and LCS 1/3) | 2.135 | 24.625 | 3.5
 The results of this study are shown in Table \@ref(tab:cleancompare).
 Notably, the mean edit distance to the correct notes (or the error) is large for the FNC methods, with a high level of variation.
 However, the computation time is approximately 2.5 minutes.
-In the case of the LCS method, the error is much lower, but the computation time is above an hour.
+In the case of the LCS method, the error is much lower, but the computation time is above an hour, taking approximately 30 times as long as the FNC method.
 The hybrid method appears to combine the benefits of both of these methods. 
 The error rate is on par with that of the LCS methods, while the time is only slightly above that of the FNC methods.
-The hybrid method was therefore implemented for the larger database.
-The flowchart in Figure \@ref(fig:flowchart) shows how this hybrid method can be applied.
+The flowchart in Figure \@ref(fig:flowchart) shows how this hybrid method was applied.
 
 ```{r}
 #| flowchart,
@@ -359,9 +357,18 @@ include_graphics(path = "images/flowchart.jpg")
 
 In order to analyze which areas of the text individuals focus on, we must first find a way to compare their notes to the written testimony.
 One way to do this comparison is through collocation analysis, which uses the frequency of strings of sequentially-appearing words (n-grams) in order to identify words that tend to 'stick together'.
-For example, in the case of the phrase "The cat ran up the tree", there would be three collocations of length 4: "The cat ran up", "cat ran up the", and "ran up the tree".
-By matching the collocations that appear in the testimony to a frequency of the collocation from the given notepad, we would be able to get frequency values for all n-grams that occur in the testimony.
+For example, in the case of the phrase "The cat ran up the tree", there would be three collocations of length 4, as shown in Table \@ref(tab:colex)).
+By matching the collocations that appear in the testimony to a frequency of the collocation from the given notepad, we can get frequency values for all n-grams that occur in the testimony.
 The functions for creating highlighted text can be found in the package `highlightr` [@highlightr].
+
+Collocation | The | cat | ran | up | the | tree
+------------|-----|-----|-----|----|-----|-----
+1           | The | cat | ran | up |     | 
+2           |     | cat | ran | up | the | 
+3           |     |     | ran | up | the | tree
+
+
+: Collocations in "The cat ran up the tree" (\#tab:colex)
 
 In setting the size of the collocation, there are two important factors to keep in mind: the frequency with which a phrase appears in the testimony itself, and the number of words in a row that individuals may directly copy from the testimony.
 If the number of words considered in a collocation is too short, we may run into an issue of phrases occurring multiple times throughout the testimony, without having a way to distinguish which sections are of importance.
