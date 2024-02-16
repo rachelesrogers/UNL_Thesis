@@ -370,20 +370,22 @@ Collocation | The | cat | ran | up | the | tree
 
 : Collocations in "The cat ran up the tree" (\#tab:colex)
 
-In setting the size of the collocation, there are two important factors to keep in mind: the frequency with which a phrase appears in the testimony itself, and the number of words in a row that individuals may directly copy from the testimony.
-If the number of words considered in a collocation is too short, we may run into an issue of phrases occurring multiple times throughout the testimony, without having a way to distinguish which sections are of importance.
-For example, if we used a collocation of length two, a common phrase in the testimony would be "Richard Cole".
+In setting the size of the collocation, there are two important factors to keep in mind: the frequency with which a phrase appears in the transcript itself, and the number of words in a row that individuals may directly copy from the transcript.
+If the number of words considered in a collocation is too short, a phrase may occur multiple times throughout the transcript, without a way to distinguish which specific sections participants were recording.
+For example, if we used a collocation of length two, a common phrase in the courtroom testimony is "Richard Cole", the name of the defendant.
 Because this phrase occurs so frequently in the testimony, it does not by itself tell us if there are particular portions of the testimony that individuals find important, even if we add weights to calculate the relative frequency.
-On the other hand, if we use a collocation of length 10, it is unlikely that a large amount of individuals would copy the exact 10-word phrase, which would result in fewer observations.
+On the other hand, if we use a collocation of length 10, it is unlikely that a large amount of individuals copied the exact 10-word phrase, which results in fewer observations.
 In considering these two issues, we decided on a collocation size of 5.
 This would be long enough to avoid many common phrases such as "the bullet matching algorithm", but short enough that individuals may copy the phrase down directly.
-The implementation of collocations used the 'quanteda' package, with guidance from a tutorial by Schweinberger.
+The implementation of collocations used the 'quanteda' package [@quanteda], with guidance from a tutorial by @collocationpage.
 
-N-grams are identified in the testimony, and assigned ordered word numbers (so the first n-gram of length 5 will have words 1-5, the second will have words 2-6, and so on). 
-These are then bound with collocations from the notes based on the sequence of 5 words, in order to assign a frequency to each n-gram. 
-The average is then taken per word out of the possible words that the n-gram could have appeared in (for example, the first word can only appear in a single n-gram, so its average will be equal to the frequency of the first collocation). 
+Collocations are identified in the transcript, and assigned ordered word numbers (so the first collocation of length 5 will have words 1-5, the second will have words 2-6, and so on). 
+This data structure is similar to that shown in Table \@ref(tab:colex), where the collocation is length 4 instead of 5.
+These are then bound with collocations from the participants' notes based on the sequence of 5 words, in order to assign a frequency to each collocation. 
+We then take the average per word out of the possible collocations that the word could have appeared in.
+For example, the first word can only appear in a single collocation (in Table \@ref(tab:colex), "The" only apprears in the first collocation, while "ran" appears in all three), so its average will be equal to the frequency of the first collocation. 
 When multiple 5-grams appear in the same testimony page, the note frequency is divided by the number of appearances in the testimony in order to account for multiple occurrences.
-The table below shows the highest frequencies for the second page of the testimony: 
+The Figure \@ref(fig:colcount) shows the highest frequencies for the second page of the testimony: 
 
 "In this case the defendant Richard Cole has been charged with willfully discharging a firearm in a place of business. This crime is a felony. 
 Mr. Cole has pleaded not guilty to the charge. 
@@ -422,20 +424,22 @@ This is to ensure a smooth transition between words in order to give an overall 
 include_graphics(path = "images/collocationanalysis.jpg")
 ```
 
-In order to create this effect, we first implemented a graph of the testimony in 'ggplot2' [@ggplot] in order to assign color values to the frequencies.
+In order to create this effect, we first implemented a graph of the testimony in 'ggplot2' [@ggplot] in order to assign color values to the frequencies based on a continuous gradient.
 Then we used HTML gradient boxes, where the left color is that of the previous word, while the right color is based on the frequency of the current word.
 This results in a smooth transition between words.
 
 
 #### Fuzzy Matching
 
+At times, participants do not directly copy a collocation, but the correspondence is clear enough to match their notes to the transcript.
+In these cases, we can use fuzzy matching to account for indirect collocations.
 Because the intent of the participant is more clear with simple typos (such as a single letter change) than with larger differences (such as the changing of multiple words), the count for these fuzzily matched observations are weighted based on the edit distance.
 I set a maximum edit distance of 99 to be considered a match.
-Specifically, a weight of $\frac{1}{dist+0.25}$ is used, where $dist$ represents the edit distance (between 1 and 99).
+Specifically, a weight of $\frac{1}{d+0.25}$ is used, where $d$ represents the edit distance (between 1 and 99).
 An edit distance of 0 would receive a weight of 1, since fuzzy matching need not be applied.
 Another factor in the calculation is the number of matches per 'misspelled' collocation.
 To return to the month example shown in Table \@ref(tab:fuzzymonth), if an individual were to spell a month "Jur", the edit distance to both "June" and "July" is 2.
-It is then unclear which month the person was born in, but they most likely meant June or July.
+It is then unclear which month the person was born in, but they most likely meant June or July, as opposed to the other months.
 Similarly, some collocation notes had the same edit distance for multiple transcript collocations.
 In these cases, the frequency of the 'misspelled' collocation notes are split evenly between the closest transcript collocations.
 This results in a total fuzzy frequency per transcript collocation of:
@@ -443,13 +447,12 @@ This results in a total fuzzy frequency per transcript collocation of:
 $$
 \sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i}
 $$
-where $x_i$ is the count for note collocation $i$, $d_i$ is the distance between the transcript collocation and the 'misspelled' collocation $i$, and $c_i$ is the number of transcript collocation matches for note collocation $i$.
+where $x_i$ is the count for the participant's note collocation $i$, $d_i$ is the distance between the transcript collocation and the 'misspelled' collocation $i$, and $c_i$ is the number of transcript collocation matches for note collocation $i$.
 This quantity is then added to the count of direct collocation matches calculated in the previous section.
-
 
 #### Standardization
 
-The testimony analyzed comes from a 2x2x3 factorial design (presence or absence of images, presence or absence of the algorithm, and the conclusion: match, inconclusive, or not a match).
+The courtroom transcript testimony analyzed comes from a 2x2x3 factorial design (presence or absence of images, presence or absence of the algorithm, and the conclusion: identification, inconclusive, or elimination).
 Due to this design, the testimony diverges and merges in several places. 
 For clarity, when the testimony corresponds, the frequency for all scenarios are considered together.
 However, when the testimony diverges, each scenario is considered separately.
@@ -461,11 +464,29 @@ $$
 $$
 
 In this case, $z$ is the count of direct matches; $\sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i}$ is the weighted fuzzy match count as defined above; $k$ is the number of times the collocation re-occurs in the transcript page itself; and $s$ is the number of scenarios included in the frequency count.
+This standardization is included in Figure \@ref(fig:weightedhighlights).
+In comparing with the unweighted highlighting without fuzzy matching of Figure \@ref(fig:highlights), the same pattern emerges in terms of phrase popularity: most individuals focused on the crime.
+However, the numerical values of the gradient scale have changed.
+
+```{r}
+#| weightedhighlights,
+#| fig.cap= "Collocation Count for Page 2",
+#| fig.width= 7,
+#| fig.align= "center",
+#| echo= FALSE,
+#| message= FALSE,
+#| warning= FALSE
+
+include_graphics(path = "images/weightedcollocationanalysis.jpg")
+```
+
 
 ## Case Study
 
-This method was applied to notes taken from a recent study.
-Dr. Vanderplas and I conducted a study on jury perception, in which participants were asked to read over a testimony transcript and answer some questions related to the scenarios. 
+This method was applied to notes taken from a recent study on jury perception.
+Participants were asked to read over a testimony transcript and answer some questions related to the scenarios. 
+Conditions varied based on the examiner conclusion, the presence of images, and the presence of a bullet matching algorithm.
+When the algorithm was present, participants also read the testimony of an algorithm developer, resulting in more pages of notes.
 Participants were supplied with a notepad in order to take notes throughout the testimony. 
 We are interested in comparing this notepad to the given testimony, in order to determine which portions of the testimony the participants found to be worth recording the most.
 Portions of the testimony that bear the most similarity to the collective notes will be more highlighted than testimony that appears less frequently in the collective notes.
@@ -473,18 +494,32 @@ The method outlined above resulted in scenario testimonies that indicate where p
 
 ### The Data
 
-Our study consisted of 559 uniquely recorded participants.
-Of these 559 participants, 430 recorded something on the notepad.
-This has resulted in 10,329 pages of notes with at least something recorded.
+```{r}
+#| echo= FALSE,
+#| message= FALSE,
+#| warning= FALSE
+
+study1_notes <- read.csv("data/study1_hybrid_dataset.csv")
+
+study1_unclean_notes <- read.csv("data/study1_clean_notes.csv")
+
+unclean_reduced <- study1_unclean_notes %>% filter(notes != "")
+
+
+```
+
+Our study consisted of `r length(unique(study1_unclean_notes$clean_prints))` uniquely recorded participants.
+Of these `r length(unique(study1_unclean_notes$clean_prints))` participants, `r length(unique(unclean_reduced$clean_prints))` recorded something on the notepad.
+This has resulted in `r format(dim(unclean_reduced)[1], big.mark = ",")` pages of notes with at least something recorded, out of `r format(dim(study1_unclean_notes)[1], big.mark = ",")` total pages.
 For individuals who clicked through the survey multiple times but submitted a single result, the notes correspond to the closest time less than their submission time for observation per page number.
 Note pages that corresponded to the questions (and not the testimony) were removed; this was above page 10 in conditions without the algorithm and page 19 in conditions with the algorithm.
 
 ### Data Cleaning
 
 On the complete dataset, the hybrid method took a total of 19.33 minutes. 
-This again demonstrates the time benefit of the hybrid method over the Longest Common Substring method - it took less time to clean the complete dataset with the hybrid method than it took to evaluate the reduced dataset with the LCS method. 
-The data cleaning resulted in a total of 2371 note pages with some text recorded.
-This is much smaller than the uncleaned total of 10,329 note pages, demonstrating a significant reduction in the note size (as is expected when removing the previous page's notes).
+This demonstrates the time benefit of the hybrid method over the Longest Common Substring method - it took less time to clean the complete dataset with the hybrid method than it took to evaluate the reduced dataset with the LCS method. 
+The data cleaning resulted in a total of `r format(sum(study1_notes$page_notes != "", na.rm=TRUE), big.mark = ",")` note pages with some text recorded.
+This is much smaller than the uncleaned total of `r format(dim(unclean_reduced)[1], big.mark = ",")` note pages, demonstrating a significant reduction in the note size (as is expected when removing the previous page's notes).
 
 ```{r}
 #| notecount,
@@ -494,8 +529,16 @@ This is much smaller than the uncleaned total of 10,329 note pages, demonstratin
 #| echo= FALSE,
 #| message= FALSE,
 #| warning= FALSE
-#| 
-include_graphics(path = "images/freq_barchart.jpg")
+
+library(ggplot2)
+
+ggplot(subset(study1_notes, page_notes != ""), aes(x=page_count))+
+  geom_histogram(binwidth = 1, fill="black", col="white")+
+  facet_grid(algorithm~., labeller = label_both)+
+  theme_bw()+
+  xlab("Page Number")+
+  ylab("Count")
+
 ```
 
 Figure \@ref(fig:notecount) consists of the number of participants who took notes based on the page number.
@@ -534,7 +577,7 @@ This may either indicate areas that participants saw as interesting or confusing
 
 ### Conclusion
 
-Overall, this process appears to effectively clean and display notes with the desired highlight format.
+Overall, this process effectively cleans and displays notes with the desired highlight format.
 For sequential notes, such as this case, the First N Character method manages to clean the notes in most cases.
 In the cases where the FNC method is ineffective (when the edit distance is above the threshold or the clean notes are unusually long), the Longest Common Substring method can be applied.
 This process was demonstrated in a dataset of 35 participants, and showed a significant note reduction on the full dataset.
@@ -542,7 +585,7 @@ This process was demonstrated in a dataset of 35 participants, and showed a sign
 After the notes are cleaned, collocations can be used to determine what phrases participants decided to copy into their notes.
 The length of the collocation was chosen to be long enough to avoid commonly repeated phrases, but short enough that participants may directly copy the phrase into their notes.
 Notes that were not directly copied were included with weights proportional to edit distance through the use of fuzzy matching.
-The final output qualitatively indicates which portions of testimony participants find relevant to copy.
+The final output qualitatively indicates which portions of testimony participants found relevant to copy.
 
 This new method opens up new avenues for user studies and analyses.
 While this method was developed for a specific use case, it has diverse applications, including education, social science, and more. 

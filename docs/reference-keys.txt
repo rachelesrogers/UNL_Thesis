@@ -46,8 +46,10 @@ tab:issues
 fig:errorplot
 tab:cleancompare
 fig:flowchart
+tab:colex
 fig:colcount
 fig:highlights
+fig:weightedhighlights
 fig:notecount
 tab:nonfuzzycount
 fig:completiontime2
