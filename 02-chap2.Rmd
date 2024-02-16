@@ -42,6 +42,9 @@ The First n Character method relies on the concept of edit distance for matching
 I developed this method specifically for the cleaning of sequential notes.
 In this process, a previous page's notes are matched to the next page's notes in order to remove duplicate text.
 This is a form of pattern matching.
+In a reference to algorithmic detection of plagiarism in computer programs, @parker1989 describe an algorithm that uses the character differences in order to compare how similar programs are.
+Other algorithms they discuss use code-specific features such as number of operators, lines of comments, and number of various loop statements.
+Because we are only concerned with the content of the notes, there is little information to be gained from formatting, as there is in this plagiarism detection in programs.
 There are plenty of examples of pattern matching in text analysis - such as @baeza-yates and @landau1988. 
 These papers rely on a set pattern to be found in the reference text, with a defined number of differences allowed between the pattern and the text. 
 According to @baeza-yates, many algorithmic methods have been developed to solve this problem, with allowances for mismatches between the reference text and the pattern.
@@ -51,12 +54,12 @@ Levenshtein considered the issue of insertions, deletions, and substitutions wit
 This concept has later been extended to include more extensive strings, as demonstrated by @konstantinidis2005.
 The edit distance can be used to determine the extent of matching text when comparing two sequential note sheets, in order to identify if a portion of notes should be removed.
 
-Word 1 | Word 2 | Transformation | Method | Edit Distance
--------|--------|----------------|--------|---------------
-Hat     | Hot    | a &rarr; o    | substitution | 1
-Hello there | there | **Hello** | deletion | 5
-meow | homeowner | \textcolor{red}{ho}meow\textcolor{red}{ner} | insertion | 5
-Shire  |  Shareholder  |  i &rarr; a + \textcolor{red}{holder} | substitution and insertion | 7
+| Word 1 | Word 2 | Transformation | Method | Edit Distance |
+|:-------:|:--------:|:----------------:|:--------:|:---------------:|
+| Hat     | Hot    | a &rarr; o    | substitution | 1 |
+| Hello there | there | **Hello** | deletion | 6 |
+| meow | homeowner | \textcolor{red}{ho}meow\textcolor{red}{ner} | insertion | 5 |
+| Shire  |  Shareholder  |  i &rarr; a + \textcolor{red}{holder} | substitution and insertion | 7 |
 
 : Transformations used to calculate Edit Distance (\#tab:edist)
 
@@ -78,7 +81,6 @@ Instead of only aiming to remove exact matches of the previous note sheet, we mu
 
 Whereas calculating edit distance between two pages of notes is useful when finding notes that wholly match the previous page, the Longest Common Substring (LCS) method can be used to find pieces of notes that match between pages, so that this repeated text can be removed.
 LCS accomplishes this goal through searching for common text between two sequential pages to be removed.
-
 For example, in Figure \@ref(fig:lcs), the LCS between the two strings is "the cat enjoys napping".
 In the process of note cleaning, this would be the string that is removed from the second page of notes, resulting in "When it is quiet" as the cleaned (non-repeated) notes.
 
@@ -108,18 +110,19 @@ In the process of note cleaning, this would be the string that is removed from t
 #   rec3 -> rec4
 #   }",
 #   height = 500, width=800)
-
+ 
 ```
 
-@landau1988's discussion of pattern matching with k differences includes both a dynamic programming approach, as well as the construction of suffix trees.
-\authorcol{In the dynamic programming approach, results are recorded in a table or matrix form, while the suffix tree approach organizes text into a tree format for performing calculations} [@dynamicvstree].
-These methods correspond to those proposed for finding the Longest Common Substring between two sequences.
-This problem has been used to compare biological sequences (@crochemore2017).
-An early solution for finding the longest common substring involves the construction of a suffix tree (@charalampopoulos2021).
+<!-- @landau1988's discussion of pattern matching with k differences includes both a dynamic programming approach, as well as the construction of suffix trees. -->
+<!-- \authorcol{In the dynamic programming approach, results are recorded in a table or matrix form, while the suffix tree approach organizes text into a tree format for performing calculations} [@dynamicvstree]. -->
+<!-- These methods correspond to those proposed for finding the Longest Common Substring between two sequences. -->
+Methods for computing the longest common substring between two sequences have been used to compare biological sequences [@crochemore2017].
+Solutions for finding the longest common substring usually the construction of a suffix tree [@charalampopoulos2021] or table [@landau1988].
 The suffix tree method is described by @gusfield1997; in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leaves consist of the string's terminal character: \$ is used avoid recurrence with previous characters in the string.
 
-A solution implemented by @ptxqc in a CRAN R package uses dynamic programming, which involves the construction of a matrix that records the length of a matching string at character $i$ for string 1 (in the $i$th row), and character $j$ for string 2 (in the $j$th column).
-Because the dynamic programming method has an R implementation, it is utilized for this analysis.
+A solution implemented by @ptxqc in a CRAN R package constructs a matrix that records the length of a matching string at character $i$ for string 1 (in the $i$th row), and character $j$ for string 2 (in the $j$th column).
+Because this matrix method has an R implementation, it is utilized for this analysis.
+However, @ptxqc warns that this LCS method is inefficient, and meant to be used in small instances.
 <!-- The comparison between suffix tree and dynamic programming methods will be evaluated in a future analysis. -->
 This method creates an empty matrix, where the number of rows correspond to the length of the first string, and the number of columns correspond to the length of the second string.
 Thus, the first cell would correspond to the first character of both strings, and so on.
@@ -144,22 +147,16 @@ e | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0
 
 : Dynamic Programming for LCS (\#tab:dylcs)
 
-#### Collocation Analysis
+#### Collocation Analysis and Fuzzy Matching
 
 After the notes are cleaned, sequences of 5 words (collocations) are used to find areas of the testimony that participants focus on.
 For indirect matches, such as typos, weights are applied to these fuzzy matches to contribute to the total count. 
-
 While collocations traditionally refer to words that occur more frequently together - such as "white house"(@DefinitionCOLLOCATION2023), tools for collocation analysis helpfully provide the frequency of occurrence for strings of a specified length (@collocationpage). 
-In a reference to algorithmic detection of plagiarism in computer programs, @parker1989 describe an algorithm that uses the character differences in order to compare how similar programs are.
-Other algorithms they discuss use code-specific features such as number of operators, lines of comments, and number of various loop statements.
-Because we are only concerned with the content of the notes, there is little information to be gained from formatting, as there is in plagiarism detection in programs.
 
-#### Fuzzy Matching
-
-Character differences can effectively be used to indicate similarity between participants' notes and the study testimony.
+Character differences can effectively be used to indicate similarity between participants' notes and the text transcript.
 This is useful in situation where individuals do not copy the notes directly.
-In these cases, fuzzy matching can be used to find the testimony collocation that is the most similar to the participants' written notes.
-This approximate string matching allows for matching strings that do not correspond directly (@gusfield1997), which allows for matching up participants' inexact notes with the closest testimony collocation.
+In these cases, fuzzy matching can be used to find the transcript collocation that is the most similar to the participants' written notes.
+This approximate string matching allows for matching strings that do not correspond directly (@gusfield1997), which allows for matching up participants' inexact notes with the closest transcript collocation.
 
 In order to perform fuzzy matching on the indirect collocations from participants' notes, I used 'stringdist_join' from the 'fuzzyjoin' R package [@fuzzy]. 
 This function conducts a join with the best matching observations from the second dataset. 
@@ -204,10 +201,10 @@ kable(fuzzy_matches, caption="Fuzzy Match by Month") # %>%
 
 ```
 
-In Table \@ref(tab:fuzzymonth) above, "month.x" is the correctly spelled month, "month.y" is the children's spellings, and "dist" is the edit distance between the two words. 
-This same concept is applied to the notepad dataset.
-In this case, the transcript of the testimony is considered the "correct" version, and the participants' collocations that do not directly match are considered the misspellings.
-This method finds the closest transcript collocation to the written collocation, with a maximum edit distance of 99 for collocations to still be considered a match.
+In Table \@ref(tab:fuzzymonth), "month.x" is the correctly spelled month, "month.y" is the children's spellings, and "dist" is the edit distance between the two words. 
+This same concept is applied to matching collocations between a transcript and notepad.
+In this case, the transcript is considered the "correct" version, and the participants' collocations that do not directly match are considered the misspellings.
+This method finds the closest transcript collocation to the written collocation.
 
 ## Implementation
 
@@ -230,8 +227,13 @@ comments <- read.csv("data/study1_clean_notes.csv")
 
 test_comments <-comments[1:4,]
 
+table_comments <- test_comments %>% filter(page_count==2 | page_count==3) %>% dplyr::select(page_count, notes)
+
+table_comments$notes <- str_wrap(table_comments$notes, width=35)
+
 kable(test_comments %>% filter(page_count==2 | page_count==3) %>% dplyr::select(page_count, notes), caption="Participant Note Example") 
 # %>% column_spec(2, width = "30em")
+
 ```
 
 In order to appropriately clean the notes, the duplicated text ("Richard Cole - has been charted with willfully discharging a firearm in a place of business. This crime is a felony.") needs to be removed from the third page, to leave only notes that correspond to the third page's testimony.
@@ -421,10 +423,11 @@ This results in a smooth transition between words.
 #### Fuzzy Matching
 
 Because the intent of the participant is more clear with simple typos (such as a single letter change) than with larger differences (such as the changing of multiple words), the count for these fuzzily matched observations are weighted based on the edit distance.
+I set a maximum edit distance of 99 to be considered a match.
 Specifically, a weight of $\frac{1}{dist+0.25}$ is used, where $dist$ represents the edit distance (between 1 and 99).
 An edit distance of 0 would receive a weight of 1, since fuzzy matching need not be applied.
 Another factor in the calculation is the number of matches per 'misspelled' collocation.
-To return to the month example, if an individual were to spell a month "Jur", the edit distance to both "June" and "July" is 2.
+To return to the month example shown in Table \@ref(tab:fuzzymonth), if an individual were to spell a month "Jur", the edit distance to both "June" and "July" is 2.
 It is then unclear which month the person was born in, but they most likely meant June or July.
 Similarly, some collocation notes had the same edit distance for multiple transcript collocations.
 In these cases, the frequency of the 'misspelled' collocation notes are split evenly between the closest transcript collocations.

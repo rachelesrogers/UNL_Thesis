@@ -1442,6 +1442,9 @@ The First n Character method relies on the concept of edit distance for matching
 I developed this method specifically for the cleaning of sequential notes.
 In this process, a previous page's notes are matched to the next page's notes in order to remove duplicate text.
 This is a form of pattern matching.
+In a reference to algorithmic detection of plagiarism in computer programs, Parker \& Hamblen (1989) describe an algorithm that uses the character differences in order to compare how similar programs are.
+Other algorithms they discuss use code-specific features such as number of operators, lines of comments, and number of various loop statements.
+Because we are only concerned with the content of the notes, there is little information to be gained from formatting, as there is in this plagiarism detection in programs.
 There are plenty of examples of pattern matching in text analysis - such as Baeza-Yates \& Gonnet (1992) and Landau \& Vishkin (1988).
 These papers rely on a set pattern to be found in the reference text, with a defined number of differences allowed between the pattern and the text.
 According to Baeza-Yates \& Gonnet (1992), many algorithmic methods have been developed to solve this problem, with allowances for mismatches between the reference text and the pattern.
@@ -1452,36 +1455,36 @@ This concept has later been extended to include more extensive strings, as demon
 The edit distance can be used to determine the extent of matching text when comparing two sequential note sheets, in order to identify if a portion of notes should be removed.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1296}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1481}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2963}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1481}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2778}}@{}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1406}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1562}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2812}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1562}}
+  >{\centering\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2656}}@{}}
 \caption{Transformations used to calculate Edit Distance \label{tab:edist}}\tabularnewline
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
+\begin{minipage}[b]{\linewidth}\centering
 Word 1
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Word 2
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Transformation
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Method
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Edit Distance
 \end{minipage} \\
 \midrule\noalign{}
 \endfirsthead
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
+\begin{minipage}[b]{\linewidth}\centering
 Word 1
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Word 2
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Transformation
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Method
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 Edit Distance
 \end{minipage} \\
 \midrule\noalign{}
@@ -1489,7 +1492,7 @@ Edit Distance
 \bottomrule\noalign{}
 \endlastfoot
 Hat & Hot & a → o & substitution & 1 \\
-Hello there & there & \textbf{Hello} & deletion & 5 \\
+Hello there & there & \textbf{Hello} & deletion & 6 \\
 meow & homeowner & \textcolor{red}{ho}meow\textcolor{red}{ner} & insertion & 5 \\
 Shire & Shareholder & i → a + \textcolor{red}{holder} & substitution and insertion & 7 \\
 \end{longtable}
@@ -1513,7 +1516,6 @@ Instead of only aiming to remove exact matches of the previous note sheet, we mu
 
 Whereas calculating edit distance between two pages of notes is useful when finding notes that wholly match the previous page, the Longest Common Substring (LCS) method can be used to find pieces of notes that match between pages, so that this repeated text can be removed.
 LCS accomplishes this goal through searching for common text between two sequential pages to be removed.
-
 For example, in Figure \ref{fig:lcs}, the LCS between the two strings is ``the cat enjoys napping''.
 In the process of note cleaning, this would be the string that is removed from the second page of notes, resulting in ``When it is quiet'' as the cleaned (non-repeated) notes.
 
@@ -1526,15 +1528,13 @@ In the process of note cleaning, this would be the string that is removed from t
 \caption{Longest Common Substring Diagram}\label{fig:lcs}
 \end{figure}
 
-Landau \& Vishkin (1988)'s discussion of pattern matching with k differences includes both a dynamic programming approach, as well as the construction of suffix trees.
-\authorcol{In the dynamic programming approach, results are recorded in a table or matrix form, while the suffix tree approach organizes text into a tree format for performing calculations} (Keng, 2006).
-These methods correspond to those proposed for finding the Longest Common Substring between two sequences.
-This problem has been used to compare biological sequences (Crochemore, Iliopoulos, Langiu, \& Mignosi (2017)).
-An early solution for finding the longest common substring involves the construction of a suffix tree (Charalampopoulos, Kociumaka, Pissis, \& Radoszewski (2021)).
+Methods for computing the longest common substring between two sequences have been used to compare biological sequences (Crochemore, Iliopoulos, Langiu, \& Mignosi, 2017).
+Solutions for finding the longest common substring usually the construction of a suffix tree (Charalampopoulos, Kociumaka, Pissis, \& Radoszewski, 2021) or table (Landau \& Vishkin, 1988).
 The suffix tree method is described by Gusfield (1997); in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leaves consist of the string's terminal character: \$ is used avoid recurrence with previous characters in the string.
 
-A solution implemented by Bielow, Mastrobuoni, \& Kempa (2016) in a CRAN R package uses dynamic programming, which involves the construction of a matrix that records the length of a matching string at character \(i\) for string 1 (in the \(i\)th row), and character \(j\) for string 2 (in the \(j\)th column).
-Because the dynamic programming method has an R implementation, it is utilized for this analysis.
+A solution implemented by Bielow, Mastrobuoni, \& Kempa (2016) in a CRAN R package constructs a matrix that records the length of a matching string at character \(i\) for string 1 (in the \(i\)th row), and character \(j\) for string 2 (in the \(j\)th column).
+Because this matrix method has an R implementation, it is utilized for this analysis.
+However, Bielow et al. (2016) warns that this LCS method is inefficient, and meant to be used in small instances.
 This method creates an empty matrix, where the number of rows correspond to the length of the first string, and the number of columns correspond to the length of the second string.
 Thus, the first cell would correspond to the first character of both strings, and so on.
 If the characters match and it is the first row or column, then the cell gets a value of 1.
@@ -1567,24 +1567,17 @@ d & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
 e & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
 \end{longtable}
 
-\hypertarget{collocation-analysis}{%
-\subsubsection{Collocation Analysis}\label{collocation-analysis}}
+\hypertarget{collocation-analysis-and-fuzzy-matching}{%
+\subsubsection{Collocation Analysis and Fuzzy Matching}\label{collocation-analysis-and-fuzzy-matching}}
 
 After the notes are cleaned, sequences of 5 words (collocations) are used to find areas of the testimony that participants focus on.
 For indirect matches, such as typos, weights are applied to these fuzzy matches to contribute to the total count.
-
 While collocations traditionally refer to words that occur more frequently together - such as ``white house''(Merriam-Webster (2023)), tools for collocation analysis helpfully provide the frequency of occurrence for strings of a specified length (Schweinberger (2022)).
-In a reference to algorithmic detection of plagiarism in computer programs, Parker \& Hamblen (1989) describe an algorithm that uses the character differences in order to compare how similar programs are.
-Other algorithms they discuss use code-specific features such as number of operators, lines of comments, and number of various loop statements.
-Because we are only concerned with the content of the notes, there is little information to be gained from formatting, as there is in plagiarism detection in programs.
 
-\hypertarget{fuzzy-matching}{%
-\subsubsection{Fuzzy Matching}\label{fuzzy-matching}}
-
-Character differences can effectively be used to indicate similarity between participants' notes and the study testimony.
+Character differences can effectively be used to indicate similarity between participants' notes and the text transcript.
 This is useful in situation where individuals do not copy the notes directly.
-In these cases, fuzzy matching can be used to find the testimony collocation that is the most similar to the participants' written notes.
-This approximate string matching allows for matching strings that do not correspond directly (Gusfield (1997)), which allows for matching up participants' inexact notes with the closest testimony collocation.
+In these cases, fuzzy matching can be used to find the transcript collocation that is the most similar to the participants' written notes.
+This approximate string matching allows for matching strings that do not correspond directly (Gusfield (1997)), which allows for matching up participants' inexact notes with the closest transcript collocation.
 
 In order to perform fuzzy matching on the indirect collocations from participants' notes, I used `stringdist\_join' from the `fuzzyjoin' R package (Robinson, 2020).
 This function conducts a join with the best matching observations from the second dataset.
@@ -1646,10 +1639,10 @@ February & Febrey & Tammy & 3\\
 \end{tabular}
 \end{table}
 
-In Table \ref{tab:fuzzymonth} above, ``month.x'' is the correctly spelled month, ``month.y'' is the children's spellings, and ``dist'' is the edit distance between the two words.
-This same concept is applied to the notepad dataset.
-In this case, the transcript of the testimony is considered the ``correct'' version, and the participants' collocations that do not directly match are considered the misspellings.
-This method finds the closest transcript collocation to the written collocation, with a maximum edit distance of 99 for collocations to still be considered a match.
+In Table \ref{tab:fuzzymonth}, ``month.x'' is the correctly spelled month, ``month.y'' is the children's spellings, and ``dist'' is the edit distance between the two words.
+This same concept is applied to matching collocations between a transcript and notepad.
+In this case, the transcript is considered the ``correct'' version, and the participants' collocations that do not directly match are considered the misspellings.
+This method finds the closest transcript collocation to the written collocation.
 
 \hypertarget{implementation}{%
 \section{Implementation}\label{implementation}}
@@ -1895,14 +1888,15 @@ In order to create this effect, we first implemented a graph of the testimony in
 Then we used HTML gradient boxes, where the left color is that of the previous word, while the right color is based on the frequency of the current word.
 This results in a smooth transition between words.
 
-\hypertarget{fuzzy-matching-1}{%
-\subsubsection{Fuzzy Matching}\label{fuzzy-matching-1}}
+\hypertarget{fuzzy-matching}{%
+\subsubsection{Fuzzy Matching}\label{fuzzy-matching}}
 
 Because the intent of the participant is more clear with simple typos (such as a single letter change) than with larger differences (such as the changing of multiple words), the count for these fuzzily matched observations are weighted based on the edit distance.
+I set a maximum edit distance of 99 to be considered a match.
 Specifically, a weight of \(\frac{1}{dist+0.25}\) is used, where \(dist\) represents the edit distance (between 1 and 99).
 An edit distance of 0 would receive a weight of 1, since fuzzy matching need not be applied.
 Another factor in the calculation is the number of matches per `misspelled' collocation.
-To return to the month example, if an individual were to spell a month ``Jur'', the edit distance to both ``June'' and ``July'' is 2.
+To return to the month example shown in Table \ref{tab:fuzzymonth}, if an individual were to spell a month ``Jur'', the edit distance to both ``June'' and ``July'' is 2.
 It is then unclear which month the person was born in, but they most likely meant June or July.
 Similarly, some collocation notes had the same edit distance for multiple transcript collocations.
 In these cases, the frequency of the `misspelled' collocation notes are split evenly between the closest transcript collocations.
@@ -3183,7 +3177,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-02-15 14:31:02.226046.
+This version of the thesis was generated on 2024-02-16 11:55:03.261998.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -3198,7 +3192,7 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2024-02-15
+##  date     2024-02-16
 ##  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------
@@ -3455,9 +3449,6 @@ Kassin, S. M., Dror, I. E., \& Kukucka, J. (2013). The forensic confirmation bia
 
 \leavevmode\vadjust pre{\hypertarget{ref-kellermannTrialAdvocacyTruthiness2013}{}}%
 Kellermann, K. (2013). Trial advocacy: {Truthiness}, falsiness, and nothingness. \emph{The Jury Expert}, \emph{25}(5), 38.
-
-\leavevmode\vadjust pre{\hypertarget{ref-dynamicvstree}{}}%
-Keng, L. H. (2006). \emph{Approximate string matching with dynamic programming and suffix trees} (Master's thesis). University of North Florida School of Computing.
 
 \leavevmode\vadjust pre{\hypertarget{ref-koehler2001}{}}%
 Koehler, J. J. (2001). When are people persuaded by {DNA} match statistics? \emph{Law and Human Behavior}, \emph{25}(5), 493--513. http://doi.org/\href{https://doi.org/d82kvn}{d82kvn}

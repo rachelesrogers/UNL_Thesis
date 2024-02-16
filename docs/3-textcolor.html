@@ -338,6 +338,9 @@ This method was developed and tested on a trial transcript study designed to ass
 I developed this method specifically for the cleaning of sequential notes.
 In this process, a previous page’s notes are matched to the next page’s notes in order to remove duplicate text.
 This is a form of pattern matching.
+In a reference to algorithmic detection of plagiarism in computer programs, <span class="citation">Parker &amp; Hamblen (1989)</span> describe an algorithm that uses the character differences in order to compare how similar programs are.
+Other algorithms they discuss use code-specific features such as number of operators, lines of comments, and number of various loop statements.
+Because we are only concerned with the content of the notes, there is little information to be gained from formatting, as there is in this plagiarism detection in programs.
 There are plenty of examples of pattern matching in text analysis - such as <span class="citation">Baeza-Yates &amp; Gonnet (1992)</span> and <span class="citation">Landau &amp; Vishkin (1988)</span>.
 These papers rely on a set pattern to be found in the reference text, with a defined number of differences allowed between the pattern and the text.
 According to <span class="citation">Baeza-Yates &amp; Gonnet (1992)</span>, many algorithmic methods have been developed to solve this problem, with allowances for mismatches between the reference text and the pattern.
@@ -349,49 +352,49 @@ The edit distance can be used to determine the extent of matching text when comp
 <table>
 <caption>Transformations used to calculate Edit Distance <span id="tab:edist">Table 3.1: </span></caption>
 <colgroup>
-<col width="12%" />
 <col width="14%" />
-<col width="29%" />
-<col width="14%" />
-<col width="27%" />
+<col width="15%" />
+<col width="28%" />
+<col width="15%" />
+<col width="26%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th>Word 1</th>
-<th>Word 2</th>
-<th>Transformation</th>
-<th>Method</th>
-<th>Edit Distance</th>
+<th align="center">Word 1</th>
+<th align="center">Word 2</th>
+<th align="center">Transformation</th>
+<th align="center">Method</th>
+<th align="center">Edit Distance</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Hat</td>
-<td>Hot</td>
-<td>a → o</td>
-<td>substitution</td>
-<td>1</td>
+<td align="center">Hat</td>
+<td align="center">Hot</td>
+<td align="center">a → o</td>
+<td align="center">substitution</td>
+<td align="center">1</td>
 </tr>
 <tr class="even">
-<td>Hello there</td>
-<td>there</td>
-<td><strong>Hello</strong></td>
-<td>deletion</td>
-<td>5</td>
+<td align="center">Hello there</td>
+<td align="center">there</td>
+<td align="center"><strong>Hello</strong></td>
+<td align="center">deletion</td>
+<td align="center">6</td>
 </tr>
 <tr class="odd">
-<td>meow</td>
-<td>homeowner</td>
-<td>meow</td>
-<td>insertion</td>
-<td>5</td>
+<td align="center">meow</td>
+<td align="center">homeowner</td>
+<td align="center">meow</td>
+<td align="center">insertion</td>
+<td align="center">5</td>
 </tr>
 <tr class="even">
-<td>Shire</td>
-<td>Shareholder</td>
-<td>i → a + </td>
-<td>substitution and insertion</td>
-<td>7</td>
+<td align="center">Shire</td>
+<td align="center">Shareholder</td>
+<td align="center">i → a + </td>
+<td align="center">substitution and insertion</td>
+<td align="center">7</td>
 </tr>
 </tbody>
 </table>
@@ -411,8 +414,8 @@ Instead of only aiming to remove exact matches of the previous note sheet, we mu
 <div id="longest-common-substring-method" class="section level4 hasAnchor" number="3.1.1.2">
 <h4><span class="header-section-number">3.1.1.2</span> Longest Common Substring Method<a href="3-textcolor.html#longest-common-substring-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Whereas calculating edit distance between two pages of notes is useful when finding notes that wholly match the previous page, the Longest Common Substring (LCS) method can be used to find pieces of notes that match between pages, so that this repeated text can be removed.
-LCS accomplishes this goal through searching for common text between two sequential pages to be removed.</p>
-<p>For example, in Figure <a href="3-textcolor.html#fig:lcs">3.1</a>, the LCS between the two strings is “the cat enjoys napping”.
+LCS accomplishes this goal through searching for common text between two sequential pages to be removed.
+For example, in Figure <a href="3-textcolor.html#fig:lcs">3.1</a>, the LCS between the two strings is “the cat enjoys napping”.
 In the process of note cleaning, this would be the string that is removed from the second page of notes, resulting in “When it is quiet” as the cleaned (non-repeated) notes.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:lcs"></span>
 <img src="images/svg_graph.png" alt="Longest Common Substring Diagram" width="\linewidth" />
@@ -420,14 +423,15 @@ In the process of note cleaning, this would be the string that is removed from t
 Figure 3.1: Longest Common Substring Diagram
 </p>
 </div>
-<p><span class="citation">Landau &amp; Vishkin (1988)</span>’s discussion of pattern matching with k differences includes both a dynamic programming approach, as well as the construction of suffix trees.
-<span class="citation">(Keng, 2006)</span>.
-These methods correspond to those proposed for finding the Longest Common Substring between two sequences.
-This problem has been used to compare biological sequences (<span class="citation">Crochemore, Iliopoulos, Langiu, &amp; Mignosi (2017)</span>).
-An early solution for finding the longest common substring involves the construction of a suffix tree (<span class="citation">Charalampopoulos, Kociumaka, Pissis, &amp; Radoszewski (2021)</span>).
+<!-- @landau1988's discussion of pattern matching with k differences includes both a dynamic programming approach, as well as the construction of suffix trees. -->
+<!-- \authorcol{In the dynamic programming approach, results are recorded in a table or matrix form, while the suffix tree approach organizes text into a tree format for performing calculations} [@dynamicvstree]. -->
+<!-- These methods correspond to those proposed for finding the Longest Common Substring between two sequences. -->
+<p>Methods for computing the longest common substring between two sequences have been used to compare biological sequences <span class="citation">(Crochemore, Iliopoulos, Langiu, &amp; Mignosi, 2017)</span>.
+Solutions for finding the longest common substring usually the construction of a suffix tree <span class="citation">(Charalampopoulos, Kociumaka, Pissis, &amp; Radoszewski, 2021)</span> or table <span class="citation">(Landau &amp; Vishkin, 1988)</span>.
 The suffix tree method is described by <span class="citation">Gusfield (1997)</span>; in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leaves consist of the string’s terminal character: $ is used avoid recurrence with previous characters in the string.</p>
-<p>A solution implemented by <span class="citation">Bielow, Mastrobuoni, &amp; Kempa (2016)</span> in a CRAN R package uses dynamic programming, which involves the construction of a matrix that records the length of a matching string at character <span class="math inline">\(i\)</span> for string 1 (in the <span class="math inline">\(i\)</span>th row), and character <span class="math inline">\(j\)</span> for string 2 (in the <span class="math inline">\(j\)</span>th column).
-Because the dynamic programming method has an R implementation, it is utilized for this analysis.
+<p>A solution implemented by <span class="citation">Bielow, Mastrobuoni, &amp; Kempa (2016)</span> in a CRAN R package constructs a matrix that records the length of a matching string at character <span class="math inline">\(i\)</span> for string 1 (in the <span class="math inline">\(i\)</span>th row), and character <span class="math inline">\(j\)</span> for string 2 (in the <span class="math inline">\(j\)</span>th column).
+Because this matrix method has an R implementation, it is utilized for this analysis.
+However, <span class="citation">Bielow et al. (2016)</span> warns that this LCS method is inefficient, and meant to be used in small instances.
 <!-- The comparison between suffix tree and dynamic programming methods will be evaluated in a future analysis. -->
 This method creates an empty matrix, where the number of rows correspond to the length of the first string, and the number of columns correspond to the length of the second string.
 Thus, the first cell would correspond to the first character of both strings, and so on.
@@ -565,21 +569,15 @@ Thus, “bbacc” is identified as the LCS.</p>
 </tbody>
 </table>
 </div>
-<div id="collocation-analysis" class="section level4 hasAnchor" number="3.1.1.3">
-<h4><span class="header-section-number">3.1.1.3</span> Collocation Analysis<a href="3-textcolor.html#collocation-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="collocation-analysis-and-fuzzy-matching" class="section level4 hasAnchor" number="3.1.1.3">
+<h4><span class="header-section-number">3.1.1.3</span> Collocation Analysis and Fuzzy Matching<a href="3-textcolor.html#collocation-analysis-and-fuzzy-matching" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>After the notes are cleaned, sequences of 5 words (collocations) are used to find areas of the testimony that participants focus on.
-For indirect matches, such as typos, weights are applied to these fuzzy matches to contribute to the total count.</p>
-<p>While collocations traditionally refer to words that occur more frequently together - such as “white house”(<span class="citation">Merriam-Webster (2023)</span>), tools for collocation analysis helpfully provide the frequency of occurrence for strings of a specified length (<span class="citation">Schweinberger (2022)</span>).
-In a reference to algorithmic detection of plagiarism in computer programs, <span class="citation">Parker &amp; Hamblen (1989)</span> describe an algorithm that uses the character differences in order to compare how similar programs are.
-Other algorithms they discuss use code-specific features such as number of operators, lines of comments, and number of various loop statements.
-Because we are only concerned with the content of the notes, there is little information to be gained from formatting, as there is in plagiarism detection in programs.</p>
-</div>
-<div id="fuzzy-matching" class="section level4 hasAnchor" number="3.1.1.4">
-<h4><span class="header-section-number">3.1.1.4</span> Fuzzy Matching<a href="3-textcolor.html#fuzzy-matching" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Character differences can effectively be used to indicate similarity between participants’ notes and the study testimony.
+For indirect matches, such as typos, weights are applied to these fuzzy matches to contribute to the total count.
+While collocations traditionally refer to words that occur more frequently together - such as “white house”(<span class="citation">Merriam-Webster (2023)</span>), tools for collocation analysis helpfully provide the frequency of occurrence for strings of a specified length (<span class="citation">Schweinberger (2022)</span>).</p>
+<p>Character differences can effectively be used to indicate similarity between participants’ notes and the text transcript.
 This is useful in situation where individuals do not copy the notes directly.
-In these cases, fuzzy matching can be used to find the testimony collocation that is the most similar to the participants’ written notes.
-This approximate string matching allows for matching strings that do not correspond directly (<span class="citation">Gusfield (1997)</span>), which allows for matching up participants’ inexact notes with the closest testimony collocation.</p>
+In these cases, fuzzy matching can be used to find the transcript collocation that is the most similar to the participants’ written notes.
+This approximate string matching allows for matching strings that do not correspond directly (<span class="citation">Gusfield (1997)</span>), which allows for matching up participants’ inexact notes with the closest transcript collocation.</p>
 <p>In order to perform fuzzy matching on the indirect collocations from participants’ notes, I used ‘stringdist_join’ from the ‘fuzzyjoin’ R package <span class="citation">(Robinson, 2020)</span>.
 This function conducts a join with the best matching observations from the second dataset.
 For example, consider asking young children to spell their birth month.
@@ -700,10 +698,10 @@ While ‘stringdist_join’ will give values for all matches between the two dat
 </tr>
 </tbody>
 </table>
-<p>In Table <a href="3-textcolor.html#tab:fuzzymonth">3.4</a> above, “month.x” is the correctly spelled month, “month.y” is the children’s spellings, and “dist” is the edit distance between the two words.
-This same concept is applied to the notepad dataset.
-In this case, the transcript of the testimony is considered the “correct” version, and the participants’ collocations that do not directly match are considered the misspellings.
-This method finds the closest transcript collocation to the written collocation, with a maximum edit distance of 99 for collocations to still be considered a match.</p>
+<p>In Table <a href="3-textcolor.html#tab:fuzzymonth">3.4</a>, “month.x” is the correctly spelled month, “month.y” is the children’s spellings, and “dist” is the edit distance between the two words.
+This same concept is applied to matching collocations between a transcript and notepad.
+In this case, the transcript is considered the “correct” version, and the participants’ collocations that do not directly match are considered the misspellings.
+This method finds the closest transcript collocation to the written collocation.</p>
 </div>
 </div>
 </div>
@@ -965,13 +963,14 @@ Figure 3.5: Collocation Count for Page 2
 Then we used HTML gradient boxes, where the left color is that of the previous word, while the right color is based on the frequency of the current word.
 This results in a smooth transition between words.</p>
 </div>
-<div id="fuzzy-matching-1" class="section level4 hasAnchor" number="3.2.2.2">
-<h4><span class="header-section-number">3.2.2.2</span> Fuzzy Matching<a href="3-textcolor.html#fuzzy-matching-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="fuzzy-matching" class="section level4 hasAnchor" number="3.2.2.2">
+<h4><span class="header-section-number">3.2.2.2</span> Fuzzy Matching<a href="3-textcolor.html#fuzzy-matching" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Because the intent of the participant is more clear with simple typos (such as a single letter change) than with larger differences (such as the changing of multiple words), the count for these fuzzily matched observations are weighted based on the edit distance.
+I set a maximum edit distance of 99 to be considered a match.
 Specifically, a weight of <span class="math inline">\(\frac{1}{dist+0.25}\)</span> is used, where <span class="math inline">\(dist\)</span> represents the edit distance (between 1 and 99).
 An edit distance of 0 would receive a weight of 1, since fuzzy matching need not be applied.
 Another factor in the calculation is the number of matches per ‘misspelled’ collocation.
-To return to the month example, if an individual were to spell a month “Jur”, the edit distance to both “June” and “July” is 2.
+To return to the month example shown in Table <a href="3-textcolor.html#tab:fuzzymonth">3.4</a>, if an individual were to spell a month “Jur”, the edit distance to both “June” and “July” is 2.
 It is then unclear which month the person was born in, but they most likely meant June or July.
 Similarly, some collocation notes had the same edit distance for multiple transcript collocations.
 In these cases, the frequency of the ‘misspelled’ collocation notes are split evenly between the closest transcript collocations.

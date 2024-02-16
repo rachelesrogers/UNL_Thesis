@@ -129,8 +129,7 @@ introduction-1
 literature-review
 first-n-character-method
 longest-common-substring-method
-collocation-analysis
-fuzzy-matching
+collocation-analysis-and-fuzzy-matching
 implementation
 data-cleaning
 first-n-character-fnc-method
@@ -138,7 +137,7 @@ longest-common-substring-lcs-method
 hybrid-method
 note-analysis
 collocations
-fuzzy-matching-1
+fuzzy-matching
 standardization
 case-study
 the-data
