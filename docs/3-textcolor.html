@@ -839,66 +839,77 @@ This graph shows that and edit distance the FNC method’s threshold and the len
 I chose to set a threshold of 4 standard deviations above the mean note length for cleaned notes of the page of interest to constitute “unusually long” notes to apply the LCS method to.
 I chose 1/3 of the previous notes as the LCS threshold because the mean edit distance to the correct notes was comparable to the 1/4 + 5 character threshold, but it is more conservative for larger notes (as can be seen in Table <a href="3-textcolor.html#tab:cleancompare">3.7</a>).</p>
 <table>
-<caption>Comparison of Note Cleaning Methods <span id="tab:cleancompare">Table 3.7: </span></caption>
+<caption><span id="tab:cleancompare">Table 3.7: </span>Method Comparison</caption>
 <thead>
 <tr class="header">
-<th>Methods</th>
-<th>Error</th>
-<th>SD</th>
-<th>Time (Minutes)</th>
+<th align="left">Method</th>
+<th align="center">Time (Minutes)</th>
+<th align="center">Error</th>
+<th align="center">SD</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>FNC 1 Character</td>
-<td>498.965</td>
-<td>2769.826</td>
-<td>2.4</td>
+<td align="left">FNC 1 Character</td>
+<td align="center">7.17</td>
+<td align="center">498.96</td>
+<td align="center">2769.83</td>
 </tr>
 <tr class="even">
-<td>FNC 6 Character</td>
-<td>201.353</td>
-<td>1890.009</td>
-<td>2.5</td>
+<td align="left">FNC 6 Character</td>
+<td align="center">3.74</td>
+<td align="center">201.35</td>
+<td align="center">1890.01</td>
 </tr>
 <tr class="odd">
-<td>FNC 16 Character</td>
-<td>36.912</td>
-<td>411.252</td>
-<td>2.5</td>
+<td align="left">FNC 16 Character</td>
+<td align="center">3.43</td>
+<td align="center">36.91</td>
+<td align="center">411.25</td>
 </tr>
 <tr class="even">
-<td>LCS 40 Character</td>
-<td>6.337</td>
-<td>35.497</td>
-<td>75.8</td>
+<td align="left">LCS 40 Character</td>
+<td align="center">79.51</td>
+<td align="center">6.34</td>
+<td align="center">35.50</td>
 </tr>
 <tr class="odd">
-<td>LCS 1/2 Previous Notes</td>
-<td>7.288</td>
-<td>104.692</td>
-<td>85.7</td>
+<td align="left">LCS 1/2 Previous Notes</td>
+<td align="center">71.25</td>
+<td align="center">7.29</td>
+<td align="center">104.69</td>
 </tr>
 <tr class="even">
-<td>LCS 1/3 Previous Notes</td>
-<td>3.064</td>
-<td>26.769</td>
-<td>76.3</td>
+<td align="left">LCS 1/3 Previous Notes</td>
+<td align="center">71.33</td>
+<td align="center">3.06</td>
+<td align="center">26.77</td>
 </tr>
 <tr class="odd">
-<td>LCS 1/4 Previous Notes + 5</td>
-<td>2.823</td>
-<td>26.137</td>
-<td>73.6</td>
+<td align="left">LCS 1/4 Previous Notes + 5</td>
+<td align="center">71.05</td>
+<td align="center">2.82</td>
+<td align="center">26.14</td>
 </tr>
 <tr class="even">
-<td>Hybrid (FNC 16 and LCS 1/3)</td>
-<td>2.135</td>
-<td>24.625</td>
-<td>3.5</td>
+<td align="left">Hybrid (FNC 16 and LCS 1/3)</td>
+<td align="center">4.52</td>
+<td align="center">2.13</td>
+<td align="center">24.62</td>
 </tr>
 </tbody>
 </table>
+<!-- Methods | Error | SD | Time (Minutes) -->
+<!-- --------|--------|---------|--------- -->
+<!-- FNC 1 Character | 498.965 | 2769.826 | 2.4  -->
+<!-- FNC 6 Character | 201.353 | 1890.009 | 2.5  -->
+<!-- FNC 16 Character | 36.912 | 411.252 | 2.5  -->
+<!-- LCS 40 Character | 6.337 | 35.497 | 75.8  -->
+<!-- LCS 1/2 Previous Notes | 7.288 | 104.692 | 85.7  -->
+<!-- LCS 1/3 Previous Notes | 3.064 | 26.769 | 76.3  -->
+<!-- LCS 1/4 Previous Notes + 5 | 2.823 | 26.137 | 73.6  -->
+<!-- Hybrid (FNC 16 and LCS 1/3) | 2.135 | 24.625 | 3.5  -->
+<!-- : Comparison of Note Cleaning Methods (\#tab:cleancompare) -->
 <p>The results of this study are shown in Table <a href="3-textcolor.html#tab:cleancompare">3.7</a>.
 Notably, the mean edit distance to the correct notes (or the error) is large for the FNC methods, with a high level of variation.
 However, the computation time is approximately 2.5 minutes.
