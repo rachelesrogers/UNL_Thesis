@@ -820,7 +820,7 @@ The other issue with the LCS method is the greater computational complexity.</p>
 <p>I also investigated the use of a hybrid method in the hope that the FNC method could be used as a quick way to clean the simplest cases of notes, while the LCS method could be used to clean up the notes that are less clear-cut.
 In order to determine which observations would need the second cleaning method, I created Figure <a href="3-textcolor.html#fig:errorplot">3.2</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:errorplot"></span>
-<img src="images/cleaningerror.jpg" alt="Error Comparison" width="\linewidth" />
+<img src="thesis_files/figure-html/errorplot-1.png" alt="Error Comparison" width="\linewidth" />
 <p class="caption">
 Figure 3.2: Error Comparison
 </p>
@@ -839,7 +839,7 @@ This graph shows that and edit distance the FNC method’s threshold and the len
 I chose to set a threshold of 4 standard deviations above the mean note length for cleaned notes of the page of interest to constitute “unusually long” notes to apply the LCS method to.
 I chose 1/3 of the previous notes as the LCS threshold because the mean edit distance to the correct notes was comparable to the 1/4 + 5 character threshold, but it is more conservative for larger notes (as can be seen in Table <a href="3-textcolor.html#tab:cleancompare">3.7</a>).</p>
 <table>
-<caption><span id="tab:cleancompare">Table 3.7: </span>Method Comparison</caption>
+<caption><span id="tab:cleancompare">Table 3.7: </span>Note Cleaning Method Comparison</caption>
 <thead>
 <tr class="header">
 <th align="left">Method</th>
@@ -899,22 +899,11 @@ I chose 1/3 of the previous notes as the LCS threshold because the mean edit dis
 </tr>
 </tbody>
 </table>
-<!-- Methods | Error | SD | Time (Minutes) -->
-<!-- --------|--------|---------|--------- -->
-<!-- FNC 1 Character | 498.965 | 2769.826 | 2.4  -->
-<!-- FNC 6 Character | 201.353 | 1890.009 | 2.5  -->
-<!-- FNC 16 Character | 36.912 | 411.252 | 2.5  -->
-<!-- LCS 40 Character | 6.337 | 35.497 | 75.8  -->
-<!-- LCS 1/2 Previous Notes | 7.288 | 104.692 | 85.7  -->
-<!-- LCS 1/3 Previous Notes | 3.064 | 26.769 | 76.3  -->
-<!-- LCS 1/4 Previous Notes + 5 | 2.823 | 26.137 | 73.6  -->
-<!-- Hybrid (FNC 16 and LCS 1/3) | 2.135 | 24.625 | 3.5  -->
-<!-- : Comparison of Note Cleaning Methods (\#tab:cleancompare) -->
 <p>The results of this study are shown in Table <a href="3-textcolor.html#tab:cleancompare">3.7</a>.
 Notably, the mean edit distance to the correct notes (or the error) is large for the FNC methods, with a high level of variation.
-However, the computation time is approximately 2.5 minutes.
-In the case of the LCS method, the error is much lower, but the computation time is above an hour, taking approximately 30 times as long as the FNC method.
-The hybrid method appears to combine the benefits of both of these methods.
+However, the computation time is, between 3 and 8 minutes.
+In the case of the LCS method, the error is much lower, but the computation time is above an hour, taking approximately 17 times as long as the FNC method.
+The hybrid method combines the benefits of both of these methods.
 The error rate is on par with that of the LCS methods, while the time is only slightly above that of the FNC methods.
 The flowchart in Figure <a href="3-textcolor.html#fig:flowchart">3.3</a> shows how this hybrid method was applied.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:flowchart"></span>
@@ -991,27 +980,72 @@ These are then bound with collocations from the participants’ notes based on t
 We then take the average per word out of the possible collocations that the word could have appeared in.
 For example, the first word can only appear in a single collocation (in Table <a href="3-textcolor.html#tab:colex">3.8</a>, “The” only apprears in the first collocation, while “ran” appears in all three), so its average will be equal to the frequency of the first collocation.
 When multiple 5-grams appear in the same testimony page, the note frequency is divided by the number of appearances in the testimony in order to account for multiple occurrences.
-The Figure <a href="3-textcolor.html#fig:colcount">3.4</a> shows the highest frequencies for the second page of the testimony:</p>
+The Figure <a href="#fig:colcount"><strong>??</strong></a> shows the highest frequencies for the second page of the testimony:</p>
 <p>“In this case the defendant Richard Cole has been charged with willfully discharging a firearm in a place of business. This crime is a felony.
 Mr. Cole has pleaded not guilty to the charge.
 You will now hear a summary of the case.
 This summary was prepared by an objective court clerk.
 It describes all of the evidence that was presented at trial.”</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:colcount"></span>
-<img src="images/collocationcount.jpg" alt="Collocation Count for Page 2" width="\linewidth" />
-<p class="caption">
-Figure 3.4: Collocation Count for Page 2
-</p>
-</div>
-<p>The highlighted collocations in Figure <a href="3-textcolor.html#fig:colcount">3.4</a> show all of the collocations for the word “willfully” from the testimony above.
-The frequencies for ‘willfully’ can be averaged: <span class="math inline">\(\frac{121+93+91+76+75}{5}=91.2\)</span>.
-This number will correspond to the shading of the word “willfully” in the highlighted testimony of Figure <a href="3-textcolor.html#fig:highlights">3.5</a>.</p>
+<table>
+<caption><span id="tab:colcount">Table 3.9: </span>Collocation Count for Page 2</caption>
+<thead>
+<tr class="header">
+<th align="right">count</th>
+<th align="left">collocation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">212</td>
+<td align="left">discharging a firearm in a</td>
+</tr>
+<tr class="even">
+<td align="right">210</td>
+<td align="left">firearm in a place of</td>
+</tr>
+<tr class="odd">
+<td align="right">207</td>
+<td align="left">a firearm in a place</td>
+</tr>
+<tr class="even">
+<td align="right">203</td>
+<td align="left">in a place of business</td>
+</tr>
+<tr class="odd">
+<td align="right">193</td>
+<td align="left">willfully discharging a firearm in</td>
+</tr>
+<tr class="even">
+<td align="right">165</td>
+<td align="left">with willfully discharging a firearm</td>
+</tr>
+<tr class="odd">
+<td align="right">162</td>
+<td align="left">charged with willfully discharging a</td>
+</tr>
+<tr class="even">
+<td align="right">78</td>
+<td align="left">been charged with willfully discharging</td>
+</tr>
+<tr class="odd">
+<td align="right">77</td>
+<td align="left">has been charged with willfully</td>
+</tr>
+<tr class="even">
+<td align="right">75</td>
+<td align="left">cole has been charged with</td>
+</tr>
+</tbody>
+</table>
+<p>The highlighted collocations in Figure <a href="#fig:colcount"><strong>??</strong></a> show all of the collocations for the word “willfully” from the testimony above.
+The frequencies for ‘willfully’ can be averaged: <span class="math inline">\(\frac{193+165+162+78+77}{5}=135\)</span>.
+This number will correspond to the shading of the word “willfully” in the highlighted testimony of Figure <a href="3-textcolor.html#fig:highlights">3.4</a>.</p>
 <p>Note that the words have a gradient.
 This is to ensure a smooth transition between words in order to give an overall “highlight” effect, because we are interested in the important phrases in the testimony as opposed to the importance of individual words.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:highlights"></span>
-<img src="images/collocationanalysis.jpg" alt="Collocation Count for Page 2" width="\linewidth" />
+<img src="images/updatedcollocation.jpg" alt="Collocation Count for Page 2" width="\linewidth" />
 <p class="caption">
-Figure 3.5: Collocation Count for Page 2
+Figure 3.4: Collocation Count for Page 2
 </p>
 </div>
 <p>In order to create this effect, we first implemented a graph of the testimony in ‘ggplot2’ <span class="citation">(Wickham, 2016)</span> in order to assign color values to the frequencies based on a continuous gradient.
@@ -1050,13 +1084,13 @@ This would result in collocations with a final frequency weight of:</p>
 (z+\sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i})\frac{1}{ks}
 \]</span></p>
 <p>In this case, <span class="math inline">\(z\)</span> is the count of direct matches; <span class="math inline">\(\sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i}\)</span> is the weighted fuzzy match count as defined above; <span class="math inline">\(k\)</span> is the number of times the collocation re-occurs in the transcript page itself; and <span class="math inline">\(s\)</span> is the number of scenarios included in the frequency count.
-This standardization is included in Figure <a href="3-textcolor.html#fig:weightedhighlights">3.6</a>.
-In comparing with the unweighted highlighting without fuzzy matching of Figure <a href="3-textcolor.html#fig:highlights">3.5</a>, the same pattern emerges in terms of phrase popularity: most individuals focused on the crime.
+This standardization is included in Figure <a href="3-textcolor.html#fig:weightedhighlights">3.5</a>.
+In comparing with the unweighted highlighting without fuzzy matching of Figure <a href="3-textcolor.html#fig:highlights">3.4</a>, the same pattern emerges in terms of phrase popularity: most individuals focused on the crime.
 However, the numerical values of the gradient scale have changed.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:weightedhighlights"></span>
 <img src="images/weightedcollocationanalysis.jpg" alt="Collocation Count for Page 2" width="\linewidth" />
 <p class="caption">
-Figure 3.6: Collocation Count for Page 2
+Figure 3.5: Collocation Count for Page 2
 </p>
 </div>
 </div>
@@ -1089,10 +1123,10 @@ This is much smaller than the uncleaned total of 7,185 note pages, demonstrating
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:notecount"></span>
 <img src="thesis_files/figure-html/notecount-1.png" alt="Number of Notes Taken Per Page" width="\linewidth" />
 <p class="caption">
-Figure 3.7: Number of Notes Taken Per Page
+Figure 3.6: Number of Notes Taken Per Page
 </p>
 </div>
-<p>Figure <a href="3-textcolor.html#fig:notecount">3.7</a> consists of the number of participants who took notes based on the page number.
+<p>Figure <a href="3-textcolor.html#fig:notecount">3.6</a> consists of the number of participants who took notes based on the page number.
 In both the algorithm and the non-algorithm scenario, more individuals took notes on the first two pages of the testimony compared to the rest of the testimony.
 However, the plot shows that individuals took notes throughout the testimony.</p>
 </div>
@@ -1101,10 +1135,10 @@ However, the plot shows that individuals took notes throughout the testimony.</p
 <p>This final note analysis, which includes fuzzy matching, can be found at <a href="https://rachelesrogers.github.io/Presentations/Collocations/Collocation%20Comment%20Analysis.html" class="uri">https://rachelesrogers.github.io/Presentations/Collocations/Collocation%20Comment%20Analysis.html</a>.
 In visually comparing the highlighted transcripts for fuzzy matches to those without fuzzy matching, the results appear to be fairly similar.
 While the fuzzy matching did increase the frequency number, the overall trends remained the same for the dataset.
-This can be seen in Table <a href="3-textcolor.html#tab:nonfuzzycount">3.9</a>.
+This can be seen in Table <a href="3-textcolor.html#tab:nonfuzzycount">3.10</a>.
 The ranking of the collocations remains fairly consistent, aside from differences that can be seen in collocations that had the same non-fuzzy count.</p>
 <table>
-<caption>Table of Collocation Frequencies <span id="tab:nonfuzzycount">Table 3.9: </span></caption>
+<caption>Table of Collocation Frequencies <span id="tab:nonfuzzycount">Table 3.10: </span></caption>
 <thead>
 <tr class="header">
 <th>collocation</th>

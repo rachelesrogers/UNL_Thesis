@@ -404,20 +404,38 @@ You will now hear a summary of the case.
 This summary was prepared by an objective court clerk.
 It describes all of the evidence that was presented at trial."
 
-```{r}
-#| colcount,
-#| fig.cap= "Collocation Count for Page 2",
-#| fig.width= 7,
-#| fig.align= "center",
-#| echo= FALSE,
-#| message= FALSE,
-#| warning= FALSE
+```{r colcount, echo=FALSE, message=FALSE, warning=FALSE}
 
-include_graphics(path = "images/collocationcount.jpg")
+# devtools::install_github("rachelesrogers/highlightr")
+library(highlightr)
+study1_notes <- read.csv("data/study1_hybrid_dataset.csv")
+transcript <- read.csv("data/page2_transcript.csv")
+
+page2_notes <- study1_notes %>% filter(page_count == 2) %>% 
+  select("clean_prints", "page_notes")
+
+toks_comment <- token_comments(study1_notes)
+
+transcript_example_rename <- dplyr::rename(transcript, text=Text)
+
+toks_transcript <- token_transcript(transcript_example_rename)
+
+collocation_object_nonfuzzy <- collocate_comments(toks_transcript, toks_comment)
+
+collocation_object_nonfuzzy[order(-collocation_object_nonfuzzy$col_1),] %>% select(col_1, collocation) %>% rename(count=col_1) %>%
+  head(n=10) %>% kable(caption = "Collocation Count for Page 2")
+
+# merged_frequency_nonfuzzy <- transcript_frequency(transcript_example_rename, collocation_object_nonfuzzy)
+# 
+# freq_plot_nonfuzzy <- collocation_plot(merged_frequency_nonfuzzy)
+# 
+# page_highlight_nonfuzzy <- highlighted_text(freq_plot_nonfuzzy, merged_frequency_nonfuzzy)
+
+# include_graphics(path = "images/collocationcount.jpg")
 ```
 
 The highlighted collocations in Figure \@ref(fig:colcount) show all of the collocations for the word "willfully" from the testimony above.
-The frequencies for 'willfully' can be averaged: $\frac{121+93+91+76+75}{5}=91.2$.
+The frequencies for 'willfully' can be averaged: $\frac{193+165+162+78+77}{5}=135$.
 This number will correspond to the shading of the word "willfully" in the highlighted testimony of Figure \@ref(fig:highlights).
 
 Note that the words have a gradient.
@@ -432,7 +450,7 @@ This is to ensure a smooth transition between words in order to give an overall 
 #| message= FALSE,
 #| warning= FALSE
 
-include_graphics(path = "images/collocationanalysis.jpg")
+include_graphics(path = "images/updatedcollocation.jpg")
 ```
 
 In order to create this effect, we first implemented a graph of the testimony in 'ggplot2' [@ggplot] in order to assign color values to the frequencies based on a continuous gradient.
@@ -509,8 +527,6 @@ The method outlined above resulted in scenario testimonies that indicate where p
 #| echo= FALSE,
 #| message= FALSE,
 #| warning= FALSE
-
-study1_notes <- read.csv("data/study1_hybrid_dataset.csv")
 
 study1_unclean_notes <- read.csv("data/study1_clean_notes.csv")
 

@@ -47,7 +47,7 @@ fig:errorplot
 tab:cleancompare
 fig:flowchart
 tab:colex
-fig:colcount
+tab:colcount
 fig:highlights
 fig:weightedhighlights
 fig:notecount
