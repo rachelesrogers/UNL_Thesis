@@ -1912,7 +1912,7 @@ count & collocation\\
 \end{tabular}
 \end{table}
 
-The highlighted collocations in Figure \ref{fig:colcount} show all of the collocations for the word ``willfully'' from the testimony above.
+The highlighted collocations in Table \ref{tab:colcount} show all of the collocations for the word ``willfully'' from the testimony above.
 The frequencies for `willfully' can be averaged: \(\frac{121+93+91+76+75}{5}=91.2\).
 This number will correspond to the shading of the word ``willfully'' in the highlighted testimony of Figure \ref{fig:highlights}.
 
@@ -1953,6 +1953,69 @@ This results in a total fuzzy frequency per transcript collocation of:
 \]
 where \(x_i\) is the count for the participant's note collocation \(i\), \(d_i\) is the distance between the transcript collocation and the `misspelled' collocation \(i\), and \(c_i\) is the number of transcript collocation matches for note collocation \(i\).
 This quantity is then added to the count of direct collocation matches calculated in the previous section.
+
+For example, Table \ref{tab:fuzzyexam} demonstrates fuzzy matches on the testimony description text mentioned previously.
+Here, ``collocation.x'' refers to the collocation found in the transcript, while ``collocation.y'' refers to the ``misspelled'' collocation.
+With an edit distance of 1, it can be seen that these fuzzy matches are the result of simple typos - making it clear which transcript collocation the misspelled version corresponds to.
+While most collocation misspellings in the table only occur a single time (recorded via the ``count'' column), the last collocation occurs twice - indicating that two individual note takers removed an ``l'' from ``willfully''.
+The ``close\_freq'' column indicates if the participant's collocation matches with multiple collocations from the study - such as ``Jur'' in the example above.
+
+\begin{table}
+
+\caption{\label{tab:fuzzyexam}Close Fuzzy Matches from the Testimony}
+\centering
+\begin{tabular}[t]{l|l|r|r|r}
+\hline
+collocation.x & collocation.y & dist & count & close\_freq\\
+\hline
+charged with willfully discharging a & charged with wilfully discharging a & 1 & 1 & 1\\
+\hline
+charged with willfully discharging a & charged with willfully disharging a & 1 & 1 & 1\\
+\hline
+cole has been charged with & cole- has been charged with & 1 & 1 & 1\\
+\hline
+discharging a firearm in a & discharing a firearm in a & 1 & 1 & 1\\
+\hline
+the defendant richard cole has & he defendant richard cole has & 1 & 1 & 1\\
+\hline
+in a place of business & in a place of business- & 1 & 1 & 1\\
+\hline
+in a place of business & in a place of bussiness & 1 & 1 & 1\\
+\hline
+in this case the defendant & n this case the defendant & 1 & 1 & 1\\
+\hline
+richard cole has been charged & richard cole- has been charged & 1 & 1 & 1\\
+\hline
+willfully discharging a firearm in & wilfully discharging a firearm in & 1 & 2 & 1\\
+\hline
+\end{tabular}
+\end{table}
+
+Interestingly, when considering the most distant fuzzy matches in Table \ref{tab:fuzzyexamlarge}, these phrases do not come from simple typos, but rather from a non-testimony portion of the study, and may result from participants copying the entire web page into the note sheet.
+Because these phrases do not noticeably correspond to the transcript collocations, as shown in their larger edit distance, they are given less weight.
+In this case, we also see that the participant collocation of ``perception of trial information presentation'' was an equal edit distance from two collocations, based on the ``close\_freq'' value.
+Thus, the weight would be adjusted accordingly due to the presence of two close matches.
+
+\begin{table}
+
+\caption{\label{tab:fuzzyexamlarge}Distant Fuzzy Matches from the Testimony}
+\centering
+\begin{tabular}[t]{l|l|r|r|r}
+\hline
+collocation.x & collocation.y & dist & count & close\_freq\\
+\hline
+describes all of the evidence & information presentation and demonstrative evidence & 32 & 1 & 1\\
+\hline
+that was presented at trial & trial information presentation and demonstrative & 30 & 1 & 1\\
+\hline
+the evidence that was presented & perception of trial information presentation & 29 & 1 & 2\\
+\hline
+evidence that was presented at & perception of trial information presentation & 29 & 1 & 2\\
+\hline
+describes all of the evidence & presentation and demonstrative evidence study & 28 & 1 & 1\\
+\hline
+\end{tabular}
+\end{table}
 
 \hypertarget{standardization}{%
 \subsubsection{Standardization}\label{standardization}}
@@ -3243,7 +3306,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-02-21 12:41:55.365215.
+This version of the thesis was generated on 2024-02-21 13:46:50.518717.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -3272,7 +3335,7 @@ The computational environment that was used to generate this version is as follo
 ##    colorspace           2.1-0   2023-01-23 [1] CRAN (R 4.3.1)
 ##    crayon               1.5.2   2022-09-29 [1] CRAN (R 4.3.1)
 ##    data.table           1.15.0  2024-01-30 [1] CRAN (R 4.3.2)
-##    devtools             2.4.5   2022-10-11 [1] CRAN (R 4.3.2)
+##    devtools           * 2.4.5   2022-10-11 [1] CRAN (R 4.3.2)
 ##    DiagrammeR         * 1.0.11  2024-02-02 [1] CRAN (R 4.3.2)
 ##    digest               0.6.34  2024-01-11 [1] CRAN (R 4.3.2)
 ##    dplyr              * 1.1.4   2023-11-17 [1] CRAN (R 4.3.2)
@@ -3364,7 +3427,7 @@ The computational environment that was used to generate this version is as follo
 ##    tm                 * 0.7-11  2023-02-05 [1] CRAN (R 4.3.1)
 ##    tzdb                 0.4.0   2023-05-12 [1] CRAN (R 4.3.1)
 ##    urlchecker           1.0.1   2021-11-30 [1] CRAN (R 4.3.1)
-##    usethis              2.2.3   2024-02-19 [1] CRAN (R 4.3.2)
+##    usethis            * 2.2.3   2024-02-19 [1] CRAN (R 4.3.2)
 ##    utf8                 1.2.4   2023-10-22 [1] CRAN (R 4.3.2)
 ##    vctrs                0.6.5   2023-12-01 [1] CRAN (R 4.3.2)
 ##    viridisLite          0.4.2   2023-05-02 [1] CRAN (R 4.3.1)
