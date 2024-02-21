@@ -1889,31 +1889,31 @@ It describes all of the evidence that was presented at trial.''
 \hline
 count & collocation\\
 \hline
-212 & discharging a firearm in a\\
+134 & discharging a firearm in a\\
 \hline
-210 & firearm in a place of\\
+133 & firearm in a place of\\
 \hline
-207 & a firearm in a place\\
+130 & a firearm in a place\\
 \hline
-203 & in a place of business\\
+129 & in a place of business\\
 \hline
-193 & willfully discharging a firearm in\\
+121 & willfully discharging a firearm in\\
 \hline
-165 & with willfully discharging a firearm\\
+93 & with willfully discharging a firearm\\
 \hline
-162 & charged with willfully discharging a\\
+91 & charged with willfully discharging a\\
 \hline
-78 & been charged with willfully discharging\\
+76 & been charged with willfully discharging\\
 \hline
-77 & has been charged with willfully\\
+75 & has been charged with willfully\\
 \hline
-75 & cole has been charged with\\
+74 & cole has been charged with\\
 \hline
 \end{tabular}
 \end{table}
 
 The highlighted collocations in Figure \ref{fig:colcount} show all of the collocations for the word ``willfully'' from the testimony above.
-The frequencies for `willfully' can be averaged: \(\frac{193+165+162+78+77}{5}=135\).
+The frequencies for `willfully' can be averaged: \(\frac{121+93+91+76+75}{5}=91.2\).
 This number will correspond to the shading of the word ``willfully'' in the highlighted testimony of Figure \ref{fig:highlights}.
 
 Note that the words have a gradient.
@@ -1921,7 +1921,7 @@ This is to ensure a smooth transition between words in order to give an overall 
 
 \begin{figure}
 
-{\centering \includegraphics[width=\linewidth]{images/updatedcollocation} 
+{\centering \includegraphics[width=\linewidth]{images/collocationanalysis} 
 
 }
 
@@ -1975,7 +1975,7 @@ However, the numerical values of the gradient scale have changed.
 
 \begin{figure}
 
-{\centering \includegraphics[width=\linewidth]{images/updatedweightedcollocation} 
+{\centering \includegraphics[width=\linewidth]{images/weightedcollocationanalysis} 
 
 }
 
@@ -2027,11 +2027,11 @@ However, the plot shows that individuals took notes throughout the testimony.
 \hypertarget{final-output}{%
 \subsection{Final Output}\label{final-output}}
 
-This final note analysis, which includes fuzzy matching, can be found at \url{https://rachelesrogers.github.io/Presentations/Collocations/Collocation\%20Comment\%20Analysis.html}.
+This final note analysis, which includes fuzzy matching, can be found at \url{https://rachelesrogers.github.io/Presentations/Collocations/Collocation\%20Comment\%20Analysis\%20Cleaned.html}.
 In visually comparing the highlighted transcripts for fuzzy matches to those without fuzzy matching, the results appear to be fairly similar.
 While the fuzzy matching did increase the frequency number, the overall trends remained the same for the dataset.
 This can be seen in Table \ref{tab:nonfuzzycount}.
-There is a jump in the fuzzy matches for the charge (a felony) that is not seen in the non-fuzzy matching.
+The ranking of the collocations remains fairly consistent, aside from differences that can be seen in collocations that had the same non-fuzzy count.
 
 \begin{table}
 
@@ -2041,45 +2041,25 @@ There is a jump in the fuzzy matches for the charge (a felony) that is not seen 
 \hline
 collocation & Nonfuzzy & Fuzzy\\
 \hline
-discharging a firearm in a & 212 & 320.65\\
+discharging a firearm in a & 134 & 151.04\\
 \hline
-firearm in a place of & 210 & 447.86\\
+firearm in a place of & 133 & 139.37\\
 \hline
-a firearm in a place & 207 & 534.65\\
+a firearm in a place & 130 & 136.98\\
 \hline
-in a place of business & 203 & 301.27\\
+in a place of business & 129 & 136.43\\
 \hline
-willfully discharging a firearm in & 193 & 217.02\\
+willfully discharging a firearm in & 121 & 136.24\\
 \hline
-with willfully discharging a firearm & 165 & 187.04\\
+with willfully discharging a firearm & 93 & 107.45\\
 \hline
-charged with willfully discharging a & 162 & 180.11\\
+charged with willfully discharging a & 91 & 101.56\\
 \hline
-been charged with willfully discharging & 78 & 102.79\\
+been charged with willfully discharging & 76 & 83.05\\
 \hline
-has been charged with willfully & 77 & 94.99\\
+has been charged with willfully & 75 & 78.65\\
 \hline
-cole has been charged with & 75 & 156.33\\
-\hline
-a place of business this & 75 & 174.02\\
-\hline
-place of business this crime & 75 & 114.71\\
-\hline
-of business this crime is & 75 & 147.69\\
-\hline
-business this crime is a & 75 & 206.99\\
-\hline
-richard cole has been charged & 74 & 121.34\\
-\hline
-this crime is a felony & 74 & 300.71\\
-\hline
-pleaded not guilty to the & 60 & 165.18\\
-\hline
-not guilty to the charge & 60 & 218.79\\
-\hline
-cole has pleaded not guilty & 59 & 98.86\\
-\hline
-mr cole has pleaded not & 58 & 172.15\\
+cole has been charged with & 74 & 76.12\\
 \hline
 \end{tabular}
 \end{table}
@@ -3263,7 +3243,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-02-20 12:28:25.560679.
+This version of the thesis was generated on 2024-02-20 14:01:31.473553.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -3282,118 +3262,123 @@ The computational environment that was used to generate this version is as follo
 ##  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------
-##  ! package            * version    date (UTC) lib source
-##    assertthat           0.2.1      2019-03-21 [1] CRAN (R 4.3.1)
-##    bit                  4.0.5      2022-11-15 [1] CRAN (R 4.3.1)
-##    bit64                4.0.5      2020-08-30 [1] CRAN (R 4.3.1)
-##    bookdown             0.37       2023-12-01 [1] CRAN (R 4.3.2)
-##    cachem               1.0.8      2023-05-01 [1] CRAN (R 4.3.1)
-##    callr                3.7.3      2022-11-02 [1] CRAN (R 4.3.1)
-##    cli                  3.6.1      2023-03-23 [1] CRAN (R 4.3.1)
-##    colorspace           2.1-0      2023-01-23 [1] CRAN (R 4.3.1)
-##    crayon               1.5.2      2022-09-29 [1] CRAN (R 4.3.1)
-##    data.table           1.14.8     2023-02-17 [1] CRAN (R 4.3.1)
-##    devtools           * 2.4.5      2022-10-11 [1] CRAN (R 4.3.1)
-##    DiagrammeR         * 1.0.10     2023-05-18 [1] CRAN (R 4.3.1)
-##    digest               0.6.33     2023-07-07 [1] CRAN (R 4.3.1)
-##    dplyr              * 1.1.3      2023-09-03 [1] CRAN (R 4.3.1)
-##    ellipsis             0.3.2      2021-04-29 [1] CRAN (R 4.3.1)
-##    evaluate             0.23       2023-11-01 [1] CRAN (R 4.3.2)
-##    fansi                1.0.4      2023-01-22 [1] CRAN (R 4.3.1)
-##    farver               2.1.1      2022-07-06 [1] CRAN (R 4.3.1)
-##    fastmap              1.1.1      2023-02-24 [1] CRAN (R 4.3.1)
-##    fastmatch            1.1-4      2023-08-18 [1] CRAN (R 4.3.1)
-##    forcats            * 1.0.0      2023-01-29 [1] CRAN (R 4.3.1)
-##    formatR              1.14       2023-01-17 [1] CRAN (R 4.3.1)
-##    fs                   1.6.3      2023-07-20 [1] CRAN (R 4.3.1)
-##    fuzzyjoin          * 0.1.6      2020-05-15 [1] CRAN (R 4.3.1)
-##    generics             0.1.3      2022-07-05 [1] CRAN (R 4.3.1)
-##    GGally             * 2.1.2      2021-06-21 [1] CRAN (R 4.3.1)
-##    ggblend            * 0.1.0      2023-05-22 [1] CRAN (R 4.3.1)
-##    ggmosaic           * 0.3.3      2021-02-23 [1] CRAN (R 4.3.1)
-##    ggpcp              * 0.2.0      2022-11-28 [1] CRAN (R 4.3.1)
-##    ggplot2            * 3.4.4      2023-10-12 [1] CRAN (R 4.3.2)
-##    ggrepel            * 0.9.3      2023-02-03 [1] CRAN (R 4.3.1)
-##    ggridges           * 0.5.6      2024-01-23 [1] CRAN (R 4.3.2)
-##    git2r                0.32.0     2023-04-12 [1] CRAN (R 4.3.1)
-##    glue                 1.6.2      2022-02-24 [1] CRAN (R 4.3.1)
-##    gridExtra          * 2.3        2017-09-09 [1] CRAN (R 4.3.1)
-##    gtable               0.3.4      2023-08-21 [1] CRAN (R 4.3.1)
-##    highlightr         * 0.0.0.9000 2024-02-20 [1] Github (rachelesrogers/highlightr@4a50118)
-##    hms                  1.1.3      2023-03-21 [1] CRAN (R 4.3.1)
-##    htmltools            0.5.7      2023-11-03 [1] CRAN (R 4.3.2)
-##    htmlwidgets          1.6.2      2023-03-17 [1] CRAN (R 4.3.1)
-##    httpuv               1.6.11     2023-05-11 [1] CRAN (R 4.3.1)
-##    httr                 1.4.7      2023-08-15 [1] CRAN (R 4.3.1)
-##    huskydown          * 0.0.5      2023-10-04 [1] Github (benmarwick/huskydown@addb48e)
-##    jpeg               * 0.1-10     2022-11-29 [1] CRAN (R 4.3.0)
-##    jsonlite             1.8.8      2023-12-04 [1] CRAN (R 4.3.2)
-##    knitr              * 1.44       2023-09-11 [1] CRAN (R 4.3.1)
-##    labeling             0.4.3      2023-08-29 [1] CRAN (R 4.3.1)
-##    later                1.3.1      2023-05-02 [1] CRAN (R 4.3.1)
-##    lattice              0.22-5     2023-10-24 [1] CRAN (R 4.3.2)
-##    lazyeval             0.2.2      2019-03-15 [1] CRAN (R 4.3.1)
-##    lifecycle            1.0.4      2023-11-07 [1] CRAN (R 4.3.2)
-##    lubridate          * 1.9.2      2023-02-10 [1] CRAN (R 4.3.1)
-##    magrittr             2.0.3      2022-03-30 [1] CRAN (R 4.3.1)
-##    MASS                 7.3-60     2023-05-04 [2] CRAN (R 4.3.1)
-##    Matrix               1.6-5      2024-01-11 [1] CRAN (R 4.3.2)
-##    memoise              2.0.1      2021-11-26 [1] CRAN (R 4.3.1)
-##    mime                 0.12       2021-09-28 [1] CRAN (R 4.3.0)
-##    miniUI               0.1.1.1    2018-05-18 [1] CRAN (R 4.3.1)
-##    munsell              0.5.0      2018-06-12 [1] CRAN (R 4.3.1)
-##    nsyllable            1.0.1      2022-02-28 [1] CRAN (R 4.3.1)
-##    patchwork          * 1.1.3      2023-08-14 [1] CRAN (R 4.3.1)
-##    pillar               1.9.0      2023-03-22 [1] CRAN (R 4.3.1)
-##    pkgbuild             1.4.2      2023-06-26 [1] CRAN (R 4.3.1)
-##    pkgconfig            2.0.3      2019-09-22 [1] CRAN (R 4.3.1)
-##    pkgload              1.3.3      2023-09-22 [1] CRAN (R 4.3.1)
-##    plotly               4.10.2     2023-06-03 [1] CRAN (R 4.3.1)
-##    plyr               * 1.8.8      2022-11-11 [1] CRAN (R 4.3.1)
-##    prettyunits          1.2.0      2023-09-24 [1] CRAN (R 4.3.1)
-##    processx             3.8.2      2023-06-30 [1] CRAN (R 4.3.1)
-##    productplots         0.1.1      2016-07-02 [1] CRAN (R 4.3.1)
-##    profvis              0.3.8      2023-05-02 [1] CRAN (R 4.3.1)
-##    promises             1.2.1      2023-08-10 [1] CRAN (R 4.3.1)
-##    ps                   1.7.5      2023-04-18 [1] CRAN (R 4.3.1)
-##    purrr              * 1.0.2      2023-08-10 [1] CRAN (R 4.3.1)
-##    quanteda           * 3.3.1      2023-05-18 [1] CRAN (R 4.3.1)
-##    quanteda.textstats * 0.96.3     2023-08-09 [1] CRAN (R 4.3.1)
-##    R6                   2.5.1      2021-08-19 [1] CRAN (R 4.3.1)
-##    RColorBrewer         1.1-3      2022-04-03 [1] CRAN (R 4.3.0)
-##    Rcpp                 1.0.11     2023-07-06 [1] CRAN (R 4.3.1)
-##  D RcppParallel         5.1.7      2023-02-27 [1] CRAN (R 4.3.1)
-##    readr              * 2.1.4      2023-02-10 [1] CRAN (R 4.3.1)
-##    readtext           * 0.90       2023-06-03 [1] CRAN (R 4.3.1)
-##    remotes              2.4.2.1    2023-07-18 [1] CRAN (R 4.3.1)
-##    reshape              0.8.9      2022-04-12 [1] CRAN (R 4.3.1)
-##    rlang                1.1.1      2023-04-28 [1] CRAN (R 4.3.1)
-##    rmarkdown            2.25       2023-09-18 [1] CRAN (R 4.3.1)
-##    rstudioapi           0.15.0     2023-07-07 [1] CRAN (R 4.3.1)
-##    scales             * 1.3.0      2023-11-28 [1] CRAN (R 4.3.2)
-##    sessioninfo          1.2.2      2021-12-06 [1] CRAN (R 4.3.1)
-##    shiny                1.8.0      2023-11-17 [1] CRAN (R 4.3.2)
-##    stopwords            2.3        2021-10-28 [1] CRAN (R 4.3.1)
-##    stringdist         * 0.9.10     2022-11-07 [1] CRAN (R 4.3.0)
-##    stringi            * 1.7.12     2023-01-11 [1] CRAN (R 4.3.0)
-##    stringr            * 1.5.1      2023-11-14 [1] CRAN (R 4.3.2)
-##    tibble             * 3.2.1      2023-03-20 [1] CRAN (R 4.3.1)
-##    tidyr              * 1.3.0      2023-01-24 [1] CRAN (R 4.3.1)
-##    tidyselect           1.2.0      2022-10-10 [1] CRAN (R 4.3.1)
-##    tidyverse          * 2.0.0      2023-02-22 [1] CRAN (R 4.3.1)
-##    timechange           0.2.0      2023-01-11 [1] CRAN (R 4.3.1)
-##    tzdb                 0.4.0      2023-05-12 [1] CRAN (R 4.3.1)
-##    urlchecker           1.0.1      2021-11-30 [1] CRAN (R 4.3.1)
-##    usethis            * 2.2.2      2023-07-06 [1] CRAN (R 4.3.1)
-##    utf8                 1.2.3      2023-01-31 [1] CRAN (R 4.3.1)
-##    vctrs                0.6.3      2023-06-14 [1] CRAN (R 4.3.1)
-##    viridisLite          0.4.2      2023-05-02 [1] CRAN (R 4.3.1)
-##    visNetwork           2.1.2      2022-09-29 [1] CRAN (R 4.3.1)
-##    vroom                1.6.3      2023-04-28 [1] CRAN (R 4.3.1)
-##    withr                2.5.1      2023-09-26 [1] CRAN (R 4.3.1)
-##    xfun                 0.40       2023-08-09 [1] CRAN (R 4.3.1)
-##    xtable               1.8-4      2019-04-21 [1] CRAN (R 4.3.1)
-##    yaml                 2.3.7      2023-01-23 [1] CRAN (R 4.3.0)
+##  ! package            * version date (UTC) lib source
+##    assertthat           0.2.1   2019-03-21 [1] CRAN (R 4.3.1)
+##    bit                  4.0.5   2022-11-15 [1] CRAN (R 4.3.1)
+##    bit64                4.0.5   2020-08-30 [1] CRAN (R 4.3.1)
+##    bookdown             0.37    2023-12-01 [1] CRAN (R 4.3.2)
+##    cachem               1.0.8   2023-05-01 [1] CRAN (R 4.3.1)
+##    callr                3.7.3   2022-11-02 [1] CRAN (R 4.3.1)
+##    cli                  3.6.1   2023-03-23 [1] CRAN (R 4.3.1)
+##    colorspace           2.1-0   2023-01-23 [1] CRAN (R 4.3.1)
+##    crayon               1.5.2   2022-09-29 [1] CRAN (R 4.3.1)
+##    data.table           1.14.8  2023-02-17 [1] CRAN (R 4.3.1)
+##    devtools           * 2.4.5   2022-10-11 [1] CRAN (R 4.3.1)
+##    DiagrammeR         * 1.0.10  2023-05-18 [1] CRAN (R 4.3.1)
+##    digest               0.6.33  2023-07-07 [1] CRAN (R 4.3.1)
+##    dplyr              * 1.1.3   2023-09-03 [1] CRAN (R 4.3.1)
+##    ellipsis             0.3.2   2021-04-29 [1] CRAN (R 4.3.1)
+##    evaluate             0.23    2023-11-01 [1] CRAN (R 4.3.2)
+##    fansi                1.0.4   2023-01-22 [1] CRAN (R 4.3.1)
+##    farver               2.1.1   2022-07-06 [1] CRAN (R 4.3.1)
+##    fastmap              1.1.1   2023-02-24 [1] CRAN (R 4.3.1)
+##    fastmatch            1.1-4   2023-08-18 [1] CRAN (R 4.3.1)
+##    forcats            * 1.0.0   2023-01-29 [1] CRAN (R 4.3.1)
+##    formatR              1.14    2023-01-17 [1] CRAN (R 4.3.1)
+##    fs                   1.6.3   2023-07-20 [1] CRAN (R 4.3.1)
+##    fuzzyjoin          * 0.1.6   2020-05-15 [1] CRAN (R 4.3.1)
+##    generics             0.1.3   2022-07-05 [1] CRAN (R 4.3.1)
+##    GGally             * 2.1.2   2021-06-21 [1] CRAN (R 4.3.1)
+##    ggblend            * 0.1.0   2023-05-22 [1] CRAN (R 4.3.1)
+##    ggmosaic           * 0.3.3   2021-02-23 [1] CRAN (R 4.3.1)
+##    ggpcp              * 0.2.0   2022-11-28 [1] CRAN (R 4.3.1)
+##    ggplot2            * 3.4.4   2023-10-12 [1] CRAN (R 4.3.2)
+##    ggrepel            * 0.9.3   2023-02-03 [1] CRAN (R 4.3.1)
+##    ggridges           * 0.5.6   2024-01-23 [1] CRAN (R 4.3.2)
+##    git2r                0.32.0  2023-04-12 [1] CRAN (R 4.3.1)
+##    glue                 1.6.2   2022-02-24 [1] CRAN (R 4.3.1)
+##    gridExtra          * 2.3     2017-09-09 [1] CRAN (R 4.3.1)
+##    gtable               0.3.4   2023-08-21 [1] CRAN (R 4.3.1)
+##    hms                  1.1.3   2023-03-21 [1] CRAN (R 4.3.1)
+##    htmltools            0.5.7   2023-11-03 [1] CRAN (R 4.3.2)
+##    htmlwidgets          1.6.2   2023-03-17 [1] CRAN (R 4.3.1)
+##    httpuv               1.6.11  2023-05-11 [1] CRAN (R 4.3.1)
+##    httr                 1.4.7   2023-08-15 [1] CRAN (R 4.3.1)
+##    huskydown          * 0.0.5   2023-10-04 [1] Github (benmarwick/huskydown@addb48e)
+##    jpeg               * 0.1-10  2022-11-29 [1] CRAN (R 4.3.0)
+##    jsonlite             1.8.8   2023-12-04 [1] CRAN (R 4.3.2)
+##    knitr              * 1.44    2023-09-11 [1] CRAN (R 4.3.1)
+##    labeling             0.4.3   2023-08-29 [1] CRAN (R 4.3.1)
+##    later                1.3.1   2023-05-02 [1] CRAN (R 4.3.1)
+##    lattice              0.22-5  2023-10-24 [1] CRAN (R 4.3.2)
+##    lazyeval             0.2.2   2019-03-15 [1] CRAN (R 4.3.1)
+##    lifecycle            1.0.4   2023-11-07 [1] CRAN (R 4.3.2)
+##    lubridate          * 1.9.2   2023-02-10 [1] CRAN (R 4.3.1)
+##    magrittr             2.0.3   2022-03-30 [1] CRAN (R 4.3.1)
+##    MASS                 7.3-60  2023-05-04 [2] CRAN (R 4.3.1)
+##    Matrix               1.6-5   2024-01-11 [1] CRAN (R 4.3.2)
+##    memoise              2.0.1   2021-11-26 [1] CRAN (R 4.3.1)
+##    mime                 0.12    2021-09-28 [1] CRAN (R 4.3.0)
+##    miniUI               0.1.1.1 2018-05-18 [1] CRAN (R 4.3.1)
+##    munsell              0.5.0   2018-06-12 [1] CRAN (R 4.3.1)
+##    NLP                * 0.2-1   2020-10-14 [1] CRAN (R 4.3.0)
+##    nsyllable            1.0.1   2022-02-28 [1] CRAN (R 4.3.1)
+##    patchwork          * 1.1.3   2023-08-14 [1] CRAN (R 4.3.1)
+##    pillar               1.9.0   2023-03-22 [1] CRAN (R 4.3.1)
+##    pkgbuild             1.4.2   2023-06-26 [1] CRAN (R 4.3.1)
+##    pkgconfig            2.0.3   2019-09-22 [1] CRAN (R 4.3.1)
+##    pkgload              1.3.3   2023-09-22 [1] CRAN (R 4.3.1)
+##    plotly               4.10.2  2023-06-03 [1] CRAN (R 4.3.1)
+##    plyr               * 1.8.8   2022-11-11 [1] CRAN (R 4.3.1)
+##    prettyunits          1.2.0   2023-09-24 [1] CRAN (R 4.3.1)
+##    processx             3.8.2   2023-06-30 [1] CRAN (R 4.3.1)
+##    productplots         0.1.1   2016-07-02 [1] CRAN (R 4.3.1)
+##    profvis              0.3.8   2023-05-02 [1] CRAN (R 4.3.1)
+##    promises             1.2.1   2023-08-10 [1] CRAN (R 4.3.1)
+##    ps                   1.7.5   2023-04-18 [1] CRAN (R 4.3.1)
+##    purrr              * 1.0.2   2023-08-10 [1] CRAN (R 4.3.1)
+##    quanteda           * 3.3.1   2023-05-18 [1] CRAN (R 4.3.1)
+##    quanteda.textstats * 0.96.3  2023-08-09 [1] CRAN (R 4.3.1)
+##    R6                   2.5.1   2021-08-19 [1] CRAN (R 4.3.1)
+##    RColorBrewer       * 1.1-3   2022-04-03 [1] CRAN (R 4.3.0)
+##    Rcpp                 1.0.11  2023-07-06 [1] CRAN (R 4.3.1)
+##  D RcppParallel         5.1.7   2023-02-27 [1] CRAN (R 4.3.1)
+##    readr              * 2.1.4   2023-02-10 [1] CRAN (R 4.3.1)
+##    readtext           * 0.90    2023-06-03 [1] CRAN (R 4.3.1)
+##    remotes              2.4.2.1 2023-07-18 [1] CRAN (R 4.3.1)
+##    reshape              0.8.9   2022-04-12 [1] CRAN (R 4.3.1)
+##    rlang                1.1.1   2023-04-28 [1] CRAN (R 4.3.1)
+##    rmarkdown            2.25    2023-09-18 [1] CRAN (R 4.3.1)
+##    rstudioapi           0.15.0  2023-07-07 [1] CRAN (R 4.3.1)
+##    scales             * 1.3.0   2023-11-28 [1] CRAN (R 4.3.2)
+##    sessioninfo          1.2.2   2021-12-06 [1] CRAN (R 4.3.1)
+##    shiny                1.8.0   2023-11-17 [1] CRAN (R 4.3.2)
+##    slam                 0.1-50  2022-01-08 [1] CRAN (R 4.3.0)
+##    SnowballC          * 0.7.1   2023-04-25 [1] CRAN (R 4.3.0)
+##    stopwords            2.3     2021-10-28 [1] CRAN (R 4.3.1)
+##    stringdist         * 0.9.10  2022-11-07 [1] CRAN (R 4.3.0)
+##    stringi            * 1.7.12  2023-01-11 [1] CRAN (R 4.3.0)
+##    stringr            * 1.5.1   2023-11-14 [1] CRAN (R 4.3.2)
+##    tibble             * 3.2.1   2023-03-20 [1] CRAN (R 4.3.1)
+##    tidyr              * 1.3.0   2023-01-24 [1] CRAN (R 4.3.1)
+##    tidyselect           1.2.0   2022-10-10 [1] CRAN (R 4.3.1)
+##    tidyverse          * 2.0.0   2023-02-22 [1] CRAN (R 4.3.1)
+##    timechange           0.2.0   2023-01-11 [1] CRAN (R 4.3.1)
+##    tm                 * 0.7-11  2023-02-05 [1] CRAN (R 4.3.1)
+##    tzdb                 0.4.0   2023-05-12 [1] CRAN (R 4.3.1)
+##    urlchecker           1.0.1   2021-11-30 [1] CRAN (R 4.3.1)
+##    usethis            * 2.2.2   2023-07-06 [1] CRAN (R 4.3.1)
+##    utf8                 1.2.3   2023-01-31 [1] CRAN (R 4.3.1)
+##    vctrs                0.6.3   2023-06-14 [1] CRAN (R 4.3.1)
+##    viridisLite          0.4.2   2023-05-02 [1] CRAN (R 4.3.1)
+##    visNetwork           2.1.2   2022-09-29 [1] CRAN (R 4.3.1)
+##    vroom                1.6.3   2023-04-28 [1] CRAN (R 4.3.1)
+##    withr                2.5.1   2023-09-26 [1] CRAN (R 4.3.1)
+##    wordcloud          * 2.6     2018-08-24 [1] CRAN (R 4.3.1)
+##    xfun                 0.40    2023-08-09 [1] CRAN (R 4.3.1)
+##    xml2                 1.3.5   2023-07-06 [1] CRAN (R 4.3.1)
+##    xtable               1.8-4   2019-04-21 [1] CRAN (R 4.3.1)
+##    yaml                 2.3.7   2023-01-23 [1] CRAN (R 4.3.0)
 ## 
 ##  [1] C:/Users/rrogers9/AppData/Local/R/win-library/4.3
 ##  [2] C:/Program Files/R/R-4.3.1/library

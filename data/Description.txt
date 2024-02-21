@@ -1,0 +1,25 @@
+"In this study you will read a description of a criminal case and give your opinions about it. 
+Although it is based on a real case, some of the facts (and all of the names) have been changed 
+for the purposes of the study.</br></br>
+As when listening to testimony, you will not be able to go back.
+Please use the notepad to keep track of relevant information."
+
+"In this case, the defendant - Richard Cole - has been charged with willfully discharging a firearm 
+in a place of business. This crime is a felony. </br></br>
+Mr. Cole has pleaded not guilty to the charge. </br></br>
+You will now hear a summary of the case. This summary was prepared by an objective court clerk. 
+It describes all of the evidence that was presented at trial."
+
+"Police received a 911 call from a convenience store clerk stating that a man had entered the store, 
+pulled out a firearm, fired a shot into the ceiling, and then demanded money. The man ended up leaving 
+the store without receiving any money and no one was hurt by the gunshot. </br></br>
+The store clerk took the stand and stated that she did not get a close enough look at the robber's face 
+to make an identification, because the robber wore a ski mask.</br></br>
+As the cashier was pulling out the money to hand to him, she pressed a hidden button that activated an alarm 
+and called the police. Startled by the alarm bells, the robber rushed out of the store. </br></br>
+Next, the detective testified that he arrived at the convenience store and interviewed the clerk. The detective 
+recovered the 9mm bullet from the ceiling of the store, which was collected for forensic analysis. </br></br>
+Two days later, a police officer pulled over Richard Cole for speeding. During a search of the Defendant's vehicle, 
+the detective located a 9mm handgun, which was legally licensed to the Defendant. Because this gun was the same caliber 
+as the one used in the convenience store shooting, it was confiscated for testing. Richard Cole was subsequently arrested 
+and charged with willfully discharging a firearm in a place of business."
