@@ -32,7 +32,11 @@ csl: bib/apa.csl
 # Download your specific csl file and refer to it in the line above.
 lot: true
 lof: true
-#header-includes:
+header-includes: |
+  \makeatletter
+  \@ifundefined{Shaded}{}{\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}}
+  \makeatother
+  
 #- \usepackage{tikz}
 ---
 

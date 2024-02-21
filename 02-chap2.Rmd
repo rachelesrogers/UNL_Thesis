@@ -57,7 +57,7 @@ The edit distance can be used to determine the extent of matching text when comp
 | Word 1 | Word 2 | Transformation | Method | Edit Distance |
 |:-------:|:--------:|:----------------:|:--------:|:---------------:|
 | Hat     | Hot    | a &rarr; o    | substitution | 1 |
-| Hello there | there | **Hello** | deletion | 6 |
+| Hello there | there | Hello | deletion | 6 |
 | meow | homeowner | \textcolor{red}{ho}meow\textcolor{red}{ner} | insertion | 5 |
 | Shire  |  Shareholder  |  i &rarr; a + \textcolor{red}{holder} | substitution and insertion | 7 |
 
@@ -94,23 +94,23 @@ In the process of note cleaning, this would be the string that is removed from t
 #| warning= FALSE
 
  include_graphics(path = "images/svg_graph.png")
-
+# library(webshot)
 # grViz("digraph {
 #   graph [layout = dot, rankdir = TB]
-#   
-#   node [shape = rectangle]        
+# 
+#   node [shape = rectangle]
 #   rec1 [label = 'Page 1\n the cat enjoys napping in the afternoon']
 #   rec2 [label = 'Page 2\nWhen it is quiet, the cat enjoys napping']
 #   rec3 [label =  'LCS\n the cat enjoys napping']
 #   rec4 [label = 'Page 2 Clean\nWhen it is quiet']
-#   
+# 
 #   # edge definitions with the node IDs
 #   rec1 -> rec3
 #   rec2 -> rec3
 #   rec3 -> rec4
 #   }",
 #   height = 500, width=800)
- 
+
 ```
 
 <!-- @landau1988's discussion of pattern matching with k differences includes both a dynamic programming approach, as well as the construction of suffix trees. -->
@@ -226,14 +226,17 @@ comments <- read.csv("data/validation_dataset.csv")
 # write.csv(val_dataset, "validation_dataset.csv")
 # dim(val_dataset)
 
+library(DT)
 test_comments <-comments[1:4,]
 
 table_comments <- test_comments %>% filter(page_count==2 | page_count==3) %>% dplyr::select(page_count, notes)
 
 table_comments$notes <- str_wrap(table_comments$notes, width=35)
-
-kable(test_comments %>% filter(page_count==2 | page_count==3) %>% dplyr::select(page_count, notes), caption="Participant Note Example") 
+# 
+kable(test_comments %>% filter(page_count==2 | page_count==3) %>% dplyr::select(page_count, notes), caption="Participant Note Example")
 # %>% column_spec(2, width = "30em")
+
+# datatable(test_comments %>% filter(page_count==2 | page_count==3) %>% dplyr::select(page_count, notes), options = list(dom = 't'), caption="Participant Note Example")
 
 ```
 
