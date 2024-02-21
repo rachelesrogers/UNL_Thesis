@@ -49,7 +49,6 @@ fig:flowchart
 tab:colex
 tab:colcount
 fig:highlights
-tab:fuzzyexam
 tab:fuzzyexamlarge
 fig:weightedhighlights
 fig:notecount

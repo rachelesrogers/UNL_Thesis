@@ -1,7 +1,7 @@
 # Text analysis with Transcripts {#textcolor}
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
-
+library(pander)
 library(knitr)
 library(tidyverse)
 library(stringdist)
@@ -233,10 +233,15 @@ table_comments <- test_comments %>% filter(page_count==2 | page_count==3) %>% dp
 
 table_comments$notes <- str_wrap(table_comments$notes, width=35)
 # 
-kable(test_comments %>% filter(page_count==2 | page_count==3) %>% dplyr::select(page_count, notes), caption="Participant Note Example")
+# kable(test_comments %>% filter(page_count==2 | page_count==3) %>% dplyr::select(page_count, notes), caption="Participant Note Example")
 # %>% column_spec(2, width = "30em")
 
 # datatable(test_comments %>% filter(page_count==2 | page_count==3) %>% dplyr::select(page_count, notes), options = list(dom = 't'), caption="Participant Note Example")
+
+test_comments %>% filter(page_count==2 | page_count==3) %>%
+  dplyr::select(page_count, notes) %>%
+  pander(caption = "Participant Note Example", justify = 'left')
+
 
 ```
 
@@ -560,13 +565,15 @@ close_freq <- close_freq %>% rename("collocation.y"="Var1", "close_freq"="Freq")
   
 fuzzy_matches <- left_join(fuzzy_matches, close_freq)
 
-fuzzy_matches$collocation.x <- str_wrap(fuzzy_matches$collocation.x, width=15)
-fuzzy_matches$collocation.y <- str_wrap(fuzzy_matches$collocation.y, width=15)
+fuzzy_matches$collocation.x <- str_wrap(fuzzy_matches$collocation.x, width=5)
+fuzzy_matches$collocation.y <- str_wrap(fuzzy_matches$collocation.y, width=5)
   
 fuzzy_matches %>% 
   select(collocation.x, collocation.y, dist, count, close_freq) %>% 
   arrange(dist) %>%
-    head(n=10) %>% kable(caption = "Close Fuzzy Matches from the Testimony")
+    head(n=10) %>% 
+  pander(caption = "Close Fuzzy Matches from the Testimony", justify = 'left')
+  # kable(caption = "Close Fuzzy Matches from the Testimony")
 
 ```
 Interestingly, when considering the most distant fuzzy matches in Table \@ref(tab:fuzzyexamlarge), these phrases do not come from simple typos, but rather from a non-testimony portion of the study, and may result from participants copying the entire web page into the note sheet.
@@ -579,7 +586,9 @@ Thus, the weight would be adjusted accordingly due to the presence of two close 
 fuzzy_matches %>% 
   select(collocation.x, collocation.y, dist, count, close_freq) %>% 
   arrange(-dist) %>%
-    head(n=5) %>% kable(caption = "Distant Fuzzy Matches from the Testimony")
+    head(n=5) %>% 
+  pander(caption = "Distant Fuzzy Matches from the Testimony", justify = 'left')
+  # kable(caption = "Distant Fuzzy Matches from the Testimony")
 
 ```
 
