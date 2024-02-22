@@ -405,7 +405,7 @@ These are then bound with collocations from the participants' notes based on the
 We then take the average per word out of the possible collocations that the word could have appeared in.
 For example, the first word can only appear in a single collocation (in Table \@ref(tab:colex), "The" only apprears in the first collocation, while "ran" appears in all three), so its average will be equal to the frequency of the first collocation. 
 When multiple 5-grams appear in the same testimony page, the note frequency is divided by the number of appearances in the testimony in order to account for multiple occurrences.
-The Figure \@ref(fig:colcount) shows the highest frequencies for the second page of the testimony: 
+Table \@ref(tab:colcount) shows the highest frequencies for the second page of the testimony: 
 
 "In this case the defendant Richard Cole has been charged with willfully discharging a firearm in a place of business. This crime is a felony. 
 Mr. Cole has pleaded not guilty to the charge. 
@@ -461,13 +461,15 @@ merged_descript<- transcript_frequency("data/Description.txt",2, col_descript_to
 descript_plot <-collocate_plot(merged_descript,12)
 page2_text <- highlighted_text(descript_plot,merged_descript)
 
+
 col_descript_tomerge[order(-col_descript_tomerge$col_1),] %>% select(col_1, collocation) %>% rename(count=col_1) %>%
-  head(n=10) %>% kable(caption = "Collocation Count for Page 2")
+  head(n=10) %>% 
+  pander(caption = "(\\#tab:colcount) Collocation Count for Page 2", emphasize.rows = 5:9, justify = 'left', split.cells = 40)
 
 
 ```
 
-The highlighted collocations in Table \@ref(tab:colcount) show all of the collocations for the word "willfully" from the testimony above.
+The italicized collocations in Table \@ref(tab:colcount) show all of the collocations for the word "willfully" from the testimony above.
 The frequencies for 'willfully' can be averaged: $\frac{121+93+91+76+75}{5}=91.2$.
 This number will correspond to the shading of the word "willfully" in the highlighted testimony of Figure \@ref(fig:highlights).
 
@@ -574,11 +576,12 @@ fuzzy_matches %>%
   arrange(dist) %>%
     head(n=10) %>% 
   pander(style = "grid",
-         caption = "(\\#tab:fuzzyexam) Close Fuzzy Matches from the Testimony", 
+         caption = "(\\#tab:fuzzyexam) Close Fuzzy Matches from the Testimony",
          justify = 'left', split.cells = 20)
   # kable(caption = "Close Fuzzy Matches from the Testimony")
 
 ```
+
 Interestingly, when considering the most distant fuzzy matches in Table \@ref(tab:fuzzyexamlarge), these phrases do not come from simple typos, but rather from a non-testimony portion of the study, and may result from participants copying the entire web page into the note sheet.
 Because these phrases do not noticeably correspond to the transcript collocations, as shown in their larger edit distance, they are given less weight.
 In this case, we also see that the participant collocation of "perception of trial information presentation" was an equal edit distance from two collocations, based on the "close_freq" value.
@@ -616,7 +619,7 @@ However, the numerical values of the gradient scale have changed.
 
 ```{r}
 #| weightedhighlights,
-#| fig.cap= "Collocation Count for Page 2",
+#| fig.cap= "Highlighted Fuzzy Collocation for Page 2",
 #| fig.width= 7,
 #| fig.align= "center",
 #| echo= FALSE,

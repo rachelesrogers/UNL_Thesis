@@ -984,60 +984,69 @@ These are then bound with collocations from the participants’ notes based on t
 We then take the average per word out of the possible collocations that the word could have appeared in.
 For example, the first word can only appear in a single collocation (in Table <a href="3-textcolor.html#tab:colex">3.8</a>, “The” only apprears in the first collocation, while “ran” appears in all three), so its average will be equal to the frequency of the first collocation.
 When multiple 5-grams appear in the same testimony page, the note frequency is divided by the number of appearances in the testimony in order to account for multiple occurrences.
-The Figure <a href="#fig:colcount"><strong>??</strong></a> shows the highest frequencies for the second page of the testimony:</p>
+Table <a href="3-textcolor.html#tab:colcount">3.9</a> shows the highest frequencies for the second page of the testimony:</p>
 <p>“In this case the defendant Richard Cole has been charged with willfully discharging a firearm in a place of business. This crime is a felony.
 Mr. Cole has pleaded not guilty to the charge.
 You will now hear a summary of the case.
 This summary was prepared by an objective court clerk.
 It describes all of the evidence that was presented at trial.”</p>
-<table>
-<caption><span id="tab:colcount">Table 3.9: </span>Collocation Count for Page 2</caption>
+<table style="width:56%;">
+<caption><span id="tab:colcount">Table 3.9: </span> Collocation Count for Page 2</caption>
+<colgroup>
+<col width="11%" />
+<col width="44%" />
+</colgroup>
 <thead>
 <tr class="header">
-<th align="right">count</th>
-<th align="left">collocation</th>
+<th align="center">count</th>
+<th align="center">collocation</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">134</td>
-<td align="left">discharging a firearm in a</td>
+<td align="center">134</td>
+<td align="center">discharging a firearm in a</td>
 </tr>
 <tr class="even">
-<td align="right">133</td>
-<td align="left">firearm in a place of</td>
+<td align="center">133</td>
+<td align="center">firearm in a place of</td>
 </tr>
 <tr class="odd">
-<td align="right">130</td>
-<td align="left">a firearm in a place</td>
+<td align="center">130</td>
+<td align="center">a firearm in a place</td>
 </tr>
 <tr class="even">
-<td align="right">129</td>
-<td align="left">in a place of business</td>
+<td align="center">129</td>
+<td align="center">in a place of business</td>
 </tr>
 <tr class="odd">
-<td align="right">121</td>
-<td align="left">willfully discharging a firearm in</td>
+<td align="center">121</td>
+<td align="center">willfully discharging a
+firearm in</td>
 </tr>
 <tr class="even">
-<td align="right">93</td>
-<td align="left">with willfully discharging a firearm</td>
+<td align="center"><em>93</em></td>
+<td align="center"><em>with willfully discharging a
+firearm</em></td>
 </tr>
 <tr class="odd">
-<td align="right">91</td>
-<td align="left">charged with willfully discharging a</td>
+<td align="center"><em>91</em></td>
+<td align="center"><em>charged with willfully
+discharging a</em></td>
 </tr>
 <tr class="even">
-<td align="right">76</td>
-<td align="left">been charged with willfully discharging</td>
+<td align="center"><em>76</em></td>
+<td align="center"><em>been charged with willfully
+discharging</em></td>
 </tr>
 <tr class="odd">
-<td align="right">75</td>
-<td align="left">has been charged with willfully</td>
+<td align="center"><em>75</em></td>
+<td align="center"><em>has been charged with
+willfully</em></td>
 </tr>
 <tr class="even">
-<td align="right">74</td>
-<td align="left">cole has been charged with</td>
+<td align="center"><em>74</em></td>
+<td align="center"><em>cole has been charged with</em></td>
 </tr>
 </tbody>
 </table>
@@ -1081,11 +1090,7 @@ With an edit distance of 1, it can be seen that these fuzzy matches are the resu
 While most collocation misspellings in the table only occur a single time (recorded via the “count” column), the last collocation occurs twice - indicating that two individual note takers removed an “l” from “willfully”.
 The “close_freq” column indicates if the participant’s collocation matches with multiple collocations from the study - such as “Jur” in the example above.</p>
 <table style="width:96%;">
-<caption><span id="tab:fuzzyexam">Table 3.10: </span> Close Fuzzy Matches from the Testimony
-Interestingly, when considering the most distant fuzzy matches in Table <a href="3-textcolor.html#tab:fuzzyexamlarge">3.11</a>, these phrases do not come from simple typos, but rather from a non-testimony portion of the study, and may result from participants copying the entire web page into the note sheet.
-Because these phrases do not noticeably correspond to the transcript collocations, as shown in their larger edit distance, they are given less weight.
-In this case, we also see that the participant collocation of “perception of trial information presentation” was an equal edit distance from two collocations, based on the “close_freq” value.
-Thus, the weight would be adjusted accordingly due to the presence of two close matches.</caption>
+<caption><span id="tab:fuzzyexam">Table 3.10: </span> Close Fuzzy Matches from the Testimony</caption>
 <colgroup>
 <col width="26%" />
 <col width="31%" />
@@ -1200,6 +1205,10 @@ a firearm in</td>
 </tr>
 </tbody>
 </table>
+<p>Interestingly, when considering the most distant fuzzy matches in Table <a href="3-textcolor.html#tab:fuzzyexamlarge">3.11</a>, these phrases do not come from simple typos, but rather from a non-testimony portion of the study, and may result from participants copying the entire web page into the note sheet.
+Because these phrases do not noticeably correspond to the transcript collocations, as shown in their larger edit distance, they are given less weight.
+In this case, we also see that the participant collocation of “perception of trial information presentation” was an equal edit distance from two collocations, based on the “close_freq” value.
+Thus, the weight would be adjusted accordingly due to the presence of two close matches.</p>
 <table style="width:96%;">
 <caption><span id="tab:fuzzyexamlarge">Table 3.11: </span> Distant Fuzzy Matches from the Testimony</caption>
 <colgroup>
@@ -1289,9 +1298,9 @@ This standardization is included in Figure <a href="3-textcolor.html#fig:weighte
 In comparing with the unweighted highlighting without fuzzy matching of Figure <a href="3-textcolor.html#fig:highlights">3.4</a>, the same pattern emerges in terms of phrase popularity: most individuals focused on the crime.
 However, the numerical values of the gradient scale have changed.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:weightedhighlights"></span>
-<img src="images/weightedcollocationanalysis.jpg" alt="Collocation Count for Page 2" width="\linewidth" />
+<img src="images/weightedcollocationanalysis.jpg" alt="Highlighted Fuzzy Collocation for Page 2" width="\linewidth" />
 <p class="caption">
-Figure 3.5: Collocation Count for Page 2
+Figure 3.5: Highlighted Fuzzy Collocation for Page 2
 </p>
 </div>
 </div>

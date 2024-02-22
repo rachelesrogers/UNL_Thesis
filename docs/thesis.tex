@@ -1887,7 +1887,7 @@ These are then bound with collocations from the participants' notes based on the
 We then take the average per word out of the possible collocations that the word could have appeared in.
 For example, the first word can only appear in a single collocation (in Table \ref{tab:colex}, ``The'' only apprears in the first collocation, while ``ran'' appears in all three), so its average will be equal to the frequency of the first collocation.
 When multiple 5-grams appear in the same testimony page, the note frequency is divided by the number of appearances in the testimony in order to account for multiple occurrences.
-The Figure \ref{fig:colcount} shows the highest frequencies for the second page of the testimony:
+Table \ref{tab:colcount} shows the highest frequencies for the second page of the testimony:
 
 ``In this case the defendant Richard Cole has been charged with willfully discharging a firearm in a place of business. This crime is a felony.
 Mr.~Cole has pleaded not guilty to the charge.
@@ -1895,36 +1895,44 @@ You will now hear a summary of the case.
 This summary was prepared by an objective court clerk.
 It describes all of the evidence that was presented at trial.''
 
-\begin{table}
-
-\caption{\label{tab:colcount}Collocation Count for Page 2}
-\centering
-\begin{tabular}[t]{r|l}
-\hline
-count & collocation\\
-\hline
-134 & discharging a firearm in a\\
-\hline
-133 & firearm in a place of\\
-\hline
-130 & a firearm in a place\\
-\hline
-129 & in a place of business\\
-\hline
-121 & willfully discharging a firearm in\\
-\hline
-93 & with willfully discharging a firearm\\
-\hline
-91 & charged with willfully discharging a\\
-\hline
-76 & been charged with willfully discharging\\
-\hline
-75 & has been charged with willfully\\
-\hline
-74 & cole has been charged with\\
-\hline
-\end{tabular}
-\end{table}
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.1111}}
+  >{\centering\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.4444}}@{}}
+\caption{\label{tab:colcount} Collocation Count for Page 2}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+count
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+collocation
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+count
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+collocation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+134 & discharging a firearm in a \\
+133 & firearm in a place of \\
+130 & a firearm in a place \\
+129 & in a place of business \\
+121 & willfully discharging a
+firearm in \\
+\emph{93} & \emph{with willfully discharging a
+firearm} \\
+\emph{91} & \emph{charged with willfully
+discharging a} \\
+\emph{76} & \emph{been charged with willfully
+discharging} \\
+\emph{75} & \emph{has been charged with
+willfully} \\
+\emph{74} & \emph{cole has been charged with} \\
+\end{longtable}
 
 The highlighted collocations in Table \ref{tab:colcount} show all of the collocations for the word ``willfully'' from the testimony above.
 The frequencies for `willfully' can be averaged: \(\frac{121+93+91+76+75}{5}=91.2\).
@@ -1980,11 +1988,7 @@ The ``close\_freq'' column indicates if the participant's collocation matches wi
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0959}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1096}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1781}}@{}}
-\caption{\label{tab:fuzzyexam} Close Fuzzy Matches from the Testimony
-Interestingly, when considering the most distant fuzzy matches in Table \ref{tab:fuzzyexamlarge}, these phrases do not come from simple typos, but rather from a non-testimony portion of the study, and may result from participants copying the entire web page into the note sheet.
-Because these phrases do not noticeably correspond to the transcript collocations, as shown in their larger edit distance, they are given less weight.
-In this case, we also see that the participant collocation of ``perception of trial information presentation'' was an equal edit distance from two collocations, based on the ``close\_freq'' value.
-Thus, the weight would be adjusted accordingly due to the presence of two close matches.}\tabularnewline
+\caption{\label{tab:fuzzyexam} Close Fuzzy Matches from the Testimony}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 collocation.x
@@ -2051,6 +2055,11 @@ discharging a
 firearm in & wilfully discharging
 a firearm in & 1 & 2 & 1 \\
 \end{longtable}
+
+Interestingly, when considering the most distant fuzzy matches in Table \ref{tab:fuzzyexamlarge}, these phrases do not come from simple typos, but rather from a non-testimony portion of the study, and may result from participants copying the entire web page into the note sheet.
+Because these phrases do not noticeably correspond to the transcript collocations, as shown in their larger edit distance, they are given less weight.
+In this case, we also see that the participant collocation of ``perception of trial information presentation'' was an equal edit distance from two collocations, based on the ``close\_freq'' value.
+Thus, the weight would be adjusted accordingly due to the presence of two close matches.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3026}}
@@ -2137,7 +2146,7 @@ However, the numerical values of the gradient scale have changed.
 
 }
 
-\caption{Collocation Count for Page 2}\label{fig:weightedhighlights}
+\caption{Highlighted Fuzzy Collocation for Page 2}\label{fig:weightedhighlights}
 \end{figure}
 
 \hypertarget{case-study}{%
@@ -2260,13 +2269,16 @@ Another application of this type of analysis may be used in the evaluation of st
 \hypertarget{study-1-and-scale-compression}{%
 \subsection{Study 1 and Scale Compression}\label{study-1-and-scale-compression}}
 
-The results from the initial study found in Chapter \ref{study1} call into question the use of Likert response scales when evaluation jury perception of firearms experts, as well as the use of a transcript testimony format.
+The results from the initial study found in Chapter \ref{study1} call into question the use of Likert response scales when evaluating jury perception of firearms experts, as well as the use of a transcript testimony format.
 
 Responses pertaining to the credibility of the expert, as well as the reliability and scientificity of the evidence, suffered from scale compression when a Likert scale was used - participants indicated overall confidence in credibility, reliability, and scientificity by mainly selecting the two highest categories of each scale.
 This lack of variation in scale responses makes it difficult to discern potential differences between treatment conditions.
-Due to this difficulty, we conducted a micro study comparing various response types, in order to determine substitute questions that may be more sensitive to scenario differences.
+Due to this difficulty, we conducted a follow-up study comparing various response types, in order to determine substitute questions that may result in a wider variety of responses.
+
 Additional changes include the addition of jury instructions on the part of the judge, instructing members of the jury to treat the firearms examiner as they would any other witness and removing the use of the term ``expert''.
-Additional cross examination testimony with regards to the firearms examiner's inability to specifically tie the defendant to the crime scene is included as well.
+We enacted this change after investigating the scale compression in responses, and finding that United States Courts for the Ninth Circuit (2019) suggests that the use of the term ``expert'' may result in jurors giving the testimony more weight, and provides sample text for the judge to clarify the presence of the witnesses as opinion witnesses instead of experts.
+Additional cross examination testimony with regards to the firearms examiner's inability to specifically tie the defendant to the crime scene is included as well, due to a lack of distinction in participants between evidence tying the firearm to the crime scene, and evidence tying the defendant to the crime scene.
+As in the initial study, these changes were directly related to trial transcripts or sample wording.
 The transcript for the second study can be found in Appendix \ref{study-2-changes}.
 
 In the initial study, some participants were confused about who the witnesses were testifying for.
@@ -3401,7 +3413,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-02-22 08:49:25.704157.
+This version of the thesis was generated on 2024-02-22 14:09:40.327126.
 
 The computational environment that was used to generate this version is as follows:
 

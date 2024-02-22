@@ -5,13 +5,16 @@
 
 ### Study 1 and Scale Compression
 
-The results from the initial study found in Chapter \@ref(study1) call into question the use of Likert response scales when evaluation jury perception of firearms experts, as well as the use of a transcript testimony format.
+The results from the initial study found in Chapter \@ref(study1) call into question the use of Likert response scales when evaluating jury perception of firearms experts, as well as the use of a transcript testimony format.
 
 Responses pertaining to the credibility of the expert, as well as the reliability and scientificity of the evidence, suffered from scale compression when a Likert scale was used - participants indicated overall confidence in credibility, reliability, and scientificity by mainly selecting the two highest categories of each scale.
 This lack of variation in scale responses makes it difficult to discern potential differences between treatment conditions.
-Due to this difficulty, we conducted a micro study comparing various response types, in order to determine substitute questions that may be more sensitive to scenario differences.
+Due to this difficulty, we conducted a follow-up study comparing various response types, in order to determine substitute questions that may result in a wider variety of responses.
+
 Additional changes include the addition of jury instructions on the part of the judge, instructing members of the jury to treat the firearms examiner as they would any other witness and removing the use of the term "expert".
-Additional cross examination testimony with regards to the firearms examiner's inability to specifically tie the defendant to the crime scene is included as well.
+We enacted this change after investigating the scale compression in responses, and finding that @OpinionEvidence suggests that the use of the term "expert" may result in jurors giving the testimony more weight, and provides sample text for the judge to clarify the presence of the witnesses as opinion witnesses instead of experts.
+Additional cross examination testimony with regards to the firearms examiner's inability to specifically tie the defendant to the crime scene is included as well, due to a lack of distinction in participants between evidence tying the firearm to the crime scene, and evidence tying the defendant to the crime scene.
+As in the initial study, these changes were directly related to trial transcripts or sample wording.
 The transcript for the second study can be found in Appendix \@ref(study-2-changes).
 
 In the initial study, some participants were confused about who the witnesses were testifying for.
