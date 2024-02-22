@@ -1657,7 +1657,7 @@ Because participants are provided with the same continuous notepad throughout th
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.1806}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.4583}}@{}}
-\caption{Participant Note Example}\tabularnewline
+\caption{\label{tab:noteexample} Participant Note Example}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 page\_count
@@ -1975,88 +1975,16 @@ While most collocation misspellings in the table only occur a single time (recor
 The ``close\_freq'' column indicates if the participant's collocation matches with multiple collocations from the study - such as ``Jur'' in the example above.
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4074}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4074}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0864}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0988}}@{}}
-\caption{Close Fuzzy Matches from the Testimony (continued below)}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-collocation.x
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-collocation.y
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-dist
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-count
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-collocation.x
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-collocation.y
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-dist
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-count
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-charged with willfully
-discharging a & charged with wilfully
-discharging a & 1 & 1 \\
-charged with willfully
-discharging a & charged with willfully
-disharging a & 1 & 1 \\
-cole has been charged with & cole- has been charged with & 1 & 1 \\
-discharging a firearm in a & discharing a firearm in a & 1 & 1 \\
-the defendant richard cole has & he defendant richard cole has & 1 & 1 \\
-in a place of business & in a place of business- & 1 & 1 \\
-in a place of business & in a place of bussiness & 1 & 1 \\
-in this case the defendant & n this case the defendant & 1 & 1 \\
-richard cole has been charged & richard cole- has been charged & 1 & 1 \\
-willfully discharging a
-firearm in & wilfully discharging a firearm
-in & 1 & 2 \\
-\end{longtable}
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 0\tabcolsep) * \real{0.1806}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-close\_freq
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-1 \\
-1 \\
-1 \\
-1 \\
-1 \\
-1 \\
-1 \\
-1 \\
-1 \\
-1 \\
-\end{longtable}
-
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2603}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3151}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0959}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1096}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1781}}@{}}
+\caption{\label{tab:fuzzyexam} Close Fuzzy Matches from the Testimony
 Interestingly, when considering the most distant fuzzy matches in Table \ref{tab:fuzzyexamlarge}, these phrases do not come from simple typos, but rather from a non-testimony portion of the study, and may result from participants copying the entire web page into the note sheet.
 Because these phrases do not noticeably correspond to the transcript collocations, as shown in their larger edit distance, they are given less weight.
 In this case, we also see that the participant collocation of ``perception of trial information presentation'' was an equal edit distance from two collocations, based on the ``close\_freq'' value.
-Thus, the weight would be adjusted accordingly due to the presence of two close matches.
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4074}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4074}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0864}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0988}}@{}}
-\caption{Distant Fuzzy Matches from the Testimony (continued below)}\tabularnewline
+Thus, the weight would be adjusted accordingly due to the presence of two close matches.}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 collocation.x
@@ -2066,6 +1994,8 @@ collocation.y
 dist
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 count
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+close\_freq
 \end{minipage} \\
 \midrule\noalign{}
 \endfirsthead
@@ -2078,39 +2008,108 @@ collocation.y
 dist
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 count
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-describes all of the evidence & information presentation and
-demonstrative evidence & 32 & 1 \\
-that was presented at trial & trial information presentation
-and demonstrative & 30 & 1 \\
-the evidence that was
-presented & perception of trial
-information presentation & 29 & 1 \\
-evidence that was presented at & perception of trial
-information presentation & 29 & 1 \\
-describes all of the evidence & presentation and demonstrative
-evidence study & 28 & 1 \\
-\end{longtable}
-
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 0\tabcolsep) * \real{0.1806}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 close\_freq
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-1 \\
-1 \\
-2 \\
-2 \\
-1 \\
+charged with
+willfully
+discharging a & charged with
+wilfully discharging
+a & 1 & 1 & 1 \\
+charged with
+willfully
+discharging a & charged with
+willfully disharging
+a & 1 & 1 & 1 \\
+cole has been
+charged with & cole- has been
+charged with & 1 & 1 & 1 \\
+discharging a
+firearm in a & discharing a firearm
+in a & 1 & 1 & 1 \\
+the defendant
+richard cole has & he defendant richard
+cole has & 1 & 1 & 1 \\
+in a place of
+business & in a place of
+business- & 1 & 1 & 1 \\
+in a place of
+business & in a place of
+bussiness & 1 & 1 & 1 \\
+in this case the
+defendant & n this case the
+defendant & 1 & 1 & 1 \\
+richard cole has
+been charged & richard cole- has
+been charged & 1 & 1 & 1 \\
+willfully
+discharging a
+firearm in & wilfully discharging
+a firearm in & 1 & 2 & 1 \\
+\end{longtable}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3026}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2895}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0921}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1053}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1711}}@{}}
+\caption{\label{tab:fuzzyexamlarge} Distant Fuzzy Matches from the Testimony}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+collocation.x
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+collocation.y
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+dist
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+count
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+close\_freq
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+collocation.x
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+collocation.y
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+dist
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+count
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+close\_freq
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+describes all of the
+evidence & information
+presentation and
+demonstrative
+evidence & 32 & 1 & 1 \\
+that was presented
+at trial & trial information
+presentation and
+demonstrative & 30 & 1 & 1 \\
+the evidence that
+was presented & perception of trial
+information
+presentation & 29 & 1 & 2 \\
+evidence that was
+presented at & perception of trial
+information
+presentation & 29 & 1 & 2 \\
+describes all of the
+evidence & presentation and
+demonstrative
+evidence study & 28 & 1 & 1 \\
 \end{longtable}
 
 \hypertarget{standardization}{%
@@ -3402,7 +3401,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-02-21 14:56:10.568717.
+This version of the thesis was generated on 2024-02-22 08:49:25.704157.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -3417,7 +3416,7 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2024-02-21
+##  date     2024-02-22
 ##  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------

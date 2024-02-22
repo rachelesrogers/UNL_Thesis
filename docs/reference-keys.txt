@@ -41,6 +41,7 @@ fig:lcs
 tab:dylcs
 tab:months
 tab:fuzzymonth
+tab:noteexample
 tab:issues
 fig:errorplot
 tab:cleancompare
@@ -48,6 +49,8 @@ fig:flowchart
 tab:colex
 tab:colcount
 fig:highlights
+tab:fuzzyexam
+tab:fuzzyexamlarge
 fig:weightedhighlights
 fig:notecount
 tab:nonfuzzycount

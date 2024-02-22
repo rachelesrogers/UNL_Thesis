@@ -713,26 +713,26 @@ This method finds the closest transcript collocation to the written collocation.
 In this study, participants were provided with a notepad to record information while reading through mock trial testimony.
 Because participants are provided with the same continuous notepad throughout the study, the database records each page as a “screenshot” of what is written on their notes when they advance to the next page - this provides cumulative notes.</p>
 <table style="width:64%;">
-<caption>Participant Note Example</caption>
+<caption><span id="tab:noteexample">Table 3.5: </span> Participant Note Example</caption>
 <colgroup>
 <col width="18%" />
 <col width="45%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left">page_count</th>
-<th align="left">notes</th>
+<th>page_count</th>
+<th>notes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">2</td>
-<td align="left">discharge firearm in business-
+<td>2</td>
+<td>discharge firearm in business-
 felony, not guilty</td>
 </tr>
 <tr class="even">
-<td align="left">3</td>
-<td align="left">discharge firearm in business-
+<td>3</td>
+<td>discharge firearm in business-
 felony, not guilty ski mask.
 no money, no injuries. 9mm,
 arrested after confiscated and
@@ -744,14 +744,14 @@ testing.</td>
 This dataset consists of 561 pages of ‘notes’ (including 66 blanks) with 35 unique participants.
 30 participants were randomly selected from the larger dataset, while 5 participants were selected based on demonstrated issues with data cleaning.
 The 5 selected participants included an individual who deleted almost all of the beginning notes; two individuals who pasted new notes in the middle of old notes; an individual who duplicated notes; and an individual who included the algorithm expert’s trial confirmation as well as the forensic scientist’s - duplicate text that should be included as the new notes.
-Table <a href="#tab:noteexample"><strong>??</strong></a> is an example of what sequential notes may look like, taken from the second and third pages of a study participant’s notes.</p>
+Table <a href="3-textcolor.html#tab:noteexample">3.5</a> is an example of what sequential notes may look like, taken from the second and third pages of a study participant’s notes.</p>
 <p>In order to appropriately clean the notes, the duplicated text (“discharge firearm in business- felony, not guilty”) needs to be removed from the third page, to leave only notes that correspond to the third page’s testimony.
 A generalized version of the functions used in this data cleaning are included in the <code>seqstrclean</code> package <span class="citation">(Rogers &amp; VanderPlas, 2024b)</span>.</p>
 <div id="first-n-character-fnc-method" class="section level4 hasAnchor" number="3.2.1.1">
 <h4><span class="header-section-number">3.2.1.1</span> First n Character (FNC) Method<a href="3-textcolor.html#first-n-character-fnc-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>In scenarios such as Table <a href="#tab:noteexample"><strong>??</strong></a>, a straightforward method for note cleaning would be to measure the length of the previous page’s notes (n), and compare the previous notes to the first n characters in the current pages’ notes via edit distance.
+<p>In scenarios such as Table <a href="3-textcolor.html#tab:noteexample">3.5</a>, a straightforward method for note cleaning would be to measure the length of the previous page’s notes (n), and compare the previous notes to the first n characters in the current pages’ notes via edit distance.
 If the edit distance is small (indicating a correspondence to the previous page’s notes), the first n characters can be removed.
-If we consider Table <a href="#tab:noteexample"><strong>??</strong></a>, it is clear to see how this method can be applied.
+If we consider Table <a href="3-textcolor.html#tab:noteexample">3.5</a>, it is clear to see how this method can be applied.
 The page 2 notes perfectly line up with the first line in the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
 Thus, by removing this beginning section, we would be left with the notes that are unique to page 3 - namely, “ski mask. no money, no injuries. 9mm, arrested after confiscated and testing.”
 The threshold of allowable disagreement between two strings can be controlled through setting the maximum allowable edit distance.
@@ -759,11 +759,11 @@ For this method comparison, I changed the threshold with values of 0 character d
 <p>This method works well when participants take notes sequentially.
 In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
 When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
-The first n character method cannot appropriately clean these notes, as shown in Table <a href="3-textcolor.html#tab:issues">3.5</a>.</p>
+The first n character method cannot appropriately clean these notes, as shown in Table <a href="3-textcolor.html#tab:issues">3.6</a>.</p>
 </div>
 <div id="longest-common-substring-lcs-method" class="section level4 hasAnchor" number="3.2.1.2">
 <h4><span class="header-section-number">3.2.1.2</span> Longest Common Substring (LCS) Method<a href="3-textcolor.html#longest-common-substring-lcs-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The Longest Common Substring method is able to handle the issues found in the First n Character method, which is demonstrated in Table <a href="3-textcolor.html#tab:issues">3.5</a>.
+<p>The Longest Common Substring method is able to handle the issues found in the First n Character method, which is demonstrated in Table <a href="3-textcolor.html#tab:issues">3.6</a>.
 If notes are deleted, the LCS method can identify the substring from the previous notes, despite the large edit distance that would prevent removal in the First n Character method.
 If new notes are inserted in the middle of previous notes, the First n Character method would compare the Page 1’s notes with the red text of the Page 2 notes shown in the second row, resulting in an edit distance that would prevent removal.
 With the LCS method, the first substring “The cat ran” could be identified and removed, then in a second iteration, the second substring of “up the tree” can also be removed, leaving only the new text.
@@ -774,7 +774,7 @@ If the threshold is too small, the LCS method can identify words like “the” 
 If the threshold is too large, the LCS method may be unable to remove substrings when new text is inserted in the middle of the old text.
 Here, I tried several different character lengths: 40 characters, half the previous note length, a third of the previous note length, and a fourth of the previous note length plus 5 (to compensate for shorter strings).</p>
 <table>
-<caption>LCS Comparison for FNC Issues <span id="tab:issues">Table 3.5: </span></caption>
+<caption>LCS Comparison for FNC Issues <span id="tab:issues">Table 3.6: </span></caption>
 <colgroup>
 <col width="18%" />
 <col width="18%" />
@@ -841,9 +841,9 @@ There is also a larger FNC method error for the observation on the bottom right 
 This was a case of duplicate text, resulting in abnormally long notes.
 This graph shows that and edit distance the FNC method’s threshold and the length of the cleaned notes can be used as criterion for determining when the LCS method should be applied.
 I chose to set a threshold of 4 standard deviations above the mean note length for cleaned notes of the page of interest to constitute “unusually long” notes to apply the LCS method to.
-I chose 1/3 of the previous notes as the LCS threshold because the mean edit distance to the correct notes was comparable to the 1/4 + 5 character threshold, but it is more conservative for larger notes (as can be seen in Table <a href="3-textcolor.html#tab:cleancompare">3.6</a>).</p>
+I chose 1/3 of the previous notes as the LCS threshold because the mean edit distance to the correct notes was comparable to the 1/4 + 5 character threshold, but it is more conservative for larger notes (as can be seen in Table <a href="3-textcolor.html#tab:cleancompare">3.7</a>).</p>
 <table>
-<caption><span id="tab:cleancompare">Table 3.6: </span>Note Cleaning Method Comparison</caption>
+<caption><span id="tab:cleancompare">Table 3.7: </span>Note Cleaning Method Comparison</caption>
 <thead>
 <tr class="header">
 <th align="left">Method</th>
@@ -903,7 +903,7 @@ I chose 1/3 of the previous notes as the LCS threshold because the mean edit dis
 </tr>
 </tbody>
 </table>
-<p>The results of this study are shown in Table <a href="3-textcolor.html#tab:cleancompare">3.6</a>.
+<p>The results of this study are shown in Table <a href="3-textcolor.html#tab:cleancompare">3.7</a>.
 Notably, the mean edit distance to the correct notes (or the error) is large for the FNC methods, with a high level of variation.
 However, the computation time is, between 3 and 8 minutes.
 In the case of the LCS method, the error is much lower, but the computation time is above an hour, taking approximately 17 times as long as the FNC method.
@@ -924,11 +924,11 @@ Figure 3.3: Hybrid Flowchart
 <h4><span class="header-section-number">3.2.2.1</span> Collocations<a href="3-textcolor.html#collocations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In order to analyze which areas of the text individuals focus on, we must first find a way to compare their notes to the written testimony.
 One way to do this comparison is through collocation analysis, which uses the frequency of strings of sequentially-appearing words (n-grams) in order to identify words that tend to ‘stick together’.
-For example, in the case of the phrase “The cat ran up the tree”, there would be three collocations of length 4, as shown in Table <a href="3-textcolor.html#tab:colex">3.7</a>).
+For example, in the case of the phrase “The cat ran up the tree”, there would be three collocations of length 4, as shown in Table <a href="3-textcolor.html#tab:colex">3.8</a>).
 By matching the collocations that appear in the testimony to a frequency of the collocation from the given notepad, we can get frequency values for all n-grams that occur in the testimony.
 The functions for creating highlighted text can be found in the package <code>highlightr</code> <span class="citation">(Rogers &amp; VanderPlas, 2024a)</span>.</p>
 <table>
-<caption>Collocations in “The cat ran up the tree” <span id="tab:colex">Table 3.7: </span></caption>
+<caption>Collocations in “The cat ran up the tree” <span id="tab:colex">Table 3.8: </span></caption>
 <thead>
 <tr class="header">
 <th>Collocation</th>
@@ -979,10 +979,10 @@ In considering these two issues, we decided on a collocation size of 5.
 This would be long enough to avoid many common phrases such as “the bullet matching algorithm”, but short enough that individuals may copy the phrase down directly.
 The implementation of collocations used the ‘quanteda’ package <span class="citation">(Benoit et al., 2018)</span>, with guidance from a tutorial by <span class="citation">Schweinberger (2022)</span>.</p>
 <p>Collocations are identified in the transcript, and assigned ordered word numbers (so the first collocation of length 5 will have words 1-5, the second will have words 2-6, and so on).
-This data structure is similar to that shown in Table <a href="3-textcolor.html#tab:colex">3.7</a>, where the collocation is length 4 instead of 5.
+This data structure is similar to that shown in Table <a href="3-textcolor.html#tab:colex">3.8</a>, where the collocation is length 4 instead of 5.
 These are then bound with collocations from the participants’ notes based on the sequence of 5 words, in order to assign a frequency to each collocation.
 We then take the average per word out of the possible collocations that the word could have appeared in.
-For example, the first word can only appear in a single collocation (in Table <a href="3-textcolor.html#tab:colex">3.7</a>, “The” only apprears in the first collocation, while “ran” appears in all three), so its average will be equal to the frequency of the first collocation.
+For example, the first word can only appear in a single collocation (in Table <a href="3-textcolor.html#tab:colex">3.8</a>, “The” only apprears in the first collocation, while “ran” appears in all three), so its average will be equal to the frequency of the first collocation.
 When multiple 5-grams appear in the same testimony page, the note frequency is divided by the number of appearances in the testimony in order to account for multiple occurrences.
 The Figure <a href="#fig:colcount"><strong>??</strong></a> shows the highest frequencies for the second page of the testimony:</p>
 <p>“In this case the defendant Richard Cole has been charged with willfully discharging a firearm in a place of business. This crime is a felony.
@@ -991,7 +991,7 @@ You will now hear a summary of the case.
 This summary was prepared by an objective court clerk.
 It describes all of the evidence that was presented at trial.”</p>
 <table>
-<caption><span id="tab:colcount">Table 3.8: </span>Collocation Count for Page 2</caption>
+<caption><span id="tab:colcount">Table 3.9: </span>Collocation Count for Page 2</caption>
 <thead>
 <tr class="header">
 <th align="right">count</th>
@@ -1041,7 +1041,7 @@ It describes all of the evidence that was presented at trial.”</p>
 </tr>
 </tbody>
 </table>
-<p>The highlighted collocations in Table <a href="3-textcolor.html#tab:colcount">3.8</a> show all of the collocations for the word “willfully” from the testimony above.
+<p>The highlighted collocations in Table <a href="3-textcolor.html#tab:colcount">3.9</a> show all of the collocations for the word “willfully” from the testimony above.
 The frequencies for ‘willfully’ can be averaged: <span class="math inline">\(\frac{121+93+91+76+75}{5}=91.2\)</span>.
 This number will correspond to the shading of the word “willfully” in the highlighted testimony of Figure <a href="3-textcolor.html#fig:highlights">3.4</a>.</p>
 <p>Note that the words have a gradient.
@@ -1075,221 +1075,200 @@ This results in a total fuzzy frequency per transcript collocation of:</p>
 \]</span>
 where <span class="math inline">\(x_i\)</span> is the count for the participant’s note collocation <span class="math inline">\(i\)</span>, <span class="math inline">\(d_i\)</span> is the distance between the transcript collocation and the ‘misspelled’ collocation <span class="math inline">\(i\)</span>, and <span class="math inline">\(c_i\)</span> is the number of transcript collocation matches for note collocation <span class="math inline">\(i\)</span>.
 This quantity is then added to the count of direct collocation matches calculated in the previous section.</p>
-<p>For example, Table <a href="#tab:fuzzyexam"><strong>??</strong></a> demonstrates fuzzy matches on the testimony description text mentioned previously.
+<p>For example, Table <a href="3-textcolor.html#tab:fuzzyexam">3.10</a> demonstrates fuzzy matches on the testimony description text mentioned previously.
 Here, “collocation.x” refers to the collocation found in the transcript, while “collocation.y” refers to the “misspelled” collocation.
 With an edit distance of 1, it can be seen that these fuzzy matches are the result of simple typos - making it clear which transcript collocation the misspelled version corresponds to.
 While most collocation misspellings in the table only occur a single time (recorded via the “count” column), the last collocation occurs twice - indicating that two individual note takers removed an “l” from “willfully”.
 The “close_freq” column indicates if the participant’s collocation matches with multiple collocations from the study - such as “Jur” in the example above.</p>
-<table>
-<caption>Close Fuzzy Matches from the Testimony (continued below)</caption>
-<colgroup>
-<col width="40%" />
-<col width="40%" />
-<col width="8%" />
-<col width="9%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">collocation.x</th>
-<th align="left">collocation.y</th>
-<th align="left">dist</th>
-<th align="left">count</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">charged with willfully
-discharging a</td>
-<td align="left">charged with wilfully
-discharging a</td>
-<td align="left">1</td>
-<td align="left">1</td>
-</tr>
-<tr class="even">
-<td align="left">charged with willfully
-discharging a</td>
-<td align="left">charged with willfully
-disharging a</td>
-<td align="left">1</td>
-<td align="left">1</td>
-</tr>
-<tr class="odd">
-<td align="left">cole has been charged with</td>
-<td align="left">cole- has been charged with</td>
-<td align="left">1</td>
-<td align="left">1</td>
-</tr>
-<tr class="even">
-<td align="left">discharging a firearm in a</td>
-<td align="left">discharing a firearm in a</td>
-<td align="left">1</td>
-<td align="left">1</td>
-</tr>
-<tr class="odd">
-<td align="left">the defendant richard cole has</td>
-<td align="left">he defendant richard cole has</td>
-<td align="left">1</td>
-<td align="left">1</td>
-</tr>
-<tr class="even">
-<td align="left">in a place of business</td>
-<td align="left">in a place of business-</td>
-<td align="left">1</td>
-<td align="left">1</td>
-</tr>
-<tr class="odd">
-<td align="left">in a place of business</td>
-<td align="left">in a place of bussiness</td>
-<td align="left">1</td>
-<td align="left">1</td>
-</tr>
-<tr class="even">
-<td align="left">in this case the defendant</td>
-<td align="left">n this case the defendant</td>
-<td align="left">1</td>
-<td align="left">1</td>
-</tr>
-<tr class="odd">
-<td align="left">richard cole has been charged</td>
-<td align="left">richard cole- has been charged</td>
-<td align="left">1</td>
-<td align="left">1</td>
-</tr>
-<tr class="even">
-<td align="left">willfully discharging a
-firearm in</td>
-<td align="left">wilfully discharging a firearm
-in</td>
-<td align="left">1</td>
-<td align="left">2</td>
-</tr>
-</tbody>
-</table>
-<table style="width:18%;">
-<colgroup>
-<col width="18%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">close_freq</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">1</td>
-</tr>
-<tr class="even">
-<td align="left">1</td>
-</tr>
-<tr class="odd">
-<td align="left">1</td>
-</tr>
-<tr class="even">
-<td align="left">1</td>
-</tr>
-<tr class="odd">
-<td align="left">1</td>
-</tr>
-<tr class="even">
-<td align="left">1</td>
-</tr>
-<tr class="odd">
-<td align="left">1</td>
-</tr>
-<tr class="even">
-<td align="left">1</td>
-</tr>
-<tr class="odd">
-<td align="left">1</td>
-</tr>
-<tr class="even">
-<td align="left">1</td>
-</tr>
-</tbody>
-</table>
-<p>Interestingly, when considering the most distant fuzzy matches in Table <a href="#tab:fuzzyexamlarge"><strong>??</strong></a>, these phrases do not come from simple typos, but rather from a non-testimony portion of the study, and may result from participants copying the entire web page into the note sheet.
+<table style="width:96%;">
+<caption><span id="tab:fuzzyexam">Table 3.10: </span> Close Fuzzy Matches from the Testimony
+Interestingly, when considering the most distant fuzzy matches in Table <a href="3-textcolor.html#tab:fuzzyexamlarge">3.11</a>, these phrases do not come from simple typos, but rather from a non-testimony portion of the study, and may result from participants copying the entire web page into the note sheet.
 Because these phrases do not noticeably correspond to the transcript collocations, as shown in their larger edit distance, they are given less weight.
 In this case, we also see that the participant collocation of “perception of trial information presentation” was an equal edit distance from two collocations, based on the “close_freq” value.
-Thus, the weight would be adjusted accordingly due to the presence of two close matches.</p>
-<table>
-<caption>Distant Fuzzy Matches from the Testimony (continued below)</caption>
+Thus, the weight would be adjusted accordingly due to the presence of two close matches.</caption>
 <colgroup>
-<col width="40%" />
-<col width="40%" />
-<col width="8%" />
+<col width="26%" />
+<col width="31%" />
 <col width="9%" />
+<col width="10%" />
+<col width="17%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left">collocation.x</th>
-<th align="left">collocation.y</th>
-<th align="left">dist</th>
-<th align="left">count</th>
+<th>collocation.x</th>
+<th>collocation.y</th>
+<th>dist</th>
+<th>count</th>
+<th>close_freq</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">describes all of the evidence</td>
-<td align="left">information presentation and
-demonstrative evidence</td>
-<td align="left">32</td>
-<td align="left">1</td>
+<td>charged with
+willfully
+discharging a</td>
+<td>charged with
+wilfully discharging
+a</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
 </tr>
 <tr class="even">
-<td align="left">that was presented at trial</td>
-<td align="left">trial information presentation
-and demonstrative</td>
-<td align="left">30</td>
-<td align="left">1</td>
+<td>charged with
+willfully
+discharging a</td>
+<td>charged with
+willfully disharging
+a</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
 </tr>
 <tr class="odd">
-<td align="left">the evidence that was
-presented</td>
-<td align="left">perception of trial
-information presentation</td>
-<td align="left">29</td>
-<td align="left">1</td>
+<td>cole has been
+charged with</td>
+<td>cole- has been
+charged with</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
 </tr>
 <tr class="even">
-<td align="left">evidence that was presented at</td>
-<td align="left">perception of trial
-information presentation</td>
-<td align="left">29</td>
-<td align="left">1</td>
+<td>discharging a
+firearm in a</td>
+<td>discharing a firearm
+in a</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
 </tr>
 <tr class="odd">
-<td align="left">describes all of the evidence</td>
-<td align="left">presentation and demonstrative
-evidence study</td>
-<td align="left">28</td>
-<td align="left">1</td>
+<td>the defendant
+richard cole has</td>
+<td>he defendant richard
+cole has</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>in a place of
+business</td>
+<td>in a place of
+business-</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>in a place of
+business</td>
+<td>in a place of
+bussiness</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>in this case the
+defendant</td>
+<td>n this case the
+defendant</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>richard cole has
+been charged</td>
+<td>richard cole- has
+been charged</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>willfully
+discharging a
+firearm in</td>
+<td>wilfully discharging
+a firearm in</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
-<table style="width:18%;">
+<table style="width:96%;">
+<caption><span id="tab:fuzzyexamlarge">Table 3.11: </span> Distant Fuzzy Matches from the Testimony</caption>
 <colgroup>
-<col width="18%" />
+<col width="30%" />
+<col width="28%" />
+<col width="9%" />
+<col width="10%" />
+<col width="17%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left">close_freq</th>
+<th>collocation.x</th>
+<th>collocation.y</th>
+<th>dist</th>
+<th>count</th>
+<th>close_freq</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">1</td>
+<td>describes all of the
+evidence</td>
+<td>information
+presentation and
+demonstrative
+evidence</td>
+<td>32</td>
+<td>1</td>
+<td>1</td>
 </tr>
 <tr class="even">
-<td align="left">1</td>
+<td>that was presented
+at trial</td>
+<td>trial information
+presentation and
+demonstrative</td>
+<td>30</td>
+<td>1</td>
+<td>1</td>
 </tr>
 <tr class="odd">
-<td align="left">2</td>
+<td>the evidence that
+was presented</td>
+<td>perception of trial
+information
+presentation</td>
+<td>29</td>
+<td>1</td>
+<td>2</td>
 </tr>
 <tr class="even">
-<td align="left">2</td>
+<td>evidence that was
+presented at</td>
+<td>perception of trial
+information
+presentation</td>
+<td>29</td>
+<td>1</td>
+<td>2</td>
 </tr>
 <tr class="odd">
-<td align="left">1</td>
+<td>describes all of the
+evidence</td>
+<td>presentation and
+demonstrative
+evidence study</td>
+<td>28</td>
+<td>1</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
@@ -1357,11 +1336,11 @@ However, the plot shows that individuals took notes throughout the testimony.</p
 <p>This final note analysis, which includes fuzzy matching, can be found at <a href="https://rachelesrogers.github.io/Presentations/Collocations/Collocation%20Comment%20Analysis%20Cleaned.html" class="uri">https://rachelesrogers.github.io/Presentations/Collocations/Collocation%20Comment%20Analysis%20Cleaned.html</a>.
 In visually comparing the highlighted transcripts for fuzzy matches to those without fuzzy matching, the results appear to be fairly similar.
 While the fuzzy matching did increase the frequency number, the overall trends remained the same for the dataset.
-This can be seen in Table <a href="3-textcolor.html#tab:nonfuzzycount">3.9</a>.
+This can be seen in Table <a href="3-textcolor.html#tab:nonfuzzycount">3.12</a>.
 The ranking of the collocations remains fairly consistent, aside from differences that can be seen in collocations that had the same non-fuzzy count.
 <!-- There is a jump in the fuzzy matches for the charge (a felony) that is not seen in the non-fuzzy matching. --></p>
 <table>
-<caption><span id="tab:nonfuzzycount">Table 3.9: </span>Table of Collocation Frequencies</caption>
+<caption><span id="tab:nonfuzzycount">Table 3.12: </span>Table of Collocation Frequencies</caption>
 <thead>
 <tr class="header">
 <th align="left">collocation</th>
