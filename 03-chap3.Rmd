@@ -109,7 +109,16 @@ library(ggridges)
 microstudy <- read_csv("data/mircrostudy_response_redo_clean.csv")
 
 # Removing record with unusually low completion time
-microstudy_clean <- microstudy %>% 
+
+microstudy_complete <- 
+  microstudy[complete.cases(microstudy[ , c("convict", "guilt_opinion", 
+                                            "betting", "hidden_probability",
+                                            "chances_fixed", 
+                                            "evidence_strength",      
+                                            "numeric_chance", 
+                                            "check", "visible_probability")]), ] %>% dplyr::filter(round(randomnumber,5) != 12.59938)
+
+microstudy_clean <- microstudy_complete %>% 
   dplyr::filter(check=="9mm", round(randomnumber,5) != 12.59938)
 
 prolific_data <- read_csv("data/microstudy_redo_prolific_clean.csv")
@@ -161,8 +170,8 @@ ggplot(subset(prolific_data, Status=="APPROVED"), aes(x = `Time taken`/60)) +
 #| warning= FALSE,
 #| message= FALSE
 
-microstudy$age = factor(
-  microstudy$age,
+microstudy_complete$age = factor(
+  microstudy_complete$age,
   levels = c(
     "18 - 25",
     "26 - 35",
@@ -172,10 +181,11 @@ microstudy$age = factor(
     "Over 65"
   )
 )
-microstudy$gender = factor(microstudy$gender,
+microstudy_complete$gender = factor(microstudy_complete$gender,
                            levels=c("Other/non-binary", "Man", "Woman"))
+# table(microstudy_complete$age)
 
-  ggplot(microstudy,
+  ggplot(microstudy_complete,
          aes(x = age, fill = gender)) +
   geom_bar(mapping = aes(y = after_stat(count), group = gender), color="black") +
   #  geom_histogram(stat="count", position="dodge")+
@@ -186,12 +196,12 @@ microstudy$gender = factor(microstudy$gender,
 
 ```
 
-Of the `r dim(microstudy)[1]` completed surveys, `r sum(microstudy$gender=="Man")` participants were men, `r sum(microstudy$gender=="Woman")` participants were women, and `r sum(microstudy$gender=="Other/non-binary")` participants identified as other or non-binary. 
+Of the `r dim(microstudy_complete)[1]` surveys completed, `r sum(microstudy_complete$gender=="Man")` participants were men, `r sum(microstudy_complete$gender=="Woman")` participants were women, and `r sum(microstudy_complete$gender=="Other/non-binary")` participants identified as other or non-binary. 
 The median age category was 46 - 55.
 Age and gender are shown in Figure \@ref(fig:demographics2).
 Individuals were asked a single attention check question with regards to the caliber of gun used in the attempted robbery.
-`r dim(microstudy_clean)[1]` participants passed the attention check, meaning that only `r sum(microstudy$check!="9mm", na.rm=TRUE) + sum(is.na(microstudy$check))` participants failed the attention check, and will not be included in the analysis.
-There were `r sum(microstudy_clean$conclusion=="Match")` participants in the identification condition, and `r sum(microstudy_clean$conclusion=="NoMatch")` participants in the elimination condition who passed the attention check.
+`r dim(microstudy_clean)[1]` participants passed the attention check, meaning that only `r sum(microstudy_complete$check!="9mm")` participants failed the attention check, and will not be included in the analysis.
+There were `r sum(microstudy_clean$conclusion=="Match")` participants in the identification condition and `r sum(microstudy_clean$conclusion=="NoMatch")` participants in the elimination condition who passed the attention check.
 We adjusted the probability of receiving each condition throughout the survey to ensure categories were relatively equal.
 
 ### Questions from Study 1
