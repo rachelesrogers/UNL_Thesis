@@ -971,39 +971,100 @@ ggplot(clean_results_merged, aes(x=chances_fixed))+ #,fill=conclusion
 #| probchancescale1,
 #| fig.cap= "Guilt Probability Comparison Log 10 Scale",
 #| fig.width= 10,
-#| fig.height= 9,
+#| fig.height= 12,
 #| fig.align= "center",
 #| echo= FALSE,
 #| eval= TRUE,
 #| warning= FALSE,
 #| message= FALSE
 
-clean_results_merged$prob_wo_0 <- as.numeric(clean_results_merged$visible_probability)/100
+# clean_results_merged$prob_wo_0 <- as.numeric(clean_results_merged$visible_probability)/100
+# 
+# clean_results_merged <- clean_results_merged %>%
+#     mutate(prob_wo_0 = ifelse(prob_wo_0 == 0, .Machine$double.eps, prob_wo_0))
 
-clean_results_merged <- clean_results_merged %>%
-    mutate(prob_wo_0 = ifelse(prob_wo_0 == 0, .Machine$double.eps, prob_wo_0))
+clean_results_merged$cat_prob <- NA
+clean_results_merged[clean_results_merged$visible_probability==0,]$cat_prob <- "0%"
+clean_results_merged[clean_results_merged$visible_probability==1,]$cat_prob <- "1%"
+clean_results_merged[clean_results_merged$visible_probability>1 &
+                      clean_results_merged$visible_probability<11 ,]$cat_prob <- "2% - 10%"
+clean_results_merged[clean_results_merged$visible_probability>10 &
+                      clean_results_merged$visible_probability<21 ,]$cat_prob <- "11% - 20%"
+clean_results_merged[clean_results_merged$visible_probability>20 &
+                      clean_results_merged$visible_probability<41 ,]$cat_prob <- "21% - 40%"
+clean_results_merged[clean_results_merged$visible_probability>40 &
+                      clean_results_merged$visible_probability<51 ,]$cat_prob <- "41% - 50%"
+clean_results_merged[clean_results_merged$visible_probability>50 &
+                      clean_results_merged$visible_probability<61 ,]$cat_prob <- "51% - 60%"
+clean_results_merged[clean_results_merged$visible_probability>60 &
+                      clean_results_merged$visible_probability<71 ,]$cat_prob <- "61% - 80%"
+clean_results_merged[clean_results_merged$visible_probability>80 &
+                      clean_results_merged$visible_probability<91 ,]$cat_prob <- "81% - 90%"
+clean_results_merged[clean_results_merged$visible_probability>90 &
+                      clean_results_merged$visible_probability<99 ,]$cat_prob <- "91% - 98%"
+clean_results_merged[clean_results_merged$visible_probability==99,]$cat_prob <- "99%"
+clean_results_merged[clean_results_merged$visible_probability==100,]$cat_prob <- "100%"
 
-ggplot(subset(clean_results_merged, 
-              chances_fixed %in% c("Impossible that he is guilty", 
-                                   "About 1 chance in 10,000", 
-                                   "About 1 chance in 1,000",
-                                   "About 1 chance in 100",
-                                   "About 1 chance in 10")), aes(x=prob_wo_0, fill=chances_fixed))+
-  ggtitle("Probability of Guilt") +
-  ylab("Count")+
-  xlab("Visible Probability")+
-  geom_histogram(alpha=0.5)+
-  facet_grid(chances_fixed~.)+
-  scale_fill_manual(values=c("#D81B60","#1E88E5","#FFC107","#004D40", "#CCA785"))+
-  theme_bw()+
-  scale_x_log10(breaks=c(1/10000, 1/1000,
-                              1/100, 1/10, 0.5), labels=label_number(drop0trailing=TRUE))+
-  geom_vline(aes(xintercept=1/10000), color="#1E88E5", size=1)+
-  geom_vline(aes(xintercept=1/1000), color="#FFC107", size=1)+
-  geom_vline(aes(xintercept=1/100), color="#004D40", size=1)+
-  geom_vline(aes(xintercept=.Machine$double.eps), color="#D81B60", size=1)+
-  geom_vline(aes(xintercept=1/10), color="#CCA785", size=1)+
-  geom_vline(aes(xintercept=0.5), color="black", size=1)
+clean_results_merged$cat_prob <- 
+  factor(clean_results_merged$cat_prob,
+         levels = c("0%", "1%","2% - 10%", "11% - 20%", "21% - 40%",
+                    "41% - 50%", "51% - 60%", "61% - 80%", "81% - 90%",
+                    "91% - 98%", "99%", "100%"))
+
+shortened_chance <- c(
+    "Impossible",
+    "1 in 10,000",
+    "1 in 1,000",
+    "1 in 100",
+    "1 in 10",
+    "1 in 2",
+    "9 in 10",
+    "99 in 100",
+    "999 in 1,000",
+    "9,999 in 10,000",
+    "Certain"
+  )
+names(shortened_chance) <- c(
+    "Impossible that he is guilty",
+    "About 1 chance in 10,000",
+    "About 1 chance in 1,000",
+    "About 1 chance in 100",
+    "About 1 chance in 10",
+    "1 chance in 2 (fifty-fifty chance)",
+    "About 9 chances in 10",
+    "About 99 chances in 100",
+    "About 999 chances in 1,000",
+    "About 9,999 chances in 10,000",
+    "Certain to be guilty"
+  )
+
+ggplot(subset(clean_results_merged, !is.na(cat_prob)), aes(x=cat_prob))+
+  geom_bar()+
+  facet_grid(chances_fixed~., labeller = labeller(chances_fixed = shortened_chance))+
+  theme_bw()
+
+
+# ggplot(subset(clean_results_merged, 
+#               chances_fixed %in% c("Impossible that he is guilty", 
+#                                    "About 1 chance in 10,000", 
+#                                    "About 1 chance in 1,000",
+#                                    "About 1 chance in 100",
+#                                    "About 1 chance in 10")), aes(x=prob_wo_0, fill=chances_fixed))+
+#   ggtitle("Probability of Guilt") +
+#   ylab("Count")+
+#   xlab("Visible Probability")+
+#   geom_histogram(alpha=0.5)+
+#   facet_grid(chances_fixed~.)+
+#   scale_fill_manual(values=c("#D81B60","#1E88E5","#FFC107","#004D40", "#CCA785"))+
+#   theme_bw()+
+#   scale_x_log10(breaks=c(1/10000, 1/1000,
+#                               1/100, 1/10, 0.5), labels=label_number(drop0trailing=TRUE))+
+#   geom_vline(aes(xintercept=1/10000), color="#1E88E5", size=1)+
+#   geom_vline(aes(xintercept=1/1000), color="#FFC107", size=1)+
+#   geom_vline(aes(xintercept=1/100), color="#004D40", size=1)+
+#   geom_vline(aes(xintercept=.Machine$double.eps), color="#D81B60", size=1)+
+#   geom_vline(aes(xintercept=1/10), color="#CCA785", size=1)+
+#   geom_vline(aes(xintercept=0.5), color="black", size=1)
 
 # sort(table(clean_results_merged$visible_probability))
 
