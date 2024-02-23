@@ -250,7 +250,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="4.1" data-path="4-study2.html"><a href="4-study2.html#background-1"><i class="fa fa-check"></i><b>4.1</b> Background</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="4-study2.html"><a href="4-study2.html#study-1-and-scale-compression"><i class="fa fa-check"></i><b>4.1.1</b> Study 1 and Scale Compression</a></li>
+<li class="chapter" data-level="4.1.1" data-path="4-study2.html"><a href="4-study2.html#problems-in-study-1"><i class="fa fa-check"></i><b>4.1.1</b> Problems in Study 1</a></li>
 <li class="chapter" data-level="4.1.2" data-path="4-study2.html"><a href="4-study2.html#study-visualization"><i class="fa fa-check"></i><b>4.1.2</b> Study Visualization</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="4-study2.html"><a href="4-study2.html#methods-1"><i class="fa fa-check"></i><b>4.2</b> Methods</a>
@@ -319,34 +319,36 @@ div.csl-indent {
 <h1><span class="header-section-number">CHAPTER 4</span> An Investigation of Response Types<a href="4-study2.html#study2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="background-1" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Background<a href="4-study2.html#background-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="study-1-and-scale-compression" class="section level3 hasAnchor" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Study 1 and Scale Compression<a href="4-study2.html#study-1-and-scale-compression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The results from the initial study found in Chapter <a href="2-study1.html#study1">2</a> call into question the use of Likert response scales when evaluating jury perception of firearms experts, as well as the use of a transcript testimony format.</p>
-<p>Responses pertaining to the credibility of the expert, as well as the reliability and scientificity of the evidence, suffered from scale compression when a Likert scale was used - participants indicated overall confidence in credibility, reliability, and scientificity by mainly selecting the two highest categories of each scale.
+<div id="problems-in-study-1" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Problems in Study 1<a href="4-study2.html#problems-in-study-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The results from the initial study found in Chapter <a href="2-study1.html#study1">2</a> call into question the use of Likert response scales when evaluating jury perception of firearms experts, as well as the use of a transcript testimony format.
+Responses pertaining to the credibility of the expert, as well as the reliability and scientificity of the evidence, suffered from scale compression when a Likert scale was used - participants indicated overall confidence in credibility, reliability, and scientificity by mainly selecting the two highest categories of each scale.
 This lack of variation in scale responses makes it difficult to discern potential differences between treatment conditions.
-Due to this difficulty, we conducted a follow-up study comparing various response types, in order to determine substitute questions that may result in a wider variety of responses.</p>
-<p>Additional changes include the addition of jury instructions on the part of the judge, instructing members of the jury to treat the firearms examiner as they would any other witness and removing the use of the term “expert”.
-We enacted this change after investigating the scale compression in responses, and finding that <span class="citation">United States Courts for the Ninth Circuit (2019)</span> suggests that the use of the term “expert” may result in jurors giving the testimony more weight, and provides sample text for the judge to clarify the presence of the witnesses as opinion witnesses instead of experts.
+Due to this difficulty, we conducted a follow-up study comparing various response types, in order to determine substitute questions that may result in a wider distribution of responses.</p>
+<p>Further changes include the addition of jury instructions on the part of the judge, instructing members of the jury to treat the firearms examiner as they would any other witness and removing the use of the term “expert”.
+We enacted these changes after investigating the scale compression in responses, and finding that <span class="citation">United States Courts for the Ninth Circuit (2019)</span> suggests that the use of the term “expert” may result in jurors giving the testimony more weight, and provides sample text for the judge to clarify the presence of the witnesses as opinion witnesses instead of experts.
 Additional cross examination testimony with regards to the firearms examiner’s inability to specifically tie the defendant to the crime scene is included as well, due to a lack of distinction in participants between evidence tying the firearm to the crime scene, and evidence tying the defendant to the crime scene.
-As in the initial study, these changes were directly related to trial transcripts or sample wording.
-The transcript for the second study can be found in Appendix <a href="B-study-2-changes.html#study-2-changes">B</a>.</p>
-<p>In the initial study, some participants were confused about who the witnesses were testifying for.
+As in the initial study, these changes were directly related to trial transcripts or resources.
+The transcript changes for the second study can be found in Appendix <a href="B-study-2-changes.html#study-2-changes">B</a>.</p>
+<p>In the initial study, some participants were confused about who the witnesses were testifying for, as evidenced by their written comments.
 This may be due to the testimony format, which does not clearly identify the speaker with each line, instead using “Q:” and “A:” in most cases, as shown in Appendix <a href="B-study-2-changes.html#study-2-changes">B</a>.
-This lack of visuals for tracking speakers is not representative of the courtroom setting, and may have contributed to the confusion expressed by a participant.
+This lack of visuals cues for tracking speakers is not representative of the courtroom setting, and may have contributed to the confusion expressed by some participants.
 The transcript format may also lend an air of impartiality to the witnesses due to the relatively unclear identity of the individual asking the questions.
+This may have been compounded by the exclusion of testimony where the prosecution called the witness to testify, instead beginning with the swearing in of the witness.
+This has been rectified in this second study.
 Due to this potential issue, we strove to develop a general tool that can be used in online courtroom studies to provide visual representation of relevant actors, making it easier to track speakers, and with versatility in terms of individual characteristics.</p>
 <p>In order to minimize the chance of confounding typos as seen in Study 1, we used one master file with all lines of testimony, labelled by the scenario in which the testimony occurs.
-Thus, there is no longer multiple files of repeated text.
-We also use unique identification throughout the database files in the form of Prolific ID’s and a random number assigned to the participant instead of relying on unique fingerprints, so the demographics section can more easily be linked to the final results.</p>
+Thus, there is no longer multiple files of repeated text, and this format allows for more flexibility when implementing the R Shiny application.
+We also use unique identification throughout the database files in the form of Prolific ID’s and a random number assigned to the participant instead of relying on unique fingerprints, which resulted in technical difficulties in a preliminary run of this second study, so the demographics section can more easily be linked to the final results.</p>
 </div>
 <div id="study-visualization" class="section level3 hasAnchor" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> Study Visualization<a href="4-study2.html#study-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Appendix <a href="B-study-2-changes.html#study-2-changes">B</a> shows the characters that have been developed for this study, as well as a screenshot of the study format.
+<p>Appendix <a href="B-study-2-changes.html#study-2-changes">B</a> shows the characters that have been developed for this study (drawn by Richy Meleus), as well as a screenshot of the study format.
 These characters were drawn so that the clothes and heads can be interchanged, providing a wide variety of characters for potential scenarios.
 One difficulty in including drawn figures with realistic skin tones and figures is the influence of perceived race or gender on the participants’ judgements.
 <span class="citation">Stanley, Sokol-Hessner, Banaji, &amp; Phelps (2011)</span> found a relationship between implicit racial bias and the perceived trustworthiness of individuals based on images of black and white males.
 They also found that 80% of participants exhibited pro-white implicit bias.
-Because of this potential bias introduced by visual figures, we plan to conduct a study in order to determine how these figures are perceived at a later time.
+Because of this potential bias introduced by visual figures, we plan to conduct a follow-up study in order to determine how these figures are perceived.
 For the current study, the same figures are used consistently across all conditions to prevent a confounding effect.</p>
 <p>To investigate a which response type may be most informative for this study and to troubleshoot the use of figures and speech bubble format, we conducted a smaller micro study using various response types.</p>
 </div>
@@ -358,24 +360,33 @@ For the current study, the same figures are used consistently across all conditi
 <p>Participants were presented with the same scenario described in Chapter <a href="2-study1.html#study1">2</a>: participants read a trial transcript regarding an attempted convenience store robbery, where the only evidence presented is a bullet comparison between the defendant’s gun and a bullet recovered from the scene of the crime (a scenario from <span class="citation">B. Garrett et al. (2020)</span>).
 In this case, however, the only factor that was changed was the conclusion of the firearms examiner: either an indentification or exclusion.
 In all conditions, the algorithm was absent and there were no images.
-The testimony largely followed that of Chapter <a href="2-study1.html#study1">2</a>, aside from differences in the format and additional testimony described above.
-In this case, it was also explicitly stated that the testimony did not reflect all evidence presented in the case, because in the exclusion condition there may not be enough evidence to bring the case to trial.</p>
+The testimony largely followed that of Chapter <a href="2-study1.html#study1">2</a>, aside from differences in the format and additional testimony described above and outlined in Appendix <a href="B-study-2-changes.html#study-2-changes">B</a>.
+In this case, it was also explicitly stated that the testimony did not reflect all evidence presented in the case, because in the exclusion condition there may not be enough evidence to bring the case to trial.
+Figure <a href="4-study2.html#fig:responsefigures">4.1</a> depicts the characters used in this study.
+Those speaking on behalf of the prosecution were coded with speech bubbles in warmer colors (red for the prosecutor and orange for the forensic scientist), while the defense was coded with a cooler color (purple), and the judge was coded as grey.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:responsefigures"></span>
+<img src="thesis_files/figure-html/responsefigures-1.png" alt="Figures used in the response study. From left to right: the judge, forensic scientist, prosecutor, and defense lawyer." width="\linewidth" />
+<p class="caption">
+Figure 4.1: Figures used in the response study. From left to right: the judge, forensic scientist, prosecutor, and defense lawyer.
+</p>
+</div>
 <p>At the end of the testimony, the participants were asked a variety of questions regarding the strength of evidence in the case.
 Questions of probability, strength of evidence, and decision to convict were repeated from the Chapter <a href="2-study1.html#study1">2</a> study.
 Participants were asked to evaluate the probability that the defendant committed the crime, both with a visible probability scale (allowing the participants to select the exact probability integer) and with a non-visible scale (only the numbers of 0 and 100 were available on the extremes of the scale).
 The strength of evidence was a Likert scale with values from “Not at all strong” to “Extremely strong” with nine points.
 In terms of conviction, participants were reminded of the decision criterion of “beyond a reasonable doubt” when making a decision in a criminal trial, and asked if they would choose to convict.</p>
-<p>New questions for this micro study asked individuals to give their opinion of the guilt of the defendant, as well as assessing the chances that the defendant committed the crime, how much they would be willing to bet that the defendant was either innocent or guilty, and their opinion of the defendant.
+<p>New questions for this response study asked individuals to give their opinion of the guilt of the defendant, as well as assessing the chances that the defendant committed the crime, how much they would be willing to bet that the defendant was either innocent or guilty, and their opinion of the defendant.
 In addition to a question regarding whether or not the participant would choose to convict, we also asked the participants to give their personal opinion on the guilt of the defendant.
-This provides a second threshold for assessing the strength of evidence, aside from the “beyond a reasonable doubt” standard.
-Two different questions were asked with regards to the chances that the defendant committed the crime.
+This provides a second threshold for assessing the strength of evidence, aside from the “beyond a reasonable doubt” standard.</p>
+<p>Two different questions were asked with regards to the chances that the defendant committed the crime.
 One was in a multiple choice format, with extreme values of “Impossible to be guilty” and “Certain to be guilty”, and intermediate values ranging from “About 1 chance in 10,000” to “About 9,999 chances in 10,000” with denominator values changing by a decimal place for each choice, and a middle value of “1 chance in 2”.
 This format was taken from <span class="citation">Thompson &amp; Newman (2015)</span>’s study of DNA, which consisted of larger scaled values in the denominator (up to 1 in 10 million).
-The second question allowed participants to select both the numerator and denominator: “About ___ chance(s) in ___ that the defendant is (innocent/guilty)”, where participants were able to select to express the value as innocence or guilt.
-In both cases, the numerator had to be less than or equal to the denominator.
-Individuals who thought that the defendant was guilty were asked how much they were willing to bet that the defendant was guilty, if hypothetically researchers provided them with $50 and they would double their money if they were correct, and vice versa.
-A final new question was open ended, and asked participants to provide their opinion of the defendant.</p>
-<p>We first asked individuals to provide their opinion of the defendant, their conviction decision, and their personal opinion of the guilt of the defendant.
+The second question allowed participants to select both the numerator and denominator: “About ___ chance(s) in ___ that the defendant is (innocent/guilty)”, where participants were able to select to express the value as innocence or guilt (the default value was “innocent”).
+In the preliminary study, participants had to express chances that corresponded with their opinion on the defendant committing the crime, but this resulted in some scale confusion.
+In both cases, the numerator had to be less than or equal to the denominator.</p>
+<p>Individuals who thought that the defendant was guilty were asked how much they were willing to bet that the defendant was guilty, if hypothetically researchers provided them with $50 and they would double their money if they were correct, and vice versa.
+A final new question was open ended, and asked participants to provide their opinion of the defendant.
+We first asked individuals to provide their opinion of the defendant, their conviction decision, and their personal opinion of the guilt of the defendant.
 All other questions were randomized in a way that guaranteed the two probability questions and the two chance questions were not asked directly following each other.</p>
 </div>
 <div id="prolific-1" class="section level3 hasAnchor" number="4.2.2">
@@ -383,13 +394,13 @@ All other questions were randomized in a way that guaranteed the two probability
 <p>Participants were recruited in a similar manner as Study 1 in terms of the representative sample and self-screened jury requirements through Prolific.
 Participants were paid $4.07 with a median completion time of 15 minutes and 15 seconds according to Prolific, for an average reward of $16.01 per hour.
 There were 300 paid participants who completed the survey, 22 individuals who decided to not complete the survey (“returned”), and 8 participants who did not complete the survey before Prolific’s cutoff time (“Timed-out”).
-Figure <a href="4-study2.html#fig:completiontime2">4.1</a> shows the time spent on the survey, according to Prolific.
+Figure <a href="4-study2.html#fig:completiontime2">4.2</a> shows the time spent on the survey, according to Prolific.
 One individual took 3.43 minutes to complete the survey, which is an unusually short amount of time (the next smallest time was 6.02 minutes).
 While this completion time is within three standard deviations of the mean (mean = 17.67, sd = 9.62) and does not fall within Prolific’s criterion for rejection, we do not feel that this participant would have had adequate time to appropriately complete the survey, and have removed them from analysis.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:completiontime2"></span>
 <img src="thesis_files/figure-html/completiontime2-1.png" alt="Prolific Completion Time" width="\linewidth" />
 <p class="caption">
-Figure 4.1: Prolific Completion Time
+Figure 4.2: Prolific Completion Time
 </p>
 </div>
 </div>
@@ -401,12 +412,12 @@ Figure 4.1: Prolific Completion Time
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:demographics2"></span>
 <img src="thesis_files/figure-html/demographics2-1.png" alt="Demographic Information" width="\linewidth" />
 <p class="caption">
-Figure 4.2: Demographic Information
+Figure 4.3: Demographic Information
 </p>
 </div>
 <p>Of the 306 completed surveys, 145 participants were men, 156 participants were women, and 5 participants identified as other or non-binary.
 The median age category was 46 - 55.
-Age and gender are shown in Figure <a href="4-study2.html#fig:demographics2">4.2</a>.
+Age and gender are shown in Figure <a href="4-study2.html#fig:demographics2">4.3</a>.
 Individuals were asked a single attention check question with regards to the caliber of gun used in the attempted robbery.
 298 participants passed the attention check, meaning that only 7 participants failed the attention check, and will not be included in the analysis.
 There were 147 participants in the identification condition, and 151 participants in the elimination condition who passed the attention check.
@@ -425,20 +436,20 @@ None of the 49 individuals in the original study who received the elimination co
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:strength2"></span>
 <img src="thesis_files/figure-html/strength2-1.png" alt="Microstudy Strength of Evidence" width="\linewidth" />
 <p class="caption">
-Figure 4.3: Microstudy Strength of Evidence
+Figure 4.4: Microstudy Strength of Evidence
 </p>
 </div>
-<p>Figure <a href="4-study2.html#fig:strength2">4.3</a> shows participant responses to the strength of evidence in this study.
+<p>Figure <a href="4-study2.html#fig:strength2">4.4</a> shows participant responses to the strength of evidence in this study.
 As can be seen, those in the elimination category tended to choose the smallest value for the strength of evidence (“Not at all strong”), while in the case of the identification condition, individuals tended to distribute their views of the strength of evidence more evenly.
 This graph resembles the strength of evidence results from the initial study, shown in Figure <a href="2-study1.html#fig:strength">2.17</a>.
 While not as dramatic as the scale compression for questions of reliability, credibility, and scientificity, the elimination results for strength of evidence do appear to show a scale limitation in the way that individuals tended to select the lowest category.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:prob2"></span>
 <img src="thesis_files/figure-html/prob2-1.png" alt="Probability Cole Committed Crime" width="\linewidth" />
 <p class="caption">
-Figure 4.4: Probability Cole Committed Crime
+Figure 4.5: Probability Cole Committed Crime
 </p>
 </div>
-<p>Figure <a href="4-study2.html#fig:prob2">4.4</a> demonstrates the participants’ selected probabilities that the defendant committed the crime.
+<p>Figure <a href="4-study2.html#fig:prob2">4.5</a> demonstrates the participants’ selected probabilities that the defendant committed the crime.
 As in the case of the strength of evidence, the graph resembles the probability graph found in the initial study (Figure <a href="2-study1.html#fig:probalgorithm">2.6</a>), where there is a higher peak of extreme values for the elimination conditions than for the identification condition.
 When using a t-test to compare the mean visible probabilities for the identification and elimination condition to those comparable conditions of the initial study, there is not a significant difference for the identification condition, but is a significant difference in the elimination condition (p-values of 0.15 and 0.01, respectively).
 The estimated mean is higher in this follow up study (16.57) than the initial study (9.98) in the elimination condition.
@@ -449,7 +460,7 @@ In this study, there does not appear to be a difference in the density curves ba
 <h3><span class="header-section-number">4.3.3</span> New Study Questions<a href="4-study2.html#new-study-questions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In addition to asking participants if they would choose to convict, participants were also asked about their opinion of the guilt of the defendant.
 In this case, 74.15% (or 109 out of 147) individuals who received the identification condition thought the defendant was guilty, while 3.97% (or 6 out of 151) participants who received the elimination condition thought the defendant was guilty.
-Figure <a href="4-study2.html#fig:opinionguilt">4.5</a> shows the comparison between the participant’s decision to convict and their personal opinion.
+Figure <a href="4-study2.html#fig:opinionguilt">4.6</a> shows the comparison between the participant’s decision to convict and their personal opinion.
 Approximately half of the participant in the identification condition who chose not to convict thought the defendant was in fact guilty.
 This indicates that participants have different thresholds for their personal opinion of guilt compared to the “beyond a reasonable doubt” threshold.
 Of the 80 individuals who chose to convict in the identification condition, 5 participants thought the defendant was in fact innocent.
@@ -457,10 +468,10 @@ This discrepancy may be due to participants reversing the strength of the thresh
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:opinionguilt"></span>
 <img src="thesis_files/figure-html/opinionguilt-1.png" alt="Comparison of opinions of guilt and choice to convict" width="\linewidth" />
 <p class="caption">
-Figure 4.5: Comparison of opinions of guilt and choice to convict
+Figure 4.6: Comparison of opinions of guilt and choice to convict
 </p>
 </div>
-<p>Figure <a href="4-study2.html#fig:betting">4.6</a> indicates how much participants said they would be willing to bet that the defendant was either guilty or innocent, if provided with $50.
+<p>Figure <a href="4-study2.html#fig:betting">4.7</a> indicates how much participants said they would be willing to bet that the defendant was either guilty or innocent, if provided with $50.
 If the participant indicated that they thought the defendant was innocent, they were asked how much they would be willing to bet that the defendant was innocent, and vice versa.
 This figure indicates that most people who thought Cole was innocent in the elimination condition were willing to bet the full amount (84 out of 141 participants).
 It also appears that people tended to select values multiples of 5 (283 out of 298, with 8 additional individuals selecting 0).
@@ -469,11 +480,11 @@ In this way, the betting response is similar both to the strength of evidence re
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:betting"></span>
 <img src="thesis_files/figure-html/betting-1.png" alt="If the researchers provided 50 dollars, how much would you be willing to bet?" width="\linewidth" />
 <p class="caption">
-Figure 4.6: If the researchers provided 50 dollars, how much would you be willing to bet?
+Figure 4.7: If the researchers provided 50 dollars, how much would you be willing to bet?
 </p>
 </div>
 <p>The remaining questions relate to the chance that the defendant committed the crime.
-One question, shown in Figure <a href="4-study2.html#fig:fixedlike">4.7</a>, allowed participants to select the chance that the defendant committed the crime from a multiple choice scale.
+One question, shown in Figure <a href="4-study2.html#fig:fixedlike">4.8</a>, allowed participants to select the chance that the defendant committed the crime from a multiple choice scale.
 Because the scale includes both extreme values that favor innocence and guilt, this question remained the same regardless of the participant’s opinion on the guilt of the defendant.
 This scale does not provide a linear distance between intervals, but instead changes by multiples of 10 in the denominator (ex. one category is 1 in 10, and the next category is 1 in 100).
 The exceptions are the endpoints, which are “Impossible to be guilty” and “Certain to be guilty”, as well as the midpoint of 1 chance in 2.
@@ -485,28 +496,28 @@ This wider distribution may be the result of decompressing the end points - indi
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:fixedlike"></span>
 <img src="thesis_files/figure-html/fixedlike-1.png" alt="Multiple Choice Chance" width="\linewidth" />
 <p class="caption">
-Figure 4.7: Multiple Choice Chance
+Figure 4.8: Multiple Choice Chance
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:freelike"></span>
 <img src="thesis_files/figure-html/freelike-1.png" alt="Free Response Chance" width="\linewidth" />
 <p class="caption">
-Figure 4.8: Free Response Chance
+Figure 4.9: Free Response Chance
 </p>
 </div>
 <p>A final question asks individuals to provide a numerical chance that the defendant is either innocent or guilty, depending on the participants’ choice.
 Their responses were limited so that the numerator was smaller than the denominator, resulting in a range of values from 0 to 1, in most cases.
 There were 3 responses with values greater than 1 that will not be considered in this analysis.
-These results are shown in Figure <a href="4-study2.html#fig:freelike">4.8</a>.
+These results are shown in Figure <a href="4-study2.html#fig:freelike">4.9</a>.
 As seen in previous graphs, in the case of the elimination condition, individuals gave small values for the chance that the defendant had in fact committed the crime, resulting in a sharp peak.
 Alternatively, individuals were less extreme when they expressed their opinion as the chance that the defendant did not commit the crime.
 In the case of the identification condition, those who expressed their opinions as either guilt or innocence gave similar results, resulting in symmetry between the two distributions.
-As shown in Figure <a href="4-study2.html#fig:opinionchanceplot">4.9</a>, those who thought the defendant was innocent were more likely to favor inputting chance values in terms of innocence, while those who thought the defendant was guilty showed no clear preference.
+As shown in Figure <a href="4-study2.html#fig:opinionchanceplot">4.10</a>, those who thought the defendant was innocent were more likely to favor inputting chance values in terms of innocence, while those who thought the defendant was guilty showed no clear preference.
 The default value of the question is “innocent”, with the option of switching to “guilty”.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:opinionchanceplot"></span>
 <img src="thesis_files/figure-html/opinionchanceplot-1.png" alt="Participants who chose to express chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant." width="\linewidth" />
 <p class="caption">
-Figure 4.9: Participants who chose to express chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant.
+Figure 4.10: Participants who chose to express chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant.
 </p>
 </div>
 <!-- Based on the results shown in Figure \@ref(fig:fixedlike), it seems that the results from this free chance scale may benefit from a transformation of the scale. -->
@@ -528,14 +539,14 @@ Because individuals may be influenced by the order of the questions, the order w
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:likecomp1"></span>
 <img src="thesis_files/figure-html/likecomp1-1.png" alt="Chance of Guilt Comparison" width="\linewidth" />
 <p class="caption">
-Figure 4.10: Chance of Guilt Comparison
+Figure 4.11: Chance of Guilt Comparison
 </p>
 </div>
-<p>Figure <a href="4-study2.html#fig:likecomp1">4.10</a> shows the comparison of the multiple choice chance responses to the numeric chance responses, in the case that the participants chose to express the numeric chance in terms of guilt.
+<p>Figure <a href="4-study2.html#fig:likecomp1">4.11</a> shows the comparison of the multiple choice chance responses to the numeric chance responses, in the case that the participants chose to express the numeric chance in terms of guilt.
 The red dots represent the actual value corresponding to their selection of the multiple choice chance (for example, the red dot for “About 1 chance in 10” is located at the y-value of 0.10).
 This allows for comparison on the consistency between the multiple choice and the numeric scales.
 For values of “1 chance in 2”, “About 1 chance in 10”, and “About 9 chances in 10”, the responses seem fairly consistent - however, it is difficult to tell if these values are consistent for more extreme values, because they are compressed on the linear scale.</p>
-<p>Figure <a href="4-study2.html#fig:likecomp1scale">4.11</a> demonstrates the lower half of the multiple choice scale, when the x axis is transformed by log 10.
+<p>Figure <a href="4-study2.html#fig:likecomp1scale">4.12</a> demonstrates the lower half of the multiple choice scale, when the x axis is transformed by log 10.
 The lines indicate the numerical equivalent to the multiple choice wording, including a black line for the unpictured category of “1 chance in 2 (fifty-fifty chance)”.
 From this transformed scale, there still appears to be some consistency between when participants choose their own chance numerically and when they were offered a multiple choice.
 This can be seen in the graph when the observations are inside the boundaries that align with its multiple choice category - meaning that it is not beyond the category.
@@ -543,10 +554,10 @@ However, many individuals did not show consistent choices between scales - parti
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:likecomp1scale"></span>
 <img src="thesis_files/figure-html/likecomp1scale-1.png" alt="Guilt Chance Comparison Log 10 Scale" width="\linewidth" />
 <p class="caption">
-Figure 4.11: Guilt Chance Comparison Log 10 Scale
+Figure 4.12: Guilt Chance Comparison Log 10 Scale
 </p>
 </div>
-<p>Figure <a href="4-study2.html#fig:likecomp1scalerev">4.12</a> demonstrates the upper half of the multiple choice scale.
+<p>Figure <a href="4-study2.html#fig:likecomp1scalerev">4.13</a> demonstrates the upper half of the multiple choice scale.
 In order to visualize these compressed values, the numerical chance selected by participants was subtracted from 1 and a log 10 transformation was used on the x axis.
 Thus, values can be interpreted as the chance that the defendant was innocent, even though participants chose to express their values in terms of guilt.
 The lines indicate the numerical equivalent to the multiple choice wording, if expressed in terms of innocence.
@@ -556,10 +567,10 @@ Other numerical values tended to cluster around 0.01 - 0.1 as the chance of inno
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:likecomp1scalerev"></span>
 <img src="thesis_files/figure-html/likecomp1scalerev-1.png" alt="Guilt Chance Comparison Log 10 Scale, where values were subtracted from 1" width="\linewidth" />
 <p class="caption">
-Figure 4.12: Guilt Chance Comparison Log 10 Scale, where values were subtracted from 1
+Figure 4.13: Guilt Chance Comparison Log 10 Scale, where values were subtracted from 1
 </p>
 </div>
-<p>This same procedure can be repeated for those who thought the defendant was guilty, as shown in Figure <a href="4-study2.html#fig:likecomp2">4.13</a>.
+<p>This same procedure can be repeated for those who thought the defendant was guilty, as shown in Figure <a href="4-study2.html#fig:likecomp2">4.14</a>.
 In this case, because individuals chose to supply the chance that the defendant did not commit the crime, the multiple choice chance indicators were reversed by subtracting the given value from 1.
 There appears to be some confusion on the question wording in this case, as demonstrated by numerous responses in the “About 1 chance in 1,000” and “About 1 chance in 100” categories that appear as low chance values - indicating that individuals selected a low chance of innocence when given the numerical format, but a high chance of innocence when given the multiple choice.
 Most median numeric values on the left half of the multiple choice scale do not align with the translated value from the multiple choice scale.
@@ -568,36 +579,36 @@ Most individuals who had inconsistent responses between the numeric and multiple
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:likecomp2"></span>
 <img src="thesis_files/figure-html/likecomp2-1.png" alt="Chance of Innocence Comparison" width="\linewidth" />
 <p class="caption">
-Figure 4.13: Chance of Innocence Comparison
+Figure 4.14: Chance of Innocence Comparison
 </p>
 </div>
-<p>This appearance confusion is reinforced in Figure <a href="4-study2.html#fig:likecomp2scale">4.14</a>, displaying the values corresponding to the lower half of the multiple choice scale.
-As in Figure <a href="4-study2.html#fig:likecomp1scalerev">4.12</a>, I have reversed the numeric values so a log transformation can be used to better visualize the data.
+<p>This appearance confusion is reinforced in Figure <a href="4-study2.html#fig:likecomp2scale">4.15</a>, displaying the values corresponding to the lower half of the multiple choice scale.
+As in Figure <a href="4-study2.html#fig:likecomp1scalerev">4.13</a>, I have reversed the numeric values so a log transformation can be used to better visualize the data.
 The only multiple choice value that shows some consistency with the numeric counterpoints is “About 1 chance in 10”, while for all other multiple choice options participants tended to provide a lower chance of numerical innocence than their multiple choice selection would indicate (shown by values further right on the scale).
 In two cases, for those who selected “About 1 chance in 100” and “About 1 chance in 1,000” of guilt, the most popular category is above a fifty-fifty chance, indicating confusion on the scale.
 Those who selected “Impossible that he is guilty” also tended to select chance of guilt values at 0, also demonstrating consistency (although several individuals also chose “Impossible that he is guilty” and assigned higher chances of guilt).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:likecomp2scale"></span>
 <img src="thesis_files/figure-html/likecomp2scale-1.png" alt="Innocence Chance Comparison Log 10 Scale, where values were subtracted from 1" width="\linewidth" />
 <p class="caption">
-Figure 4.14: Innocence Chance Comparison Log 10 Scale, where values were subtracted from 1
+Figure 4.15: Innocence Chance Comparison Log 10 Scale, where values were subtracted from 1
 </p>
 </div>
-<p>Interestingly, this inconsistency did not hold as strongly for the upper part of the multiple choice chance scale, shown in Figure <a href="4-study2.html#fig:likecomp2scalerev">4.15</a>.
+<p>Interestingly, this inconsistency did not hold as strongly for the upper part of the multiple choice chance scale, shown in Figure <a href="4-study2.html#fig:likecomp2scalerev">4.16</a>.
 Here, lines indicate the appropriate level chance of innocence corresponding to the multiple choice scale of guilt.
 In this case, the first two categories (“About 9 out of 10” and “About 99 out of 100”) correspond quite well between the multiple choice answer and the numeric counterpart.
-Although this consistency is not as present in the other categories, due to a larger variety of inputs, they are closer to the ballpark than what is shown in Figure <a href="4-study2.html#fig:likecomp2scale">4.14</a>.
+Although this consistency is not as present in the other categories, due to a larger variety of inputs, they are closer to the ballpark than what is shown in Figure <a href="4-study2.html#fig:likecomp2scale">4.15</a>.
 Overall, individuals tended to provide more consistent responses when evaluating numeric chance in terms of guilt instead of in terms of innocence.
 While the upper parts of both innocent and guilty scales demonstrated less consistency than the lower parts of the scales, the trends for those who expressed chance in terms of guilt more closely followed their multiple choice selections.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:likecomp2scalerev"></span>
 <img src="thesis_files/figure-html/likecomp2scalerev-1.png" alt="Innocence Chance Comparison Log 10 Scale" width="\linewidth" />
 <p class="caption">
-Figure 4.15: Innocence Chance Comparison Log 10 Scale
+Figure 4.16: Innocence Chance Comparison Log 10 Scale
 </p>
 </div>
 </div>
 <div id="probability-and-chance-scale-comparison" class="section level4 hasAnchor" number="4.3.4.2">
 <h4><span class="header-section-number">4.3.4.2</span> Probability and Chance Scale Comparison<a href="4-study2.html#probability-and-chance-scale-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The comparison of multiple choice chance and visible probability scales is shown in Figure <a href="4-study2.html#fig:likeprob">4.16</a>.
+<p>The comparison of multiple choice chance and visible probability scales is shown in Figure <a href="4-study2.html#fig:likeprob">4.17</a>.
 In the case of the probabilities, individuals were only able to select integers between 0 and 100, meaning that this scale would not translate to the more extreme values of the multiple choice chance scale (outside of the values of “About 1 in 100” and “About 99 in 100”).
 While there is some discrepancy between choice selection, particularly in participants who selected a lower chance that the defendant is guilty, responses seem to overall be consistent.
 Probability values tend toward the middle, pulling away from the extreme values on the probability scale that would correspond to their multiple choice chance answers.
@@ -607,16 +618,16 @@ In this case, it seems that a few individuals may have found the use of the chan
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:likeprob"></span>
 <img src="thesis_files/figure-html/likeprob-1.png" alt="Probability and Chance Comparison" width="\linewidth" />
 <p class="caption">
-Figure 4.16: Probability and Chance Comparison
+Figure 4.17: Probability and Chance Comparison
 </p>
 </div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:probchancescale1"></span>
 <img src="thesis_files/figure-html/probchancescale1-1.png" alt="Guilt Probability Comparison Log 10 Scale" width="\linewidth" />
 <p class="caption">
-Figure 4.17: Guilt Probability Comparison Log 10 Scale
+Figure 4.18: Guilt Probability Comparison Log 10 Scale
 </p>
 </div>
-<p>Figure <a href="4-study2.html#fig:probchancescale1">4.17</a> shows the log-transformed comparison of probability values and the participant’s multiple choice chance decision.
+<p>Figure <a href="4-study2.html#fig:probchancescale1">4.18</a> shows the log-transformed comparison of probability values and the participant’s multiple choice chance decision.
 If participants were consistent in their choices of chance category and visible probability, we would expect that individuals selecting “About 1 chance in 1,000” or lower would exclusively select probability of guilt values of 1% or 0%, because 1% corresponds to “About 1 chance in 100”.
 While most individuals in the “Impossible he is guilty” category did select 0%, this prediction does not hold true for the other categories.
 In the case of “About 1 chance in 10,000”, approximately an equal number of individuals selected values between 1% and 10%, as did those who selected the “About 1 chance in 1,000” and “About 1 chance in 100” categories.
@@ -626,22 +637,22 @@ While 50% was the most popular (and default) value on the visible probability sc
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:probchancescale2"></span>
 <img src="thesis_files/figure-html/probchancescale2-1.png" alt="Guilt Probability Comparison Log 10 Scale, where probability values were subtracted from 1" width="\linewidth" />
 <p class="caption">
-Figure 4.18: Guilt Probability Comparison Log 10 Scale, where probability values were subtracted from 1
+Figure 4.19: Guilt Probability Comparison Log 10 Scale, where probability values were subtracted from 1
 </p>
 </div>
-<p>Figure <a href="4-study2.html#fig:probchancescale2">4.18</a> is similar to Figure <a href="4-study2.html#fig:probchancescale1">4.17</a> in its less-frequent-than-expected choice of extreme values, and the accurate alignment of the most extreme (“Certain to be guilty”) and least extreme (“About 9 chances in 10”) categories.
+<p>Figure <a href="4-study2.html#fig:probchancescale2">4.19</a> is similar to Figure <a href="4-study2.html#fig:probchancescale1">4.18</a> in its less-frequent-than-expected choice of extreme values, and the accurate alignment of the most extreme (“Certain to be guilty”) and least extreme (“About 9 chances in 10”) categories.
 Those who selected “About 99 chances in 100” of guilt tended to favor close to a 10% probability of innocence (by selecting a 90% probability of guilt), as opposed to the expected 1% probability of innocence (or 99% probability of guilt); the same can be said for those who selected “About 999 chances in 1,000” that the defendant is guilty.
 Individuals who selected the “About 9,999 chances in 10,000” favored 99% probability of guilt (or 1% probability of innocence).</p>
-<p>Overall, Figures <a href="4-study2.html#fig:probchancescale1">4.17</a> and <a href="4-study2.html#fig:probchancescale2">4.18</a> demonstrate some inconsistency between selected multiple choice scale and participants’ assigned probability.
+<p>Overall, Figures <a href="4-study2.html#fig:probchancescale1">4.18</a> and <a href="4-study2.html#fig:probchancescale2">4.19</a> demonstrate some inconsistency between selected multiple choice scale and participants’ assigned probability.
 Results in both cases generally indicate consistent beliefs in guilt: By far most individuals who selected a multiple choice chance value corresponding to the defendant being more likely to be guilty than innocent selected a corresponding probability value in the same range (i.e. less than a 50% probability of being innocent), and vice versa.
 However, the inconsistency in the scales is present in the form of magnitude: participants tended to select less extreme probability values than was indicated by their multiple choice chance selections.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:likeprobcon"></span>
 <img src="thesis_files/figure-html/likeprobcon-1.png" alt="Probability and Chance Comparison" width="\linewidth" />
 <p class="caption">
-Figure 4.19: Probability and Chance Comparison
+Figure 4.20: Probability and Chance Comparison
 </p>
 </div>
-<p>Figure <a href="4-study2.html#fig:likeprobcon">4.19</a> shows a comparison of the perceived probability that the defendant committed the crime compared to the perceived chance that the defendant is guilty, when expressed on a continuous scale.
+<p>Figure <a href="4-study2.html#fig:likeprobcon">4.20</a> shows a comparison of the perceived probability that the defendant committed the crime compared to the perceived chance that the defendant is guilty, when expressed on a continuous scale.
 The plot lines would indicate a direct correspondence between chance value and probability
 Values are clustered near the corresponding corners of each plot.
 This may be due to the compression on the probability scale - values of chance that are more extreme than 1 in 100 or 99 in 100 are represented with a single probability value.
@@ -653,7 +664,7 @@ While there is a fairly strong correlation in the case of chances of guilt and p
 This may be a result of confusion in the scale reversal of the chance of innocence scale, while the chance of guilt smoothly corresponds with expressing the probability of guilt.</p>
 <!-- Figure \@ref(fig:likeconvict) demonstrates the relationship between chance, probability, and the decision to convict. -->
 <!-- Those who chose to convict tended to select high probabilities -->
-<p>Figure <a href="4-study2.html#fig:coordstrcat">4.20</a> shows the relationship between individuals’ ratings of the strength of evidence, and the categorical selection of the chance that the defendant committed the crime.
+<p>Figure <a href="4-study2.html#fig:coordstrcat">4.21</a> shows the relationship between individuals’ ratings of the strength of evidence, and the categorical selection of the chance that the defendant committed the crime.
 While strength of evidence is on a 9-point Likert scale, the multiple choice chance scale has 11 values, giving participants more selection.
 The left graph is for the identification condition, while the right graph is for the elimination condition.
 On the y-axis, lower values correspond to weaker strength of evidence and a lower chance of committing the crime, while higher values correspond to stronger strength of evidence and a higher chance of committing the crime.
@@ -667,35 +678,35 @@ The lowest strength of evidence category can be mapped to several different valu
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:coordstrcat"></span>
 <img src="thesis_files/figure-html/coordstrcat-1.png" alt="Plots of perceived strength of evidence and categorical likelihood" width="\linewidth" />
 <p class="caption">
-Figure 4.20: Plots of perceived strength of evidence and categorical likelihood
+Figure 4.21: Plots of perceived strength of evidence and categorical likelihood
 </p>
 </div>
-<p>Figure <a href="4-study2.html#fig:convictlike">4.21</a> depicts the results for our study comparing the chances that the defendant committed a crime to the decision to convict.
+<p>Figure <a href="4-study2.html#fig:convictlike">4.22</a> depicts the results for our study comparing the chances that the defendant committed a crime to the decision to convict.
 Participants cross the threshold of being more likely to convict when they select “About 9 chances in 10” in the identification condition, with roughly equal numbers above “About 9 chances in 10” in the elimination condition.
 This indicates that participants set a threshold of “beyond a reasonable doubt” to be at “About 9 chances in 10”.
 These results are consistent with <span class="citation">Thompson et al. (2013)</span>, who found a threshold of about 9 chances in 10, where participants who selected 9 chances in 10 or a higher chance amount were more likely to select a guilty verdict, while those below 9 chances in 10 were more likely to select a not guilty verdict.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:convictlike"></span>
 <img src="thesis_files/figure-html/convictlike-1.png" alt="Multiple Choice Chance and Conviction Choice" width="\linewidth" />
 <p class="caption">
-Figure 4.21: Multiple Choice Chance and Conviction Choice
+Figure 4.22: Multiple Choice Chance and Conviction Choice
 </p>
 </div>
 <p>Another threshold that we consider in this study is participants’ personal feelings of the guilt of the defendant.
 We would overall expect the threshold for this opinion to be lower than the “beyond a reasonable doubt” threshold used in their conviction decision.
-Figure <a href="4-study2.html#fig:opinionlike">4.22</a> demonstrates the relationship between the chance scale and the participant’s opinion of the guilt of the defendant.
-In this case, individuals generally thought the defendant committed the crime if they were above the “fifty-fifty chance” value for the identification condition, showing a lower threshold for their opinion of guilt than seen in Figure <a href="4-study2.html#fig:convictlike">4.21</a>, when they were asked for their conviction choice.
+Figure <a href="4-study2.html#fig:opinionlike">4.23</a> demonstrates the relationship between the chance scale and the participant’s opinion of the guilt of the defendant.
+In this case, individuals generally thought the defendant committed the crime if they were above the “fifty-fifty chance” value for the identification condition, showing a lower threshold for their opinion of guilt than seen in Figure <a href="4-study2.html#fig:convictlike">4.22</a>, when they were asked for their conviction choice.
 Individuals who selected the “fifty-fifty chance” appear to be fairly evenly split on their opinion of the guilt of the defendant in the identification condition.
 This is to be expected when the participant believes that there is an approximately equal chance that the defendant committed the crime, but are asked to make a binary decision.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:opinionlike"></span>
 <img src="thesis_files/figure-html/opinionlike-1.png" alt="Multiple Choice Chance and Opinion of Guilt" width="\linewidth" />
 <p class="caption">
-Figure 4.22: Multiple Choice Chance and Opinion of Guilt
+Figure 4.23: Multiple Choice Chance and Opinion of Guilt
 </p>
 </div>
 </div>
 <div id="probability-comparison" class="section level4 hasAnchor" number="4.3.4.3">
 <h4><span class="header-section-number">4.3.4.3</span> Probability Comparison<a href="4-study2.html#probability-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Figure <a href="4-study2.html#fig:probcomp">4.23</a> shows the correspondence between the visible and hidden probabilities.
+<p>Figure <a href="4-study2.html#fig:probcomp">4.24</a> shows the correspondence between the visible and hidden probabilities.
 The values appear to be fairly 1:1.
 In the visible probability scale, there is a slight trend of values clustering on multiples of 5 that is not present in the hidden probability scale.
 For the identification condition, those who thought the defendant was guilty tended to select probability values above 50/%.
@@ -703,10 +714,10 @@ The correlation between the probabilities is 0.98, indicating a strong relations
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:probcomp"></span>
 <img src="thesis_files/figure-html/probcomp-1.png" alt="Probability and Chance Comparison" width="\linewidth" />
 <p class="caption">
-Figure 4.23: Probability and Chance Comparison
+Figure 4.24: Probability and Chance Comparison
 </p>
 </div>
-<p>Figure <a href="4-study2.html#fig:probbet">4.24</a> compares the amount that individuals were willing to bet to their hidden probability that the defendant had/had not committed the crime.
+<p>Figure <a href="4-study2.html#fig:probbet">4.25</a> compares the amount that individuals were willing to bet to their hidden probability that the defendant had/had not committed the crime.
 Whether the participants were betting on the guilt or innocence of the defendant depended on their personal opinion of guilt - those who thought the defendant was guilty bet on the defendant’s guilt, while those who thought the defendant was innocence bet on the defendant’s innocence.
 Values are clustered at two points.
 For those who thought the defendant was innocent, they were willing to bet almost all of the $50 and assigned a low probability to the defendant committing the crime.
@@ -718,19 +729,19 @@ Based on the graph, this may indicate that both the probability scale and the be
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:probbet"></span>
 <img src="thesis_files/figure-html/probbet-1.png" alt="Betting and Probability Comparison" width="\linewidth" />
 <p class="caption">
-Figure 4.24: Betting and Probability Comparison
+Figure 4.25: Betting and Probability Comparison
 </p>
 </div>
 <p><span class="citation">Mattijssen et al. (2020)</span> compared likelihood and strength of evidence ratings from 10 examiners who regularly used likelihood scales.
 While this sample size is rather small, they found that examiners tended to give higher verbal degrees of support than they should have, based on their likelihood ratio.
 A similar effect can be investigated in the potential jurors of this study, when asked to rate the strength of evidence in the case as compared to their perceived probability that the defendant committed the crime.</p>
-<p>Figure <a href="4-study2.html#fig:strengthprob">4.25</a> shows the relationship between the strength of evidence compared to the probability that the defendant committed the crime.
+<p>Figure <a href="4-study2.html#fig:strengthprob">4.26</a> shows the relationship between the strength of evidence compared to the probability that the defendant committed the crime.
 In the identification condition, there is a generally increasing correspondence between the perceived strength of evidence and the participants’ predicted probability that the defendant committed the crime.
 This correspondence is less clear in the elimination condition, perhaps due to scale compression.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:strengthprob"></span>
 <img src="thesis_files/figure-html/strengthprob-1.png" alt="Strength of Evidence and Numerical Chance of Committing the Crime" width="\linewidth" />
 <p class="caption">
-Figure 4.25: Strength of Evidence and Numerical Chance of Committing the Crime
+Figure 4.26: Strength of Evidence and Numerical Chance of Committing the Crime
 </p>
 </div>
 </div>
@@ -741,26 +752,26 @@ Figure 4.25: Strength of Evidence and Numerical Chance of Committing the Crime
 This demographic information can be compared with the participants’ responses.</p>
 <div id="income" class="section level4 hasAnchor" number="4.3.5.1">
 <h4><span class="header-section-number">4.3.5.1</span> Income<a href="4-study2.html#income" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Figure <a href="4-study2.html#fig:probincome">4.26</a> explores a potential relationship between income and believed probability that the defendant committed the crime.
+<p>Figure <a href="4-study2.html#fig:probincome">4.27</a> explores a potential relationship between income and believed probability that the defendant committed the crime.
 There does not appear to be a relationship between the two variables.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:probincome"></span>
 <img src="thesis_files/figure-html/probincome-1.png" alt="Income and Probability Comparison" width="\linewidth" />
 <p class="caption">
-Figure 4.26: Income and Probability Comparison
+Figure 4.27: Income and Probability Comparison
 </p>
 </div>
-<p>Bases on Figure <a href="4-study2.html#fig:convictsincome">4.27</a>, some individuals in the match condition chose to convict across all income levels.
+<p>Bases on Figure <a href="4-study2.html#fig:convictsincome">4.28</a>, some individuals in the match condition chose to convict across all income levels.
 There does not appear to be a clear trend between conviction choice and income.
 Several income brackets chose to convict over the choice not to convict, but these brackets are spread throughout the scale.
 In the case of the elimination condition, the individuals who did choose to convict came from different income brackets.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:convictsincome"></span>
 <img src="thesis_files/figure-html/convictsincome-1.png" alt="Income and Conviction Comparison" width="\linewidth" />
 <p class="caption">
-Figure 4.27: Income and Conviction Comparison
+Figure 4.28: Income and Conviction Comparison
 </p>
 </div>
 <p>One may expect income to make a difference in how much individuals choose to bet on their opinion in the case, either in the amount of risk an individual is willing to take or in their desire to keep hypothetical money.
-This does not appear to be the case, however, based on Figure <a href="4-study2.html#fig:incomebet">4.28</a>.
+This does not appear to be the case, however, based on Figure <a href="4-study2.html#fig:incomebet">4.29</a>.
 As discussed earlier, many participants in the elimination condition were willing to bet the full amount that the defendant was innocent.
 This is reflected across most income categories as well.
 In the case of the identification condition, we saw earlier that participants were not as extreme in their bets as is seen in the elimination condition.
@@ -768,36 +779,36 @@ This trend is also reflected in the boxplots, with a fairly similar distribution
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:incomebet"></span>
 <img src="thesis_files/figure-html/incomebet-1.png" alt="Income and Betting Comparison" width="\linewidth" />
 <p class="caption">
-Figure 4.28: Income and Betting Comparison
+Figure 4.29: Income and Betting Comparison
 </p>
 </div>
 </div>
 <div id="education" class="section level4 hasAnchor" number="4.3.5.2">
 <h4><span class="header-section-number">4.3.5.2</span> Education<a href="4-study2.html#education" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Figure <a href="4-study2.html#fig:probeduc">4.29</a> shows the education level along with the participants’ probability that the defendant committed the crime.
+<p>Figure <a href="4-study2.html#fig:probeduc">4.30</a> shows the education level along with the participants’ probability that the defendant committed the crime.
 In this case, there does not appear to be a relationship between education level and probability, as the boxplots for probability are similarly distributed across education levels.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:probeduc"></span>
 <img src="thesis_files/figure-html/probeduc-1.png" alt="Education Level and Probability Comparison" width="\linewidth" />
 <p class="caption">
-Figure 4.29: Education Level and Probability Comparison
+Figure 4.30: Education Level and Probability Comparison
 </p>
 </div>
-<p>Figure <a href="4-study2.html#fig:convictseduc">4.30</a> shows the relationship between the decision to convict and education level.
+<p>Figure <a href="4-study2.html#fig:convictseduc">4.31</a> shows the relationship between the decision to convict and education level.
 As before, there doesn’t appear to be much of a relationship between education level and conviction decision.
 In the identification condition, individuals chose to convict across all educational categories.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:convictseduc"></span>
 <img src="thesis_files/figure-html/convictseduc-1.png" alt="Education and Conviction Comparison" width="\linewidth" />
 <p class="caption">
-Figure 4.30: Education and Conviction Comparison
+Figure 4.31: Education and Conviction Comparison
 </p>
 </div>
-<p>Figure <a href="4-study2.html#fig:educbet">4.31</a> shows the relationship between the betting and the education level.
+<p>Figure <a href="4-study2.html#fig:educbet">4.32</a> shows the relationship between the betting and the education level.
 There does not appear to be a trend between the education level and the amount that participants were willing to bet.
 Based on these graphs, it does not appear that there is a relationship between education level and responses.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:educbet"></span>
 <img src="thesis_files/figure-html/educbet-1.png" alt="Education and Betting Comparison" width="\linewidth" />
 <p class="caption">
-Figure 4.31: Education and Betting Comparison
+Figure 4.32: Education and Betting Comparison
 </p>
 </div>
 <!-- #### Order of the Questions -->
@@ -944,13 +955,13 @@ Figure 4.31: Education and Betting Comparison
 <div id="gun-comfort" class="section level4 hasAnchor" number="4.3.5.3">
 <h4><span class="header-section-number">4.3.5.3</span> Gun Comfort<a href="4-study2.html#gun-comfort" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Participants were asked to rate how comfortable they are with guns.
-Figure <a href="4-study2.html#fig:convictscomfort">4.32</a> shows the relationship between choice to convict and comfort with guns.
+Figure <a href="4-study2.html#fig:convictscomfort">4.33</a> shows the relationship between choice to convict and comfort with guns.
 There does not appear to be a big trend in conviction rate.
 However, it can be seen in the identification condition that those who were extremely uncomfortable with guns were more likely to convict, while those who were extremely comfortable with gones were less likely to convict.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:convictscomfort"></span>
 <img src="thesis_files/figure-html/convictscomfort-1.png" alt="Gun Comfort and Conviction Comparison" width="\linewidth" />
 <p class="caption">
-Figure 4.32: Gun Comfort and Conviction Comparison
+Figure 4.33: Gun Comfort and Conviction Comparison
 </p>
 </div>
 </div>

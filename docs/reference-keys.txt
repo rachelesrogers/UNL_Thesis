@@ -54,6 +54,7 @@ tab:fuzzyexamlarge
 fig:weightedhighlights
 fig:notecount
 tab:nonfuzzycount
+fig:responsefigures
 fig:completiontime2
 fig:demographics2
 fig:strength2
@@ -151,7 +152,7 @@ discussion-1
 conclusion-1
 study2
 background-1
-study-1-and-scale-compression
+problems-in-study-1
 study-visualization
 methods-1
 study-format-1

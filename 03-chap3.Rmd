@@ -3,38 +3,39 @@
 ## Background
 
 
-### Study 1 and Scale Compression
+### Problems in Study 1
 
 The results from the initial study found in Chapter \@ref(study1) call into question the use of Likert response scales when evaluating jury perception of firearms experts, as well as the use of a transcript testimony format.
-
 Responses pertaining to the credibility of the expert, as well as the reliability and scientificity of the evidence, suffered from scale compression when a Likert scale was used - participants indicated overall confidence in credibility, reliability, and scientificity by mainly selecting the two highest categories of each scale.
 This lack of variation in scale responses makes it difficult to discern potential differences between treatment conditions.
-Due to this difficulty, we conducted a follow-up study comparing various response types, in order to determine substitute questions that may result in a wider variety of responses.
+Due to this difficulty, we conducted a follow-up study comparing various response types, in order to determine substitute questions that may result in a wider distribution of responses.
 
-Additional changes include the addition of jury instructions on the part of the judge, instructing members of the jury to treat the firearms examiner as they would any other witness and removing the use of the term "expert".
-We enacted this change after investigating the scale compression in responses, and finding that @OpinionEvidence suggests that the use of the term "expert" may result in jurors giving the testimony more weight, and provides sample text for the judge to clarify the presence of the witnesses as opinion witnesses instead of experts.
+Further changes include the addition of jury instructions on the part of the judge, instructing members of the jury to treat the firearms examiner as they would any other witness and removing the use of the term "expert".
+We enacted these changes after investigating the scale compression in responses, and finding that @OpinionEvidence suggests that the use of the term "expert" may result in jurors giving the testimony more weight, and provides sample text for the judge to clarify the presence of the witnesses as opinion witnesses instead of experts.
 Additional cross examination testimony with regards to the firearms examiner's inability to specifically tie the defendant to the crime scene is included as well, due to a lack of distinction in participants between evidence tying the firearm to the crime scene, and evidence tying the defendant to the crime scene.
-As in the initial study, these changes were directly related to trial transcripts or sample wording.
-The transcript for the second study can be found in Appendix \@ref(study-2-changes).
+As in the initial study, these changes were directly related to trial transcripts or resources.
+The transcript changes for the second study can be found in Appendix \@ref(study-2-changes).
 
-In the initial study, some participants were confused about who the witnesses were testifying for.
+In the initial study, some participants were confused about who the witnesses were testifying for, as evidenced by their written comments.
 This may be due to the testimony format, which does not clearly identify the speaker with each line, instead using "Q:" and "A:" in most cases, as shown in Appendix \@ref(study-2-changes).
-This lack of visuals for tracking speakers is not representative of the courtroom setting, and may have contributed to the confusion expressed by a participant.
+This lack of visuals cues for tracking speakers is not representative of the courtroom setting, and may have contributed to the confusion expressed by some participants.
 The transcript format may also lend an air of impartiality to the witnesses due to the relatively unclear identity of the individual asking the questions.
+This may have been compounded by the exclusion of testimony where the prosecution called the witness to testify, instead beginning with the swearing in of the witness.
+This has been rectified in this second study.
 Due to this potential issue, we strove to develop a general tool that can be used in online courtroom studies to provide visual representation of relevant actors, making it easier to track speakers, and with versatility in terms of individual characteristics.
 
 In order to minimize the chance of confounding typos as seen in Study 1, we used one master file with all lines of testimony, labelled by the scenario in which the testimony occurs.
-Thus, there is no longer multiple files of repeated text.
-We also use unique identification throughout the database files in the form of Prolific ID's and a random number assigned to the participant instead of relying on unique fingerprints, so the demographics section can more easily be linked to the final results.
+Thus, there is no longer multiple files of repeated text, and this format allows for more flexibility when implementing the R Shiny application.
+We also use unique identification throughout the database files in the form of Prolific ID's and a random number assigned to the participant instead of relying on unique fingerprints, which resulted in technical difficulties in a preliminary run of this second study, so the demographics section can more easily be linked to the final results.
 
 ### Study Visualization
 
-Appendix \@ref(study-2-changes) shows the characters that have been developed for this study, as well as a screenshot of the study format.
+Appendix \@ref(study-2-changes) shows the characters that have been developed for this study (drawn by Richy Meleus), as well as a screenshot of the study format.
 These characters were drawn so that the clothes and heads can be interchanged, providing a wide variety of characters for potential scenarios.
 One difficulty in including drawn figures with realistic skin tones and figures is the influence of perceived race or gender on the participants' judgements.
 @ImplicitRaceAttitudes found a relationship between implicit racial bias and the perceived trustworthiness of individuals based on images of black and white males.
 They also found that 80% of participants exhibited pro-white implicit bias.
-Because of this potential bias introduced by visual figures, we plan to conduct a study in order to determine how these figures are perceived at a later time.
+Because of this potential bias introduced by visual figures, we plan to conduct a follow-up study in order to determine how these figures are perceived.
 For the current study, the same figures are used consistently across all conditions to prevent a confounding effect.
 
 To investigate a which response type may be most informative for this study and to troubleshoot the use of figures and speech bubble format, we conducted a smaller micro study using various response types.
@@ -46,8 +47,35 @@ To investigate a which response type may be most informative for this study and 
 Participants were presented with the same scenario described in Chapter \@ref(study1): participants read a trial transcript regarding an attempted convenience store robbery, where the only evidence presented is a bullet comparison between the defendant's gun and a bullet recovered from the scene of the crime (a scenario from @garrettMockJurorsEvaluation2020).
 In this case, however, the only factor that was changed was the conclusion of the firearms examiner: either an indentification or exclusion.
 In all conditions, the algorithm was absent and there were no images.
-The testimony largely followed that of Chapter \@ref(study1), aside from differences in the format and additional testimony described above.
+The testimony largely followed that of Chapter \@ref(study1), aside from differences in the format and additional testimony described above and outlined in Appendix \@ref(study-2-changes).
 In this case, it was also explicitly stated that the testimony did not reflect all evidence presented in the case, because in the exclusion condition there may not be enough evidence to bring the case to trial.
+Figure \@ref(fig:responsefigures) depicts the characters used in this study. 
+Those speaking on behalf of the prosecution were coded with speech bubbles in warmer colors (red for the prosecutor and orange for the forensic scientist), while the defense was coded with a cooler color (purple), and the judge was coded as grey.
+
+```{r}
+#| responsefigures,
+#| fig.cap= "Figures used in the response study. From left to right: the judge, forensic scientist, prosecutor, and defense lawyer.",
+#| fig.width= 7,
+#| fig.align= "center",
+#| echo= FALSE,
+#| message= FALSE,
+#| warning= FALSE
+
+library(gridExtra)
+library(grid)
+library(jpeg)
+
+judge <- readJPEG("images/Judge.jpg")
+
+forensic_science <- readJPEG("images/Forensic Scientist.jpg")
+
+lawyer <- readJPEG("images/Lawyer.jpg")
+
+analyst <- readJPEG("images/Analyst.jpg")
+
+grid.arrange(rasterGrob(judge),rasterGrob(forensic_science),
+             rasterGrob(lawyer),rasterGrob(analyst),nrow=1, ncol=4)
+```
 
 At the end of the testimony, the participants were asked a variety of questions regarding the strength of evidence in the case.
 Questions of probability, strength of evidence, and decision to convict were repeated from the Chapter \@ref(study1) study.
@@ -55,17 +83,19 @@ Participants were asked to evaluate the probability that the defendant committed
 The strength of evidence was a Likert scale with values from "Not at all strong" to "Extremely strong" with nine points.
 In terms of conviction, participants were reminded of the decision criterion of "beyond a reasonable doubt" when making a decision in a criminal trial, and asked if they would choose to convict.
 
-New questions for this micro study asked individuals to give their opinion of the guilt of the defendant, as well as assessing the chances that the defendant committed the crime, how much they would be willing to bet that the defendant was either innocent or guilty, and their opinion of the defendant.
+New questions for this response study asked individuals to give their opinion of the guilt of the defendant, as well as assessing the chances that the defendant committed the crime, how much they would be willing to bet that the defendant was either innocent or guilty, and their opinion of the defendant.
 In addition to a question regarding whether or not the participant would choose to convict, we also asked the participants to give their personal opinion on the guilt of the defendant.
 This provides a second threshold for assessing the strength of evidence, aside from the "beyond a reasonable doubt" standard.
+
 Two different questions were asked with regards to the chances that the defendant committed the crime. 
 One was in a multiple choice format, with extreme values of "Impossible to be guilty" and "Certain to be guilty", and intermediate values ranging from "About 1 chance in 10,000" to "About 9,999 chances in 10,000" with denominator values changing by a decimal place for each choice, and a middle value of "1 chance in 2".
 This format was taken from @thompsonLayUnderstanding's study of DNA, which consisted of larger scaled values in the denominator (up to 1 in 10 million).
-The second question allowed participants to select both the numerator and denominator: "About ___ chance(s) in ___ that the defendant is (innocent/guilty)", where participants were able to select to express the value as innocence or guilt.
+The second question allowed participants to select both the numerator and denominator: "About ___ chance(s) in ___ that the defendant is (innocent/guilty)", where participants were able to select to express the value as innocence or guilt (the default value was "innocent").
+In the preliminary study, participants had to express chances that corresponded with their opinion on the defendant committing the crime, but this resulted in some scale confusion.
 In both cases, the numerator had to be less than or equal to the denominator.
+
 Individuals who thought that the defendant was guilty were asked how much they were willing to bet that the defendant was guilty, if hypothetically researchers provided them with \$50 and they would double their money if they were correct, and vice versa.
 A final new question was open ended, and asked participants to provide their opinion of the defendant.
-
 We first asked individuals to provide their opinion of the defendant, their conviction decision, and their personal opinion of the guilt of the defendant.
 All other questions were randomized in a way that guaranteed the two probability questions and the two chance questions were not asked directly following each other.
 
