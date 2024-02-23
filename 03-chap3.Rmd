@@ -566,15 +566,14 @@ ggplot(microstudy_clean) +
 
 ### Scale Comparison
 
-#### Numeric and Multiple Choice Chance Comparison
-
-Consistency across response types is another important aspect of this study.
+In addition to resolving scale compression, consistency across response types is another important aspect of this study.
 If different question types result in responses that are inconsistent, it would be difficult to tell which questions truly capture the attitudes of the participants, in order to most accurately answer the research questions.
 As mentioned in the Chapter \@ref(litreview), there have been studies to suggest that individuals may struggle with the interpretation of chance scales.
-Questions of how much a participant is willing to bet may also depend on their personal feel for risk, and betting hypothetical money may have different results than betting real money.
-<!-- \authorcol{There is a source for making decisions for others somewhere, and it may have had something to do with betting or something to do with plea deals. TBD} -->
-Because individuals may be influenced by the order of the questions, the order was randomized and recorded.
-<!-- , so that the orders can be compared. -->
+Other scales, such as how much a participant is willing to bet, may be highly subjective - depending their personal feel for risk, and betting hypothetical money may have different results than betting real money.
+Due to this potential difficulty in interpretation, response scales must be compared.
+Because individuals may be influenced by the order of the questions (such as choosing a numeric chance value that aligns with their multiple choice selection), the order was randomized and recorded.
+
+#### Numeric and Multiple Choice Chance Comparison
 
 ```{r}
 #| likecomp1,
@@ -640,15 +639,16 @@ ggplot(subset(clean_results_merged, chance_of=="guilty"), aes(x=chances_fixed))+
 
 Figure \@ref(fig:likecomp1) shows the comparison of the multiple choice chance responses to the numeric chance responses, in the case that the participants chose to express the numeric chance in terms of guilt.
 The red dots represent the actual value corresponding to their selection of the multiple choice chance (for example, the red dot for "About 1 chance in 10" is located at the y-value of 0.10).
-This allows for comparison on the consistency between the multiple choice and the numeric scales.
+This allows for comparison of the consistency between the multiple choice and the numeric scales.
 For values of "1 chance in 2", "About 1 chance in 10", and "About 9 chances in 10", the responses seem fairly consistent - however, it is difficult to tell if these values are consistent for more extreme values, because they are compressed on the linear scale.
 
 
-Figure \@ref(fig:likecomp1scale) demonstrates the lower half of the multiple choice scale, when the x axis is transformed by log 10.
-The lines indicate the numerical equivalent to the multiple choice wording, including a black line for the unpictured category of "1 chance in 2 (fifty-fifty chance)".
-From this transformed scale, there still appears to be some consistency between when participants choose their own chance numerically and when they were offered a multiple choice.
-This can be seen in the graph when the observations are inside the boundaries that align with its multiple choice category - meaning that it is not beyond the category.
-However, many individuals did not show consistent choices between scales - particularly in the "About 1 chance in 10,000" condition and the "About 1 chance in 100" condition, where several numerical choices would have better aligned with different selections in the multiple choice section, as demonstrated by the closeness of several observations to other lines.
+Figure \@ref(fig:likecomp1scale) demonstrates the lower half of the multiple choice scale, when the x-axis is transformed by log 10.
+The lines indicate the numerical equivalent to the multiple choice wording, including a black line for the ungraphed category of "1 chance in 2 (fifty-fifty chance)".
+Based on this transformed scale, there is some consistency between participants' numeric chance choice and their multiple choice answer.
+While the log transformation makes it difficult to measure distances between values on the density curves and the nearest multiple choice category, it would be safe to assume that there is some correspondence between multiple choice and numeric categories when the numeric value falls in the region contained by the next highest or lowest multiple choice categories.
+For example, if an individual selected "About 1 chance in 10" on the multiple choice scale, and selected a numeric chance value between 0.01 and 0.2, there is some correspondence between their multiple choice selection and the numeric value.
+However, many individuals did not show consistent choices between scales - particularly in the "About 1 chance in 10,000" condition, where several numerical choices would have better aligned with different selections in the multiple choice section, as demonstrated by the closeness of several observations to other multiple choice chance values.
 
 ```{r}
 #| likecomp1scale,
@@ -710,12 +710,13 @@ ggplot(subset(clean_results_merged, chance_of=="guilty" &
 ```
 
 Figure \@ref(fig:likecomp1scalerev) demonstrates the upper half of the multiple choice scale.
-In order to visualize these compressed values, the numerical chance selected by participants was subtracted from 1 and a log 10 transformation was used on the x axis. 
+In order to visualize these compressed values, the numerical chance selected by participants was subtracted from 1 and a log 10 transformation was used on the x-axis. 
 Thus, values can be interpreted as the chance that the defendant was innocent, even though participants chose to express their values in terms of guilt.
 The lines indicate the numerical equivalent to the multiple choice wording, if expressed in terms of innocence.
 While those selecting "About 9 chances in 10" were fairly consistent with the expected value, there is a fair amount of inconsistency between participants' multiple choice selection and their numerical values for all other categories.
 Those who selected "Certain to be guilty" tended to choose guilt values of 1 (or, alternatively, chance of innocence values of 0), as expected.
 Other numerical values tended to cluster around 0.01 - 0.1 as the chance of innocence (individuals selected values between 0.9 and 0.99 in their numerical calculation of guilt).
+For values aside from "About 9 chances in 10", this trend indicates that participants tended to provide numerical values of guilt that were lower than the values they indicated on the multiple choice scale.
 
 ```{r}
 #| likecomp1scalerev,
@@ -761,10 +762,10 @@ ggplot(subset(clean_results_merged, chance_of=="guilty" &
 
 This same procedure can be repeated for those who thought the defendant was guilty, as shown in Figure \@ref(fig:likecomp2).
 In this case, because individuals chose to supply the chance that the defendant did not commit the crime, the multiple choice chance indicators were reversed by subtracting the given value from 1.
-There appears to be some confusion on the question wording in this case, as demonstrated by numerous responses in the "About 1 chance in 1,000" and "About 1 chance in 100" categories that appear as low chance values - indicating that individuals selected a low chance of innocence when given the numerical format, but a high chance of innocence when given the multiple choice.
+There appears to be some confusion on the question wording in this case, as demonstrated by numerous responses in the "About 1 chance in 1,000" and "About 1 chance in 100" categories that appear as low chance values - indicating that individuals selected a low chance of innocence when given the numerical format, but a high chance of innocence when given the multiple choice question.
 Most median numeric values on the left half of the multiple choice scale do not align with the translated value from the multiple choice scale.
 The reduced consistency seen in these graphs may related to the change in the question wording, where the multiple choice question considers the chance of guilt, while their numeric chance considered the chance of innocence.
-Most individuals who had inconsistent responses between the numeric and multiple choice chance question thought that the defendant was innocent, indicating that the multiple choice scale is more consistent with their beliefs.
+Most individuals who had inconsistent responses between the numeric and multiple choice chance question thought that the defendant was innocent, indicating that the multiple choice scale is more consistent with their beliefs than their numeric selections.
 
 ```{r}
 #| likecomp2,
@@ -795,8 +796,9 @@ ggplot(subset(clean_results_merged, chance_of=="innocent"), aes(x=chances_fixed)
 
 ```
 
-This appearance confusion is reinforced in Figure \@ref(fig:likecomp2scale), displaying the values corresponding to the lower half of the multiple choice scale. 
+This apparent confusion is reinforced in Figure \@ref(fig:likecomp2scale), displaying the values corresponding to the lower half of the multiple choice scale. 
 As in Figure \@ref(fig:likecomp1scalerev), I have reversed the numeric values so a log transformation can be used to better visualize the data.
+While both graphs show inconsistency in responses, leading to a clustering of density distributions, in this case the effect is more severe.
 The only multiple choice value that shows some consistency with the numeric counterpoints is "About 1 chance in 10", while for all other multiple choice options participants tended to provide a lower chance of numerical innocence than their multiple choice selection would indicate (shown by values further right on the scale).
 In two cases, for those who selected "About 1 chance in 100" and "About 1 chance in 1,000" of guilt, the most popular category is above a fifty-fifty chance, indicating confusion on the scale.
 Those who selected "Impossible that he is guilty" also tended to select chance of guilt values at 0, also demonstrating consistency (although several individuals also chose "Impossible that he is guilty" and assigned higher chances of guilt).
@@ -857,8 +859,10 @@ ggplot(subset(clean_results_merged, chance_of=="innocent" &
 
 Interestingly, this inconsistency did not hold as strongly for the upper part of the multiple choice chance scale, shown in Figure \@ref(fig:likecomp2scalerev).
 Here, lines indicate the appropriate level chance of innocence corresponding to the multiple choice scale of guilt.
-In this case, the first two categories ("About 9 out of 10" and "About 99 out of 100") correspond quite well between the multiple choice answer and the numeric counterpart.
+In this case, the bottom two categories ("About 9 out of 10" and "About 99 out of 100") correspond quite well between the multiple choice answer and the numeric counterpart.
 Although this consistency is not as present in the other categories, due to a larger variety of inputs, they are closer to the ballpark than what is shown in Figure \@ref(fig:likecomp2scale).
+None of the individuals who selected "Certain to be guilty" on the multiple choice scale chose the corresponding 0 chance value of innocence, instead largely choosing values consistent with "About 99 chances in 100".
+
 Overall, individuals tended to provide more consistent responses when evaluating numeric chance in terms of guilt instead of in terms of innocence.
 While the upper parts of both innocent and guilty scales demonstrated less consistency than the lower parts of the scales, the trends for those who expressed chance in terms of guilt more closely followed their multiple choice selections.
 
