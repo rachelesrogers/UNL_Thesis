@@ -216,13 +216,15 @@ merged_results <- merged_results_allresponses %>% filter(check1 =="9mm" & check2
 match_convict_compare <- prop.test(x=c(sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="Match"),sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")), n=c(sum(microstudy_clean$conclusion=="Match"), sum(merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")),alternative="two.sided")
 ```
 
-There were some procedural changes made to this study compared to the original study that may influence results; namely, more detailed cross examination and the inclusion of jury instructions.
-Another significant difference between the two studies is the time frame - notably, in this microstudy, a participant commented that they had recently read an article about the unreliability of firearms evidence.
+There were some procedural changes made to this study compared to the original study that may influence results: namely, more detailed cross examination and the inclusion of jury instructions.
+Another significant difference between the two studies is the time that has passed between the two studies.
+The first study was conducted in July 2022, while this study was conducted in January 2024.
+In this time, notoriety of firearms evidence has not remained the same - in this response study, a participant commented that they had recently read an article about the unreliability of firearms evidence.
 More widespread criticism of firearms examination may lead to lower feelings of reliability.
 
 In both studies, participants are asked if they would choose to convict, given the "beyond a reasonable doubt" threshold.
 In this study, `r round(sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="Match")/sum(microstudy_clean$conclusion=="Match")*100, 2)`\% (or `r sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="Match")` out of `r sum(microstudy_clean$conclusion=="Match")`) individuals who received the identification condition chose to convict, while `r round(sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="NoMatch")/sum(microstudy_clean$conclusion=="NoMatch")*100, 2)`\% (or `r sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="NoMatch")` out of `r sum(microstudy_clean$conclusion=="NoMatch")`) participants who received the elimination condition chose to convict.
-The conviction percentage for the identification condition in this study is slightly lower than the comparable condition in the original study (without the use of the algorithm and images): `r round(sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")/sum(merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")*100, 2)` (or `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")` out of `r sum(merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")`).
+The conviction percentage for the identification condition in this study is slightly lower than the comparable condition in the original study (without the use of the algorithm and images): `r round(sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")/sum(merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")*100, 2)`\% (or `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")` out of `r sum(merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")`).
 However, there is not a significant difference between studies (p-value `r round(match_convict_compare$p.value, 2)`).
 None of the `r sum(merged_results$conclusion=="NoMatch" & merged_results$algorithm=="No" & merged_results$picture=="No")` individuals in the original study who received the elimination condition without the use of the algorithm or images chose to convict.
 
@@ -268,7 +270,7 @@ ggplot(microstudy_clean) +
 Figure \@ref(fig:strength2) shows participant responses to the strength of evidence in this study.
 As can be seen, those in the elimination category tended to choose the smallest value for the strength of evidence ("Not at all strong"), while in the case of the identification condition, individuals tended to distribute their views of the strength of evidence more evenly.
 This graph resembles the strength of evidence results from the initial study, shown in Figure \@ref(fig:strength).
-While not as dramatic as the scale compression for questions of reliability, credibility, and scientificity, the elimination results for strength of evidence do appear to show a scale limitation in the way that individuals tended to select the lowest category.
+While not as dramatic as the scale compression for questions of reliability, credibility, and scientificity, the elimination results for strength of evidence do appear to show a scale limitation because individuals tended to overwhelmingly select the lowest category.
 
 ```{r}
 #| prob2,
@@ -283,6 +285,9 @@ While not as dramatic as the scale compression for questions of reliability, cre
 
 colors <-  c("Hidden"="red", "Visible"="grey")
 
+conclusion_labs <- c("Identification", "Elimination")
+names(conclusion_labs) <- c("Match", "NoMatch")
+
 ggplot(microstudy_clean) +
   geom_density(alpha=0.75, aes(x=as.numeric(hidden_probability), fill="Hidden")) +
   geom_density(alpha=0.75, aes(x=as.numeric(visible_probability), fill="Visible")) +
@@ -290,7 +295,7 @@ ggplot(microstudy_clean) +
   scale_fill_manual(values = colors, name="Probability")+
   ylab("Density")+
   xlab("Probability")+
-  facet_grid(.~conclusion)+
+  facet_grid(.~conclusion, labeller = labeller(conclusion = conclusion_labs))+
   theme_bw()
 
 
@@ -307,9 +312,9 @@ nomatch_prob_ttest<-t.test(microstudy_clean[microstudy_clean$conclusion=="NoMatc
 Figure \@ref(fig:prob2) demonstrates the participants' selected probabilities that the defendant committed the crime.
 As in the case of the strength of evidence, the graph resembles the probability graph found in the initial study (Figure \@ref(fig:probalgorithm)), where there is a higher peak of extreme values for the elimination conditions than for the identification condition.
 When using a t-test to compare the mean visible probabilities for the identification and elimination condition to those comparable conditions of the initial study, there is not a significant difference for the identification condition, but is a significant difference in the elimination condition (p-values of `r round(match_prob_ttest$p.value,2)` and `r round(nomatch_prob_ttest$p.value,2)`, respectively).
-The estimated mean is higher in this follow up study (`r round(nomatch_prob_ttest$estimate[1], 2)`) than the initial study (`r round(nomatch_prob_ttest$estimate[2], 2)`) in the elimination condition.
-For the identification condition, the estimated probabilities are `r round(match_prob_ttest$estimate[1], 2)` for the follow-up study and `r round(match_prob_ttest$estimate[2], 2)` for the initial study.
-In this study, there does not appear to be a difference in the density curves based on the visibility of the probability scale.
+The estimated mean is higher in this follow up study (`r round(nomatch_prob_ttest$estimate[1], 2)`\%) than the initial study (`r round(nomatch_prob_ttest$estimate[2], 2)`\%) in the elimination condition.
+For the identification condition, the estimated probabilities are `r round(match_prob_ttest$estimate[1], 2)`\% for the follow-up study and `r round(match_prob_ttest$estimate[2], 2)`\% for the initial study.
+In this study, the density curves for when the probability was visible or hidden remain similar.
 
 ### New Study Questions
 
@@ -335,12 +340,13 @@ This discrepancy may be due to participants reversing the strength of the thresh
 
 
 ggplot(microstudy_clean) +
-  geom_bar(aes(x=convict, fill=guilt_opinion), position="dodge") +
+  geom_bar(aes(x=convict, fill=guilt_opinion), 
+           position=position_dodge(preserve="single")) +
   ggtitle("") +
   scale_fill_manual(values = c("#D81B60","#004D40"), name="Opinion", labels=c("Innocent","Guilty"))+
   ylab("Count")+
   xlab("Convict?")+
-  facet_grid(.~conclusion)+
+  facet_grid(.~conclusion, labeller = labeller(conclusion = conclusion_labs))+
   theme_bw()
 
 ```
@@ -364,14 +370,15 @@ In this way, the betting response is similar both to the strength of evidence re
 #| message= FALSE
 
 ggplot(microstudy_clean) +
-  geom_histogram(aes(x=betting, fill=guilt_opinion), binwidth=5, color="black",
+  geom_histogram(aes(x=betting, fill=guilt_opinion), 
+                 binwidth=5, color="black",
            position = position_dodge(preserve = "single")) +
   ggtitle("How much would you bet that the Defendant is...") +
   scale_fill_manual(values = c("#D81B60","#004D40"), name="", labels=c("Innocent","Guilty"))+
   ylab("Count")+
   xlab("Bet Amount")+
   xlim(c(0,50))+
-  facet_grid(conclusion~.)+
+  facet_grid(conclusion~., labeller = labeller(conclusion = conclusion_labs))+
   theme_bw()
 
 
@@ -379,13 +386,12 @@ ggplot(microstudy_clean) +
 
 The remaining questions relate to the chance that the defendant committed the crime.
 One question, shown in Figure \@ref(fig:fixedlike), allowed participants to select the chance that the defendant committed the crime from a multiple choice scale.
-Because the scale includes both extreme values that favor innocence and guilt, this question remained the same regardless of the participant's opinion on the guilt of the defendant.
 This scale does not provide a linear distance between intervals, but instead changes by multiples of 10 in the denominator (ex. one category is 1 in 10, and the next category is 1 in 100).
 The exceptions are the endpoints, which are "Impossible to be guilty" and "Certain to be guilty", as well as the midpoint of 1 chance in 2.
 In this case, the scale in the elimination condition does not encounter the ceiling or floor effect that has been seen in previous scales, as participants did not overwhelmingly select the lowest value.
-Instead, participants are distributed mainly throughout the lower half of the scale, while those in the match condition tended to be a little closer to the center.
+Instead, participants are distributed mainly throughout the lower half of the scale, while those in the identification condition tended to be a little closer to the center.
 In both cases, participants are not crowded into a small number of categories.
-Thus, the multiple choice chance scale appears to have less scale compression than seen previously in the other response types.
+Thus, the multiple choice chance scale has less scale compression than seen previously in the other response types.
 This wider distribution may be the result of decompressing the end points - individuals have a variety of values to select that reflect their judgement of a low probability that the defendant committed the crime, or a low strength of evidence.
 
 
@@ -418,9 +424,11 @@ microstudy_clean$chances_fixed = factor(
 )
 
 ggplot(microstudy_clean) +
-  geom_bar(aes(x=chances_fixed, fill=conclusion), position="dodge") +
+  geom_bar(aes(x=chances_fixed, fill=conclusion),  
+           position = position_dodge(preserve = "single")) +
   ggtitle("What is the Chance that the Defendant is Guilty?") +
-  scale_fill_manual(values = c("grey80","seagreen"), name="Condition")+
+  scale_fill_manual(values = c("grey80","seagreen"), name="Condition",
+                    labels = conclusion_labs)+
   ylab("Count")+
   xlab("Chance")+
   theme_bw()+
@@ -452,23 +460,39 @@ ggplot(microstudy_clean) +
   scale_fill_manual(values = c("#CC79A7" ,"#D55E00"), name="", labels=c("Guilty","Innocent"))+
  # ylab("Count")+
   xlab("Chance")+
-  facet_grid(.~conclusion)+
+  facet_grid(.~conclusion, labeller = labeller(conclusion = conclusion_labs))+
   #scale_x_continuous(trans='log10')+
   theme_bw()+
   xlim(c(0,1))
 
 
+
+######## Choice of Response format #####################
+
+innocent_chance <- 
+  c(dim(microstudy_clean[microstudy_clean$guilt_opinion=="No" &
+                           microstudy_clean$chance_of=="innocent",])[1],
+    dim(microstudy_clean[microstudy_clean$guilt_opinion=="Yes" &
+                           microstudy_clean$chance_of=="innocent",])[1])
+
+opinion_totals <- 
+    c(dim(microstudy_clean[microstudy_clean$guilt_opinion=="No",])[1],
+    dim(microstudy_clean[microstudy_clean$guilt_opinion=="Yes",])[1])
+
+response_choice <- prop.test(x=innocent_chance, n=opinion_totals)
+
+
 ```
 
-A final question asks individuals to provide a numerical chance that the defendant is either innocent or guilty, depending on the participants' choice.
+A final question asks individuals to provide a numerical chance that the defendant is either innocent or guilty, depending on the participants' choice (the question defaulted to chances of innocence, but participants had the option to switch the scale).
 Their responses were limited so that the numerator was smaller than the denominator, resulting in a range of values from 0 to 1, in most cases.
 There were `r sum(microstudy_clean$num_chance>1)` responses with values greater than 1 that will not be considered in this analysis.
 These results are shown in Figure \@ref(fig:freelike).
-As seen in previous graphs, in the case of the elimination condition, individuals gave small values for the chance that the defendant had in fact committed the crime, resulting in a sharp peak.
-Alternatively, individuals were less extreme when they expressed their opinion as the chance that the defendant did not commit the crime.
+As seen in previous response types, in the case of the elimination condition, individuals gave small values for the chance that the defendant had in fact committed the crime, resulting in a sharp peak.
+Alternatively, individuals were less extreme when they expressed their opinion as the chance that the defendant did not commit the crime in the elimination condition, even though the same sentiment is being expressed.
 In the case of the identification condition, those who expressed their opinions as either guilt or innocence gave similar results, resulting in symmetry between the two distributions.
-As shown in Figure \@ref(fig:opinionchanceplot), those who thought the defendant was innocent were more likely to favor inputting chance values in terms of innocence, while those who thought the defendant was guilty showed no clear preference.
-The default value of the question is "innocent", with the option of switching to "guilty".
+As shown in Figure \@ref(fig:opinionchanceplot), those who thought the defendant was innocent were more likely to favor inputting chance values in terms of innocence(`r innocent_chance[1]/opinion_totals[1]`\%, or `r innocent_chance[1]` out of `r opinion_totals[1]`), while those who thought the defendant was guilty were slightly less likely to express chance in terms of innocence (`r innocent_chance[2]/opinion_totals[2]`\% expressed their beliefs in terms of innocence, or `r innocent_chance[2]` out of `r opinion_totals[2]`).
+This resulted in a significant difference between the two groups (p-value of `r round(response_choice$p.value, 3)`).
 
 ```{r}
 #| opinionchanceplot,
