@@ -980,114 +980,76 @@ ggplot(clean_results_merged, aes(x=chances_fixed))+ #,fill=conclusion
 #| warning= FALSE,
 #| message= FALSE
 
-ggplot(subset(clean_results_merged, !is.na(visible_probability)), aes(x=visible_probability, y=chances_fixed))+
-    geom_density_ridges(alpha=0.25, scale=1)+
-  # facet_grid(chances_fixed~., labeller = labeller(chances_fixed = shortened_chance))+
+clean_results_merged$prob_mult_consistency <- NA
+
+clean_results_merged[clean_results_merged$chances_fixed=="Impossible that he is guilty" & clean_results_merged$visible_probability==0,]$prob_mult_consistency <- "correct"
+
+clean_results_merged[clean_results_merged$chances_fixed=="Impossible that he is guilty" & clean_results_merged$visible_probability!=0,]$prob_mult_consistency <- "incorrect"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 10,000" & clean_results_merged$visible_probability %in% c(0,1),]$prob_mult_consistency <- "correct"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 10,000" & !(clean_results_merged$visible_probability %in% c(0,1)),]$prob_mult_consistency <- "incorrect"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 1,000" & clean_results_merged$visible_probability %in% c(0,1),]$prob_mult_consistency <- "correct"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 1,000" & !(clean_results_merged$visible_probability %in% c(0,1)),]$prob_mult_consistency <- "incorrect"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 100" & clean_results_merged$visible_probability %in% seq(1,5),]$prob_mult_consistency <- "correct"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 100" & !(clean_results_merged$visible_probability %in% seq(1,5)),]$prob_mult_consistency <- "incorrect"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 10" & clean_results_merged$visible_probability %in% seq(6,30),]$prob_mult_consistency <- "correct"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 10" & !(clean_results_merged$visible_probability %in% seq(6,30)),]$prob_mult_consistency <- "incorrect"
+
+clean_results_merged[clean_results_merged$chances_fixed=="1 chance in 2 (fifty-fifty chance)" & clean_results_merged$visible_probability %in% seq(30,70),]$prob_mult_consistency <- "correct"
+
+clean_results_merged[clean_results_merged$chances_fixed=="1 chance in 2 (fifty-fifty chance)" & !(clean_results_merged$visible_probability %in% seq(30,70)),]$prob_mult_consistency <- "incorrect"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 9 chances in 10" & clean_results_merged$visible_probability %in% seq(70,94),]$prob_mult_consistency <- "correct"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 9 chances in 10" & !(clean_results_merged$visible_probability %in% seq(70,94)),]$prob_mult_consistency <- "incorrect"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 99 chances in 100" & clean_results_merged$visible_probability %in% seq(95,99),]$prob_mult_consistency <- "correct"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 99 chances in 100" & !(clean_results_merged$visible_probability %in% seq(95,99)),]$prob_mult_consistency <- "incorrect"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 999 chances in 1,000" & clean_results_merged$visible_probability %in% c(99,100),]$prob_mult_consistency <- "correct"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 999 chances in 1,000" & !(clean_results_merged$visible_probability %in% c(99,100)),]$prob_mult_consistency <- "incorrect"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 9,999 chances in 10,000" & clean_results_merged$visible_probability %in% c(99,100),]$prob_mult_consistency <- "correct"
+
+clean_results_merged[clean_results_merged$chances_fixed=="About 9,999 chances in 10,000" & !(clean_results_merged$visible_probability %in% c(99,100)),]$prob_mult_consistency <- "incorrect"
+
+clean_results_merged[clean_results_merged$chances_fixed=="Certain to be guilty" & clean_results_merged$visible_probability==100,]$prob_mult_consistency <- "correct"
+
+clean_results_merged[clean_results_merged$chances_fixed=="Certain to be guilty" & clean_results_merged$visible_probability!=100,]$prob_mult_consistency <- "incorrect"
+
+
+ggplot(subset(clean_results_merged, !is.na(visible_probability)), aes(x=visible_probability, y=chances_fixed,
+                     fill=prob_mult_consistency))+
+    geom_density_ridges(scale=1, stat="binline", bins=100)+
   theme_bw()+
-  geom_rect(aes(xmin=0, xmax=1, ymin=0, ymax=Inf), 
-            fill="#648FFF", alpha=0.006) +
-  geom_rect(aes(xmin=99, xmax=100, ymin=0, ymax=Inf), 
-            fill="#648FFF", alpha=0.006) +
-  geom_rect(aes(xmin=1, xmax=5.5, ymin=0, ymax=Inf), 
-            fill="#785EF0", alpha=0.006)+
-  geom_rect(aes(xmin=94.5, xmax=99, ymin=0, ymax=Inf), 
-            fill="#785EF0", alpha=0.006)+
-    geom_rect(aes(xmin=5.5, xmax=30, ymin=0, ymax=Inf), 
-            fill="#DC267F", alpha=0.006)+
-  geom_rect(aes(xmin=70, xmax=94.5, ymin=0, ymax=Inf), 
-            fill="#DC267F", alpha=0.006)+
-    geom_rect(aes(xmin=30, xmax=70, ymin=0, ymax=Inf), 
-            fill="#FE6100", alpha=0.006)+
-  geom_density_ridges(alpha=0, scale=1)+ 
   scale_x_continuous(breaks=c(1,5.5,30,70,94.5,99),
-                     labels=label_number(drop0trailing=TRUE),
-                     limits = c(0, 100))+
+                     labels=label_number(drop0trailing=TRUE))+
   xlab("Probability Defendant is Guilty")+
-  scale_y_discrete(labels = wrap_format(15))
-
-
-# ggplot(subset(clean_results_merged, 
-#               chances_fixed %in% c("Impossible that he is guilty", 
-#                                    "About 1 chance in 10,000", 
-#                                    "About 1 chance in 1,000",
-#                                    "About 1 chance in 100",
-#                                    "About 1 chance in 10")), aes(x=prob_wo_0, fill=chances_fixed))+
-#   ggtitle("Probability of Guilt") +
-#   ylab("Count")+
-#   xlab("Visible Probability")+
-#   geom_histogram(alpha=0.5)+
-#   facet_grid(chances_fixed~.)+
-#   scale_fill_manual(values=c("#D81B60","#1E88E5","#FFC107","#004D40", "#CCA785"))+
-#   theme_bw()+
-#   scale_x_log10(breaks=c(1/10000, 1/1000,
-#                               1/100, 1/10, 0.5), labels=label_number(drop0trailing=TRUE))+
-#   geom_vline(aes(xintercept=1/10000), color="#1E88E5", size=1)+
-#   geom_vline(aes(xintercept=1/1000), color="#FFC107", size=1)+
-#   geom_vline(aes(xintercept=1/100), color="#004D40", size=1)+
-#   geom_vline(aes(xintercept=.Machine$double.eps), color="#D81B60", size=1)+
-#   geom_vline(aes(xintercept=1/10), color="#CCA785", size=1)+
-#   geom_vline(aes(xintercept=0.5), color="black", size=1)
-
-# sort(table(clean_results_merged$visible_probability))
+  scale_y_discrete(labels = wrap_format(15))+
+  scale_fill_manual(values = c("green", "grey"), name="Range")
 
 ```
 
-<!-- Figure \@ref(fig:probchancescale1) shows the log-transformed comparison of probability values and the participant's multiple choice chance decision.  -->
 Figure \@ref(fig:probchancescale1) compares the probability values to the participant's multiple choice chance decision.
-The different colors indicate the closest multiple choice value to the selected probability.
+Green indicates that participants selected the multiple choice value that is closest to their selected probability, while grey indicates that they could have selected a closer multiple choice value.
+Overall, participant selections appear to be fairly consistent between scales, with some individuals selecting less extreme values.
 If participants were consistent in their choices of chance category and visible probability, we would expect that individuals selecting "About 1 chance in 1,000" or lower would exclusively select probability of guilt values of 1\% or 0\%.
 While most individuals in the "Impossible he is guilty" category did select 0\%, this prediction does not hold true for the other categories.
-In the case of "About 1 chance in 10,000" and "About 1 chance in 1,000", the participants' selected values peak between 1\% and 5.5\%. 
-The same trend holds true for the upper portion of the scale - while individuals generally selected either 99\% or 100\% when they selected that the defendant was "Certain to be guilty", participants generally selected less extreme values than their multiple choice selection for categories for "About 9,999 chances in 10,000" and "About 999 chances in 1,000".
+In the case of "About 1 chance in 10,000" and "About 1 chance in 1,000", many participants selected values between 1\% and 5.5\%. 
+The same trend holds true for the upper portion of the scale - while individuals generally selected either 100\% when they selected that the defendant was "Certain to be guilty", participants generally selected less extreme values than their multiple choice selection for categories for "About 9,999 chances in 10,000" and "About 999 chances in 1,000".
 When scale values are more spread out, between "About 1 chance in 100" and "About 99 chances in 100", participant values on the probability scale tend to correspond with their multiple choice chance scale selection.
 This demonstrates that this calibration issue mostly affects those who select extreme values
 While 50\% was the most popular (and default) value on the visible probability scale (selected by 33 participants), the next two most popular values are 0\% and 1\% (both selected by 21 participants).
 
-```{r}
-#| probchancescale2,
-#| fig.cap= "Guilt Probability Comparison Log 10 Scale, where probability values were subtracted from 1",
-#| fig.width= 10,
-#| fig.height= 9,
-#| fig.align= "center",
-#| echo= FALSE,
-#| eval= FALSE,
-#| warning= FALSE,
-#| message= FALSE
-
-clean_results_merged$prob_subtracted <- 1 - (clean_results_merged$visible_probability/100)
-
-clean_results_merged <- clean_results_merged %>%
-    mutate(prob_subtracted = ifelse(prob_subtracted == 0, .Machine$double.eps, prob_subtracted))
-
-ggplot(subset(clean_results_merged,
-              chances_fixed %in% c("Certain to be guilty", 
-                                   "About 9,999 chances in 10,000", 
-                                   "About 999 chances in 1,000",
-                                   "About 99 chances in 100",
-                                   "About 9 chances in 10")), aes(x=prob_subtracted, fill=chances_fixed))+
-  ggtitle("Probability of Innocence") +
-  ylab("Count")+
-  xlab("1 - Visible Probability of Guilt")+
-  geom_histogram(alpha=0.5)+
-  facet_grid(chances_fixed~.)+
-  scale_fill_manual(values=c("#CC79A7","#D55E00","#009E73","#F0E442", "#A4A3B3"))+
-  theme_bw()+
-   scale_x_log10(breaks=c(1/10000, 1/1000,
-                              1/100, 1/10, 0.5), labels=label_number(drop0trailing=TRUE))+
-  geom_vline(aes(xintercept=1/10000), color="#F0E442", size=1)+
-  geom_vline(aes(xintercept=1/1000), color="#009E73", size=1)+
-  geom_vline(aes(xintercept=1/100), color="#D55E00", size=1)+
-  geom_vline(aes(xintercept=.Machine$double.eps), color="#A4A3B3", size=1)+
-  geom_vline(aes(xintercept=1/10), color="#CC79A7", size=1)+
-  geom_vline(aes(xintercept=0.5), color="black", size=1)
-
-```
-
-<!-- Figure \@ref(fig:probchancescale2) is similar to Figure \@ref(fig:probchancescale1) in its less-frequent-than-expected choice of extreme values, and the accurate alignment of the most extreme ("Certain to be guilty") and least extreme ("About 9 chances in 10") categories. -->
-<!-- Those who selected "About 99 chances in 100" of guilt tended to favor close to a 10\% probability of innocence (by selecting a 90\% probability of guilt), as opposed to the expected 1\% probability of innocence (or 99\% probability of guilt); the same can be said for those who selected "About 999 chances in 1,000" that the defendant is guilty. -->
-<!-- Individuals who selected the "About 9,999 chances in 10,000" favored 99\% probability of guilt (or 1\% probability of innocence). -->
-
-<!-- Overall, Figures \@ref(fig:probchancescale1) and \@ref(fig:probchancescale2) demonstrate some inconsistency between selected multiple choice scale and participants' assigned probability. -->
 Results generally indicate consistent beliefs in guilt: By far most individuals who selected a multiple choice chance value corresponding to the defendant being more likely to be guilty than innocent selected a corresponding probability value in the same range (i.e. less than a 50\% probability of being innocent), and vice versa.
 However, the inconsistency in the scales is present in the form of magnitude: participants tended to select less extreme probability values than was indicated by their multiple choice chance selections.
 
