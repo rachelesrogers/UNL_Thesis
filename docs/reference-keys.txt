@@ -72,7 +72,6 @@ fig:likecomp2scale
 fig:likecomp2scalerev
 fig:likeprob
 fig:probchancescale1
-fig:probchancescale2
 fig:likeprobcon
 fig:coordstrcat
 fig:convictlike
