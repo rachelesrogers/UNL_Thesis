@@ -70,8 +70,10 @@ fig:likecomp1scalerev
 fig:likecomp2
 fig:likecomp2scale
 fig:likecomp2scalerev
+fig:correctrangemosaic
 fig:likeprob
 fig:probchancescale1
+fig:correctprobmosaic
 fig:likeprobcon
 fig:coordstrcat
 fig:convictlike

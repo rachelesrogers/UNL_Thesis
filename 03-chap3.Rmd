@@ -599,8 +599,24 @@ set_values <-
                              "About 999 chances in 1,000",
                              "About 9,999 chances in 10,000",
                              "Certain to be guilty"),
-                         value=c(0,1/10000,1/1000,1/100,1/10,0.5,9/10,99/100,999/1000,9999/10000,1))
+             value=c(0,1/10000,1/1000,1/100,1/10,0.5,9/10,
+                     99/100,999/1000,9999/10000,1),
+             lower = c(0, 1/20000, (1/10000+1/1000)/2, (1/1000+1/100)/2,
+                       (1/100+1/10)/2, (1/10+0.5)/2, (0.5+9/10)/2,
+                       (9/10+99/100)/2, (99/100+999/1000)/2,
+                       (999/1000+9999/10000)/2, (9999/10000+1)/2),
+             upper = c(1/20000, (1/10000+1/1000)/2, (1/1000+1/100)/2,
+                       (1/100+1/10)/2, (1/10+0.5)/2, (0.5+9/10)/2,
+                       (9/10+99/100)/2, (99/100+999/1000)/2,
+                       (999/1000+9999/10000)/2, (9999/10000+1)/2, 1))
 clean_results_merged<- dplyr::left_join(microstudy_clean, set_values)
+
+clean_results_merged <- clean_results_merged %>%
+    mutate(adjusted_lower = 
+             ifelse(chance_of == "innocent", 1 - upper, lower))%>%
+    mutate(adjusted_upper = ifelse(chance_of == "innocent", 1 - lower, upper))
+
+
 clean_results_merged$chances_fixed = factor(
   microstudy_clean$chances_fixed,
   levels = c(
@@ -864,10 +880,6 @@ In this case, the bottom two categories ("About 9 out of 10" and "About 99 out o
 Although this consistency is not as present in the other categories, due to a larger variety of inputs, they are closer to the ballpark than what is shown in Figure \@ref(fig:likecomp2scale).
 None of the individuals who selected "Certain to be guilty" on the multiple choice scale chose the corresponding 0 chance value of innocence, instead largely choosing values consistent with "About 99 chances in 100".
 
-Overall, individuals tended to provide more consistent responses when evaluating numeric chance in terms of guilt instead of in terms of innocence.
-While the upper parts of both innocent and guilty scales demonstrated less consistency than the lower parts of the scales, the trends for those who expressed chance in terms of guilt more closely followed their multiple choice selections.
-
-
 ```{r}
 #| likecomp2scalerev,
 #| fig.cap= "Innocence Chance Comparison Log 10 Scale",
@@ -879,13 +891,13 @@ While the upper parts of both innocent and guilty scales demonstrated less consi
 #| warning= FALSE,
 #| message= FALSE
 
-ggplot(subset(clean_results_merged, chance_of=="innocent" & 
-              chances_fixed %in% c("Certain to be guilty", 
-                                   "About 9,999 chances in 10,000", 
+ggplot(subset(clean_results_merged, chance_of=="innocent" &
+              chances_fixed %in% c("Certain to be guilty",
+                                   "About 9,999 chances in 10,000",
                                    "About 999 chances in 1,000",
                                    "About 99 chances in 100",
                                    "About 9 chances in 10")), aes(x=chance_wo_0, fill=chances_fixed, y=chances_fixed))+
-    geom_density_ridges(alpha=0.5)+
+   geom_density_ridges(alpha=0.5)+
   ggtitle("Chances of Innocence") +
   ylab("Count")+
   xlab("Open Response Chance of Innocence")+
@@ -893,38 +905,64 @@ ggplot(subset(clean_results_merged, chance_of=="innocent" &
   theme_bw()+
       theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), legend.position="none")+
    scale_x_log10(breaks=c(1/10000, 1/1000, 1/100, 1/10, 0.5),
-                 labels=label_number(drop0trailing=TRUE), 
+                 labels=label_number(drop0trailing=TRUE),
                  limits = c(.Machine$double.eps, NA))+
   geom_vline(aes(xintercept=1/10000), color="#F0E442")+
   geom_vline(aes(xintercept=1/1000), color="#009E73")+
   geom_vline(aes(xintercept=1/100), color="#D55E00")+
     geom_vline(aes(xintercept=.Machine$double.eps), color="#A4A3B3")+
   geom_vline(aes(xintercept=1/10), color="#CC79A7")+
+  # geom_vline(aes(xintercept=0.255), color="black")+
+  # geom_vline(aes(xintercept=0.0055), color="black")+
+  # geom_vline(aes(xintercept=0.00055), color="black")+
+  # geom_vline(aes(xintercept=0.000055), color="black")+
   geom_vline(aes(xintercept=0.5), color="black")+
   scale_y_discrete(labels = wrap_format(15))
 
 ```
 
 ```{r}
-#| onevaluesmosaic,
-#| fig.cap= "Participants who selected a chance of 1",
+#| correctrangemosaic,
+#| fig.cap= "Participants who selected the correct range",
 #| fig.width= 10,
 #| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
-#| eval= FALSE,
+#| eval= TRUE,
 #| warning= FALSE,
 #| message= FALSE
 
-ggplot(subset(clean_results_merged, num_chance==1))+
-  geom_bar(aes(x=chances_fixed, fill=chance_of))+
+clean_results_merged$correct_range <- 
+  clean_results_merged$num_chance >= clean_results_merged$adjusted_lower &
+  clean_results_merged$num_chance <= clean_results_merged$adjusted_upper
+
+correct_summary_df <- data.frame(table(clean_results_merged$correct_range, clean_results_merged$chance_of))
+names(correct_summary_df)<- c("Correct", "chance_of", "Count")
+
+correct_prop_test <-
+  prop.test(x=c(correct_summary_df$Count[2], correct_summary_df$Count[4]),
+              n=c(correct_summary_df$Count[1]+correct_summary_df$Count[2],
+                  correct_summary_df$Count[3]+correct_summary_df$Count[4]))
+
+ggplot(clean_results_merged)+
+  geom_mosaic(aes(x=product(correct_range, chance_of),
+                  fill=correct_range))+
   theme_bw()+
-  scale_fill_manual(values = c("#CC79A7" ,"#D55E00"), name="Chance of:", labels=c("Guilt","Innocence"))+
-  ggtitle("Correspondence Between Chances of 1 and the Multiple Choice Scale")+
-  xlab("Guilty?")+
-    scale_x_discrete(labels = wrap_format(10))
+  scale_fill_manual(values = c("grey" ,"green"), name="Correct Range:")+
+  ggtitle("Selecting the Correct Range vs. Choice to Express Chance")+
+  xlab("Chance that defendant is:")+
+  theme(axis.text.y = element_blank(), axis.ticks.y=element_blank(),
+        axis.title.y = element_blank())
 
 ```
+
+This inconsistency based on the scales is summarized in Figure \@ref(fig:correctrangemosaic).
+Here, individuals were classified asn selecting the a numeric chance value in the correct range if their multiple choice selection was the closest option for their numeric value.
+Those who chose to express numeric choice in terms of innocence were less likely to input a value corresponding to their multiple choice selection (`r round(correct_summary_df$Count[4]/(correct_summary_df$Count[4]+correct_summary_df$Count[3])*100, 2)`\% correct, or `r correct_summary_df$Count[4]` out of `r correct_summary_df$Count[4]+correct_summary_df$Count[3]` correct for chance of innocence, and `r round(correct_summary_df$Count[2]/(correct_summary_df$Count[2]+correct_summary_df$Count[1])*100, 2)`\% correct, or `r correct_summary_df$Count[2]` out of `r correct_summary_df$Count[2]+correct_summary_df$Count[1]` correct for chance of guilt).
+This represents a significant difference in correct ranges based on how participants chose to express the numeric chance (p-value: `r round(correct_prop_test$p.value, 4)`).
+
+Overall, individuals tended to provide more consistent responses when evaluating numeric chance in terms of guilt instead of in terms of innocence.
+While the upper parts of both innocent and guilty scales demonstrated less consistency than the lower parts of the scales, the trends for those who expressed chance in terms of guilt more closely followed their multiple choice selections.
 
 #### Probability and Chance Scale Comparison
 
@@ -1050,8 +1088,61 @@ When scale values are more spread out, between "About 1 chance in 100" and "Abou
 This demonstrates that this calibration issue mostly affects those who select extreme values
 While 50\% was the most popular (and default) value on the visible probability scale (selected by 33 participants), the next two most popular values are 0\% and 1\% (both selected by 21 participants).
 
+```{r}
+#| correctprobmosaic,
+#| fig.cap= "Participants who selected the correct range between probability and multiple choice chance",
+#| fig.width= 10,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+
+mult_labs <- c(
+    "Impossible",
+    "0.0001",
+    "0.001",
+    "0.01",
+    "0.1",
+    "0.5",
+    "0.9",
+    "0.99",
+    "0.999",
+    "0.9999",
+    "Certain"
+  )
+names(mult_labs) <- c(
+    "Impossible that he is guilty",
+    "About 1 chance in 10,000",
+    "About 1 chance in 1,000",
+    "About 1 chance in 100",
+    "About 1 chance in 10",
+    "1 chance in 2 (fifty-fifty chance)",
+    "About 9 chances in 10",
+    "About 99 chances in 100",
+    "About 999 chances in 1,000",
+    "About 9,999 chances in 10,000",
+    "Certain to be guilty"
+  )
+
+
+ggplot(clean_results_merged)+
+  geom_mosaic(aes(x=product(prob_mult_consistency, chances_fixed),
+                  fill=prob_mult_consistency))+
+  theme_bw()+
+  xlab("Impossible -> Certain")+
+  scale_fill_manual(values = c("green" ,"grey"), name="Correct Range:")+
+  ggtitle("Selecting the Correct Range vs. Multiple Choice Value")+
+  theme(axis.text.y = element_blank(), axis.ticks.y=element_blank(),
+        axis.title.y = element_blank(), axis.text.x = element_blank())
+
+```
+
 Results generally indicate consistent beliefs in guilt: By far most individuals who selected a multiple choice chance value corresponding to the defendant being more likely to be guilty than innocent selected a corresponding probability value in the same range (i.e. less than a 50\% probability of being innocent), and vice versa.
 However, the inconsistency in the scales is present in the form of magnitude: participants tended to select less extreme probability values than was indicated by their multiple choice chance selections.
+In particular, individuals do well for values in the middle and at the endpoints, as shown in Figure \@ref(fig:correctprobmosaic), but they struggle with multiple choice values that are between the most extreme choices (0\% - 1\% and 99\% - 100\%).
 
 
 ```{r}
