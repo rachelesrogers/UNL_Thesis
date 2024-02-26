@@ -1142,7 +1142,8 @@ ggplot(clean_results_merged)+
 
 Results generally indicate consistent beliefs in guilt: By far most individuals who selected a multiple choice chance value corresponding to the defendant being more likely to be guilty than innocent selected a corresponding probability value in the same range (i.e. less than a 50\% probability of being innocent), and vice versa.
 However, the inconsistency in the scales is present in the form of magnitude: participants tended to select less extreme probability values than was indicated by their multiple choice chance selections.
-In particular, individuals do well for values in the middle and at the endpoints, as shown in Figure \@ref(fig:correctprobmosaic), but they struggle with multiple choice values that are between the most extreme choices (0\% - 1\% and 99\% - 100\%).
+In particular, individuals do well for values in the middle and at the endpoints, as shown in Figure \@ref(fig:correctprobmosaic), but they struggle with multiple choice values that are between the most extreme choices (0\% - 1\% and 99\% - 100\%). When comparing the multiple choice selection to visible probability, `r round(sum(clean_results_merged$prob_mult_consistency=="correct")/length(clean_results_merged$prob_mult_consistency)*100, 2)`\% of individuals selected a visible probability value that corresponded exactly to their multiple choice selection.
+This does not account for probability values that were similar, but would be better when placed in a different multiple choice category.
 
 
 ```{r}
