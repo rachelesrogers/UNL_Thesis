@@ -936,6 +936,10 @@ clean_results_merged$correct_range <-
   clean_results_merged$num_chance >= clean_results_merged$adjusted_lower &
   clean_results_merged$num_chance <= clean_results_merged$adjusted_upper
 
+clean_results_merged$correct_range_word <- NA
+clean_results_merged[clean_results_merged$correct_range==TRUE,]$correct_range_word <- "correct"
+clean_results_merged[clean_results_merged$correct_range==FALSE,]$correct_range_word <- "incorrect"
+
 correct_summary_df <- data.frame(table(clean_results_merged$correct_range, clean_results_merged$chance_of))
 names(correct_summary_df)<- c("Correct", "chance_of", "Count")
 
@@ -945,12 +949,13 @@ correct_prop_test <-
                   correct_summary_df$Count[3]+correct_summary_df$Count[4]))
 
 ggplot(clean_results_merged)+
-  geom_mosaic(aes(x=product(correct_range, chance_of),
+  geom_mosaic(aes(x=product(correct_range, chances_fixed),
                   fill=correct_range))+
   theme_bw()+
   scale_fill_manual(values = c("grey" ,"green"), name="Correct Range:")+
   ggtitle("Selecting the Correct Range vs. Choice to Express Chance")+
-  xlab("Chance that defendant is:")+
+  xlab("Multiple Choice Options")+
+  facet_grid(chance_of~., labeller = "label_both", scales = "free_x")+
   theme(axis.text.y = element_blank(), axis.ticks.y=element_blank(),
         axis.title.y = element_blank())
 
