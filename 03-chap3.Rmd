@@ -924,13 +924,58 @@ ggplot(subset(clean_results_merged, chance_of=="innocent" &
 ```{r}
 #| correctrangemosaic,
 #| fig.cap= "Participants who selected the correct range",
-#| fig.width= 10,
+#| fig.width= 12,
 #| fig.height= 4,
 #| fig.align= "center",
 #| echo= FALSE,
 #| eval= TRUE,
 #| warning= FALSE,
 #| message= FALSE
+
+mult_labs <- data.frame(short_mult = c(
+    "Impossible",
+    "0.0001",
+    "0.001",
+    "0.01",
+    "0.1",
+    "0.5",
+    "0.9",
+    "0.99",
+    "0.999",
+    "0.9999",
+    "Certain"
+  ), chances_fixed = c(
+    "Impossible that he is guilty",
+    "About 1 chance in 10,000",
+    "About 1 chance in 1,000",
+    "About 1 chance in 100",
+    "About 1 chance in 10",
+    "1 chance in 2 (fifty-fifty chance)",
+    "About 9 chances in 10",
+    "About 99 chances in 100",
+    "About 999 chances in 1,000",
+    "About 9,999 chances in 10,000",
+    "Certain to be guilty"
+  ))
+
+clean_results_merged<-left_join(clean_results_merged, mult_labs)
+
+clean_results_merged$short_mult = factor(
+  clean_results_merged$short_mult,
+  levels = c(
+    "Impossible",
+    "0.0001",
+    "0.001",
+    "0.01",
+    "0.1",
+    "0.5",
+    "0.9",
+    "0.99",
+    "0.999",
+    "0.9999",
+    "Certain"
+  )
+)
 
 clean_results_merged$correct_range <- 
   clean_results_merged$num_chance >= clean_results_merged$adjusted_lower &
@@ -949,15 +994,16 @@ correct_prop_test <-
                   correct_summary_df$Count[3]+correct_summary_df$Count[4]))
 
 ggplot(clean_results_merged)+
-  geom_mosaic(aes(x=product(correct_range_word, chances_fixed),
+  geom_mosaic(aes(x=product(correct_range_word, short_mult),
                   fill=correct_range_word))+
   theme_bw()+
   scale_fill_manual(values = c("green", "grey"), name="Correct Range:")+
   ggtitle("Selecting the Correct Range vs. Choice to Express Chance")+
-  xlab("Multiple Choice Options")+
-  facet_grid(chance_of~., labeller = "label_both", scales = "free_x")+
+  xlab("Multiple Choice Chance of Guilt")+
+  facet_grid(.~chance_of, labeller = "label_both", scales = "free_x")+
   theme(axis.text.y = element_blank(), axis.ticks.y=element_blank(),
-        axis.title.y = element_blank())
+        axis.title.y = element_blank(), 
+        axis.text.x = element_text(angle = 90))
 
 ```
 
@@ -1105,44 +1151,15 @@ While 50\% was the most popular (and default) value on the visible probability s
 #| warning= FALSE,
 #| message= FALSE
 
-
-mult_labs <- c(
-    "Impossible",
-    "0.0001",
-    "0.001",
-    "0.01",
-    "0.1",
-    "0.5",
-    "0.9",
-    "0.99",
-    "0.999",
-    "0.9999",
-    "Certain"
-  )
-names(mult_labs) <- c(
-    "Impossible that he is guilty",
-    "About 1 chance in 10,000",
-    "About 1 chance in 1,000",
-    "About 1 chance in 100",
-    "About 1 chance in 10",
-    "1 chance in 2 (fifty-fifty chance)",
-    "About 9 chances in 10",
-    "About 99 chances in 100",
-    "About 999 chances in 1,000",
-    "About 9,999 chances in 10,000",
-    "Certain to be guilty"
-  )
-
-
 ggplot(clean_results_merged)+
-  geom_mosaic(aes(x=product(prob_mult_consistency, chances_fixed),
+  geom_mosaic(aes(x=product(prob_mult_consistency, short_mult),
                   fill=prob_mult_consistency))+
   theme_bw()+
-  xlab("Impossible -> Certain")+
+  xlab("Multiple Choice Chance of Guilt")+
   scale_fill_manual(values = c("green" ,"grey"), name="Correct Range:")+
   ggtitle("Selecting the Correct Range vs. Multiple Choice Value")+
   theme(axis.text.y = element_blank(), axis.ticks.y=element_blank(),
-        axis.title.y = element_blank(), axis.text.x = element_blank())
+        axis.title.y = element_blank())
 
 ```
 
