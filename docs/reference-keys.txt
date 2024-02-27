@@ -35,6 +35,7 @@ fig:histsci
 fig:histunder
 fig:coordcred
 fig:coordscirel
+fig:allpcp
 tab:edist
 fig:lcs
 tab:dylcs

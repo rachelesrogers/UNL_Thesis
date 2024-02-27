@@ -19,6 +19,7 @@ library(knitr)
 library(patchwork)
 #library(kableExtra)
 library(scales)
+library(tidyverse)
 ```
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
@@ -206,9 +207,11 @@ fingerprint_freq<-table(merged_results_allresponses$clean_prints)
 freq_df <- data.frame(fingerprint_freq)
 single_fingerprint <- freq_df %>%
   filter(Freq == 1)
-scenarios <- merged_results_allresponses %>% dplyr::select(scenario_number, conclusion, clean_prints, 
+scenarios <- merged_results_allresponses %>% 
+  dplyr::select(scenario_number, conclusion, clean_prints, 
                                          algorithm, picture, time) %>%
-  filter(clean_prints %in% single_fingerprint$Var1) %>% rename(finish_time = time)
+  filter(clean_prints %in% single_fingerprint$Var1) %>% 
+  dplyr::rename(finish_time = time)
 beginning_wend <- right_join(demographics, scenarios)
 beginning_wend$total_time <- NA
 beginning_wend$total_time <- beginning_wend$finish_time - beginning_wend$time
@@ -1842,6 +1845,10 @@ algtestcred_reorder <- algtestcred_reorder %>% mutate(examsci=fct_relevel(examsc
                                            "Neither scientific nor unscientific", "Weakly scientific", "Moderately scientific",
                                            "Extremely scientific"))
 
+algtestcred_reorder <- algtestcred_reorder %>% mutate(algsci=fct_relevel(algsci, "Extremely unscientific","Moderately unscientific","Weakly unscientific",
+                                           "Neither scientific nor unscientific", "Weakly scientific", "Moderately scientific",
+                                           "Extremely scientific"))
+
 
 cred_data2 <- data.frame(
   algtestcred = algtestcred_reorder$algtestcred, 
@@ -1866,8 +1873,8 @@ testcred_df2 <- testcred_df2 %>%
 # 
 # testcred_df2 %>%
 #   pcp_select(algunder, algsci, algtestcred, algrel, examrel, firetestcred, examsci, expunder) %>%
-#   pcp_scale() %>%
-#   pcp_arrange() %>%
+#   # pcp_scale() %>%
+#   # pcp_arrange() %>%
 #   ggplot(aes_pcp()) +
 #   scale_y_continuous(labels=c("low scores", "", "", "", "high scores"),
 #                      breaks=c(0,0.25, .5,.75, 1)) +
@@ -1876,6 +1883,16 @@ testcred_df2 <- testcred_df2 %>%
 #   guides(colour = guide_legend(override.aes = list(alpha = 1))) +
 #   geom_pcp_boxes(fill = "transparent", color = "black", linewidth = 1)+
 #   theme_bw()
+
+testcred_df2 %>%
+  ggplot(aes(vars=vars(c(algunder, algsci, algtestcred, algrel, examrel, firetestcred, examsci, expunder)))) +
+  geom_pcp_box(boxwidth=0.1, fill=NA) +
+  geom_pcp(aes(colour = conclusion), alpha = 0.5, 
+            boxwidth=0.1, resort=2:3) +
+  scale_colour_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
+  guides(colour=guide_legend(override.aes = list(alpha=1))) +
+  theme_bw() +
+  ggtitle("Comparing Strength of Evidence to Multiple Choice Guilt Answer")
 
 
 ```
