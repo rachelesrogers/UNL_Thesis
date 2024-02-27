@@ -2527,6 +2527,32 @@ Other scales, such as how much a participant is willing to bet, may be highly su
 Due to this potential difficulty in interpretation, response scales must be compared.
 Because individuals may be influenced by the order of the questions (such as choosing a numeric chance value that aligns with their multiple choice selection), the order was randomized and recorded.
 
+\hypertarget{consistency-with-opinion-of-guilt}{%
+\subsubsection{Consistency with Opinion of Guilt}\label{consistency-with-opinion-of-guilt}}
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/opinioncomp-1} 
+
+}
+
+\caption{Opinion of Guilt Consistency with Scales}\label{fig:opinioncomp}
+\end{figure}
+
+\begin{verbatim}
+## [1] 44
+\end{verbatim}
+
+Perhaps the simplest question that we asked participants was whether or not they personally thought the defendant was guilty of committing the crime.
+This opinion can provide a baseline for participant understanding of response questions.
+If we set a threshold for opinion of guilt at a fifty-fifty chance (or 50\% probability of committing the crime), we can compare whether or not participant responses are within the expected range of their opinion of guilt, as shown in Figure \ref{fig:opinioncomp}.
+This figure demonstrates that most individuals were consistent in their opinion of guilt and their selected values for the defendant committing the crime: meaning that if the participant thought the defendant was guilty, they selected at or more than a 50\% chance of guilt or a fifty-fifty chance, and vice versa.
+This consistency is especially low for the numeric chance question, with 14.77\% of individuals providing inconsistent answers (compared to 4.7\%, 5.05\%, and 5.37\% for visible probability, hidden probability, and multiple choice chance, respectively).
+Numeric chance can be broken into two categories, depending on if individuals chose to express numeric chance in terms of innocence or guilt.
+Dividing along these lines results in 20.24\% of individuals providing inconsistent answers when expressing numeric chance of guilt in terms of innocence, and 7.69\% providing inconsistent answers when expressing chance in terms of guilt.
+This demonstrates confusion in participants when expressing numeric chance in terms of innocence, while the consistency of numeric chance in terms of guilt is similar to that of the probability and multiple choice chance scales.
+The numeric scale defaulted to chance of innocence, so it is possible that this scale reversal was overlooked by participants.
+
 \hypertarget{numeric-and-multiple-choice-chance-comparison}{%
 \subsubsection{Numeric and Multiple Choice Chance Comparison}\label{numeric-and-multiple-choice-chance-comparison}}
 
@@ -3452,7 +3478,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-02-27 09:38:14.579118.
+This version of the thesis was generated on 2024-02-27 11:07:34.829598.
 
 The computational environment that was used to generate this version is as follows:
 

@@ -64,6 +64,7 @@ fig:betting
 fig:fixedlike
 fig:freelike
 fig:opinionchanceplot
+fig:opinioncomp
 fig:likecomp1
 fig:likecomp1scale
 fig:likecomp1scalerev
@@ -163,6 +164,7 @@ participants-1
 questions-from-study-1
 new-study-questions
 scale-comparison
+consistency-with-opinion-of-guilt
 numeric-and-multiple-choice-chance-comparison
 probability-and-chance-scale-comparison
 evidence-strength-and-chance
