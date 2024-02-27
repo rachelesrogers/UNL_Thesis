@@ -1291,7 +1291,8 @@ ggplot(clean_results_merged)+
   scale_fill_manual(values = c("green" ,"grey"), name="Correct Range:")+
   ggtitle("Selecting the Correct Range vs. Multiple Choice Value")+
   theme(axis.text.y = element_blank(), axis.ticks.y=element_blank(),
-        axis.title.y = element_blank())
+        axis.title.y = element_blank(),
+        axis.text.x = element_text(angle = 90))
 
 ```
 
@@ -1370,19 +1371,6 @@ ggplot(microstudy_clean, aes(x=num_chance, color=convict, y=visible_probability)
 
 #### Evidence Strength and Chance
 
-Figure \@ref(fig:coordstrcat) shows the relationship between individuals' ratings of the strength of evidence, and the categorical selection of the chance that the defendant committed the crime.
-While strength of evidence is on a 9-point Likert scale, the multiple choice chance scale has 11 values, giving participants more selection.
-The left graph is for the identification condition, while the right graph is for the elimination condition.
-On the y-axis, lower values correspond to weaker strength of evidence and a lower chance of committing the crime, while higher values correspond to stronger strength of evidence and a higher chance of committing the crime.
-In the case of the identification condition, individuals in the strength condition selected various values for the chance that the defendant committed the crime, indicating that participants do not interpret the chances of committing the crime as the same amount of strength of evidence uniformly.
-Responses for the identification condition are also spread across many values on the scale, consistent with what we saw in the strength of evidence and multiple choice chance graphs.
-In the case of the elimination condition, most individuals chose the smallest level for the strength of evidence.
-However, participant responses diverged in terms of the multiple choice chance that the defendant committed the crime: values corresponding to the lowest strength of evidence span four categories for the multiple choice chance, ranging from "Impossible that he is guilty" to "About 1 chance in 100".
-The most popular categories corresponding to the weakest level of evidence strength were "About 1 chance in 10,000" and "About 1 chance in 100".
-Similar to the relationship between probability and numeric chance, this graphical comparison indicates compression on the strength of evidence scale.
-The lowest strength of evidence category can be mapped to several different values for the chance that the defendant committed the crime.
-
-
 ```{r}
 #| coordstrcat,
 #| fig.cap= "Plots of perceived strength of evidence and categorical likelihood",
@@ -1392,18 +1380,6 @@ The lowest strength of evidence category can be mapped to several different valu
 #| echo= FALSE,
 #| message= FALSE,
 #| warning= FALSE
-
-# library(GGally)
-# 
-# strlike_tab<-table(microstudy_clean$evidence_strength, microstudy_clean$chances_fixed, microstudy_clean$conclusion)
-# strlike_df<-as.data.frame(strlike_tab)
-# colnames(strlike_df) <- c("Strength", "Chances", "Conclusion", "Freq")
-# 
-# 
-# ggparcoord(data=subset(strlike_df, Freq != 0), columns=c("Strength","Chances"), order=c(1,2,3,4,5,6,7,8,9), scale="globalminmax")+
-#   geom_line(aes(linewidth=Freq, alpha=Freq))+
-#   ggtitle("Strength of Evidence Vs Chances of Committing the Crime")+
-#   facet_grid(.~Conclusion, drop=FALSE, labeller=label_both)
 
 library(ggpcp)
 
@@ -1442,7 +1418,7 @@ microstudy_pcp$evidence_strength <- gsub(" ", "\n", microstudy_pcp$evidence_stre
 microstudy_pcp %>%
   ggplot(aes(vars=vars(c(1,4)))) +
   geom_pcp_box(boxwidth=0.1, fill=NA) +
-  geom_pcp(aes(colour = conclusion), boxwidth=0.1) +
+  geom_pcp(aes(colour = conclusion), boxwidth=0.1, alpha=1) +
   scale_color_manual(values = c("grey80","seagreen"), name="Condition",
                     labels=c("Identification", "Elimination")) +
   guides(colour=guide_legend(override.aes = list(alpha=1))) +
@@ -1452,11 +1428,16 @@ microstudy_pcp %>%
 
 ```
 
-Figure \@ref(fig:convictlike) depicts the results for our study comparing the chances that the defendant committed a crime to the decision to convict.
-Participants cross the threshold of being more likely to convict when they select "About 9 chances in 10" in the identification condition, with roughly equal numbers above "About 9 chances in 10" in the elimination condition.
-This indicates that participants set a threshold of "beyond a reasonable doubt" to be at "About 9 chances in 10".
-These results are consistent with @thompsonJurorsGiveAppropriate2013, who found a threshold of about 9 chances in 10, where participants who selected 9 chances in 10 or a higher chance amount were more likely to select a guilty verdict, while those below 9 chances in 10 were more likely to select a not guilty verdict.
-
+Figure \@ref(fig:coordstrcat) shows the relationship between individuals' ratings of the strength of evidence, and the categorical selection of the chance that the defendant committed the crime.
+While strength of evidence is on a 9-point Likert scale, the multiple choice chance scale has 11 values, giving participants more selection.
+On the y-axis, lower values correspond to weaker strength of evidence and a lower chance of committing the crime, while higher values correspond to stronger strength of evidence and a higher chance of committing the crime.
+In the case of the identification condition, there is a lack of equivalency between individuals' choice of strength of evidnece and the chance the defendant committed the crime, indicating that participants do not uniformly assign the same chances of committing the crime to the same strength of evidence.
+Responses for the identification condition are also spread across many values on the scale, consistent with what we saw in the strength of evidence and multiple choice chance graphs, shown in Figures \@ref(fig:strength2) and \@ref(fig:fixedlike) respectively.
+In the case of the elimination condition, most individuals chose the smallest level for the strength of evidence.
+However, participant responses diverged in terms of the multiple choice chance that the defendant committed the crime: values corresponding to the lowest strength of evidence span four categories for the multiple choice chance, ranging from "Impossible that he is guilty" to "About 1 chance in 100".
+The most popular categories corresponding to the weakest level of evidence strength were "About 1 chance in 10,000" and "About 1 chance in 100".
+Similar to the relationship between probability and chance discussed in the previous section, this graphical comparison indicates compression on the strength of evidence scale.
+The lowest strength of evidence category can be mapped to several different values for the chance that the defendant committed the crime.
 
 ```{r}
 #| convictlike,
@@ -1477,18 +1458,16 @@ ggplot(microstudy_clean) +
   ylab("Count")+
   xlab("Chance")+
   theme_bw()+
-  facet_grid(conclusion~.)+
+  facet_grid(conclusion~., labeller = labeller(conclusion = conclusion_labs))+
   scale_x_discrete(labels = wrap_format(10))
 
 
 ```
 
-Another threshold that we consider in this study is participants' personal feelings of the guilt of the defendant.
-We would overall expect the threshold for this opinion to be lower than the "beyond a reasonable doubt" threshold used in their conviction decision.
-Figure \@ref(fig:opinionlike) demonstrates the relationship between the chance scale and the participant's opinion of the guilt of the defendant.
-In this case, individuals generally thought the defendant committed the crime if they were above the "fifty-fifty chance" value for the identification condition, showing a lower threshold for their opinion of guilt than seen in Figure \@ref(fig:convictlike), when they were asked for their conviction choice.
-Individuals who selected the "fifty-fifty chance" appear to be fairly evenly split on their opinion of the guilt of the defendant in the identification condition.
-This is to be expected when the participant believes that there is an approximately equal chance that the defendant committed the crime, but are asked to make a binary decision.
+Figure \@ref(fig:convictlike) depicts the results for our study comparing the chances that the defendant committed a crime to the decision to convict.
+Participants cross the threshold of being more likely to convict when they select "About 9 chances in 10" in the identification condition, with roughly equal numbers above "About 9 chances in 10" in the elimination condition.
+This indicates that participants set a threshold of "beyond a reasonable doubt" to be at "About 9 chances in 10".
+These results are consistent with @thompsonJurorsGiveAppropriate2013, who also found a threshold of about 9 chances in 10, where participants who selected 9 chances in 10 or a higher chance amount were more likely to select a guilty verdict, while those below 9 chances in 10 were more likely to select a not guilty verdict.
 
 ```{r}
 #| opinionlike,
@@ -1509,13 +1488,20 @@ ggplot(microstudy_clean) +
   ylab("Count")+
   xlab("Chance")+
   theme_bw()+
-  facet_grid(conclusion~.)+
+  facet_grid(conclusion~., labeller = labeller(conclusion = conclusion_labs))+
   scale_x_discrete(labels = wrap_format(10))
 
 
 ```
 
-#### Probability Comparison
+Another threshold that we consider in this study is participants' personal feelings of the guilt of the defendant.
+We would overall expect the threshold for this opinion to be lower than the "beyond a reasonable doubt" threshold used in their conviction decision.
+Figure \@ref(fig:opinionlike) demonstrates the relationship between the chance scale and the participant's opinion of the guilt of the defendant.
+In this case, individuals generally thought the defendant committed the crime if they were above the "fifty-fifty chance" value for the identification condition, showing a lower threshold for their opinion of guilt than seen in Figure \@ref(fig:convictlike), when they were asked for their conviction choice.
+Individuals who selected the "fifty-fifty chance" are fairly evenly split on their opinion of the guilt of the defendant in the identification condition.
+This is to be expected when the participant believes that there is an approximately equal chance that the defendant committed the crime, but are asked to make a binary decision.
+
+#### Hidden and Visible Probability Comparison
 
 Figure \@ref(fig:probcomp) shows the correspondence between the visible and hidden probabilities.
 The values appear to be fairly 1:1.
@@ -1525,7 +1511,7 @@ The correlation between the probabilities is `r round(cor(as.numeric(microstudy_
 
 ```{r}
 #| probcomp,
-#| fig.cap= "Probability and Chance Comparison",
+#| fig.cap= "Comparison of Probability Scales",
 #| fig.width= 10,
 #| fig.height= 4,
 #| fig.align= "center",

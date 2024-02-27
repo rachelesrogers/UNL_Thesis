@@ -168,7 +168,7 @@ consistency-with-opinion-of-guilt
 numeric-and-multiple-choice-chance-comparison
 probability-and-chance-scale-comparison
 evidence-strength-and-chance
-probability-comparison
+hidden-and-visible-probability-comparison
 demographic-comparison
 income
 education
