@@ -1393,17 +1393,62 @@ The lowest strength of evidence category can be mapped to several different valu
 #| message= FALSE,
 #| warning= FALSE
 
-library(GGally)
+# library(GGally)
+# 
+# strlike_tab<-table(microstudy_clean$evidence_strength, microstudy_clean$chances_fixed, microstudy_clean$conclusion)
+# strlike_df<-as.data.frame(strlike_tab)
+# colnames(strlike_df) <- c("Strength", "Chances", "Conclusion", "Freq")
+# 
+# 
+# ggparcoord(data=subset(strlike_df, Freq != 0), columns=c("Strength","Chances"), order=c(1,2,3,4,5,6,7,8,9), scale="globalminmax")+
+#   geom_line(aes(linewidth=Freq, alpha=Freq))+
+#   ggtitle("Strength of Evidence Vs Chances of Committing the Crime")+
+#   facet_grid(.~Conclusion, drop=FALSE, labeller=label_both)
 
-strlike_tab<-table(microstudy_clean$evidence_strength, microstudy_clean$chances_fixed, microstudy_clean$conclusion)
-strlike_df<-as.data.frame(strlike_tab)
-colnames(strlike_df) <- c("Strength", "Chances", "Conclusion", "Freq")
+library(ggpcp)
 
 
-ggparcoord(data=subset(strlike_df, Freq != 0), columns=c("Strength","Chances"), order=c(1,2,3,4,5,6,7,8,9), scale="globalminmax")+
-  geom_line(aes(linewidth=Freq, alpha=Freq))+ 
-  ggtitle("Strength of Evidence Vs Chances of Committing the Crime")+
-  facet_grid(.~Conclusion, drop=FALSE, labeller=label_both)
+microstudy_pcp <- as.data.frame(table(microstudy_clean$evidence_strength,
+                                      microstudy_clean$chances_fixed,
+                                      microstudy_clean$conclusion))
+
+microstudy_pcp <- microstudy_pcp %>%
+  purrr::map(.f = function(x) rep(x, microstudy_pcp$Freq)) %>%
+  as.data.frame() %>% select(-Freq)
+
+names(microstudy_pcp) <- c("evidence_strength", "chances_fixed","conclusion")
+
+microstudy_pcp<-left_join(microstudy_pcp, mult_labs)
+
+microstudy_pcp$short_mult = factor(
+  microstudy_pcp$short_mult,
+  levels = c(
+    "Impossible",
+    "1/10,000",
+    "1/1,000",
+    "1/100",
+    "1/10",
+    "1/2",
+    "9/10",
+    "99/100",
+    "999/1,000",
+    "9,999/10,000",
+    "Certain"
+  )
+)
+
+microstudy_pcp$evidence_strength <- gsub(" ", "\n", microstudy_pcp$evidence_strength)
+
+microstudy_pcp %>%
+  ggplot(aes(vars=vars(c(1,4)))) +
+  geom_pcp_box(boxwidth=0.1, fill=NA) +
+  geom_pcp(aes(colour = conclusion), boxwidth=0.1) +
+  scale_color_manual(values = c("grey80","seagreen"), name="Condition",
+                    labels=c("Identification", "Elimination")) +
+  guides(colour=guide_legend(override.aes = list(alpha=1))) +
+  geom_pcp_text(boxwidth=0.1) +
+  theme_bw() +
+  ggtitle("Comparing Strength of Evidence to Multiple Choice Guilt Answer")
 
 ```
 

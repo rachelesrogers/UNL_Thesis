@@ -1863,19 +1863,19 @@ testcred_df2 <- testcred_df2 %>%
   as.data.frame() %>%
   select(-Freq)
 
-
-testcred_df2 %>%
-  pcp_select(algunder, algsci, algtestcred, algrel, examrel, firetestcred, examsci, expunder) %>%
-  pcp_scale() %>%
-  pcp_arrange() %>%
-  ggplot(aes_pcp()) +
-  scale_y_continuous(labels=c("low scores", "", "", "", "high scores"),
-                     breaks=c(0,0.25, .5,.75, 1)) +
-  geom_pcp(aes(color=conclusion), alpha = 0.75) +
-  scale_colour_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
-  guides(colour = guide_legend(override.aes = list(alpha = 1))) +
-  geom_pcp_boxes(fill = "transparent", color = "black", linewidth = 1)+
-  theme_bw()
+# 
+# testcred_df2 %>%
+#   pcp_select(algunder, algsci, algtestcred, algrel, examrel, firetestcred, examsci, expunder) %>%
+#   pcp_scale() %>%
+#   pcp_arrange() %>%
+#   ggplot(aes_pcp()) +
+#   scale_y_continuous(labels=c("low scores", "", "", "", "high scores"),
+#                      breaks=c(0,0.25, .5,.75, 1)) +
+#   geom_pcp(aes(color=conclusion), alpha = 0.75) +
+#   scale_colour_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
+#   guides(colour = guide_legend(override.aes = list(alpha = 1))) +
+#   geom_pcp_boxes(fill = "transparent", color = "black", linewidth = 1)+
+#   theme_bw()
 
 
 ```
