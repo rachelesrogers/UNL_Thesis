@@ -165,6 +165,7 @@ new-study-questions
 scale-comparison
 numeric-and-multiple-choice-chance-comparison
 probability-and-chance-scale-comparison
+evidence-strength-and-chance
 probability-comparison
 demographic-comparison
 income
