@@ -949,10 +949,10 @@ correct_prop_test <-
                   correct_summary_df$Count[3]+correct_summary_df$Count[4]))
 
 ggplot(clean_results_merged)+
-  geom_mosaic(aes(x=product(correct_range, chances_fixed),
-                  fill=correct_range))+
+  geom_mosaic(aes(x=product(correct_range_word, chances_fixed),
+                  fill=correct_range_word))+
   theme_bw()+
-  scale_fill_manual(values = c("grey" ,"green"), name="Correct Range:")+
+  scale_fill_manual(values = c("green", "grey"), name="Correct Range:")+
   ggtitle("Selecting the Correct Range vs. Choice to Express Chance")+
   xlab("Multiple Choice Options")+
   facet_grid(chance_of~., labeller = "label_both", scales = "free_x")+
@@ -965,6 +965,7 @@ This inconsistency based on the scales is summarized in Figure \@ref(fig:correct
 Here, individuals were classified asn selecting the a numeric chance value in the correct range if their multiple choice selection was the closest option for their numeric value.
 Those who chose to express numeric choice in terms of innocence were less likely to input a value corresponding to their multiple choice selection (`r round(correct_summary_df$Count[4]/(correct_summary_df$Count[4]+correct_summary_df$Count[3])*100, 2)`\% correct, or `r correct_summary_df$Count[4]` out of `r correct_summary_df$Count[4]+correct_summary_df$Count[3]` correct for chance of innocence, and `r round(correct_summary_df$Count[2]/(correct_summary_df$Count[2]+correct_summary_df$Count[1])*100, 2)`\% correct, or `r correct_summary_df$Count[2]` out of `r correct_summary_df$Count[2]+correct_summary_df$Count[1]` correct for chance of guilt).
 This represents a significant difference in correct ranges based on how participants chose to express the numeric chance (p-value: `r round(correct_prop_test$p.value, 4)`).
+Individuals who chose to express numeric chance in terms of innocence particularly struggled with the lower end of the chance scale (from "About 1 chance in 10,000" to "About 1 chance in 100").
 
 Overall, individuals tended to provide more consistent responses when evaluating numeric chance in terms of guilt instead of in terms of innocence.
 While the upper parts of both innocent and guilty scales demonstrated less consistency than the lower parts of the scales, the trends for those who expressed chance in terms of guilt more closely followed their multiple choice selections.
