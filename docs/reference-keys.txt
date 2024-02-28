@@ -88,6 +88,7 @@ fig:incomebet
 fig:probeduc
 fig:convictseduc
 fig:educbet
+fig:educrange
 fig:convictscomfort
 litreview
 introduction
@@ -174,6 +175,8 @@ income
 education
 gun-comfort
 notepad-analysis
+note-cleaning
+comment-analysis
 conclusion-2
 finalstudy
 introduction-2

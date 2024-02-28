@@ -599,7 +599,6 @@ opinion_comparison$opinion <- ifelse(microstudy_clean$guilt_opinion == "No", "In
 
 opinion_comparison$chance_of <- microstudy_clean$chance_of
 
-
 opinion_comparison[opinion_comparison$opinion == "Innocent",]$hidden_probability <- 
   ifelse(as.numeric(microstudy_clean[microstudy_clean$guilt_opinion == "No",]$hidden_probability) <= 50, "Correct","Incorrect")
 
@@ -671,7 +670,7 @@ ggplot(long_opinion_comparison, aes(x=Question, fill=Consistent))+
     ggtitle("Consistency with Opinion of Guilt") +
   theme_bw()
 
-sum(opinion_comparison$numeric_chance=="Incorrect")
+#sum(opinion_comparison$numeric_chance=="Incorrect")
 ```
 
 Perhaps the simplest question that we asked participants was whether or not they personally thought the defendant was guilty of committing the crime.
@@ -1503,12 +1502,6 @@ This is to be expected when the participant believes that there is an approximat
 
 #### Hidden and Visible Probability Comparison
 
-Figure \@ref(fig:probcomp) shows the correspondence between the visible and hidden probabilities.
-The values appear to be fairly 1:1.
-In the visible probability scale, there is a slight trend of values clustering on multiples of 5 that is not present in the hidden probability scale.
-For the identification condition, those who thought the defendant was guilty tended to select probability values above 50/%.
-The correlation between the probabilities is `r round(cor(as.numeric(microstudy_clean$hidden_probability), microstudy_clean$visible_probability, use="complete.obs"),2)`, indicating a strong relationship between the hidden and visible scales.
-
 ```{r}
 #| probcomp,
 #| fig.cap= "Comparison of Probability Scales",
@@ -1527,23 +1520,18 @@ ggplot(microstudy_clean, aes(x=as.numeric(hidden_probability), color=guilt_opini
   ylab("Visible Probability")+
   xlab("Hidden Probability")+
   scale_y_continuous(breaks = seq(0, 100, by = 10))+
-  facet_grid(.~conclusion)+
+  facet_grid(.~conclusion, labeller = labeller(conclusion = conclusion_labs))+
   coord_fixed(ratio=1)+
   geom_abline(intercept = 0, slope = 1)+
   theme_bw()
 
 ```
 
-Figure \@ref(fig:probbet) compares the amount that individuals were willing to bet to their hidden probability that the defendant had/had not committed the crime.
-Whether the participants were betting on the guilt or innocence of the defendant depended on their personal opinion of guilt - those who thought the defendant was guilty bet on the defendant's guilt, while those who thought the defendant was innocence bet on the defendant's innocence.
-Values are clustered at two points.
-For those who thought the defendant was innocent, they were willing to bet almost all of the \$50 and assigned a low probability to the defendant committing the crime.
-For those who thought the defendant was guilty, they were also willing to bet almost all of the \$50, but assigned a high probability to the defendant committing the crime.
-There is no clear pattern to individuals who fell outside of these two extreme points.
-The correlation is `r round(cor(microstudy_clean[!is.na(microstudy_clean$betting) & microstudy_clean$guilt_opinion=="Yes",]$visible_probability, microstudy_clean[!is.na(microstudy_clean$betting) & microstudy_clean$guilt_opinion=="Yes",]$betting),2)` in the case that the participants were asked to bet on if the defendant committed the crime, and `r round(cor(microstudy_clean[!is.na(microstudy_clean$betting) & microstudy_clean$guilt_opinion=="No",]$visible_probability, microstudy_clean[!is.na(microstudy_clean$betting) & microstudy_clean$guilt_opinion=="No",]$betting),2)` when participants were asked to bet on if the defendant did not commit the crime.
-These correlations are lower than both correlations between numeric chance and probability.
-Based on the graph, this may indicate that both the probability scale and the betting scale suffer from compression in the most extreme values, with little correspondence on the remainder of the scale.
-
+Figure \@ref(fig:probcomp) shows the correspondence between the visible and hidden probabilities.
+The values appear to be fairly 1:1.
+In the visible probability scale, there is a slight trend of values clustering on multiples of 5 that is not present in the hidden probability scale.
+For the identification condition, those who thought the defendant was guilty tended to select probability values above 50\%.
+The correlation between the probabilities is `r round(cor(as.numeric(microstudy_clean$hidden_probability), microstudy_clean$visible_probability, use="complete.obs"),2)`, indicating a strong relationship between the hidden and visible scales.
 
 ```{r}
 #| probbet,
@@ -1558,15 +1546,16 @@ Based on the graph, this may indicate that both the probability scale and the be
 
 ggplot(microstudy_clean, aes(x=betting,
                              y=as.numeric(hidden_probability))) +
-  # geom_jitter(alpha=0.75) +
-  stat_density_2d(aes(fill = ..density..), geom = "raster", contour = FALSE) +
+  stat_density_2d_filled()+
+  # geom_point()+
+  geom_density_2d(linewidth = 0.25, colour = "black")+
+  # stat_density_2d(aes(fill = log10(..density..)), geom = "raster", contour = FALSE, linewidth = 0.25) +
   ggtitle("Betting and Probability Comparison") +
-  scale_color_manual(values = c("#004D40","#D81B60"), name="Bet Defendant is...", labels=c("Innocent","Guilty"))+
-  # scale_fill_viridis_c(option = "magma") +
-  scale_fill_distiller(palette=3, direction=1)+
+  # scale_color_manual(values = c("#004D40","#D81B60"), name="Bet Defendant is...", labels=c("Innocent","Guilty"))+
+  # scale_fill_distiller(palette=3, direction=1)+
   ylab("Visible Probability")+
   xlab("Amount (Dollars)")+
-  scale_y_continuous(breaks = seq(0, 100, by = 10))+
+  # scale_y_continuous(breaks = seq(0, 100, by = 10))+
   facet_grid(.~guilt_opinion, labeller="label_both")+
   xlim(c(0,50))+
   theme_bw()
@@ -1574,6 +1563,19 @@ ggplot(microstudy_clean, aes(x=betting,
 # Log transformed contours - maybe polygon approach
 
 ```
+
+Figure \@ref(fig:probbet) compares the amount that individuals were willing to bet to their hidden probability that the defendant had/had not committed the crime.
+Whether the participants were betting on the guilt or innocence of the defendant depended on their personal opinion of guilt - those who thought the defendant was guilty bet on the defendant's guilt, while those who thought the defendant was innocence bet on the defendant's innocence.
+Values are clustered at two points.
+For those who thought the defendant was innocent, they were willing to bet almost all of the \$50 and assigned a low probability to the defendant committing the crime.
+For those who thought the defendant was guilty, they were also willing to bet almost all of the \$50, but assigned a high probability to the defendant committing the crime.
+There is no clear pattern to individuals who fell outside of these two extreme points.
+The correlation is `r round(cor(microstudy_clean[!is.na(microstudy_clean$betting) & microstudy_clean$guilt_opinion=="Yes",]$visible_probability, microstudy_clean[!is.na(microstudy_clean$betting) & microstudy_clean$guilt_opinion=="Yes",]$betting),2)` in the case that the participants were asked to bet on if the defendant committed the crime, and `r round(cor(microstudy_clean[!is.na(microstudy_clean$betting) & microstudy_clean$guilt_opinion=="No",]$visible_probability, microstudy_clean[!is.na(microstudy_clean$betting) & microstudy_clean$guilt_opinion=="No",]$betting),2)` when participants were asked to bet on if the defendant did not commit the crime.
+These correlations are lower than both correlations between numeric chance and probability.
+Based on the graph, this may indicate that both the probability scale and the betting scale suffer from compression in the most extreme values, with little correspondence on the remainder of the scale.
+
+
+
 
 @mattijssen2020 compared likelihood and strength of evidence ratings from 10 examiners who regularly used likelihood scales.
 While this sample size is rather small, they found that examiners tended to give higher verbal degrees of support than they should have, based on their likelihood ratio.
@@ -1604,11 +1606,11 @@ ggplot(microstudy_clean, aes(x = evidence_strength, y = visible_probability, fil
     ),
     size = 0.5
   ) +
-  geom_boxplot(position = position_dodge(1),
+  geom_boxplot(position = position_dodge(preserve = "single"),
                alpha = 0.5,
                outlier.shape = NA) +
   ggtitle("Probability Cole Commited the Crime Compared with Strength of Evidence") +
-  facet_grid(conclusion~.)+
+  facet_grid(conclusion~., labeller = labeller(conclusion = conclusion_labs))+
   scale_fill_manual(values = c("#D81B60","#004D40"), name="Opinion: Guilty?")+
   ylab("Visible Probability")+
   xlab("Strength of Evidence")+
@@ -1699,7 +1701,7 @@ ggplot(microstudy_clean) +
   scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
   ylab("Count")+
   xlab("Income")+
-  facet_grid(conclusion~.)+
+  facet_grid(conclusion~., labeller = labeller(conclusion = conclusion_labs))+
   scale_x_discrete(labels = wrap_format(10))+
   theme_bw()
 
@@ -1788,7 +1790,7 @@ ggplot(microstudy_clean, aes(x = education, y = visible_probability, fill = conv
                alpha = 0.5,
                outlier.shape = NA) +
   ggtitle("Probability Cole Commited the Crime Compared with Education") +
-  facet_grid(conclusion~.)+
+  facet_grid(conclusion~., labeller = labeller(conclusion = conclusion_labs))+
   scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
   ylab("Visible Probability")+
   xlab("Education")+
@@ -1818,7 +1820,7 @@ ggplot(microstudy_clean) +
   scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
   ylab("Count")+
   xlab("Education")+
-  facet_grid(conclusion~.)+
+  facet_grid(conclusion~., labeller = labeller(conclusion = conclusion_labs))+
   scale_x_discrete(labels = wrap_format(10))+
   theme_bw()
 
@@ -1852,7 +1854,7 @@ ggplot(microstudy_clean, aes(x = education, y = betting, fill = guilt_opinion)) 
                alpha = 0.5,
                outlier.shape = NA) +
   ggtitle("Amount Bet Compared with Education") +
-  facet_grid(conclusion~.)+
+  facet_grid(conclusion~., labeller = labeller(conclusion = conclusion_labs))+
   scale_fill_manual(values = c("#D81B60","#004D40"), name="Bet Defendant is...", labels=c("Guilty","Innocent"))+
   ylab("Visible Probability")+
   xlab("Education")+
@@ -1861,6 +1863,48 @@ ggplot(microstudy_clean, aes(x = education, y = betting, fill = guilt_opinion)) 
   theme_bw()
 
 ```
+
+
+```{r}
+#| educrange,
+#| fig.cap= "Education and Correct Numeric Chance Range",
+#| fig.width= 12,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+clean_results_merged$education = factor(
+  clean_results_merged$education,
+  levels = c(
+    "Less than high school",
+    "High school graduate",
+    "Some college",
+    "2 year degree",
+    "4 year degree",
+    "Professional degree",
+    "Doctorate"
+  )
+)
+
+ggplot(clean_results_merged)+
+  geom_mosaic(aes(x=product(correct_range_word, education),
+                  fill=correct_range_word))+
+  theme_bw()+
+  scale_fill_manual(values = c("green", "grey"), name="Correct Range:")+
+  ggtitle("Selecting the Correct Range vs. Education Level")+
+  xlab("Education Level")+
+  facet_grid(.~chance_of, labeller = "label_both", scales = "free_x")+
+  theme(axis.text.y = element_blank(), axis.ticks.y=element_blank(),
+        axis.title.y = element_blank(), 
+        axis.text.x = element_text(angle = 90))
+
+```
+
+There also doesn't appear to be a relationship between individuals who select the corresponding range between multiple choice and numeric chance scales and education, as shown in Figure \@ref(fig:educrange).
+This graphic demonstrates inconsistency in individuals choosing to express chance of innocence across the board.
 
 <!-- #### Order of the Questions -->
 
@@ -2078,7 +2122,7 @@ ggplot(microstudy_clean) +
   scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
   ylab("Count")+
   xlab("Gun Comfort")+
-  facet_grid(conclusion~.)+
+  facet_grid(conclusion~., labeller = labeller(conclusion = conclusion_labs))+
   scale_x_discrete(labels = wrap_format(10))+
   theme_bw()
 
@@ -2086,9 +2130,272 @@ ggplot(microstudy_clean) +
 
 ### Notepad Analysis
 
+```{r}
+#| echo= FALSE,
+#| eval= FALSE,
+#| warning= FALSE,
+#| message= FALSE
+
+###### Using the closest previous page when j-1 is missing #######
+
+library(tidyverse)
+library(stringdist)
+library(dplyr)
+library(kableExtra)
+library(ggplot2)
+library(readtext)
+require(quanteda)
+require(quanteda.textstats)
+require(quanteda.corpora)
+library(purrr)
+library(ggrepel)
+library(stringi)
+library(PTXQC)
+
+start_time <- Sys.time()
+
+# Reading in uncleaned comments
+val_comments <- read.csv("data/microstudy_notepad_clean.csv")
+
+# Finding unique identifiers
+unique_ids <- unique(val_comments$randomnumber)
+
+# Calculating length of uncleaned comments
+val_comments$length <- nchar(val_comments$notes)
+# val_comments[is.na(val_comments$length),]$length <- 0
+
+# Creating an empty dataset
+full_reduced_comments <- data.frame(page = NA, page_notes=NA, edit_distance=NA, clean_prints=NA, time=NA, randomnumber=NA)
+
+# First N Character Method
+# Loop through based on unique id's
+for (i in 1:length(unique_ids)){
+  reduced_comments <- data.frame(page = NA, page_notes=NA, edit_distance=NA, clean_prints=NA, time=NA, randomnumber=NA)
+  # Including only the current unique id's
+  by_fingerprint <- val_comments %>% subset(randomnumber==unique_ids[i])
+  # Because some individuals started the survey multiple times, we only want notes that were made prior
+  # to submission
+  # by_fingerprint <- subset(by_fingerprint, time <= submission_time+1)
+  # if there are multiple of the same page for the same unique id:
+  while (length(by_fingerprint[by_fingerprint$page_count==1,1]) > 1){
+
+    duplicate_print <- by_fingerprint %>% subset(page_count==1) # & time <= submission_time)
+    min_time <- min(duplicate_print$time)
+    # remove the earliest note occurrence
+    by_fingerprint <- subset(by_fingerprint, time != min_time)
+
+  }
+  if (max(by_fingerprint$page) > 4){
+  for (j in 5:max(by_fingerprint$page)){
+    prev_page <- max(by_fingerprint[by_fingerprint$page < j,]$page)
+    while (length(by_fingerprint[by_fingerprint$page==j,1]) > 1){
+
+      duplicate_print <- by_fingerprint %>% subset(page==j) #& time <= submission_time)
+      min_time <- min(duplicate_print$time)
+
+      by_fingerprint <- subset(by_fingerprint, time != min_time)
+
+    }
+    # keeping only the first n characters of the current page's notes for comparison to the previous page
+    if (dim(by_fingerprint[by_fingerprint$page==j,])[1] > 0){
+    if (dim(by_fingerprint[by_fingerprint$page==prev_page,])[1] > 0){
+    previous_notes <-
+      substr(by_fingerprint[by_fingerprint$page==j,]$notes, 1,
+             by_fingerprint[by_fingerprint$page==prev_page,]$length)
+
+    # if previous notes do exist
+    if (by_fingerprint[by_fingerprint$page==prev_page,]$length > 0){
+      # calculate the edit distance between the first n characters and the previous notes
+      edit_distance <-adist(previous_notes, by_fingerprint[by_fingerprint$page==prev_page,]$notes)
+      if (edit_distance < 16){ # this is the comparison threshold
+        # first n characters of notes are removed if the edit distance is small enough
+        reduced_comments[j-4,]$page_notes <-
+          substring(by_fingerprint[by_fingerprint$page==j,]$notes,
+                    by_fingerprint[by_fingerprint$page==prev_page,]$length+1) 
+      }else{
+        # no notes are removed if the edit distance is too large
+        reduced_comments[j-4,]$page_notes <- by_fingerprint[by_fingerprint$page==j,]$notes
+      }
+      reduced_comments[j-4,]$edit_distance <- edit_distance #saving the edit distance
+      #
+    }else{ #if there are no previous notes, no notes are removed
+      reduced_comments[j-4,]$page_notes <-
+        by_fingerprint[by_fingerprint$page==j,]$notes
+      reduced_comments[j-4,]$edit_distance <- 0
+
+    }
+    }else{ #if there are no previous notes, no notes are removed
+      reduced_comments[j-4,]$page_notes <-
+        by_fingerprint[by_fingerprint$page==j,]$notes
+      reduced_comments[j-4,]$edit_distance <- 0
+
+    }
+    reduced_comments[j-4,]$clean_prints <- by_fingerprint$clean_prints[1]
+    reduced_comments[j-4,]$randomnumber <- unique_ids[i]
+    reduced_comments[j-4,]$page <- j
+    reduced_comments[j-4,]$time <- by_fingerprint[by_fingerprint$page==j,]$time
+
+    }
+  }
+  full_reduced_comments <- rbind(full_reduced_comments, reduced_comments)
+}}
+# saving clean note length
+full_reduced_comments$clean_length <- nchar(full_reduced_comments$page_notes)
+saved_dataset <- full_reduced_comments
+# Joining the uncleaned comments to the clean comments
+
+full_reduced_comments <- left_join(val_comments, full_reduced_comments)
+
+full_reduced_comments <-
+  full_reduced_comments[!duplicated(full_reduced_comments),]
+
+mid_time <- Sys.time() - start_time
+mid_time #36 seconds
+
+#Summarizing results by two conditions: page count
+summary_info <- full_reduced_comments %>%
+  dplyr::group_by(page) %>%
+  dplyr::summarise (normal_outlier = mean(clean_length, na.rm=TRUE)+4*sd(clean_length, na.rm=TRUE), mean=mean(clean_length, na.rm=TRUE), sd = sd(clean_length, na.rm=TRUE))
+
+#full_reduced_comments <- left_join(full_reduced_comments, summary_info, by=c("algorithm", "page_count"))
+full_reduced_comments <- left_join(full_reduced_comments, summary_info, by=c("page"))
+
+# finding the outliers that are 4 standard deviations above the mean
+full_reduced_comments$outlier_bin <- (full_reduced_comments$clean_length > full_reduced_comments$normal_outlier)
+
+# sum(full_reduced_comments$outlier_bin, na.rm=TRUE)
+# 61 processed comments - where the clean note length is an outlier or the edit distance
+# for the first n character method is too large for the method to be applied
+
+processed_comments <- subset(full_reduced_comments, (edit_distance > 15 | full_reduced_comments$outlier_bin==TRUE))
+# dim(processed_comments)
+
+unique_ids <- unique(processed_comments$randomnumber)
+
+second_filter_val <- data.frame(page = NA, page_notes=NA, clean_prints=NA, time=NA, randomnumber = NA)
+
+
+for (i in 1:length(unique_ids)){
+
+  reduced_comments <- data.frame(page = NA, page_notes=NA, clean_prints=NA, time=NA, randomnumber = NA)
+  index <- 0
+  by_fingerprint <- val_comments %>% subset(randomnumber==unique_ids[i])
+  # by_fingerprint <- subset(by_fingerprint, time <= submission_time+1)
+
+  for (j in unique(processed_comments[processed_comments$randomnumber==unique_ids[i],]$page)){
+    index <- index + 1
+    prev_page <- max(by_fingerprint[by_fingerprint$page < j,]$page)
+    # in the case of more than one note sheet, remove the older copy
+    while (length(by_fingerprint[by_fingerprint$page==prev_page,1]) > 1){
+
+      duplicate_print <- by_fingerprint %>% subset(page==prev_page)# & time <= submission_time)
+      min_time <- min(duplicate_print$time)
+      # print(min_time)
+      by_fingerprint <- subset(by_fingerprint, time != min_time)
+
+    }
+    # removing emojis - cannot be processed with LCS
+    previous_notes <- gsub("[^\x01-\x7F]", "",by_fingerprint[by_fingerprint$page==prev_page,]$notes)
+
+    current_notes <- gsub("[^\x01-\x7F]", "",processed_comments[(processed_comments$page==j & processed_comments$randomnumber== unique_ids[i]),]$page_notes)
+    reduced_comments[index,]$page_notes <- current_notes
+
+    if (by_fingerprint[by_fingerprint$page==prev_page,]$length > 0){
+      # Finding the longest common substring between the current and previous notes
+      longest_sub <- LCS(previous_notes, reduced_comments[index,]$page_notes)
+      # setting the LCS threshold to repeat until LCS is too short
+      while (nchar(longest_sub) > ((1/3)*nchar(previous_notes))){
+        # Remove the substring if it is long enough
+        # print(i)
+        # print(j)
+        # print(nchar(longest_sub))
+        reduced_comments[index,]$page_notes <- gsub(longest_sub,"",
+                                                    reduced_comments[index,]$page_notes,fixed=TRUE)
+        longest_sub <- LCS(previous_notes, reduced_comments[index,]$page_notes)
+      }
+
+    }
+    reduced_comments[index,]$clean_prints <-
+      processed_comments[(processed_comments$page==j &
+                            processed_comments$randomnumber==
+                            unique_ids[i]),]$clean_prints
+    reduced_comments[index,]$randomnumber <- unique_ids[i]
+
+    reduced_comments[index,]$page <- j
+
+    reduced_comments[index,]$time <-
+      processed_comments[(processed_comments$page==j &
+                            processed_comments$randomnumber==
+                            unique_ids[i]),]$time
+
+  }
+  second_filter_val <- rbind(second_filter_val, reduced_comments)
+}
+
+# end_time <- start_time - Sys.time()
+# end_time
+# View(second_filter_val)
+
+second_filter_val <- dplyr::rename(second_filter_val, "lcs_notes"="page_notes")
+
+hybrid_dataset <- left_join(full_reduced_comments, second_filter_val)
+View(hybrid_dataset)
+hybrid_dataset<- dplyr::rename(hybrid_dataset, "nchar_notes"="page_notes")
+
+hybrid_dataset$page_notes <- hybrid_dataset$nchar_notes
+hybrid_dataset[!is.na(hybrid_dataset$lcs_notes),]$page_notes <-
+  hybrid_dataset[!is.na(hybrid_dataset$lcs_notes),]$lcs_notes
+
+
+# write.csv(hybrid_dataset, "data/microstudy_hybrid_notepad.csv")
+
+```
+
+```{r}
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+responsetype_unclean_notes <- read.csv("data/microstudy_notepad_clean.csv")
+
+written_responsetype_unclean_notes <- responsetype_unclean_notes %>% filter(notes !="")
+
+responsetype_clean_notes <- read.csv("data/microstudy_hybrid_notepad.csv")
+
+written_responsetype_clean_notes <- responsetype_clean_notes %>% filter(page_notes !="")
+
+# View(written_responsetype_unclean_notes[!(written_responsetype_unclean_notes$randomnumber %in% written_responsetype_clean_notes$randomnumber),])
+
+```
+
 While the notepad analysis for this study still needs to be conducted, analysis of preliminary results indicate that individuals were less likely to directly copy testimony compared to the first study.
 This may be due to the change in format - the use of speech bubbles breaks up the text, which may prevent highlighting the entire page of testimony.
 Due to this potential change, the potential length of the collocation may need to be shortened.
+
+#### Note Cleaning
+
+One complication in this dataset that was not present in the previous dataset was a missing page in the middle of participant notes.
+In this case, based on slight modifications from the sequential cleaning functions mentioned in Chapter \@ref(textcolor), the algorithm uses the last known page of previous notes for data cleaning.
+
+In this study, `r length(unique(written_responsetype_unclean_notes$randomnumber))` individuals used the notepad at least once, resulting in `r dim(written_responsetype_unclean_notes)[1]` pages of uncleaned notes.
+After data cleaning, there were `r dim(written_responsetype_clean_notes)[1]` pages of notes, from `r length(unique(written_responsetype_clean_notes$randomnumber))` individuals.
+The one individual present in the uncleaned notes that is absent in the cleaned dataset only took notes on the description page prior to the trial transcript, so no transcript notes were present in their record.
+
+#### Comment Analysis
+
+The full comment analysis transcript can be found at: https://rachelesrogers.github.io/Presentations/Response%20Type%20Collocations/Response_Survey_Comment_Analysis.html.
+On the whole, the highlighting trends for this testimony are similar for that of the previous study (found in Chapter \@ref(textcolor)).
+The addition of speech bubbles instead of a transcript format is one major difference in the testimony format that may affect how much participants copy down directly.
+This, along with approximately half the sample size, may account for the low values found in this transcript.
+
+In this study, an additional questions were added to the cross examination regarding the subjectivity of the bullet comparison - namely, if another firearms examiner would use the same subjective criterion and reach the same conclusion.
+A few of the participants wrote the firearms examiner's answer in their notepad, indicating that they paid attention to this question.
+On the other hand, participants did not appear to copy down the final jury instructions given by the judge - regarding the treatment of the algorithm examiner as any other witness.
+These changes represent two different types of information presentation.
+The discussion of other examiner's comparisons is aimed to be more informational - it describes the process of firearms comparison.
+The jury instructions, on the other hand, are aimed to be instructional - it it asks the reader to reflect on their own interpretation of the case.
+While the lack of notes on jury instructions may indicate that participants did not find them to be relevant, it may also be a product of a more reflective and less informative piece of testimony.
 
 ## Conclusion
 
@@ -2110,7 +2417,7 @@ Individuals who chose to numerically express chance of innocence as opposed to c
 <!--      - [blank] out of [blank] examiners would agree with Smith's results of bullet comparison -->
 <!--    - If the algorithm were re-run on the same bullet comparison, how many times do you believe the algorithm would agree with these results? -->
 <!--        - [blank] out of [blank] runs would agree with the results of the bullet comparison -->
-<!--    <!-- - Credibility: Perhaps questions regarding the ability to testify? Or something on credentials, or comparison to another individual --> -->
+<!-- - Credibility: Perhaps questions regarding the ability to testify? Or something on credentials, or comparison to another individual -->
 <!--    - What if we used a blank slider for credibility/scientificity? -->
 <!--    - Scientificity: can directly compare to each other, or have a non-scientific portion to compare to -->
 <!--      - Did you find the algorithm or the bullet comparison to be more scientific? -->
@@ -2118,4 +2425,4 @@ Individuals who chose to numerically express chance of innocence as opposed to c
 <!--    - How much would you be willing to bet that the crime scene bullet (did/did not) match Cole's gun? -->
 
 <!-- - Clarify if the examiner used the algorithm before or after their initial comparison. -->
-<!--  <!-- - If the algorithm is used first, this would potentially be confounding --> -->
+<!-- - If the algorithm is used first, this would potentially be confounding -->

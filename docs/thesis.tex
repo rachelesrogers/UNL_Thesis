@@ -2539,10 +2539,6 @@ Because individuals may be influenced by the order of the questions (such as cho
 \caption{Opinion of Guilt Consistency with Scales}\label{fig:opinioncomp}
 \end{figure}
 
-\begin{verbatim}
-## [1] 44
-\end{verbatim}
-
 Perhaps the simplest question that we asked participants was whether or not they personally thought the defendant was guilty of committing the crime.
 This opinion can provide a baseline for participant understanding of response questions.
 If we set a threshold for opinion of guilt at a fifty-fifty chance (or 50\% probability of committing the crime), we can compare whether or not participant responses are within the expected range of their opinion of guilt, as shown in Figure \ref{fig:opinioncomp}.
@@ -2802,12 +2798,6 @@ This is to be expected when the participant believes that there is an approximat
 \hypertarget{hidden-and-visible-probability-comparison}{%
 \subsubsection{Hidden and Visible Probability Comparison}\label{hidden-and-visible-probability-comparison}}
 
-Figure \ref{fig:probcomp} shows the correspondence between the visible and hidden probabilities.
-The values appear to be fairly 1:1.
-In the visible probability scale, there is a slight trend of values clustering on multiples of 5 that is not present in the hidden probability scale.
-For the identification condition, those who thought the defendant was guilty tended to select probability values above 50/\%.
-The correlation between the probabilities is 0.98, indicating a strong relationship between the hidden and visible scales.
-
 \begin{figure}
 
 {\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/probcomp-1} 
@@ -2815,6 +2805,21 @@ The correlation between the probabilities is 0.98, indicating a strong relations
 }
 
 \caption{Comparison of Probability Scales}\label{fig:probcomp}
+\end{figure}
+
+Figure \ref{fig:probcomp} shows the correspondence between the visible and hidden probabilities.
+The values appear to be fairly 1:1.
+In the visible probability scale, there is a slight trend of values clustering on multiples of 5 that is not present in the hidden probability scale.
+For the identification condition, those who thought the defendant was guilty tended to select probability values above 50\%.
+The correlation between the probabilities is 0.98, indicating a strong relationship between the hidden and visible scales.
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/probbet-1} 
+
+}
+
+\caption{Betting and Probability Comparison}\label{fig:probbet}
 \end{figure}
 
 Figure \ref{fig:probbet} compares the amount that individuals were willing to bet to their hidden probability that the defendant had/had not committed the crime.
@@ -2826,15 +2831,6 @@ There is no clear pattern to individuals who fell outside of these two extreme p
 The correlation is 0.58 in the case that the participants were asked to bet on if the defendant committed the crime, and -0.57 when participants were asked to bet on if the defendant did not commit the crime.
 These correlations are lower than both correlations between numeric chance and probability.
 Based on the graph, this may indicate that both the probability scale and the betting scale suffer from compression in the most extreme values, with little correspondence on the remainder of the scale.
-
-\begin{figure}
-
-{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/probbet-1} 
-
-}
-
-\caption{Betting and Probability Comparison}\label{fig:probbet}
-\end{figure}
 
 Mattijssen et al. (2020) compared likelihood and strength of evidence ratings from 10 examiners who regularly used likelihood scales.
 While this sample size is rather small, they found that examiners tended to give higher verbal degrees of support than they should have, based on their likelihood ratio.
@@ -2945,6 +2941,18 @@ Based on these graphs, it does not appear that there is a relationship between e
 \caption{Education and Betting Comparison}\label{fig:educbet}
 \end{figure}
 
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/educrange-1} 
+
+}
+
+\caption{Education and Correct Numeric Chance Range}\label{fig:educrange}
+\end{figure}
+
+There also doesn't appear to be a relationship between individuals who select the corresponding range between multiple choice and numeric chance scales and education, as shown in Figure \ref{fig:educrange}.
+This graphic demonstrates inconsistency in individuals choosing to express chance of innocence across the board.
+
 \hypertarget{gun-comfort}{%
 \subsubsection{Gun Comfort}\label{gun-comfort}}
 
@@ -2969,6 +2977,32 @@ While the notepad analysis for this study still needs to be conducted, analysis 
 This may be due to the change in format - the use of speech bubbles breaks up the text, which may prevent highlighting the entire page of testimony.
 Due to this potential change, the potential length of the collocation may need to be shortened.
 
+\hypertarget{note-cleaning}{%
+\subsubsection{Note Cleaning}\label{note-cleaning}}
+
+One complication in this dataset that was not present in the previous dataset was a missing page in the middle of participant notes.
+In this case, based on slight modifications from the sequential cleaning functions mentioned in Chapter \ref{textcolor}, the algorithm uses the last known page of previous notes for data cleaning.
+
+In this study, 198 individuals used the notepad at least once, resulting in 2413 pages of uncleaned notes.
+After data cleaning, there were 807 pages of notes, from 197 individuals.
+The one individual present in the uncleaned notes that is absent in the cleaned dataset only took notes on the description page prior to the trial transcript, so no transcript notes were present in their record.
+
+\hypertarget{comment-analysis}{%
+\subsubsection{Comment Analysis}\label{comment-analysis}}
+
+The full comment analysis transcript can be found at: \url{https://rachelesrogers.github.io/Presentations/Response\%20Type\%20Collocations/Response_Survey_Comment_Analysis.html}.
+On the whole, the highlighting trends for this testimony are similar for that of the previous study (found in Chapter \ref{textcolor}).
+The addition of speech bubbles instead of a transcript format is one major difference in the testimony format that may affect how much participants copy down directly.
+This, along with approximately half the sample size, may account for the low values found in this transcript.
+
+In this study, an additional questions were added to the cross examination regarding the subjectivity of the bullet comparison - namely, if another firearms examiner would use the same subjective criterion and reach the same conclusion.
+A few of the participants wrote the firearms examiner's answer in their notepad, indicating that they paid attention to this question.
+On the other hand, participants did not appear to copy down the final jury instructions given by the judge - regarding the treatment of the algorithm examiner as any other witness.
+These changes represent two different types of information presentation.
+The discussion of other examiner's comparisons is aimed to be more informational - it describes the process of firearms comparison.
+The jury instructions, on the other hand, are aimed to be instructional - it it asks the reader to reflect on their own interpretation of the case.
+While the lack of notes on jury instructions may indicate that participants did not find them to be relevant, it may also be a product of a more reflective and less informative piece of testimony.
+
 \hypertarget{conclusion-2}{%
 \section{Conclusion}\label{conclusion-2}}
 
@@ -2977,10 +3011,6 @@ Probability and strength of evidence scales suffer from scale compression in the
 The amount that participants were willing to bet was also compressed around the maximum amount, with no clear relationship between probability and betting amount, aside from individuals generally betting near the maximum and selecting extreme values on the probability scale.
 The chance scales were less compressed, with the best results from the multiple choice scale.
 Individuals who chose to numerically express chance of innocence as opposed to chance of guilt demonstrated more of a tendency to reverse the scale.
-
---\textgreater{}
-
---\textgreater{}
 
 \hypertarget{finalstudy}{%
 \chapter{Conclusion - Initial Study Revisited}\label{finalstudy}}
@@ -3477,7 +3507,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-02-27 14:07:12.317256.
+This version of the thesis was generated on 2024-02-28 14:47:13.358851.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -3492,7 +3522,7 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2024-02-27
+##  date     2024-02-28
 ##  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------
@@ -3540,6 +3570,7 @@ The computational environment that was used to generate this version is as follo
 ##    httpuv               1.6.14  2024-01-26 [1] CRAN (R 4.3.2)
 ##    httr                 1.4.7   2023-08-15 [1] CRAN (R 4.3.1)
 ##    huskydown          * 0.0.5   2023-10-04 [1] Github (benmarwick/huskydown@addb48e)
+##    isoband              0.2.7   2022-12-20 [1] CRAN (R 4.3.1)
 ##    jpeg               * 0.1-10  2022-11-29 [1] CRAN (R 4.3.0)
 ##    jsonlite             1.8.8   2023-12-04 [1] CRAN (R 4.3.2)
 ##    knitr              * 1.45    2023-10-30 [1] CRAN (R 4.3.2)
