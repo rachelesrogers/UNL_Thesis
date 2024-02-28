@@ -56,8 +56,8 @@ The edit distance can be used to determine the extent of matching text when comp
 
 | Word 1 | Word 2 | Transformation | Method | Edit Distance |
 |:-------:|:--------:|:----------------:|:--------:|:---------------:|
-| Hat     | Hot    | a &rarr; o    | substitution | 1 |
-| Hello there | there | Hello | deletion | 6 |
+| caw     | cow    | a &rarr; o    | substitution | 1 |
+| inveigh | neigh | \textcolor{gray}{i}n\textcolor{gray}{v}eigh | deletion | 2 |
 | meow | homeowner | \textcolor{red}{ho}meow\textcolor{red}{ner} | insertion | 5 |
 | Shire  |  Shareholder  |  i &rarr; a + \textcolor{red}{holder} | substitution and insertion | 7 |
 
@@ -66,9 +66,9 @@ The edit distance can be used to determine the extent of matching text when comp
 The edit distance is the number of characters that would need to be changed in order to transform the first string into the second string.
 This includes insertions, deletions, and substitutions, in the case of the "adist" function [@utils].
 These different transformations are shown in Table \@ref(tab:edist).
-For example, "Hat" and "Hot" would have an edit distance of 1, because the strings match if the "a" is turned into an "o".
+For example, "caw" and "cow" would have an edit distance of 1, because the strings match if the "a" is turned into an "o".
 This is an example of substitution.
-Similarly, "Hello there" and "there" would have an edit distance of 6, since 6 characters are deleted (the letters in "Hello" plus an additional space).
+Similarly, "inveigh" and "neigh" would have an edit distance of 2, since 2 characters are deleted ("i" and "v").
 Finally, "meow" and "homeowner" would have an edit distance of 5, because 5 characters are added.
 These operations can also be combined in edit distance calculations.
 For example, going from "Shire" to "Shareholder" would require both a substitution and insertion.

@@ -1491,8 +1491,8 @@ Edit Distance
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Hat & Hot & a → o & substitution & 1 \\
-Hello there & there & Hello & deletion & 6 \\
+caw & cow & a → o & substitution & 1 \\
+inveigh & neigh & \textcolor{gray}{i}n\textcolor{gray}{v}eigh & deletion & 2 \\
 meow & homeowner & \textcolor{red}{ho}meow\textcolor{red}{ner} & insertion & 5 \\
 Shire & Shareholder & i → a + \textcolor{red}{holder} & substitution and insertion & 7 \\
 \end{longtable}
@@ -1500,9 +1500,9 @@ Shire & Shareholder & i → a + \textcolor{red}{holder} & substitution and inser
 The edit distance is the number of characters that would need to be changed in order to transform the first string into the second string.
 This includes insertions, deletions, and substitutions, in the case of the ``adist'' function (R Core Team, 2023).
 These different transformations are shown in Table \ref{tab:edist}.
-For example, ``Hat'' and ``Hot'' would have an edit distance of 1, because the strings match if the ``a'' is turned into an ``o''.
+For example, ``caw'' and ``cow'' would have an edit distance of 1, because the strings match if the ``a'' is turned into an ``o''.
 This is an example of substitution.
-Similarly, ``Hello there'' and ``there'' would have an edit distance of 6, since 6 characters are deleted (the letters in ``Hello'' plus an additional space).
+Similarly, ``inveigh'' and ``neigh'' would have an edit distance of 2, since 2 characters are deleted (``i'' and ``v'').
 Finally, ``meow'' and ``homeowner'' would have an edit distance of 5, because 5 characters are added.
 These operations can also be combined in edit distance calculations.
 For example, going from ``Shire'' to ``Shareholder'' would require both a substitution and insertion.
@@ -3507,7 +3507,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-02-28 15:29:15.934077.
+This version of the thesis was generated on 2024-02-28 16:08:58.109267.
 
 The computational environment that was used to generate this version is as follows:
 

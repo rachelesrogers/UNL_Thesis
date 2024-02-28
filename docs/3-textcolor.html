@@ -369,18 +369,18 @@ The edit distance can be used to determine the extent of matching text when comp
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">Hat</td>
-<td align="center">Hot</td>
+<td align="center">caw</td>
+<td align="center">cow</td>
 <td align="center">a → o</td>
 <td align="center">substitution</td>
 <td align="center">1</td>
 </tr>
 <tr class="even">
-<td align="center">Hello there</td>
-<td align="center">there</td>
-<td align="center">Hello</td>
+<td align="center">inveigh</td>
+<td align="center">neigh</td>
+<td align="center">neigh</td>
 <td align="center">deletion</td>
-<td align="center">6</td>
+<td align="center">2</td>
 </tr>
 <tr class="odd">
 <td align="center">meow</td>
@@ -401,9 +401,9 @@ The edit distance can be used to determine the extent of matching text when comp
 <p>The edit distance is the number of characters that would need to be changed in order to transform the first string into the second string.
 This includes insertions, deletions, and substitutions, in the case of the “adist” function <span class="citation">(R Core Team, 2023)</span>.
 These different transformations are shown in Table <a href="3-textcolor.html#tab:edist">3.1</a>.
-For example, “Hat” and “Hot” would have an edit distance of 1, because the strings match if the “a” is turned into an “o”.
+For example, “caw” and “cow” would have an edit distance of 1, because the strings match if the “a” is turned into an “o”.
 This is an example of substitution.
-Similarly, “Hello there” and “there” would have an edit distance of 6, since 6 characters are deleted (the letters in “Hello” plus an additional space).
+Similarly, “inveigh” and “neigh” would have an edit distance of 2, since 2 characters are deleted (“i” and “v”).
 Finally, “meow” and “homeowner” would have an edit distance of 5, because 5 characters are added.
 These operations can also be combined in edit distance calculations.
 For example, going from “Shire” to “Shareholder” would require both a substitution and insertion.</p>

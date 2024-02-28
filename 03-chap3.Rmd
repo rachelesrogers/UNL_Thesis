@@ -679,8 +679,8 @@ long_opinion_comparison$Consistent <- factor(long_opinion_comparison$Consistent,
 # View(long_opinion_comparison)
 
 ggplot(long_opinion_comparison, aes(x=Question, fill=Consistent))+
-  geom_bar()+
-  scale_fill_manual(values=c("grey", "green"), na.value = "black")+
+  geom_bar(color="black")+
+  scale_fill_manual(values=c("white", "green"), na.value = "black")+
     ggtitle("Consistency with Opinion of Guilt") +
   theme_bw()
 
@@ -1119,9 +1119,9 @@ correct_prop_test <-
 
 ggplot(clean_results_merged)+
   geom_mosaic(aes(x=product(correct_range_word, short_mult),
-                  fill=correct_range_word))+
+                  fill=correct_range_word), color="black")+
   theme_bw()+
-  scale_fill_manual(values = c("green", "grey"), name="Consistent Range:")+
+  scale_fill_manual(values = c("green", "white"), name="Consistent Range:")+
   ggtitle("Selecting the Consistent Range vs. Choice to Express Chance")+
   xlab("Multiple Choice Chance of Guilt")+
   facet_grid(.~chance_of, labeller = "label_both", scales = "free_x")+
@@ -1298,10 +1298,10 @@ While 50\% was the most popular (and default) value on the visible probability s
 
 ggplot(clean_results_merged)+
   geom_mosaic(aes(x=product(prob_mult_consistency, short_mult),
-                  fill=prob_mult_consistency))+
+                  fill=prob_mult_consistency), color="black")+
   theme_bw()+
   xlab("Multiple Choice Chance of Guilt")+
-  scale_fill_manual(values = c("green" ,"grey"), name="Consistent Range:")+
+  scale_fill_manual(values = c("green" ,"white"), name="Consistent Range:")+
   ggtitle("Selecting the Consistent Range vs. Multiple Choice Value")+
   theme(axis.text.y = element_blank(), axis.ticks.y=element_blank(),
         axis.title.y = element_blank(),
@@ -1905,9 +1905,9 @@ clean_results_merged$education = factor(
 
 ggplot(clean_results_merged)+
   geom_mosaic(aes(x=product(correct_range_word, education),
-                  fill=correct_range_word))+
+                  fill=correct_range_word), color="black")+
   theme_bw()+
-  scale_fill_manual(values = c("green", "grey"), name="Consistent Range:")+
+  scale_fill_manual(values = c("green", "white"), name="Consistent Range:")+
   ggtitle("Selecting the Consistent Range vs. Education Level")+
   xlab("Education Level")+
   facet_grid(.~chance_of, labeller = "label_both", scales = "free_x")+
