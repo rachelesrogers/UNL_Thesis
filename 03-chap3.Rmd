@@ -150,6 +150,7 @@ ggplot(subset(prolific_data, Status=="APPROVED"), aes(x = `Time taken`/60)) +
     geom_histogram(alpha=0.75) +
   ggtitle("Completion Time") +
   xlab("Completion Time in Minutes")+
+  ylab("Count")+
   theme_bw()
 
 
@@ -192,7 +193,8 @@ microstudy_complete$gender = factor(microstudy_complete$gender,
   ggtitle("Age and Gender of Participants") +
   scale_fill_manual(values = c("#E69F00", "#009E73", "#F0E442")) +
   theme_bw()+
-  theme(axis.title.x = element_blank())
+  xlab("Age")+
+    ylab("Count")
 
 ```
 
@@ -339,6 +341,9 @@ This discrepancy may be due to participants reversing the strength of the thresh
 #| warning= FALSE,
 #| message= FALSE
 
+conviction_labs <- c("Convict", "Not Convict")
+names(conviction_labs) <- c("Yes", "No")
+
 
 ggplot(microstudy_clean) +
   geom_bar(aes(x=convict, fill=guilt_opinion), 
@@ -346,9 +351,10 @@ ggplot(microstudy_clean) +
   ggtitle("") +
   scale_fill_manual(values = c("#D81B60","#004D40"), name="Opinion", labels=c("Innocent","Guilty"))+
   ylab("Count")+
-  xlab("Convict?")+
+  xlab("")+
   facet_grid(.~conclusion, labeller = labeller(conclusion = conclusion_labs))+
-  theme_bw()
+  theme_bw()+
+  scale_x_discrete(labels = conviction_labs)
 
 ```
 
@@ -377,7 +383,7 @@ ggplot(microstudy_clean) +
   ggtitle("How much would you bet that the Defendant is...") +
   scale_fill_manual(values = c("#D81B60","#004D40"), name="", labels=c("Innocent","Guilty"))+
   ylab("Count")+
-  xlab("Bet Amount")+
+  xlab("Bet Amount ($)")+
   xlim(c(0,50))+
   facet_grid(conclusion~., labeller = labeller(conclusion = conclusion_labs))+
   theme_bw()
@@ -497,7 +503,7 @@ This resulted in a significant difference between the two groups (p-value of `r 
 
 ```{r}
 #| opinionchanceplot,
-#| fig.cap= "Participants who chose to express chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant.",
+#| fig.cap= "Moasiac plot of participants who chose to express chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant. The width of the bar corresponds to the number of participants per category.",
 #| fig.width= 6,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -507,15 +513,23 @@ This resulted in a significant difference between the two groups (p-value of `r 
 #| message= FALSE
 
 library(ggmosaic)
+
+opinion_labs <- c("Guilty", "Innocent")
+names(opinion_labs) <- c("Yes", "No")
+
+microstudy_clean$opinion_labs <- 
+  ifelse(microstudy_clean$guilt_opinion=="Yes", "Guilty", "Innocent")
+
 ggplot(microstudy_clean)+
-  geom_mosaic(aes(x=product(chance_of, guilt_opinion),
+  geom_mosaic(aes(x=product(chance_of, opinion_labs),
                   fill=chance_of))+
   theme_bw()+
   scale_fill_manual(values = c("#CC79A7" ,"#D55E00"), name="Chance of:", labels=c("Guilt","Innocence"))+
   ggtitle("Opinion of Guilt vs. Choice to Express Chance")+
-  xlab("Guilty?")+
+  xlab("Opinion")+
   theme(axis.text.y = element_blank(), axis.ticks.y=element_blank(),
         axis.title.y = element_blank())
+
 
 ```
 
@@ -600,44 +614,44 @@ opinion_comparison$opinion <- ifelse(microstudy_clean$guilt_opinion == "No", "In
 opinion_comparison$chance_of <- microstudy_clean$chance_of
 
 opinion_comparison[opinion_comparison$opinion == "Innocent",]$hidden_probability <- 
-  ifelse(as.numeric(microstudy_clean[microstudy_clean$guilt_opinion == "No",]$hidden_probability) <= 50, "Correct","Incorrect")
+  ifelse(as.numeric(microstudy_clean[microstudy_clean$guilt_opinion == "No",]$hidden_probability) <= 50, "Consistent","Inconsistent")
 
 opinion_comparison[opinion_comparison$opinion == "Guilty",]$hidden_probability <- 
-  ifelse(as.numeric(microstudy_clean[microstudy_clean$guilt_opinion == "Yes",]$hidden_probability) >= 50, "Correct","Incorrect")
+  ifelse(as.numeric(microstudy_clean[microstudy_clean$guilt_opinion == "Yes",]$hidden_probability) >= 50, "Consistent","Inconsistent")
 
 opinion_comparison[opinion_comparison$opinion == "Innocent",]$visible_probability <- 
-  ifelse(as.numeric(microstudy_clean[microstudy_clean$guilt_opinion == "No",]$visible_probability) <= 50, "Correct","Incorrect")
+  ifelse(as.numeric(microstudy_clean[microstudy_clean$guilt_opinion == "No",]$visible_probability) <= 50, "Consistent","Inconsistent")
 
 opinion_comparison[opinion_comparison$opinion == "Guilty",]$visible_probability <- 
-  ifelse(as.numeric(microstudy_clean[microstudy_clean$guilt_opinion == "Yes",]$visible_probability) >= 50, "Correct","Incorrect")
+  ifelse(as.numeric(microstudy_clean[microstudy_clean$guilt_opinion == "Yes",]$visible_probability) >= 50, "Consistent","Inconsistent")
 
 opinion_comparison[opinion_comparison$opinion == "Innocent" & 
                      opinion_comparison$chance_of=="guilty",
                    ]$numeric_chance <-
   ifelse(microstudy_clean[(microstudy_clean$guilt_opinion == "No" &
                              microstudy_clean$chance_of=="guilty"),
-                          ]$num_chance <= 0.50, "Correct","Incorrect")
+                          ]$num_chance <= 0.50, "Consistent","Inconsistent")
 
 opinion_comparison[opinion_comparison$opinion == "Guilty" & 
                      opinion_comparison$chance_of=="guilty",
                    ]$numeric_chance <-
   ifelse(microstudy_clean[(microstudy_clean$guilt_opinion == "Yes" &
                              microstudy_clean$chance_of=="guilty"),
-                          ]$num_chance >= 0.50, "Correct","Incorrect")
+                          ]$num_chance >= 0.50, "Consistent","Inconsistent")
 
 opinion_comparison[opinion_comparison$opinion == "Innocent" & 
                      opinion_comparison$chance_of=="innocent",
                    ]$numeric_chance <-
   ifelse(microstudy_clean[(microstudy_clean$guilt_opinion == "No" &
                              microstudy_clean$chance_of=="innocent"),
-                          ]$num_chance >= 0.50, "Correct","Incorrect")
+                          ]$num_chance >= 0.50, "Consistent","Inconsistent")
 
 opinion_comparison[opinion_comparison$opinion == "Guilty" & 
                      opinion_comparison$chance_of=="innocent",
                    ]$numeric_chance <-
   ifelse(microstudy_clean[(microstudy_clean$guilt_opinion == "Yes" &
                              microstudy_clean$chance_of=="innocent"),
-                          ]$num_chance <= 0.50, "Correct","Incorrect")
+                          ]$num_chance <= 0.50, "Consistent","Inconsistent")
 
 opinion_comparison[opinion_comparison$opinion == "Innocent",
                    ]$chances_fixed <-
@@ -646,7 +660,7 @@ opinion_comparison[opinion_comparison$opinion == "Innocent",
            c("Impossible that he is guilty", "About 1 chance in 10,000",
              "About 1 chance in 1,000", "About 1 chance in 100",
              "About 1 chance in 10", "1 chance in 2 (fifty-fifty chance)"),
-         "Correct","Incorrect")
+         "Consistent","Inconsistent")
 
 opinion_comparison[opinion_comparison$opinion == "Guilty",
                    ]$chances_fixed <-
@@ -655,12 +669,12 @@ opinion_comparison[opinion_comparison$opinion == "Guilty",
            c("1 chance in 2 (fifty-fifty chance)", "About 9 chances in 10",
              "About 99 chances in 100", "About 999 chances in 1,000",
              "About 9,999 chances in 10,000","Certain to be guilty"),
-         "Correct","Incorrect")
+         "Consistent","Inconsistent")
 
 long_opinion_comparison <- opinion_comparison %>% 
   pivot_longer(1:4, names_to = "Question", values_to = "Consistent")
 
-long_opinion_comparison$Consistent <- factor(long_opinion_comparison$Consistent, levels = c("Incorrect", "Correct"))
+long_opinion_comparison$Consistent <- factor(long_opinion_comparison$Consistent, levels = c("Inconsistent", "Consistent"))
 
 # View(long_opinion_comparison)
 
@@ -670,16 +684,16 @@ ggplot(long_opinion_comparison, aes(x=Question, fill=Consistent))+
     ggtitle("Consistency with Opinion of Guilt") +
   theme_bw()
 
-#sum(opinion_comparison$numeric_chance=="Incorrect")
+#sum(opinion_comparison$numeric_chance=="Inconsistent")
 ```
 
 Perhaps the simplest question that we asked participants was whether or not they personally thought the defendant was guilty of committing the crime.
 This opinion can provide a baseline for participant understanding of response questions.
 If we set a threshold for opinion of guilt at a fifty-fifty chance (or 50\% probability of committing the crime), we can compare whether or not participant responses are within the expected range of their opinion of guilt, as shown in Figure \@ref(fig:opinioncomp).
 This figure demonstrates that most individuals were consistent in their opinion of guilt and their selected values for the defendant committing the crime: meaning that if the participant thought the defendant was guilty, they selected at or more than a 50\% chance of guilt or a fifty-fifty chance, and vice versa.
-This consistency is especially low for the numeric chance question, with `r round(sum(opinion_comparison$numeric_chance=="Incorrect")/sum(!is.na(opinion_comparison$numeric_chance))*100, 2)`\% of individuals providing inconsistent answers (compared to `r round(sum(opinion_comparison$visible_probability=="Incorrect")/sum(!is.na(opinion_comparison$visible_probability))*100, 2)`\%, `r round(sum(opinion_comparison$hidden_probability=="Incorrect", na.rm=TRUE)/sum(!is.na(opinion_comparison$hidden_probability))*100, 2)`\%, and `r round(sum(opinion_comparison$chances_fixed=="Incorrect")/sum(!is.na(opinion_comparison$chances_fixed))*100, 2)`\% for visible probability, hidden probability, and multiple choice chance, respectively).
+This consistency is especially low for the numeric chance question, with `r round(sum(opinion_comparison$numeric_chance=="Inconsistent")/sum(!is.na(opinion_comparison$numeric_chance))*100, 2)`\% of individuals providing inconsistent answers (compared to `r round(sum(opinion_comparison$visible_probability=="Inconsistent")/sum(!is.na(opinion_comparison$visible_probability))*100, 2)`\%, `r round(sum(opinion_comparison$hidden_probability=="Inconsistent", na.rm=TRUE)/sum(!is.na(opinion_comparison$hidden_probability))*100, 2)`\%, and `r round(sum(opinion_comparison$chances_fixed=="Inconsistent")/sum(!is.na(opinion_comparison$chances_fixed))*100, 2)`\% for visible probability, hidden probability, and multiple choice chance, respectively).
 Numeric chance can be broken into two categories, depending on if individuals chose to express numeric chance in terms of innocence or guilt.
-Dividing along these lines results in `r round(sum(opinion_comparison$numeric_chance=="Incorrect" & opinion_comparison$chance_of=="innocent")/sum(!is.na(opinion_comparison$numeric_chance) & opinion_comparison$chance_of=="innocent")*100, 2)`\% of individuals providing inconsistent answers when expressing numeric chance of guilt in terms of innocence, and `r round(sum(opinion_comparison$numeric_chance=="Incorrect" & opinion_comparison$chance_of=="guilty")/sum(!is.na(opinion_comparison$numeric_chance) & opinion_comparison$chance_of=="guilty")*100, 2)`\% providing inconsistent answers when expressing chance in terms of guilt.
+Dividing along these lines results in `r round(sum(opinion_comparison$numeric_chance=="Inconsistent" & opinion_comparison$chance_of=="innocent")/sum(!is.na(opinion_comparison$numeric_chance) & opinion_comparison$chance_of=="innocent")*100, 2)`\% of individuals providing inconsistent answers when expressing numeric chance of guilt in terms of innocence, and `r round(sum(opinion_comparison$numeric_chance=="Inconsistent" & opinion_comparison$chance_of=="guilty")/sum(!is.na(opinion_comparison$numeric_chance) & opinion_comparison$chance_of=="guilty")*100, 2)`\% providing inconsistent answers when expressing chance in terms of guilt.
 This demonstrates confusion in participants when expressing numeric chance in terms of innocence, while the consistency of numeric chance in terms of guilt is similar to that of the probability and multiple choice chance scales.
 The numeric scale defaulted to chance of innocence, so it is possible that this scale reversal was overlooked by participants.
 
@@ -1033,7 +1047,7 @@ None of the individuals who selected "Certain to be guilty" on the multiple choi
 
 ```{r}
 #| correctrangemosaic,
-#| fig.cap= "Participants who selected the correct range",
+#| fig.cap= "Participants who selected the consistent range",
 #| fig.width= 12,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -1092,11 +1106,11 @@ clean_results_merged$correct_range <-
   clean_results_merged$num_chance <= clean_results_merged$adjusted_upper
 
 clean_results_merged$correct_range_word <- NA
-clean_results_merged[clean_results_merged$correct_range==TRUE,]$correct_range_word <- "correct"
-clean_results_merged[clean_results_merged$correct_range==FALSE,]$correct_range_word <- "incorrect"
+clean_results_merged[clean_results_merged$correct_range==TRUE,]$correct_range_word <- "consistent"
+clean_results_merged[clean_results_merged$correct_range==FALSE,]$correct_range_word <- "inconsistent"
 
 correct_summary_df <- data.frame(table(clean_results_merged$correct_range, clean_results_merged$chance_of))
-names(correct_summary_df)<- c("Correct", "chance_of", "Count")
+names(correct_summary_df)<- c("Consistent", "chance_of", "Count")
 
 correct_prop_test <-
   prop.test(x=c(correct_summary_df$Count[2], correct_summary_df$Count[4]),
@@ -1107,8 +1121,8 @@ ggplot(clean_results_merged)+
   geom_mosaic(aes(x=product(correct_range_word, short_mult),
                   fill=correct_range_word))+
   theme_bw()+
-  scale_fill_manual(values = c("green", "grey"), name="Correct Range:")+
-  ggtitle("Selecting the Correct Range vs. Choice to Express Chance")+
+  scale_fill_manual(values = c("green", "grey"), name="Consistent Range:")+
+  ggtitle("Selecting the Consistent Range vs. Choice to Express Chance")+
   xlab("Multiple Choice Chance of Guilt")+
   facet_grid(.~chance_of, labeller = "label_both", scales = "free_x")+
   theme(axis.text.y = element_blank(), axis.ticks.y=element_blank(),
@@ -1118,9 +1132,9 @@ ggplot(clean_results_merged)+
 ```
 
 This inconsistency based on the scales is summarized in Figure \@ref(fig:correctrangemosaic).
-Here, individuals were classified asn selecting the a numeric chance value in the correct range if their multiple choice selection was the closest option for their numeric value.
-Those who chose to express numeric choice in terms of innocence were less likely to input a value corresponding to their multiple choice selection (`r round(correct_summary_df$Count[4]/(correct_summary_df$Count[4]+correct_summary_df$Count[3])*100, 2)`\% correct, or `r correct_summary_df$Count[4]` out of `r correct_summary_df$Count[4]+correct_summary_df$Count[3]` correct for chance of innocence, and `r round(correct_summary_df$Count[2]/(correct_summary_df$Count[2]+correct_summary_df$Count[1])*100, 2)`\% correct, or `r correct_summary_df$Count[2]` out of `r correct_summary_df$Count[2]+correct_summary_df$Count[1]` correct for chance of guilt).
-This represents a significant difference in correct ranges based on how participants chose to express the numeric chance (p-value: `r round(correct_prop_test$p.value, 4)`).
+Here, individuals were classified asn selecting the a numeric chance value in the consistent range if their multiple choice selection was the closest option for their numeric value.
+Those who chose to express numeric choice in terms of innocence were less likely to input a value corresponding to their multiple choice selection (`r round(correct_summary_df$Count[4]/(correct_summary_df$Count[4]+correct_summary_df$Count[3])*100, 2)`\% consistent, or `r correct_summary_df$Count[4]` out of `r correct_summary_df$Count[4]+correct_summary_df$Count[3]` consistent for chance of innocence, and `r round(correct_summary_df$Count[2]/(correct_summary_df$Count[2]+correct_summary_df$Count[1])*100, 2)`\% consistent, or `r correct_summary_df$Count[2]` out of `r correct_summary_df$Count[2]+correct_summary_df$Count[1]` consistent for chance of guilt).
+This represents a significant difference in consistent ranges based on how participants chose to express the numeric chance (p-value: `r round(correct_prop_test$p.value, 4)`).
 While only `r round(correct_summary_df$Count[2]/(correct_summary_df$Count[2]+correct_summary_df$Count[1])*100, 2)`\% of those expressing numeric chance in terms of guilt selected the closest multiple choice answer to their numeric chance value, based on Figures \@ref(fig:likecomp1scale) and \@ref(fig:likecomp1scalerev), many individuals were within the same region with their estimates, even if they could have chosen a better-fitting category.
 Individuals who chose to express numeric chance in terms of innocence particularly struggled with the lower end of the multiple choice chance scale (from "About 1 chance in 10,000" to "About 1 chance in 100"), corresponding to the higher end of the numeric chance scale.
 Additionally, those who expressed numeric chance in terms of guilt struggled with two higher categories ("About 999 chances in 1,000" and "About 9,999 chances in 10,000").
@@ -1203,49 +1217,49 @@ This indicates that their selected probability value is more consistent with the
 
 clean_results_merged$prob_mult_consistency <- NA
 
-clean_results_merged[clean_results_merged$chances_fixed=="Impossible that he is guilty" & clean_results_merged$visible_probability==0,]$prob_mult_consistency <- "correct"
+clean_results_merged[clean_results_merged$chances_fixed=="Impossible that he is guilty" & clean_results_merged$visible_probability==0,]$prob_mult_consistency <- "consistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="Impossible that he is guilty" & clean_results_merged$visible_probability!=0,]$prob_mult_consistency <- "incorrect"
+clean_results_merged[clean_results_merged$chances_fixed=="Impossible that he is guilty" & clean_results_merged$visible_probability!=0,]$prob_mult_consistency <- "inconsistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 10,000" & clean_results_merged$visible_probability %in% c(0,1),]$prob_mult_consistency <- "correct"
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 10,000" & clean_results_merged$visible_probability %in% c(0,1),]$prob_mult_consistency <- "consistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 10,000" & !(clean_results_merged$visible_probability %in% c(0,1)),]$prob_mult_consistency <- "incorrect"
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 10,000" & !(clean_results_merged$visible_probability %in% c(0,1)),]$prob_mult_consistency <- "inconsistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 1,000" & clean_results_merged$visible_probability %in% c(0,1),]$prob_mult_consistency <- "correct"
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 1,000" & clean_results_merged$visible_probability %in% c(0,1),]$prob_mult_consistency <- "consistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 1,000" & !(clean_results_merged$visible_probability %in% c(0,1)),]$prob_mult_consistency <- "incorrect"
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 1,000" & !(clean_results_merged$visible_probability %in% c(0,1)),]$prob_mult_consistency <- "inconsistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 100" & clean_results_merged$visible_probability %in% seq(1,5),]$prob_mult_consistency <- "correct"
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 100" & clean_results_merged$visible_probability %in% seq(1,5),]$prob_mult_consistency <- "consistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 100" & !(clean_results_merged$visible_probability %in% seq(1,5)),]$prob_mult_consistency <- "incorrect"
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 100" & !(clean_results_merged$visible_probability %in% seq(1,5)),]$prob_mult_consistency <- "inconsistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 10" & clean_results_merged$visible_probability %in% seq(6,30),]$prob_mult_consistency <- "correct"
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 10" & clean_results_merged$visible_probability %in% seq(6,30),]$prob_mult_consistency <- "consistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 10" & !(clean_results_merged$visible_probability %in% seq(6,30)),]$prob_mult_consistency <- "incorrect"
+clean_results_merged[clean_results_merged$chances_fixed=="About 1 chance in 10" & !(clean_results_merged$visible_probability %in% seq(6,30)),]$prob_mult_consistency <- "inconsistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="1 chance in 2 (fifty-fifty chance)" & clean_results_merged$visible_probability %in% seq(30,70),]$prob_mult_consistency <- "correct"
+clean_results_merged[clean_results_merged$chances_fixed=="1 chance in 2 (fifty-fifty chance)" & clean_results_merged$visible_probability %in% seq(30,70),]$prob_mult_consistency <- "consistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="1 chance in 2 (fifty-fifty chance)" & !(clean_results_merged$visible_probability %in% seq(30,70)),]$prob_mult_consistency <- "incorrect"
+clean_results_merged[clean_results_merged$chances_fixed=="1 chance in 2 (fifty-fifty chance)" & !(clean_results_merged$visible_probability %in% seq(30,70)),]$prob_mult_consistency <- "inconsistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 9 chances in 10" & clean_results_merged$visible_probability %in% seq(70,94),]$prob_mult_consistency <- "correct"
+clean_results_merged[clean_results_merged$chances_fixed=="About 9 chances in 10" & clean_results_merged$visible_probability %in% seq(70,94),]$prob_mult_consistency <- "consistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 9 chances in 10" & !(clean_results_merged$visible_probability %in% seq(70,94)),]$prob_mult_consistency <- "incorrect"
+clean_results_merged[clean_results_merged$chances_fixed=="About 9 chances in 10" & !(clean_results_merged$visible_probability %in% seq(70,94)),]$prob_mult_consistency <- "inconsistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 99 chances in 100" & clean_results_merged$visible_probability %in% seq(95,99),]$prob_mult_consistency <- "correct"
+clean_results_merged[clean_results_merged$chances_fixed=="About 99 chances in 100" & clean_results_merged$visible_probability %in% seq(95,99),]$prob_mult_consistency <- "consistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 99 chances in 100" & !(clean_results_merged$visible_probability %in% seq(95,99)),]$prob_mult_consistency <- "incorrect"
+clean_results_merged[clean_results_merged$chances_fixed=="About 99 chances in 100" & !(clean_results_merged$visible_probability %in% seq(95,99)),]$prob_mult_consistency <- "inconsistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 999 chances in 1,000" & clean_results_merged$visible_probability %in% c(99,100),]$prob_mult_consistency <- "correct"
+clean_results_merged[clean_results_merged$chances_fixed=="About 999 chances in 1,000" & clean_results_merged$visible_probability %in% c(99,100),]$prob_mult_consistency <- "consistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 999 chances in 1,000" & !(clean_results_merged$visible_probability %in% c(99,100)),]$prob_mult_consistency <- "incorrect"
+clean_results_merged[clean_results_merged$chances_fixed=="About 999 chances in 1,000" & !(clean_results_merged$visible_probability %in% c(99,100)),]$prob_mult_consistency <- "inconsistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 9,999 chances in 10,000" & clean_results_merged$visible_probability %in% c(99,100),]$prob_mult_consistency <- "correct"
+clean_results_merged[clean_results_merged$chances_fixed=="About 9,999 chances in 10,000" & clean_results_merged$visible_probability %in% c(99,100),]$prob_mult_consistency <- "consistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="About 9,999 chances in 10,000" & !(clean_results_merged$visible_probability %in% c(99,100)),]$prob_mult_consistency <- "incorrect"
+clean_results_merged[clean_results_merged$chances_fixed=="About 9,999 chances in 10,000" & !(clean_results_merged$visible_probability %in% c(99,100)),]$prob_mult_consistency <- "inconsistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="Certain to be guilty" & clean_results_merged$visible_probability==100,]$prob_mult_consistency <- "correct"
+clean_results_merged[clean_results_merged$chances_fixed=="Certain to be guilty" & clean_results_merged$visible_probability==100,]$prob_mult_consistency <- "consistent"
 
-clean_results_merged[clean_results_merged$chances_fixed=="Certain to be guilty" & clean_results_merged$visible_probability!=100,]$prob_mult_consistency <- "incorrect"
+clean_results_merged[clean_results_merged$chances_fixed=="Certain to be guilty" & clean_results_merged$visible_probability!=100,]$prob_mult_consistency <- "inconsistent"
 
 
 ggplot(subset(clean_results_merged, !is.na(visible_probability)), aes(x=visible_probability, y=chances_fixed,
@@ -1273,7 +1287,7 @@ While 50\% was the most popular (and default) value on the visible probability s
 
 ```{r}
 #| correctprobmosaic,
-#| fig.cap= "Participants who selected the correct range between probability and multiple choice chance",
+#| fig.cap= "Participants who selected the consistent range between probability and multiple choice chance",
 #| fig.width= 10,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -1287,8 +1301,8 @@ ggplot(clean_results_merged)+
                   fill=prob_mult_consistency))+
   theme_bw()+
   xlab("Multiple Choice Chance of Guilt")+
-  scale_fill_manual(values = c("green" ,"grey"), name="Correct Range:")+
-  ggtitle("Selecting the Correct Range vs. Multiple Choice Value")+
+  scale_fill_manual(values = c("green" ,"grey"), name="Consistent Range:")+
+  ggtitle("Selecting the Consistent Range vs. Multiple Choice Value")+
   theme(axis.text.y = element_blank(), axis.ticks.y=element_blank(),
         axis.title.y = element_blank(),
         axis.text.x = element_text(angle = 90))
@@ -1297,7 +1311,7 @@ ggplot(clean_results_merged)+
 
 Results generally indicate consistent beliefs in guilt; by far most individuals who selected a multiple choice chance value corresponding to the defendant being more likely to be guilty than innocent selected a corresponding probability value in the same range (i.e. less than a 50\% probability of being innocent), and vice versa.
 However, the inconsistency in the scales is present in the form of magnitude: participants tended to select less extreme probability values than was indicated by their multiple choice chance selections.
-In particular, individuals do well for values in the middle and at the endpoints, as shown in Figure \@ref(fig:correctprobmosaic), but they struggle with multiple choice values that are between the most extreme choices (0\% - 1\% and 99\% - 100\%). When comparing the multiple choice selection to visible probability, `r round(sum(clean_results_merged$prob_mult_consistency=="correct")/length(clean_results_merged$prob_mult_consistency)*100, 2)`\% of individuals selected a visible probability value that corresponded to the range of their multiple choice selection.
+In particular, individuals do well for values in the middle and at the endpoints, as shown in Figure \@ref(fig:correctprobmosaic), but they struggle with multiple choice values that are between the most extreme choices (0\% - 1\% and 99\% - 100\%). When comparing the multiple choice selection to visible probability, `r round(sum(clean_results_merged$prob_mult_consistency=="consistent")/length(clean_results_merged$prob_mult_consistency)*100, 2)`\% of individuals selected a visible probability value that corresponded to the range of their multiple choice selection.
 This does not account for probability values that were similar, but would be better when placed in a different multiple choice category.
 This percentage is lower than what was seen when comparing numeric chance of guilt to participants' multiple choice selection, which may be expected given the similar wording between the multiple choice and numeric chance categories.
 However, the percentage of correspondence is higher than what was seen for participants who expressed numeric chance in terms of innocence.
@@ -1867,7 +1881,7 @@ ggplot(microstudy_clean, aes(x = education, y = betting, fill = guilt_opinion)) 
 
 ```{r}
 #| educrange,
-#| fig.cap= "Education and Correct Numeric Chance Range",
+#| fig.cap= "Education and Consistent Numeric Chance Range",
 #| fig.width= 12,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -1893,8 +1907,8 @@ ggplot(clean_results_merged)+
   geom_mosaic(aes(x=product(correct_range_word, education),
                   fill=correct_range_word))+
   theme_bw()+
-  scale_fill_manual(values = c("green", "grey"), name="Correct Range:")+
-  ggtitle("Selecting the Correct Range vs. Education Level")+
+  scale_fill_manual(values = c("green", "grey"), name="Consistent Range:")+
+  ggtitle("Selecting the Consistent Range vs. Education Level")+
   xlab("Education Level")+
   facet_grid(.~chance_of, labeller = "label_both", scales = "free_x")+
   theme(axis.text.y = element_blank(), axis.ticks.y=element_blank(),
