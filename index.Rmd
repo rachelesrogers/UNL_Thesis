@@ -466,14 +466,15 @@ The influence of images on individuals remains unclear, and may be situationally
 
 ## Response Methods
 
-There are many different ways to measure participant responses.
+There are many different ways to measure participant responses, each of which may affect the accuracy with which the response reflects the construct that we wish to measure [@grovesSurveyMethodology2009].
 Verbal scales, such as those used in the ENFSI guidelines described in the last section, are often used to record participant responses.
 Likert scales can be used to evaluate several factors, such as the reliability, understanding, and scientific quality of the forensics expert, the algorithm, and the testimony in general.
 It is therefore important to ensure that participants' views are accurately recorded with Likert type scales, which can vary in the number of categories used.
 Several researchers found that the 7-point scale may perform or represent the participants’ true views better than the 5-point scale [@joshiLikertScaleExplored2015;@finstadResponseInterpolationScale2010]. 
-Participants often preferred more categories, such as 7, 9, or 10 [@prestonOptimalNumberResponse2000;@komoritaNumberScalePoints1965]. 
+While @grovesSurveyMethodology2009 recommends using a 5 or 7-point Likert scale with a label for every scale point for attitude questions, participants often preferred more categories, such as 7, 9, or 10 [@prestonOptimalNumberResponse2000;@komoritaNumberScalePoints1965]. 
 However, @prestonOptimalNumberResponse2000 found that reliability decreased with more than 10 categories. 
 This indicates that 7, 9, or 10 point scales should be adequate for reliable responses that accurately represent the participant's views.
+In addition, @decastellarnau2018 found that asking participants to respond to specific items (such as reliable - unreliable) is preferred over using a generalized agree - disagree scale in terms of measurement quality, cognitive effort, and bias. 
 
 Other methods have also been used to evaluate participant responses, such as asking participants to give a likelihood ratio or a probability of guilt.
 @thompsonJurorsGiveAppropriate2013 asked participants rate the chance of guilt on a scale from: with values generally on a log 10 scale (ex. 1 in 100; 1 in 1,000); a middle value of a fifty-fifty chance; and extreme values of "Certain to be guilty" and "Impossible that he is guilty".

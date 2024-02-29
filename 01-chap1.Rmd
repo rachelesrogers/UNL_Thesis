@@ -161,7 +161,8 @@ This document included expert testimony, cross examination, and questions from t
 \authorcol{Cross examination included questions on the newness of the algorithm, as well as subjective aspects of calibration, and limitations with respect to the types of bullets that it can evaluate.}
 The testimony was based on actual court testimony provided by forensics experts lawyers, and judges, shown in Appendix \@ref(testimony-transcripts).
 
-\authorcol{After reading the transcript, participants were directed to respond to some questions regarding the testimony.}
+\authorcol{After reading the transcript, participants were directed to respond to some questions regarding the testimony.
+These questions were largely based on} @garrettMockJurorsEvaluation2020.
 \authorcol{They were first given information about their responsibility as jurors to choose whether or not to convict, and the 'beyond reasonable doubt' threshold was established before asking participants for their conviction decision.}
 \authorcol{Participants were also asked to estimate the probability that the defendant committed the crime, and the probability that the gun was involved in the crime.}
 \authorcol{These questions were followed by several Likert scales on the strength of evidence, the credibility of the examiners, reliability and scientificity of the evidence, and understanding of the procedures.}
@@ -1368,6 +1369,7 @@ ggplot(subset(merged_results, !is.na(strength)), aes(x=strength, fill = algorith
 ```
 
 Individuals were also asked to rate the strength of evidence, both against Richard Cole and against the gun. 
+\authorcol{Unlike questions of reliability, credibility, and scientificity, strength of evidence was measured on a 9-point Likert scale, without worded values for intermittent categories, following the procedure of @garrettMockJurorsEvaluation2020.}
 
 When asked about the case against the defendant, shown in Figure \@ref(fig:strength), there was a small difference in terms of the algorithm. 
 When the examiner reached a non-match conclusion, individuals who also received the algorithm were more likely to select the lowest category ("not at all strong") compared to those who did not receive the algorithm. 
@@ -1909,7 +1911,7 @@ These results generally reflect the trends shown in the histograms in the previo
 ### Summary of Results
 
 As can be seen in most graphics, scale compression was an issue with this study. 
-The vast majority of participants selected the two highest categories for questions rating how credible, reliable, and scientific the expert/method was. 
+The vast majority of participants selected the two highest categories for questions rating how credible, reliable, and scientific the expert/method was\authorcol{, despite following the scale size and labeling recommendations of } @grovesSurveyMethodology2009. 
 This corresponds with @garrett2013's study of fingerprint match language, where they did not find a significant difference in the participants' feelings of guilt based on various match language.
 @garrett2013 hypothesized that this may relate to strong feelings reliability for fingerprint evidence, resulting in individuals viewing any match as automatically reliable (without the need for stronger language).
 \authorcol{In future studies, we will be evaluating different methods of response, aside from Likert scales, to study other formats that may yield less compressed results.}

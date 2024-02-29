@@ -13,7 +13,7 @@ Due to this difficulty, we conducted a follow-up study comparing various respons
 \authorcol{According to }@grovesSurveyMethodology2009\authorcol{, an error in survey measurements may result from a difference between the construct that we wish to evaluate, and the measurement used to evaluate it.
 In this case, there is a disconnect between what we want to measure (participant's perception of the witness/method's abilities) and what we ended up measuring with Likert scales (reliability, credibility, and scientificity).
 This disconnect can be seen in the form of scale compression: due to the limited scale, we are unable to observe individuals' true perceptions with regards to the witnesses and methods.}
-@grovesSurveyMethodology2009\authorcol{ uses the National Assessment of Educational Progress as an example of the difference between construct and measures: "when measuring the construct of mathematical abilities of 4th graders, the measures are sets of arithmetic problems" (50).
+@grovesSurveyMethodology2009 \authorcol{ uses the National Assessment of Educational Progress as an example of the difference between construct and measures: "when measuring the construct of mathematical abilities of 4th graders, the measures are sets of arithmetic problems" (50).
 The scale compression seen in our initial study would be equivalent to using the wrong set of arithmetic problems: if the problems are simple enough that almost all 4th graders receive a perfect score, then the true mathematical abilities of the 4th graders are not being evaluated.
 Similarly, the standard for being considered reliable, credible, and scientific as a court-approved witness or method is too easy to overcome.}
 
@@ -597,6 +597,7 @@ If different question types result in responses that are inconsistent, it would 
 As mentioned in the Chapter \@ref(litreview), @thompsonLayUnderstanding suggest that individuals may struggle with the interpretation of likelihood scales, while chance scales were more consistent with Bayesian estimates.
 Other scales, such as how much a participant is willing to bet, may be highly subjective - depending their personal feel for risk, and betting hypothetical money may have different results than betting real money.
 Due to this potential difficulty in interpretation, response scales must be compared.
+@schwarzSAGEHandbookMeasurement2010 \authorcol{indicate that order matters in partially-redundant questions, where participants may assume that later questions are asking about different facets than the initial question.}
 Because individuals may be influenced by the order of the questions (such as choosing a numeric chance value that aligns with their multiple choice selection), the order was randomized and recorded \svp{so that we are averaging across any potential biasing effects due to question order}.
 
 #### Consistency with Opinion of Guilt
