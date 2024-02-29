@@ -8,37 +8,38 @@
 The results from the initial study found in Chapter \@ref(study1) call into question the use of Likert response scales when evaluating jury perception of firearms experts, as well as the use of a transcript testimony format.
 Responses pertaining to the credibility of the expert, as well as the reliability and scientificity of the evidence, suffered from scale compression when a Likert scale was used - participants indicated overall confidence in credibility, reliability, and scientificity by mainly selecting the two highest categories of each scale.
 This lack of variation in scale responses makes it difficult to discern potential differences between treatment conditions.
-Due to this difficulty, we conducted a follow-up study comparing various response types, in order to determine substitute questions that may result in a wider distribution of responses.
+Due to this difficulty, we conducted a follow-up study comparing various response types, in order to determine substitute questions that may result in a wider distribution of responses. \svp{I think you may want to have a few references about why scale compression is bad and how to deal with it as part of the intro here?}
 
 Further changes include the addition of jury instructions on the part of the judge, instructing members of the jury to treat the firearms examiner as they would any other witness and removing the use of the term "expert".
-We enacted these changes after investigating the scale compression in responses, and finding that @OpinionEvidence suggests that the use of the term "expert" may result in jurors giving the testimony more weight, and provides sample text for the judge to clarify the presence of the witnesses as opinion witnesses instead of experts.
+We enacted these changes after investigating the scale compression in responses, and finding that @OpinionEvidence suggests that the use of the term "expert" may result in jurors giving the testimony more weight, and provides sample text for the judge to clarify the presence of the witnesses as opinion witnesses instead of experts. \svp{This is a bit convoluted - try to clarify the wording and simplify the syntax. Provide examples as blockquotes.}
 Additional cross examination testimony with regards to the firearms examiner's inability to specifically tie the defendant to the crime scene is included as well, due to a lack of distinction in participants between evidence tying the firearm to the crime scene, and evidence tying the defendant to the crime scene.
 As in the initial study, these changes were directly related to trial transcripts or resources.
 The transcript changes for the second study can be found in Appendix \@ref(study-2-changes).
 
+\svp{I think identifying the root cause here: participants couldn't match text to the "side" of the adversarial process, and then providing examples of how that was addressed (with pictures) is important for clarity. Use fewer "may" statements and instead support your claims with participant comments, if possible.}
 In the initial study, some participants were confused about who the witnesses were testifying for, as evidenced by their written comments.
 This may be due to the testimony format, which does not clearly identify the speaker with each line, instead using "Q:" and "A:" in most cases, as shown in Appendix \@ref(study-2-changes).
-This lack of visuals cues for tracking speakers is not representative of the courtroom setting, and may have contributed to the confusion expressed by some participants.
+The lack of visual cues for \svp{matching text with the speaker} is not representative of the courtroom setting, and may have contributed to the confusion expressed by some participants.
 The transcript format may also lend an air of impartiality to the witnesses due to the relatively unclear identity of the individual asking the questions.
 This may have been compounded by the exclusion of testimony where the prosecution called the witness to testify, instead beginning with the swearing in of the witness.
 This has been rectified in this second study.
 Due to this potential issue, we strove to develop a general tool that can be used in online courtroom studies to provide visual representation of relevant actors, making it easier to track speakers, and with versatility in terms of individual characteristics.
 
-In order to minimize the chance of confounding typos as seen in Study 1, we used one master file with all lines of testimony, labelled by the scenario in which the testimony occurs.
-Thus, there is no longer multiple files of repeated text, and this format allows for more flexibility when implementing the R Shiny application.
-We also use unique identification throughout the database files in the form of Prolific ID's and a random number assigned to the participant instead of relying on unique fingerprints, which resulted in technical difficulties in a preliminary run of this second study, so the demographics section can more easily be linked to the final results.
+In order to minimize the chance of confounding typos as seen in Study 1, we used one master file with all lines of testimony, labelled by the scenario in which the testimony occurs, \svp{which minimizes the need to change testimony in multiple locations}.
+\svp{In addition,} this format allows for more flexibility when implementing the R Shiny application.
+We also use unique identification throughout the database files in the form of Prolific ID's and a random number assigned to the participant \svp{upon initial connection to the application} instead of relying on \svp{browser-based} fingerprints, which resulted in technical difficulties in a preliminary run of this second study, so the demographics section can more easily be linked to the final results.
 
 ### Study Visualization
 
-Appendix \@ref(study-2-changes) shows the characters that have been developed for this study (drawn by Richy Meleus), as well as a screenshot of the study format.
+Appendix \@ref(study-2-changes) shows the characters that have been developed for this study (drawn by Richy Meleus), as well as a screenshot of the study format. \svp{I would put the characters and the screenshot in the text -- they're important}
 These characters were drawn so that the clothes and heads can be interchanged, providing a wide variety of characters for potential scenarios.
-One difficulty in including drawn figures with realistic skin tones and figures is the influence of perceived race or gender on the participants' judgements.
+One difficulty in including drawn figures with realistic skin tones and figures is the influence of perceived race or gender on participant judgments.
 @ImplicitRaceAttitudes found a relationship between implicit racial bias and the perceived trustworthiness of individuals based on images of black and white males.
 They also found that 80% of participants exhibited pro-white implicit bias.
-Because of this potential bias introduced by visual figures, we plan to conduct a follow-up study in order to determine how these figures are perceived.
+Because of this potential bias introduced by visual figures, we plan to conduct a follow-up study in order to determine how these figures are perceived \svp{as part of the validation of this set of figures for wider use}.
 For the current study, the same figures are used consistently across all conditions to prevent a confounding effect.
 
-To investigate a which response type may be most informative for this study and to troubleshoot the use of figures and speech bubble format, we conducted a smaller micro study using various response types.
+To investigate a which response type may be most informative for this study and to troubleshoot the use of figures and speech bubble format, we conducted a micro study using various response types. \svp{I think you need to link this back to scale compression and explicitly review the literature corresponding to these different response types.}
 
 ## Methods
 
@@ -46,9 +47,9 @@ To investigate a which response type may be most informative for this study and 
 
 Participants were presented with the same scenario described in Chapter \@ref(study1): participants read a trial transcript regarding an attempted convenience store robbery, where the only evidence presented is a bullet comparison between the defendant's gun and a bullet recovered from the scene of the crime (a scenario from @garrettMockJurorsEvaluation2020).
 In this case, however, the only factor that was changed was the conclusion of the firearms examiner: either an indentification or exclusion.
-In all conditions, the algorithm was absent and there were no images.
+In all conditions, the algorithm was absent and there were no images \svp{provided as demonstrative evidence during testimony}.
 The testimony largely followed that of Chapter \@ref(study1), aside from differences in the format and additional testimony described above and outlined in Appendix \@ref(study-2-changes).
-In this case, it was also explicitly stated that the testimony did not reflect all evidence presented in the case, because in the exclusion condition there may not be enough evidence to bring the case to trial.
+In this case, it was also explicitly stated that the testimony did not reflect all evidence presented in the case, because in the exclusion condition there \svp{is clearly insufficient} evidence to bring the case to trial.
 Figure \@ref(fig:responsefigures) depicts the characters used in this study. 
 Those speaking on behalf of the prosecution were coded with speech bubbles in warmer colors (red for the prosecutor and orange for the forensic scientist), while the defense was coded with a cooler color (purple), and the judge was coded as grey.
 
@@ -81,7 +82,7 @@ At the end of the testimony, the participants were asked a variety of questions 
 Questions of probability, strength of evidence, and decision to convict were repeated from the Chapter \@ref(study1) study.
 Participants were asked to evaluate the probability that the defendant committed the crime, both with a visible probability scale (allowing the participants to select the exact probability integer) and with a non-visible scale (only the numbers of 0 and 100 were available on the extremes of the scale).
 The strength of evidence was a Likert scale with values from "Not at all strong" to "Extremely strong" with nine points.
-In terms of conviction, participants were reminded of the decision criterion of "beyond a reasonable doubt" when making a decision in a criminal trial, and asked if they would choose to convict.
+In terms of conviction, participants were reminded of the decision criterion of "beyond a reasonable doubt" when making a decision in a criminal trial, and asked if they would choose to convict. \svp{Show screenshots of each scale in a figure here, please}
 
 New questions for this response study asked individuals to give their opinion of the guilt of the defendant, as well as assessing the chances that the defendant committed the crime, how much they would be willing to bet that the defendant was either innocent or guilty, and their opinion of the defendant.
 In addition to a question regarding whether or not the participant would choose to convict, we also asked the participants to give their personal opinion on the guilt of the defendant.
@@ -92,12 +93,12 @@ One was in a multiple choice format, with extreme values of "Impossible to be gu
 This format was taken from @thompsonLayUnderstanding's study of DNA, which consisted of larger scaled values in the denominator (up to 1 in 10 million).
 The second question allowed participants to select both the numerator and denominator: "About ___ chance(s) in ___ that the defendant is (innocent/guilty)", where participants were able to select to express the value as innocence or guilt (the default value was "innocent").
 In the preliminary study, participants had to express chances that corresponded with their opinion on the defendant committing the crime, but this resulted in some scale confusion.
-In both cases, the numerator had to be less than or equal to the denominator.
+In both cases, the numerator had to be less than or equal to the denominator, \svp{restricting the numerical result to the $[0,1]$ range.
 
 Individuals who thought that the defendant was guilty were asked how much they were willing to bet that the defendant was guilty, if hypothetically researchers provided them with \$50 and they would double their money if they were correct, and vice versa.
 A final new question was open ended, and asked participants to provide their opinion of the defendant.
 We first asked individuals to provide their opinion of the defendant, their conviction decision, and their personal opinion of the guilt of the defendant.
-All other questions were randomized in a way that guaranteed the two probability questions and the two chance questions were not asked directly following each other.
+All other questions were randomized \svp{subject to the constraint that} the two probability questions and the two chance questions were not \svp{adjacent}.
 
 
 ### Prolific
@@ -204,7 +205,7 @@ Age and gender are shown in Figure \@ref(fig:demographics2).
 Individuals were asked a single attention check question with regards to the caliber of gun used in the attempted robbery.
 `r dim(microstudy_clean)[1]` participants passed the attention check, meaning that only `r sum(microstudy_complete$check!="9mm")` participants failed the attention check, and will not be included in the analysis.
 There were `r sum(microstudy_clean$conclusion=="Match")` participants in the identification condition and `r sum(microstudy_clean$conclusion=="NoMatch")` participants in the elimination condition who passed the attention check.
-We adjusted the probability of receiving each condition throughout the survey to ensure categories were relatively equal.
+We adjusted the probability of receiving each condition throughout the survey to ensure \svp{the number of participants across} categories \svp{was} relatively equal.
 
 ### Questions from Study 1
 
@@ -219,9 +220,11 @@ match_convict_compare <- prop.test(x=c(sum(microstudy_clean$convict=="Yes" & mic
 ```
 
 There were some procedural changes made to this study compared to the original study that may influence results: namely, more detailed cross examination and the inclusion of jury instructions.
+\svp{These changes were made in order to reduce scale compression by providing a stronger defense and emphasizing the role of the expert witness as providing opinions.}
 Another significant difference between the two studies is the time that has passed between the two studies.
 The first study was conducted in July 2022, while this study was conducted in January 2024.
 In this time, notoriety of firearms evidence has not remained the same - in this response study, a participant commented that they had recently read an article about the unreliability of firearms evidence.
+\svp{This is in part due to a number of high-profile court cases in jurisdictions around the country which have limited the presentation of firearms evidence or how expert witnesses may present evidence to ensure that witnesses do not overstate the scientific value of firearms comparisons.}
 More widespread criticism of firearms examination may lead to lower feelings of reliability.
 
 In both studies, participants are asked if they would choose to convict, given the "beyond a reasonable doubt" threshold.
@@ -270,7 +273,7 @@ ggplot(microstudy_clean) +
 ```
 
 Figure \@ref(fig:strength2) shows participant responses to the strength of evidence in this study.
-As can be seen, those in the elimination category tended to choose the smallest value for the strength of evidence ("Not at all strong"), while in the case of the identification condition, individuals tended to distribute their views of the strength of evidence more evenly.
+\svp{Participants} in the elimination category tend to choose the smallest value for the strength of evidence ("Not at all strong"), while in the identification condition, individuals tend to distribute their views of the strength of evidence more evenly.
 This graph resembles the strength of evidence results from the initial study, shown in Figure \@ref(fig:strength).
 While not as dramatic as the scale compression for questions of reliability, credibility, and scientificity, the elimination results for strength of evidence do appear to show a scale limitation because individuals tended to overwhelmingly select the lowest category.
 
@@ -311,7 +314,7 @@ nomatch_prob_ttest<-t.test(microstudy_clean[microstudy_clean$conclusion=="NoMatc
 
 ```
 
-Figure \@ref(fig:prob2) demonstrates the participants' selected probabilities that the defendant committed the crime.
+Figure \@ref(fig:prob2) \svp{shows participant-}selected probabilities that the defendant committed the crime.
 For a single participant, their hidden probability selection was recorded incorrectly (carrying over a previous answer), I have removed this observation when performing analysis on the hidden probability scale.
 As in the case of the strength of evidence, the graph resembles the probability graph found in the initial study (Figure \@ref(fig:probalgorithm)), where there is a higher peak of extreme values for the elimination conditions than for the identification condition.
 When using a t-test to compare the mean visible probabilities for the identification and elimination condition to those comparable conditions of the initial study, there is not a significant difference for the identification condition, but is a significant difference in the elimination condition (p-values of `r round(match_prob_ttest$p.value,2)` and `r round(nomatch_prob_ttest$p.value,2)`, respectively).
@@ -359,9 +362,10 @@ ggplot(microstudy_clean) +
 ```
 
 Figure \@ref(fig:betting) indicates how much participants said they would be willing to bet that the defendant was either guilty or innocent, if provided with \$50.
-If the participant indicated that they thought the defendant was innocent, they were asked how much they would be willing to bet that the defendant was innocent, and vice versa.
+If the participant thought the defendant was innocent, they were asked how much they would be willing to bet that the defendant was innocent, and vice versa.
 This figure indicates that most people who thought Cole was innocent in the elimination condition were willing to bet the full amount (`r sum(microstudy_clean$conclusion=="NoMatch" & microstudy_clean$guilt_opinion=="No" & microstudy_clean$betting==50)` out of `r sum(microstudy_clean$conclusion=="NoMatch" & microstudy_clean$guilt_opinion=="No")` participants).
 It also appears that people tended to select values multiples of 5 (`r sum(microstudy_clean$betting %in% c(5,10,15,20,25,30,35,40,45,50))` out of `r sum(!is.na(microstudy_clean$betting))`, with `r sum(microstudy_clean$betting==0)` additional individuals selecting 0).
+\svp{In follow-up studies, we will attempt to assess this in a more symmetric manner by allowing participants to bet more than \$50; this should allow for a wider discrimination of the strength of participant opinion.}
 Those in the identification condition selected less extreme values (for both those who thought the defendant was guilty and those who thought the defendant was innocent) than what is seen in those with the elimination condition who thought the defendant was innocent.
 In this way, the betting response is similar both to the strength of evidence response and the probability of committing the crime response.
 
@@ -493,13 +497,13 @@ response_choice <- prop.test(x=innocent_chance, n=opinion_totals)
 
 A final question asks individuals to provide a numerical chance that the defendant is either innocent or guilty, depending on the participants' choice (the question defaulted to chances of innocence, but participants had the option to switch the scale).
 Their responses were limited so that the numerator was smaller than the denominator, resulting in a range of values from 0 to 1, in most cases.
-There were `r sum(microstudy_clean$num_chance>1)` responses with values greater than 1 that will not be considered in this analysis.
+There were `r sum(microstudy_clean$num_chance>1)` responses with values greater than 1 that will not be considered in this analysis.\svp{What failed here to allow participants to respond $> 1$?}
 These results are shown in Figure \@ref(fig:freelike).
 As seen in previous response types, in the case of the elimination condition, individuals gave small values for the chance that the defendant had in fact committed the crime, resulting in a sharp peak.
 Alternatively, individuals were less extreme when they expressed their opinion as the chance that the defendant did not commit the crime in the elimination condition, even though the same sentiment is being expressed.
 In the case of the identification condition, those who expressed their opinions as either guilt or innocence gave similar results, resulting in symmetry between the two distributions.
 As shown in Figure \@ref(fig:opinionchanceplot), those who thought the defendant was innocent were more likely to favor inputting chance values in terms of innocence(`r innocent_chance[1]/opinion_totals[1]`\%, or `r innocent_chance[1]` out of `r opinion_totals[1]`), while those who thought the defendant was guilty were slightly less likely to express chance in terms of innocence (`r innocent_chance[2]/opinion_totals[2]`\% expressed their beliefs in terms of innocence, or `r innocent_chance[2]` out of `r opinion_totals[2]`).
-This resulted in a significant difference between the two groups (p-value of `r round(response_choice$p.value, 3)`).
+This resulted in a significant difference between the two groups (p-value of `r round(response_choice$p.value, 3)`).\svp{Mention how this p-value came to be - what test did you use?}
 
 ```{r}
 #| opinionchanceplot,
@@ -586,7 +590,7 @@ If different question types result in responses that are inconsistent, it would 
 As mentioned in the Chapter \@ref(litreview), @thompsonLayUnderstanding suggest that individuals may struggle with the interpretation of likelihood scales, while chance scales were more consistent with Bayesian estimates.
 Other scales, such as how much a participant is willing to bet, may be highly subjective - depending their personal feel for risk, and betting hypothetical money may have different results than betting real money.
 Due to this potential difficulty in interpretation, response scales must be compared.
-Because individuals may be influenced by the order of the questions (such as choosing a numeric chance value that aligns with their multiple choice selection), the order was randomized and recorded.
+Because individuals may be influenced by the order of the questions (such as choosing a numeric chance value that aligns with their multiple choice selection), the order was randomized and recorded \svp{so that we are averaging across any potential biasing effects due to question order}.
 
 #### Consistency with Opinion of Guilt
 
@@ -1353,7 +1357,7 @@ The clustering of low chance of innocence and low probability of guilt shown in 
 The correlation between the probability and the chances of guilt is `r round(cor(microstudy_clean[!is.na(microstudy_clean$num_chance) & microstudy_clean$chance_of=="guilty",]$visible_probability, microstudy_clean[!is.na(microstudy_clean$num_chance) & microstudy_clean$chance_of=="guilty",]$num_chance),2)`,
 while the correlation between the probability and the chances of innocence is `r round(cor(microstudy_clean[!is.na(microstudy_clean$num_chance) & microstudy_clean$chance_of=="innocent",]$visible_probability, microstudy_clean[!is.na(microstudy_clean$num_chance) & microstudy_clean$chance_of=="innocent",]$num_chance),2)`.
 While there is a fairly strong correlation in the case of chances of guilt and probability, the correlation between the probability and the chances of innocence is weaker.
-This may be a result of confusion in the scale reversal of the chance of innocence scale, while the chance of guilt smoothly corresponds with expressing the probability of guilt.
+This may be a result of confusion in the scale reversal of the chance of innocence scale, while the chance of guilt smoothly\svp{wording?? I get what you're going for, but smoothly reads a bit strange here} corresponds with expressing the probability of guilt.
 
 <!-- Figure \@ref(fig:likeconvict) demonstrates the relationship between chance, probability, and the decision to convict. -->
 <!-- Those who chose to convict tended to select high probabilities -->
@@ -2104,7 +2108,7 @@ This graphic demonstrates inconsistency in individuals choosing to express chanc
 Participants were asked to rate how comfortable they are with guns.
 Figure \@ref(fig:convictscomfort) shows the relationship between choice to convict and comfort with guns.
 There does not appear to be a big trend in conviction rate.
-However, it can be seen in the identification condition that those who were extremely uncomfortable with guns were more likely to convict, while those who were extremely comfortable with gones were less likely to convict.
+However, it can be seen in the identification condition that those who were extremely uncomfortable with guns were more likely to convict, while those who were extremely comfortable with guns were less likely to convict.
 
 ```{r}
 #| convictscomfort,
@@ -2385,16 +2389,17 @@ written_responsetype_clean_notes <- responsetype_clean_notes %>% filter(page_not
 
 While the notepad analysis for this study still needs to be conducted, analysis of preliminary results indicate that individuals were less likely to directly copy testimony compared to the first study.
 This may be due to the change in format - the use of speech bubbles breaks up the text, which may prevent highlighting the entire page of testimony.
-Due to this potential change, the potential length of the collocation may need to be shortened.
+Due to this change, the length of the collocation may need to be shortened.
+\svp{However, this change may encourage participants to only select relevant portions of the testimony, which would provide more insight from the collocation analysis.}
 
 #### Note Cleaning
 
-One complication in this dataset that was not present in the previous dataset was a missing page in the middle of participant notes.
+One complication in this dataset that was not present in the previous dataset was a missing page in the middle of participant notes. \svp{Why did this happen - need to explain what the missing page means and how it occurred.}
 In this case, based on slight modifications from the sequential cleaning functions mentioned in Chapter \@ref(textcolor), the algorithm uses the last known page of previous notes for data cleaning.
 
 In this study, `r length(unique(written_responsetype_unclean_notes$randomnumber))` individuals used the notepad at least once, resulting in `r dim(written_responsetype_unclean_notes)[1]` pages of uncleaned notes.
 After data cleaning, there were `r dim(written_responsetype_clean_notes)[1]` pages of notes, from `r length(unique(written_responsetype_clean_notes$randomnumber))` individuals.
-The one individual present in the uncleaned notes that is absent in the cleaned dataset only took notes on the description page prior to the trial transcript, so no transcript notes were present in their record.
+The one individual present in the uncleaned notes that is absent in the cleaned dataset\svp{; this participant} only took notes on the description page prior to the trial transcript, so no transcript notes were present in their record.
 
 #### Comment Analysis
 
