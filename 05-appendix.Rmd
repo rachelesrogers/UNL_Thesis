@@ -439,3 +439,83 @@ include_graphics("images/Study2_Screenshot.jpg")
 
 include_graphics("images/Study2_Screenshot2.jpg")
 ```
+
+
+# Select Comments
+
+## Study 1
+
+"Even if it seems like Richard Cole's gun is the same gun fired in the store, there is not enough (or any) evidence that Richard Cole was the one to fire the gun, so he cannot reasonably be convicted." 
+
+"The 1.5% error rate does seem sort of high, but at the same time it seems extremely unlikely that two guns that leave such similar bullet markings would be found in the general area of the crime."
+
+"Very difficult for juror to understand and remember the scientific evidence."
+
+"I'm not sure why the prosecution would have even called that witness because they basically said there was no conclusive bullet evidence"
+
+"I think it's interesting there is not any evidence identifying the suspect from the witness or cameras. Makes it hard to make an accurate judgement, especially when the gun was obtained through a routine violation."
+
+"I'm wondering why testimony had to discuss details of the ML algorithm?  When they use a microscope to examine evidence, does the examiner have to explain the optics of microscopes?"
+
+"It seems likely that it was the gun but I'd love to have a witness who was skeptical of this stuff. But even if it's the gun, no evidence it was defendent who used it.  I'm worried this is junk science but I don't know enough to ahve more than a lingering doubt."
+
+"Firearm evidence seems a lot like hair evidence which was debunked but I don't know that to be fact. From what was stated in this testimony, it seems to be mostly reliable but I wouldn't say it is strongly scientific."
+
+"Was interesting.  I was very surprised that with today's technology, a fired bullet could still be labeled inconclusive."
+
+"Richard Cole has been victimized by the court system in this case. The seizure of his firearm - absent any other evidence - was most probably illegal. Police cannot be allowed to simply confiscate every legally owned gun they come across in case it was used to commit a crime."
+
+"I would trust the trained professional human with experience who can use an algorithm as an extra tool over an algorithm alone any day."
+
+"The examiner themself said it was inconclusive if it was the same gun. Do I think Richard did it? Yes, he probably did but I need more evidence before I risk sending a innocent man to jail."
+
+"Random forest methods for machine learning and classification are not very robust.  They identify pictures of cats as hamburgers, for example.  Just use science."
+
+"I would liked to have had the score given by the algorithm for the comparison between the evidential bullet and the weaker of the two firing bullets.  I would also like information on how well the comparison judges between multiple guns of the same make, multiple guns of the same caliber of different manufacturers, and of situations where the algorithm is misfed information regarding bullet information such as comparisons between bullets of different sizes.  From the given testimony, it is difficult to judge if the information around the algorithm that is public was entered into evidence, and whether that information contained the issues I question.  Of course, if I were on the jury for this case, I would also want to know why the detective was searching the car for a traffic stop."
+
+"Just that a number of forensic sciences are anything but science, such as finger-printing, hair and fiber analysis, and bullet striation analysis."
+
+"I'm an attorney, don't know if that makes a difference. I had 4th amendment concerns about the seizing of the gun in the first place :) - from my understanding, neither the human nor machine left very persuasive indicators that the gun was the same in my view. "
+
+"I am cautious when it comes to algorithms because it seems as they can be problematic and subject to errors.  Also it may have been his gun but they couldn't prove that he was the one using it at that time"
+
+"The information from the Algorithm expert was not easy to digest."
+
+"The details of the methodology were difficult to understand, but the basic ideas were clear and credible."
+
+"I was, actually, fairly engaged with this!  I also appreciate, you focused this study on the evidence / expert testimony, and not on the usual, played out "stereotyping the alleged" trope.  Though I can't lay claim to a perfect understanding of all the science, etc., I still do appreciate your having enough respect for me as a participant to lay it on me anyway.  Both witnesses kept it fairly layman, honestly.  I am more surprised, you didn't use this opportunity to hit me with some super-complex questions.  (Which would've irritated me, mind you.)  Firearm evidence is *pretty* good, but not perfect.  I might've selected "extremely reliable" instead of "moderately reliable," if you had presented me an option to select "perfectly reliable" there.  (Ha ha ha.)"
+
+"the algorithm experts testimony was mostly over my head. I didn't try very hard to understand it. I just accepted it."
+
+"Not about the study itself, but I have seen several articles (I don't recall the sources but thought they were credible) calling into question this type of evidence.  The main thrust was that it is unreliable and often not objective.  This information undoubtedly shaded my responses to this survey."
+
+"I have questions about the initial search, and you may wish to adjust the statement that a police officer pulled a car over for speeding and the detective was present and searched the car. I don't think the search was supported unless the gun was in plain view or the suspect gave permission. I also don't believe this case would have come to court given the state of the evidence. It is remotely possible that Cole was guilty and used a different handgun at the scene, but there was no evidence to support this."
+
+"I am not a firearm expert, so some of the information that the examiner gave almost sounded like a foreign language to me. I honed on the fact that he said that his findings were inconclusive, and that it appeared that the defendant was charged because they found him with an extremely common firearm in his vehicle. I could not vote to convict the defendant. "
+
+"I would like to have known why the case was brouth given the evidence and if there was another evidentiary component."
+
+"I don't know that much about court stuff, but why would the prosucution bring the firearms expert when he didn't think the defendant's gun fired the shot? I was confused about that."
+
+"None too particular! I definitely would be weirded out as a juror if the expert said "it's inconclusive" and neither the prosecution nor the defense explored that further, based purely on court TV and whatever.  Also, the longer I think about it, the less I believe in the expert testimony; we were never given a "how similar are two random guns' lands and grooves" figure, yet we kind of assumed there was a uniqueness without Terry/Alex Smith telling us that. I definitely would've fallen into that fallacy in the moment."
+
+"I did not see any mention of the possibility of someone else firing the gun.  I was wondering about that."
+
+"I think the firearm evidence is fairly scientific, but it's certainly not failproof. While the error rate is stated to be very low, the fact that the process is subjective means that the error rate itself is subjective and makes me doubt how reliable that evidence actually is. If there is no other evidence pointing to the defendant, I wouldn't be able to find him guilty based on the gun alone. "
+
+"Thank you for conducting this study. Where's the defense in all of this? It would have been  helpful to know whether or not the defendant had an alibi, whether his firearm had in fact been recently fired, from a forensics perspective, whether there were any in-store or exterior or neighborhood cameras that picked up whoever discharged the firearm. Convenience stores nearly always have a height chart posted alongside the door but no one provided an approximate height or weight for the person who discharged the firearm. This was an interesting study. All the best to your research team in this and  your future endeavors. "
+
+"The evidence made me think it highly likely that Smith had the gun and was guilty. It was too much of a coincidence, for the evidence not to be accurate. However I also felt that their was at least a 5 percent to 15 percent chance that he was innocent. Even though I thought the evidence was right, I found it emotionally hard to be 100 percent certain."
+
+"yes. I am focused on the fact that the officers did not have probable cause to confiscate the weapon and the evidence was obtained illegally and should be excluded. It is irrelevant that he was actually guilty, His rights were violated and they evidence should be excluded and the case dismissed."
+
+"It would be interesting to know if the prosecution would order a second testing of the gun with a different expert. Also why would the prosecution charge this man since it had no eyewitnesses or other evidence placing him at the scene of the robbery at the time of the robbery and since the gun found in the defendant was not a match to the bullet found at the scene. Charging him seems pointless as there's virtually no evidence other than he owned a 9mm handgun."
+
+"I would have like another firearms expert testify or a representative from that 9mm handgun manufacturer explain how and why each individual handgun are designed such that the lands and grooves create unique impressions on bullets for each gun. I do believe the firearms expert and his credibility. Further, the defendant would be basically convicted only on one evidence. Would have liked to read or know what was his alibi during that attempted robbery and if a search warrant issued to search for that ski mask. What about security cameras to determine any other physical identification. This case presentation was scant and focused too heavily on one piece of evidence and testimony. "
+
+"Just from TV, I thought the fired bullet comparisons were more scientific, like 100 percent accuracy, not a subjective determination."
+
+"Years ago, I wouldn't have felt this way but now the science and technology used is far superior."
+
+"I'd prefer more information about the clerk's perception of the thief's size and build to see if it matches.  Also does the defendant have any explanation to offer like someone else had his car, may have had his gun at this time? Where does he say he was at the time of the crime?  Was there video of the thief driving away and if so was it apparently the same car?  The is a 1 in 50 chance the firearms expert made an error, so I would really like more corroborating background before saying there is no reasonable doubt..  "
+

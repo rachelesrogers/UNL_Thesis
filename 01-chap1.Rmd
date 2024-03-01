@@ -1906,6 +1906,20 @@ These coordinate plots indicate that individuals tended to choose the same categ
 Relatively few individuals changed their response by more than one category, when comparing between the algorithm and the expert. 
 These results generally reflect the trends shown in the histograms in the previous section.
 
+### Comments
+
+Select comments are shown in Appendix \@ref(select-comments).
+Many participants were concerned about the lawfulness of the arrest, and the lack of evidence tying the defendant specifically to the crime scene.
+Several also indicate that they have pre-conceived notions, either about algorithms or about firearms evidence.
+In particular, two comments were:
+
+>"Random forest methods for machine learning and classification are not very robust.  They identify pictures of cats as hamburgers, for example.  Just use science."
+
+>"Firearm evidence seems a lot like hair evidence which was debunked but I don't know that to be fact. From what was stated in this testimony, it seems to be mostly reliable but I wouldn't say it is strongly scientific."
+
+The comments indicate that participants can have distrust for methods based on their previous ideas, which may not be factual.
+
+
 ## Discussion
 
 ### Summary of Results
