@@ -146,10 +146,24 @@ grid.arrange(rasterGrob(judge),rasterGrob(forensic_science),
 ```
 
 At the end of the testimony, the participants were asked a variety of questions regarding the strength of evidence in the case.
+\authorcol{All questions asked in this study are shown in Figure} \@ref(fig:questions).
 Questions of probability, strength of evidence, and decision to convict were repeated from the Chapter \@ref(study1) study.
 Participants were asked to evaluate the probability that the defendant committed the crime, both with a visible probability scale (allowing the participants to select the exact probability integer) and with a non-visible scale (only the numbers of 0 and 100 were available on the extremes of the scale).
 The strength of evidence was a Likert scale with values from "Not at all strong" to "Extremely strong" with nine points.
-In terms of conviction, participants were reminded of the decision criterion of "beyond a reasonable doubt" when making a decision in a criminal trial, and asked if they would choose to convict. \svp{Show screenshots of each scale in a figure here, please}
+In terms of conviction, participants were reminded of the decision criterion of "beyond a reasonable doubt" when making a decision in a criminal trial, and asked if they would choose to convict. 
+
+```{r}
+#| questions,
+#| fig.cap= "Questions asked in the Response Survey",
+#| fig.width= 7,
+#| fig.align= "center",
+#| echo= FALSE,
+#| message= FALSE,
+#| warning= FALSE
+
+include_graphics("images/study_questions.jpg")
+
+```
 
 New questions for this response study asked individuals to give their opinion of the guilt of the defendant, as well as assessing the chances that the defendant committed the crime, how much they would be willing to bet that the defendant was either innocent or guilty, and their opinion of the defendant.
 In addition to a question regarding whether or not the participant would choose to convict, we also asked the participants to give their personal opinion on the guilt of the defendant.
@@ -160,7 +174,7 @@ One was in a multiple choice format, with extreme values of "Impossible to be gu
 This format was taken from @thompsonLayUnderstanding's study of DNA, which consisted of larger scaled values in the denominator (up to 1 in 10 million).
 The second question allowed participants to select both the numerator and denominator: "About ___ chance(s) in ___ that the defendant is (innocent/guilty)", where participants were able to select to express the value as innocence or guilt (the default value was "innocent").
 In the preliminary study, participants had to express chances that corresponded with their opinion on the defendant committing the crime, but this resulted in some scale confusion.
-In both cases, the numerator had to be less than or equal to the denominator, \svp{restricting the numerical result to the $[0,1]$ range.
+In both cases, the numerator had to be less than or equal to the denominator, \svp{restricting the numerical result to the $[0,1]$ range.}
 
 Individuals who thought that the defendant was guilty were asked how much they were willing to bet that the defendant was guilty, if hypothetically researchers provided them with \$50 and they would double their money if they were correct, and vice versa.
 A final new question was open ended, and asked participants to provide their opinion of the defendant.
@@ -1425,7 +1439,7 @@ The clustering of low chance of innocence and low probability of guilt shown in 
 The correlation between the probability and the chances of guilt is `r round(cor(microstudy_clean[!is.na(microstudy_clean$num_chance) & microstudy_clean$chance_of=="guilty",]$visible_probability, microstudy_clean[!is.na(microstudy_clean$num_chance) & microstudy_clean$chance_of=="guilty",]$num_chance),2)`,
 while the correlation between the probability and the chances of innocence is `r round(cor(microstudy_clean[!is.na(microstudy_clean$num_chance) & microstudy_clean$chance_of=="innocent",]$visible_probability, microstudy_clean[!is.na(microstudy_clean$num_chance) & microstudy_clean$chance_of=="innocent",]$num_chance),2)`.
 While there is a fairly strong correlation in the case of chances of guilt and probability, the correlation between the probability and the chances of innocence is weaker.
-This may be a result of confusion in the scale reversal of the chance of innocence scale, while the chance of guilt smoothly\svp{wording?? I get what you're going for, but smoothly reads a bit strange here} corresponds with expressing the probability of guilt.
+This may be a result of confusion in the scale reversal of the chance of innocence scale, while the chance of guilt \authorcol{regularly} corresponds with expressing the probability of guilt.
 
 <!-- Figure \@ref(fig:likeconvict) demonstrates the relationship between chance, probability, and the decision to convict. -->
 <!-- Those who chose to convict tended to select high probabilities -->

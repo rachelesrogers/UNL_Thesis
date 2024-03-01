@@ -57,6 +57,7 @@ tab:nonfuzzycount
 fig:testimonyformat
 fig:jurypanel
 fig:responsefigures
+fig:questions
 fig:completiontime2
 fig:demographics2
 fig:strength2
