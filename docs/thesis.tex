@@ -1348,6 +1348,24 @@ These coordinate plots indicate that individuals tended to choose the same categ
 Relatively few individuals changed their response by more than one category, when comparing between the algorithm and the expert.
 These results generally reflect the trends shown in the histograms in the previous section.
 
+\hypertarget{comments}{%
+\subsection{Comments}\label{comments}}
+
+Select comments are shown in Appendix \ref{select-comments}.
+Many participants were concerned about the lawfulness of the arrest, and the lack of evidence tying the defendant specifically to the crime scene.
+Several also indicate that they have pre-conceived notions, either about algorithms or about firearms evidence.
+In particular, two comments were:
+
+\begin{quote}
+``Random forest methods for machine learning and classification are not very robust. They identify pictures of cats as hamburgers, for example. Just use science.''
+\end{quote}
+
+\begin{quote}
+``Firearm evidence seems a lot like hair evidence which was debunked but I don't know that to be fact. From what was stated in this testimony, it seems to be mostly reliable but I wouldn't say it is strongly scientific.''
+\end{quote}
+
+The comments indicate that participants can have distrust for methods based on their previous ideas, which may not be factual.
+
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
 
@@ -2293,23 +2311,81 @@ Additional cross examination testimony with regards to the firearms examiner's i
 As in the initial study, these changes were directly related to trial transcripts or resources.
 The transcript changes for the second study can be found in Appendix \ref{study-2-changes}.
 
-\svp{I think identifying the root cause here: participants couldn't match text to the "side" of the adversarial process, and then providing examples of how that was addressed (with pictures) is important for clarity. Use fewer "may" statements and instead support your claims with participant comments, if possible.}
+In the initial study, some participants were confused about \authorcol{the witness testimony}, as evidenced by their written comments:
 
-In the initial study, some participants were confused about who the witnesses were testifying for, as evidenced by their written comments.
-This may be due to the testimony format, which does not clearly identify the speaker with each line, instead using ``Q:'' and ``A:'' in most cases, as shown in Appendix \ref{study-2-changes}.
+\begin{quote}
+\authorcol{"I don't know that much about court stuff, but why would the prosucution bring the firearms expert when he didn't think the defendant's gun fired the shot? I was confused about that."}
+\end{quote}
+
+\begin{quote}
+\authorcol{"I'm not sure why the prosecution would have even called that witness because they basically said there was no conclusive bullet evidence"}
+\end{quote}
+
+\begin{quote}
+\authorcol{"Very difficult for juror to understand and remember the scientific evidence."}
+\end{quote}
+
+\authorcol{Other participants thought that the defendant was convicted, although this is not specified in the transcript:}
+
+\begin{quote}
+\authorcol{"Going by what I read and reviewing my notes I see that the firearms evidence was inconclusive against R. Cole.  *So I am baffled as to why he was convicted.* [emphasis added] Also I prefer more things like visual evidence via a good quality video camera. Or a whole group of people testifying against someone saying things like they saw, they heard, or they know someone is prone to commit certain crimes."}
+\end{quote}
+
+\begin{quote}
+\authorcol{"I would have like another firearms expert testify or a representative from that 9mm handgun manufacturer explain how and why each individual handgun are designed such that the lands and grooves create unique impressions on bullets for each gun. I do believe the firearms expert and his credibility. *Further, the defendant would be basically convicted only on one evidence.* [emphasis added] Would have liked to read or know what was his alibi during that attempted robbery and if a search warrant issued to search for that ski mask. What about security cameras to determine any other physical identification. This case presentation was scant and focused too heavily on one piece of evidence and testimony."}
+\end{quote}
+
+The testimony transcript format did not clearly identify the speaker with each line, instead using ``Q:'' and ``A:'' in most cases, as shown in Appendix \ref{study-2-changes}.
 The lack of visual cues for \svp{matching text with the speaker} is not representative of the courtroom setting.
 The transcript format may also lend an air of impartiality to the witnesses due to the relatively unclear identity of the individual asking the questions.
 \authorcol{In order to clarify, we also added} testimony where the prosecution called the witness to testify, instead beginning with the swearing in of the witness.
 Due to this issue, we strove to develop a general tool that can be used in online courtroom studies to provide visual representation of relevant actors, making it easier to track speakers, and with versatility in terms of individual characteristics.
+\authorcol{These changes are shown in Figure} \ref{fig:testimonyformat}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{images/Study2_Screenshot} 
+
+}
+
+\caption{A screenshot of the layout of the second study.}\label{fig:testimonyformat}
+\end{figure}
 
 In order to minimize the chance of confounding typos as seen in Study 1, we used one master file with all lines of testimony, labelled by the scenario in which the testimony occurs, \svp{which minimizes the need to change testimony in multiple locations}.
 \svp{In addition,} this format allows for more flexibility when implementing the R Shiny application.
 We also use unique identification throughout the database files in the form of Prolific ID's and a random number assigned to the participant \svp{upon initial connection to the application} instead of relying on \svp{browser-based} fingerprints, which resulted in technical difficulties in a preliminary run of this second study, so the demographics section can more easily be linked to the final results.
 
+\authorcol{Individuals also indicated confusion with regards to the use of a partial testimony transcript:}
+
+\begin{quote}
+``Thank you for conducting this study. Where's the defense in all of this? It would have been helpful to know whether or not the defendant had an alibi, whether his firearm had in fact been recently fired, from a forensics perspective, whether there were any in-store or exterior or neighborhood cameras that picked up whoever discharged the firearm. Convenience stores nearly always have a height chart posted alongside the door but no one provided an approximate height or weight for the person who discharged the firearm. This was an interesting study. All the best to your research team in this and your future endeavors.''
+\end{quote}
+
+\begin{quote}
+``It would be interesting to know if the prosecution would order a second
+testing of the gun with a different expert. Also why would the prosecution
+charge this man since it had no eyewitnesses or other evidence placing him at
+the scene of the robbery at the time of the robbery and since the gun found in
+the defendant was not a match to the bullet found at the scene. Charging him
+seems pointless as there's virtually no evidence other than he owned a 9mm
+handgun.''
+\end{quote}
+
+\authorcol{Due to this confusion, an additional line is added to the study description to clarify that this is not the only evidence presented in the case.}
+
 \hypertarget{study-visualization}{%
 \subsection{Study Visualization}\label{study-visualization}}
 
-Appendix \ref{study-2-changes} shows the characters that have been developed for this study (drawn by Richy Meleus), as well as a screenshot of the study format. \svp{I would put the characters and the screenshot in the text -- they're important}
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{images/Jury} 
+
+}
+
+\caption{An image of the jury panel}\label{fig:jurypanel}
+\end{figure}
+
+Figure \ref{fig:jurypanel} and Figure \ref{fig:testimonyformat} show some of the characters that have been developed for this study (drawn by Richy Meleus), as well as a screenshot of the study format.
 These characters were drawn so that the clothes and heads can be interchanged, providing a wide variety of characters for potential scenarios.
 One difficulty in including drawn figures with realistic skin tones and figures is the influence of perceived race or gender on participant judgments.
 Stanley, Sokol-Hessner, Banaji, \& Phelps (2011) found a relationship between implicit racial bias and the perceived trustworthiness of individuals based on images of black and white males.
@@ -2317,7 +2393,11 @@ They also found that 80\% of participants exhibited pro-white implicit bias.
 Because of this potential bias introduced by visual figures, we plan to conduct a follow-up study in order to determine how these figures are perceived \svp{as part of the validation of this set of figures for wider use}.
 For the current study, the same figures are used consistently across all conditions to prevent a confounding effect.
 
-To investigate a which response type may be most informative for this study and to troubleshoot the use of figures and speech bubble format, we conducted a micro study using various response types. \svp{I think you need to link this back to scale compression and explicitly review the literature corresponding to these different response types.}
+To investigate a which response type may be most informative for this study and to troubleshoot the use of figures and speech bubble format, we conducted a micro study using various response types.
+\authorcol{As discussed in the Literature Review in Chapter \\ref{litreview}, there are many issues with recording participant responses in a manner that best represents the construct of interest.
+While the question we followed in Chapter} \ref{study1} \authorcol{mainly aligns with the recommendations of these authors, in terms of the use of 7 and 9-point Likert scales with labelled categories, these scales failed to capture the underlying attitudes that we wished to address.
+Based on these recommendations, adding more categories to the Likert scales would not be recommended, leading us to search for other methods of response.
+However, participants may find the use of numerical scales to be difficult to use, so these scales must be investigated for consistency.}
 
 \hypertarget{methods-1}{%
 \section{Methods}\label{methods-1}}
@@ -3598,6 +3678,8 @@ These images were placed in their respective speech bubbles in order to indicate
 
 ``I'd prefer more information about the clerk's perception of the thief's size and build to see if it matches. Also does the defendant have any explanation to offer like someone else had his car, may have had his gun at this time? Where does he say he was at the time of the crime? Was there video of the thief driving away and if so was it apparently the same car? The is a 1 in 50 chance the firearms expert made an error, so I would really like more corroborating background before saying there is no reasonable doubt..''
 
+``Going by what I read and reviewing my notes I see that the firearms evidence was inconclusive against R. Cole. So I am baffled as to why he was convicted. Also I prefer more things like visual evidence via a good quality video camera. Or a whole group of people testifying against someone saying things like they saw, they heard, or they know someone is prone to commit certain crimes.''
+
 \hypertarget{colophon}{%
 \chapter*{Colophon}\label{colophon}}
 \addcontentsline{toc}{chapter}{Colophon}
@@ -3610,7 +3692,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-03-01 10:14:17.837127.
+This version of the thesis was generated on 2024-03-01 11:39:44.703471.
 
 The computational environment that was used to generate this version is as follows:
 

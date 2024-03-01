@@ -54,6 +54,8 @@ tab:fuzzyexamlarge
 fig:weightedhighlights
 fig:notecount
 tab:nonfuzzycount
+fig:testimonyformat
+fig:jurypanel
 fig:responsefigures
 fig:completiontime2
 fig:demographics2
@@ -128,6 +130,7 @@ mistakes
 comparing-algorithm-values-to-examiner-values
 group-level-results
 individual-level-results
+comments
 discussion
 summary-of-results
 limitations
