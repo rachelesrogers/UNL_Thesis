@@ -180,7 +180,8 @@ education
 gun-comfort
 notepad-analysis
 note-cleaning
-comment-analysis
+notepad-analysis-1
+participant-comments
 conclusion-2
 finalstudy
 introduction-2

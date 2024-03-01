@@ -541,8 +541,9 @@ ggplot(microstudy_clean) +
 #| warning= FALSE,
 #| message= FALSE
 
+#using separator correctly
 microstudy_clean <- microstudy_clean %>% 
-  separate(numeric_chance, c("chance_of", "numerator", "denominator"))
+  separate(numeric_chance, c("chance_of", "numerator", "denominator"), sep=",")
 
 microstudy_clean$num_chance <- as.numeric(microstudy_clean$numerator)/as.numeric(microstudy_clean$denominator)
 
@@ -577,14 +578,13 @@ response_choice <- prop.test(x=innocent_chance, n=opinion_totals)
 ```
 
 A final question asks individuals to provide a numerical chance that the defendant is either innocent or guilty, depending on the participants' choice (the question defaulted to chances of innocence, but participants had the option to switch the scale).
-Their responses were limited so that the numerator was smaller than the denominator, resulting in a range of values from 0 to 1, in most cases.
-There were `r sum(microstudy_clean$num_chance>1)` responses with values greater than 1 that will not be considered in this analysis.\svp{What failed here to allow participants to respond $> 1$?}
+Their responses were limited so that the numerator was smaller than the denominator, resulting in a range of values from 0 to 1.
 These results are shown in Figure \@ref(fig:freelike).
 As seen in previous response types, in the case of the elimination condition, individuals gave small values for the chance that the defendant had in fact committed the crime, resulting in a sharp peak.
 Alternatively, individuals were less extreme when they expressed their opinion as the chance that the defendant did not commit the crime in the elimination condition, even though the same sentiment is being expressed.
 In the case of the identification condition, those who expressed their opinions as either guilt or innocence gave similar results, resulting in symmetry between the two distributions.
 As shown in Figure \@ref(fig:opinionchanceplot), those who thought the defendant was innocent were more likely to favor inputting chance values in terms of innocence(`r innocent_chance[1]/opinion_totals[1]`\%, or `r innocent_chance[1]` out of `r opinion_totals[1]`), while those who thought the defendant was guilty were slightly less likely to express chance in terms of innocence (`r innocent_chance[2]/opinion_totals[2]`\% expressed their beliefs in terms of innocence, or `r innocent_chance[2]` out of `r opinion_totals[2]`).
-This resulted in a significant difference between the two groups (p-value of `r round(response_choice$p.value, 3)`).\svp{Mention how this p-value came to be - what test did you use?}
+This resulted in a significant difference between the two groups (\authorcol{Pearson's chi-squared test statistic} p-value of `r round(response_choice$p.value, 3)`).
 
 ```{r}
 #| opinionchanceplot,
@@ -2459,9 +2459,44 @@ hybrid_dataset[!is.na(hybrid_dataset$lcs_notes),]$page_notes <-
 
 responsetype_unclean_notes <- read.csv("data/microstudy_notepad_clean.csv")
 
+# freq_summary <- as.data.frame(table(responsetype_unclean_notes$randomnumber))
+# shorter_rand <- freq_summary[freq_summary$Freq<14,]$Var1
+
+# table(freq_summary$Freq)
+# 
+# View(responsetype_unclean_notes[responsetype_unclean_notes$randomnumber %in% shorter_rand,])
+# 
+# has_pg18 <- responsetype_unclean_notes[responsetype_unclean_notes$page==18,]$randomnumber
+# 
+# has_pg4 <- responsetype_unclean_notes[responsetype_unclean_notes$page==4,]$randomnumber
+# 
+# has_both <- has_pg4[has_pg4 %in% has_pg18]
+# 
+# table(responsetype_unclean_notes[responsetype_unclean_notes$randomnumber %in% has_pg4,]$page)
+# 
+# ggplot(filter(responsetype_unclean_notes,randomnumber %in% has_both), aes(group=randomnumber, y=time, x=page,
+#                                        color=randomnumber))+
+#   geom_line()+
+#   geom_point()
+
+
 written_responsetype_unclean_notes <- responsetype_unclean_notes %>% filter(notes !="")
 
-responsetype_clean_notes <- read.csv("data/microstudy_hybrid_notepad.csv")
+# responsetype_clean_notes <- read.csv("data/microstudy_hybrid_notepad.csv")
+
+# responsetype_clean_notes$updated_page <- ifelse(responsetype_clean_notes$randomnumber %in% has_pg4, responsetype_clean_notes$page, responsetype_clean_notes$page - 1)
+# View(responsetype_clean_notes)
+# 
+# responsetype_clean_notes[responsetype_clean_notes$randomnumber %in% has_both &
+#                            responsetype_clean_notes$page==18,]$updated_page <- 17
+# 
+# table(responsetype_clean_notes$updated_page)
+
+# write.csv(responsetype_clean_notes, "data/microstudy_hybrid_pageupdate.csv")
+
+responsetype_clean_notes <- read.csv("data/microstudy_hybrid_pageupdate.csv")
+
+# responsetype_clean_notes[responsetype_clean_notes$randomnumber %in% has_pg4,]
 
 written_responsetype_clean_notes <- responsetype_clean_notes %>% filter(page_notes !="")
 
@@ -2476,14 +2511,20 @@ Due to this change, the length of the collocation may need to be shortened.
 
 #### Note Cleaning
 
-One complication in this dataset that was not present in the previous dataset was a missing page in the middle of participant notes. \svp{Why did this happen - need to explain what the missing page means and how it occurred.}
+One complication in this dataset that was not present in the previous dataset was a missing page in the middle of participant notes. 
+\authorcol{All participants had 14 pages of notes, aside from those who did not complete the survey.
+However, page numbers go from 4 to 18 - which should correspond to 15 pages of notes; though only one participant had a note page at both 4 and 18.
+This person was missing a number for page 17, resulting in the skipped page.
+In order to provide consistent notes for all participants, we shifted the page numbering to start at 4 and end at 18 for all individuals.
+Individuals having the same number of pages in their note pads indicates that the notes were likely recorded correctly, but there was an issue with the page counter.
+We hypothesize that this may occur when participants click the "Next" page button multiple times due to a delay in the webpage loading.}
 In this case, based on slight modifications from the sequential cleaning functions mentioned in Chapter \@ref(textcolor), the algorithm uses the last known page of previous notes for data cleaning.
 
 In this study, `r length(unique(written_responsetype_unclean_notes$randomnumber))` individuals used the notepad at least once, resulting in `r dim(written_responsetype_unclean_notes)[1]` pages of uncleaned notes.
 After data cleaning, there were `r dim(written_responsetype_clean_notes)[1]` pages of notes, from `r length(unique(written_responsetype_clean_notes$randomnumber))` individuals.
 The one individual present in the uncleaned notes that is absent in the cleaned dataset\svp{; this participant} only took notes on the description page prior to the trial transcript, so no transcript notes were present in their record.
 
-#### Comment Analysis
+#### Notepad Analysis
 
 The full comment analysis transcript can be found at: https://rachelesrogers.github.io/Presentations/Response%20Type%20Collocations/Response_Survey_Comment_Analysis.html.
 On the whole, the highlighting trends for this testimony are similar for that of the previous study (found in Chapter \@ref(textcolor)).
@@ -2497,6 +2538,8 @@ These changes represent two different types of information presentation.
 The discussion of other examiner's comparisons is aimed to be more informational - it describes the process of firearms comparison.
 The jury instructions, on the other hand, are aimed to be instructional - it it asks the reader to reflect on their own interpretation of the case.
 While the lack of notes on jury instructions may indicate that participants did not find them to be relevant, it may also be a product of a more reflective and less informative piece of testimony.
+
+### Participant Comments
 
 ## Conclusion
 

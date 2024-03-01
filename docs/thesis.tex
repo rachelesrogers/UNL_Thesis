@@ -2610,14 +2610,13 @@ This wider distribution may be the result of decompressing the end points - indi
 \end{figure}
 
 A final question asks individuals to provide a numerical chance that the defendant is either innocent or guilty, depending on the participants' choice (the question defaulted to chances of innocence, but participants had the option to switch the scale).
-Their responses were limited so that the numerator was smaller than the denominator, resulting in a range of values from 0 to 1, in most cases.
-There were 3 responses with values greater than 1 that will not be considered in this analysis.\svp{What failed here to allow participants to respond $> 1$?}
+Their responses were limited so that the numerator was smaller than the denominator, resulting in a range of values from 0 to 1.
 These results are shown in Figure \ref{fig:freelike}.
 As seen in previous response types, in the case of the elimination condition, individuals gave small values for the chance that the defendant had in fact committed the crime, resulting in a sharp peak.
 Alternatively, individuals were less extreme when they expressed their opinion as the chance that the defendant did not commit the crime in the elimination condition, even though the same sentiment is being expressed.
 In the case of the identification condition, those who expressed their opinions as either guilt or innocence gave similar results, resulting in symmetry between the two distributions.
 As shown in Figure \ref{fig:opinionchanceplot}, those who thought the defendant was innocent were more likely to favor inputting chance values in terms of innocence(0.6312849\%, or 113 out of 179), while those who thought the defendant was guilty were slightly less likely to express chance in terms of innocence (0.4621849\% expressed their beliefs in terms of innocence, or 55 out of 119).
-This resulted in a significant difference between the two groups (p-value of 0.006).\svp{Mention how this p-value came to be - what test did you use?}
+This resulted in a significant difference between the two groups (\authorcol{Pearson's chi-squared test statistic} p-value of 0.006).
 
 \begin{figure}
 
@@ -2655,9 +2654,9 @@ Perhaps the simplest question that we asked participants was whether or not they
 This opinion can provide a baseline for participant understanding of response questions.
 If we set a threshold for opinion of guilt at a fifty-fifty chance (or 50\% probability of committing the crime), we can compare whether or not participant responses are within the expected range of their opinion of guilt, as shown in Figure \ref{fig:opinioncomp}.
 This figure demonstrates that most individuals were consistent in their opinion of guilt and their selected values for the defendant committing the crime: meaning that if the participant thought the defendant was guilty, they selected at or more than a 50\% chance of guilt or a fifty-fifty chance, and vice versa.
-This consistency is especially low for the numeric chance question, with 14.77\% of individuals providing inconsistent answers (compared to 4.7\%, 5.05\%, and 5.37\% for visible probability, hidden probability, and multiple choice chance, respectively).
+This consistency is especially low for the numeric chance question, with 14.43\% of individuals providing inconsistent answers (compared to 4.7\%, 5.05\%, and 5.37\% for visible probability, hidden probability, and multiple choice chance, respectively).
 Numeric chance can be broken into two categories, depending on if individuals chose to express numeric chance in terms of innocence or guilt.
-Dividing along these lines results in 20.24\% of individuals providing inconsistent answers when expressing numeric chance of guilt in terms of innocence, and 7.69\% providing inconsistent answers when expressing chance in terms of guilt.
+Dividing along these lines results in 19.64\% of individuals providing inconsistent answers when expressing numeric chance of guilt in terms of innocence, and 7.69\% providing inconsistent answers when expressing chance in terms of guilt.
 This demonstrates confusion in participants when expressing numeric chance in terms of innocence, while the consistency of numeric chance in terms of guilt is similar to that of the probability and multiple choice chance scales.
 The numeric scale defaulted to chance of innocence, so it is possible that this scale reversal was overlooked by participants.
 
@@ -2769,9 +2768,9 @@ None of the individuals who selected ``Certain to be guilty'' on the multiple ch
 
 This inconsistency based on the scales is summarized in Figure \ref{fig:correctrangemosaic}.
 Here, individuals were classified asn selecting the a numeric chance value in the consistent range if their multiple choice selection was the closest option for their numeric value.
-Those who chose to express numeric choice in terms of innocence were less likely to input a value corresponding to their multiple choice selection (45.24\% consistent, or 76 out of 168 consistent for chance of innocence, and 66.15\% consistent, or 86 out of 130 consistent for chance of guilt).
-This represents a significant difference in consistent ranges based on how participants chose to express the numeric chance (p-value: \ensuremath{5\times 10^{-4}}).
-While only 66.15\% of those expressing numeric chance in terms of guilt selected the closest multiple choice answer to their numeric chance value, based on Figures \ref{fig:likecomp1scale} and \ref{fig:likecomp1scalerev}, many individuals were within the same region with their estimates, even if they could have chosen a better-fitting category.
+Those who chose to express numeric choice in terms of innocence were less likely to input a value corresponding to their multiple choice selection (46.43\% consistent, or 78 out of 168 consistent for chance of innocence, and 67.69\% consistent, or 88 out of 130 consistent for chance of guilt).
+This represents a significant difference in consistent ranges based on how participants chose to express the numeric chance (p-value: \ensuremath{4\times 10^{-4}}).
+While only 67.69\% of those expressing numeric chance in terms of guilt selected the closest multiple choice answer to their numeric chance value, based on Figures \ref{fig:likecomp1scale} and \ref{fig:likecomp1scalerev}, many individuals were within the same region with their estimates, even if they could have chosen a better-fitting category.
 Individuals who chose to express numeric chance in terms of innocence particularly struggled with the lower end of the multiple choice chance scale (from ``About 1 chance in 10,000'' to ``About 1 chance in 100''), corresponding to the higher end of the numeric chance scale.
 Additionally, those who expressed numeric chance in terms of guilt struggled with two higher categories (``About 999 chances in 1,000'' and ``About 9,999 chances in 10,000'').
 
@@ -2849,8 +2848,8 @@ Values are clustered near the corresponding corners of each plot.
 This may be due to the compression on the probability scale - values of chance that are more extreme than 1 in 100 or 99 in 100 are represented with a single probability value.
 Most responses that do not follow the line are below it when participants chose to express chance of innocence.
 The clustering of low chance of innocence and low probability of guilt shown in the bottom left of the plot indicate participants who were confused about the chance scale - their opinion indicated that they thought the defendant was innocent, yet they assigned a low chance of innocence in the numerical scale.
-The correlation between the probability and the chances of guilt is 0.9,
-while the correlation between the probability and the chances of innocence is -0.69.
+The correlation between the probability and the chances of guilt is 0.91,
+while the correlation between the probability and the chances of innocence is -0.75.
 While there is a fairly strong correlation in the case of chances of guilt and probability, the correlation between the probability and the chances of innocence is weaker.
 This may be a result of confusion in the scale reversal of the chance of innocence scale, while the chance of guilt \authorcol{regularly} corresponds with expressing the probability of guilt.
 
@@ -3093,15 +3092,21 @@ Due to this change, the length of the collocation may need to be shortened.
 \hypertarget{note-cleaning}{%
 \subsubsection{Note Cleaning}\label{note-cleaning}}
 
-One complication in this dataset that was not present in the previous dataset was a missing page in the middle of participant notes. \svp{Why did this happen - need to explain what the missing page means and how it occurred.}
+One complication in this dataset that was not present in the previous dataset was a missing page in the middle of participant notes.
+\authorcol{All participants had 14 pages of notes, aside from those who did not complete the survey.
+However, page numbers go from 4 to 18 - which should correspond to 15 pages of notes; though only one participant had a note page at both 4 and 18.
+This person was missing a number for page 17, resulting in the skipped page.
+In order to provide consistent notes for all participants, we shifted the page numbering to start at 4 and end at 18 for all individuals.
+Individuals having the same number of pages in their note pads indicates that the notes were likely recorded correctly, but there was an issue with the page counter.
+We hypothesize that this may occur when participants click the "Next" page button multiple times due to a delay in the webpage loading.}
 In this case, based on slight modifications from the sequential cleaning functions mentioned in Chapter \ref{textcolor}, the algorithm uses the last known page of previous notes for data cleaning.
 
 In this study, 198 individuals used the notepad at least once, resulting in 2413 pages of uncleaned notes.
 After data cleaning, there were 807 pages of notes, from 197 individuals.
 The one individual present in the uncleaned notes that is absent in the cleaned dataset\svp{; this participant} only took notes on the description page prior to the trial transcript, so no transcript notes were present in their record.
 
-\hypertarget{comment-analysis}{%
-\subsubsection{Comment Analysis}\label{comment-analysis}}
+\hypertarget{notepad-analysis-1}{%
+\subsubsection{Notepad Analysis}\label{notepad-analysis-1}}
 
 The full comment analysis transcript can be found at: \url{https://rachelesrogers.github.io/Presentations/Response\%20Type\%20Collocations/Response_Survey_Comment_Analysis.html}.
 On the whole, the highlighting trends for this testimony are similar for that of the previous study (found in Chapter \ref{textcolor}).
@@ -3115,6 +3120,9 @@ These changes represent two different types of information presentation.
 The discussion of other examiner's comparisons is aimed to be more informational - it describes the process of firearms comparison.
 The jury instructions, on the other hand, are aimed to be instructional - it it asks the reader to reflect on their own interpretation of the case.
 While the lack of notes on jury instructions may indicate that participants did not find them to be relevant, it may also be a product of a more reflective and less informative piece of testimony.
+
+\hypertarget{participant-comments}{%
+\subsection{Participant Comments}\label{participant-comments}}
 
 \hypertarget{conclusion-2}{%
 \section{Conclusion}\label{conclusion-2}}
@@ -3702,7 +3710,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-03-01 12:26:24.918764.
+This version of the thesis was generated on 2024-03-01 13:37:02.303425.
 
 The computational environment that was used to generate this version is as follows:
 
