@@ -304,7 +304,10 @@ There were some procedural changes made to this study compared to the original s
 \svp{These changes were made in order to reduce scale compression by providing a stronger defense and emphasizing the role of the expert witness as providing opinions.}
 Another significant difference between the two studies is the time that has passed between the two studies.
 The first study was conducted in July 2022, while this study was conducted in January 2024.
-In this time, notoriety of firearms evidence has not remained the same - in this response study, a participant commented that they had recently read an article about the unreliability of firearms evidence.
+In this time, notoriety of firearms evidence has not remained the same - in this response study, a participant commented that they had recently read an article about the unreliability of firearms evidence:
+
+>\authorcol{"Recently I have seen an article about a court decision that testimony about fired bullet comparisons have been shown to be unreliable.  At least some convictions in that state based upon fired bullet comparisons have been overturned.  I did not use that information in this case." - Elimination}
+
 \svp{This is in part due to a number of high-profile court cases in jurisdictions around the country which have limited the presentation of firearms evidence or how expert witnesses may present evidence to ensure that witnesses do not overstate the scientific value of firearms comparisons.}
 More widespread criticism of firearms examination may lead to lower feelings of reliability.
 
@@ -2540,6 +2543,28 @@ The jury instructions, on the other hand, are aimed to be instructional - it it 
 While the lack of notes on jury instructions may indicate that participants did not find them to be relevant, it may also be a product of a more reflective and less informative piece of testimony.
 
 ### Participant Comments
+
+\authorcol{Participant comments are found in Appendix }\@ref(select-comments).
+\authorcol{Individuals still indicated confusion about the partial testimony, and the firearms examiner testifying on behalf of the prosecution in the elimination condition:}
+
+>\authorcol{"were you trying to trick the reader? the firearms ex. said that the gun did not match." - Elimination}
+
+>\authorcol{"Seems highly unlikely that the DA would take this case to trial with ZERO eyewitness identification, the gun seized was NOT the gun that was used in the robbery, and the traffic stop has some constitutional issues." - Elimination}
+
+\authorcol{While the visuals did not assist in clearing up this confusion, both the visuals and the notepad received generally positive reviews:}
+
+>\authorcol{"The visuals of the conversation really helped me to focus in on the study. Also GREAT idea with the notepad, i tend to forget important information when im overloaded and it helps to be able to jot things down. Thanks for the study, good luck with your research!" - Identification}
+
+>\authorcol{"This was a very interesting study to take. I liked the graphics and I liked how the study moved forward easily and I understood everything asked of me. I had no problems taking the study and I really enjoyed taking this study." - Identification}
+
+>\authorcol{"I like the graphics that help to create the feeling of a court of examination." - Identification}
+
+\authorcol{However, one individual indicated some technical issues, while another did not appreciate the format:}
+
+>\authorcol{"The display was uncomfortable. I had to keep enlarging, then reducing the screen size even though I had a 24 inch screen." - Identification}
+
+>\authorcol{"The cartoon presentation of the testimony was childish. And where is any testimony about the defendant's guilty, i.e., alibi, alibi witnesses, etc." - Identification}
+
 
 ## Conclusion
 

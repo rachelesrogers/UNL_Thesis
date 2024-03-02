@@ -198,4 +198,5 @@ cross-examination
 clarifying-sides
 images
 select-comments
-study-1
+initial-study
+response-type-survey
