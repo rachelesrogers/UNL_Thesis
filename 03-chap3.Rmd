@@ -1476,7 +1476,7 @@ ggplot(microstudy_clean, aes(x=num_chance, color=convict, y=visible_probability)
 ```{r}
 #| coordstrcat,
 #| fig.cap= "Plots of perceived strength of evidence and categorical likelihood",
-#| fig.width= 7,
+#| fig.width= 10,
 #| fig.height= 6,
 #| fig.align= "center",
 #| echo= FALSE,
@@ -1485,21 +1485,32 @@ ggplot(microstudy_clean, aes(x=num_chance, color=convict, y=visible_probability)
 
 library(ggpcp)
 
+microstudy_pcp <- microstudy_clean %>% 
+  select(evidence_strength, chances_fixed, conclusion, visible_probability)
 
-microstudy_pcp <- as.data.frame(table(microstudy_clean$evidence_strength,
-                                      microstudy_clean$chances_fixed,
-                                      microstudy_clean$conclusion))
+# microstudy_pcp <- as.data.frame(table(microstudy_clean$evidence_strength,
+#                                       microstudy_clean$chances_fixed,
+#                                       microstudy_clean$conclusion))
+# 
+# microstudy_pcp <- microstudy_pcp %>%
+#   purrr::map(.f = function(x) rep(x, microstudy_pcp$Freq)) %>%
+#   as.data.frame() %>% select(-Freq)
 
-microstudy_pcp <- microstudy_pcp %>%
-  purrr::map(.f = function(x) rep(x, microstudy_pcp$Freq)) %>%
-  as.data.frame() %>% select(-Freq)
-
-names(microstudy_pcp) <- c("evidence_strength", "chances_fixed","conclusion")
+# names(microstudy_pcp) <- c("evidence strength", "chances_fixed","conclusion")
 
 microstudy_pcp<-left_join(microstudy_pcp, mult_labs)
 
-microstudy_pcp$short_mult = factor(
-  microstudy_pcp$short_mult,
+conclusion_labs_df <- data.frame(conclusion = c("Match", "NoMatch"),
+                                 condition = c("Identification", "Elimination"))
+
+microstudy_pcp <- left_join(microstudy_pcp, conclusion_labs_df)
+
+names(microstudy_pcp) <- c("Evidence Strength", "original_chance",
+                           "original_conclusion", "Probability", 
+                           "Fixed Chances", "Conclusion")
+
+microstudy_pcp$`Fixed Chances` = factor(
+  microstudy_pcp$`Fixed Chances`,
   levels = c(
     "Impossible",
     "1/10,000",
@@ -1515,14 +1526,15 @@ microstudy_pcp$short_mult = factor(
   )
 )
 
-microstudy_pcp$evidence_strength <- gsub(" ", "\n", microstudy_pcp$evidence_strength)
+microstudy_pcp$`Evidence Strength` <- 
+  gsub(" ", "\n", microstudy_pcp$`Evidence Strength`)
 
 microstudy_pcp %>%
-  ggplot(aes(vars=vars(c(1,4)))) +
+  ggplot(aes(vars=vars(c(6,5,1,4)))) +
   geom_pcp_box(boxwidth=0.1, fill=NA) +
-  geom_pcp(aes(colour = conclusion), boxwidth=0.1, alpha=1) +
-  scale_color_manual(values = c("grey80","seagreen"), name="Condition",
-                    labels=c("Identification", "Elimination")) +
+  geom_pcp(aes(colour = Conclusion), boxwidth=0.1, alpha=1) +
+  scale_color_manual(values = c("seagreen", "grey80"), name="Conclusion",
+                    labels=conclusion_labs) +
   guides(colour=guide_legend(override.aes = list(alpha=1))) +
   geom_pcp_text(boxwidth=0.1) +
   theme_bw() +
@@ -1530,7 +1542,7 @@ microstudy_pcp %>%
 
 ```
 
-Figure \@ref(fig:coordstrcat) shows the relationship between individuals' ratings of the strength of evidence, and the categorical selection of the chance that the defendant committed the crime.
+Figure \@ref(fig:coordstrcat) shows the relationship between individuals' ratings of the strength of evidence, the categorical selection of the chance that the defendant committed the crime, \authorcol{and their assigned visible probability.}
 While strength of evidence is on a 9-point Likert scale, the multiple choice chance scale has 11 values, giving participants more selection.
 On the y-axis, lower values correspond to weaker strength of evidence and a lower chance of committing the crime, while higher values correspond to stronger strength of evidence and a higher chance of committing the crime.
 In the case of the identification condition, there is a lack of equivalency between individuals' choice of strength of evidnece and the chance the defendant committed the crime, indicating that participants do not uniformly assign the same chances of committing the crime to the same strength of evidence.
@@ -1540,6 +1552,9 @@ However, participant responses diverged in terms of the multiple choice chance t
 The most popular categories corresponding to the weakest level of evidence strength were "About 1 chance in 10,000" and "About 1 chance in 100".
 Similar to the relationship between probability and chance discussed in the previous section, this graphical comparison indicates compression on the strength of evidence scale.
 The lowest strength of evidence category can be mapped to several different values for the chance that the defendant committed the crime.
+\authorcol{Probability values in the elimination condition also converge upon lower values across several multiple choice chance categories.
+In the identification condition, most participants tended to select higher values.
+There is also a convergence to a probability of 50}\%.
 
 ```{r}
 #| convictlike,
@@ -1649,10 +1664,13 @@ The correlation between the probabilities is `r round(cor(as.numeric(microstudy_
 
 ggplot(microstudy_clean, aes(x=betting,
                              y=as.numeric(hidden_probability))) +
-  stat_density_2d_filled()+
+  stat_density_2d_filled(contour_var = "ndensity")+
+  # stat_density_2d(geom = "point", 
+                  # aes(size = log(after_stat(density))), n = 20, contour = FALSE)+
+  # stat_density_2d(geom = "raster", aes(fill = log(after_stat(density))), contour = FALSE) +
   # geom_point()+
-  geom_density_2d(linewidth = 0.25, colour = "black")+
-  # stat_density_2d(aes(fill = log10(..density..)), geom = "raster", contour = FALSE, linewidth = 0.25) +
+  # geom_density_2d(linewidth = 0.25, colour = "black")+
+  # stat_density_2d(aes(fill = log10(..density..)), geom = "raster", contour = FALSE, linewidth = 0.25, colour = "black") +
   ggtitle("Betting and Probability Comparison") +
   # scale_color_manual(values = c("#004D40","#D81B60"), name="Bet Defendant is...", labels=c("Innocent","Guilty"))+
   # scale_fill_distiller(palette=3, direction=1)+
