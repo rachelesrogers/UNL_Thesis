@@ -640,80 +640,93 @@ This may result in a dataset like Table <a href="3-textcolor.html#tab:months">3.
 </tr>
 <tr class="odd">
 <td>Benny</td>
-<td>Jun</td>
+<td>Jur</td>
 </tr>
 </tbody>
 </table>
 <p>We may then want to match the written months to their correctly spelled counterparts.
 While ‘stringdist_join’ will give values for all matches between the two data sets, we can the month that is closest to the misspelled value.</p>
-<table>
-<caption><span id="tab:fuzzymonth">Table 3.4: </span>Fuzzy Match by Month</caption>
+<table style="width:78%;">
+<caption><span id="tab:fuzzymonth">Table 3.4: </span> Fuzzy Match by Month</caption>
+<colgroup>
+<col width="15%" />
+<col width="26%" />
+<col width="13%" />
+<col width="22%" />
+</colgroup>
 <thead>
 <tr class="header">
-<th align="left">month.x</th>
-<th align="left">month.y</th>
-<th align="left">name</th>
-<th align="right">dist</th>
+<th>Month</th>
+<th>Misspelled Month</th>
+<th>Name</th>
+<th>Edit Distance</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">June</td>
-<td align="left">Jun</td>
-<td align="left">Benny</td>
-<td align="right">1</td>
+<td>June</td>
+<td>Jur</td>
+<td>Benny</td>
+<td>2</td>
 </tr>
 <tr class="even">
-<td align="left">March</td>
-<td align="left">Mach</td>
-<td align="left">Billy</td>
-<td align="right">1</td>
+<td>July</td>
+<td>Jur</td>
+<td>Benny</td>
+<td>2</td>
 </tr>
 <tr class="odd">
-<td align="left">August</td>
-<td align="left">Agust</td>
-<td align="left">Bobby</td>
-<td align="right">1</td>
+<td>March</td>
+<td>Mach</td>
+<td>Billy</td>
+<td>1</td>
 </tr>
 <tr class="even">
-<td align="left">May</td>
-<td align="left">Mae</td>
-<td align="left">Frances</td>
-<td align="right">1</td>
+<td>August</td>
+<td>Agust</td>
+<td>Bobby</td>
+<td>1</td>
 </tr>
 <tr class="odd">
-<td align="left">February</td>
-<td align="left">Febary</td>
-<td align="left">Gary</td>
-<td align="right">2</td>
+<td>May</td>
+<td>Mae</td>
+<td>Frances</td>
+<td>1</td>
 </tr>
 <tr class="even">
-<td align="left">August</td>
-<td align="left">Agast</td>
-<td align="left">Greg</td>
-<td align="right">2</td>
+<td>February</td>
+<td>Febary</td>
+<td>Gary</td>
+<td>2</td>
 </tr>
 <tr class="odd">
-<td align="left">April</td>
-<td align="left">Apil</td>
-<td align="left">Jimmy</td>
-<td align="right">1</td>
+<td>August</td>
+<td>Agast</td>
+<td>Greg</td>
+<td>2</td>
 </tr>
 <tr class="even">
-<td align="left">October</td>
-<td align="left">Octobr</td>
-<td align="left">Steve</td>
-<td align="right">1</td>
+<td>April</td>
+<td>Apil</td>
+<td>Jimmy</td>
+<td>1</td>
 </tr>
 <tr class="odd">
-<td align="left">February</td>
-<td align="left">Febrey</td>
-<td align="left">Tammy</td>
-<td align="right">3</td>
+<td>October</td>
+<td>Octobr</td>
+<td>Steve</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>February</td>
+<td>Febrey</td>
+<td>Tammy</td>
+<td>3</td>
 </tr>
 </tbody>
 </table>
-<p>In Table <a href="3-textcolor.html#tab:fuzzymonth">3.4</a>, “month.x” is the correctly spelled month, “month.y” is the child’s spelling, and “dist” is the edit distance between the two words.
+<p>In Table <a href="3-textcolor.html#tab:fuzzymonth">3.4</a>, “Month” is the correctly spelled month, “Misspelled Month” is the child’s spelling, and “Edit Distance” is the edit distance between the two words.
+In this case, Benny’s spelling (“Jur”) is equally close to “June” and “July”, resulting in two listings.
 This same concept is applied to matching collocations between a transcript and notepad.
 In this case, the transcript is considered the “correct” version, and the participants’ collocations that do not directly match are considered the misspellings.
 This method finds the closest transcript collocation to the written collocation.</p>
@@ -726,13 +739,13 @@ This method finds the closest transcript collocation to the written collocation.
 <h3><span class="header-section-number">3.2.1</span> Data Cleaning<a href="3-textcolor.html#data-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="first-n-character-fnc-method" class="section level4 hasAnchor" number="3.2.1.1">
 <h4><span class="header-section-number">3.2.1.1</span> First N Character (FNC) Method<a href="3-textcolor.html#first-n-character-fnc-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<table>
+<table style="width:100%;">
 <caption>FNC Demonstration with an edit distance threshold of 3 <span id="tab:fncmethod">Table 3.5: </span></caption>
 <colgroup>
-<col width="14%" />
-<col width="17%" />
-<col width="40%" />
+<col width="21%" />
 <col width="27%" />
+<col width="14%" />
+<col width="36%" />
 </colgroup>
 <thead>
 <tr class="header">

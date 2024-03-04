@@ -171,18 +171,18 @@ Steve | Octobr
 Bobby | Agust
 Tammy | Febrey
 Greg | Agast
-Benny | Jun
+Benny | Jur
 
 : Dataset of misspelled months (\#tab:months)
 
 We may then want to match the written months to their correctly spelled counterparts. 
 While 'stringdist_join' will give values for all matches between the two data sets, we can \svp{then identify} the month that is closest to the misspelled value.
 
-```{r fuzzymonth, echo=FALSE,message=FALSE, warning=FALSE}
+```{r, echo=FALSE,message=FALSE, warning=FALSE}
 
 months <- data.frame(month=c("January","February","March","April","May","June","July","August","September","October",
                              "November","December"))
-classroom <- data.frame(month=c("Mach","Apil","Mae","Febary","Octobr","Agust","Febrey","Agast","Jun"), 
+classroom <- data.frame(month=c("Mach","Apil","Mae","Febary","Octobr","Agust","Febrey","Agast","Jur"), 
                     name=c("Billy","Jimmy","Frances","Gary","Steve","Bobby","Tammy","Greg","Benny"))
 
 fuzzy_matches <-stringdist_join(months, classroom, 
@@ -194,12 +194,18 @@ fuzzy_matches <-stringdist_join(months, classroom,
     group_by(name) %>%
     slice_min(order_by=dist, n=1)
 
-kable(fuzzy_matches, caption="Fuzzy Match by Month") # %>%
+names(fuzzy_matches) <- c("Month", "Misspelled Month", "Name", "Edit Distance")
+
+# kable(fuzzy_matches, caption="Fuzzy Match by Month") # %>%
 #  kable_styling(position = "center")
+
+fuzzy_matches %>%  pander(style = "grid",
+         caption = "(\\#tab:fuzzymonth) Fuzzy Match by Month", justify = 'left')
 
 ```
 
-In Table \@ref(tab:fuzzymonth), "month.x" is the correctly spelled month, "month.y" is the child's spelling, and "dist" is the edit distance between the two words. 
+In Table \@ref(tab:fuzzymonth), "Month" is the correctly spelled month, "Misspelled Month" is the child's spelling, and "Edit Distance" is the edit distance between the two words. 
+In this case, Benny's spelling ("Jur") is equally close to "June" and "July", resulting in two listings.
 This same concept is applied to matching collocations between a transcript and notepad.
 In this case, the transcript is considered the "correct" version, and the participants' collocations that do not directly match are considered the misspellings.
 This method finds the closest transcript collocation to the written collocation.
@@ -210,8 +216,8 @@ This method finds the closest transcript collocation to the written collocation.
 
 #### First N Character (FNC) Method
 
-Page 1 | Page 2 | FNC Edit Distance | FNC Page 2 Results
--------|--------|-------------------|-------------
+Page 1           | Page 2            | FNC Edit Distance | FNC Page 2 Results
+-----------------|-------------------|--------|----------
 The cat ran | \textcolor{red}{The cat ran} up the tree | 0 | up the tree
 The dog howled | \textcolor{red}{The cat ran up} the tree | 9 | The cat ran up the tree
 The cat run | \textcolor{red}{The cat ran} up the tree | 1 | up the tree

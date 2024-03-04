@@ -1625,42 +1625,58 @@ Steve & Octobr \\
 Bobby & Agust \\
 Tammy & Febrey \\
 Greg & Agast \\
-Benny & Jun \\
+Benny & Jur \\
 \end{longtable}
 
 We may then want to match the written months to their correctly spelled counterparts.
 While `stringdist\_join' will give values for all matches between the two data sets, we can \svp{then identify} the month that is closest to the misspelled value.
 
-\begin{table}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1528}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2639}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1389}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2222}}@{}}
+\caption{\label{tab:fuzzymonth} Fuzzy Match by Month}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Month
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Misspelled Month
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Name
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Edit Distance
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Month
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Misspelled Month
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Name
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Edit Distance
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+June & Jur & Benny & 2 \\
+July & Jur & Benny & 2 \\
+March & Mach & Billy & 1 \\
+August & Agust & Bobby & 1 \\
+May & Mae & Frances & 1 \\
+February & Febary & Gary & 2 \\
+August & Agast & Greg & 2 \\
+April & Apil & Jimmy & 1 \\
+October & Octobr & Steve & 1 \\
+February & Febrey & Tammy & 3 \\
+\end{longtable}
 
-\caption{\label{tab:fuzzymonth}Fuzzy Match by Month}
-\centering
-\begin{tabular}[t]{l|l|l|r}
-\hline
-month.x & month.y & name & dist\\
-\hline
-June & Jun & Benny & 1\\
-\hline
-March & Mach & Billy & 1\\
-\hline
-August & Agust & Bobby & 1\\
-\hline
-May & Mae & Frances & 1\\
-\hline
-February & Febary & Gary & 2\\
-\hline
-August & Agast & Greg & 2\\
-\hline
-April & Apil & Jimmy & 1\\
-\hline
-October & Octobr & Steve & 1\\
-\hline
-February & Febrey & Tammy & 3\\
-\hline
-\end{tabular}
-\end{table}
-
-In Table \ref{tab:fuzzymonth}, ``month.x'' is the correctly spelled month, ``month.y'' is the child's spelling, and ``dist'' is the edit distance between the two words.
+In Table \ref{tab:fuzzymonth}, ``Month'' is the correctly spelled month, ``Misspelled Month'' is the child's spelling, and ``Edit Distance'' is the edit distance between the two words.
+In this case, Benny's spelling (``Jur'') is equally close to ``June'' and ``July'', resulting in two listings.
 This same concept is applied to matching collocations between a transcript and notepad.
 In this case, the transcript is considered the ``correct'' version, and the participants' collocations that do not directly match are considered the misspellings.
 This method finds the closest transcript collocation to the written collocation.
@@ -1675,10 +1691,10 @@ This method finds the closest transcript collocation to the written collocation.
 \subsubsection{First N Character (FNC) Method}\label{first-n-character-fnc-method}}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1489}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1702}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4043}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2766}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2182}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2727}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1455}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3636}}@{}}
 \caption{FNC Demonstration with an edit distance threshold of 3 \label{tab:fncmethod}}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
@@ -3879,7 +3895,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-03-04 12:41:51.557685.
+This version of the thesis was generated on 2024-03-04 13:53:51.752708.
 
 The computational environment that was used to generate this version is as follows:
 
