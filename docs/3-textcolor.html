@@ -332,7 +332,7 @@ These notes can act as a guide in terms of what items of information the note ta
 By fluidly connecting notes from multiple note takers to the information presented, one may be able to discover the most ‘noteworthy’ pieces of information, and compare the perception of the note takers to the goal of the presenter.
 To this end, we have designed a method for highlighting presented information, in the form of a transcript, to correspond to the notes of participants in order to form a ‘heatmap’ for the information that participants found worth recording. This method can provide valuable information about what participants chose to, or not to, record.
 There were two important steps to this process: the text cleaning of cumulative notes, and the mapping of phrase frequency to form a ‘heatmap’.
-In this case, participants took notes on a single notepad, but their notes were saved multiple times throughout the study as they were presented with new information.
+The sequential note cleaning is necessary when participants take notes on a single notepad, but their notes are saved multiple times throughout the study as they were presented with new information.
 By isolating the notes taken at each time point through text cleaning, we can isolate notes corresponding to the presentation of specific information.
 This was accomplished through a combination of two methods (First N Character and Longest Common Substring) used to identify which notes have been added, presumably corresponding to the new information.
 These individualized notes can then be mapped to the information presented through the use of collocations, or phrases of a set length.
@@ -342,13 +342,13 @@ This method was developed and tested on a trial transcript study designed to ass
 <h3><span class="header-section-number">3.1.1</span> Literature Review<a href="3-textcolor.html#literature-review" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="first-n-character-method" class="section level4 hasAnchor" number="3.1.1.1">
 <h4><span class="header-section-number">3.1.1.1</span> First N Character Method<a href="3-textcolor.html#first-n-character-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The First n Character method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
+<p>The First n Character (FNC) method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
 I developed this method specifically for the cleaning of sequential notes.
 In this process, a previous page’s notes are matched to the next page’s notes in order to remove duplicate text.
 This is a form of pattern matching.
 In a reference to algorithmic detection of plagiarism in computer programs, <span class="citation">Parker &amp; Hamblen (1989)</span> describe an algorithm that uses the character differences in order to compare how similar programs are.
 Other algorithms <span class="citation">Parker &amp; Hamblen (1989)</span> use code-specific features such as number of operators, lines of comments, and number of various loop statements.
-Because we are only concerned with the content of the notes, there is little information to be gained from formatting;.</p>
+Because we are only concerned with the content of the notes, there is little information to be gained from formatting; .</p>
 <p>There are examples of pattern matching in text analysis - such as <span class="citation">Baeza-Yates &amp; Gonnet (1992)</span> and <span class="citation">Landau &amp; Vishkin (1988)</span>.
 These papers rely on a set pattern to be found in the reference text, with a defined number of differences allowed between the pattern and the text.
 According to <span class="citation">Baeza-Yates &amp; Gonnet (1992)</span>, many algorithmic methods have been developed to solve this problem, with allowances for mismatches between the reference text and the pattern.
@@ -422,7 +422,7 @@ Instead of only aiming to remove exact matches of the previous note sheet, we mu
 <div id="longest-common-substring-method" class="section level4 hasAnchor" number="3.1.1.2">
 <h4><span class="header-section-number">3.1.1.2</span> Longest Common Substring Method<a href="3-textcolor.html#longest-common-substring-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Whereas calculating edit distance between two pages of notes is useful when finding notes that wholly match the previous page, the Longest Common Substring (LCS) method can be used to find pieces of notes that match between pages, so that this repeated text can be removed.
-LCS accomplishes this goal through searching for common text between two sequential pages to be removed.
+The LCS method accomplishes this goal through searching for common text between two sequential pages to be removed.
 For example, in Figure <a href="3-textcolor.html#fig:lcs">3.1</a>, the LCS between the two strings is “the cat enjoys napping”.
 In the process of note cleaning, this would be the string that is removed from the second page of notes, resulting in “When it is quiet” as the cleaned (non-repeated) notes.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:lcs"></span>
@@ -433,7 +433,8 @@ Figure 3.1: Longest Common Substring Diagram
 </div>
 <p>Methods for computing the longest common substring between two sequences have been used to compare biological sequences <span class="citation">(Crochemore, Iliopoulos, Langiu, &amp; Mignosi, 2017)</span>.
 Solutions for finding the longest common substring the construction of a suffix tree <span class="citation">(Charalampopoulos, Kociumaka, Pissis, &amp; Radoszewski, 2021)</span> or table <span class="citation">(Landau &amp; Vishkin, 1988)</span>.
-The suffix tree method is described by <span class="citation">Gusfield (1997)</span>; in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leaves consist of the string’s terminal character: $ is used avoid recurrence with previous characters in the string.</p>
+The suffix tree method is described by <span class="citation">Gusfield (1997)</span>; in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leaves consist of the string’s terminal character: $.
+<!-- This is used avoid recurrence with previous characters in the string. --></p>
 <p>A solution implemented by <span class="citation">Bielow, Mastrobuoni, &amp; Kempa (2016)</span> in a CRAN R package constructs a matrix that records the length of a matching string at character <span class="math inline">\(i\)</span> for string 1 (in the <span class="math inline">\(i\)</span>th row), and character <span class="math inline">\(j\)</span> for string 2 (in the <span class="math inline">\(j\)</span>th column).
 Because R implementation , for this analysis,
 <span class="citation">Bielow et al. (2016)</span> warns that this LCS method is inefficient, and meant to be used in small instances.
@@ -442,44 +443,47 @@ Thus, the first cell would correspond to the first character of both strings, an
 If the characters match and it is the first row or column, then the cell gets a value of 1.
 If the characters match and it is not the first row or column, the the cell receives the value of the (i-1,j-1) cell plus one.
 The first string’s index for the substring of the longest length is saved.
-This process is shown in Table <a href="3-textcolor.html#tab:dylcs">3.2</a>, with two strings: “cabbacced” and “bbacccade”.
-The diagonal of numbers in red indicate the longest substring, beginning with ‘b’ and ending with ‘c’
-Thus, “bbacc” is identified as the LCS.</p>
+This process is shown in Table <a href="3-textcolor.html#tab:dylcs">3.2</a>, with two strings: “gratuitous” and “intuitive”.
+The diagonal of numbers in red indicate the longest substring, beginning and ending with ‘t’.
+Thus, “tuit” is identified as the LCS.</p>
 <table>
 <caption>Dynamic Programming for LCS <span id="tab:dylcs">Table 3.2: </span></caption>
 <thead>
 <tr class="header">
 <th>_</th>
-<th>c</th>
+<th>g</th>
+<th>r</th>
 <th>a</th>
-<th>b</th>
-<th>b</th>
-<th>a</th>
-<th>c</th>
-<th>c</th>
-<th>e</th>
-<th>d</th>
+<th>t</th>
+<th>u</th>
+<th>i</th>
+<th>t</th>
+<th>o</th>
+<th>u</th>
+<th>s</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>b</td>
+<td>i</td>
 <td>0</td>
 <td>0</td>
-<td></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
-<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr class="even">
-<td>b</td>
+<td>n</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
-<td></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -487,9 +491,36 @@ Thus, “bbacc” is identified as the LCS.</p>
 <td>0</td>
 </tr>
 <tr class="odd">
-<td>a</td>
+<td>t</td>
 <td>0</td>
 <td>1</td>
+<td>0</td>
+<td></td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>u</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>i</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td></td>
@@ -499,45 +530,23 @@ Thus, “bbacc” is identified as the LCS.</p>
 <td>0</td>
 </tr>
 <tr class="even">
-<td>c</td>
+<td>t</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
 <td>1</td>
-<td>0</td>
-<td>0</td>
 <td>0</td>
 <td>0</td>
 <td></td>
-<td>1</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr class="odd">
-<td>c</td>
-<td>1</td>
+<td>i</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>1</td>
-<td></td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>c</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td>a</td>
-<td>0</td>
-<td>1</td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
@@ -547,7 +556,7 @@ Thus, “bbacc” is identified as the LCS.</p>
 <td>0</td>
 </tr>
 <tr class="even">
-<td>d</td>
+<td>v</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -556,10 +565,12 @@ Thus, “bbacc” is identified as the LCS.</p>
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
+<td>0</td>
 </tr>
 <tr class="odd">
 <td>e</td>
+<td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>

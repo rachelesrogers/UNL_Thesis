@@ -1445,7 +1445,7 @@ These notes can act as a guide in terms of what items of information the note ta
 By fluidly connecting notes from multiple note takers to the information presented, one may be able to discover the most `noteworthy' pieces of information, and compare the perception of the note takers to the goal of the presenter.
 To this end, we have designed a method for highlighting presented information, in the form of a transcript, to correspond to the notes of participants in order to form a `heatmap' for the information that participants found worth recording. This method can provide valuable information about what participants chose to, or not to, record.
 There were two important steps to this process: the text cleaning of cumulative notes, and the mapping of phrase frequency to form a `heatmap'.
-In this case, participants took notes on a single notepad, but their notes were saved multiple times throughout the study as they were presented with new information.
+The sequential note cleaning is necessary when participants take notes on a single notepad, but their notes are saved multiple times throughout the study as they were presented with new information.
 By isolating the notes taken at each time point through text cleaning, we can isolate notes corresponding to the presentation of specific information.
 This was accomplished through a combination of two methods (First N Character and Longest Common Substring) used to identify which notes have been added, presumably corresponding to the new information.
 These individualized notes can then be mapped to the information presented through the use of collocations, or phrases of a set length.
@@ -1458,13 +1458,13 @@ This method was developed and tested on a trial transcript study designed to ass
 \hypertarget{first-n-character-method}{%
 \subsubsection{First N Character Method}\label{first-n-character-method}}
 
-The First n Character method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
+The First n Character (FNC) method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
 I developed this method specifically for the cleaning of sequential notes.
 In this process, a previous page's notes are matched to the next page's notes in order to remove duplicate text.
 This is a form of pattern matching.
 In a reference to algorithmic detection of plagiarism in computer programs, Parker \& Hamblen (1989) describe an algorithm that uses the character differences in order to compare how similar programs are.
 Other algorithms \svp{discussed in} Parker \& Hamblen (1989) use code-specific features such as number of operators, lines of comments, and number of various loop statements.
-Because we are only concerned with the content of the notes, there is little information to be gained from formatting;\svp{a notable difference from the plagiarism detection problem}.
+Because we are only concerned with the content of the notes, there is little information to be gained from formatting; \svp{a notable difference from the plagiarism detection problem}.
 
 There are \svp{many} examples of pattern matching in text analysis - such as Baeza-Yates \& Gonnet (1992) and Landau \& Vishkin (1988).
 These papers rely on a set pattern to be found in the reference text, with a defined number of differences allowed between the pattern and the text.
@@ -1536,7 +1536,7 @@ Instead of only aiming to remove exact matches of the previous note sheet, we mu
 \subsubsection{Longest Common Substring Method}\label{longest-common-substring-method}}
 
 Whereas calculating edit distance between two pages of notes is useful when finding notes that wholly match the previous page, the Longest Common Substring (LCS) method can be used to find pieces of notes that match between pages, so that this repeated text can be removed.
-LCS accomplishes this goal through searching for common text between two sequential pages to be removed.
+The LCS method accomplishes this goal through searching for common text between two sequential pages to be removed.
 For example, in Figure \ref{fig:lcs}, the LCS between the two strings is ``the cat enjoys napping''.
 In the process of note cleaning, this would be the string that is removed from the second page of notes, resulting in ``When it is quiet'' as the cleaned (non-repeated) notes.
 
@@ -1551,7 +1551,7 @@ In the process of note cleaning, this would be the string that is removed from t
 
 Methods for computing the longest common substring between two sequences have been used to compare biological sequences (Crochemore, Iliopoulos, Langiu, \& Mignosi, 2017).
 Solutions for finding the longest common substring \svp{utilize either} the construction of a suffix tree (Charalampopoulos, Kociumaka, Pissis, \& Radoszewski, 2021) or table (Landau \& Vishkin, 1988).
-The suffix tree method is described by Gusfield (1997); in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leaves consist of the string's terminal character: \$ is used avoid recurrence with previous characters in the string.
+The suffix tree method is described by Gusfield (1997); in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leaves consist of the string's terminal character: \$.
 
 A solution implemented by Bielow, Mastrobuoni, \& Kempa (2016) in a CRAN R package constructs a matrix that records the length of a matching string at character \(i\) for string 1 (in the \(i\)th row), and character \(j\) for string 2 (in the \(j\)th column).
 Because \svp{an} R implementation \svp{is readily available}, \svp{this is the solution used} for this analysis,
@@ -1561,31 +1561,31 @@ Thus, the first cell would correspond to the first character of both strings, an
 If the characters match and it is the first row or column, then the cell gets a value of 1.
 If the characters match and it is not the first row or column, the the cell receives the value of the (i-1,j-1) cell plus one.
 The first string's index for the substring of the longest length is saved.
-This process is shown in Table \ref{tab:dylcs}, with two strings: ``cabbacced'' and ``bbacccade''.
-The diagonal of numbers in red indicate the longest substring, beginning with `b' and ending with `c'
-Thus, ``bbacc'' is identified as the LCS.
+This process is shown in Table \ref{tab:dylcs}, with two strings: ``gratuitous'' and ``intuitive''.
+The diagonal of numbers in red indicate the longest substring, beginning and ending with `t'.
+Thus, ``tuit'' is identified as the LCS.
 
-\begin{longtable}[]{@{}llllllllll@{}}
+\begin{longtable}[]{@{}lllllllllll@{}}
 \caption{Dynamic Programming for LCS \label{tab:dylcs}}\tabularnewline
 \toprule\noalign{}
-\_ & c & a & b & b & a & c & c & e & d \\
+\_ & g & r & a & t & u & i & t & o & u & s \\
 \midrule\noalign{}
 \endfirsthead
 \toprule\noalign{}
-\_ & c & a & b & b & a & c & c & e & d \\
+\_ & g & r & a & t & u & i & t & o & u & s \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-b & 0 & 0 & \textcolor{red}{1} & 1 & 0 & 0 & 0 & 0 & 0 \\
-b & 0 & 0 & 1 & \textcolor{red}{2} & 0 & 0 & 0 & 0 & 0 \\
-a & 0 & 1 & 0 & 0 & \textcolor{red}{3} & 0 & 0 & 0 & 0 \\
-c & 1 & 0 & 0 & 0 & 0 & \textcolor{red}{4} & 1 & 0 & 0 \\
-c & 1 & 0 & 0 & 0 & 0 & 1 & \textcolor{red}{5} & 0 & 0 \\
-c & 1 & 0 & 0 & 0 & 0 & 1 & 2 & 0 & 0 \\
-a & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
-d & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
-e & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+i & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+n & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+t & 0 & 1 & 0 & \textcolor{red}{1} & 0 & 0 & 1 & 0 & 0 & 0 \\
+u & 0 & 0 & 0 & 0 & \textcolor{red}{2} & 0 & 0 & 0 & 1 & 0 \\
+i & 0 & 0 & 0 & 0 & 0 & \textcolor{red}{3} & 0 & 0 & 0 & 0 \\
+t & 0 & 0 & 0 & 1 & 0 & 0 & \textcolor{red}{4} & 0 & 0 & 0 \\
+i & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+v & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+e & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
 \end{longtable}
 
 \hypertarget{collocation-analysis-and-fuzzy-matching}{%
@@ -3879,7 +3879,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-03-04 11:26:55.827819.
+This version of the thesis was generated on 2024-03-04 12:41:51.557685.
 
 The computational environment that was used to generate this version is as follows:
 
