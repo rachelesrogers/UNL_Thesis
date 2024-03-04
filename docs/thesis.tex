@@ -1555,7 +1555,7 @@ The suffix tree method is described by Gusfield (1997); in short, each unique su
 
 A solution implemented by Bielow, Mastrobuoni, \& Kempa (2016) in a CRAN R package constructs a matrix that records the length of a matching string at character \(i\) for string 1 (in the \(i\)th row), and character \(j\) for string 2 (in the \(j\)th column).
 Because \svp{an} R implementation \svp{is readily available}, \svp{this is the solution used} for this analysis,
-\textbackslash svp\{even though Bielow et al. (2016) warns that this LCS method is inefficient, and meant to be used in small instances.
+\svp{even though} Bielow et al. (2016) warns that this LCS method is inefficient, and meant to be used in small instances.
 This method creates an empty matrix, where the number of rows correspond to the length of the first string, and the number of columns correspond to the length of the second string.
 Thus, the first cell would correspond to the first character of both strings, and so on.
 If the characters match and it is the first row or column, then the cell gets a value of 1.
@@ -1671,65 +1671,55 @@ This method finds the closest transcript collocation to the written collocation.
 \hypertarget{data-cleaning}{%
 \subsection{Data Cleaning}\label{data-cleaning}}
 
-The FNC and LCS methods for sequential notepad cleaning were first tested on a subset of notes resulting from a jury perception survey.
-In this study, participants were provided with a notepad to record information while reading through mock trial testimony.
-Because participants are provided with the same continuous notepad throughout the study, the database records a \svp{snapshot} of their notes when they advance to the next page\svp{, providing a cumulative set of notes over time}.
+\hypertarget{first-n-character-fnc-method}{%
+\subsubsection{First N Character (FNC) Method}\label{first-n-character-fnc-method}}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.1806}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.4583}}@{}}
-\caption{\label{tab:noteexample} Participant Note Example}\tabularnewline
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1489}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1702}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4043}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2766}}@{}}
+\caption{FNC Demonstration with an edit distance threshold of 3 \label{tab:fncmethod}}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
-page\_count
+Page 1
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-notes
+Page 2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+FNC Edit Distance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+FNC Page 2 Results
 \end{minipage} \\
 \midrule\noalign{}
 \endfirsthead
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
-page\_count
+Page 1
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-notes
+Page 2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+FNC Edit Distance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+FNC Page 2 Results
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-2 & discharge firearm in business-
-felony, not guilty \\
-3 & discharge firearm in business-
-felony, not guilty ski mask.
-no money, no injuries. 9mm,
-arrested after confiscated and
-testing. \\
+The cat ran & \textcolor{red}{The cat ran} up the tree & 0 & up the tree \\
+The dog howled & \textcolor{red}{The cat ran up} the tree & 9 & The cat ran up the tree \\
+The cat run & \textcolor{red}{The cat ran} up the tree & 1 & up the tree \\
 \end{longtable}
 
-In order to compare the FNC and LCS methods described above, I cleaned a subset of the survey response notes to have a ``correct'' baseline with which to calculate error rates.
-This dataset consists of 561 pages of `notes' (including 66 blanks) with 35 unique participants.
-30 participants were randomly selected from the larger dataset \svp{to test the method's effectiveness}, while 5 participants were selected based on demonstrated issues with \svp{the existing} data cleaning \svp{process}.
-The 5 selected participants included an individual who deleted almost all of the beginning notes; two individuals who pasted new notes in the middle of old notes; an individual who duplicated notes; and an individual who included the algorithm expert's trial confirmation as well as the forensic scientist's - duplicate text that should be included as the new notes.
-Table \ref{tab:noteexample} is an example of what sequential notes may look like, taken from the second and third pages of a study participant's notes.
-
-In order to appropriately clean the notes, the duplicated text (``discharge firearm in business- felony, not guilty'') needs to be removed from the third page, to leave only notes that correspond to the third page's testimony.
-A generalized version of the functions used in this data cleaning are included in the \texttt{seqstrclean} package (Rogers \& VanderPlas, 2024b).
-
-\hypertarget{first-n-character-fnc-method}{%
-\subsubsection{First n Character (FNC) Method}\label{first-n-character-fnc-method}}
-
-In scenarios such as Table \ref{tab:noteexample}, a straightforward method for note cleaning would be to measure the length of the previous page's notes (n), and compare the previous notes to the first n characters in the current pages' notes via edit distance.
+In scenarios such as those shown in Table \ref{tab:fncmethod}, a straightforward method for note cleaning would be to measure the length of the previous page's notes (n), and compare the previous notes to the first n characters in the current pages' notes via edit distance.
+The characters that would be compared between the first and second pages are shown in red in the Page 2 column.
 If the edit distance is small (indicating a correspondence to the previous page's notes), the first n characters can be removed.
-Table \ref{tab:noteexample} \svp{shows the application of this method}.
-The page 2 notes perfectly line up with the first line in the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
-Thus, by removing this beginning section, we would be left with the notes that are unique to page 3 - namely, ``ski mask. no money, no injuries. 9mm, arrested after confiscated and testing.''
+In the first row, the page 1 notes perfectly align with the beginning of the page 2 notes, resulting in an edit distance of 0, and the duplicate text would be removed.
+In the second row, the text between the two pages differs significantly (edit distance of 9), so the page 2 notes are left alone.
 The threshold of allowable disagreement between two strings can be controlled through setting the maximum allowable edit distance.
-For this method comparison, I changed the threshold with values of 0 character difference, 5 character difference, and 15 character difference (set as less than 1, less than 6, and less than 16).
-
-This method works well when participants take notes sequentially.
-In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
-When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
-The first n character method cannot appropriately clean these notes, as shown in Table \ref{tab:issues}.
+This concept is demonstrated in the third row, the text was edited from ``ran'' to ``run'', resulting in an edit distance of 1.
+However, because the two texts have the same meaning, regardless of the typo, we would still want to remove the duplicate text.
+By allowing for some mismatch between the two pages, we can account for inexact matches in the text cleaning.
 
 \hypertarget{longest-common-substring-lcs-method}{%
 \subsubsection{Longest Common Substring (LCS) Method}\label{longest-common-substring-lcs-method}}
@@ -1743,7 +1733,6 @@ As before, the LCS method would be able to identify both instances through two i
 In the case of LCS, a threshold must be picked for the minimum matching substring length to be considered `previous notes' and removed.
 If the threshold is too small, the LCS method can identify words like ``the'' as matching previous testimony to be removed.
 If the threshold is too large, the LCS method may be unable to remove substrings when new text is inserted in the middle of the old text.
-Here, I tried several different character lengths: 40 characters, half the previous note length, a third of the previous note length, and a fourth of the previous note length plus 5 (to compensate for shorter strings).
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1860}}
@@ -1786,83 +1775,6 @@ Deletion & The cat ran up the tree & The cat ran & The cat ran & 12 \\
 Insertion & The cat ran up the tree & \textcolor{red}{The cat ran, chased by a} dog, up the tree & (The cat ran)(up the tree) & 11 \\
 Duplication & The cat ran up the tree & \textcolor{red}{The cat ran up the tree} The cat ran up the tree & (The cat ran up the tree)(The cat ran up the tree) & 0 \\
 \end{longtable}
-
-While the LCS method is able to solve the issues related to the First N Character method, it has some issues of its own.
-If the testimony itself contains duplicate text, such as the text related to swearing in witnesses, the LCS method would remove the new text that corresponds to the later testimony.
-The other issue with the LCS method is the greater computational complexity.
-
-\hypertarget{hybrid-method}{%
-\subsubsection{Hybrid Method}\label{hybrid-method}}
-
-I also investigated the use of a hybrid method in the hope that the FNC method could be used as a quick way to clean the simplest cases of notes, while the LCS method could be used to clean up the notes that are less clear-cut.
-In order to determine which observations would need the second cleaning method, I created Figure \ref{fig:errorplot}.
-
-\begin{figure}
-
-{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/errorplot-1} 
-
-}
-
-\caption{Error Comparison}\label{fig:errorplot}
-\end{figure}
-
-Here, the yellow circles indicate the FNC method with a 16 character threshold, while the black circles represent the LCS method with a threshold of 1/3 the previous character length.
-Larger circles indicate a larger amount of error when compared to the hand-cleaned notes.
-The y-axis shows the edit distance computed between the current and previous notes for the FNC method, while the x-axis indicates the length of the clean notes.
-The horizontal line is the 16 character threshold for the FNC method.
-As can be seen, most observations are located in the bottom left of the graph, below the FNC threshold, and have relatively small circles.
-These are notes where the FNC method was effectively applied, meaning that the edit distance was small enough to remove duplicated text at the beginning of the document.
-In the observations above the threshold, most have a larger error when the FNC method is applied compared to the LCS method, with the exception of one observation in the top left.
-In that case, the error appeared to be equal for both methods.
-There is also a larger FNC method error for the observation on the bottom right of the graph.
-This was a case of duplicate text, resulting in abnormally long notes.
-This graph shows that and edit distance the FNC method's threshold and the length of the cleaned notes can be used as criterion for determining when the LCS method should be applied.
-I chose to set a threshold of 4 standard deviations above the mean note length for cleaned notes of the page of interest to constitute ``unusually long'' notes to apply the LCS method to.
-I chose 1/3 of the previous notes as the LCS threshold because the mean edit distance to the correct notes was comparable to the 1/4 + 5 character threshold, but it is more conservative for larger notes (as can be seen in Table \ref{tab:cleancompare}).
-
-\begin{table}
-
-\caption{\label{tab:cleancompare}Note Cleaning Method Comparison}
-\centering
-\begin{tabular}[t]{l|c|c|c}
-\hline
-Method & Time (Minutes) & Error & SD\\
-\hline
-FNC 1 Character & 7.17 & 498.96 & 2769.83\\
-\hline
-FNC 6 Character & 3.74 & 201.35 & 1890.01\\
-\hline
-FNC 16 Character & 3.43 & 36.91 & 411.25\\
-\hline
-LCS 40 Character & 79.51 & 6.34 & 35.50\\
-\hline
-LCS 1/2 Previous Notes & 71.25 & 7.29 & 104.69\\
-\hline
-LCS 1/3 Previous Notes & 71.33 & 3.06 & 26.77\\
-\hline
-LCS 1/4 Previous Notes + 5 & 71.05 & 2.82 & 26.14\\
-\hline
-Hybrid (FNC 16 and LCS 1/3) & 4.52 & 2.13 & 24.62\\
-\hline
-\end{tabular}
-\end{table}
-
-The results of this study are shown in Table \ref{tab:cleancompare}.
-Notably, the mean edit distance to the correct notes (or the error) is large for the FNC methods, with a high level of variation.
-However, the computation time is, between 3 and 8 minutes.
-In the case of the LCS method, the error is much lower, but the computation time is above an hour, taking approximately 17 times as long as the FNC method.
-The hybrid method combines the benefits of both of these methods.
-The error rate is on par with that of the LCS methods, while the time is only slightly above that of the FNC methods.
-The flowchart in Figure \ref{fig:flowchart} shows how this hybrid method was applied.
-
-\begin{figure}
-
-{\centering \includegraphics[width=\linewidth]{images/flowchart} 
-
-}
-
-\caption{Hybrid Flowchart}\label{fig:flowchart}
-\end{figure}
 
 \hypertarget{note-analysis}{%
 \subsection{Note Analysis}\label{note-analysis}}
@@ -2191,6 +2103,149 @@ Note pages that corresponded to the questions (and not the testimony) were remov
 
 \hypertarget{data-cleaning-1}{%
 \subsection{Data Cleaning}\label{data-cleaning-1}}
+
+\hypertarget{validation-study}{%
+\subsubsection{Validation Study}\label{validation-study}}
+
+The FNC and LCS methods for sequential notepad cleaning were first tested on a subset of notes resulting from a jury perception survey.
+In this study, participants were provided with a notepad to record information while reading through mock trial testimony.
+Because participants are provided with the same continuous notepad throughout the study, the database records a \svp{snapshot} of their notes when they advance to the next page\svp{, providing a cumulative set of notes over time}.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.1711}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.8289}}@{}}
+\caption{\label{tab:noteexample} Participant Note Example}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+page\_count
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+notes
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+page\_count
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+notes
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+2 & discharge firearm in business- felony, not guilty \\
+3 & discharge firearm in business- felony, not guilty ski mask.
+no money, no injuries. 9mm, arrested after confiscated and
+testing. \\
+\end{longtable}
+
+In order to compare the FNC and LCS methods described above, I cleaned a subset of the survey response notes to have a ``correct'' baseline with which to calculate error rates.
+This dataset consists of 561 pages of `notes' (including 66 blanks) with 35 unique participants.
+30 participants were randomly selected from the larger dataset \svp{to test the method's effectiveness}, while 5 participants were selected based on demonstrated issues with \svp{the existing} data cleaning \svp{process}.
+The 5 selected participants included an individual who deleted almost all of the beginning notes; two individuals who pasted new notes in the middle of old notes; an individual who duplicated notes; and an individual who included the algorithm expert's trial confirmation as well as the forensic scientist's - duplicate text that should be included as the new notes.
+Table \ref{tab:noteexample} is an example of what sequential notes may look like, taken from the second and third pages of a study participant's notes.
+
+In order to appropriately clean the notes, the duplicated text (``discharge firearm in business- felony, not guilty'') needs to be removed from the third page, to leave only notes that correspond to the third page's testimony.
+A generalized version of the functions used in this data cleaning are included in the \texttt{seqstrclean} package (Rogers \& VanderPlas, 2024b).
+
+\hypertarget{first-n-character-fnc-method-1}{%
+\paragraph{First n Character (FNC) Method}\label{first-n-character-fnc-method-1}}
+
+Table \ref{tab:noteexample} shows two sequential note pages used in the validation dataset.
+In this case, the FNC method could easily be applied - because the text from page 2 perfectly aligns with the beginning of the page 3 text, resulting in an edit distance of 0.
+The page 2 notes perfectly line up with the first line in the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
+Thus, by removing this beginning section, we would be left with the notes that are unique to page 3 - namely, ``ski mask. no money, no injuries. 9mm, arrested after confiscated and testing.''
+For this method comparison study, I changed the threshold with values of 0 character difference, 5 character difference, and 15 character difference (set as less than 1, less than 6, and less than 16).
+
+This method works well when participants take notes sequentially.
+In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
+When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
+The first n character method cannot appropriately clean these notes, as shown in Table \ref{tab:issues}.
+
+\hypertarget{longest-common-substring-lcs-method-1}{%
+\paragraph{Longest Common Substring (LCS) Method}\label{longest-common-substring-lcs-method-1}}
+
+In the validation study, I tried several different character lengths: 40 characters, half the previous note length, a third of the previous note length, and a fourth of the previous note length plus 5 (to compensate for shorter strings).
+
+While the LCS method is able to solve the issues related to the First N Character method, it has some issues of its own.
+If the testimony itself contains duplicate text, such as the text related to swearing in witnesses, the LCS method would remove the new text that corresponds to the later testimony.
+The other issue with the LCS method is the greater computational complexity.
+
+\hypertarget{hybrid-method}{%
+\paragraph{Hybrid Method}\label{hybrid-method}}
+
+I also investigated the use of a hybrid method in the hope that the FNC method could be used as a quick way to clean the simplest cases of notes, while the LCS method could be used to clean up the notes that are less clear-cut.
+In order to determine which observations would need the second cleaning method, I created Figure \ref{fig:errorplot}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/errorplot-1} 
+
+}
+
+\caption{Error Comparison}\label{fig:errorplot}
+\end{figure}
+
+Here, the yellow circles indicate the FNC method with a 16 character threshold, while the black circles represent the LCS method with a threshold of 1/3 the previous character length.
+Larger circles indicate a larger amount of error when compared to the hand-cleaned notes.
+The y-axis shows the edit distance computed between the current and previous notes for the FNC method, while the x-axis indicates the length of the clean notes.
+The horizontal line is the 16 character threshold for the FNC method.
+As can be seen, most observations are located in the bottom left of the graph, below the FNC threshold, and have relatively small circles.
+These are notes where the FNC method was effectively applied, meaning that the edit distance was small enough to remove duplicated text at the beginning of the document.
+In the observations above the threshold, most have a larger error when the FNC method is applied compared to the LCS method, with the exception of one observation in the top left.
+In that case, the error appeared to be equal for both methods.
+There is also a larger FNC method error for the observation on the bottom right of the graph.
+This was a case of duplicate text, resulting in abnormally long notes.
+This graph shows that and edit distance the FNC method's threshold and the length of the cleaned notes can be used as criterion for determining when the LCS method should be applied.
+I chose to set a threshold of 4 standard deviations above the mean note length for cleaned notes of the page of interest to constitute ``unusually long'' notes to apply the LCS method to.
+I chose 1/3 of the previous notes as the LCS threshold because the mean edit distance to the correct notes was comparable to the 1/4 + 5 character threshold, but it is more conservative for larger notes (as can be seen in Table \ref{tab:cleancompare}).
+
+\begin{table}
+
+\caption{\label{tab:cleancompare}Note Cleaning Method Comparison}
+\centering
+\begin{tabular}[t]{l|c|c|c}
+\hline
+Method & Time (Minutes) & Error & SD\\
+\hline
+FNC 1 Character & 7.17 & 498.96 & 2769.83\\
+\hline
+FNC 6 Character & 3.74 & 201.35 & 1890.01\\
+\hline
+FNC 16 Character & 3.43 & 36.91 & 411.25\\
+\hline
+LCS 40 Character & 79.51 & 6.34 & 35.50\\
+\hline
+LCS 1/2 Previous Notes & 71.25 & 7.29 & 104.69\\
+\hline
+LCS 1/3 Previous Notes & 71.33 & 3.06 & 26.77\\
+\hline
+LCS 1/4 Previous Notes + 5 & 71.05 & 2.82 & 26.14\\
+\hline
+Hybrid (FNC 16 and LCS 1/3) & 4.52 & 2.13 & 24.62\\
+\hline
+\end{tabular}
+\end{table}
+
+The results of this study are shown in Table \ref{tab:cleancompare}.
+Notably, the mean edit distance to the correct notes (or the error) is large for the FNC methods, with a high level of variation.
+However, the computation time is, between 3 and 8 minutes.
+In the case of the LCS method, the error is much lower, but the computation time is above an hour, taking approximately 17 times as long as the FNC method.
+The hybrid method combines the benefits of both of these methods.
+The error rate is on par with that of the LCS methods, while the time is only slightly above that of the FNC methods.
+The flowchart in Figure \ref{fig:flowchart} shows how this hybrid method was applied.
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{images/flowchart} 
+
+}
+
+\caption{Hybrid Flowchart}\label{fig:flowchart}
+\end{figure}
+
+\hypertarget{full-dataset}{%
+\subsubsection{Full Dataset}\label{full-dataset}}
 
 On the complete dataset, the hybrid method took a total of 19.33 minutes.
 This demonstrates the time benefit of the hybrid method over the Longest Common Substring method - it took less time to clean the complete dataset with the hybrid method than it took to evaluate the reduced dataset with the LCS method.
@@ -3813,7 +3868,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-03-02 00:23:46.613015.
+This version of the thesis was generated on 2024-03-04 10:03:53.527681.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -3828,7 +3883,7 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2024-03-02
+##  date     2024-03-04
 ##  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------
