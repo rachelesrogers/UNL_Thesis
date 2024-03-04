@@ -240,7 +240,8 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="3-textcolor.html"><a href="3-textcolor.html#the-data"><i class="fa fa-check"></i><b>3.3.1</b> The Data</a></li>
 <li class="chapter" data-level="3.3.2" data-path="3-textcolor.html"><a href="3-textcolor.html#data-cleaning-1"><i class="fa fa-check"></i><b>3.3.2</b> Data Cleaning</a></li>
-<li class="chapter" data-level="3.3.3" data-path="3-textcolor.html"><a href="3-textcolor.html#final-output"><i class="fa fa-check"></i><b>3.3.3</b> Final Output</a></li>
+<li class="chapter" data-level="3.3.3" data-path="3-textcolor.html"><a href="3-textcolor.html#collocation-analysis"><i class="fa fa-check"></i><b>3.3.3</b> Collocation Analysis</a></li>
+<li class="chapter" data-level="3.3.4" data-path="3-textcolor.html"><a href="3-textcolor.html#final-output"><i class="fa fa-check"></i><b>3.3.4</b> Final Output</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="3-textcolor.html"><a href="3-textcolor.html#discussion-1"><i class="fa fa-check"></i><b>3.4</b> Discussion</a>
 <ul>
@@ -870,26 +871,258 @@ The functions for creating highlighted text can be found in the package <code>hi
 </table>
 <p>In setting the size of the collocation, there are two important factors to keep in mind: the frequency with which a phrase appears in the transcript itself, and the number of words in a row that individuals may directly copy from the transcript.
 If the number of words considered in a collocation is too short, a phrase may occur multiple times throughout the transcript, without a way to distinguish which specific sections participants were recording.
-For example, if we used a collocation of length two, a common phrase in the courtroom testimony is “Richard Cole”, the name of the defendant.
-Because this phrase occurs so frequently in the testimony, it does not by itself tell us if there are particular portions of the testimony that individuals find important, even if we add weights to calculate the relative frequency.
+For example, if we used a collocation of length two when analyzing an article about cats, a common phrase may be “cats are”.
+Because this phrase occurs frequently in the article, it does not by itself tell us if there are particular portions of the article that individuals find important, even if we add weights to calculate the relative frequency.
 On the other hand, if we use a collocation of length 10, it is unlikely that a large amount of individuals copied the exact 10-word phrase, which results in fewer observations.
 In considering these two issues, we decided on a collocation size of 5.
-This would be long enough to avoid many common phrases such as “the bullet matching algorithm”, but short enough that individuals may copy the phrase down directly.
+This would be long enough to avoid many common phrases, but short enough that individuals may copy the phrase down directly.
 The implementation of collocations used the ‘quanteda’ package <span class="citation">(Benoit et al., 2018)</span>, with guidance from a tutorial by <span class="citation">Schweinberger (2022)</span>.</p>
-<p>Collocations are identified in the transcript, and assigned ordered word numbers (so the first collocation of length 5 will have words 1-5, the second will have words 2-6, and so on).
+<p>Collocations are identified in the reference text, and assigned ordered word numbers (so the first collocation of length 5 will have words 1-5, the second will have words 2-6, and so on).
 This data structure is similar to that shown in Table <a href="3-textcolor.html#tab:colex">3.7</a>, where the collocation is length 4 instead of 5.
 These are then bound with collocations from the participants’ notes based on the sequence of 5 words, in order to assign a frequency to each collocation.
 We then take the average per word out of the possible collocations that the word could have appeared in.
 For example, the first word can only appear in a single collocation (in Table <a href="3-textcolor.html#tab:colex">3.7</a>, “The” only apprears in the first collocation, while “ran” appears in all three), so its average will be equal to the frequency of the first collocation.
-When multiple 5-grams appear in the same testimony page, the note frequency is divided by the number of appearances in the testimony in order to account for multiple occurrences.
-Table <a href="3-textcolor.html#tab:colcount">3.8</a> shows the highest frequencies for the second page of the testimony:</p>
+When multiple 5-grams appear in the same reference text, the note frequency is divided by the number of appearances in the reference text in order to account for multiple occurrences.</p>
+<p>In order to create a highlighting effect in the page notes, we first implemented a graph of the testimony in ‘ggplot2’ <span class="citation">(Wickham, 2016)</span> in order to assign color values to the frequencies based on a continuous gradient.
+Then we used HTML gradient boxes, where the left color is that of the previous word, while the right color is based on the frequency of the current word.
+This results in a smooth transition between words.</p>
+</div>
+<div id="fuzzy-matching" class="section level4 hasAnchor" number="3.2.2.2">
+<h4><span class="header-section-number">3.2.2.2</span> Fuzzy Matching<a href="3-textcolor.html#fuzzy-matching" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>At times, participants do not directly copy a collocation, but the correspondence is clear enough to match their notes to the transcript.
+In these cases, we can use fuzzy matching to account for indirect collocations.
+Because the intent of the participant is more clear with simple typos (such as a single letter change) than with larger differences (such as the changing of multiple words), the count for these fuzzily matched observations are weighted based on the edit distance.
+I set a maximum edit distance of 99 to be considered a match.
+Specifically, a weight of <span class="math inline">\(\frac{1}{d+0.25}\)</span> is used, where <span class="math inline">\(d\)</span> represents the edit distance (between 1 and 99).
+An edit distance of 0 would receive a weight of 1, since fuzzy matching need not be applied.
+Another factor in the calculation is the number of matches per ‘misspelled’ collocation.
+To return to the month example shown in Table <a href="3-textcolor.html#tab:fuzzymonth">3.4</a>, if an individual were to spell a month “Jur”, the edit distance to both “June” and “July” is 2.
+It is then unclear which month the person was born in, but they most likely meant June or July, as opposed to the other months.
+Similarly, some collocation notes had the same edit distance for multiple transcript collocations.
+In these cases, the frequency of the ‘misspelled’ collocation notes are split evenly between the closest transcript collocations.
+This results in a total fuzzy frequency per transcript collocation of:</p>
+<p><span class="math display">\[
+\sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i}
+\]</span>
+where <span class="math inline">\(x_i\)</span> is the count for the participant’s note collocation <span class="math inline">\(i\)</span>, <span class="math inline">\(d_i\)</span> is the distance between the transcript collocation and the ‘misspelled’ collocation <span class="math inline">\(i\)</span>, and <span class="math inline">\(c_i\)</span> is the number of transcript collocation matches for note collocation <span class="math inline">\(i\)</span>.
+This quantity is then added to the count of direct collocation matches calculated in the previous section.</p>
+</div>
+<div id="standardization" class="section level4 hasAnchor" number="3.2.2.3">
+<h4><span class="header-section-number">3.2.2.3</span> Standardization<a href="3-textcolor.html#standardization" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In many study designs, the study transcript may differ in specific places due to the experimental conditions.
+For clarity, when the study transcript corresponds across all scenarios, the frequency for all scenarios are considered together.
+However, when the testimony diverges, each scenario is considered separately.
+In order to consistently evaluate the frequencies throughout the transcripts, the final frequency count was standardized by the number of scenarios included.
+This would result in collocations with a final frequency weight of:</p>
+<p><span class="math display">\[
+(z+\sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i})\frac{1}{ks}
+\]</span></p>
+<p>In this case, <span class="math inline">\(z\)</span> is the count of direct matches; <span class="math inline">\(\sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i}\)</span> is the weighted fuzzy match count as defined above; <span class="math inline">\(k\)</span> is the number of times the collocation re-occurs in the transcript page itself; and <span class="math inline">\(s\)</span> is the number of scenarios included in the frequency count.</p>
+</div>
+</div>
+</div>
+<div id="case-study" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Case Study<a href="3-textcolor.html#case-study" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This method was applied to notes taken from a recent study on jury perception.
+Participants were asked to read over a testimony transcript and answer some questions related to the scenarios.
+Conditions varied based on the examiner conclusion, the presence of images, and the presence of a bullet matching algorithm.
+When the algorithm was present, participants also read the testimony of an algorithm developer, resulting in more pages of notes.
+Participants were supplied with a notepad in order to take notes throughout the testimony.
+We are interested in comparing this notepad to the given testimony, in order to determine which portions of the testimony the participants found to be worth recording the most.
+Portions of the testimony that bear the most similarity to the collective notes will be more highlighted than testimony that appears less frequently in the collective notes.
+The method outlined above resulted in scenario testimonies that indicate where participants copied notes.</p>
+<div id="the-data" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> The Data<a href="3-textcolor.html#the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Our study consisted of 560 uniquely recorded participants.
+Of these 560 participants, 430 recorded something on the notepad.
+This has resulted in 7,185 pages of notes with at least something recorded, out of 10,329 total pages.
+For individuals who clicked through the survey multiple times but submitted a single result, the notes correspond to the closest time less than their submission time for observation per page number.
+Note pages that corresponded to the questions (and not the testimony) were removed; this was above page 10 in conditions without the algorithm and page 19 in conditions with the algorithm.</p>
+</div>
+<div id="data-cleaning-1" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Data Cleaning<a href="3-textcolor.html#data-cleaning-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="validation-study" class="section level4 hasAnchor" number="3.3.2.1">
+<h4><span class="header-section-number">3.3.2.1</span> Validation Study<a href="3-textcolor.html#validation-study" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The FNC and LCS methods for sequential notepad cleaning were first tested on a subset of notes resulting from a jury perception survey.
+In this study, participants were provided with a notepad to record information while reading through mock trial testimony.
+Because participants are provided with the same continuous notepad throughout the study, the database records a of their notes when they advance to the next page.</p>
+<table>
+<caption><span id="tab:noteexample">Table 3.8: </span> Participant Note Example</caption>
+<colgroup>
+<col width="17%" />
+<col width="82%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>page_count</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>discharge firearm in business- felony, not guilty</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>discharge firearm in business- felony, not guilty ski mask.
+no money, no injuries. 9mm, arrested after confiscated and
+testing.</td>
+</tr>
+</tbody>
+</table>
+<p>In order to compare the FNC and LCS methods described above, I cleaned a subset of the survey response notes to have a “correct” baseline with which to calculate error rates.
+This dataset consists of 561 pages of ‘notes’ (including 66 blanks) with 35 unique participants.
+30 participants were randomly selected from the larger dataset , while 5 participants were selected based on demonstrated issues with data cleaning .
+The 5 selected participants included an individual who deleted almost all of the beginning notes; two individuals who pasted new notes in the middle of old notes; an individual who duplicated notes; and an individual who included the algorithm expert’s trial confirmation as well as the forensic scientist’s - duplicate text that should be included as the new notes.
+Table <a href="3-textcolor.html#tab:noteexample">3.8</a> is an example of what sequential notes may look like, taken from the second and third pages of a study participant’s notes.</p>
+<p>In order to appropriately clean the notes, the duplicated text (“discharge firearm in business- felony, not guilty”) needs to be removed from the third page, to leave only notes that correspond to the third page’s testimony.
+A generalized version of the functions used in this data cleaning are included in the <code>seqstrclean</code> package <span class="citation">(Rogers &amp; VanderPlas, 2024b)</span>.</p>
+<div id="first-n-character-fnc-method-1" class="section level5 hasAnchor" number="3.3.2.1.1">
+<h5><span class="header-section-number">3.3.2.1.1</span> First n Character (FNC) Method<a href="3-textcolor.html#first-n-character-fnc-method-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Table <a href="3-textcolor.html#tab:noteexample">3.8</a> shows two sequential note pages used in the validation dataset.
+In this case, the FNC method could easily be applied - because the text from page 2 perfectly aligns with the beginning of the page 3 text, resulting in an edit distance of 0.
+The page 2 notes perfectly line up with the first line in the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
+Thus, by removing this beginning section, we would be left with the notes that are unique to page 3 - namely, “ski mask. no money, no injuries. 9mm, arrested after confiscated and testing.”
+For this method comparison study, I changed the threshold with values of 0 character difference, 5 character difference, and 15 character difference (set as less than 1, less than 6, and less than 16).</p>
+<p>This method works well when participants take notes sequentially.
+In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
+When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
+The first n character method cannot appropriately clean these notes, as shown in Table <a href="3-textcolor.html#tab:issues">3.6</a>.</p>
+</div>
+<div id="longest-common-substring-lcs-method-1" class="section level5 hasAnchor" number="3.3.2.1.2">
+<h5><span class="header-section-number">3.3.2.1.2</span> Longest Common Substring (LCS) Method<a href="3-textcolor.html#longest-common-substring-lcs-method-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>In the validation study, I tried several different character lengths: 40 characters, half the previous note length, a third of the previous note length, and a fourth of the previous note length plus 5 (to compensate for shorter strings).</p>
+<p>While the LCS method is able to solve the issues related to the First N Character method, it has some issues of its own.
+If the testimony itself contains duplicate text, such as the text related to swearing in witnesses, the LCS method would remove the new text that corresponds to the later testimony.
+The other issue with the LCS method is the greater computational complexity.</p>
+</div>
+<div id="hybrid-method" class="section level5 hasAnchor" number="3.3.2.1.3">
+<h5><span class="header-section-number">3.3.2.1.3</span> Hybrid Method<a href="3-textcolor.html#hybrid-method" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>I also investigated the use of a hybrid method in the hope that the FNC method could be used as a quick way to clean the simplest cases of notes, while the LCS method could be used to clean up the notes that are less clear-cut.
+In order to determine which observations would need the second cleaning method, I created Figure <a href="3-textcolor.html#fig:errorplot">3.2</a>.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:errorplot"></span>
+<img src="thesis_files/figure-html/errorplot-1.png" alt="Error Comparison" width="\linewidth" />
+<p class="caption">
+Figure 3.2: Error Comparison
+</p>
+</div>
+<p>Here, the yellow circles indicate the FNC method with a 16 character threshold, while the black circles represent the LCS method with a threshold of 1/3 the previous character length.
+Larger circles indicate a larger amount of error when compared to the hand-cleaned notes.
+The y-axis shows the edit distance computed between the current and previous notes for the FNC method, while the x-axis indicates the length of the clean notes.
+The horizontal line is the 16 character threshold for the FNC method.
+As can be seen, most observations are located in the bottom left of the graph, below the FNC threshold, and have relatively small circles.
+These are notes where the FNC method was effectively applied, meaning that the edit distance was small enough to remove duplicated text at the beginning of the document.
+In the observations above the threshold, most have a larger error when the FNC method is applied compared to the LCS method, with the exception of one observation in the top left.
+In that case, the error appeared to be equal for both methods.
+There is also a larger FNC method error for the observation on the bottom right of the graph.
+This was a case of duplicate text, resulting in abnormally long notes.
+This graph shows that and edit distance the FNC method’s threshold and the length of the cleaned notes can be used as criterion for determining when the LCS method should be applied.
+I chose to set a threshold of 4 standard deviations above the mean note length for cleaned notes of the page of interest to constitute “unusually long” notes to apply the LCS method to.
+I chose 1/3 of the previous notes as the LCS threshold because the mean edit distance to the correct notes was comparable to the 1/4 + 5 character threshold, but it is more conservative for larger notes (as can be seen in Table <a href="3-textcolor.html#tab:cleancompare">3.9</a>).</p>
+<table>
+<caption><span id="tab:cleancompare">Table 3.9: </span>Note Cleaning Method Comparison</caption>
+<thead>
+<tr class="header">
+<th align="left">Method</th>
+<th align="center">Time (Minutes)</th>
+<th align="center">Error</th>
+<th align="center">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">FNC 1 Character</td>
+<td align="center">7.17</td>
+<td align="center">498.96</td>
+<td align="center">2769.83</td>
+</tr>
+<tr class="even">
+<td align="left">FNC 6 Character</td>
+<td align="center">3.74</td>
+<td align="center">201.35</td>
+<td align="center">1890.01</td>
+</tr>
+<tr class="odd">
+<td align="left">FNC 16 Character</td>
+<td align="center">3.43</td>
+<td align="center">36.91</td>
+<td align="center">411.25</td>
+</tr>
+<tr class="even">
+<td align="left">LCS 40 Character</td>
+<td align="center">79.51</td>
+<td align="center">6.34</td>
+<td align="center">35.50</td>
+</tr>
+<tr class="odd">
+<td align="left">LCS 1/2 Previous Notes</td>
+<td align="center">71.25</td>
+<td align="center">7.29</td>
+<td align="center">104.69</td>
+</tr>
+<tr class="even">
+<td align="left">LCS 1/3 Previous Notes</td>
+<td align="center">71.33</td>
+<td align="center">3.06</td>
+<td align="center">26.77</td>
+</tr>
+<tr class="odd">
+<td align="left">LCS 1/4 Previous Notes + 5</td>
+<td align="center">71.05</td>
+<td align="center">2.82</td>
+<td align="center">26.14</td>
+</tr>
+<tr class="even">
+<td align="left">Hybrid (FNC 16 and LCS 1/3)</td>
+<td align="center">4.52</td>
+<td align="center">2.13</td>
+<td align="center">24.62</td>
+</tr>
+</tbody>
+</table>
+<p>The results of this study are shown in Table <a href="3-textcolor.html#tab:cleancompare">3.9</a>.
+Notably, the mean edit distance to the correct notes (or the error) is large for the FNC methods, with a high level of variation.
+However, the computation time is, between 3 and 8 minutes.
+In the case of the LCS method, the error is much lower, but the computation time is above an hour, taking approximately 17 times as long as the FNC method.
+The hybrid method combines the benefits of both of these methods.
+The error rate is on par with that of the LCS methods, while the time is only slightly above that of the FNC methods.
+The flowchart in Figure <a href="3-textcolor.html#fig:flowchart">3.3</a> shows how this hybrid method was applied.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:flowchart"></span>
+<img src="images/flowchart.jpg" alt="Hybrid Flowchart" width="\linewidth" />
+<p class="caption">
+Figure 3.3: Hybrid Flowchart
+</p>
+</div>
+</div>
+</div>
+<div id="full-dataset" class="section level4 hasAnchor" number="3.3.2.2">
+<h4><span class="header-section-number">3.3.2.2</span> Full Dataset<a href="3-textcolor.html#full-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>On the complete dataset, the hybrid method took a total of 19.33 minutes.
+This demonstrates the time benefit of the hybrid method over the Longest Common Substring method - it took less time to clean the complete dataset with the hybrid method than it took to evaluate the reduced dataset with the LCS method.
+The data cleaning resulted in a total of 2,372 note pages with some text recorded.
+This is much smaller than the uncleaned total of 7,185 note pages, demonstrating a significant reduction in the note size (as is expected when removing the previous page’s notes).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:notecount"></span>
+<img src="thesis_files/figure-html/notecount-1.png" alt="Number of Notes Taken Per Page" width="\linewidth" />
+<p class="caption">
+Figure 3.4: Number of Notes Taken Per Page
+</p>
+</div>
+<p>Figure <a href="3-textcolor.html#fig:notecount">3.4</a> consists of the number of participants who took notes based on the page number.
+In both the algorithm and the non-algorithm scenario, more individuals took notes on the first two pages of the testimony compared to the rest of the testimony.
+However, the plot shows that individuals took notes throughout the testimony.</p>
+</div>
+</div>
+<div id="collocation-analysis" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Collocation Analysis<a href="3-textcolor.html#collocation-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Table <a href="3-textcolor.html#tab:colcount">3.10</a> shows the highest frequencies for the second page of the testimony:</p>
 <p>“In this case the defendant Richard Cole has been charged with willfully discharging a firearm in a place of business. This crime is a felony.
 Mr. Cole has pleaded not guilty to the charge.
 You will now hear a summary of the case.
 This summary was prepared by an objective court clerk.
 It describes all of the evidence that was presented at trial.”</p>
 <table style="width:68%;">
-<caption><span id="tab:colcount">Table 3.8: </span> Collocation Count for Page 2</caption>
+<caption><span id="tab:colcount">Table 3.10: </span> Collocation Count for Page 2</caption>
 <colgroup>
 <col width="11%" />
 <col width="56%" />
@@ -944,47 +1177,26 @@ discharging</em></td>
 </tr>
 </tbody>
 </table>
-<p>The italicized collocations in Table <a href="3-textcolor.html#tab:colcount">3.8</a> show all of the collocations for the word “willfully” from the testimony above.
+<p>The italicized collocations in Table <a href="3-textcolor.html#tab:colcount">3.10</a> show all of the collocations for the word “willfully” from the testimony above.
 The frequencies for ‘willfully’ can be averaged: <span class="math inline">\(\frac{121+93+91+76+75}{5}=91.2\)</span>.
-This number will correspond to the shading of the word “willfully” in the highlighted testimony of Figure <a href="3-textcolor.html#fig:highlights">3.2</a>.</p>
+This number will correspond to the shading of the word “willfully” in the highlighted testimony of Figure <a href="3-textcolor.html#fig:highlights">3.5</a>.</p>
 <p>Note that the words have a gradient.
 This is to ensure a smooth transition between words in order to give an overall “highlight” effect, because we are interested in the important phrases in the testimony as opposed to the importance of individual words.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:highlights"></span>
 <img src="images/collocationanalysis.jpg" alt="Collocation Count for Page 2" width="\linewidth" />
 <p class="caption">
-Figure 3.2: Collocation Count for Page 2
+Figure 3.5: Collocation Count for Page 2
 </p>
 </div>
-<p>In order to create this effect, we first implemented a graph of the testimony in ‘ggplot2’ <span class="citation">(Wickham, 2016)</span> in order to assign color values to the frequencies based on a continuous gradient.
-Then we used HTML gradient boxes, where the left color is that of the previous word, while the right color is based on the frequency of the current word.
-This results in a smooth transition between words.</p>
-</div>
-<div id="fuzzy-matching" class="section level4 hasAnchor" number="3.2.2.2">
-<h4><span class="header-section-number">3.2.2.2</span> Fuzzy Matching<a href="3-textcolor.html#fuzzy-matching" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>At times, participants do not directly copy a collocation, but the correspondence is clear enough to match their notes to the transcript.
-In these cases, we can use fuzzy matching to account for indirect collocations.
-Because the intent of the participant is more clear with simple typos (such as a single letter change) than with larger differences (such as the changing of multiple words), the count for these fuzzily matched observations are weighted based on the edit distance.
-I set a maximum edit distance of 99 to be considered a match.
-Specifically, a weight of <span class="math inline">\(\frac{1}{d+0.25}\)</span> is used, where <span class="math inline">\(d\)</span> represents the edit distance (between 1 and 99).
-An edit distance of 0 would receive a weight of 1, since fuzzy matching need not be applied.
-Another factor in the calculation is the number of matches per ‘misspelled’ collocation.
-To return to the month example shown in Table <a href="3-textcolor.html#tab:fuzzymonth">3.4</a>, if an individual were to spell a month “Jur”, the edit distance to both “June” and “July” is 2.
-It is then unclear which month the person was born in, but they most likely meant June or July, as opposed to the other months.
-Similarly, some collocation notes had the same edit distance for multiple transcript collocations.
-In these cases, the frequency of the ‘misspelled’ collocation notes are split evenly between the closest transcript collocations.
-This results in a total fuzzy frequency per transcript collocation of:</p>
-<p><span class="math display">\[
-\sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i}
-\]</span>
-where <span class="math inline">\(x_i\)</span> is the count for the participant’s note collocation <span class="math inline">\(i\)</span>, <span class="math inline">\(d_i\)</span> is the distance between the transcript collocation and the ‘misspelled’ collocation <span class="math inline">\(i\)</span>, and <span class="math inline">\(c_i\)</span> is the number of transcript collocation matches for note collocation <span class="math inline">\(i\)</span>.
-This quantity is then added to the count of direct collocation matches calculated in the previous section.</p>
-<p>For example, Table <a href="3-textcolor.html#tab:fuzzyexam">3.9</a> demonstrates fuzzy matches on the testimony description text mentioned previously.
+<div id="fuzzy-matching-1" class="section level4 hasAnchor" number="3.3.3.1">
+<h4><span class="header-section-number">3.3.3.1</span> Fuzzy Matching<a href="3-textcolor.html#fuzzy-matching-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>For example, Table <a href="3-textcolor.html#tab:fuzzyexam">3.11</a> demonstrates fuzzy matches on the testimony description text mentioned previously.
 Here, “collocation.x” refers to the collocation found in the transcript, while “collocation.y” refers to the “misspelled” collocation.
 With an edit distance of 1, it can be seen that these fuzzy matches are the result of simple typos - making it clear which transcript collocation the misspelled version corresponds to.
 While most collocation misspellings in the table only occur a single time (recorded via the “count” column), the last collocation occurs twice - indicating that two individual note takers “l” “willfully”.
 The “close_freq” column indicates if the participant’s collocation matches with multiple collocations from the study - such as “Jur” in the example above.</p>
 <table style="width:96%;">
-<caption><span id="tab:fuzzyexam">Table 3.9: </span> Close Fuzzy Matches from the Testimony</caption>
+<caption><span id="tab:fuzzyexam">Table 3.11: </span> Close Fuzzy Matches from the Testimony</caption>
 <colgroup>
 <col width="26%" />
 <col width="31%" />
@@ -1099,12 +1311,12 @@ a firearm in</td>
 </tr>
 </tbody>
 </table>
-<p>Interestingly, when considering the most distant fuzzy matches in Table <a href="3-textcolor.html#tab:fuzzyexamlarge">3.10</a>, these phrases do not come from simple typos, but rather from a non-testimony portion of the study, and may result from participants copying the entire web page into the note sheet.
+<p>Interestingly, when considering the most distant fuzzy matches in Table <a href="3-textcolor.html#tab:fuzzyexamlarge">3.12</a>, these phrases do not come from simple typos, but rather from a non-testimony portion of the study, and may result from participants copying the entire web page into the note sheet.
 Because these phrases do not noticeably correspond to the transcript collocations, as shown in their larger edit distance, they are given less weight.
 In this case, we also see that the participant collocation of “perception of trial information presentation” was an equal edit distance from two collocations, based on the “close_freq” value.
 Thus, the weight would be adjusted accordingly due to the presence of two close matches.</p>
 <table style="width:96%;">
-<caption><span id="tab:fuzzyexamlarge">Table 3.10: </span> Distant Fuzzy Matches from the Testimony</caption>
+<caption><span id="tab:fuzzyexamlarge">Table 3.12: </span> Distant Fuzzy Matches from the Testimony</caption>
 <colgroup>
 <col width="30%" />
 <col width="28%" />
@@ -1176,224 +1388,22 @@ evidence study</td>
 </tbody>
 </table>
 </div>
-<div id="standardization" class="section level4 hasAnchor" number="3.2.2.3">
-<h4><span class="header-section-number">3.2.2.3</span> Standardization<a href="3-textcolor.html#standardization" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="standardization-1" class="section level4 hasAnchor" number="3.3.3.2">
+<h4><span class="header-section-number">3.3.3.2</span> Standardization<a href="3-textcolor.html#standardization-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The courtroom transcript testimony analyzed comes from a 2x2x3 factorial design (presence or absence of images, presence or absence of the algorithm, and the conclusion: identification, inconclusive, or elimination).
-Due to this design, the testimony diverges and merges in several places.
-For clarity, when the testimony corresponds, the frequency for all scenarios are considered together.
-However, when the testimony diverges, each scenario is considered separately.
-In order to consistently evaluate the frequencies throughout the testimonies, the final frequency count was standardized by the number of scenarios included.
-This would result in collocations with a final frequency weight of:</p>
-<p><span class="math display">\[
-(z+\sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i})\frac{1}{ks}
-\]</span></p>
-<p>In this case, <span class="math inline">\(z\)</span> is the count of direct matches; <span class="math inline">\(\sum_{i=1}^n\frac{x_i}{(d_i+0.25)c_i}\)</span> is the weighted fuzzy match count as defined above; <span class="math inline">\(k\)</span> is the number of times the collocation re-occurs in the transcript page itself; and <span class="math inline">\(s\)</span> is the number of scenarios included in the frequency count.
-This standardization is included in Figure <a href="3-textcolor.html#fig:weightedhighlights">3.3</a>.
-In comparing with the unweighted highlighting without fuzzy matching of Figure <a href="3-textcolor.html#fig:highlights">3.2</a>, the same pattern emerges in terms of phrase popularity: most individuals focused on the crime.
+This standardization is included in Figure <a href="3-textcolor.html#fig:weightedhighlights">3.6</a>.
+In comparing with the unweighted highlighting without fuzzy matching of Figure <a href="3-textcolor.html#fig:highlights">3.5</a>, the same pattern emerges in terms of phrase popularity: most individuals focused on the crime.
 However, the numerical values of the gradient scale have changed.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:weightedhighlights"></span>
 <img src="images/weightedcollocationanalysis.jpg" alt="Highlighted Fuzzy Collocation for Page 2" width="\linewidth" />
 <p class="caption">
-Figure 3.3: Highlighted Fuzzy Collocation for Page 2
+Figure 3.6: Highlighted Fuzzy Collocation for Page 2
 </p>
 </div>
 </div>
 </div>
-</div>
-<div id="case-study" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Case Study<a href="3-textcolor.html#case-study" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This method was applied to notes taken from a recent study on jury perception.
-Participants were asked to read over a testimony transcript and answer some questions related to the scenarios.
-Conditions varied based on the examiner conclusion, the presence of images, and the presence of a bullet matching algorithm.
-When the algorithm was present, participants also read the testimony of an algorithm developer, resulting in more pages of notes.
-Participants were supplied with a notepad in order to take notes throughout the testimony.
-We are interested in comparing this notepad to the given testimony, in order to determine which portions of the testimony the participants found to be worth recording the most.
-Portions of the testimony that bear the most similarity to the collective notes will be more highlighted than testimony that appears less frequently in the collective notes.
-The method outlined above resulted in scenario testimonies that indicate where participants copied notes.</p>
-<div id="the-data" class="section level3 hasAnchor" number="3.3.1">
-<h3><span class="header-section-number">3.3.1</span> The Data<a href="3-textcolor.html#the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Our study consisted of 560 uniquely recorded participants.
-Of these 560 participants, 430 recorded something on the notepad.
-This has resulted in 7,185 pages of notes with at least something recorded, out of 10,329 total pages.
-For individuals who clicked through the survey multiple times but submitted a single result, the notes correspond to the closest time less than their submission time for observation per page number.
-Note pages that corresponded to the questions (and not the testimony) were removed; this was above page 10 in conditions without the algorithm and page 19 in conditions with the algorithm.</p>
-</div>
-<div id="data-cleaning-1" class="section level3 hasAnchor" number="3.3.2">
-<h3><span class="header-section-number">3.3.2</span> Data Cleaning<a href="3-textcolor.html#data-cleaning-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="validation-study" class="section level4 hasAnchor" number="3.3.2.1">
-<h4><span class="header-section-number">3.3.2.1</span> Validation Study<a href="3-textcolor.html#validation-study" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The FNC and LCS methods for sequential notepad cleaning were first tested on a subset of notes resulting from a jury perception survey.
-In this study, participants were provided with a notepad to record information while reading through mock trial testimony.
-Because participants are provided with the same continuous notepad throughout the study, the database records a of their notes when they advance to the next page.</p>
-<table>
-<caption><span id="tab:noteexample">Table 3.11: </span> Participant Note Example</caption>
-<colgroup>
-<col width="17%" />
-<col width="82%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>page_count</th>
-<th>notes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>2</td>
-<td>discharge firearm in business- felony, not guilty</td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td>discharge firearm in business- felony, not guilty ski mask.
-no money, no injuries. 9mm, arrested after confiscated and
-testing.</td>
-</tr>
-</tbody>
-</table>
-<p>In order to compare the FNC and LCS methods described above, I cleaned a subset of the survey response notes to have a “correct” baseline with which to calculate error rates.
-This dataset consists of 561 pages of ‘notes’ (including 66 blanks) with 35 unique participants.
-30 participants were randomly selected from the larger dataset , while 5 participants were selected based on demonstrated issues with data cleaning .
-The 5 selected participants included an individual who deleted almost all of the beginning notes; two individuals who pasted new notes in the middle of old notes; an individual who duplicated notes; and an individual who included the algorithm expert’s trial confirmation as well as the forensic scientist’s - duplicate text that should be included as the new notes.
-Table <a href="3-textcolor.html#tab:noteexample">3.11</a> is an example of what sequential notes may look like, taken from the second and third pages of a study participant’s notes.</p>
-<p>In order to appropriately clean the notes, the duplicated text (“discharge firearm in business- felony, not guilty”) needs to be removed from the third page, to leave only notes that correspond to the third page’s testimony.
-A generalized version of the functions used in this data cleaning are included in the <code>seqstrclean</code> package <span class="citation">(Rogers &amp; VanderPlas, 2024b)</span>.</p>
-<div id="first-n-character-fnc-method-1" class="section level5 hasAnchor" number="3.3.2.1.1">
-<h5><span class="header-section-number">3.3.2.1.1</span> First n Character (FNC) Method<a href="3-textcolor.html#first-n-character-fnc-method-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>Table <a href="3-textcolor.html#tab:noteexample">3.11</a> shows two sequential note pages used in the validation dataset.
-In this case, the FNC method could easily be applied - because the text from page 2 perfectly aligns with the beginning of the page 3 text, resulting in an edit distance of 0.
-The page 2 notes perfectly line up with the first line in the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
-Thus, by removing this beginning section, we would be left with the notes that are unique to page 3 - namely, “ski mask. no money, no injuries. 9mm, arrested after confiscated and testing.”
-For this method comparison study, I changed the threshold with values of 0 character difference, 5 character difference, and 15 character difference (set as less than 1, less than 6, and less than 16).</p>
-<p>This method works well when participants take notes sequentially.
-In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
-When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
-The first n character method cannot appropriately clean these notes, as shown in Table <a href="3-textcolor.html#tab:issues">3.6</a>.</p>
-</div>
-<div id="longest-common-substring-lcs-method-1" class="section level5 hasAnchor" number="3.3.2.1.2">
-<h5><span class="header-section-number">3.3.2.1.2</span> Longest Common Substring (LCS) Method<a href="3-textcolor.html#longest-common-substring-lcs-method-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>In the validation study, I tried several different character lengths: 40 characters, half the previous note length, a third of the previous note length, and a fourth of the previous note length plus 5 (to compensate for shorter strings).</p>
-<p>While the LCS method is able to solve the issues related to the First N Character method, it has some issues of its own.
-If the testimony itself contains duplicate text, such as the text related to swearing in witnesses, the LCS method would remove the new text that corresponds to the later testimony.
-The other issue with the LCS method is the greater computational complexity.</p>
-</div>
-<div id="hybrid-method" class="section level5 hasAnchor" number="3.3.2.1.3">
-<h5><span class="header-section-number">3.3.2.1.3</span> Hybrid Method<a href="3-textcolor.html#hybrid-method" class="anchor-section" aria-label="Anchor link to header"></a></h5>
-<p>I also investigated the use of a hybrid method in the hope that the FNC method could be used as a quick way to clean the simplest cases of notes, while the LCS method could be used to clean up the notes that are less clear-cut.
-In order to determine which observations would need the second cleaning method, I created Figure <a href="3-textcolor.html#fig:errorplot">3.4</a>.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:errorplot"></span>
-<img src="thesis_files/figure-html/errorplot-1.png" alt="Error Comparison" width="\linewidth" />
-<p class="caption">
-Figure 3.4: Error Comparison
-</p>
-</div>
-<p>Here, the yellow circles indicate the FNC method with a 16 character threshold, while the black circles represent the LCS method with a threshold of 1/3 the previous character length.
-Larger circles indicate a larger amount of error when compared to the hand-cleaned notes.
-The y-axis shows the edit distance computed between the current and previous notes for the FNC method, while the x-axis indicates the length of the clean notes.
-The horizontal line is the 16 character threshold for the FNC method.
-As can be seen, most observations are located in the bottom left of the graph, below the FNC threshold, and have relatively small circles.
-These are notes where the FNC method was effectively applied, meaning that the edit distance was small enough to remove duplicated text at the beginning of the document.
-In the observations above the threshold, most have a larger error when the FNC method is applied compared to the LCS method, with the exception of one observation in the top left.
-In that case, the error appeared to be equal for both methods.
-There is also a larger FNC method error for the observation on the bottom right of the graph.
-This was a case of duplicate text, resulting in abnormally long notes.
-This graph shows that and edit distance the FNC method’s threshold and the length of the cleaned notes can be used as criterion for determining when the LCS method should be applied.
-I chose to set a threshold of 4 standard deviations above the mean note length for cleaned notes of the page of interest to constitute “unusually long” notes to apply the LCS method to.
-I chose 1/3 of the previous notes as the LCS threshold because the mean edit distance to the correct notes was comparable to the 1/4 + 5 character threshold, but it is more conservative for larger notes (as can be seen in Table <a href="3-textcolor.html#tab:cleancompare">3.12</a>).</p>
-<table>
-<caption><span id="tab:cleancompare">Table 3.12: </span>Note Cleaning Method Comparison</caption>
-<thead>
-<tr class="header">
-<th align="left">Method</th>
-<th align="center">Time (Minutes)</th>
-<th align="center">Error</th>
-<th align="center">SD</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">FNC 1 Character</td>
-<td align="center">7.17</td>
-<td align="center">498.96</td>
-<td align="center">2769.83</td>
-</tr>
-<tr class="even">
-<td align="left">FNC 6 Character</td>
-<td align="center">3.74</td>
-<td align="center">201.35</td>
-<td align="center">1890.01</td>
-</tr>
-<tr class="odd">
-<td align="left">FNC 16 Character</td>
-<td align="center">3.43</td>
-<td align="center">36.91</td>
-<td align="center">411.25</td>
-</tr>
-<tr class="even">
-<td align="left">LCS 40 Character</td>
-<td align="center">79.51</td>
-<td align="center">6.34</td>
-<td align="center">35.50</td>
-</tr>
-<tr class="odd">
-<td align="left">LCS 1/2 Previous Notes</td>
-<td align="center">71.25</td>
-<td align="center">7.29</td>
-<td align="center">104.69</td>
-</tr>
-<tr class="even">
-<td align="left">LCS 1/3 Previous Notes</td>
-<td align="center">71.33</td>
-<td align="center">3.06</td>
-<td align="center">26.77</td>
-</tr>
-<tr class="odd">
-<td align="left">LCS 1/4 Previous Notes + 5</td>
-<td align="center">71.05</td>
-<td align="center">2.82</td>
-<td align="center">26.14</td>
-</tr>
-<tr class="even">
-<td align="left">Hybrid (FNC 16 and LCS 1/3)</td>
-<td align="center">4.52</td>
-<td align="center">2.13</td>
-<td align="center">24.62</td>
-</tr>
-</tbody>
-</table>
-<p>The results of this study are shown in Table <a href="3-textcolor.html#tab:cleancompare">3.12</a>.
-Notably, the mean edit distance to the correct notes (or the error) is large for the FNC methods, with a high level of variation.
-However, the computation time is, between 3 and 8 minutes.
-In the case of the LCS method, the error is much lower, but the computation time is above an hour, taking approximately 17 times as long as the FNC method.
-The hybrid method combines the benefits of both of these methods.
-The error rate is on par with that of the LCS methods, while the time is only slightly above that of the FNC methods.
-The flowchart in Figure <a href="3-textcolor.html#fig:flowchart">3.5</a> shows how this hybrid method was applied.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:flowchart"></span>
-<img src="images/flowchart.jpg" alt="Hybrid Flowchart" width="\linewidth" />
-<p class="caption">
-Figure 3.5: Hybrid Flowchart
-</p>
-</div>
-</div>
-</div>
-<div id="full-dataset" class="section level4 hasAnchor" number="3.3.2.2">
-<h4><span class="header-section-number">3.3.2.2</span> Full Dataset<a href="3-textcolor.html#full-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>On the complete dataset, the hybrid method took a total of 19.33 minutes.
-This demonstrates the time benefit of the hybrid method over the Longest Common Substring method - it took less time to clean the complete dataset with the hybrid method than it took to evaluate the reduced dataset with the LCS method.
-The data cleaning resulted in a total of 2,372 note pages with some text recorded.
-This is much smaller than the uncleaned total of 7,185 note pages, demonstrating a significant reduction in the note size (as is expected when removing the previous page’s notes).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:notecount"></span>
-<img src="thesis_files/figure-html/notecount-1.png" alt="Number of Notes Taken Per Page" width="\linewidth" />
-<p class="caption">
-Figure 3.6: Number of Notes Taken Per Page
-</p>
-</div>
-<p>Figure <a href="3-textcolor.html#fig:notecount">3.6</a> consists of the number of participants who took notes based on the page number.
-In both the algorithm and the non-algorithm scenario, more individuals took notes on the first two pages of the testimony compared to the rest of the testimony.
-However, the plot shows that individuals took notes throughout the testimony.</p>
-</div>
-</div>
-<div id="final-output" class="section level3 hasAnchor" number="3.3.3">
-<h3><span class="header-section-number">3.3.3</span> Final Output<a href="3-textcolor.html#final-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="final-output" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Final Output<a href="3-textcolor.html#final-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This final note analysis, which includes fuzzy matching, can be found at <a href="https://rachelesrogers.github.io/Presentations/Collocations/Collocation%20Comment%20Analysis%20Cleaned.html" class="uri">https://rachelesrogers.github.io/Presentations/Collocations/Collocation%20Comment%20Analysis%20Cleaned.html</a>.
 In visually comparing the highlighted transcripts for fuzzy matches to those without fuzzy matching, the results appear to be fairly similar.
 While the fuzzy matching did increase the frequency number, the overall trends remained the same for the dataset.
