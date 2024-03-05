@@ -739,13 +739,13 @@ This method finds the closest transcript collocation to the written collocation.
 <h3><span class="header-section-number">3.2.1</span> Data Cleaning<a href="3-textcolor.html#data-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="first-n-character-fnc-method" class="section level4 hasAnchor" number="3.2.1.1">
 <h4><span class="header-section-number">3.2.1.1</span> First N Character (FNC) Method<a href="3-textcolor.html#first-n-character-fnc-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<table style="width:100%;">
+<table>
 <caption>FNC Demonstration with an edit distance threshold of 3 <span id="tab:fncmethod">Table 3.5: </span></caption>
 <colgroup>
-<col width="21%" />
-<col width="27%" />
-<col width="14%" />
-<col width="36%" />
+<col width="25%" />
+<col width="33%" />
+<col width="16%" />
+<col width="23%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -776,8 +776,7 @@ This method finds the closest transcript collocation to the written collocation.
 </tr>
 </tbody>
 </table>
-<p>In scenarios such as those shown in Table <a href="3-textcolor.html#tab:fncmethod">3.5</a>, a straightforward method for note cleaning would be to measure the length of the previous page’s notes (n), and compare the previous notes to the first n characters in the current pages’ notes via edit distance.
-The characters that would be compared between the first and second pages are shown in red in the Page 2 column.
+<p>In scenarios such as those shown in Table <a href="3-textcolor.html#tab:fncmethod">3.5</a>, a straightforward method for note cleaning would be to measure the length of the page 1 notes (n), and compare the previous notes to the first n characters in the page 2 notes (shown in red) via edit distance.
 If the edit distance is small (indicating a correspondence to the previous page’s notes), the first n characters can be removed.
 In the first row, the page 1 notes perfectly align with the beginning of the page 2 notes, resulting in an edit distance of 0, and the duplicate text would be removed.
 In the second row, the text between the two pages differs significantly (edit distance of 9), so the page 2 notes are left alone.
@@ -785,18 +784,13 @@ The threshold of allowable disagreement between two strings can be controlled th
 This concept is demonstrated in the third row, the text was edited from “ran” to “run”, resulting in an edit distance of 1.
 However, because the two texts have the same meaning, regardless of the typo, we would still want to remove the duplicate text.
 By allowing for some mismatch between the two pages, we can account for inexact matches in the text cleaning.</p>
+<p>This method works well when participants take notes sequentially.
+In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
+When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
+The first n character method cannot appropriately clean these notes, as shown in Table <a href="3-textcolor.html#tab:issues">3.6</a>.</p>
 </div>
 <div id="longest-common-substring-lcs-method" class="section level4 hasAnchor" number="3.2.1.2">
 <h4><span class="header-section-number">3.2.1.2</span> Longest Common Substring (LCS) Method<a href="3-textcolor.html#longest-common-substring-lcs-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The Longest Common Substring method is able to handle the issues found in the First n Character method, which is demonstrated in Table <a href="3-textcolor.html#tab:issues">3.6</a>.
-If notes are deleted, the LCS method can identify the substring from the previous notes, despite the large edit distance that would prevent removal in the First n Character method.
-If new notes are inserted in the middle of previous notes, the First n Character method would compare the Page 1’s notes with the red text of the Page 2 notes shown in the second row, resulting in an edit distance that would prevent removal.
-With the LCS method, the first substring “The cat ran” could be identified and removed, then in a second iteration, the second substring of “up the tree” can also be removed, leaving only the new text.
-In the case of duplication, the First n Character method would be able to identify the first iteration of text that matches Page 1 and remove it; but it would not be able to identify the second occurrence of the text.
-As before, the LCS method would be able to identify both instances through two iterations, and remove all Page 1 text.
-In the case of LCS, a threshold must be picked for the minimum matching substring length to be considered ‘previous notes’ and removed.
-If the threshold is too small, the LCS method can identify words like “the” as matching previous testimony to be removed.
-If the threshold is too large, the LCS method may be unable to remove substrings when new text is inserted in the middle of the old text.</p>
 <table>
 <caption>LCS Comparison for FNC Issues <span id="tab:issues">Table 3.6: </span></caption>
 <colgroup>
@@ -839,6 +833,15 @@ If the threshold is too large, the LCS method may be unable to remove substrings
 </tr>
 </tbody>
 </table>
+<p>The Longest Common Substring method is able to handle the issues found in the First n Character method, which is demonstrated in Table <a href="3-textcolor.html#tab:issues">3.6</a>.
+If notes are deleted, the LCS method can identify the substring from the previous notes, despite the large edit distance that would prevent removal in the FNC method.
+If new notes are inserted in the middle of previous notes, the FNC method would compare the Page 1’s notes with the red text of the Page 2 notes shown in the second row, resulting in an edit distance that would prevent removal.
+With the LCS method, the first substring “The cat ran” could be identified and removed, then in a second iteration, the second substring of “up the tree” can also be removed, leaving only the new text.
+In the case of duplication, the FNC method would be able to identify the first iteration of text that matches Page 1 and remove it; but it would not be able to identify the second occurrence of the text.
+As before, the LCS method would be able to identify both instances through two iterations, and remove all Page 1 text.
+In the case of the LCS method, a threshold must be picked for the minimum matching substring length to be considered ‘previous notes’ and removed.
+If the threshold is too small, the LCS method can identify words like “the” as matching previous testimony to be removed.
+If the threshold is too large, the LCS method may be unable to remove substrings when new text is inserted in the middle of the old text.</p>
 </div>
 </div>
 <div id="note-analysis" class="section level3 hasAnchor" number="3.2.2">
@@ -847,8 +850,8 @@ If the threshold is too large, the LCS method may be unable to remove substrings
 <h4><span class="header-section-number">3.2.2.1</span> Collocations<a href="3-textcolor.html#collocations" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In order to analyze which areas of the text individuals focus on, we must first find a way to compare their notes to the written testimony.
 One way to do this comparison is through collocation analysis, which uses the frequency of strings of sequentially-appearing words (n-grams) in order to identify words that tend to ‘stick together’.
-For example, in the case of the phrase “The cat ran up the tree”, there would be three collocations of length 4, as shown in Table <a href="3-textcolor.html#tab:colex">3.7</a>).
-By matching the collocations that appear in the testimony to a frequency of the collocation from the given notepad, we can get frequency values for all n-grams that occur in the testimony.
+For example, in the case of the phrase “The cat ran up the tree”, there would be three collocations of length 4, as shown in Table <a href="3-textcolor.html#tab:colex">3.7</a>.
+By matching the collocations that appear in the testimony to a frequency of the collocation from the participants’ notepads, we can get frequency values for all n-grams that occur in the testimony.
 The functions for creating highlighted text can be found in the package <code>highlightr</code> <span class="citation">(Rogers &amp; VanderPlas, 2024a)</span>.</p>
 <table>
 <caption>Collocations in “The cat ran up the tree” <span id="tab:colex">Table 3.7: </span></caption>
@@ -901,13 +904,14 @@ On the other hand, if we use a collocation of length 10, it is unlikely that a l
 In considering these two issues, we decided on a collocation size of 5.
 This would be long enough to avoid many common phrases, but short enough that individuals may copy the phrase down directly.
 The implementation of collocations used the ‘quanteda’ package <span class="citation">(Benoit et al., 2018)</span>, with guidance from a tutorial by <span class="citation">Schweinberger (2022)</span>.</p>
-<p>Collocations are identified in the reference text, and assigned ordered word numbers (so the first collocation of length 5 will have words 1-5, the second will have words 2-6, and so on).
+<p>Collocations are identified in the reference text, and assigned ordered word numbers (the first collocation of length 5 will have words 1-5, the second will have words 2-6, and so on).
 This data structure is similar to that shown in Table <a href="3-textcolor.html#tab:colex">3.7</a>, where the collocation is length 4 instead of 5.
 These are then bound with collocations from the participants’ notes based on the sequence of 5 words, in order to assign a frequency to each collocation.
 We then take the average per word out of the possible collocations that the word could have appeared in.
 For example, the first word can only appear in a single collocation (in Table <a href="3-textcolor.html#tab:colex">3.7</a>, “The” only apprears in the first collocation, while “ran” appears in all three), so its average will be equal to the frequency of the first collocation.
 When multiple 5-grams appear in the same reference text, the note frequency is divided by the number of appearances in the reference text in order to account for multiple occurrences.</p>
-<p>In order to create a highlighting effect in the page notes, we first implemented a graph of the testimony in ‘ggplot2’ <span class="citation">(Wickham, 2016)</span> in order to assign color values to the frequencies based on a continuous gradient.
+<p>These frequency values are then assigned to a color on a color scale in order to create a highlighting gradient.
+We first implemented a graph of the testimony in ‘ggplot2’ <span class="citation">(Wickham, 2016)</span> to assign color values to the frequencies based on a continuous gradient.
 Then we used HTML gradient boxes, where the left color is that of the previous word, while the right color is based on the frequency of the current word.
 This results in a smooth transition between words.</p>
 </div>
@@ -920,8 +924,8 @@ I set a maximum edit distance of 99 to be considered a match.
 Specifically, a weight of <span class="math inline">\(\frac{1}{d+0.25}\)</span> is used, where <span class="math inline">\(d\)</span> represents the edit distance (between 1 and 99).
 An edit distance of 0 would receive a weight of 1, since fuzzy matching need not be applied.
 Another factor in the calculation is the number of matches per ‘misspelled’ collocation.
-To return to the month example shown in Table <a href="3-textcolor.html#tab:fuzzymonth">3.4</a>, if an individual were to spell a month “Jur”, the edit distance to both “June” and “July” is 2.
-It is then unclear which month the person was born in, but they most likely meant June or July, as opposed to the other months.
+To return to the month example shown in Table <a href="3-textcolor.html#tab:fuzzymonth">3.4</a>, when Benny spelled a month “Jur”, the edit distance to both “June” and “July” is 2.
+It is then unclear which month Benny was born in, but they most likely meant June or July, as opposed to the other months.
 Similarly, some collocation notes had the same edit distance for multiple transcript collocations.
 In these cases, the frequency of the ‘misspelled’ collocation notes are split evenly between the closest transcript collocations.
 This results in a total fuzzy frequency per transcript collocation of:</p>
@@ -934,8 +938,8 @@ This quantity is then added to the count of direct collocation matches calculate
 <div id="standardization" class="section level4 hasAnchor" number="3.2.2.3">
 <h4><span class="header-section-number">3.2.2.3</span> Standardization<a href="3-textcolor.html#standardization" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In many study designs, the study transcript may differ in specific places due to the experimental conditions.
-For clarity, when the study transcript corresponds across all scenarios, the frequency for all scenarios are considered together.
-However, when the testimony diverges, each scenario is considered separately.
+For clarity, when the study transcript corresponds across all scenarios, the frequency for all scenarios can be considered together.
+When the testimony diverges, each scenario can be considered separately.
 In order to consistently evaluate the frequencies throughout the transcripts, the final frequency count was standardized by the number of scenarios included.
 This would result in collocations with a final frequency weight of:</p>
 <p><span class="math display">\[
@@ -1009,10 +1013,6 @@ In this case, the FNC method could easily be applied - because the text from pag
 The page 2 notes perfectly line up with the first line in the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
 Thus, by removing this beginning section, we would be left with the notes that are unique to page 3 - namely, “ski mask. no money, no injuries. 9mm, arrested after confiscated and testing.”
 For this method comparison study, I changed the threshold with values of 0 character difference, 5 character difference, and 15 character difference (set as less than 1, less than 6, and less than 16).</p>
-<p>This method works well when participants take notes sequentially.
-In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
-When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
-The first n character method cannot appropriately clean these notes, as shown in Table <a href="3-textcolor.html#tab:issues">3.6</a>.</p>
 </div>
 <div id="longest-common-substring-lcs-method-1" class="section level5 hasAnchor" number="3.3.2.1.2">
 <h5><span class="header-section-number">3.3.2.1.2</span> Longest Common Substring (LCS) Method<a href="3-textcolor.html#longest-common-substring-lcs-method-1" class="anchor-section" aria-label="Anchor link to header"></a></h5>
