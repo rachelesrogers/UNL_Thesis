@@ -241,7 +241,7 @@ The first n character method cannot appropriately clean these notes, as shown in
 #### Longest Common Substring (LCS) Method
 
 Issue | Page 1 | Page 2 | LCS | Edit Distance
---------|--------|---------|---------|---------
+--------|--------|-----------|-----------|-------
 Deletion | The cat ran up the tree | The cat ran | The cat ran | 12
 Insertion | The cat ran up the tree | \textcolor{red}{The cat ran, chased by a} dog, up the tree | (The cat ran)(up the tree) | 11
 Duplication | The cat ran up the tree | \textcolor{red}{The cat ran up the tree} The cat ran up the tree | (The cat ran up the tree)(The cat ran up the tree) | 0
@@ -335,13 +335,13 @@ In this case, $z$ is the count of direct matches; $\sum_{i=1}^n\frac{x_i}{(d_i+0
 
 ## Case Study
 
-This method was applied to notes taken from a recent study on jury perception.
-Participants were asked to read over a testimony transcript and answer some questions related to the scenarios. 
+We applied this method to notes taken from a recent study on jury perception (described in Chapter \@ref(study1)).
+Participants were asked to read over a testimony transcript when the defendant had been charged with attempted robbery and answer some questions related to the scenario. 
 Conditions varied based on the examiner conclusion, the presence of images, and the presence of a bullet matching algorithm.
 When the algorithm was present, participants also read the testimony of an algorithm developer, resulting in more pages of notes.
 Participants were supplied with a notepad in order to take notes throughout the testimony. 
 We are interested in comparing this notepad to the given testimony, in order to determine which portions of the testimony the participants found to be worth recording the most.
-Portions of the testimony that bear the most similarity to the collective notes will be more highlighted than testimony that appears less frequently in the collective notes.
+Portions of the testimony that bear the most similarity to the collective notes will be have a highlight color on the higher end of the gradient color scale than testimony that appears less frequently in the collective notes.
 The method outlined above resulted in scenario testimonies that indicate where participants copied notes.
 
 ### The Data
@@ -366,11 +366,9 @@ Note pages that corresponded to the questions (and not the testimony) were remov
 
 ### Data Cleaning
 
-#### Validation Study
-
-The FNC and LCS methods for sequential notepad cleaning were first tested on a subset of notes resulting from a jury perception survey.
 In this study, participants were provided with a notepad to record information while reading through mock trial testimony.
 Because participants are provided with the same continuous notepad throughout the study, the database records a \svp{snapshot} of their notes when they advance to the next page\svp{, providing a cumulative set of notes over time}.
+Table \@ref(tab:noteexample) is an example of what sequential notes may look like, taken from the second and third pages of a study participant's notes. 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 comments <- read.csv("data/validation_dataset.csv")
@@ -405,34 +403,31 @@ test_comments %>% filter(page_count==2 | page_count==3) %>%
 
 ```
 
-In order to compare the FNC and LCS methods described above, I cleaned a subset of the survey response notes to have a "correct" baseline with which to calculate error rates.
-This dataset consists of `r dim(comments)[1]` pages of 'notes' (including `r sum(comments$notes=="")` blanks) with 35 unique participants. 
-30 participants were randomly selected from the larger dataset \svp{to test the method's effectiveness}, while 5 participants were selected based on demonstrated issues with \svp{the existing} data cleaning \svp{process}. 
-The 5 selected participants included an individual who deleted almost all of the beginning notes; two individuals who pasted new notes in the middle of old notes; an individual who duplicated notes; and an individual who included the algorithm expert's trial confirmation as well as the forensic scientist's - duplicate text that should be included as the new notes.
-Table \@ref(tab:noteexample) is an example of what sequential notes may look like, taken from the second and third pages of a study participant's notes. 
-
 In order to appropriately clean the notes, the duplicated text ("discharge firearm in business- felony, not guilty") needs to be removed from the third page, to leave only notes that correspond to the third page's testimony.
 A generalized version of the functions used in this data cleaning are included in the `seqstrclean` package [@seqstrclean].
 
-##### First n Character (FNC) Method
+#### Method Comparison Study
 
-Table \@ref(tab:noteexample) shows two sequential note pages used in the validation dataset.
-In this case, the FNC method could easily be applied - because the text from page 2 perfectly aligns with the beginning of the page 3 text, resulting in an edit distance of 0.
-The page 2 notes perfectly line up with the first line in the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
+The FNC and LCS methods for sequential notepad cleaning were first tested on a subset of notes resulting from a jury perception survey.
+In order to compare the FNC and LCS methods described above, I manually cleaned a subset of the survey response notes to have a "correct" baseline with which to calculate error rates.
+This dataset consists of `r dim(comments)[1]` pages of 'notes' (including `r sum(comments$notes=="")` blanks) with 35 unique participants. 
+30 participants were randomly selected from the larger dataset \svp{to test the method's effectiveness}, while 5 participants were selected based on demonstrated issues with \svp{the existing} data cleaning \svp{process}. 
+The 5 selected participants included an individual who deleted almost all of the beginning notes; two individuals who pasted new notes in the middle of old notes; an individual who duplicated notes; and an individual who included the algorithm expert's trial confirmation as well as the forensic scientist's - duplicate text that should be included as the new notes.
+
+Table \@ref(tab:noteexample) shows two sequential note pages used in the method comparison dataset.
+In this case, the FNC method could easily be applied; the page 2 notes perfectly align with the first part of the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
 Thus, by removing this beginning section, we would be left with the notes that are unique to page 3 - namely, "ski mask. no money, no injuries. 9mm, arrested after confiscated and testing."
-For this method comparison study, I changed the threshold with values of 0 character difference, 5 character difference, and 15 character difference (set as less than 1, less than 6, and less than 16).
 
-##### Longest Common Substring (LCS) Method
+For this method comparison study, I changed the FNC edit distance threshold with values of 0 character difference, 5 character difference, and 15 character difference (set as less than 1, less than 6, and less than 16).
+In the method comparison study, I tried several different character length thresholds for the LCS method: 40 characters, half the previous note length, a third of the previous note length, and a fourth of the previous note length plus 5 (to compensate for shorter strings).
 
-In the validation study, I tried several different character lengths: 40 characters, half the previous note length, a third of the previous note length, and a fourth of the previous note length plus 5 (to compensate for shorter strings).
-
-While the LCS method is able to solve the issues related to the First N Character method, it has some issues of its own.
+While the LCS method is able to solve the issues related to the First N Character method, such as cleaning notes that are not written sequentially, it has some issues of its own.
 If the testimony itself contains duplicate text, such as the text related to swearing in witnesses, the LCS method would remove the new text that corresponds to the later testimony.
 The other issue with the LCS method is the greater computational complexity.
 
 ##### Hybrid Method
 
-I also investigated the use of a hybrid method in the hope that the FNC method could be used as a quick way to clean the simplest cases of notes, while the LCS method could be used to clean up the notes that are less clear-cut.
+Due to the benefits and drawbacks of both the LCS and FNC methods, I investigated the use of a hybrid method in the hope that the FNC method could be used as a quick way to clean the simplest cases of notes, while the LCS method could be used to clean up the notes that are less clear-cut.
 In order to determine which observations would need the second cleaning method, I created Figure \@ref(fig:errorplot).
 
 ```{r}
@@ -469,7 +464,7 @@ In the observations above the threshold, most have a larger error when the FNC m
 In that case, the error appeared to be equal for both methods.
 There is also a larger FNC method error for the observation on the bottom right of the graph.
 This was a case of duplicate text, resulting in abnormally long notes.
-This graph shows that and edit distance the FNC method's threshold and the length of the cleaned notes can be used as criterion for determining when the LCS method should be applied.
+This graph shows that an edit distance above the FNC method's threshold and the length of the cleaned notes can be used as criterion for determining when the LCS method should be applied.
 I chose to set a threshold of 4 standard deviations above the mean note length for cleaned notes of the page of interest to constitute "unusually long" notes to apply the LCS method to.
 I chose 1/3 of the previous notes as the LCS threshold because the mean edit distance to the correct notes was comparable to the 1/4 + 5 character threshold, but it is more conservative for larger notes (as can be seen in Table \@ref(tab:cleancompare)).
 
@@ -489,11 +484,11 @@ kable(val_table, align=c('l','c','c','c'), caption="Note Cleaning Method Compari
 
 The results of this study are shown in Table \@ref(tab:cleancompare).
 Notably, the mean edit distance to the correct notes (or the error) is large for the FNC methods, with a high level of variation.
-However, the computation time is, between 3 and 8 minutes.
+However, the computation time is between 3 and 8 minutes.
 In the case of the LCS method, the error is much lower, but the computation time is above an hour, taking approximately 17 times as long as the FNC method.
 The hybrid method combines the benefits of both of these methods. 
 The error rate is on par with that of the LCS methods, while the time is only slightly above that of the FNC methods.
-The flowchart in Figure \@ref(fig:flowchart) shows how this hybrid method was applied.
+The flowchart in Figure \@ref(fig:flowchart) shows how this hybrid method will be applied to the case study dataset.
 
 ```{r}
 #| flowchart,
@@ -509,7 +504,7 @@ include_graphics(path = "images/flowchart.jpg")
 
 #### Full Dataset
 
-On the complete dataset, the hybrid method took a total of 19.33 minutes. 
+On the complete dataset, the hybrid method took a total of 19.33 minutes to run. 
 This demonstrates the time benefit of the hybrid method over the Longest Common Substring method - it took less time to clean the complete dataset with the hybrid method than it took to evaluate the reduced dataset with the LCS method. 
 The data cleaning resulted in a total of `r format(sum(study1_notes$page_notes != "", na.rm=TRUE), big.mark = ",")` note pages with some text recorded.
 This is much smaller than the uncleaned total of `r format(dim(unclean_reduced)[1], big.mark = ",")` note pages, demonstrating a significant reduction in the note size (as is expected when removing the previous page's notes).
@@ -625,11 +620,13 @@ include_graphics(path = "images/collocationanalysis.jpg")
 
 #### Fuzzy Matching
 
-For example, Table \@ref(tab:fuzzyexam) demonstrates fuzzy matches on the testimony description text mentioned previously.
-Here, "collocation.x" refers to the collocation found in the transcript, while "collocation.y" refers to the "misspelled" collocation.\svp{I might rename these so that the table is clear and doesn't require explanation.}
+Table \@ref(tab:fuzzyexam) demonstrates fuzzy matches on the testimony description text mentioned previously.
 With an edit distance of 1, it can be seen that these fuzzy matches are the result of simple typos - making it clear which transcript collocation the misspelled version corresponds to.
-While most collocation misspellings in the table only occur a single time (recorded via the "count" column), the last collocation occurs twice - indicating that two individual note takers \svp{missed an} "l" \svp{in} "willfully".
-The "close_freq" column indicates if the participant's collocation matches with multiple collocations from the study - such as "Jur" in the example above.
+While most collocation misspellings in the table only occur a single time (recorded via the "Count" column), the last collocation occurs twice - indicating that two individual note takers \svp{missed an} "l" \svp{in} "willfully".
+The "Collocation Matches" column indicates if the participant's collocation matches with multiple collocations from the study - such as "Jur" in the example above.
+
+\newpage
+\blandscape
 
 ```{r fuzzyexam, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -681,38 +678,49 @@ fuzzy_matches <- left_join(fuzzy_matches, close_freq)
 
 fuzzy_matches$collocation.x <- str_wrap(fuzzy_matches$collocation.x, width=5)
 fuzzy_matches$collocation.y <- str_wrap(fuzzy_matches$collocation.y, width=5)
-  
-fuzzy_matches %>% 
-  select(collocation.x, collocation.y, dist, count, close_freq) %>% 
-  arrange(dist) %>%
-    head(n=10) %>% 
+
+reduced_fuzzy_matches <- fuzzy_matches %>% 
+  select(collocation.x, collocation.y, dist, count, close_freq) %>%
+  as.data.frame()
+
+names(reduced_fuzzy_matches) <- c("Transcript Collocation", "Notepad Collocation",
+                                  "Edit Distance", "Count", "Collocation Matches")
+
+reduced_fuzzy_matches %>% 
+  arrange(`Edit Distance`) %>%
+    dplyr::slice(4:8) %>%
   pander(style = "grid",
          caption = "(\\#tab:fuzzyexam) Close Fuzzy Matches from the Testimony",
-         justify = 'left', split.cells = 20)
+         justify = 'left', split.cells = c(20, 20, 11,11,11))
   # kable(caption = "Close Fuzzy Matches from the Testimony")
 
 ```
 
-Interestingly, when considering the most distant fuzzy matches in Table \@ref(tab:fuzzyexamlarge), these phrases do not come from simple typos, but rather from a non-testimony portion of the study, and may result from participants copying the entire web page into the note sheet.
-Because these phrases do not noticeably correspond to the transcript collocations, as shown in their larger edit distance, they are given less weight.
-In this case, we also see that the participant collocation of "perception of trial information presentation" was an equal edit distance from two collocations, based on the "close_freq" value.
-Thus, the weight would be adjusted accordingly due to the presence of two close matches.
-
 ```{r fuzzyexamlarge, echo=FALSE, message=FALSE, warning=FALSE}
 
-fuzzy_matches %>% 
-  select(collocation.x, collocation.y, dist, count, close_freq) %>% 
-  arrange(-dist) %>%
-    head(n=5) %>% 
+reduced_fuzzy_matches %>% 
+  arrange(-`Edit Distance`) %>%
+    head(n=4) %>% 
   pander(style = "grid",
-         caption = "(\\#tab:fuzzyexamlarge) Distant Fuzzy Matches from the Testimony", justify = 'left', split.cells = 20)
+         caption = "(\\#tab:fuzzyexamlarge) Distant Fuzzy Matches from the Testimony", justify = 'left', split.cells = c(20, 20, 11,11,11))
   # kable(caption = "Distant Fuzzy Matches from the Testimony")
+
+# View(nonempty_reduced_comments)
 
 ```
 
+\elandscape
+
+Interestingly, when considering the most distant fuzzy matches in Table \@ref(tab:fuzzyexamlarge), these phrases do not come from simple typos, but rather from a non-testimony title portion of the study: "Jury Perception of Trial Information, Presentation, and Demonstrative Evidence", and may result from participants copying the entire web page into the note sheet.
+Two individuals copied this title into their notes, but on different pages of the testimony.
+The collocations in Table \@ref(tab:fuzzyexamlarge) correspond to the individual who copied the title on the second page of the testimony.
+Because these phrases do not noticeably correspond to the transcript collocations, as shown in their larger edit distance, they are given less weight.
+In this case, we also see that the participant collocation of "perception of trial information presentation" was an equal edit distance from two collocations, based on the "Collocation Matches" value.
+Thus, the weight would be adjusted accordingly due to the presence of two close matches.
+
 #### Standardization
 
-The courtroom transcript testimony analyzed comes from a 2x2x3 factorial design (presence or absence of images, presence or absence of the algorithm, and the conclusion: identification, inconclusive, or elimination).
+The courtroom transcript testimony comes from a 2x2x3 factorial design (presence or absence of images, presence or absence of the algorithm, and the conclusion: identification, inconclusive, or elimination).
 This standardization is included in Figure \@ref(fig:weightedhighlights).
 In comparing with the unweighted highlighting without fuzzy matching of Figure \@ref(fig:highlights), the same pattern emerges in terms of phrase popularity: most individuals focused on the crime.
 However, the numerical values of the gradient scale have changed.
@@ -745,7 +753,7 @@ This final note analysis, which includes fuzzy matching, can be found at https:/
 In visually comparing the highlighted transcripts for fuzzy matches to those without fuzzy matching, the results appear to be fairly similar. 
 While the fuzzy matching did increase the frequency number, the overall trends remained the same for the dataset.
 This can be seen in Table \@ref(tab:nonfuzzycount).
-The ranking of the collocations remains fairly consistent, aside from differences that can be seen in collocations that had the same non-fuzzy count.
+The ranking of the collocations remains is similar, aside from differences that can be seen in collocations that had the same non-fuzzy count.
 <!-- There is a jump in the fuzzy matches for the charge (a felony) that is not seen in the non-fuzzy matching. -->
 
 ```{r nonfuzzycount, echo=FALSE, message=FALSE, warning=FALSE}
@@ -800,7 +808,7 @@ The length of the collocation was chosen to be long enough to avoid commonly rep
 Notes that were not directly copied were included with weights proportional to edit distance through the use of fuzzy matching.
 The final output qualitatively indicates which portions of testimony participants found relevant to copy.
 
-This new method opens up new avenues for user studies and analyses.
+This method opens up new avenues for user studies and analyses.
 While this method was developed for a specific use case, it has diverse applications, including education, social science, and more. 
 These methods are being developed into R packages to be used by other
 researchers in transcript analysis. 

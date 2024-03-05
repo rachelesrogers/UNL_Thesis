@@ -154,9 +154,7 @@ standardization
 case-study
 the-data
 data-cleaning-1
-validation-study
-first-n-character-fnc-method-1
-longest-common-substring-lcs-method-1
+method-comparison-study
 hybrid-method
 full-dataset
 collocation-analysis

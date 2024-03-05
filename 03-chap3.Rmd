@@ -2259,213 +2259,213 @@ ggplot(microstudy_clean) +
 
 ###### Using the closest previous page when j-1 is missing #######
 
-library(tidyverse)
-library(stringdist)
-library(dplyr)
-library(kableExtra)
-library(ggplot2)
-library(readtext)
-require(quanteda)
-require(quanteda.textstats)
-require(quanteda.corpora)
-library(purrr)
-library(ggrepel)
-library(stringi)
-library(PTXQC)
-
-start_time <- Sys.time()
-
-# Reading in uncleaned comments
-val_comments <- read.csv("data/microstudy_notepad_clean.csv")
-
-# Finding unique identifiers
-unique_ids <- unique(val_comments$randomnumber)
-
-# Calculating length of uncleaned comments
-val_comments$length <- nchar(val_comments$notes)
-# val_comments[is.na(val_comments$length),]$length <- 0
-
-# Creating an empty dataset
-full_reduced_comments <- data.frame(page = NA, page_notes=NA, edit_distance=NA, clean_prints=NA, time=NA, randomnumber=NA)
-
-# First N Character Method
-# Loop through based on unique id's
-for (i in 1:length(unique_ids)){
-  reduced_comments <- data.frame(page = NA, page_notes=NA, edit_distance=NA, clean_prints=NA, time=NA, randomnumber=NA)
-  # Including only the current unique id's
-  by_fingerprint <- val_comments %>% subset(randomnumber==unique_ids[i])
-  # Because some individuals started the survey multiple times, we only want notes that were made prior
-  # to submission
-  # by_fingerprint <- subset(by_fingerprint, time <= submission_time+1)
-  # if there are multiple of the same page for the same unique id:
-  while (length(by_fingerprint[by_fingerprint$page_count==1,1]) > 1){
-
-    duplicate_print <- by_fingerprint %>% subset(page_count==1) # & time <= submission_time)
-    min_time <- min(duplicate_print$time)
-    # remove the earliest note occurrence
-    by_fingerprint <- subset(by_fingerprint, time != min_time)
-
-  }
-  if (max(by_fingerprint$page) > 4){
-  for (j in 5:max(by_fingerprint$page)){
-    prev_page <- max(by_fingerprint[by_fingerprint$page < j,]$page)
-    while (length(by_fingerprint[by_fingerprint$page==j,1]) > 1){
-
-      duplicate_print <- by_fingerprint %>% subset(page==j) #& time <= submission_time)
-      min_time <- min(duplicate_print$time)
-
-      by_fingerprint <- subset(by_fingerprint, time != min_time)
-
-    }
-    # keeping only the first n characters of the current page's notes for comparison to the previous page
-    if (dim(by_fingerprint[by_fingerprint$page==j,])[1] > 0){
-    if (dim(by_fingerprint[by_fingerprint$page==prev_page,])[1] > 0){
-    previous_notes <-
-      substr(by_fingerprint[by_fingerprint$page==j,]$notes, 1,
-             by_fingerprint[by_fingerprint$page==prev_page,]$length)
-
-    # if previous notes do exist
-    if (by_fingerprint[by_fingerprint$page==prev_page,]$length > 0){
-      # calculate the edit distance between the first n characters and the previous notes
-      edit_distance <-adist(previous_notes, by_fingerprint[by_fingerprint$page==prev_page,]$notes)
-      if (edit_distance < 16){ # this is the comparison threshold
-        # first n characters of notes are removed if the edit distance is small enough
-        reduced_comments[j-4,]$page_notes <-
-          substring(by_fingerprint[by_fingerprint$page==j,]$notes,
-                    by_fingerprint[by_fingerprint$page==prev_page,]$length+1) 
-      }else{
-        # no notes are removed if the edit distance is too large
-        reduced_comments[j-4,]$page_notes <- by_fingerprint[by_fingerprint$page==j,]$notes
-      }
-      reduced_comments[j-4,]$edit_distance <- edit_distance #saving the edit distance
-      #
-    }else{ #if there are no previous notes, no notes are removed
-      reduced_comments[j-4,]$page_notes <-
-        by_fingerprint[by_fingerprint$page==j,]$notes
-      reduced_comments[j-4,]$edit_distance <- 0
-
-    }
-    }else{ #if there are no previous notes, no notes are removed
-      reduced_comments[j-4,]$page_notes <-
-        by_fingerprint[by_fingerprint$page==j,]$notes
-      reduced_comments[j-4,]$edit_distance <- 0
-
-    }
-    reduced_comments[j-4,]$clean_prints <- by_fingerprint$clean_prints[1]
-    reduced_comments[j-4,]$randomnumber <- unique_ids[i]
-    reduced_comments[j-4,]$page <- j
-    reduced_comments[j-4,]$time <- by_fingerprint[by_fingerprint$page==j,]$time
-
-    }
-  }
-  full_reduced_comments <- rbind(full_reduced_comments, reduced_comments)
-}}
-# saving clean note length
-full_reduced_comments$clean_length <- nchar(full_reduced_comments$page_notes)
-saved_dataset <- full_reduced_comments
-# Joining the uncleaned comments to the clean comments
-
-full_reduced_comments <- left_join(val_comments, full_reduced_comments)
-
-full_reduced_comments <-
-  full_reduced_comments[!duplicated(full_reduced_comments),]
-
-mid_time <- Sys.time() - start_time
-mid_time #36 seconds
-
-#Summarizing results by two conditions: page count
-summary_info <- full_reduced_comments %>%
-  dplyr::group_by(page) %>%
-  dplyr::summarise (normal_outlier = mean(clean_length, na.rm=TRUE)+4*sd(clean_length, na.rm=TRUE), mean=mean(clean_length, na.rm=TRUE), sd = sd(clean_length, na.rm=TRUE))
-
-#full_reduced_comments <- left_join(full_reduced_comments, summary_info, by=c("algorithm", "page_count"))
-full_reduced_comments <- left_join(full_reduced_comments, summary_info, by=c("page"))
-
-# finding the outliers that are 4 standard deviations above the mean
-full_reduced_comments$outlier_bin <- (full_reduced_comments$clean_length > full_reduced_comments$normal_outlier)
-
-# sum(full_reduced_comments$outlier_bin, na.rm=TRUE)
-# 61 processed comments - where the clean note length is an outlier or the edit distance
-# for the first n character method is too large for the method to be applied
-
-processed_comments <- subset(full_reduced_comments, (edit_distance > 15 | full_reduced_comments$outlier_bin==TRUE))
-# dim(processed_comments)
-
-unique_ids <- unique(processed_comments$randomnumber)
-
-second_filter_val <- data.frame(page = NA, page_notes=NA, clean_prints=NA, time=NA, randomnumber = NA)
-
-
-for (i in 1:length(unique_ids)){
-
-  reduced_comments <- data.frame(page = NA, page_notes=NA, clean_prints=NA, time=NA, randomnumber = NA)
-  index <- 0
-  by_fingerprint <- val_comments %>% subset(randomnumber==unique_ids[i])
-  # by_fingerprint <- subset(by_fingerprint, time <= submission_time+1)
-
-  for (j in unique(processed_comments[processed_comments$randomnumber==unique_ids[i],]$page)){
-    index <- index + 1
-    prev_page <- max(by_fingerprint[by_fingerprint$page < j,]$page)
-    # in the case of more than one note sheet, remove the older copy
-    while (length(by_fingerprint[by_fingerprint$page==prev_page,1]) > 1){
-
-      duplicate_print <- by_fingerprint %>% subset(page==prev_page)# & time <= submission_time)
-      min_time <- min(duplicate_print$time)
-      # print(min_time)
-      by_fingerprint <- subset(by_fingerprint, time != min_time)
-
-    }
-    # removing emojis - cannot be processed with LCS
-    previous_notes <- gsub("[^\x01-\x7F]", "",by_fingerprint[by_fingerprint$page==prev_page,]$notes)
-
-    current_notes <- gsub("[^\x01-\x7F]", "",processed_comments[(processed_comments$page==j & processed_comments$randomnumber== unique_ids[i]),]$page_notes)
-    reduced_comments[index,]$page_notes <- current_notes
-
-    if (by_fingerprint[by_fingerprint$page==prev_page,]$length > 0){
-      # Finding the longest common substring between the current and previous notes
-      longest_sub <- LCS(previous_notes, reduced_comments[index,]$page_notes)
-      # setting the LCS threshold to repeat until LCS is too short
-      while (nchar(longest_sub) > ((1/3)*nchar(previous_notes))){
-        # Remove the substring if it is long enough
-        # print(i)
-        # print(j)
-        # print(nchar(longest_sub))
-        reduced_comments[index,]$page_notes <- gsub(longest_sub,"",
-                                                    reduced_comments[index,]$page_notes,fixed=TRUE)
-        longest_sub <- LCS(previous_notes, reduced_comments[index,]$page_notes)
-      }
-
-    }
-    reduced_comments[index,]$clean_prints <-
-      processed_comments[(processed_comments$page==j &
-                            processed_comments$randomnumber==
-                            unique_ids[i]),]$clean_prints
-    reduced_comments[index,]$randomnumber <- unique_ids[i]
-
-    reduced_comments[index,]$page <- j
-
-    reduced_comments[index,]$time <-
-      processed_comments[(processed_comments$page==j &
-                            processed_comments$randomnumber==
-                            unique_ids[i]),]$time
-
-  }
-  second_filter_val <- rbind(second_filter_val, reduced_comments)
-}
-
-# end_time <- start_time - Sys.time()
-# end_time
-# View(second_filter_val)
-
-second_filter_val <- dplyr::rename(second_filter_val, "lcs_notes"="page_notes")
-
-hybrid_dataset <- left_join(full_reduced_comments, second_filter_val)
-View(hybrid_dataset)
-hybrid_dataset<- dplyr::rename(hybrid_dataset, "nchar_notes"="page_notes")
-
-hybrid_dataset$page_notes <- hybrid_dataset$nchar_notes
-hybrid_dataset[!is.na(hybrid_dataset$lcs_notes),]$page_notes <-
-  hybrid_dataset[!is.na(hybrid_dataset$lcs_notes),]$lcs_notes
+# library(tidyverse)
+# library(stringdist)
+# library(dplyr)
+# library(kableExtra)
+# library(ggplot2)
+# library(readtext)
+# require(quanteda)
+# require(quanteda.textstats)
+# require(quanteda.corpora)
+# library(purrr)
+# library(ggrepel)
+# library(stringi)
+# library(PTXQC)
+# 
+# start_time <- Sys.time()
+# 
+# # Reading in uncleaned comments
+# val_comments <- read.csv("data/microstudy_notepad_clean.csv")
+# 
+# # Finding unique identifiers
+# unique_ids <- unique(val_comments$randomnumber)
+# 
+# # Calculating length of uncleaned comments
+# val_comments$length <- nchar(val_comments$notes)
+# # val_comments[is.na(val_comments$length),]$length <- 0
+# 
+# # Creating an empty dataset
+# full_reduced_comments <- data.frame(page = NA, page_notes=NA, edit_distance=NA, clean_prints=NA, time=NA, randomnumber=NA)
+# 
+# # First N Character Method
+# # Loop through based on unique id's
+# for (i in 1:length(unique_ids)){
+#   reduced_comments <- data.frame(page = NA, page_notes=NA, edit_distance=NA, clean_prints=NA, time=NA, randomnumber=NA)
+#   # Including only the current unique id's
+#   by_fingerprint <- val_comments %>% subset(randomnumber==unique_ids[i])
+#   # Because some individuals started the survey multiple times, we only want notes that were made prior
+#   # to submission
+#   # by_fingerprint <- subset(by_fingerprint, time <= submission_time+1)
+#   # if there are multiple of the same page for the same unique id:
+#   while (length(by_fingerprint[by_fingerprint$page_count==1,1]) > 1){
+# 
+#     duplicate_print <- by_fingerprint %>% subset(page_count==1) # & time <= submission_time)
+#     min_time <- min(duplicate_print$time)
+#     # remove the earliest note occurrence
+#     by_fingerprint <- subset(by_fingerprint, time != min_time)
+# 
+#   }
+#   if (max(by_fingerprint$page) > 4){
+#   for (j in 5:max(by_fingerprint$page)){
+#     prev_page <- max(by_fingerprint[by_fingerprint$page < j,]$page)
+#     while (length(by_fingerprint[by_fingerprint$page==j,1]) > 1){
+# 
+#       duplicate_print <- by_fingerprint %>% subset(page==j) #& time <= submission_time)
+#       min_time <- min(duplicate_print$time)
+# 
+#       by_fingerprint <- subset(by_fingerprint, time != min_time)
+# 
+#     }
+#     # keeping only the first n characters of the current page's notes for comparison to the previous page
+#     if (dim(by_fingerprint[by_fingerprint$page==j,])[1] > 0){
+#     if (dim(by_fingerprint[by_fingerprint$page==prev_page,])[1] > 0){
+#     previous_notes <-
+#       substr(by_fingerprint[by_fingerprint$page==j,]$notes, 1,
+#              by_fingerprint[by_fingerprint$page==prev_page,]$length)
+# 
+#     # if previous notes do exist
+#     if (by_fingerprint[by_fingerprint$page==prev_page,]$length > 0){
+#       # calculate the edit distance between the first n characters and the previous notes
+#       edit_distance <-adist(previous_notes, by_fingerprint[by_fingerprint$page==prev_page,]$notes)
+#       if (edit_distance < 16){ # this is the comparison threshold
+#         # first n characters of notes are removed if the edit distance is small enough
+#         reduced_comments[j-4,]$page_notes <-
+#           substring(by_fingerprint[by_fingerprint$page==j,]$notes,
+#                     by_fingerprint[by_fingerprint$page==prev_page,]$length+1) 
+#       }else{
+#         # no notes are removed if the edit distance is too large
+#         reduced_comments[j-4,]$page_notes <- by_fingerprint[by_fingerprint$page==j,]$notes
+#       }
+#       reduced_comments[j-4,]$edit_distance <- edit_distance #saving the edit distance
+#       #
+#     }else{ #if there are no previous notes, no notes are removed
+#       reduced_comments[j-4,]$page_notes <-
+#         by_fingerprint[by_fingerprint$page==j,]$notes
+#       reduced_comments[j-4,]$edit_distance <- 0
+# 
+#     }
+#     }else{ #if there are no previous notes, no notes are removed
+#       reduced_comments[j-4,]$page_notes <-
+#         by_fingerprint[by_fingerprint$page==j,]$notes
+#       reduced_comments[j-4,]$edit_distance <- 0
+# 
+#     }
+#     reduced_comments[j-4,]$clean_prints <- by_fingerprint$clean_prints[1]
+#     reduced_comments[j-4,]$randomnumber <- unique_ids[i]
+#     reduced_comments[j-4,]$page <- j
+#     reduced_comments[j-4,]$time <- by_fingerprint[by_fingerprint$page==j,]$time
+# 
+#     }
+#   }
+#   full_reduced_comments <- rbind(full_reduced_comments, reduced_comments)
+# }}
+# # saving clean note length
+# full_reduced_comments$clean_length <- nchar(full_reduced_comments$page_notes)
+# saved_dataset <- full_reduced_comments
+# # Joining the uncleaned comments to the clean comments
+# 
+# full_reduced_comments <- left_join(val_comments, full_reduced_comments)
+# 
+# full_reduced_comments <-
+#   full_reduced_comments[!duplicated(full_reduced_comments),]
+# 
+# mid_time <- Sys.time() - start_time
+# mid_time #36 seconds
+# 
+# #Summarizing results by two conditions: page count
+# summary_info <- full_reduced_comments %>%
+#   dplyr::group_by(page) %>%
+#   dplyr::summarise (normal_outlier = mean(clean_length, na.rm=TRUE)+4*sd(clean_length, na.rm=TRUE), mean=mean(clean_length, na.rm=TRUE), sd = sd(clean_length, na.rm=TRUE))
+# 
+# #full_reduced_comments <- left_join(full_reduced_comments, summary_info, by=c("algorithm", "page_count"))
+# full_reduced_comments <- left_join(full_reduced_comments, summary_info, by=c("page"))
+# 
+# # finding the outliers that are 4 standard deviations above the mean
+# full_reduced_comments$outlier_bin <- (full_reduced_comments$clean_length > full_reduced_comments$normal_outlier)
+# 
+# # sum(full_reduced_comments$outlier_bin, na.rm=TRUE)
+# # 61 processed comments - where the clean note length is an outlier or the edit distance
+# # for the first n character method is too large for the method to be applied
+# 
+# processed_comments <- subset(full_reduced_comments, (edit_distance > 15 | full_reduced_comments$outlier_bin==TRUE))
+# # dim(processed_comments)
+# 
+# unique_ids <- unique(processed_comments$randomnumber)
+# 
+# second_filter_val <- data.frame(page = NA, page_notes=NA, clean_prints=NA, time=NA, randomnumber = NA)
+# 
+# 
+# for (i in 1:length(unique_ids)){
+# 
+#   reduced_comments <- data.frame(page = NA, page_notes=NA, clean_prints=NA, time=NA, randomnumber = NA)
+#   index <- 0
+#   by_fingerprint <- val_comments %>% subset(randomnumber==unique_ids[i])
+#   # by_fingerprint <- subset(by_fingerprint, time <= submission_time+1)
+# 
+#   for (j in unique(processed_comments[processed_comments$randomnumber==unique_ids[i],]$page)){
+#     index <- index + 1
+#     prev_page <- max(by_fingerprint[by_fingerprint$page < j,]$page)
+#     # in the case of more than one note sheet, remove the older copy
+#     while (length(by_fingerprint[by_fingerprint$page==prev_page,1]) > 1){
+# 
+#       duplicate_print <- by_fingerprint %>% subset(page==prev_page)# & time <= submission_time)
+#       min_time <- min(duplicate_print$time)
+#       # print(min_time)
+#       by_fingerprint <- subset(by_fingerprint, time != min_time)
+# 
+#     }
+#     # removing emojis - cannot be processed with LCS
+#     previous_notes <- gsub("[^\x01-\x7F]", "",by_fingerprint[by_fingerprint$page==prev_page,]$notes)
+# 
+#     current_notes <- gsub("[^\x01-\x7F]", "",processed_comments[(processed_comments$page==j & processed_comments$randomnumber== unique_ids[i]),]$page_notes)
+#     reduced_comments[index,]$page_notes <- current_notes
+# 
+#     if (by_fingerprint[by_fingerprint$page==prev_page,]$length > 0){
+#       # Finding the longest common substring between the current and previous notes
+#       longest_sub <- LCS(previous_notes, reduced_comments[index,]$page_notes)
+#       # setting the LCS threshold to repeat until LCS is too short
+#       while (nchar(longest_sub) > ((1/3)*nchar(previous_notes))){
+#         # Remove the substring if it is long enough
+#         # print(i)
+#         # print(j)
+#         # print(nchar(longest_sub))
+#         reduced_comments[index,]$page_notes <- gsub(longest_sub,"",
+#                                                     reduced_comments[index,]$page_notes,fixed=TRUE)
+#         longest_sub <- LCS(previous_notes, reduced_comments[index,]$page_notes)
+#       }
+# 
+#     }
+#     reduced_comments[index,]$clean_prints <-
+#       processed_comments[(processed_comments$page==j &
+#                             processed_comments$randomnumber==
+#                             unique_ids[i]),]$clean_prints
+#     reduced_comments[index,]$randomnumber <- unique_ids[i]
+# 
+#     reduced_comments[index,]$page <- j
+# 
+#     reduced_comments[index,]$time <-
+#       processed_comments[(processed_comments$page==j &
+#                             processed_comments$randomnumber==
+#                             unique_ids[i]),]$time
+# 
+#   }
+#   second_filter_val <- rbind(second_filter_val, reduced_comments)
+# }
+# 
+# # end_time <- start_time - Sys.time()
+# # end_time
+# # View(second_filter_val)
+# 
+# second_filter_val <- dplyr::rename(second_filter_val, "lcs_notes"="page_notes")
+# 
+# hybrid_dataset <- left_join(full_reduced_comments, second_filter_val)
+# View(hybrid_dataset)
+# hybrid_dataset<- dplyr::rename(hybrid_dataset, "nchar_notes"="page_notes")
+# 
+# hybrid_dataset$page_notes <- hybrid_dataset$nchar_notes
+# hybrid_dataset[!is.na(hybrid_dataset$lcs_notes),]$page_notes <-
+#   hybrid_dataset[!is.na(hybrid_dataset$lcs_notes),]$lcs_notes
 
 
 # write.csv(hybrid_dataset, "data/microstudy_hybrid_notepad.csv")

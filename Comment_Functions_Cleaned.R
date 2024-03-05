@@ -235,6 +235,9 @@ token_comments <- function(comment_document, page_number){
   pg2$page_notes <- gsub("\"Q:", "", pg2$page_notes)
   ##############################################
   
+  ############### Removing -'s ######################
+  pg2$page_notes <- gsub("-", "", pg2$page_notes)
+  
   # pg2$page_notes <- gsub("---Test-fired bullets admitted into evidence---","",pg2$page_notes)
   
   pg2_df <- data.frame(docid = cbind(seq(1:dim(pg2)[1])), text=tolower(pg2$page_notes)) #lowercasing text
