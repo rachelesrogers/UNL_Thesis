@@ -51,8 +51,6 @@ fig:flowchart
 fig:notecount
 tab:colcount
 fig:highlights
-tab:fuzzyexam
-tab:fuzzyexamlarge
 fig:weightedhighlights
 tab:nonfuzzycount
 fig:testimonyformat

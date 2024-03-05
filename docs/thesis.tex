@@ -95,6 +95,8 @@
 %% for more attractive tables
 \usepackage{booktabs}
 \usepackage{longtable}
+\usepackage{lscape}
+\usepackage{pdfpages}
 
 
 \usepackage{graphicx}
@@ -2126,128 +2128,118 @@ With an edit distance of 1, it can be seen that these fuzzy matches are the resu
 While most collocation misspellings in the table only occur a single time (recorded via the ``Count'' column), the last collocation occurs twice - indicating that two individual note takers \svp{missed an} ``l'' \svp{in} ``willfully''.
 The ``Collocation Matches'' column indicates if the participant's collocation matches with multiple collocations from the study - such as ``Jur'' in the example above.
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2436}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2949}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1410}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1026}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1795}}@{}}
-\caption{\label{tab:fuzzyexam} Close Fuzzy Matches from the Testimony}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Transcript
-Collocation
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Notepad Collocation
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Edit
-Distance
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Count
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Collocation
-Matches
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Transcript
-Collocation
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Notepad Collocation
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Edit
-Distance
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Count
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Collocation
-Matches
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-discharging a
-firearm in a & discharing a firearm
-in a & 1 & 1 & 1 \\
-the defendant
-richard cole has & he defendant richard
-cole has & 1 & 1 & 1 \\
-in a place of
-business & in a place of
-bussiness & 1 & 1 & 1 \\
-in this case the
-defendant & n this case the
-defendant & 1 & 1 & 1 \\
-willfully
-discharging a
-firearm in & wilfully discharging
-a firearm in & 1 & 2 & 1 \\
-\end{longtable}
+\newpage
+\begin{landscape}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2840}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2716}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1358}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0988}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1728}}@{}}
-\caption{\label{tab:fuzzyexamlarge} Distant Fuzzy Matches from the Testimony}\tabularnewline
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Transcript
-Collocation
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Notepad Collocation
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Edit
-Distance
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Count
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Collocation
-Matches
-\end{minipage} \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Transcript
-Collocation
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Notepad Collocation
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Edit
-Distance
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Count
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Collocation
-Matches
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-describes all of the
+\begin{table}
+
+\caption{\label{tab:fuzzyexam}Close Fuzzy Matches from the Testimony}
+\centering
+\begin{tabular}[t]{l|l|r|r|r}
+\hline
+Transcript Collocation & Notepad Collocation & Edit Distance & Count & Collocation Matches\\
+\hline
+discharging
+a
+firearm
+in a & discharing
+a
+firearm
+in a & 1 & 1 & 1\\
+\hline
+the
+defendant
+richard
+cole
+has & he
+defendant
+richard
+cole
+has & 1 & 1 & 1\\
+\hline
+in a
+place
+of
+business & in a
+place
+of
+bussiness & 1 & 1 & 1\\
+\hline
+in
+this
+case
+the
+defendant & n
+this
+case
+the
+defendant & 1 & 1 & 1\\
+\hline
+willfully
+discharging
+a
+firearm
+in & wilfully
+discharging
+a
+firearm
+in & 1 & 2 & 1\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+
+\caption{\label{tab:fuzzyexamlarge}Distant Fuzzy Matches from the Testimony}
+\centering
+\begin{tabular}[t]{l|l|r|r|r}
+\hline
+Transcript Collocation & Notepad Collocation & Edit Distance & Count & Collocation Matches\\
+\hline
+describes
+all
+of
+the
 evidence & information
-presentation and
+presentation
+and
 demonstrative
-evidence & 32 & 1 & 1 \\
-that was presented
-at trial & trial information
-presentation and
-demonstrative & 30 & 1 & 1 \\
-the evidence that
-was presented & perception of trial
+evidence & 32 & 1 & 1\\
+\hline
+that
+was
+presented
+at
+trial & trial
 information
-presentation & 29 & 1 & 2 \\
-evidence that was
-presented at & perception of trial
+presentation
+and
+demonstrative & 30 & 1 & 1\\
+\hline
+the
+evidence
+that
+was
+presented & perception
+of
+trial
 information
-presentation & 29 & 1 & 2 \\
-\end{longtable}
+presentation & 29 & 1 & 2\\
+\hline
+evidence
+that
+was
+presented
+at & perception
+of
+trial
+information
+presentation & 29 & 1 & 2\\
+\hline
+\end{tabular}
+\end{table}
+
+\end{landscape}
 
 Interestingly, when considering the most distant fuzzy matches in Table \ref{tab:fuzzyexamlarge}, these phrases do not come from simple typos, but rather from a non-testimony title portion of the study: ``Jury Perception of Trial Information, Presentation, and Demonstrative Evidence'', and may result from participants copying the entire web page into the note sheet.
 Two individuals copied this title into their notes, but on different pages of the testimony.
@@ -3876,7 +3868,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-03-05 11:11:34.35261.
+This version of the thesis was generated on 2024-03-05 12:36:25.227524.
 
 The computational environment that was used to generate this version is as follows:
 

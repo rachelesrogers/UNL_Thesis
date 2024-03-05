@@ -626,7 +626,7 @@ While most collocation misspellings in the table only occur a single time (recor
 The "Collocation Matches" column indicates if the participant's collocation matches with multiple collocations from the study - such as "Jur" in the example above.
 
 \newpage
-\blandscape
+\begin{landscape}
 
 ```{r fuzzyexam, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -686,30 +686,38 @@ reduced_fuzzy_matches <- fuzzy_matches %>%
 names(reduced_fuzzy_matches) <- c("Transcript Collocation", "Notepad Collocation",
                                   "Edit Distance", "Count", "Collocation Matches")
 
+# reduced_fuzzy_matches %>% 
+#   arrange(`Edit Distance`) %>%
+#     dplyr::slice(4:8) %>%
+#   pander(style = "grid",
+#          caption = "(\\#tab:fuzzyexam) Close Fuzzy Matches from the Testimony",
+#          justify = 'left') #, split.cells = c(20, 20, 11,11,11))
+
 reduced_fuzzy_matches %>% 
   arrange(`Edit Distance`) %>%
     dplyr::slice(4:8) %>%
-  pander(style = "grid",
-         caption = "(\\#tab:fuzzyexam) Close Fuzzy Matches from the Testimony",
-         justify = 'left', split.cells = c(20, 20, 11,11,11))
-  # kable(caption = "Close Fuzzy Matches from the Testimony")
+   kable(caption = "Close Fuzzy Matches from the Testimony")
 
 ```
 
 ```{r fuzzyexamlarge, echo=FALSE, message=FALSE, warning=FALSE}
 
+# reduced_fuzzy_matches %>% 
+#   arrange(-`Edit Distance`) %>%
+#     head(n=4) %>% 
+#   pander(style = "grid",
+#          caption = "(\\#tab:fuzzyexamlarge) Distant Fuzzy Matches from the Testimony", justify = 'left', split.cells = c(20, 20, 11,11,11))
+
 reduced_fuzzy_matches %>% 
   arrange(-`Edit Distance`) %>%
     head(n=4) %>% 
-  pander(style = "grid",
-         caption = "(\\#tab:fuzzyexamlarge) Distant Fuzzy Matches from the Testimony", justify = 'left', split.cells = c(20, 20, 11,11,11))
-  # kable(caption = "Distant Fuzzy Matches from the Testimony")
+  kable(caption = "Distant Fuzzy Matches from the Testimony")
 
 # View(nonempty_reduced_comments)
 
 ```
 
-\elandscape
+\end{landscape}
 
 Interestingly, when considering the most distant fuzzy matches in Table \@ref(tab:fuzzyexamlarge), these phrases do not come from simple typos, but rather from a non-testimony title portion of the study: "Jury Perception of Trial Information, Presentation, and Demonstrative Evidence", and may result from participants copying the entire web page into the note sheet.
 Two individuals copied this title into their notes, but on different pages of the testimony.
