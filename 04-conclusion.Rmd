@@ -1,67 +1,70 @@
-# Conclusion - Initial Study Revisited {#finalstudy}
+# Conclusion {#finalstudy}
 
-## Introduction
+ <!-- - Initial Study Revisited -->
+
+<!-- ## Introduction -->
 
 The initial goal of this research was to investigate how a bullet matching algorithm or demonstrative evidence may affect juror perception of the courtroom evidence and procedure.
-In the course of this investigation, we encountered two issues: confusion based on the transcript-based testimony format and Likert scale compression.
+In the course of this investigation, we encountered two issues: testimony confusion and Likert scale compression.
 In order to address these issues, we redesigned the study format to include cartoons and color-coded speech bubbles for clarity, and conducted a survey investigating response type.
 We also designed a method for analyzing participant notes that were taken while reading through the testimony, to create a 'heatmap' of areas of text that participants found to be important.
+We also investigated various response types, and found that Likert and probability scales were not optimal for collecting data in this case - instead, multiple choice chance scales with non-linear intervals allowed for more spread in participants' answers.
 
-These diverging avenues of investigation have again merged for a final study.
-The new cartoon study format seemed to alleviate the confusion that came from the initial transcript format, the response type study indicates that phrasing questions in terms of chance (i.e. "1 chance in 10 that...") reduced/eliminated(?) the scale compression seen in Likert scales, and the text analysis provides useful information about what participants found worth copying into their notes.
-\authorcol{While some scales can be rephrased in terms of chance, others, such as how scientific the approach is, were more difficult to reframe.
-These questions also suffered from scale compression, which may result from an issue of calibration.
-While a continuous scale would potentially alleviate the limiting effect of categories, the issue of calibration may still remain: individuals may still choose a cluster of high values on the continuous scale.
-The process of scale calibration can be seen in the game} *Wavelength* [@wavelength].
-\authorcol{In this game, one team member tries to get the rest of the team to select values on a continuous scale.
-Individuals attempt to calibrate their scales to each other through discussion, sometimes setting end points that they reference to.
-We wish to have a similar process without discussion, by giving participants end points to compare their experience to in terms of scientificity.}]
-In consolidating the information learned from these sub-studies, we returned to the initial study with significant changes designed to assist in elucidating the relationship between the inclusion of an algorithm in courtroom testimony and juror perception.
+These diverging avenues of investigation will again merged for a final study (in progress).
+The new cartoon study format was well received by participants, the response type study indicates that phrasing questions in terms of chance (i.e. "1 chance in 10 that...") reduced/eliminated(?) the scale compression seen in Likert scales, and the text analysis provides useful information about what participants found worth copying into their notes.
+<!-- \authorcol{While some scales can be rephrased in terms of chance, others, such as how scientific the approach is, were more difficult to reframe. -->
+<!-- These questions also suffered from scale compression, which may result from an issue of calibration. -->
+<!-- While a continuous scale would potentially alleviate the limiting effect of categories, the issue of calibration may still remain: individuals may still choose a cluster of high values on the continuous scale. -->
+<!-- The process of scale calibration can be seen in the game} *Wavelength* [@wavelength]. -->
+<!-- \authorcol{In this game, one team member tries to get the rest of the team to select values on a continuous scale. -->
+<!-- Individuals attempt to calibrate their scales to each other through discussion, sometimes setting end points that they reference to. -->
+<!-- We wish to have a similar process without discussion, by giving participants end points to compare their experience to in terms of scientificity.}] -->
+In consolidating the information learned from these sub-studies, we will return to the initial study with significant changes designed to assist in elucidating the relationship between the inclusion of an algorithm in courtroom testimony and juror perception.
 
-## Methods
+<!-- ## Methods -->
 
-The same initial study scenario is used, as explained in Chapter \@ref(study1): Richard Cole is accused of attempted robbery, and the only evidence presented to study participants is the bullet comparison between the bullet recovered from the scene and Cole's gun.
-Independent variables include the examiner's conclusion (match/not a match/inconclusive), the use of demonstrative evidence, such as images (yes/no), and the use of the bullet matching algorithm, with additional testimony from an algorithm expert (yes/no).
-The study was reformatted to resemble the format of the response type study - including cartoons, speech bubbles, color-coding, and jury instructions.
-This also involved streamlining the testimony transcript to come from a single document, in order to reduce the chance of confounding typos.
-Questions with regard to reliability, scientificity, and credibility were re-worded from Likert scale format to chance format.
+<!-- The same initial study scenario is used, as explained in Chapter \@ref(study1): Richard Cole is accused of attempted robbery, and the only evidence presented to study participants is the bullet comparison between the bullet recovered from the scene and Cole's gun. -->
+<!-- Independent variables include the examiner's conclusion (match/not a match/inconclusive), the use of demonstrative evidence, such as images (yes/no), and the use of the bullet matching algorithm, with additional testimony from an algorithm expert (yes/no). -->
+<!-- The study was reformatted to resemble the format of the response type study - including cartoons, speech bubbles, color-coding, and jury instructions. -->
+<!-- This also involved streamlining the testimony transcript to come from a single document, in order to reduce the chance of confounding typos. -->
+<!-- Questions with regard to reliability, scientificity, and credibility were re-worded from Likert scale format to chance format. -->
 
-### Study Format
+<!-- ### Study Format -->
 
-As in Chapter \@ref(study1), the trial scenario was based on @garrettMockJurorsEvaluation2020, where a bullet is recovered from an attempted robbery of a convenience store and compared to a gun found in the defendant's vehicle in a routine traffic stop.
-While the initial study specified that this bullet comparison was the only evidence linking the defendant (Richard Cole) to the crime scene, in this follow up study we instead specified that the transcript provides "select evidence" presented at trial.
-Because the examiner may reach an inconclusive or non-match decision, the bullet evidence may not carry enough weight to justify a trial if no other evidence is present.
-However, to stay consistent with the initial study, the scenario description included the fact that the store clerk was unable to make an identification because the robber was wearing a ski mask.
-As before, participants were asked to use the study notepad to record relevant information, as they would be unable to re-read the testimony.
-Participants were then provided with mock court testimony complete with cartoon figures and speech bubbles, followed by questions regarding their impression of the witnesses and the evidence presented.
-While the initial study referred to the firearms examiner and algorithm developer as expert witnesses, this language was removed to coincide with recommendations from @OpinionEvidence.
-This transcript included witness testimony, cross examination, jury questions in reference to error rates, and jury instructions on witness testimony.
-The transcript also included additional cross examination on the subjectivity of the firearm examiner's bullet comparison.
-Additional testimony was also included for the swearing in of the witnesses, in order to more clearly indicate that they were testifying for the prosecution (the initial study started after the witness had been called and sworn in).
-The witness then testified to their qualifications and the bullet matching process before describing their comparison of the fired evidence to the test fire from the defendant's gun and the subsequent results.
-In the scenarios that included the algorithm, the firearm examiner would describe the algorithm's match score for the comparison, and an interpretation of how the match score corresponds to their personal bullet comparison.
-The examiner conclusions are described as follows: the match condition includes correspondence in class and individual characteristics; the inconclusive condition includes correspondence in class characteristics, but not enough correspondence in individual characteristics to declare a match; and the exclusion condition included correspondence in class characteristics, but disagreement in individual characteristics.
-Demonstrative evidence included images of rifling [@105mmTank2005;@gremi], a bullet comparison, and algorithm images (shown in Chapter \@ref(study1). 
-Cross examination consists of questions regarding the ability to uniquely identify the source of the bullet, and an increased number of questions regarding the subjectivity of the bullet comparison.
+<!-- As in Chapter \@ref(study1), the trial scenario was based on @garrettMockJurorsEvaluation2020, where a bullet is recovered from an attempted robbery of a convenience store and compared to a gun found in the defendant's vehicle in a routine traffic stop. -->
+<!-- While the initial study specified that this bullet comparison was the only evidence linking the defendant (Richard Cole) to the crime scene, in this follow up study we instead specified that the transcript provides "select evidence" presented at trial. -->
+<!-- Because the examiner may reach an inconclusive or non-match decision, the bullet evidence may not carry enough weight to justify a trial if no other evidence is present. -->
+<!-- However, to stay consistent with the initial study, the scenario description included the fact that the store clerk was unable to make an identification because the robber was wearing a ski mask. -->
+<!-- As before, participants were asked to use the study notepad to record relevant information, as they would be unable to re-read the testimony. -->
+<!-- Participants were then provided with mock court testimony complete with cartoon figures and speech bubbles, followed by questions regarding their impression of the witnesses and the evidence presented. -->
+<!-- While the initial study referred to the firearms examiner and algorithm developer as expert witnesses, this language was removed to coincide with recommendations from @OpinionEvidence. -->
+<!-- This transcript included witness testimony, cross examination, jury questions in reference to error rates, and jury instructions on witness testimony. -->
+<!-- The transcript also included additional cross examination on the subjectivity of the firearm examiner's bullet comparison. -->
+<!-- Additional testimony was also included for the swearing in of the witnesses, in order to more clearly indicate that they were testifying for the prosecution (the initial study started after the witness had been called and sworn in). -->
+<!-- The witness then testified to their qualifications and the bullet matching process before describing their comparison of the fired evidence to the test fire from the defendant's gun and the subsequent results. -->
+<!-- In the scenarios that included the algorithm, the firearm examiner would describe the algorithm's match score for the comparison, and an interpretation of how the match score corresponds to their personal bullet comparison. -->
+<!-- The examiner conclusions are described as follows: the match condition includes correspondence in class and individual characteristics; the inconclusive condition includes correspondence in class characteristics, but not enough correspondence in individual characteristics to declare a match; and the exclusion condition included correspondence in class characteristics, but disagreement in individual characteristics. -->
+<!-- Demonstrative evidence included images of rifling [@105mmTank2005;@gremi], a bullet comparison, and algorithm images (shown in Chapter \@ref(study1).  -->
+<!-- Cross examination consists of questions regarding the ability to uniquely identify the source of the bullet, and an increased number of questions regarding the subjectivity of the bullet comparison. -->
 
-An algorithm developer also testified if the algorithm was used in the testimony.
-The testimony would begin with their qualifications and relationship with the algortihm, before the developer describes the process of obtaining a match score.
-As in the initial study, this algorithm description matches that of @hare2017automatic.
-They then mention the algorithm's publication history, the open source nature of the code, and if the algorithm can be applied to the type of gun used in this case.
-In cross examination, they were asked about the relative newness of the algorithm and subjective calibration aspects, as well as limitations in terms of the types of bullets that the algorithm can evaluate.
-The testimony from the initial study is found in Appendix \@ref(testimony-transcripts), while additional modifications are described in Appendix \@ref(study-2-changes)
+<!-- An algorithm developer also testified if the algorithm was used in the testimony. -->
+<!-- The testimony would begin with their qualifications and relationship with the algortihm, before the developer describes the process of obtaining a match score. -->
+<!-- As in the initial study, this algorithm description matches that of @hare2017automatic. -->
+<!-- They then mention the algorithm's publication history, the open source nature of the code, and if the algorithm can be applied to the type of gun used in this case. -->
+<!-- In cross examination, they were asked about the relative newness of the algorithm and subjective calibration aspects, as well as limitations in terms of the types of bullets that the algorithm can evaluate. -->
+<!-- The testimony from the initial study is found in Appendix \@ref(testimony-transcripts), while additional modifications are described in Appendix \@ref(study-2-changes) -->
 
-Participants are then asked to consider the testimony and respond to a set of questions.
-They are asked if they would choose to convict, based on the 'beyond a reasonable doubt' threshold.
-Unlike the initial study, participants are also asked if they personally believe that the defendant is guilty.
-As demonstrated in Chapter \@ref(study2), these two questions can act in conjunction to judge how participants perceive the strength of evidence in the case - those who personally believe the defendant was guilty but choose not to convict are placing the evidential strength somewhere between enough evidence to sway their personal belief, but not enough evidence to say the defendant is guilty 'beyond a reasonable doubt'.
-Because of the scale compression found in Likert scales in the initial study, the questions regarding the strength of evidence, the credibility of the examiners, the reliability and scientificity of the evidence, and the understanding of the procedures were changed.
-Instead, questions were formed in terms of chance scales, as described in Chapter \@ref(study2). 
-<!-- **[TO BE DEVELOPED]**. -->
-Chapter \@ref(study2) also demonstrates some of the limitations of asking participants to give a probability that the defendant committed the crime - in the match condition, responses are clustered at the end of the scale. 
-<!-- **[LOOK INTO A WAY TO CHANGE THE SCALING ON THE SLIDER?]** -->
-Participants were also asked to answer two attention check questions: one regarding the caliber of the recovered bullet to ensure the participant read the testimony, and another asking for the participant to select a specific value to ensure the participant read the question.
-Participants who received the algorithm were asked additional questions regarding the algorithm evidence, as well as their perception of the the evidence as a whole (considering both the algorithm and the firearm examiner's comparison)
+<!-- Participants are then asked to consider the testimony and respond to a set of questions. -->
+<!-- They are asked if they would choose to convict, based on the 'beyond a reasonable doubt' threshold. -->
+<!-- Unlike the initial study, participants are also asked if they personally believe that the defendant is guilty. -->
+<!-- As demonstrated in Chapter \@ref(study2), these two questions can act in conjunction to judge how participants perceive the strength of evidence in the case - those who personally believe the defendant was guilty but choose not to convict are placing the evidential strength somewhere between enough evidence to sway their personal belief, but not enough evidence to say the defendant is guilty 'beyond a reasonable doubt'. -->
+<!-- Because of the scale compression found in Likert scales in the initial study, the questions regarding the strength of evidence, the credibility of the examiners, the reliability and scientificity of the evidence, and the understanding of the procedures were changed. -->
+<!-- Instead, questions were formed in terms of chance scales, as described in Chapter \@ref(study2).  -->
+<!-- **[TO BE DEVELOPED]**. --> 
+<!-- Chapter \@ref(study2) also demonstrates some of the limitations of asking participants to give a probability that the defendant committed the crime - in the match condition, responses are clustered at the end of the scale.  -->
+<!-- **[LOOK INTO A WAY TO CHANGE THE SCALING ON THE SLIDER?]** --> 
+<!-- Participants were also asked to answer two attention check questions: one regarding the caliber of the recovered bullet to ensure the participant read the testimony, and another asking for the participant to select a specific value to ensure the participant read the question. -->
+<!-- Participants who received the algorithm were asked additional questions regarding the algorithm evidence, as well as their perception of the the evidence as a whole (considering both the algorithm and the firearm examiner's comparison) -->
 
 
 

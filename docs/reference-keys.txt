@@ -188,9 +188,6 @@ notepad-analysis-1
 participant-comments
 conclusion-2
 finalstudy
-introduction-2
-methods-2
-study-format-2
 testimony-transcripts
 firearm-examiner
 algorithm-expert
