@@ -67,7 +67,6 @@ fig:fixedlike
 fig:freelike
 fig:opinionchanceplot
 fig:questorder
-tab:ordertest
 fig:opinioncomp
 fig:likecomp1
 fig:likecomp1scale

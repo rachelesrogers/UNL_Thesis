@@ -26,11 +26,7 @@ Additional cross examination testimony with regards to the firearms examiner's i
 As in the initial study, these changes were directly related to trial transcripts or resources.
 The transcript changes for the second study can be found in Appendix \@ref(study-2-changes).
 
-In the initial study, some participants were confused about \authorcol{the witness testimony}, as evidenced by their written comments:
-
->\authorcol{"I don't know that much about court stuff, but why would the prosucution bring the firearms expert when he didn't think the defendant's gun fired the shot? I was confused about that."}
-
->\authorcol{"I'm not sure why the prosecution would have even called that witness because they basically said there was no conclusive bullet evidence"}
+In the initial study, some participants were confused about \authorcol{the witness testimony:}
 
 >\authorcol{"Very difficult for juror to understand and remember the scientific evidence."}
 
@@ -706,7 +702,7 @@ microstudy_response_order %>%
 
 ```
 
-```{r, echo=FALSE,message=FALSE, warning=FALSE}
+```{r, echo=FALSE,message=FALSE, warning=FALSE, eval=FALSE}
 
 bet_test <- 
   chisq.test(table(microstudy_response_order[microstudy_response_order$question=="betting",]$sequential_page))
@@ -745,8 +741,7 @@ order_test_df %>%  pander(style = "grid",
 ```
 
 Figure \@ref(fig:questorder) \authorcol{depicts the order of the questions (the first three questions, conviction decision, comments on the defendant, and opinion of guilt, were not randomized).
-The page on which each question appeared seems to be fairly random, with roughly equal proportions.
-I performed Chi-Square tests to test for equality across categories, and the p-values from these tests are shown in Table} \@ref(tab:ordertest)\authorcol{, which indicates no significant difference between page number for any of the question categories.}
+The page on which each question appeared seems to be fairly random, with roughly equal proportions.}
 
 #### Consistency with Opinion of Guilt
 
@@ -1736,8 +1731,8 @@ The correlation between the probabilities is `r round(cor(as.numeric(microstudy_
 ggplot(microstudy_clean, aes(x=betting,
                              y=as.numeric(hidden_probability))) +
   stat_density_2d_filled(contour_var = "ndensity")+
-  # stat_density_2d(geom = "point", 
-                  # aes(size = log(after_stat(density))), n = 20, contour = FALSE)+
+  # stat_density_2d(geom = "point",
+  #                 aes(size = log(after_stat(density))), n = 20, contour = FALSE)+
   # stat_density_2d(geom = "raster", aes(fill = log(after_stat(density))), contour = FALSE) +
   # geom_point()+
   # geom_density_2d(linewidth = 0.25, colour = "black")+
