@@ -677,6 +677,77 @@ Due to this potential difficulty in interpretation, response scales must be comp
 @schwarzSAGEHandbookMeasurement2010 \authorcol{indicate that order matters in partially-redundant questions, where participants may assume that later questions are asking about different facets than the initial question.}
 Because individuals may be influenced by the order of the questions (such as choosing a numeric chance value that aligns with their multiple choice selection), the order was randomized and recorded \svp{so that we are averaging across any potential biasing effects due to question order}.
 
+```{r}
+#| questorder,
+#| fig.cap= "Order of Study Questions",
+#| fig.width= 12,
+#| fig.height= 5,
+#| fig.align= "center",
+#| echo= FALSE,
+#| eval= TRUE,
+#| warning= FALSE,
+#| message= FALSE
+
+microstudy_response_order <- read_csv("data/microstudy_response_order.csv")
+
+microstudy_response_order <- microstudy_response_order %>%
+  group_by(randomnumber, start_time) %>%
+  arrange(page) %>%
+  mutate(sequential_page = 1:n())
+
+# table(microstudy_response_order$page, microstudy_response_order$sequential_page)
+
+microstudy_response_order %>%
+  subset(!(question %in% c("convict", "def_comment", "guilt_opinion", "comments"))) %>%
+  ggplot(aes(x=question, fill=as.factor(sequential_page)))+
+  geom_bar() + labs(fill="Page")+
+  scale_fill_brewer()+
+  theme_bw()
+
+```
+
+```{r, echo=FALSE,message=FALSE, warning=FALSE}
+
+bet_test <- 
+  chisq.test(table(microstudy_response_order[microstudy_response_order$question=="betting",]$sequential_page))
+
+vis_prob_test <- 
+  chisq.test(table(microstudy_response_order[microstudy_response_order$question=="visible_probability",]$sequential_page))
+
+hid_prob_test <- 
+  chisq.test(table(microstudy_response_order[microstudy_response_order$question=="hidden_probability",]$sequential_page))
+
+fixed_chance_test <- 
+  chisq.test(table(microstudy_response_order[microstudy_response_order$question=="chances_fixed",]$sequential_page))
+
+check_test <- 
+  chisq.test(table(microstudy_response_order[microstudy_response_order$question=="check",]$sequential_page))
+
+strength_test <- 
+  chisq.test(table(microstudy_response_order[microstudy_response_order$question=="evidence_strength",]$sequential_page))
+
+num_chance_test <- 
+  chisq.test(table(microstudy_response_order[microstudy_response_order$question=="numeric_chance",]$sequential_page))
+
+order_test_df <- data.frame(Question = 
+                              c("Betting", "Hidden Probability", 
+                                "Visible Probability", "Fixed Chance", "Check", 
+                                "Strength", "Numeric Chance"),
+                            Pvalue = c(bet_test$p.value, hid_prob_test$p.value,
+                                       vis_prob_test$p.value,
+                                        fixed_chance_test$p.value, check_test$p.value,
+                                        strength_test$p.value, 
+                                       num_chance_test$p.value))
+
+order_test_df %>%  pander(style = "grid",
+         caption = "(\\#tab:ordertest) Chi-Squared Tests for Question Order", justify = 'left')
+
+```
+
+Figure \@ref(fig:questorder) \authorcol{depicts the order of the questions (the first three questions, conviction decision, comments on the defendant, and opinion of guilt, were not randomized).
+The page on which each question appeared seems to be fairly random, with roughly equal proportions.
+I performed Chi-Square tests to test for equality across categories, and the p-values from these tests are shown in Table} \@ref(tab:ordertest)\authorcol{, which indicates no significant difference between page number for any of the question categories.}
+
 #### Consistency with Opinion of Guilt
 
 ```{r}

@@ -2699,6 +2699,50 @@ Due to this potential difficulty in interpretation, response scales must be comp
 Schwarz (2010) \authorcol{indicate that order matters in partially-redundant questions, where participants may assume that later questions are asking about different facets than the initial question.}
 Because individuals may be influenced by the order of the questions (such as choosing a numeric chance value that aligns with their multiple choice selection), the order was randomized and recorded \svp{so that we are averaging across any potential biasing effects due to question order}.
 
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/questorder-1} 
+
+}
+
+\caption{Order of Study Questions}\label{fig:questorder}
+\end{figure}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3056}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.1250}}@{}}
+\caption{\label{tab:ordertest} Chi-Squared Tests for Question Order}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Question
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pvalue
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Question
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pvalue
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Betting & 0.1564 \\
+Hidden Probability & 0.627 \\
+Visible Probability & 0.5304 \\
+Fixed Chance & 0.7132 \\
+Check & 0.3463 \\
+Strength & 0.2733 \\
+Numeric Chance & 0.3089 \\
+\end{longtable}
+
+Figure \ref{fig:questorder} \authorcol{depicts the order of the questions (the first three questions, conviction decision, comments on the defendant, and opinion of guilt, were not randomized).
+The page on which each question appeared seems to be fairly random, with roughly equal proportions.
+I performed Chi-Square tests to test for equality across categories, and the p-values from these tests are shown in Table} \ref{tab:ordertest}\authorcol{, which indicates no significant difference between page number for any of the question categories.}
+
 \hypertarget{consistency-with-opinion-of-guilt}{%
 \subsubsection{Consistency with Opinion of Guilt}\label{consistency-with-opinion-of-guilt}}
 
@@ -3814,7 +3858,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-03-05 14:22:08.571459.
+This version of the thesis was generated on 2024-03-05 20:46:08.599892.
 
 The computational environment that was used to generate this version is as follows:
 
