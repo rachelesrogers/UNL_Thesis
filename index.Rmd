@@ -154,11 +154,11 @@ include_graphics(path = "images/microscope.jpg")
 ```
 
 \authorcol{Firearms examiners use comparison microscopes, such as} Figure \@ref(fig:microscope), \authorcol{to compare these striation marks between two bullets, shown in the top right of the figure.}
-An early attempt to distinguish guns based on the rifling can be found in two issues of "The Saturday Evening Post" from 1925, in an article entitled “Fingerprinting Bullets".
-<!-- whose title demonstrates an acceptance of fingerprinting by the public that wouldn't be statistically valid until... -->
+An early attempt to distinguish guns based on the rifling can be found in two issues of "The Saturday Evening Post" from 1925, in an article entitled “Fingerprinting Bullets"\authorcol{, whose title demonstrates an acceptance of fingerprinting by the public that wouldn't considered by PCAST foundationally valid until an FBI black box study in 2011} [@pcast, 91].
 Stout describes the wrongful conviction and subsequent exoneration of Stielow, who was accused of murder [@SaturdayEveningPost]. 
 At the trial where Stielow was found guilty, an expert for the prosecution stated that there were nine abnormalities on Stielow's gun that corresponded with marks on the fired bullet [@SaturdayEveningPost, 7].
 It was later established that the bullet found at the crime scene indicated the gun was missing a land – leaving a distinctive pattern – while the alleged gun showed no such evidence; the alleged gun also showed evidence of not being fired in more than 3 years [@SaturdayEveningPost]. 
+
 While this trial did not require 'uniquely identifying' marks to rule out the alleged weapon (only a mismatch in lands), it motivated Charles Waite to attempt to catalog the manufacturing methods of guns by various companies around the country, with the goal of connecting a gun to its manufacturer. 
 Waite soon encountered issues due to the multitude of guns produced abroad, as well as “cheap knock-offs” with no clear record, making it difficult to trace a gun or bullet to its manufacturer [@SaturdayEveningPosta].
 While Waite's early attempt to match barrel markings to specific gun brands was focused on the creation of a 'database', more recent firearms identification methods have relied on the direct comparison of bullets, such as comparing fired evidence to a suspected gun.
