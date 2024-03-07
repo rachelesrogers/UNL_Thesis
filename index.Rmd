@@ -105,7 +105,8 @@ There are many forms of forensic evidence that have been generally accepted \aut
 There are even some methods - such as bite mark analysis - that have been used in the courtroom as evidence, but would later be shown to not be scientifically valid [@pcast, 86].
 When a \authorcol{defendant's} future hangs in the balance of such evidence, we must know that the type of evidence being presented is something that can be relied upon, and that the jury can weigh it appropriately when reaching a conclusion.
 One way to assure that these goals are met is through the use of statistical methods in analysis, which allows for the quantification of comparisons and the establishment of accurate error rate calculations.
-However, \authorcol{several studied have indicated that} these statistical methods \authorcol{are} more difficult for jurors to understand.
+However, \authorcol{several studies have indicated that} these statistical methods \authorcol{are} more difficult for jurors to understand.
+
 By testing jury perception in bullet matching, and developing tools for assessing jury perception, we hope to expand what can be learned about jury perception in order to present statistical methods in a way that can be understood and used to make decisions by the wider public.
 Bullet matching has a history similar to many areas of forensic pattern evidence, and we have to statistically validate its use before it should be used in the courtroom or treated as reliable evidence.
 However, we must also establish that jurors can treat the evidence with appropriate weight.
@@ -113,52 +114,51 @@ However, we must also establish that jurors can treat the evidence with appropri
 ## Bullet Matching Background
 
 In firearms evidence, there are two pieces of fired evidence that may be evaluated: the cartridge casing and the bullet itself. 
-The structure of the bullet is shown in Figure \@ref(fig:structure), provided by @glrx.
-Striation marks are created on the bullet as it travels down the barrel due to rifling, defects, and impurities [@hare2017automatic], while the head of the cartridge casing is marked by the breech face and aperture sheer [@chapnick2021].
-```{r structure, echo=FALSE, fig.cap="Image of bullet structure. 1 indicates the bullet, 2 indicates the cartridge casing, 3 indicates the powder, 4 indicates the head of the cartridge casing, and 5 indicates the primer.", out.width="50%", fig.align="center"}
+The structure of the bullet is shown in Figure \@ref(fig:structure) [@glrx].
+Striation marks are created on the bullet as it travels down the barrel due to rifling, defects, and impurities [@hare2017automatic], while the head of the cartridge casing is marked by the breech face \authorcol{(a part of the gun located at the head of the cartridge case when firing} [@FirearmToolmarkIdentificationa]) and aperture sheer \authorcol{(created by the movement of the cartridge case against the hole in the breech face for the firing pin} [@cartridgeproc]) [@chapnick2021].
+```{r structure, echo=FALSE, fig.cap="Image of bullet structure. 1 indicates the bullet, 2 indicates the cartridge casing, 3 indicates the powder, 4 indicates the head of the cartridge casing, and 5 indicates the primer. Glrx (2021).", out.width="50%", fig.align="center"}
 include_graphics(path = "images/Cartridge_cross_section.png")
 ```
 
 The practice of bullet matching is based on the concept that rifling in a gun barrel can produce uniquely identifying marks on bullets fired from the gun, due to random variation [@pcast, 104]. 
-\authorcol{Rifling is defined as the spiral ridges in a gun barrel that stabalize the bullet, as shown in Figure} \@ref(fig:rifling) \authorcol{, from} @105mmTank2005.
+\authorcol{Rifling is defined as the spiral ridges in a gun barrel that stabilize the bullet, as shown in Figure} \@ref(fig:rifling)[@105mmTank2005].
 \authorcol{The raised areas are known as lands, while the depressed areas are known as grooves.}
 
-```{r rifling, echo=FALSE, fig.cap="Cross section of a gun. The rifling is the spiral pattern of lands (raised portions) and grooves (indented portions).", out.width="50%", fig.align="center"}
+```{r rifling, echo=FALSE, fig.cap="Cross section of a gun. The rifling is the spiral pattern of lands (raised portions) and grooves (indented portions). baku13 (2005).", out.width="50%", fig.align="center"}
 include_graphics(path = "images/rifling.jpg")
 ```
 
-\authorcol{When a bullet is fired, it travels down the gun barrel and marks from the rifling are scratched into the bullet's surface.}
-\authorcol{This results in indented areas that correspond to the land impressions, as shown in Figure} \@ref(fig:fired) \authorcol{, provided by} @gremi.
+\authorcol{When a bullet is fired, it travels down the gun barrel and marks from the rifling are scratched into the bullet's surface.
+This results in indented areas that correspond to the land impressions, as shown in Figure} \@ref(fig:fired)[@gremi].
 
-```{r fired, echo=FALSE, fig.cap="Fired bullet. Indented portion correspond to the gun lands.", out.width="50%", fig.align="center"}
+```{r fired, echo=FALSE, fig.cap="Fired bullet. Indented portion correspond to the gun lands. Gremi-ch (2009).", out.width="50%", fig.align="center"}
 include_graphics(path = "images/fired_bullet.jpg")
 ```
 
-\authorcol{The diagram in Figure} \@ref(fig:fireddiagram) from @hare2017automatic \authorcol{demonstrates the structure of these land and groove impressions on a bullet.}
-\authorcol{As there are multiple lands on a gun barrel, this results in multiple land impressions on a fired bullet.}
+\authorcol{The diagram in Figure} \@ref(fig:fireddiagram) from @hare2017automatic \authorcol{demonstrates the structure of these land and groove impressions on a bullet.
+As there are multiple lands on a gun barrel, this results in multiple land impressions on a fired bullet.}
 
-```{r fireddiagram, echo=FALSE, fig.cap="Fired bullet. Indented portion correspond to the gun lands.", out.width="50%", fig.align="center"}
+```{r fireddiagram, echo=FALSE, fig.cap="Diagram of a fired bullet. Hare et al. (2017).", out.width="50%", fig.align="center"}
 include_graphics(path = "images/bulletdiagram.jpg")
 ```
 
 \authorcol{Striation marks, or scratches in the bullet surface caused by the rifling, can be seen on these land impressions, as shown in Figure} \@ref(fig:firedland) \authorcol{(provided by} @hare2017automatic). 
 \authorcol{Firearms examiners can compare these striation marks across bullets in order to determine if they were fired from the same gun.}
 
-```{r firedland, echo=FALSE, fig.cap="Fired bullet. Indented portion correspond to the gun lands.", out.width="50%", fig.align="center"}
+```{r firedland, echo=FALSE, fig.cap="Side view of a fired bullet, demonstrating striation marks on the bullet's lands. Hare et al. (2017).", out.width="50%", fig.align="center"}
 include_graphics(path = "images/bulletland.jpg")
 ```
 
-\authorcol{Firearms examiners use comparison microscopes, such as} Figure \@ref(fig:microscope), \authorcol{to compare these striation marks between two bullets, shown in the top right of the figure.}
 ```{r microscope, echo=FALSE, fig.cap="Image of a comparison microscope and aligned bullets", out.width="50%", fig.align="center"}
 include_graphics(path = "images/microscope.jpg")
 ```
 
-
+\authorcol{Firearms examiners use comparison microscopes, such as} Figure \@ref(fig:microscope), \authorcol{to compare these striation marks between two bullets, shown in the top right of the figure.}
 An early attempt to distinguish guns based on the rifling can be found in two issues of "The Saturday Evening Post" from 1925, in an article entitled “Fingerprinting Bullets".
 <!-- whose title demonstrates an acceptance of fingerprinting by the public that wouldn't be statistically valid until... -->
 Stout describes the wrongful conviction and subsequent exoneration of Stielow, who was accused of murder [@SaturdayEveningPost]. 
 At the trial where Stielow was found guilty, an expert for the prosecution stated that there were nine abnormalities on Stielow's gun that corresponded with marks on the fired bullet [@SaturdayEveningPost, 7].
-It was later found that the bullet found at the crime scene indicated the gun was missing a land – leaving a distinctive pattern – while the alleged gun showed no such evidence; the alleged gun also showed evidence of not being fired in more than 3 years [@SaturdayEveningPost]. 
+It was later established that the bullet found at the crime scene indicated the gun was missing a land – leaving a distinctive pattern – while the alleged gun showed no such evidence; the alleged gun also showed evidence of not being fired in more than 3 years [@SaturdayEveningPost]. 
 While this trial did not require 'uniquely identifying' marks to rule out the alleged weapon (only a mismatch in lands), it motivated Charles Waite to attempt to catalog the manufacturing methods of guns by various companies around the country, with the goal of connecting a gun to its manufacturer. 
 Waite soon encountered issues due to the multitude of guns produced abroad, as well as “cheap knock-offs” with no clear record, making it difficult to trace a gun or bullet to its manufacturer [@SaturdayEveningPosta].
 While Waite's early attempt to match barrel markings to specific gun brands was focused on the creation of a 'database', more recent firearms identification methods have relied on the direct comparison of bullets, such as comparing fired evidence to a suspected gun.
