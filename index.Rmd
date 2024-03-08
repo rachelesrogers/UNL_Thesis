@@ -168,28 +168,17 @@ While Waite's early attempt to match barrel markings to specific gun brands was 
 ### Subjectivity of Comparisons
 <!-- Structure of this section may be difficult to follow, and importance of information not always obvious. Review for continuity and structure -->
 
-One of the issues listed in the article still resonates today: disagreement among experts; this can be especially problematic in countries that use the adversarial judicial system, where experts can testify on the side of the prosecution or the defense [@SaturdayEveningPost, 6]. 
-\authorcol{This could lead to multiple experts with differing conclusions on the same comparison, and are not guaranteed to be unbiased.}
-Because there is no quantitative score describing the strength of a bullet match, it is possible for experts to use different criterion when making a conclusion about the same evidence. 
-Disagreement among experts concerning strength of evidence can be found within a single lab, where experts undergo the same training, use the same equipment and operate under the same procedures, as demonstrated by @montani2019. <!-- As well as in studies of bullet comparisons. Find sources -->
-@montani2019 discuss the importance of independent verification, and how to present results when experts do not agree.
-They suggest that, when experts disagree, a third expert should be consulted, and all conclusions should be documented and presented as evidence.
-In the case of bullet comparison studies, researchers ask examiners to make conclusions regarding the comparison of several bullets or cartridge cases, and experts do not always agree.
+\authorcol{A major issue in firearms comparison is the subjectivity of comparisons.
+Because there is no objective criteria used to determine what constitutes a 'match' between two samples, experts may view the same evidence and arrive at different conclusions, potentially due to their subjective comparison,differing laboratory procedures, or biases.
+Some earlier researchers attempted to quantify the bullet matching process through the use of consecutively matching striae, but this process has yet to become standard.}
+
+One of the issues discussed in @SaturdayEveningPost still resonates today: disagreement among experts; this can be especially problematic in countries that use the adversarial judicial system, where experts can testify on the side of the prosecution or the defense. 
+\authorcol{This could lead to multiple, potentially baised, experts with differing conclusions on the same comparison.}
 @nationalresearchcouncilusStrengtheningForensicScience2009 states that subjectivity is involved in determining “sufficient agreement” among firearms [@nationalresearchcouncilusStrengtheningForensicScience2009, 155].
 This issues is also reflected in @imwinkelried, who suggest that bullet identification is based more on personal experience than on the scientific method. 
 In plain terms, there is not a set standard for what constitutes sufficient agreement between compared evidence.
-
-Procedural issues may also lead to differing expert opinions across laboratories; one system may not allow an exclusion to be documented if the class characteristics match, while another system may not have such a limitation [@baldwin2014, 6]. 
-In their study, this led to 45 of 218 examiners labeling all different source comparisons as inconclusive, and 96 examiners labeling none of the comparisons as inconclusive [@baldwin2014, 16].
-Without a standardized procedure, experts \authorcol{may} evaluate the evidence similarly when comparing two bullets, but must draw different conclusions based on the procedures of their laboratory. 
-This results in inconsistencies in results based on location, which are compounded with inconsistencies that may arise due to the subjectivity of bullet comparisons. 
-<!-- Reference the lack of national standardization specifically -->
-
-Aside from the difference in evaluation, subjectivity can lead to bias in pattern recognition. 
-The need for an unbiased method of evaluation is aptly demonstrated by the case of the Madrid bombing, in which the FBI incorrectly matched a latent fingerprint to the incorrect individual, despite the use of a verification process [@stacey]. 
-The individual incorrectly identified was a Muslim from Oregon who had been on an FBI watch list [@kassinForensicConfirmationBias2013, 42]. 
-@kassinForensicConfirmationBias2013 suggest that this incorrect conclusion may relate to confirmation bias, and outline other contributing factors, such as extraneous details, external pressures, and order of presentation. 
-While this example is based on fingerprint analysis, the same issues of subjectivity are present in bullet matching.
+Because there is no quantitative score describing the strength of a bullet match, it is possible for experts to use different criterion when making a conclusion about the same evidence. 
+Disagreement among experts concerning strength of evidence can even be found within a single lab, where experts undergo the same training, use the same equipment and operate under the same procedures, as demonstrated by @montani2019. <!-- As well as in studies of bullet comparisons. Find sources -->
 
 Research has been conducted to better understand the factors that drive firearms examiners to make their conclusions.
 The use of virtual comparisons allowed @chapnick2021 to investigate what examiners considered important when evaluating cartridge cases by including a feature to highlight important aspects of comparisons. 
@@ -197,6 +186,23 @@ They found that examiners generally tended to highlight the same features when m
 However, not all examiners who correctly identified the samples used 'irregularly shaped marks' to distinguish the known matches: the number was around 60%-70% [@chapnick2021, 6].
 This is far from a unanimous consensus on important features for determining a match in this type of firearm evidence.
 <!-- What about bullet matching? -->
+<!-- CMS not standard -->
+
+Procedural issues may also lead to differing expert opinions across laboratories; one system may not allow an exclusion to be documented if the class characteristics match, while another system may not have such a limitation [@baldwin2014, 6]. 
+In their study, this led to 45 of 218 examiners labeling all different source comparisons as inconclusive, and 96 examiners labeling none of the comparisons as inconclusive [@baldwin2014, 16].
+Without a standardized procedure, experts \authorcol{may} evaluate the evidence similarly when comparing two bullets, but must draw different conclusions based on the procedures of their laboratory. 
+This results in inconsistencies in results based on location, which are compounded with inconsistencies that may arise due to the subjectivity of bullet comparisons. 
+<!-- Reference the lack of national standardization specifically -->
+
+@montani2019 discuss the importance of independent verification, and how to present results when experts do not agree.
+They suggest that, when experts disagree, a third expert should be consulted, and all conclusions should be documented and presented as evidence.
+In the case of bullet comparison studies, researchers ask examiners to make conclusions regarding the comparison of several bullets or cartridge cases, and experts do not always agree.
+
+Aside from the difference in evaluation, subjectivity can lead to bias in pattern recognition. 
+The need for an unbiased method of evaluation is aptly demonstrated by the case of the Madrid bombing, in which the FBI incorrectly matched a latent fingerprint to the incorrect individual, despite the use of a verification process [@stacey]. 
+The individual incorrectly identified was a Muslim from Oregon who had been on an FBI watch list [@kassinForensicConfirmationBias2013, 42]. 
+@kassinForensicConfirmationBias2013 suggest that this incorrect conclusion may relate to confirmation bias, and outline other contributing factors, such as extraneous details, external pressures, and order of presentation. 
+While this example is based on fingerprint analysis, the same issues of subjectivity are present in bullet matching.
 
 While there are issues in subjective bullet matching, there have been attempts to quantify the method. 
 @biasotti1959 suggests that statistical methods can be used in order to determine whether two bullets were fired from the same gun. 
