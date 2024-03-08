@@ -166,8 +166,6 @@ While Waite's early attempt to match barrel markings to specific gun brands was 
 ## Issues in Pattern Analysis
 
 ### Subjectivity of Comparisons
-<!-- Structure of this section may be difficult to follow, and importance of information not always obvious. Review for continuity and structure -->
-<!-- Has been changed. Needs to be read through -->
 
 \authorcol{A major issue in firearms comparison is the subjectivity of comparisons.
 Because there is no objective criteria used to determine what constitutes a 'match' between two samples, experts may view the same evidence and arrive at different conclusions, potentially due to their subjective comparison,differing laboratory procedures, or biases.
@@ -188,14 +186,13 @@ The use of virtual comparisons allowed @chapnick2021 to investigate what examine
 They found that examiners generally tended to highlight the same features when making match conclusions [@chapnick2021, 8].
 However, not all examiners who correctly identified the samples used 'irregularly shaped marks' to distinguish the known matches: the number was around 60%-70% [@chapnick2021, 6].
 This is far from a unanimous consensus on important features for determining a match in this type of firearm evidence.
-<!-- What about bullet matching? -->
-<!-- CMS not standard -->
+\authorcol{For example, in a court hearing, Weller discusses the use of consecutively matching striation marks between two bullets as a bullet matching standard that is used by approximately 25\% of examiners, but this standard is not used by either the Association of Firearm and Toolmark Examiners or the Organization of Scientific Area Committees (administered by the National Institute of Standards and Technology)} [@AuimatagiHearing, 98].
 
 Procedural issues may also lead to differing expert opinions across laboratories; one system may not allow an exclusion to be documented if the class characteristics match, while another system may not have such a limitation [@baldwin2014, 6]. 
 In their study, this led to 45 of 218 examiners labeling all different source comparisons as inconclusive, and 96 examiners labeling none of the comparisons as inconclusive [@baldwin2014, 16].
 Without a standardized procedure, experts \authorcol{may} evaluate the evidence similarly when comparing two bullets, but must draw different conclusions based on the procedures of their laboratory. 
 This results in inconsistencies in results based on location, which are compounded with inconsistencies that may arise due to the subjectivity of bullet comparisons. 
-<!-- Reference the lack of national standardization specifically -->
+\authorcol{While standards for forensic sciences, such as firearm analysis, have been created and published by Scientific Working Groups established by the FBI, these standards are voluntary guidelines that are not uniformly enforced} [@nationalresearchcouncilusStrengtheningForensicScience2009, 202].
 
 Aside from the difference in evaluation, subjectivity can lead to bias in pattern recognition. 
 The need for an unbiased method of evaluation is aptly demonstrated by the case of the Madrid bombing, in which the FBI incorrectly matched a latent fingerprint to the incorrect individual, despite the use of a verification process [@stacey]. 
@@ -215,7 +212,7 @@ While there are issues in subjective bullet matching, there have been attempts t
 He concludes that evaluation of individual striation marks \authorcol{(or striae)} is not sufficient, but counting the number of consecutively matching lines may provide enough information to distinguish between matching and non-matching bullets, in the case of the .38 Special Smith and Wesson revolvers used in this study [@biasotti1959, 37 – 47].
 @biasotti1959 hoped that such methods may lead to a statistical model for evaluating firearms (47). 
 The idea of consecutively matching striae (CMS) was addressed again in @bunch2000, but a completely standardized or quantifiable method of examination has yet to be developed. 
-According to @AuimatagiHearing, consecutively matching striae is still used today by some examiners (pg 48). However, the use of consecutively matching striae has not been nationally adopted. 
+According to Todd Weller, consecutively matching striae is still used today by some examiners [@AuimatagiHearing, 98]. However, the use of consecutively matching striae has not been nationally adopted. 
 @biasotti1959's idea of using consecutively matching lines is used and extended in the bullet matching algorithm developed by @hare2017automatic. 
 
 ### Scientific Validity
