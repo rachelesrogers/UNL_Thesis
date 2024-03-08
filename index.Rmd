@@ -167,6 +167,7 @@ While Waite's early attempt to match barrel markings to specific gun brands was 
 
 ### Subjectivity of Comparisons
 <!-- Structure of this section may be difficult to follow, and importance of information not always obvious. Review for continuity and structure -->
+<!-- Has been changed. Needs to be read through -->
 
 \authorcol{A major issue in firearms comparison is the subjectivity of comparisons.
 Because there is no objective criteria used to determine what constitutes a 'match' between two samples, experts may view the same evidence and arrive at different conclusions, potentially due to their subjective comparison,differing laboratory procedures, or biases.
@@ -180,7 +181,7 @@ In plain terms, there is not a set standard for what constitutes sufficient agre
 
 Because there is no quantitative score describing the strength of a bullet match, it is possible for experts to use different criterion when making a conclusion about the same evidence. 
 Disagreement among experts concerning strength of evidence can even be found within a single lab, where experts undergo the same training, use the same equipment and operate under the same procedures, as demonstrated by @montani2019. 
-\authorcol{This effect was also present in a bullet comparison study at the Netherlands Forensic Institute, where they found that, of 568 comparison conclusions in a study of the peer review process involving 8 examiners, there were 100 disagreements between the two examiners with regards to the strength of evidence, including 6 instances where one examiner found the evidence inconclusive, while the other determined the a same-source result} [@mattijssenCognitiveBiasesPeer2020].
+\authorcol{This effect was also present in a bullet comparison study at the Netherlands Forensic Institute, where they found that, of 568 comparison conclusions in a study of the peer review process involving 8 examiners, where the secondary examiner based their conclusion on photos provided by the first examiner, there were 100 disagreements between the two examiners with regards to the strength of evidence, including 6 instances where one examiner found the evidence inconclusive, while the other determined the a same-source result} [@mattijssenCognitiveBiasesPeer2020].
 
 Research has been conducted to better understand the factors that drive firearms examiners to make their conclusions.
 The use of virtual comparisons allowed @chapnick2021 to investigate what examiners considered important when evaluating cartridge cases by including a feature to highlight important aspects of comparisons. 
@@ -196,15 +197,18 @@ Without a standardized procedure, experts \authorcol{may} evaluate the evidence 
 This results in inconsistencies in results based on location, which are compounded with inconsistencies that may arise due to the subjectivity of bullet comparisons. 
 <!-- Reference the lack of national standardization specifically -->
 
-@montani2019 discuss the importance of independent verification, and how to present results when experts do not agree.
-They suggest that, when experts disagree, a third expert should be consulted, and all conclusions should be documented and presented as evidence.
-
 Aside from the difference in evaluation, subjectivity can lead to bias in pattern recognition. 
 The need for an unbiased method of evaluation is aptly demonstrated by the case of the Madrid bombing, in which the FBI incorrectly matched a latent fingerprint to the incorrect individual, despite the use of a verification process [@stacey]. 
 The individual incorrectly identified was a Muslim from Oregon who had been on an FBI watch list [@kassinForensicConfirmationBias2013, 42]. 
 @kassinForensicConfirmationBias2013 suggest that this incorrect conclusion may relate to confirmation bias, and outline other contributing factors, such as extraneous details, external pressures, and order of presentation. 
 While this example is based on fingerprint analysis, the same issues of subjectivity are present in bullet matching.
 
+@mattijssenCognitiveBiasesPeer2020 \authorcol{studied bias in blind and non-blind peer review.
+They found that individuals were significantly more likely to disagree about the strength of evidence in blind peer review (where they were initially unaware of the first examiner's proposed conclusion) than they were in non-blind peer review (where they received the initial examiner's analysis along with the comparison photos).
+Of those who disagreed,} @mattijssenCognitiveBiasesPeer2020 \authorcol{found that, when it came to discussion between the two examiners to report a final conclusion, the conclusion was more likely to align with the examiner who had the higher perceived professional status (a reporting examiner as opposed to a non-reporting examiner), although the status of the individual was not randomized in this experiment.}
+@montani2019 discuss the importance of independent verification, and how to present results when experts do not agree.
+They suggest that, when experts disagree, a third expert should be consulted, and all conclusions should be documented and presented as evidence.
+\authorcol{The use of three experts in the case of disagreement in categorical conclusions is also suggested by} @mattijssenCognitiveBiasesPeer2020\authorcol{, although they feel this approach may stifle discussion and peer learning}.
 
 While there are issues in subjective bullet matching, there have been attempts to quantify the method. 
 @biasotti1959 suggests that statistical methods can be used in order to determine whether two bullets were fired from the same gun. 
