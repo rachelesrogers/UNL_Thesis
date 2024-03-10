@@ -268,39 +268,41 @@ Others have called to scale back conclusions that attest to “individualization
 There has been some resistance to scaling back conclusions, however, as demonstrated in a memo sent out by Jim Agar II, an FBI attorney. 
 They stated that less conclusive language would not be truthful on the part of the firearm expert and to ask firearms examiners to use this language would result in perjury [@agarmemo], despite the reliance on subjective methods with unclear error rates.
 
-There has also been some push back against the conclusions of @pcast, as shown in @osacresponse (provided by the Firearms and Toolmarks subcommittee.
+There has also been some push back against the conclusions of @pcast, as shown in @osacresponse (provided by the Firearms and Toolmarks subcommittee).
 According to @davisosac2014, the Organization of Scientific Area Committees (OSAC) subcommittees are "generally composed of 70% practitioners, 20% researchers, and 10% research and development technology partners and providers".
 @osacresponse argue that a false positive error rate is not necessary for determining foundational validity, and that closed set error rate studies are fine for calculating error rates.
 @osacresponse also suggests that @pcast ignores the importance of peer review in studies that instruct firearms examiners to work alone, and that black box studies may not properly reflect casework.
 However, in order to accurately represent casework, blind testing (where the examiner does not know they are being tested) would be needed - but due to logistical issues and case load, this may not be feasible [@pcast, 59].
 @osacresponse argues that AFTE language is not circular - the basis of a practical impossibility is based on knowledge of best known non-matches conveyed through training. 
 Here decisions are based on "knowledge and experience", which does not counteract the subjective nature of this decision making.
-Despite these disagreements @osacresponse also promotes the use of more objective methods.
+Despite these disagreements, @osacresponse also promotes the use of more objective methods.
 
-These differing views are represented in @swoffordProbabilisticReportingAlgorithms2022.
+These differing views \authorcol{amongst individuals in the field} are represented in @swoffordProbabilisticReportingAlgorithms2022.
 @swoffordProbabilisticReportingAlgorithms2022 interviewed 15 individuals with a range of expertise in forensic science and the court system in order to assess their feelings about the use of algorithms and the presentation of probabilistic reporting, as opposed to categorical reporting and traditional analysis methods. 
-They found that prosecutors interviewed supported the use of match terms such as “identification” and “individualization” instead of probabilistic terms, but two of the prosecutors also rejected the use of terms that convey “absolute certainty” (7). 
-All participants felt that that examiner testimony should accurately reflect scientific limitations, although there was not a consensus on whether this practice was in fact followed in the courtroom - defense attorneys felt that the examiners usually do not uphold this expectation, while lab managers expressed frustration on the part of the court (19).
+They found that prosecutors interviewed supported the use of match terms such as “identification” and “individualization” instead of probabilistic terms, but two of the prosecutors also rejected the use of terms that convey “absolute certainty” (p. 7). 
+All participants felt that that examiner testimony should accurately reflect scientific limitations, although there was not a consensus on whether this practice was in fact followed in the courtroom - defense attorneys felt that the examiners usually do not uphold this expectation, while lab managers expressed frustration on the part of the court (p. 19).
 The scale to which firearm evidence is used in the courtroom is rather contentious, and views may differ based on occupation.
 
 In general, individuals want to guarantee that the information presented in the courtroom is accurate and valid, without causing too much imbalance between the limitations and the categorical conclusion.
 However, there isn't agreement on where the balancing point between these two factors are - somewhere between giving too much credit with a match of "absolute certainty", and introducing unfounded reasonable doubt by overstating the limitations.
 If accurate numerical information on error rates or an objective method of evaluation that can be described to the court were available, it may be possible to have factual statements of limitations and scope of evidence that both sides of the argument would find satisfactory. 
 In an investigation on the effect of the inclusion of error rate on either voice or fingerprint evidence, @garrettErrorRatesLikelihood2020 found that the inclusion of an error rate reduced convictions for fingerprint evidence presented categorically, but had no effect in the case of voice comparison (a less established science) or when the fingerprint comparison was presented as a likelihood ratio.
-They state, "This suggests that error rate information is particularly important for types of forensic evidence that people may assume are highly reliable." (1206).
-It seems that including error rates for evidence methods seen as reliable may call into question some assumptions participants make about the science, resulting in a closer consideration of the facts presented at trial.
+They state, "This suggests that error rate information is particularly important for types of forensic evidence that people may assume are highly reliable." (p. 1206).
+Including error rates for evidence methods seen as reliable may call into question some assumptions participants make about the science, resulting in a closer consideration of the facts presented at trial.
 
-Quantifying both the limitations in terms of error rates and the analysis method with set cutoffs would leave the language used by experts when presenting evidence as a variable that can be manipulated.
+\authorcol{Even i}f \authorcol{the forensic sciences quantify} both limitations (in terms of error rates) and \authorcol{conclusion thresholds, there is another important piece of the puzzle that may influence the perceived strength of evidence:} the language experts use to present evidence.
 While there is much debate over the language used in these conclusions, @garrett2013 found that the specific language used to describe the strength of the match (when a match was present) had little effect on participants’ judgement of guilt. They tested 11 different forms of match language, such as 'individualization', 'match', or 'very likely that the defendant was the source', as well as language that included match conclusions 'bolstered' by certainty or likelihood language [@garrett2013, 489].
 @mcquistonsurrett2009 also found that there was not a significant difference in participants' view of the likelihood the defendant committed the crime when the examiner presented the conclusion as a 'match' compared to presenting the conclusion as 'similar in all microscopic characteristics.'
-@garrett2013 suggests that this lack of difference may relate to the overall view of firearms evidence as reliable, meaning that even a weak match basically boils down to being a match in the eyes of the participants (507).
-They also found some tempering effect of the expert admitting the possibility that their conclusion was made in error (507).
+@garrett2013 suggests that this lack of difference may relate to the overall view of firearms evidence as reliable, meaning that even a weak match simply boils down to being a match in the eyes of the participants (p. 507).
+
+They also found some tempering effect of the expert admitting the possibility that their conclusion was made in error (p. 507).
 Thus, the use of accurate error rates may moderate the reliability of experts for a more considered weighing of evidence.
-In fact, in the Ninth Judicial Circuit Court, there are jury instructions regarding the need for juries to treat firearms and other 'expert' testimony in the same manner as other opinion testimony, in which they must decide how much weight the testimony should receive [@OpinionEvidence]. @OpinionEvidence also suggest to avoid labelling such testimony as expert testimony, since it may cause jurors to give the testimony undue weight.
+In fact, in the Ninth Judicial Circuit Court, there are suggested jury instructions regarding the need for juries to treat \authorcol{'expert' testimony, such as firearms comparisons,} in the same manner as other opinion testimony, where they must decide how much weight the testimony should receive [@OpinionEvidence]. 
+@OpinionEvidence also suggest to avoid labeling such testimony as expert testimony \authorcol{altogether}, since it may cause jurors to give the testimony undue weight.
+<!-- Describe how expert testimony works and the laws surrounding it -->
+
 One way to fix these issues of subjectivity is by developing a more objective method of evaluation.
 One objective method introduced to the forensic sciences is bullet matching algorithms, such as the one described in @hare2017automatic.
-
-<!-- Describe how expert testimony works and the laws surrounding it -->
 
 ## Quantitative Methods
 
