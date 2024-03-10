@@ -470,21 +470,24 @@ While match language may give jurors more confidence, it could have the effect o
 
 ### Demonstrative Evidence
 
-Aside from result language or scales used, another important factor in jury decision making is demonstrative evidence. 
+Aside from result language or scales used \authorcol{by forensics witnesses to convey their findings}, another important factor in jury decision making is demonstrative evidence. 
 Images can supply helpful context in describing complex forms of analysis, but they may also introduce bias in the form of "truthiness", a\authorcol{n official} term introduced by comedian Stephen Colbert.
 He described truthiness as the quality of something *seeming* true [@WordTruthinessColbert2005]. 
-In this video, Colbert talks about “thinking with your head vs. knowing with your heart”, where some information may feel true, regardless of the facts. 
-@bornsteinJuryDecisionMaking2011 found a "truthiness" effect in the courtroom - jurors tend to remember evidence that align with their previous beliefs (65). 
+In this \authorcol{segment}, Colbert talks about “thinking with your head vs. knowing with your heart”, where some information may feel true, regardless of the facts. 
+@bornsteinJuryDecisionMaking2011 found a "truthiness" effect in the courtroom - jurors tend to remember evidence that aligned with their previous beliefs.
+<!-- (65).  -->
 \authorcol{This concept can apply to images that make people more likely to feel like a statement is true, even when they do not contribute new evidence.}
-@kellermannTrialAdvocacyTruthiness2013 suggests that the truthiness or "falsiness" of non-probative visual images should be carefully considered before using images in the courtroom "...both to prevent backfire effects and to capitalize on every possible tactic that can be used to persuade jurors..." (40).
+@kellermannTrialAdvocacyTruthiness2013 suggests that the truthiness or "falsiness" of non-probative visual images should be carefully considered before using images in the courtroom "...both to prevent backfire effects and to capitalize on every possible tactic that can be used to persuade jurors..." (p. 40).
 While the concept of truthiness can be used to benefit either side in an adversarial justice system, trial outcomes should be based on factual evidence, rather than feelings that evidence is factual.
 In the case of images in trials, it is important to balance the benefit of providing additional information to the jury via images without increasing truthiness. 
 
 The impact of photos on an individual's perception can be rather large, as investigated by @cardwellNonprobativePhotosRapidly2016. 
 They asked individuals to “give” or “take” food from an animal, represented by a word. 
 Subjects were later asked to identify whether or not they gave food to an animal – either accompanied by an image or not. 
-Individuals were more likely to say that they gave food to an animal if it was accompanied by an image [@cardwellNonprobativePhotosRapidly2016, 887]. 
-They found that images had an effect for positive associations such as giving food, but not negative associations such as taking food [@cardwellNonprobativePhotosRapidly2016, 883].
+Individuals were more likely to say that they gave food to an animal if it was accompanied by an image [@cardwellNonprobativePhotosRapidly2016].
+<!-- [@cardwellNonprobativePhotosRapidly2016, 887] -->
+They found that images had an effect for positive associations such as giving food, but not negative associations such as taking food.
+<!-- [@cardwellNonprobativePhotosRapidly2016, 883]. -->
 In this case, the use of images may make it easier for individuals to visualize a scenario (giving food), and thus makes them more likely to remember the event - whether it happened or not.
 
 In a study of perception, @mccabeSeeingBelievingEffect2008 presented a variety of graphics alongside articles relating to cognitive neuroscience.
@@ -504,7 +507,8 @@ The influence of images on individuals remains unclear, and may be situationally
 
 ## Response Methods
 
-There are many different ways to measure participant responses, each of which may affect the accuracy with which the response reflects the construct that we wish to measure [@grovesSurveyMethodology2009].
+\authorcol{When conducting studies that measure participant thoughts, such as the credibility of a witness, reliability of a forensic method, or chance that the defendant committed a crime, the format of response questions themselves can have an impact on the results.}
+\authorcol{While the overall ideas, or constructs, that we wish to measure remain the same, different response types may provide more or less useful mappings to the concept to be measured} [@grovesSurveyMethodology2009].
 Verbal scales, such as those used in the ENFSI guidelines described in the last section, are often used to record participant responses.
 Likert scales can be used to evaluate several factors, such as the reliability, understanding, and scientific quality of the forensics expert, the algorithm, and the testimony in general.
 It is therefore important to ensure that participants' views are accurately recorded with Likert type scales, which can vary in the number of categories used.
@@ -514,22 +518,28 @@ However, @prestonOptimalNumberResponse2000 found that reliability decreased with
 This indicates that 7, 9, or 10 point scales should be adequate for reliable responses that accurately represent the participant's views.
 In addition, @decastellarnau2018 found that asking participants to respond to specific items (such as reliable - unreliable) is preferred over using a generalized agree - disagree scale in terms of measurement quality, cognitive effort, and bias. 
 
-Other methods have also been used to evaluate participant responses, such as asking participants to give a likelihood ratio or a probability of guilt.
-@thompsonJurorsGiveAppropriate2013 asked participants rate the chance of guilt on a scale from: with values generally on a log 10 scale (ex. 1 in 100; 1 in 1,000); a middle value of a fifty-fifty chance; and extreme values of "Certain to be guilty" and "Impossible that he is guilty".
+Other methods have also been used to evaluate participant responses, such as asking participants to give a likelihood ratio, probability, or chance of guilt.
+@thompsonJurorsGiveAppropriate2013 asked participants rate the chance of guilt with values generally on a log 10 scale (ex. 1 in 100; 1 in 1,000); a middle value of a fifty-fifty chance; and extreme values of "Certain to be guilty" and "Impossible that he is guilty".
 They compared results from participants to Bayesian conditional probabilities based on provided likelihoods of a match and error rates in order to consider how much weight participants were giving DNA evidence.
 Their results mainly showed no significant difference between Bayesian and participant estimates (meaning that the estimates were "in the right ballpark"), with some conditions producing estimates either greater than or less than what was expected.
 
-In another study of the relationship between how examiners present evidence (likelihood ratio, verbal equivalent, or random match probability), @thompsonLayUnderstanding applies the same multiple choice scale for selecting the chance that the defendant committed the crime for half of the participants, while the other half of the participants were asked to supply how many more times likely it was that the defendant was guilty as compared to not guilty, or vice versa (based on a response scale found in @martire2013).
-The likelihood statement was worded as follows: "Based on the available evidence I believe it is ___ times more likely that Mr. Kelly is guilty than not guilty." (@thompsonLayUnderstanding, 5).
+In another study of the relationship between how examiners present evidence (likelihood ratio, verbal equivalent, or random match probability), @thompsonLayUnderstanding applied the same multiple choice scale for selecting the chance that the defendant committed the crime for half of the participants, while the other half of the participants were asked to supply how many more times likely it was that the defendant was guilty as compared to not guilty, or vice versa (based on a response scale found in @martire2013).
+The likelihood statement was worded as follows: "Based on the available evidence I believe it is ___ times more likely that Mr. Kelly is guilty than not guilty." [@thompsonLayUnderstanding].
+<!-- [@thompsonLayUnderstanding, 5]. -->
 In comparing responses from these two scales, @thompsonLayUnderstanding found that individuals were more likely to give higher estimates on the categorical log scale than when they were asked to provide a likelihood - resulting in the categorical log scale being more consistent with the expected result when using Bayesian methods of calculation.
-This indicates an inconsistency in results based on the response method used.
-
+This indicates an inconsistency in results based on the response method used, so response method must be carefully considered as a part of study design.
 
 ## Conclusion
+
+\authorcol{While bullet matching, like many forensic sciences, have been widely accepted, in recent years their scientific validity has been called into question.
+These validity issues revolve around both the subjectivity of the bullet matching process and the difficulty in calculating accurate error rates.
+These concerns have led to the development of more quantitative methods of analysis, such as bullet matching algorithms.
+With these quantitative methods comes the need for quantitative reporting, which may be difficult for the general public to understand.
+This concern was raised by several subject matter experts, along with the suggestion that quantitative evidence should be presented alongside a firearms examiner's determination in order to facilitate understanding.
+While the use of demonstrative evidence, such as images, may help individuals in interpretation, these images may unintentionally bias jurors.
+In order to investigate the impact of quantitative methods in the courtroom, we conducted a series of studies.}
 
 In order to ensure that the US justice system is just, we must be confident that the evidence presented in the courtroom is scientifically valid, and that the evidence is presented in a way that gives jurors the ability to appropriately judge its strength. 
 This includes the use of accurate error rates as well as quantitative responses.
 One way to facilitate error rate calculation and quantitative results is through the use of algorithmic or statistical methods.
-These methods must, however, be explained in a manner that is understandable to those without a statistical background, while limiting any of the potentially biasing effects of "truthiness".
-
-<!-- Clarify purpose of chapter to the reader, and clean up organization/grammar -->
+These methods must, however, be explained in a manner that is understandable to those without a statistical background, while limiting any of the potentially biasing effects of "truthiness" when using demonstrative evidence.
