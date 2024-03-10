@@ -102,7 +102,7 @@ scientific-validity
 language-in-the-courtroom
 quantitative-methods
 bullet-matching-algorithm
-quantitative-results
+reporting-quantitative-results
 explainability-in-the-courtroom
 demonstrative-evidence
 response-methods

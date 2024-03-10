@@ -182,7 +182,7 @@ div.csl-indent {
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#quantitative-methods"><i class="fa fa-check"></i><b>1.4</b> Quantitative Methods</a>
 <ul>
 <li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#bullet-matching-algorithm"><i class="fa fa-check"></i><b>1.4.1</b> Bullet Matching Algorithm</a></li>
-<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#quantitative-results"><i class="fa fa-check"></i><b>1.4.2</b> Quantitative Results</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#reporting-quantitative-results"><i class="fa fa-check"></i><b>1.4.2</b> Reporting Quantitative Results</a></li>
 <li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#explainability-in-the-courtroom"><i class="fa fa-check"></i><b>1.4.3</b> Explainability in the Courtroom</a></li>
 <li class="chapter" data-level="1.4.4" data-path="index.html"><a href="index.html#demonstrative-evidence"><i class="fa fa-check"></i><b>1.4.4</b> Demonstrative Evidence</a></li>
 </ul></li>
@@ -510,8 +510,8 @@ While there is much debate over the language used in these conclusions, <span cl
 <p>They also found some tempering effect of the expert admitting the possibility that their conclusion was made in error (p. 507).
 Thus, the use of accurate error rates may moderate the reliability of experts for a more considered weighing of evidence.
 In fact, in the Ninth Judicial Circuit Court, there are suggested jury instructions regarding the need for juries to treat in the same manner as other opinion testimony, where they must decide how much weight the testimony should receive <span class="citation">(United States Courts for the Ninth Circuit, 2019)</span>.
-<span class="citation">United States Courts for the Ninth Circuit (2019)</span> also suggest to avoid labeling such testimony as expert testimony , since it may cause jurors to give the testimony undue weight.</p>
-<p>One way to fix these issues of subjectivity is by developing a more objective method of evaluation.
+<span class="citation">United States Courts for the Ninth Circuit (2019)</span> also suggest to avoid labeling such testimony as expert testimony , since it may cause jurors to give the testimony undue weight.
+One way to fix these issues of subjectivity is by developing a more objective method of evaluation.
 One objective method introduced to the forensic sciences is bullet matching algorithms, such as the one described in <span class="citation">Hare et al. (2017)</span>.</p>
 </div>
 </div>
@@ -519,27 +519,30 @@ One objective method introduced to the forensic sciences is bullet matching algo
 <h2><span class="header-section-number">1.4</span> Quantitative Methods<a href="index.html#quantitative-methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="bullet-matching-algorithm" class="section level3 hasAnchor" number="1.4.1">
 <h3><span class="header-section-number">1.4.1</span> Bullet Matching Algorithm<a href="index.html#bullet-matching-algorithm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>This bullet matching algorithm was developed by <span class="citation">Hare et al. (2017)</span> and uses a random forest in order to determine a match score <span class="citation">(Hare et al., 2017, p. 2352)</span>.
+<p><span class="citation">Hare et al. (2017)</span> developed a bullet matching algorithm that uses a random forest in order to determine a match score.
+<!-- (p. 2352).  -->
 This algorithm can be described as follows:</p>
-<p>The algorithm first takes a 3D scan of the two bullet lands, then identifies a cross section, or a stable area of the bullet land that can be used in comparison.
-This cross section is used in order to identify the signatures of the bullets, or a 2D line that captures the marks scratched onto the bullet’s surface.
-First the shoulders (the raised area on either side of the scratched pattern) must be removed from the cross section.
-Then a loess smoothing is applied twice in order to remove the curvature of the bullet.
-What is left is the bullet land’s signature (which will show the peaks and valleys produced by the barrel of the gun).
-The two signatures are compared using a variety of attributes, such as consecutively matching striae and the relative height of the peaks/valleys, as shown in Figure <a href="index.html#fig:signaturecompare">1.7</a>.</p>
+<ul>
+<li>The algorithm first takes a 3D scan of the two bullet lands, then identifies a cross section, or a stable area of the bullet land that can be used in comparison.</li>
+<li>This cross section is used in order to identify the signatures of the bullets, or a 2D line that captures the marks scratched onto the bullet’s surface.</li>
+<li>The shoulders (the raised area on either side of the scratched pattern) must be removed from the cross section.</li>
+<li>A loess smoothing is applied twice in order to remove the curvature of the bullet.
+What is left is the bullet land’s signature (which will show the peaks and valleys produced by the barrel of the gun).</li>
+<li>The two signatures are compared using a variety of attributes, such as consecutively matching striae and the relative height of the peaks/valleys, as shown in Figure <a href="index.html#fig:signaturecompare">1.7</a>.</li>
+<li>A random forest is used to compare the two signatures and generate a match score for the lands.</li>
+<li>Lands are then aligned across the bullet for the maximal random forest score, and match score for the bullet.
+Figure <a href="index.html#fig:gridcompare">1.8</a> shows two grids of land match scores computed in two different bullet comparisons.</li>
+</ul>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:signaturecompare"></span>
-<img src="images/Match_Signatures.jpg" alt="Left image depicts two matching signatures, while the right image depicts two non-matching signatures. These were generated by the author." width="49%" /><img src="images/K995_NoMatch_Signatures.jpg" alt="Left image depicts two matching signatures, while the right image depicts two non-matching signatures. These were generated by the author." width="49%" />
+<img src="images/Match_Signatures.jpg" alt="Left image depicts two matching signatures, while the right image depicts two non-matching signatures. Generated by the author." width="49%" /><img src="images/K995_NoMatch_Signatures.jpg" alt="Left image depicts two matching signatures, while the right image depicts two non-matching signatures. Generated by the author." width="49%" />
 <p class="caption">
-Figure 1.7: Left image depicts two matching signatures, while the right image depicts two non-matching signatures. These were generated by the author.
+Figure 1.7: Left image depicts two matching signatures, while the right image depicts two non-matching signatures. Generated by the author.
 </p>
 </div>
-A random forest is used to compare the two signatures and come up with a match score for the lands.
-Lands are then aligned across the bullet for the maximal random forest score, and this number would be considered the match score for the bullet.
-Figure <a href="index.html#fig:gridcompare">1.8</a> shows two grids of land match scores computed in two different bullet comparisons.
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:gridcompare"></span>
-<img src="images/F526_Match_SingleGrid.png" alt="Left image depicts two matching bullets (indicated by high land-to-land match scores in a diagonal formation), while the right image depicts two non-matching bullets." width="49%" /><img src="images/K995_NoMatch_SingleGrid.png" alt="Left image depicts two matching bullets (indicated by high land-to-land match scores in a diagonal formation), while the right image depicts two non-matching bullets." width="49%" />
+<img src="images/F526_Match_SingleGrid.png" alt="Left image depicts two matching bullets (indicated by high land-to-land match scores in a diagonal formation), while the right image depicts two non-matching bullets. Generated by the author," width="49%" /><img src="images/K995_NoMatch_SingleGrid.png" alt="Left image depicts two matching bullets (indicated by high land-to-land match scores in a diagonal formation), while the right image depicts two non-matching bullets. Generated by the author," width="49%" />
 <p class="caption">
-Figure 1.8: Left image depicts two matching bullets (indicated by high land-to-land match scores in a diagonal formation), while the right image depicts two non-matching bullets.
+Figure 1.8: Left image depicts two matching bullets (indicated by high land-to-land match scores in a diagonal formation), while the right image depicts two non-matching bullets. Generated by the author,
 </p>
 </div>
 <p>In multiple tests, it was found that the algorithm is able to successfully distinguish between known matches and known non-matches without the use of an inconclusive decision <span class="citation">(Vanderplas, Nally, Klep, Cadevall, &amp; Hofmann, 2020, p. 10)</span>.
@@ -559,8 +562,8 @@ The three defense attorneys, as well as the three judges, also supported the use
 Three academic scholars supported the use of algorithms, so long as the algorithms can be understood, have been validated, and do not include factors that may cause systematic biases <span class="citation">(Swofford &amp; Champod, 2022, p. 16)</span>.
 <span class="citation">Swofford &amp; Champod (2022)</span>’s study demonstrates the variety of opinions on algorithm implementation throughout forensic science, although most support the use of algorithms.</p>
 </div>
-<div id="quantitative-results" class="section level3 hasAnchor" number="1.4.2">
-<h3><span class="header-section-number">1.4.2</span> Quantitative Results<a href="index.html#quantitative-results" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="reporting-quantitative-results" class="section level3 hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Reporting Quantitative Results<a href="index.html#reporting-quantitative-results" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Quantitative methods of examination can lead to quantitative results.
 In this case, the quantitative results are in the form of a match score, but in other cases, results may be presented as a likelihood ratio.
 For example, <span class="citation">John Song, Chen, Vorburger, &amp; Soons (2020)</span> proposed a likelihood approach for a cartridge case comparison method that uses congruently matching cells.
