@@ -2,8 +2,8 @@
 # UNL thesis fields
 title: "JURY PERCEPTION OF EXPLAINABLE MACHINE LEARNING AND DEMONSTRATIVE EVIDENCE"
 author: "Rachel Edie Sparks Rogers"
-month: "April"
-year: "2023"
+month: "March"
+year: "2024"
 location: "Lincoln, Nebraska"
 major: "Statistics"
 adviser: "Susan Vanderplas"
@@ -13,7 +13,7 @@ abstract: |
 acknowledgments: |
   Thank you to all my people!
 # dedication: |
-#  Dedicated to...
+#  Dedicated to my mom, who introduced me to the field and taught me to identify BS: bad statistics.
 # End of UNL thesis fields
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
@@ -121,7 +121,7 @@ include_graphics(path = "images/Cartridge_cross_section.png")
 ```
 
 The practice of bullet matching is based on the concept that rifling in a gun barrel can produce uniquely identifying marks on bullets fired from the gun, due to random variation [@pcast, 104]. 
-\authorcol{Rifling is defined as the spiral ridges in a gun barrel that stabilize the bullet, as shown in Figure} \@ref(fig:rifling)[@105mmTank2005].
+\authorcol{Rifling is defined as the spiral ridges in a gun barrel that stabilize the bullet, as shown in Figure} \@ref(fig:rifling) [@105mmTank2005].
 \authorcol{The raised areas are known as lands, while the depressed areas are known as grooves.}
 
 ```{r rifling, echo=FALSE, fig.cap="Cross section of a gun. The rifling is the spiral pattern of lands (raised portions) and grooves (indented portions). baku13 (2005).", out.width="50%", fig.align="center"}
@@ -129,7 +129,7 @@ include_graphics(path = "images/rifling.jpg")
 ```
 
 \authorcol{When a bullet is fired, it travels down the gun barrel and marks from the rifling are scratched into the bullet's surface.
-This results in indented areas that correspond to the land impressions, as shown in Figure} \@ref(fig:fired)[@gremi].
+This results in indented areas that correspond to the land impressions, as shown in Figure} \@ref(fig:fired) [@gremi].
 
 ```{r fired, echo=FALSE, fig.cap="Fired bullet. Indented portion correspond to the gun lands. Gremi-ch (2009).", out.width="50%", fig.align="center"}
 include_graphics(path = "images/fired_bullet.jpg")
@@ -154,7 +154,7 @@ include_graphics(path = "images/microscope.jpg")
 ```
 
 \authorcol{Firearms examiners use comparison microscopes, such as} Figure \@ref(fig:microscope), \authorcol{to compare these striation marks between two bullets, shown in the top right of the figure.}
-An early attempt to distinguish guns based on the rifling can be found in two issues of "The Saturday Evening Post" from 1925, in an article entitled “Fingerprinting Bullets"\authorcol{, whose title demonstrates an acceptance of fingerprinting by the public that wouldn't considered by PCAST foundationally valid until an FBI black box study in 2011} [@pcast, 91].
+An early attempt to distinguish guns based on the rifling can be found in two issues of "The Saturday Evening Post" from 1925, in an article entitled “Fingerprinting Bullets"\authorcol{, whose title demonstrates an acceptance of fingerprinting by the public that wouldn't considered foundationally valid by PCAST until an FBI black box study in 2011} [@pcast, 91].
 Stout describes the wrongful conviction and subsequent exoneration of Stielow, who was accused of murder [@SaturdayEveningPost]. 
 At the trial where Stielow was found guilty, an expert for the prosecution stated that there were nine abnormalities on Stielow's gun that corresponded with marks on the fired bullet [@SaturdayEveningPost, 7].
 It was later established that the bullet found at the crime scene indicated the gun was missing a land – leaving a distinctive pattern – while the alleged gun showed no such evidence; the alleged gun also showed evidence of not being fired in more than 3 years [@SaturdayEveningPost]. 
@@ -260,8 +260,6 @@ The Ames Laboratory study is described by @pcast as an appropriate closed set bl
 These types of analyses are classified as black-box studies because reported match results are based on an examiner's subjective opinion rather than a list of objective steps [@pcast, 5].
 When comparing closed-set studies to non closed-set studies, @pcast found that closed-set studies had a much lower rate of inconclusive decisions as well as false positives (111).
 
-### Scale of Conclusions
-
 This debate regarding scientific validity continues to this day, as @vanderplas2022 shows. 
 In this declaration, they discuss the current issues with error rate studies, in which they conclude that, until valid error rate studies have been conducted, they cannot support the use of firearms analysis in the courtroom [@vanderplas2022, 10].
 Others have called to scale back conclusions that attest to “individualization” in the courtroom due to the inability to tie a specific piece of evidence to a specific source, to the exclusion of all other sources [@nationalresearchcouncilusStrengtheningForensicScience2009;@imwinkelried]. 
@@ -277,9 +275,17 @@ However, in order to accurately represent casework, blind testing (where the exa
 Here decisions are based on "knowledge and experience", which does not counteract the subjective nature of this decision making.
 Despite these disagreements, @osacresponse also promotes the use of more objective methods.
 
+\authorcol{Legal standards regulate the admissibility of expert testimony in the courtroom.
+In 1923, }*Frye vs. United States* \authorcol{established a standard of 'general acceptance' in the scientific community for the admissibility of scientific evidence} [@nationalresearchcouncilusStrengtheningForensicScience2009, 88].
+\authorcol{In 1975, the Federal Rule of Evidence 702 instead promoted "...mere 'assistance' to the trier of fact.." as the basis of admissibility, although whether} *Frye* \authorcol{or Rule 702 should be used for admissibility was not clarified until } *Daubert v. Merrell Dow Pharmaceuticals, Inc.*, \authorcol{which sided with Rule 702, with the added caveat that 'evidentiary reliability' should be established, although some states still use the} *Frye* \authorcol{standard} [@nationalresearchcouncilusStrengtheningForensicScience2009, 89-91].
+\authorcol{PCAST clarifies that: "The expert's testimony must be grounded in an accepted body of learning or experience in the expert's field, and the expert  must explain how the conclusion is so grounded"} [@nationalresearchcouncilusStrengtheningForensicScience2009, 94].
+\authorcol{However, this standard of evidence often does not lead to inadmissible determinations, as demostrated in} *United States v. Green*, \authorcol{where Judge Green stated that, while toolmark identification should not be admissible in terms of the} *Daubert* \authorcol{ruling, it would be difficult to exclude due to precedent; he did, however, limit the examiner's conclusion language such that the examiner could not testify to a 'definitive match'} [@nationalresearchcouncilusStrengtheningForensicScience2009, 108].
+
+### Language in the Courtroom
+
 These differing views \authorcol{amongst individuals in the field} are represented in @swoffordProbabilisticReportingAlgorithms2022.
 @swoffordProbabilisticReportingAlgorithms2022 interviewed 15 individuals with a range of expertise in forensic science and the court system in order to assess their feelings about the use of algorithms and the presentation of probabilistic reporting, as opposed to categorical reporting and traditional analysis methods. 
-They found that prosecutors interviewed supported the use of match terms such as “identification” and “individualization” instead of probabilistic terms, but two of the prosecutors also rejected the use of terms that convey “absolute certainty” (p. 7). 
+They found that \authorcol{the interviewed} prosecutors supported the use of match terms such as “identification” and “individualization” instead of probabilistic terms, but two of the prosecutors also rejected the use of terms that convey “absolute certainty” (p. 7). 
 All participants felt that that examiner testimony should accurately reflect scientific limitations, although there was not a consensus on whether this practice was in fact followed in the courtroom - defense attorneys felt that the examiners usually do not uphold this expectation, while lab managers expressed frustration on the part of the court (p. 19).
 The scale to which firearm evidence is used in the courtroom is rather contentious, and views may differ based on occupation.
 
@@ -299,12 +305,6 @@ They also found some tempering effect of the expert admitting the possibility th
 Thus, the use of accurate error rates may moderate the reliability of experts for a more considered weighing of evidence.
 In fact, in the Ninth Judicial Circuit Court, there are suggested jury instructions regarding the need for juries to treat \authorcol{'expert' testimony, such as firearms comparisons,} in the same manner as other opinion testimony, where they must decide how much weight the testimony should receive [@OpinionEvidence]. 
 @OpinionEvidence also suggest to avoid labeling such testimony as expert testimony \authorcol{altogether}, since it may cause jurors to give the testimony undue weight.
-<!-- Describe how expert testimony works and the laws surrounding it -->
-\authorcol{The admissibility of expert testimony in the courtroom is also regulated by legal standards.
-In 1923, }*Frye vs. United States* \authorcol{established a standard of 'general acceptance' in the scientific community for the admissibility of scientific evidence} [@nationalresearchcouncilusStrengtheningForensicScience2009, 88].
-\authorcol{In 1975, the Federal Rule of Evidence 702 instead promoted "...mere 'assistance' to the trier of fact.." as the basis of admissibility, although whether} *Frye* \authorcol{or Rule 702 should be used for admissibility was not clarified until } *Daubert v. Merrell Dow Pharmaceuticals, Inc.*, \authorcol{which sided with Rule 702, with the added caveat that 'evidentiary reliability' should be established, although some states still use the *Frye* standard} [@nationalresearchcouncilusStrengtheningForensicScience2009, 89-91].
-\authorcol{"The expert's testimony must be grounded in an accepted body of learning or experience in the expert's field, and the expert  must explain how the conclusion is so grounded"} [@nationalresearchcouncilusStrengtheningForensicScience2009, 94].
-\authorcol{However, this standard of evidence often does not lead to inadmissible determinations, as demostrated in *United States v. Green*, where Judge Green stated that, while toolmark identification should not be admissible in terms of the *Daubert* ruling, it would be difficult to exclude due to precedent; he did, however, limit the examiner's conclusion language such that the examiner could not testify to a 'definitive match'} [@nationalresearchcouncilusStrengtheningForensicScience2009, 108].
 
 One way to fix these issues of subjectivity is by developing a more objective method of evaluation.
 One objective method introduced to the forensic sciences is bullet matching algorithms, such as the one described in @hare2017automatic.
