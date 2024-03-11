@@ -73,17 +73,24 @@ demographics <-
 
 ```
 
+\authorcol{Due to the issues outlined in Chapter} \@ref(litreview), \authorcol{we designed a study to investigate how potential jurors may perceive a bullet matching algorithm, when presented alongside a firearms examiner's testimony, as well as the affect of demonstrative evidence.
+This study utilizes a testimony transcript to familiarize participants with bullet matching evidence for a case involving armed robbery, and participants are asked to make judgements on the guilt of the defendant, as well as the credibility of the witnesses and the reliability and scientificity of the evidence presented.}
+
 ## Background
 
 ### Firearms Examiners
 
-The foundational belief in bullet comparisons as a form of identifying evidence is that guns can leave unique striation marks on a bullet as an artifact of the rifling process [@pcast, p. 104]. 
+The foundational belief in bullet comparisons as a form of identifying evidence \authorcol{revolves around the idea} that guns can leave unique striation marks on a bullet as an artifact of the rifling process [@pcast]. 
+<!-- [@pcast, p. 104] -->
 Striation marks are left on portions of the bullets known as "lands", due to contact with the rifling as the bullet is fired. 
 These marks are compared by examiners across bullets in order to identify if bullets were fired from the same source. 
-These examinations are subjective, as they are based on the firearms examiner's experience and judgement [@nationalresearchcouncilusStrengtheningForensicScience2009, p. 153]. 
-This can lead to issues of bias in analysis [@kassinForensicConfirmationBias2013]. In 2019, the PCAST report highlighted common issues with traditional bullet matching methods, such as the lack of appropriately designed error rate studies and the circular nature of AFTE's bullet matching guidelines [@pcast, p. 104-112]. 
+These examinations are subjective, as they are based on the firearms examiner's experience and judgement [@nationalresearchcouncilusStrengtheningForensicScience2009].
+<!-- [@nationalresearchcouncilusStrengtheningForensicScience2009, p. 153] -->
+This can lead to issues of bias in analysis [@kassinForensicConfirmationBias2013]. In 2019, the PCAST report highlighted common issues with traditional bullet matching methods, such as the lack of appropriately designed error rate studies and the circular nature of AFTE's bullet matching guidelines [@pcast]. 
+<!-- [@pcast, p. 104-112] -->
 Issues in error rate studies have been discussed in several articles [@hofmannTreatmentInconclusivesAFTE2021;@drorMisUseScientific2020]. 
-PCAST emphasizes the importance of the development of an objective method for firearms comparisons [@pcast, p. 113]. 
+PCAST emphasizes the importance of the development of an objective method for firearms comparisons [@pcast]. 
+<!-- [@pcast, p. 113] -->
 The use of an automatic, objective method would contribute to quantifiable presentation of evidence and would lower the effort required to identify the method's error rate. 
 
 ### Bullet Matching Algorithm
@@ -92,14 +99,14 @@ Following PCAST's publication, many methods of statistical matching have been de
 In this study, the bullet matching algorithm used was developed by @hare2017automatic. 
 The algorithm can briefly be described as follows:
 
-1. A 3D scan is taken of each bullet land (containing striation marks to be compared), a stable cross-section is extracted, and shoulders (without relevant striation marks) are removed, as in \@ref(fig:shoulder), an image from @hare2017automatic.
+1. A 3D scan is taken of each bullet land (containing striation marks to be compared), a stable cross-section is extracted, and shoulders (without relevant striation marks) are removed, as in Figure \@ref(fig:shoulder), an image from @hare2017automatic.
 
-```{r shoulder, echo=FALSE, fig.cap="The land is shown in the center. Shoulders are shown outside of the vertical lines."}
+```{r shoulder, echo=FALSE, fig.cap="The land is shown in the center. Shoulders are shown outside of the vertical lines. Hare et al. (2017)"}
 include_graphics(path = "images/shoulder.jpg")
 ```
 
 2. A smoothing function is applied twice in order to extract the signature, a pattern of high and low points on the bullet's surface corresponding to the striation marks. 
-The signature can then be compared to land signatures from other bullets, as in \@ref(fig:signature).
+The signature can then be compared to land signatures from other bullets, as in Figure \@ref(fig:signature).
 
 ```{r signature, echo=FALSE, fig.cap="Two aligned signatures for a known match. Image generated from Houston dataset by authors."}
 include_graphics(path = "images/F526_Match_Signatures.png")
@@ -109,15 +116,18 @@ include_graphics(path = "images/F526_Match_Signatures.png")
 The random forest consists of decision trees that consider a combination of variables and responses in order to predict if two signatures were created by the same gun. 
 \authorcol{The decision trees in a random forest each consider a subset of variables and observations to decide whether or not the lands match.}
 The decisions of these trees are combined to produce the match score. 
-Lands are then aligned across bullets in order to compute an overall match score for the bullets, as in \@ref(fig:grid).
+Lands are then aligned across bullets in order to compute an overall match score for the bullets, as in Figure \@ref(fig:grid).
 
 ```{r grid, fig.cap="Diagonal correspondence (in orange) among lands indicate a match, as shown here. Image generated from Houston dataset by authors."}
 include_graphics(path = "images/Test_Fire_F526.jpeg")
 ```
 
-This algorithm was trained on Hamby's Consecutively Rifled Ruger Barrel Study data sets 252 and 173 [@vanderplasComparisonThreeSimilarity2020], and the final random forest was able to correctly predict all matches and non-matches [@hare2017automatic, p. 2350]. 
-Three sets were then used to verify the algorithm: Hamby set 44, Phoenix PD, and Houston FSC [@vanderplasComparisonThreeSimilarity2020, p. 5]. 
-The algorithm performed well for undamaged bullets, and was able to completely distinguish between matches and non-matches when a cutoff value was individually chosen for each data set [@vanderplasComparisonThreeSimilarity2020, p. 10].
+This algorithm was trained on Hamby's Consecutively Rifled Ruger Barrel Study data sets 252 and 173 [@vanderplasComparisonThreeSimilarity2020], and the final random forest was able to correctly predict all matches and non-matches [@hare2017automatic].
+<!-- [@hare2017automatic, p. 2350].  -->
+Three sets were then used to verify the algorithm: Hamby set 44, Phoenix PD, and Houston FSC [@vanderplasComparisonThreeSimilarity2020]. 
+<!-- [@vanderplasComparisonThreeSimilarity2020, p. 5] -->
+The algorithm performed well for undamaged bullets, and was able to completely distinguish between matches and non-matches when a cutoff value was individually chosen for each data set [@vanderplasComparisonThreeSimilarity2020].
+<!-- [@vanderplasComparisonThreeSimilarity2020, p. 10] -->
 
 ### Explainable Machine Learning - Previous Research
 
@@ -126,10 +136,11 @@ In another study, @garrettComparingCategoricalProbabilistic2018 asked jurors to 
 When asked for the likelihood the defendant committed the crime when presented with the above FRStat language, participants did not provide significantly different likelihoods for values ranging from 10 times greater to 100,000 times greater. 
 This may demonstrate a lack of understanding when jurors are presented with numerical results for statistical evidence. 
 @ENFSIGuidelineEvaluative2016 proposes a verbal scale to supplement likelihood ratios, which may alleviate some of the burden of statistical interpretation from potential jurors. 
-This scale ranged from weak support, corresponding to a likelihood ratio between 2 and 10, to very strong support, corresponding to a likelihood ratio greater than 10,000 [@ENFSIGuidelineEvaluative2016, p. 64]. 
+This scale ranged from weak support, corresponding to a likelihood ratio between 2 and 10, to very strong support, corresponding to a likelihood ratio greater than 10,000 [@ENFSIGuidelineEvaluative2016]. 
+<!-- [@ENFSIGuidelineEvaluative2016, p. 64].  -->
 When interviewing judges, lawyers, forensic scientists, and forensic researchers, @swoffordProbabilisticReportingAlgorithms2022 found that many expressed concern regarding the interpretation of probabilistic language, and several suggested a combination of both match and probabilistic language. 
 @hare2017automatic's algorithm differs from previous presentation methods in that its output is a match score, as opposed to a likelihood ratio. 
-In this study, potential jurors may encounter both the algorithm's match score alongside the categorical match language of the examiner.
+In this study, potential jurors may encounter both the algorithm's match score alongside the categorical identification language of the examiner.
 
 ### Demonstrative Evidence
 
@@ -137,7 +148,7 @@ Images are often used to assist individuals in understanding non-image informati
 However, images may have an effect of making a scenario more believable, as demonstrated in a study by @cardwellNonprobativePhotosRapidly2016 which involved "giving" or "taking" food from animals with or without images. 
 Images are also mentioned as a factor that can influence how truthful individuals view statements in the courtroom - even if no new information is presented through the presence of the image [@kellermannTrialAdvocacyTruthiness2013].
 Therefore, the use of images in a courtroom should be studied for an effect with regards to how subjects perceive the evidence presented - namely, if there is a difference in how reliable or credible they feel the experts are, based on the presence or absence of images.
-\authorcol{Because the images are intended to aid only in interpretation, we would hope for an increase in understanding across all other conditions, while reliability and credibilty stay the same.}
+\authorcol{Because the images are intended to aid only in interpretation, unbiased results would include an increase in understanding across all other conditions, while reliability and credibilty stay the same.}
 \authorcol{However, based on previous research, it seems probable that the presence of images would increase the perceived reliability and credibility of the evidence and expert, respectively.}
 
 ## Methods
@@ -154,28 +165,28 @@ This document included expert testimony, cross examination, and questions from t
 \authorcol{When the algorithm was included, the firearms examiner also described the algorithm's match score resulting from this comparison.}
 \authorcol{Cross examination included questions regarding the ability to uniquely identify the source of the bullet, as well as the subjectivity of the comparison.}
 
-\authorcol{When the algorithm was included, an algorithm expert then testified.}
-\authorcol{They also listed their qualifications and involvement in the development of the algorithm.}
-\authorcol{The expert would then describe the process for obtaining a match score (similar to the algorithm description in the previous section).}
-\authorcol{They also spoke to the publication history of the algorithm, the code availability, and the algorithm's applicability to the type of firearm considered in the case.}
-\authorcol{Cross examination included questions on the newness of the algorithm, as well as subjective aspects of calibration, and limitations with respect to the types of bullets that it can evaluate.}
+\authorcol{When the algorithm was included, an algorithm expert then testified.
+They also listed their qualifications and involvement in the development of the algorithm.
+The expert would then describe the process for obtaining a match score (similar to the algorithm description in the previous section).
+They also spoke to the publication history of the algorithm, the code availability, and the algorithm's applicability to the type of firearm considered in the case.
+Cross examination included questions on the newness of the algorithm, as well as subjective aspects of calibration, and limitations with respect to the types of bullets that it can evaluate.}
 The testimony was based on actual court testimony provided by forensics experts lawyers, and judges, shown in Appendix \@ref(testimony-transcripts).
 
 \authorcol{After reading the transcript, participants were directed to respond to some questions regarding the testimony.
 These questions were largely based on} @garrettMockJurorsEvaluation2020.
-\authorcol{They were first given information about their responsibility as jurors to choose whether or not to convict, and the 'beyond reasonable doubt' threshold was established before asking participants for their conviction decision.}
+\authorcol{They were first given information about their responsibility as jurors to choose whether or not to convict, based on the 'beyond reasonable doubt' threshold.}
 \authorcol{Participants were also asked to estimate the probability that the defendant committed the crime, and the probability that the gun was involved in the crime.}
 \authorcol{These questions were followed by several Likert scales on the strength of evidence, the credibility of the examiners, reliability and scientificity of the evidence, and understanding of the procedures.}
 Two attention check questions were asked, in order to ensure that participants were reading both the testimony and the subsequent questions. 
 The first attention check asked participants to identify the caliber of bullet recovered from the crime scene, while the second attention check asked participants to select a specific value from a Likert scale.  
 
-The study includes three \authorcol{independent} variables: \authorcol{presence or absence} of the algorithm, \authorcol{presence or absence} of demonstrative evidence (images), and conclusion (match, exclusion, or inconclusive). 
-In the case of the algorithm, two testimonies were presented: that of the firearms expert (Terry Smith), and that of the algorithm expert (Adrian Jones). 
-The firearms expert presented the algorithm results for the case alongside their own analysis, and suggests that the algorithm's results supports their conclusion. 
-By presenting the algorithm results with the interpretation suggested by the firearms expert, we hoped that potential jurors could use the firearms expert's explanation and conclusion to guide their understanding of the algorithm's results. 
+The study includes three \authorcol{independent} variables: \authorcol{presence or absence} of the algorithm, \authorcol{presence or absence} of demonstrative evidence (images), and conclusion (identification, elimination, or inconclusive). 
+In the case of the algorithm, two testimonies were presented: that of the firearms examiner (Terry Smith), and that of the algorithm developer (Adrian Jones). 
+The firearms examiner presented the algorithm results for the case alongside their own analysis, and suggested that the algorithm's results supported their conclusion. 
+By presenting the algorithm results with the interpretation suggested by the firearms examiner, we hoped that potential jurors could use the firearms examiner's explanation and conclusion to guide their understanding of the algorithm's results. 
 The algorithm expert then describes in greater detail the algorithm's process, and its validity for this particular case. 
-When demonstrative evidence is present, images of rifling [@105mmTank2005;@gremi], a bullet comparison, and algorithm images (such as those shown above) were included alongside the testimony. 
-In terms of the conclusion: a "match" indicated agreement in individual and class characteristics; an "exclusion" indicated an agreement of class characteristics, but disagreement in individual characteristics; and an "inconclusive" indicated an agreement in class characteristics, but not enough agreement in individual characteristics to state that there was a match.  
+When demonstrative evidence is present, images of rifling (Figure \@ref(fig:rifling)), a fired bullet (Figure \@ref(fig:fired)), a bullet comparison (Figure \@ref(fig:microscope)), and algorithm images (such as those shown above) were included alongside the testimony. 
+In terms of the conclusion: an "identification" indicated agreement in individual and class characteristics; an "elimination" indicated an agreement of class characteristics, but disagreement in individual characteristics; and an "inconclusive" indicated an agreement in class characteristics, but not enough agreement in individual characteristics to state that there was an identification.  
 
 The number of survey questions that respondents received depended on the scenario; participants who received the algorithm were asked more questions than those who did not receive the algorithm. 
 For example, participants who did not receive the algorithm were asked about the reliability of the forensics examiner's bullet comparison and the reliability of the field of firearms as a whole. 
@@ -239,12 +250,11 @@ include_graphics(path = "images/completiontime.png")
 
 
 ```
-Figure \@ref(fig:completiontime) depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints (n=`r dim(single_fingerprint)[1]`), excluding `r dim_g_75[1]` observations greater than 75 minutes. In general, it appears that those who received the algorithm condition took slightly more time on average than those who did not (median values of `r  round(median(beginning_wend[beginning_wend$algorithm=="Yes",]$total_time_minutes, na.rm=TRUE), digits=3)` minutes and `r round(median(beginning_wend[beginning_wend$algorithm=="No",]$total_time_minutes, na.rm=TRUE), digits=3)` minutes, respectively). This is unsurprising, given the increased length of the algorithm condition.
+Figure \@ref(fig:completiontime) depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints, or identification values (n=`r dim(single_fingerprint)[1]`), excluding `r dim_g_75[1]` observations greater than 75 minutes. 
+Those who received the algorithm condition took slightly more time on average than those who did not (median values of `r  round(median(beginning_wend[beginning_wend$algorithm=="Yes",]$total_time_minutes, na.rm=TRUE), digits=3)` minutes and `r round(median(beginning_wend[beginning_wend$algorithm=="No",]$total_time_minutes, na.rm=TRUE), digits=3)` minutes, respectively). This is unsurprising, given the increased length of the algorithm condition.
 
 
 ## Results
-
-\authorcol{Due to scale compression, no statistical analysis was performed on this data.}
 
 ### Participants
 
@@ -278,14 +288,14 @@ ggplot(subset(demographics, !is.na(age) & age > 17), aes(x = gender, y=age)) +
 
 ```
 Of the `r dim(demographics)[1]` participants with Prolific ID's who started the survey, there were `r sum(demographics$gender=="Female")` female participants, `r sum(demographics$gender=="Male")` male participants, and `r sum(demographics$gender=="Other/non-binary")` non-binary participants.
-\authorcol{These participants are a representative sample (in terms of age, sex and ethnicity, based on census data) of Prolific participants who are located in the United States.}
+\authorcol{According to Prolific, these participants are a representative sample (in terms of age, sex and ethnicity, based on census data) of Prolific participants located in the United States.}
 The median age was `r median(demographics$age, na.rm=TRUE)`. 
 Age and gender are shown in Figure \@ref(fig:demographics).
 An age of 0.2 was excluded due to implausibility and lack of study completion.
-`r dim(merged_results_allresponses)[1]` participants eligible for analysis completed the survey, and `r dim(merged_results)[1]` participants correctly answered both attention check questions.
 \authorcol{In two instances, participants reported being removed from the survey website prior to survey completion, which may have happened in other cases where the participants did not complete the survey.}
+`r dim(merged_results_allresponses)[1]` participants eligible for analysis completed the survey, and `r dim(merged_results)[1]` participants correctly answered both attention check questions.
 The division of correct answers on the attention check questions are shown in Table \@ref(tab:attentioncheck).
-These `r dim(merged_results)[1]` participants were considered for the following analysis.
+These `r dim(merged_results)[1]` participants \authorcol{who answered both attention check questions correctly} were considered for the following analysis.
 
 ```{r}
 #| attentioncheck,
@@ -318,13 +328,15 @@ Questions of credibility, reliability, and scientificity were assessed using a 7
 Understanding was ranked on a 5-point Likert scale ("I understood nothing" to "I understood everything"). 
 Participants were also asked about uniqueness of firearm toolmarks, as a simple yes/no question. 
 Strength of evidence was ranked on a 9-point Likert scale ("Not at all strong" to "Extremely strong"). The perceived frequency with which firearms examiners made mistakes was assessed on a 7-point Likert scale ("Never" to "Always").  
+\authorcol{Many of these response scales suffered from scale compression - individuals selected the top two categories on many of the Likert scales, indicating that participants overall believed in the credibility of the witnesses and the reliability and scientificity of the methods.
+Due to this issue, no statistical analysis was performed on this data.}
 
 ### Probability
 
-There is a difference in the perceived probability that Cole committed the crime as well as the perceived probability that the gun was present at the crime scene based on the examiner's decision, as shown in Figure \@ref(fig:probalgorithm). 
-The match condition resulted in high probabilities, while the non-match condition resulted in low probabilities, indicating that participants reacted to the examiner's testimony. 
+There is a difference in the perceived probability that Cole, the defendant, committed the crime as well as the perceived probability that the gun was present at the crime scene based on the examiner's decision, as shown in Figure \@ref(fig:probalgorithm). 
+The identification condition resulted in high probabilities, while the elimination condition resulted in low probabilities, indicating that participants reacted to the examiner's testimony. 
 A wider range of probability values were observed for the inconclusive decision, without the high peaks that were present for conclusive decisions. 
-Definite conclusions of match or not a match resulted in higher peaks at more extreme values for the probability that the gun was at the crime scene, compared with the probability that Cole committed the crime. 
+Definite conclusions of identification or elimation resulted in higher peaks at more extreme values for the probability that the gun was at the crime scene, compared with the probability that Cole committed the crime. 
 This may indicate that some individuals are distinguishing between evidence that the weapon was used and evidence against Cole. 
 The inconclusive decision resulted in a more spread out distribution that is practically the same for both the probability that the gun was at the crime scene and the probability that Cole committed the crime, with participants generally selecting values below 50%.  
 
@@ -347,7 +359,7 @@ merged_problong <-
 
 
 ggplot(merged_problong, aes(x = probability, fill = subject)) +
-  geom_density(alpha = 0.5, color=NA) +
+  geom_density(alpha = 0.4, color=NA) +
   facet_grid(. ~ conclusion, labeller =  purrr::partial(label_both, sep = ":\n")) +
   ggtitle("Probability __ was Involved in/Committed the Crime") +
   scale_fill_manual(values = c("orange", "purple"),
@@ -355,14 +367,6 @@ ggplot(merged_problong, aes(x = probability, fill = subject)) +
   theme_bw()
 
 ```
-
-For both Cole and the gun, values are slightly more concentrated toward the lower end of the scale when the algorithm is absent for the non-match condition, and the inconclusive decision produced similar densities across both algorithm conditions. 
-In the case of the gun's involvement, values are more concentrated toward the higher end of the scale when the algorithm is present for the match condition. 
-There is no real difference between match distributions for the probability that Cole committed the crime. 
-The vertical lines indicate the match score presented by the algorithm (0.034 or 3.4% for the non-match condition, 0.34 or 34% for the inconclusive condition, and 0.989 or 98.9% for the match condition). 
-These are displayed in order to visually assess whether the subjects are anchoring to the given match score when assessing the probability of the gun being present at the crime scene. 
-Because the match score is on a scale of 0 to 1, this value could be misinterpreted as a probability for the gun being used in the crime. 
-It does not appear that the participants are anchoring to this value, however, as the distributions do not correspond more to the line when the algorithm is present.
 
 ```{r}
 #| probalgorithm,
@@ -374,6 +378,9 @@ It does not appear that the participants are anchoring to this value, however, a
 #| eval= TRUE,
 #| warning= FALSE,
 #| message= FALSE
+
+conclusion_labs <- c("Identification", "Inconclusive", "Elimination")
+names(conclusion_labs) <- c("Match", "Inconclusive", "NoMatch")
 
 merged_probcombine<- merged_results %>% 
   select(algorithm, gunprob, conclusion, probability) %>%
@@ -392,7 +399,7 @@ ggplot(merged_probcombine, aes(x = Probability, fill = algorithm)) +
   geom_vline(data = filter(merged_probcombine, conclusion == "Match"),
              aes(xintercept = 98.9)) +
   ggtitle("Probability __ was Involved in/Committed the Crime") +
-  facet_grid(Type ~ conclusion, labeller = label_both) +
+  facet_grid(Type ~ conclusion, labeller = labeller(Type = label_both, conclusion = conclusion_labs)) +
   scale_fill_manual(values = c("grey20", "tomato"))+
   theme_bw()
 hide<-dev.off()
@@ -400,6 +407,15 @@ hide<-dev.off()
 include_graphics(path = "images/probalgorithm.png")
 
 ```
+
+For both Cole and the gun, values are slightly more concentrated toward the lower end of the scale when the algorithm is absent for the elimination condition, and the inconclusive decision produced similar densities across both algorithm conditions. 
+In the case of the gun's involvement, values are more concentrated toward the higher end of the scale when the algorithm is present for the identification condition. 
+There is no real difference between identification distributions for the probability that Cole committed the crime. 
+The vertical lines indicate the match score presented by the algorithm (0.034 or 3.4% for the elimination condition, 0.34 or 34% for the inconclusive condition, and 0.989 or 98.9% for the identification condition). 
+These are displayed in order to visually assess whether the subjects are anchoring to the given match score when assessing the probability of the gun being present at the crime scene. 
+Because the match score is on a scale of 0 to 1, this value could be misinterpreted as a probability for the gun being used in the crime. 
+It does not appear that the participants are anchoring to this value, however, as the distributions do not correspond more to the line when the algorithm is present.
+
 
 ```{r}
 #| Coleprobalgorithm,
@@ -436,10 +452,10 @@ After reading the testimony, the participants were given the following question:
 "The State has the burden of proving beyond a reasonable doubt that the defendant is the person who committed the alleged crime. 
 If you are not convinced beyond a reasonable doubt that the defendant is the person who committed the alleged crime, you must find the defendant not guilty. 
 Would you convict this defendant, based on the evidence that you have heard?" 
-`r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="NoMatch")` out of `r sum(merged_results$conclusion=="NoMatch")` individuals in the non-match category, `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Inconclusive")` out of `r sum(merged_results$conclusion=="Inconclusive")` individuals in the inconclusive category, and `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match")` out of `r sum(merged_results$conclusion=="Match")` individuals in the match category chose to convict, despite the bullet matching being the only evidence against Cole in the crime. 
+`r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="NoMatch")` out of `r sum(merged_results$conclusion=="NoMatch")` individuals in the elimination category, `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Inconclusive")` out of `r sum(merged_results$conclusion=="Inconclusive")` individuals in the inconclusive category, and `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match")` out of `r sum(merged_results$conclusion=="Match")` individuals in the identification category chose to convict, despite the bullet matching being the only evidence against Cole in the crime. 
 As \@ref(fig:probguilt) illustrates, across all categories individuals who chose to convict generally assigned a higher probability to Cole committing the crime than those who did not choose to convict. 
-The same general trend of higher probability values for those who chose to convict and lower probability values for those who chose not to convict is also seen for non-match and inconclusive conditions when discussing the probability that the gun was used in the crime. 
-However, in the case of the match condition, those who did not convict gave a generally higher probability that the gun was used in the crime than the probability that Cole committed the crime, resulting in comparable values (albeit with more variability) to those who chose to convict.
+The same general trend of higher probability values for those who chose to convict and lower probability values for those who chose not to convict is also seen for elimination and inconclusive conditions when discussing the probability that the gun was used in the crime. 
+However, in the case of the identification condition, those who did not convict gave a generally higher probability that the gun was used in the crime than the probability that Cole committed the crime, resulting in comparable values (albeit with more variability) to those who chose to convict.
 
 ```{r}
 #| probguilt,
@@ -585,7 +601,7 @@ ggplot(aes(x = picture, fill = firetestcred)) +
     position = position_stack(), color="black"
   ) +
   coord_flip() +
-  facet_grid(algorithm~conclusion, labeller = label_both) +
+  facet_grid(algorithm~conclusion, labeller = labeller(algorithm = label_both, conclusion = conclusion_labs)) +
   ggtitle("How credible did you find the testimony of Terry Smith (the firearm examiner)?") +
   scale_fill_manual("", values = c("#8c510a", "#d8b365", "#f6e8c3", "#f5f5f5", "#c7eae5","#5ab4ac", "#01665e")) +
   theme_bw()+
@@ -656,7 +672,7 @@ ggplot(aes(x = picture, fill = overrel)) +
     position = position_stack(), color="black"
   ) +
   coord_flip() +
-  facet_grid(algorithm~conclusion, labeller = label_both) +
+  facet_grid(algorithm~conclusion, labeller = labeller(algorithm = label_both, conclusion = conclusion_labs)) +
   ggtitle("How reliable do you think the firearm evidence in this case is?") +
   scale_fill_manual("", values = c("#d77227", "#fc8d59", "#fee090", "#ffffbf", "#e0f3f8","#91bfdb", "#4575b4")) +
   theme_bw()+
@@ -669,9 +685,9 @@ ggplot(aes(x = picture, fill = overrel)) +
 
 Individuals were also asked to rate the general reliability of firearms evidence as a field (Figure \@ref(fig:genrel)). 
 As with case reliability, those who received an inconclusive condition were more likely to select "Moderately reliable" than they were to select "Extremely reliable". 
-This trend is also shown in the non-match condition when the algorithm is present. 
-However, it is not reflected in the match condition. 
-When the algorithm is absent, both the match and the non-match conditions appear to produce approximately equal proportions for the two highest categories of reliability. 
+This trend is also shown in the elimination condition when the algorithm is present. 
+However, it is not reflected in the identification condition. 
+When the algorithm is absent, both the identification and the elimination conditions appear to produce approximately equal proportions for the two highest categories of reliability. 
 As with previous responses, all other categories are sparsely populated.
 
 ```{r}
@@ -725,7 +741,7 @@ ggplot(aes(x = picture, fill = firerel)) +
     position = position_stack(), color="black"
   ) +
   coord_flip() +
-  facet_grid(algorithm~conclusion, labeller = label_both) +
+  facet_grid(algorithm~conclusion, labeller = labeller(algorithm = label_both, conclusion = conclusion_labs)) +
   ggtitle("In general, how reliable do you think firearm evidence is?") +
   scale_fill_manual("", values = c("#d77227", "#fc8d59", "#fee090", "#ffffbf", "#e0f3f8","#91bfdb", "#4575b4")) +
   theme_bw()+
@@ -738,9 +754,9 @@ ggplot(aes(x = picture, fill = firerel)) +
 
 
 In all conditions, participants were asked to rate the reliability of the examiner's subjective opinion of the firearm evidence (Figure \@ref(fig:examrel)).
-Participants from both the algorithm and non-algorithm groups gave similar reliability ratings in the non-match condition: most chose "Moderately reliable" or "Extremely reliable", with more choosing "Extremely reliable". 
-For inconclusive and match conditions, there is a difference in proportions of which category is selected based on the presence or the absence of the algorithm. 
-When the algorithm is absent, the trend is fairly similar to that in the non-match condition: between the two highest categories, the majority chose "Extremely reliable". 
+Participants from both the algorithm and non-algorithm groups gave similar reliability ratings in the elimination condition: most chose "Moderately reliable" or "Extremely reliable", with more choosing "Extremely reliable". 
+For inconclusive and identification conditions, there is a difference in proportions of which category is selected based on the presence or the absence of the algorithm. 
+When the algorithm is absent, the trend is fairly similar to that in the elimination condition: between the two highest categories, the majority chose "Extremely reliable". 
 However, in the case that the algorithm was present, this trend was flipped: more participants chose "Moderately reliable" over "Extremely reliable". 
 
 ```{r}
@@ -799,7 +815,7 @@ ggplot(aes(x = picture, fill = examrel)) +
     position = position_stack(), color="black"
   ) +
   coord_flip() +
-  facet_grid(algorithm~conclusion, labeller = label_both) +
+  facet_grid(algorithm~conclusion, labeller = labeller(algorithm = label_both, conclusion = conclusion_labs)) +
   ggtitle("How reliable do you think the firearms examiner's subjective opinion \n of the bullet comparison is, in this case?") +
   scale_fill_manual("", values = c("#d77227", "#fc8d59", "#fee090", "#ffffbf", "#e0f3f8","#91bfdb", "#4575b4")) +
   theme_bw()+
@@ -882,7 +898,7 @@ ggplot(aes(x = picture, fill = algrel)) +
     position = position_stack(), color="black"
   ) +
   coord_flip() +
-  facet_grid(algorithm~conclusion, labeller = label_both) +
+  facet_grid(algorithm~conclusion, labeller = labeller(algorithm = label_both, conclusion = conclusion_labs)) +
   ggtitle("How reliable do you think the firearm algorithm evidence is,\n in this case?") +
   scale_fill_manual("", values = c("#d77227", "#fc8d59", "#fee090", "#ffffbf", "#e0f3f8","#91bfdb", "#4575b4")) +
   theme_bw()+
@@ -896,7 +912,7 @@ ggplot(aes(x = picture, fill = algrel)) +
 In most cases, individuals gave lower reliability ratings when an inconclusive decision was reached. 
 They also tended to select the two highest reliability categories, "Moderately reliable" and "Extremely reliable", regardless of other conditions.
 The presence or absence of images did not have a noticeable effect on reliability ratings. 
-The presence of the algorithm is related to a slight reduction in reliability ratings for the firearms examiner's personal bullet comparison, in the case of an inconclusive or match decision.
+The presence of the algorithm is related to a slight reduction in reliability ratings for the firearms examiner's personal bullet comparison, in the case of an inconclusive or identification decision.
 
 ### Scientificity
 
@@ -960,7 +976,7 @@ ggplot(aes(x = picture, fill = firesci)) +
     position = position_stack(), color="black"
   ) +
   coord_flip() + 
-  facet_grid(algorithm~conclusion, labeller = label_both) +
+  facet_grid(algorithm~conclusion, labeller = labeller(algorithm = label_both, conclusion = conclusion_labs)) +
   ggtitle("In general, how scientific do you think the firearm evidence is?") +
   scale_fill_manual("", values = c("#b35806", "#f1a340", "#fee0b6", "#f7f7f7", "#d8daeb","#998ec3", "#542788")) +
   theme_bw() + 
@@ -1030,7 +1046,7 @@ ggplot(aes(x = picture, fill = examsci)) +
     position = position_stack(), color="black"
   ) +
   coord_flip() + 
-  facet_grid(algorithm~conclusion, labeller = label_both) +
+  facet_grid(algorithm~conclusion, labeller = labeller(algorithm = label_both, conclusion = conclusion_labs)) +
   ggtitle("How scientific do you think the firearms examiner\'s subjective opinion \n of the bullet comparison evidence is, in this case?") +
   scale_fill_manual("", values = c("#b35806", "#f1a340", "#fee0b6", "#f7f7f7", "#d8daeb","#998ec3", "#542788")) +
   theme_bw() + 
@@ -1112,7 +1128,7 @@ ggplot(aes(x = picture, fill = algsci)) +
     position = position_stack(), color="black"
   ) +
   coord_flip() + 
-  facet_grid(algorithm~conclusion, labeller = label_both) +
+  facet_grid(algorithm~conclusion, labeller = labeller(algorithm = label_both, conclusion = conclusion_labs)) +
   ggtitle("How scientific do you think the firearm algorithm evidence is, \n in this case?") +
   scale_fill_manual("", values = c("#b35806", "#f1a340", "#fee0b6", "#f7f7f7", "#d8daeb","#998ec3", "#542788")) +
   theme_bw() + 
@@ -1196,7 +1212,7 @@ histunderdata %>%
   filter(algorithm == "Yes") %>%
 ggplot(aes(x = Question, fill = Understanding)) + 
   geom_col(aes(y = prop), position = "stack", color = "black") + 
-  facet_grid(picture~conclusion, labeller = "label_both") + 
+  facet_grid(picture~conclusion, labeller = labeller(picture = label_both, conclusion = conclusion_labs)) + 
   coord_flip() + 
   scale_fill_manual("I understood", values = c("#d01c8b", "#f1b6da", "#f7f7f7", "#b8e186", "#4dac26")) + 
   theme_bw() + 
@@ -1210,8 +1226,8 @@ ggplot(aes(x = Question, fill = Understanding)) +
 The results for the particpants' understanding of the algorithm description differs based on the presence or absence of images (Figure \@ref(fig:expunder)).
 When images are absent, participants selected values from "I understood about half the method" to "I understood everything" with a fairly uniform frequency, with a few participants selecting values in the lower categories. 
 When images were present, however, category selection appeared to relate to conclusion. 
-Those receiving the match condition were more likely to select 4 than other categories, meaning that they felt they understood more than half of the method but didn't understand everything. 
-Those receiving the non-match condition were more likely to select that they understood half of the method compared to other categories. 
+Those receiving the identification condition were more likely to select 4 than other categories, meaning that they felt they understood more than half of the method but didn't understand everything. 
+Those receiving the elimination condition were more likely to select that they understood half of the method compared to other categories. 
 Those with an inconclusive condition had responses fairly evenly distributed across the top three categories, similar to when images were absent.
 As in the case without images, few individuals indicated that they understood less than half of the method.
 It is unclear what may have caused these differences in ratings of understanding.
@@ -1309,7 +1325,7 @@ merged_results %>%
   theme(legend.position = "bottom", legend.direction = "horizontal") + 
   ylab("Proportion of responses") + 
   guides(fill = guide_legend(nrow = 1, reverse = TRUE)) + 
-  facet_grid(algorithm ~ conclusion, labeller = label_both)
+  facet_grid(algorithm ~ conclusion, labeller = labeller(algorithm = label_both, conclusion = conclusion_labs))
 ```
 
 
@@ -1372,9 +1388,9 @@ Individuals were also asked to rate the strength of evidence, both against Richa
 \authorcol{Unlike questions of reliability, credibility, and scientificity, strength of evidence was measured on a 9-point Likert scale, without worded values for intermittent categories, following the procedure of @garrettMockJurorsEvaluation2020.}
 
 When asked about the case against the defendant, shown in Figure \@ref(fig:strength), there was a small difference in terms of the algorithm. 
-When the examiner reached a non-match conclusion, individuals who also received the algorithm were more likely to select the lowest category ("not at all strong") compared to those who did not receive the algorithm. 
+When the examiner reached a elimination conclusion, individuals who also received the algorithm were more likely to select the lowest category ("not at all strong") compared to those who did not receive the algorithm. 
 Alternatively, in the case of an inconclusive decision, individuals who did not receive the algorithm were more likely to select "not at all strong" compared to those who did receive the algorithm.
-For the match condition, responses were more widely distributed.
+For the identification condition, responses were more widely distributed.
 
 ```{r}
 #| gunstrength,
@@ -1418,7 +1434,7 @@ ggplot(subset(merged_results, !is.na(gunstrength)), aes(x=gunstrength, fill = al
 ```
 
 When asked about the strength of evidence against the defendant's gun, there was no real difference between those who received the algorithm and those who did not (\@ref(fig:gunstrength)).
-The match condition resulted in a more concentrated distribution at higher strength values than were seen for the strength of evidence against Cole.
+The identification condition resulted in a more concentrated distribution at higher strength values than were seen for the strength of evidence against Cole.
 
 ```{r}
 #| probstrength,
@@ -1585,7 +1601,7 @@ ggplot(rel_df, aes(Var1, Freq, fill=question))+
 
 ```
 
-For reliability, shown in Figure \@ref(fig:histrel), a similar number of individuals selected "Extremely reliable" for both the algorithm evidence and the examiner's comparison, with a larger proportion of individuals selecting "Extremely reliable" in the match condition when the algorithm is present. 
+For reliability, shown in Figure \@ref(fig:histrel), a similar number of individuals selected "Extremely reliable" for both the algorithm evidence and the examiner's comparison, with a larger proportion of individuals selecting "Extremely reliable" in the identification condition when the algorithm is present. 
 There appears to be, however, a difference in the categories of "Moderately reliable" and "Weakly reliable". 
 Individuals were more likely to select that the algorithm was "Weakly reliable", while they were less likely to select that the algorithm was "Moderately reliable", compared to the examiner.
 
@@ -1952,7 +1968,7 @@ However, the use of written testimony allowed for the use of gender-neutral name
 Potential jurors may also develop views regarding the reliability/credibility of the examiner that are dependent on external factors - such as appearance or speech - rather than based on the testimony itself.
 
 Testimony in this case was limited to only include the firearms evidence. 
-This led to some confusion on the part of the "inconclusive" and "not a match" scenarios, where there did not appear to be relevant evidence for the prosecution. 
+This led to some confusion on the part of the "inconclusive" and "elimination" scenarios, where there did not appear to be relevant evidence for the prosecution. 
 While the goal of this format was to ensure that participants focused on the bullet matching testimony (without the compounding influence of other witnesses or evidence), this would not be representative of courtroom testimony.  
 
 In a courtroom setting, jurors are able to deliberate with each other before reaching a conclusion with regards to the case. 
@@ -1965,7 +1981,7 @@ For all scenarios, the firearms examiner was referred to as Alex Smith in the qu
 \authorcol{Several participants noted this discrepancy in their feedback on the survey, allowing us to fix the typo before all surveys were completed.}
 \authorcol{There did not appear to be confusion due to the typo on the part of the participants.}
 "Convenience" was also misspelled in one question. 
-For exclusion testimonies, the name "Alex Smith" also occurred in the cross examination.
+For elimination testimonies, the name "Alex Smith" also occurred in the cross examination.
 In the case of non-algorithm inconclusive testimonies, the question: "Can you describe the process of obtaining these test fired bullets?" was missing, but the response: "The test-fired bullets came from a test fire of the gun recovered from the traffic stop." remained unchanged. 
 Due to the nature of the online survey, any differences caused by these typos would be confounded with demographics as well as date or time.
 
