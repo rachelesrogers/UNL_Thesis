@@ -34,9 +34,6 @@ csl: bib/apa.csl
 lot: true
 lof: true
 header-includes: |
-  \makeatletter
-  \@ifundefined{Shaded}{}{\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}}
-  \makeatother
   
 #- \usepackage{tikz}
 ---
