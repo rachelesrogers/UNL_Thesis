@@ -8,7 +8,7 @@ The initial goal of this research was to investigate how a bullet matching algor
 In the course of this investigation, we \authorcol{discovered two aspects of the testimony that we wished to update: speaker clarity and response type.}
 \authorcol{While the initial study responses suffered from scale compression, the participants' notepads acted as another source of information.}
 We designed a method for analyzing participant notes that were taken while reading through the testimony, to create a 'heatmap' of areas of text that participants found to be important.
-In order to address these issues, we redesigned the study format to include cartoons and color-coded speech bubbles for clarity, and conducted a survey investigating response type.
+We also redesigned the study format to include cartoons and color-coded speech bubbles for clarity, and conducted a survey investigating response type.
 We investigated various response types, \authorcol{using a variety of methods, from betting to numeric chance scales.}
 
 \authorcol{The text analysis provided useful information on participant focus, especially when evaluating the testimony that was added in the response study. 
