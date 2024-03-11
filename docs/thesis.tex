@@ -521,7 +521,6 @@ Hare et al. (2017) developed a bullet matching algorithm that uses a random fore
 This algorithm can be described as follows:
 
 \begin{itemize}
-\tightlist
 \item
   The algorithm first takes a 3D scan of the two bullet lands, then identifies a cross section, or a stable area of the bullet land that can be used in comparison.
 \item
@@ -545,7 +544,6 @@ This algorithm can be described as follows:
 \end{figure}
 
 \begin{itemize}
-\tightlist
 \item
   A random forest is used to compare the two signatures and generate a match score for the lands.
 \item
@@ -1034,9 +1032,9 @@ It does not appear that the participants are anchoring to this value, however, a
 After reading the testimony, the participants were given the following question:
 ``The State has the burden of proving beyond a reasonable doubt that the defendant is the person who committed the alleged crime.
 If you are not convinced beyond a reasonable doubt that the defendant is the person who committed the alleged crime, you must find the defendant not guilty.
-Would you convict this defendant, based on the evidence that you have heard?''
-10 out of 196 individuals in the elimination category, 13 out of 191 individuals in the inconclusive category, and 112 out of 182 individuals in the identification category chose to convict, despite the bullet matching being the only evidence against Cole in the crime.
-As \ref{fig:probguilt} illustrates, across all categories individuals who chose to convict generally assigned a higher probability to Cole committing the crime than those who did not choose to convict.
+Would you convict this defendant, based on the evidence that you have heard?''.
+10 out of 196 individuals in the elimination category, 13 out of 191 individuals in the inconclusive category, and 112 out of 182 individuals in the identification category chose to convict, despite \authorcol{the fact that the bullet comparison testimony was the only evidence presented.}
+As Figure \ref{fig:probguilt} illustrates, across all categories individuals who chose to convict generally assigned a higher probability to Cole committing the crime than those who did not choose to convict.
 The same general trend of higher probability values for those who chose to convict and lower probability values for those who chose not to convict is also seen for elimination and inconclusive conditions when discussing the probability that the gun was used in the crime.
 However, in the case of the identification condition, those who did not convict gave a generally higher probability that the gun was used in the crime than the probability that Cole committed the crime, resulting in comparable values (albeit with more variability) to those who chose to convict.
 
@@ -1053,9 +1051,9 @@ However, in the case of the identification condition, those who did not convict 
 \subsection{Credibility}\label{credibility}}
 
 Through all conditions, the level of credibility remained approximately the same for both the firearms examiner and the algorithm expert.
-As Figure \ref{fig:cred} demonstrates, ``Extremely credible'' was by far the most selected category for the firearms examiner, with some people selecting ``Moderately credible'', while the other categories quickly drop off in responses.
-This trend was also reflected in the data for the algorithm expert, and can be seen in most histograms resulting from this study (leading to a question of scale compression).
-The lack of difference based on examiner decision, image, or algorithm (in the case of the firearms examiner) provides a hopeful indication that the credibility of expert witnesses is not necessarily swayed by the facts of the case or the presence of images, when their written testimony remains the same.
+As Figures \ref{fig:cred} and \ref{fig:algcred} demonstrates, ``Extremely credible'' was by far the most selected category for the firearms examiner and the algorithm expert, with some people selecting ``Moderately credible'', while the other categories quickly drop off in responses.
+This trend can be seen in most histograms resulting from this study (leading to a question of scale compression).
+The lack of difference based on examiner decision, image, or algorithm (in the case of the firearms examiner) provides a hopeful indication that the credibility of expert witnesses is not necessarily swayed by the examiner's decision or the presence of images, when their written testimony remains the same.
 
 \begin{figure}
 
@@ -1063,7 +1061,16 @@ The lack of difference based on examiner decision, image, or algorithm (in the c
 
 }
 
-\caption{Histogram of Firearms Examiner Credibility}\label{fig:cred}
+\caption{Histogram of firearms examiner credibility}\label{fig:cred}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/algcred-1} 
+
+}
+
+\caption{Histogram of algorithm expert credibility}\label{fig:algcred}
 \end{figure}
 
 \hypertarget{reliability}{%
@@ -1111,7 +1118,7 @@ However, in the case that the algorithm was present, this trend was flipped: mor
 
 }
 
-\caption{Histogram of perceived firearm exam reliability}\label{fig:examrel}
+\caption{Histogram of perceived reliability of the firearms examiner's comparison}\label{fig:examrel}
 \end{figure}
 
 Individuals who received the algorithm were also asked to rate algorithm reliability, responses are shown in Figure \ref{fig:algrel}.
@@ -1138,7 +1145,16 @@ The presence of the algorithm is related to a slight reduction in reliability ra
 Participants were also asked about how scientific they felt the process was, in a similar four-question format to reliability.
 These results bore some similarity in responses to reliability across questions.
 As previously stated, images did not appear to have a large effect and the two highest categories were by far the most selected.
-When asked about their rating of how scientific the evidence was in the case overall, those receiving the inconclusive condition were less likely to select ``Extremely scientific'' compared to their counterparts given conclusive conditions.
+When asked about their rating of how scientific the evidence was in the case overall, those receiving the inconclusive condition were less likely to select ``Extremely scientific'' compared to their counterparts given conclusive conditions, as shown in Figure \ref{fig:casesci}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/casesci-1} 
+
+}
+
+\caption{Histogram of perceived scientificity in this case}\label{fig:casesci}
+\end{figure}
 
 In terms of firearms evidence as a field, results are shown in Figure \ref{fig:gensci}.
 Here, as before, those who received the inconclusive decision were more likely to select ``Moderately scientific'' over ``Extremely scientific'' for both cases of the algorithm.
@@ -1153,7 +1169,7 @@ A higher proportion of individuals selected ``Extremely scientific'' for conclus
 \caption{Histogram of perceived firearm scientificity as a field}\label{fig:gensci}
 \end{figure}
 
-Regarding how scientific individuals found the examiner's comparison, the algorithm only seemed to have an effect when individuals were presented with an inconclusive decision (\ref{fig:examsci}).
+Regarding how scientific individuals found the examiner's comparison, the algorithm only seemed to have an effect when individuals were presented with an inconclusive decision (Figure \ref{fig:examsci}).
 When the algorithm was not present, people were more likely to select ``Extremely scientific'', resulting in a proportion on par with conclusive results.
 When the algorithm was present, however, ``Moderately scientific'' became the most popular choice for those who received an inconclusive decision, which reflects the general trend of the majority of participants selecting the second highest category for inconclusive results.
 Results for conclusive categories are fairly similar across algorithm conditions, with a close split between ``Moderately scientific'' and ``Extremely scientific''.
@@ -1169,7 +1185,7 @@ Results for conclusive categories are fairly similar across algorithm conditions
 
 Participants gave the algorithm a high rating in scientificity across all categories of conclusions, as shown in Figure \ref{fig:algsci}.
 Here, all decisions had the highest proportion of respondents select ``Extremely scientific''.
-The proportion selecting ``Moderately scientific'' was noticeably lower than the proportion selecting ``Extremely scientific''.
+The proportion selecting ``Moderately scientific'' is noticeably lower than the proportion selecting ``Extremely scientific''.
 The use of demonstrative evidence did not have a visible effect.
 
 \begin{figure}
@@ -1196,14 +1212,14 @@ There was not a discernible difference in responses based on the presence or abs
 
 \begin{figure}
 
-{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/expunder-1} 
+{\centering \includegraphics[width=\linewidth]{thesis_files/figure-latex/allunder-1} 
 
 }
 
-\caption{Histogram of understanding for the explanation of the firearms examiner}\label{fig:expunder}
+\caption{Histogram of understanding for the explanation of the firearms examiner}\label{fig:allunder}
 \end{figure}
 
-The results for the particpants' understanding of the algorithm description differs based on the presence or absence of images (Figure \ref{fig:expunder}).
+The results for the particpants' understanding of the algorithm description differs based on the presence or absence of images (Figure \ref{fig:allunder}).
 When images are absent, participants selected values from ``I understood about half the method'' to ``I understood everything'' with a fairly uniform frequency, with a few participants selecting values in the lower categories.
 When images were present, however, category selection appeared to relate to conclusion.
 Those receiving the identification condition were more likely to select 4 than other categories, meaning that they felt they understood more than half of the method but didn't understand everything.
@@ -1215,24 +1231,49 @@ It is unclear what may have caused these differences in ratings of understanding
 \authorcol{To investigate this potential relationship further, Table} \ref{tab:undertb}
 \authorcol{was created. Because the counts are so small for the individual cells, the resemblence to a relationship based on conclusion is possibly due to random variation.}
 
-\begin{table}
+\begin{verbatim}
+## Warning: package 'pander' was built under R version 4.3.2
+\end{verbatim}
 
-\caption{\label{tab:undertb}Understanding Frequency}
-\centering
-\begin{tabular}[t]{l|r|r|r}
-\hline
-  & NoMatch & Inconclusive & Match\\
-\hline
-2.0 & 1 & 4 & 2\\
-\hline
-3 <br/> I understood about half of the method & 25 & 16 & 7\\
-\hline
-4.0 & 14 & 16 & 27\\
-\hline
-5 <br/> I understood everything & 8 & 14 & 7\\
-\hline
-\end{tabular}
-\end{table}
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4306}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1389}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2083}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1111}}@{}}
+\caption{(\#tab:undertb Understanding Frequency}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+~
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+NoMatch
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Inconclusive
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Match
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+~
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+NoMatch
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Inconclusive
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Match
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{2.0} & 1 & 4 & 2 \\
+\textbf{3 I understood about
+half of the method} & 25 & 16 & 7 \\
+\textbf{4.0} & 14 & 16 & 27 \\
+\textbf{5 I understood
+everything} & 8 & 14 & 7 \\
+\end{longtable}
 
 \hypertarget{uniqueness}{%
 \subsection{Uniqueness}\label{uniqueness}}
@@ -3879,7 +3920,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-03-10 19:56:46.626224.
+This version of the thesis was generated on 2024-03-10 22:27:19.512257.
 
 The computational environment that was used to generate this version is as follows:
 

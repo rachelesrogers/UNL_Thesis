@@ -235,10 +235,17 @@ beginning_wend[beginning_wend$total_time_minutes > 75,]$truncated_minutes <- Inf
 # median(beginning_wend[beginning_wend$algorithm=="Yes",]$total_time_minutes, na.rm=TRUE)
 # median(beginning_wend[beginning_wend$algorithm=="No",]$total_time_minutes, na.rm=TRUE)
 
+conclusion_labs <- c("Identification", "Inconclusive", "Elimination")
+names(conclusion_labs) <- c("Match", "Inconclusive", "NoMatch")
+
+beginning_wend$conclusion <-
+  factor(beginning_wend$conclusion,
+         levels = c("NoMatch", "Inconclusive", "Match"))
+
 png(filename="images/completiontime.png",type = "cairo-png")
 ggplot(beginning_wend, aes(x = truncated_minutes, fill=algorithm)) +
     geom_density(alpha=0.75, color=NA) |> partition(vars(algorithm)) |> blend("multiply")+
-  facet_grid(conclusion~picture, labeller =  purrr::partial(label_both, sep = ":\n"))+
+  facet_grid(conclusion~picture, labeller =  labeller(picture = label_both, conclusion = conclusion_labs))+
   ggtitle("Histogram of Completion Time") +
   xlab("Completion Time in Minutes")+
   scale_fill_manual(values = c("grey20", "tomato"))+
@@ -379,9 +386,6 @@ ggplot(merged_problong, aes(x = probability, fill = subject)) +
 #| warning= FALSE,
 #| message= FALSE
 
-conclusion_labs <- c("Identification", "Inconclusive", "Elimination")
-names(conclusion_labs) <- c("Match", "Inconclusive", "NoMatch")
-
 merged_probcombine<- merged_results %>% 
   select(algorithm, gunprob, conclusion, probability) %>%
   pivot_longer(cols=c(gunprob, probability), names_to = "Type", values_to="Probability")
@@ -451,9 +455,9 @@ sum(merged_results$conclusion=="NoMatch")
 After reading the testimony, the participants were given the following question: 
 "The State has the burden of proving beyond a reasonable doubt that the defendant is the person who committed the alleged crime. 
 If you are not convinced beyond a reasonable doubt that the defendant is the person who committed the alleged crime, you must find the defendant not guilty. 
-Would you convict this defendant, based on the evidence that you have heard?" 
-`r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="NoMatch")` out of `r sum(merged_results$conclusion=="NoMatch")` individuals in the elimination category, `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Inconclusive")` out of `r sum(merged_results$conclusion=="Inconclusive")` individuals in the inconclusive category, and `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match")` out of `r sum(merged_results$conclusion=="Match")` individuals in the identification category chose to convict, despite the bullet matching being the only evidence against Cole in the crime. 
-As \@ref(fig:probguilt) illustrates, across all categories individuals who chose to convict generally assigned a higher probability to Cole committing the crime than those who did not choose to convict. 
+Would you convict this defendant, based on the evidence that you have heard?". 
+`r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="NoMatch")` out of `r sum(merged_results$conclusion=="NoMatch")` individuals in the elimination category, `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Inconclusive")` out of `r sum(merged_results$conclusion=="Inconclusive")` individuals in the inconclusive category, and `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match")` out of `r sum(merged_results$conclusion=="Match")` individuals in the identification category chose to convict, despite \authorcol{the fact that the bullet comparison testimony was the only evidence presented.} 
+As Figure \@ref(fig:probguilt) illustrates, across all categories individuals who chose to convict generally assigned a higher probability to Cole committing the crime than those who did not choose to convict. 
 The same general trend of higher probability values for those who chose to convict and lower probability values for those who chose not to convict is also seen for elimination and inconclusive conditions when discussing the probability that the gun was used in the crime. 
 However, in the case of the identification condition, those who did not convict gave a generally higher probability that the gun was used in the crime than the probability that Cole committed the crime, resulting in comparable values (albeit with more variability) to those who chose to convict.
 
@@ -483,6 +487,7 @@ probplot <-
                outlier.shape = NA) +
   ggtitle("Probability Cole Commited the Crime") +
   scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
+  scale_x_discrete(labels=conclusion_labs)+
   theme_bw()
 
 gunplot <-
@@ -501,6 +506,7 @@ gunplot <-
   ggtitle("Probability Gun was used in the Crime") +
   ylab("probability")+
   scale_fill_manual(values = c("grey20", "plum1"), name="Convict?")+
+  scale_x_discrete(labels=conclusion_labs)+
   theme_bw()
 
 grid.arrange(probplot, gunplot, ncol = 2)
@@ -511,13 +517,13 @@ grid.arrange(probplot, gunplot, ncol = 2)
 ### Credibility
 
 Through all conditions, the level of credibility remained approximately the same for both the firearms examiner and the algorithm expert. 
-As Figure \@ref(fig:cred) demonstrates, "Extremely credible" was by far the most selected category for the firearms examiner, with some people selecting "Moderately credible", while the other categories quickly drop off in responses. 
-This trend was also reflected in the data for the algorithm expert, and can be seen in most histograms resulting from this study (leading to a question of scale compression). 
-The lack of difference based on examiner decision, image, or algorithm (in the case of the firearms examiner) provides a hopeful indication that the credibility of expert witnesses is not necessarily swayed by the facts of the case or the presence of images, when their written testimony remains the same.
+As Figures \@ref(fig:cred) and \@ref(fig:algcred) demonstrates, "Extremely credible" was by far the most selected category for the firearms examiner and the algorithm expert, with some people selecting "Moderately credible", while the other categories quickly drop off in responses. 
+This trend can be seen in most histograms resulting from this study (leading to a question of scale compression). 
+The lack of difference based on examiner decision, image, or algorithm (in the case of the firearms examiner) provides a hopeful indication that the credibility of expert witnesses is not necessarily swayed by the examiner's decision or the presence of images, when their written testimony remains the same.
 
 ```{r}
 #| cred,
-#| fig.cap= "Histogram of Firearms Examiner Credibility",
+#| fig.cap= "Histogram of firearms examiner credibility",
 #| fig.width= 7,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -528,19 +534,6 @@ The lack of difference based on examiner decision, image, or algorithm (in the c
 
 merged_results$firetestcred = factor(
   merged_results$firetestcred,
-  levels = c(
-    "Extremely noncredible",
-    "Moderately noncredible",
-    "Weakly noncredible",
-    "Neither credible nor noncredible",
-    "Weakly credible",
-    "Moderately credible",
-    "Extremely credible"
-  )
-)
-algorithm_results <- merged_results %>% filter(algorithm == "Yes")
-algorithm_results$algtestcred = factor(
-  algorithm_results$algtestcred,
   levels = c(
     "Extremely noncredible",
     "Moderately noncredible",
@@ -603,6 +596,56 @@ ggplot(aes(x = picture, fill = firetestcred)) +
   coord_flip() +
   facet_grid(algorithm~conclusion, labeller = labeller(algorithm = label_both, conclusion = conclusion_labs)) +
   ggtitle("How credible did you find the testimony of Terry Smith (the firearm examiner)?") +
+  scale_fill_manual("", values = c("#8c510a", "#d8b365", "#f6e8c3", "#f5f5f5", "#c7eae5","#5ab4ac", "#01665e")) +
+  theme_bw()+
+  theme(legend.position = "bottom", legend.direction = "horizontal") + 
+  ylab("Proportion of responses") + 
+    guides(fill = guide_legend(nrow = 1, reverse = TRUE))
+```
+
+
+```{r}
+#| algcred,
+#| fig.cap= "Histogram of algorithm expert credibility",
+#| fig.width= 7,
+#| fig.height= 3,
+#| fig.align= "center",
+#| warning= FALSE,
+#| message= FALSE,
+#| echo= FALSE
+
+algorithm_results <- merged_results %>% filter(algorithm == "Yes")
+algorithm_results$algtestcred = factor(
+  algorithm_results$algtestcred,
+  levels = c(
+    "Extremely noncredible",
+    "Moderately noncredible",
+    "Weakly noncredible",
+    "Neither credible nor noncredible",
+    "Weakly credible",
+    "Moderately credible",
+    "Extremely credible"
+  )
+)
+
+
+levels(algorithm_results$algtestcred) <-
+  gsub(" ", "\n", levels(algorithm_results$algtestcred))
+
+algorithm_results %>% 
+  filter(!is.na(algtestcred)) %>%
+  group_by(conclusion, algorithm, picture, algtestcred) %>%
+  count() %>%
+  group_by(conclusion, algorithm, picture) %>%
+  mutate(prop = n/sum(n)) %>%
+ggplot(aes(x = picture, fill = algtestcred)) +
+  geom_col(
+    mapping = aes(y =prop),
+    position = position_stack(), color="black"
+  ) +
+  coord_flip() +
+  facet_grid(algorithm~conclusion, labeller = labeller(algorithm = label_both, conclusion = conclusion_labs)) +
+  ggtitle("How credible did you find the testimony of Adrian Jones (the algorithm expert)?") +
   scale_fill_manual("", values = c("#8c510a", "#d8b365", "#f6e8c3", "#f5f5f5", "#c7eae5","#5ab4ac", "#01665e")) +
   theme_bw()+
   theme(legend.position = "bottom", legend.direction = "horizontal") + 
@@ -761,7 +804,7 @@ However, in the case that the algorithm was present, this trend was flipped: mor
 
 ```{r}
 #| examrel,
-#| fig.cap= "Histogram of perceived firearm exam reliability",
+#| fig.cap= "Histogram of perceived reliability of the firearms examiner's comparison",
 #| fig.width= 7,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -919,7 +962,56 @@ The presence of the algorithm is related to a slight reduction in reliability ra
 Participants were also asked about how scientific they felt the process was, in a similar four-question format to reliability. 
 These results bore some similarity in responses to reliability across questions. 
 As previously stated, images did not appear to have a large effect and the two highest categories were by far the most selected. 
-When asked about their rating of how scientific the evidence was in the case overall, those receiving the inconclusive condition were less likely to select "Extremely scientific" compared to their counterparts given conclusive conditions.  
+When asked about their rating of how scientific the evidence was in the case overall, those receiving the inconclusive condition were less likely to select "Extremely scientific" compared to their counterparts given conclusive conditions, as shown in Figure \@ref(fig:casesci).  
+
+```{r}
+#| casesci,
+#| fig.cap= "Histogram of perceived scientificity in this case",
+#| fig.width= 7,
+#| fig.height= 3,
+#| fig.align= "center",
+#| echo= FALSE,
+#| message= FALSE,
+#| warning= FALSE
+
+merged_results$oversci = factor(
+  merged_results$oversci,
+  levels = c(
+    "Extremely unscientific",
+    "Moderately unscientific",
+    "Weakly unscientific",
+    "Neither scientific nor unscientific",
+    "Weakly scientific",
+    "Moderately scientific",
+    "Extremely scientific"
+  )
+)
+
+levels(merged_results$oversci) <-
+  gsub(" ", "\n", levels(merged_results$oversci))
+
+merged_results %>% 
+  filter(!is.na(oversci)) %>%
+  group_by(conclusion, algorithm, picture, oversci) %>%
+  count() %>%
+  group_by(conclusion, algorithm, picture) %>%
+  mutate(prop = n/sum(n)) %>%
+ggplot(aes(x = picture, fill = oversci)) +
+  geom_col(
+    mapping = aes(y =prop),
+    position = position_stack(), color="black"
+  ) +
+  coord_flip() + 
+  facet_grid(algorithm~conclusion, labeller = labeller(algorithm = label_both, conclusion = conclusion_labs)) +
+  ggtitle("How scientific do you think the firearm evidence in this case is?") +
+  scale_fill_manual("", values = c("#b35806", "#f1a340", "#fee0b6", "#f7f7f7", "#d8daeb","#998ec3", "#542788")) +
+  theme_bw() + 
+  theme(legend.position = "bottom", legend.direction = "horizontal") + 
+  ylab("Proportion of responses") + 
+    guides(fill = guide_legend(nrow = 1, reverse = TRUE))
+
+
+```
 
 In terms of firearms evidence as a field, results are shown in Figure \@ref(fig:gensci). 
 Here, as before, those who received the inconclusive decision were more likely to select "Moderately scientific" over "Extremely scientific" for both cases of the algorithm. 
@@ -987,7 +1079,7 @@ ggplot(aes(x = picture, fill = firesci)) +
 
 ```
 
-Regarding how scientific individuals found the examiner's comparison, the algorithm only seemed to have an effect when individuals were presented with an inconclusive decision (\@ref(fig:examsci)). 
+Regarding how scientific individuals found the examiner's comparison, the algorithm only seemed to have an effect when individuals were presented with an inconclusive decision (Figure \@ref(fig:examsci)). 
 When the algorithm was not present, people were more likely to select "Extremely scientific", resulting in a proportion on par with conclusive results. 
 When the algorithm was present, however, "Moderately scientific" became the most popular choice for those who received an inconclusive decision, which reflects the general trend of the majority of participants selecting the second highest category for inconclusive results. 
 Results for conclusive categories are fairly similar across algorithm conditions, with a close split between "Moderately scientific" and "Extremely scientific".
@@ -1058,7 +1150,7 @@ ggplot(aes(x = picture, fill = examsci)) +
 
 Participants gave the algorithm a high rating in scientificity across all categories of conclusions, as shown in Figure \@ref(fig:algsci). 
 Here, all decisions had the highest proportion of respondents select "Extremely scientific". 
-The proportion selecting "Moderately scientific" was noticeably lower than the proportion selecting "Extremely scientific".
+The proportion selecting "Moderately scientific" is noticeably lower than the proportion selecting "Extremely scientific".
 The use of demonstrative evidence did not have a visible effect.
 
 ```{r}
@@ -1147,12 +1239,64 @@ Individuals who received the algorithm were more likely to select "Moderately sc
 
 Individuals were asked to rate their understanding of both the algorithm and the examiner's personal bullet comparison on a 5-point Likert scale. Most responses ranged from 3 ("I understood about half of the method") to 5 ("I understood everything"), leading to less scale compression than was seen in scales relating to credibility, reliability, and scientificity.  
 
+```{r}
+#| expunder,
+#| fig.cap= "Histogram of understanding for the explanation of the firearms examiner",
+#| fig.width= 7,
+#| fig.height= 4,
+#| fig.align= "center",
+#| echo= FALSE,
+#| message= FALSE,
+#| warning= FALSE
+
+merged_results$expunder = factor(
+  merged_results$expunder,
+  levels = c(
+    "1 <br/> I understood nothing",
+    "2.0",
+    "3 <br/> I understood about half of the method",
+    "4.0",
+    "5 <br/> I understood everything"
+  )
+)
+
+levels(merged_results$expunder) <-
+  gsub("<br/>", "", levels(merged_results$expunder))
+
+# levels(merged_results$expunder) <-
+#   gsub("  ", " ", levels(merged_results$expunder))
+
+
+expunderdata <- merged_results %>% 
+  filter(!is.na(expunder)) %>%
+  group_by(conclusion, algorithm, picture, expunder) %>%
+  count() %>%
+  group_by(conclusion, algorithm, picture) %>%
+  mutate(prop = n/sum(n)) %>%
+      mutate(expunder = stringr::str_remove(expunder, "<br/>|.0") %>%
+           stringr::str_remove(., "I understood ")) %>%
+  ggplot(aes(x = picture, fill = expunder)) +
+  geom_col(
+    mapping = aes(y =prop),
+    position = position_stack(), color="black"
+  ) +
+  coord_flip() + 
+  facet_grid(algorithm~conclusion, labeller = labeller(algorithm = label_both, conclusion = conclusion_labs)) +
+  ggtitle("Based on this testimony, how would you rate your understanding of \n the method described for the examiner's personal bullet comparison?") +
+  scale_fill_manual("I understood", values = c("#d01c8b", "#f1b6da", "#f7f7f7", "#b8e186", "#4dac26")) + 
+  theme_bw() + 
+  theme(legend.position = "bottom", legend.direction = "horizontal") + 
+  ylab("Proportion of responses") + 
+    guides(fill = guide_legend(nrow = 1, reverse = TRUE))
+
+```
+
 For the firearms examiner's personal comparison, few individuals selected that they understood less than half the method (Figure \@ref(fig:expunder)). 
 Those who did not receive the algorithm were more likely to select "I understood everything" compared to those who did receive the algorithm, across all conclusions. 
 There was not a discernible difference in responses based on the presence or absence of images.
 
 ```{r}
-#| expunder,
+#| allunder,
 #| fig.cap= "Histogram of understanding for the explanation of the firearms examiner",
 #| fig.width= 7,
 #| fig.height= 4,
@@ -1208,6 +1352,7 @@ histunderdata <- merged_results %>%
   mutate(prop = n/sum(n)) %>%
   mutate(Understanding = stringr::str_remove(Understanding, "<br/>|.0") %>%
            stringr::str_remove(., "I understood "))
+
 histunderdata %>%
   filter(algorithm == "Yes") %>%
 ggplot(aes(x = Question, fill = Understanding)) + 
@@ -1223,7 +1368,7 @@ ggplot(aes(x = Question, fill = Understanding)) +
 
 ```
 
-The results for the particpants' understanding of the algorithm description differs based on the presence or absence of images (Figure \@ref(fig:expunder)).
+The results for the particpants' understanding of the algorithm description differs based on the presence or absence of images (Figure \@ref(fig:allunder)).
 When images are absent, participants selected values from "I understood about half the method" to "I understood everything" with a fairly uniform frequency, with a few participants selecting values in the lower categories. 
 When images were present, however, category selection appeared to relate to conclusion. 
 Those receiving the identification condition were more likely to select 4 than other categories, meaning that they felt they understood more than half of the method but didn't understand everything. 
@@ -1283,16 +1428,18 @@ ggplot(subset(algorithm_results,!is.na(algunder)),
 \authorcol{To investigate this potential relationship further, Table} \@ref(tab:undertb)
 \authorcol{was created. Because the counts are so small for the individual cells, the resemblence to a relationship based on conclusion is possibly due to random variation.}
 ```{r}
-#| undertb,
 #| echo= FALSE,
 #| message= FALSE,
 #| eval= TRUE
-kable(table(subset(algorithm_results,!is.na(algunder) & picture=="Yes")$algunder,
+
+library(pander)
+pander(table(subset(algorithm_results,!is.na(algunder) & picture=="Yes")$algunder,
       subset(algorithm_results,!is.na(algunder) & picture=="Yes")$conclusion),
-      caption = "Understanding Frequency")
+      caption = "(\\#tab:undertb Understanding Frequency")
 # %>% 
 #   column_spec(1, width = "10em")
 ```
+
 ```{r}
 #| examunder,
 #| fig.cap= "Histogram of understanding for the firearms examiner's explanation",
