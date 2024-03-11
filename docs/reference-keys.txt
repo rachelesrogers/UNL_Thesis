@@ -26,6 +26,7 @@ fig:gensci
 fig:examsci
 fig:algsci
 fig:allunder
+tab:undertb
 fig:strength
 fig:gunstrength
 fig:probstrength
@@ -36,7 +37,6 @@ fig:histsci
 fig:histunder
 fig:coordcred
 fig:coordscirel
-fig:allpcp
 tab:edist
 fig:lcs
 tab:dylcs

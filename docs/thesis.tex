@@ -1231,16 +1231,12 @@ It is unclear what may have caused these differences in ratings of understanding
 \authorcol{To investigate this potential relationship further, Table} \ref{tab:undertb}
 \authorcol{was created. Because the counts are so small for the individual cells, the resemblence to a relationship based on conclusion is possibly due to random variation.}
 
-\begin{verbatim}
-## Warning: package 'pander' was built under R version 4.3.2
-\end{verbatim}
-
 \begin{longtable}[]{@{}
   >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4306}}
   >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1389}}
   >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2083}}
   >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1111}}@{}}
-\caption{(\#tab:undertb Understanding Frequency}\tabularnewline
+\caption{\label{tab:undertb} Understanding Frequency}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
 ~
@@ -1296,11 +1292,11 @@ Thus, respondents in this study overwhelmingly believe in the uniqueness of mark
 \end{figure}
 
 Individuals were also asked to rate the strength of evidence, both against Richard Cole and against the gun.
-\authorcol{Unlike questions of reliability, credibility, and scientificity, strength of evidence was measured on a 9-point Likert scale, without worded values for intermittent categories, following the procedure of @garrettMockJurorsEvaluation2020.}
+\authorcol{Unlike questions of reliability, credibility, and scientificity, strength of evidence was measured on a 9-point Likert scale, without worded values for intermittent categories, following the procedure of} Garrett, Scurich, et al. (2020).
 
 When asked about the case against the defendant, shown in Figure \ref{fig:strength}, there was a small difference in terms of the algorithm.
-When the examiner reached a elimination conclusion, individuals who also received the algorithm were more likely to select the lowest category (``not at all strong'') compared to those who did not receive the algorithm.
-Alternatively, in the case of an inconclusive decision, individuals who did not receive the algorithm were more likely to select ``not at all strong'' compared to those who did receive the algorithm.
+When the examiner reached a elimination conclusion, individuals who also received the algorithm were more likely to select the lowest category (``Not at all strong'') compared to those who did not receive the algorithm.
+Alternatively, in the case of an inconclusive decision, individuals who did not receive the algorithm were more likely to select ``Not at all strong'' compared to those who did receive the algorithm.
 For the identification condition, responses were more widely distributed.
 
 \begin{figure}
@@ -1312,7 +1308,7 @@ For the identification condition, responses were more widely distributed.
 \caption{Histogram of perceived strength of evidence against the gun}\label{fig:gunstrength}
 \end{figure}
 
-When asked about the strength of evidence against the defendant's gun, there was no real difference between those who received the algorithm and those who did not (\ref{fig:gunstrength}).
+When asked about the strength of evidence against the defendant's gun, there was no real difference between those who received the algorithm and those who did not (Figure \ref{fig:gunstrength}).
 The identification condition resulted in a more concentrated distribution at higher strength values than were seen for the strength of evidence against Cole.
 
 \begin{figure}
@@ -1324,7 +1320,7 @@ The identification condition resulted in a more concentrated distribution at hig
 \caption{Probabilities based on perceived strength of evidence.}\label{fig:probstrength}
 \end{figure}
 
-In comparing how individuals scored strength of evidence and the probability that they assigned to Cole committing the crime and the gun being present at the crime scene, the results were largely consistent (\ref{fig:probstrength}).
+In comparing how individuals scored strength of evidence and the probability that they assigned to Cole committing the crime and the gun being present at the crime scene, the results were largely consistent (Figure \ref{fig:probstrength}).
 In general, the probability assigned increases as the assigned strength of evidence increases, which is to be expected.
 
 \hypertarget{mistakes}{%
@@ -1402,7 +1398,7 @@ No real difference can be seen in the lower values on the scale, due to few indi
 \caption{Histogram of participants' understanding}\label{fig:histunder}
 \end{figure}
 
-Individuals rated their understanding of the examiner's bullet comparison higher than their understanding of the algorithm method, generally speaking (\ref{fig:histunder}).
+Individuals rated their understanding of the examiner's bullet comparison higher than their understanding of the algorithm method, generally speaking (Figure \ref{fig:histunder}).
 Participants were more likely to select a 4 or 5 with regards to their understanding of the examiner's comparison, while they were more likely to select a 3 or 4 with regards to their understanding of the algorithm method.
 While these questions gauge how well participants believe they understand the given concepts, Dunning, Heath, \& Suls (2004) indicate that individuals are not unbiased judges of their own understanding.
 
@@ -1441,13 +1437,6 @@ Others selected the second highest category in both cases.
 In terms of reliability, participants tended to choose one of the two highest categories for both the algorithm and the examiner.
 Some participants switched between the two highest categories for the algorithm or the examiner, in similar numbers.
 
-\begin{figure}
-\includegraphics[width=\linewidth]{thesis_files/figure-latex/allpcp-1} \caption{Parallel Coordinate Plot for reliability, credibility, scientificity, and understanding}\label{fig:allpcp}
-\end{figure}
-
-Figure \ref{fig:allpcp} shows individual responses across all of the considered questions.
-There were some individuals who selected the highest category for responses across the board, while others selected the highest response for all except their understanding of the algorithm.
-In fact, algorithmic understanding seems to have the least consistent responses, based on the differences in the lines between algorithmic understanding and algorithmic scientificity.
 These coordinate plots indicate that individuals tended to choose the same categories for the algorithm and the examiner across variables, with most variation between categories resulting from individuals moving up or down a single category.
 Relatively few individuals changed their response by more than one category, when comparing between the algorithm and the expert.
 These results generally reflect the trends shown in the histograms in the previous section.
@@ -3920,7 +3909,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-03-10 22:27:19.512257.
+This version of the thesis was generated on 2024-03-10 23:45:28.495281.
 
 The computational environment that was used to generate this version is as follows:
 

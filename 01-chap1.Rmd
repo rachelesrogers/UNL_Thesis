@@ -1430,12 +1430,13 @@ ggplot(subset(algorithm_results,!is.na(algunder)),
 ```{r}
 #| echo= FALSE,
 #| message= FALSE,
-#| eval= TRUE
+#| eval= TRUE,
+#| warning = FALSE
 
 library(pander)
 pander(table(subset(algorithm_results,!is.na(algunder) & picture=="Yes")$algunder,
       subset(algorithm_results,!is.na(algunder) & picture=="Yes")$conclusion),
-      caption = "(\\#tab:undertb Understanding Frequency")
+      caption = "(\\#tab:undertb) Understanding Frequency")
 # %>% 
 #   column_spec(1, width = "10em")
 ```
@@ -1519,24 +1520,26 @@ levels(merged_results$strength) <-
 ggplot(subset(merged_results, !is.na(strength)), aes(x=strength, fill = algorithm))+
   geom_bar(mapping = aes(y = ..prop.., group = algorithm), position=position_dodge(preserve = "single"), color="black") +
 #  geom_histogram(stat="count", position="dodge")+
-  facet_grid(conclusion~., labeller =  purrr::partial(label_both, sep = ":\n")) +
+  facet_grid(conclusion~., labeller = labeller(conclusion = conclusion_labs)) +
   ggtitle(
     "How strong would you say the case against the defendant is?"
   ) +
-  scale_fill_manual(values = c("grey20", "tomato")) +
+  scale_fill_manual("Algorithm", values = c("grey20", "tomato")) +
   theme_bw()+
-  theme(axis.title.x = element_blank())+ 
+  theme(axis.title.x = element_blank(),
+        legend.position = c(1, 1), legend.justification = c(1, 1), 
+        legend.direction = "horizontal", legend.background = element_rect(fill = "transparent"))+ 
   scale_x_discrete(labels=c('1\nNot\nat all\nstrong', '2', '3', '4', '5\nModerately\nstrong', '6', '7', '8', '9\nExtremely\nstrong'))
 
 
 ```
 
 Individuals were also asked to rate the strength of evidence, both against Richard Cole and against the gun. 
-\authorcol{Unlike questions of reliability, credibility, and scientificity, strength of evidence was measured on a 9-point Likert scale, without worded values for intermittent categories, following the procedure of @garrettMockJurorsEvaluation2020.}
+\authorcol{Unlike questions of reliability, credibility, and scientificity, strength of evidence was measured on a 9-point Likert scale, without worded values for intermittent categories, following the procedure of} @garrettMockJurorsEvaluation2020.
 
 When asked about the case against the defendant, shown in Figure \@ref(fig:strength), there was a small difference in terms of the algorithm. 
-When the examiner reached a elimination conclusion, individuals who also received the algorithm were more likely to select the lowest category ("not at all strong") compared to those who did not receive the algorithm. 
-Alternatively, in the case of an inconclusive decision, individuals who did not receive the algorithm were more likely to select "not at all strong" compared to those who did receive the algorithm.
+When the examiner reached a elimination conclusion, individuals who also received the algorithm were more likely to select the lowest category ("Not at all strong") compared to those who did not receive the algorithm. 
+Alternatively, in the case of an inconclusive decision, individuals who did not receive the algorithm were more likely to select "Not at all strong" compared to those who did receive the algorithm.
 For the identification condition, responses were more widely distributed.
 
 ```{r}
@@ -1565,7 +1568,7 @@ levels(merged_results$gunstrength) <-
 ggplot(subset(merged_results, !is.na(gunstrength)), aes(x=gunstrength, fill = algorithm))+
   geom_bar(mapping = aes(y = ..prop.., group = algorithm), position=position_dodge(preserve = "single"), color="black") +
 #  geom_histogram(stat="count", position="dodge")+
-  facet_grid(conclusion~., labeller = purrr::partial(label_both, sep = ":\n")) +
+  facet_grid(conclusion~., labeller = labeller(conclusion = conclusion_labs)) +
   ggtitle(
     "How strong is the evidence that the defendant's gun
     \nwas used to fire the shot in the convenience store, in your opinion?"
@@ -1580,7 +1583,7 @@ ggplot(subset(merged_results, !is.na(gunstrength)), aes(x=gunstrength, fill = al
 
 ```
 
-When asked about the strength of evidence against the defendant's gun, there was no real difference between those who received the algorithm and those who did not (\@ref(fig:gunstrength)).
+When asked about the strength of evidence against the defendant's gun, there was no real difference between those who received the algorithm and those who did not (Figure \@ref(fig:gunstrength)).
 The identification condition resulted in a more concentrated distribution at higher strength values than were seen for the strength of evidence against Cole.
 
 ```{r}
@@ -1626,7 +1629,7 @@ levels(strengthdat$scale) <-
   scale_x_discrete(labels=c('1\nNot at\nall strong', '2', '3', '4', '5\nModerately\nstrong', '6', '7', '8', '9\nExtremely\nstrong'))
 ```
 
-In comparing how individuals scored strength of evidence and the probability that they assigned to Cole committing the crime and the gun being present at the crime scene, the results were largely consistent (\@ref(fig:probstrength)). 
+In comparing how individuals scored strength of evidence and the probability that they assigned to Cole committing the crime and the gun being present at the crime scene, the results were largely consistent (Figure \@ref(fig:probstrength)). 
 In general, the probability assigned increases as the assigned strength of evidence increases, which is to be expected. 
 
 ### Mistakes
@@ -1656,7 +1659,7 @@ ggplot(subset(merged_results, !is.na(mistakes)), aes(x=mistakes, fill = conclusi
   ggtitle(
     "How often do firearms examiners make mistakes when determining whether \n bullets were fired through the same gun?"
   ) +
-  scale_fill_manual(values = c("#FF8E00", "grey20", "#037AC7")) +
+  scale_fill_manual(values = c("#FF8E00", "grey20", "#037AC7"), labels = conclusion_labs) +
   theme_bw()+
   theme(axis.title.x = element_blank())
 
@@ -1701,7 +1704,7 @@ ggplot(test_df, aes(Var1, Freq, fill=question))+
   geom_bar(stat="identity", position=position_dodge(preserve = "single"), color="black")+
   ggtitle("How credible did you find the testimony of the ___ expert?")+
   scale_fill_manual(values = c("gray", "black")) +
-  facet_grid(conclusion~., labeller =  purrr::partial(label_both, sep = ":\n")) +
+  facet_grid(conclusion~., labeller =  labeller(conclusion = conclusion_labs)) +
   theme_bw()+
   theme(axis.title.x = element_blank())
 
@@ -1742,7 +1745,7 @@ ggplot(rel_df, aes(Var1, Freq, fill=question))+
   geom_bar(stat="identity", position=position_dodge(preserve = "single"), color="black")+
   ggtitle("How reliable do you think the ____ evidence is, in this case?")+
   scale_fill_manual(values = c("gray", "black")) +
-  facet_grid(conclusion~., labeller =  purrr::partial(label_both, sep = ":\n")) +
+  facet_grid(conclusion~., labeller =  labeller(conclusion = conclusion_labs)) +
   theme_bw()+
   theme(axis.title.x = element_blank())
 
@@ -1781,7 +1784,7 @@ ggplot(sci_df, aes(Var1, Freq, fill=question))+
   geom_bar(stat="identity", position=position_dodge(preserve = "single"), color="black")+
   ggtitle("How scientific do you think the ____ evidence is, in this case?")+
   scale_fill_manual(values = c("gray", "black")) +
-  facet_grid(conclusion~., labeller =  purrr::partial(label_both, sep = ":\n")) +
+  facet_grid(conclusion~., labeller =  labeller(conclusion = conclusion_labs)) +
   theme_bw()+
   theme(axis.title.x = element_blank())
 
@@ -1826,14 +1829,14 @@ ggplot(under_df, aes(Var1, Freq, fill=question))+
   ggtitle("Based on this testimony, how would you rate your understanding of the method
                   described for the ______?") +
   scale_fill_manual(values = c("gray", "black")) +
-  facet_grid(conclusion~., labeller =  purrr::partial(label_both, sep = ":\n")) +
+  facet_grid(conclusion~., labeller =  labeller(conclusion = conclusion_labs)) +
   theme_bw()+
   theme(axis.title.x = element_blank())+ 
   scale_x_discrete(labels=c('1\nI\nunderstood\nnothing', '2', '3', '4', '5\nI\nunderstood\neverything'))
 
 
 ```
-Individuals rated their understanding of the examiner's bullet comparison higher than their understanding of the algorithm method, generally speaking (\@ref(fig:histunder)). 
+Individuals rated their understanding of the examiner's bullet comparison higher than their understanding of the algorithm method, generally speaking (Figure \@ref(fig:histunder)). 
 Participants were more likely to select a 4 or 5 with regards to their understanding of the examiner's comparison, while they were more likely to select a 3 or 4 with regards to their understanding of the algorithm method.
 While these questions gauge how well participants believe they understand the given concepts, @dunningFlawedSelfAssessmentImplications2004 indicate that individuals are not unbiased judges of their own understanding.
 
@@ -1850,66 +1853,71 @@ While these questions gauge how well participants believe they understand the gi
 #| message= FALSE,
 #| warning= FALSE
 
-algtestcred_reorder<- algorithm_results %>% mutate(algtestcred=fct_relevel(algtestcred, "Extremely noncredible","Moderately noncredible",
-                                                                           "Weakly noncredible",
-                                                         "Neither credible nor noncredible", 
-                                                         "Weakly credible", "Moderately credible",
-                                                         "Extremely credible"))
+algtestcred_reorder<- algorithm_results %>%
+  mutate(algtestcred=fct_relevel(algtestcred, "Extremely noncredible",
+                                 "Moderately noncredible",
+                                 "Weakly noncredible",
+                                 "Neither credible nor noncredible", 
+                                 "Weakly credible", "Moderately credible",
+                                 "Extremely credible"))
 
-algtestcred_reorder<- algorithm_results %>% mutate(firetestcred=fct_relevel(firetestcred, "Extremely noncredible","Moderately noncredible",
-                                                                           "Weakly noncredible",
-                                                         "Neither credible nor noncredible", 
-                                                         "Weakly credible", "Moderately credible",
-                                                         "Extremely credible"))
-
-
-cred_data<-data.frame(algtestcred=algtestcred_reorder$algtestcred, firetestcred=algtestcred_reorder$firetestcred)
-testcred_tab<-table(cred_data)
-testcred_df<-as.data.frame(testcred_tab)
-
+algtestcred_reorder<- algorithm_results %>%
+  mutate(firetestcred=fct_relevel(firetestcred, 
+                                  "Extremely noncredible","Moderately noncredible",
+                                  "Weakly noncredible", 
+                                  "Neither credible nor noncredible", 
+                                  "Weakly credible", "Moderately credible",
+                                  "Extremely credible"))
 
 
-credplot<-ggparcoord(data=subset(testcred_df, Freq != 0), columns=c("algtestcred","firetestcred"), order=c(1,2,3,4,5,6,7), scale="globalminmax")+
-  geom_line(aes(linewidth=Freq, alpha=Freq))+ 
-  ggtitle("How credible did you find the \n testimony of the ___ expert?")+
-  facet_grid(drop=FALSE)
+cred_data2 <- data.frame(
+  conclusion = algtestcred_reorder$conclusion,
+  Firearms = algtestcred_reorder$firetestcred,
+  Algorithm = algtestcred_reorder$algtestcred
+)
 
+cred_tab2 <- table(cred_data2)
+cred_df2 <- as.data.frame(cred_tab2)
 
+cred_df2 <- cred_df2 %>%
+  purrr::map(.f = function(x) rep(x, cred_df2$Freq)) %>%
+  as.data.frame() %>%
+  select(-Freq)
 
-under_data<-data.frame(examiner=algorithm_results$expunder, algorithm=algorithm_results$algunder)
-under_tab<-table(under_data)
-under_df<-as.data.frame(under_tab)
+credplot <- cred_df2 %>%
+  ggplot(aes(vars=vars(c(Algorithm, Firearms)))) +
+  geom_pcp_box(boxwidth=0.1, fill=NA) +
+  geom_pcp(aes(colour = conclusion), alpha = 0.5, 
+            boxwidth=0.1) +
+  scale_colour_manual(values = c("#FF8E00", "grey20", "#037AC7"), labels = conclusion_labs) +
+  guides(colour=guide_legend(override.aes = list(alpha=1))) +
+  theme_bw() +
+  ggtitle("How credible did you find the\ntestimony of the ___ expert?")
 
-under_df<-rbind(under_df, data.frame("examiner" = "2.0", "algorithm"=NA, "Freq"=NA))
+under_data2 <- data.frame(
+  conclusion = algtestcred_reorder$conclusion,
+  algorithm = algtestcred_reorder$algunder,
+  examiner = algtestcred_reorder$expunder
+)
 
-levels(under_df$algorithm) <-
-  gsub("<br/>", "", levels(under_df$algorithm))
+under_tab2 <- table(under_data2)
+under_df2 <- as.data.frame(under_tab2)
 
-levels(under_df$algorithm) <-
-  gsub("  ", " ", levels(under_df$algorithm))
+under_df2 <- under_df2 %>%
+  purrr::map(.f = function(x) rep(x, under_df2$Freq)) %>%
+  as.data.frame() %>%
+  select(-Freq)
 
-levels(under_df$algorithm) <- gsub(" ", "\n", levels(under_df$algorithm))
-
-
-levels(under_df$examiner) <-
-  gsub("<br/>", "", levels(under_df$examiner))
-
-levels(under_df$examiner) <-
-  gsub("  ", " ", levels(under_df$examiner))
-
-levels(under_df$examiner) <- gsub(" ", "\n", levels(under_df$examiner))
-
-under_df$examiner<- factor(under_df$examiner, 
-                           levels = c("1\nI\nunderstood\nnothing","2.0","3\nI\nunderstood\nabout\nhalf\nof\nthe\nmethod", "4.0", "5\nI\nunderstood\neverything"))
-under_df$algorithm<- factor(under_df$algorithm, levels=
-                           c("1\nI\nunderstood\nnothing","2.0","3\nI\nunderstood\nabout\nhalf\nof\nthe\nmethod", "4.0", "5\nI\nunderstood\neverything"))
-
-
-
-underplot<- ggparcoord(data=subset(under_df, Freq != 0), columns=c("algorithm","examiner"), order=c(1,2,3,4,5,6,7), scale="globalminmax")+
-  geom_line(aes(linewidth=Freq, alpha=Freq))+ 
-  ggtitle("Based on this testimony, how would \n you rate your understanding of the \n method described for the ______?")+
-  facet_grid(drop=FALSE)
+underplot <- under_df2 %>%
+  ggplot(aes(vars=vars(c(algorithm, examiner)))) +
+  geom_pcp_box(boxwidth=0.1, fill=NA) +
+  geom_pcp(aes(colour = conclusion), alpha = 0.5, 
+            boxwidth=0.1) +
+  scale_colour_manual(values = c("#FF8E00", "grey20", "#037AC7"), labels = conclusion_labs) +
+  guides(colour=guide_legend(override.aes = list(alpha=1))) +
+  theme_bw() +
+  
+  ggtitle("Based on this testimony, how would\nyou rate your understanding of the\nmethod described for the ______?")
 
 
 grid.arrange(credplot, underplot, ncol = 2)
@@ -1937,44 +1945,67 @@ sci_reorder<- algorithm_results %>% mutate(algsci=fct_relevel(algsci, "Extremely
                                            "Neither scientific nor unscientific", "Weakly scientific", "Moderately scientific",
                                            "Extremely scientific"))
 
-sci_reorder<- algorithm_results %>% mutate(examsci=fct_relevel(examsci, "Extremely unscientific","Moderately unscientific","Weakly unscientific",
+sci_reorder<- sci_reorder %>% mutate(examsci=fct_relevel(examsci, "Extremely unscientific","Moderately unscientific","Weakly unscientific",
                                            "Neither scientific nor unscientific", "Weakly scientific", "Moderately scientific",
                                            "Extremely scientific"))
 
-sci_data<-data.frame(examiner=sci_reorder$examsci, algorithm=sci_reorder$algsci)
-sci_tab<-table(sci_data)
-sci_df<-as.data.frame(sci_tab)
+sci_data2 <- data.frame(
+  conclusion = sci_reorder$conclusion,
+  examiner = sci_reorder$examsci,
+  algorithm = sci_reorder$algsci
+)
 
-levels(sci_df$algorithm) <- gsub(" ", "\n", levels(sci_df$algorithm))
+sci_tab2 <- table(sci_data2)
+sci_df2 <- as.data.frame(sci_tab2)
+
+sci_df2 <- sci_df2 %>%
+  purrr::map(.f = function(x) rep(x, sci_df2$Freq)) %>%
+  as.data.frame() %>%
+  select(-Freq)
+
+sciplot <- sci_df2 %>%
+  ggplot(aes(vars=vars(c(algorithm, examiner)))) +
+  geom_pcp_box(boxwidth=0.1, fill=NA) +
+  geom_pcp(aes(colour = conclusion), alpha = 0.5, 
+            boxwidth=0.1) +
+  scale_colour_manual(values = c("#FF8E00", "grey20", "#037AC7"), labels = conclusion_labs) +
+  guides(colour=guide_legend(override.aes = list(alpha=1))) +
+  theme_bw() +
+  ggtitle("How scientific do you think the ____\nevidence is, in this case?")
 
 
-sciplot<- ggparcoord(data=subset(sci_df, Freq != 0), columns=c("algorithm","examiner"), order=c(1,2,3,4,5,6,7), scale="globalminmax")+
-  geom_line(aes(linewidth=Freq, alpha=Freq))+ 
-  ggtitle("How scientific do you think the ____ \n evidence is, in this case?")+
-  facet_grid(drop=FALSE)
 
-
-
-
-algorithm_results<- rbind.fill(algorithm_results, data.frame("examrel"="Extremely unreliable"))
+# algorithm_results<- rbind.fill(algorithm_results, data.frame("examrel"="Extremely unreliable"))
 
 rel_reorder<- algorithm_results %>% mutate(algrel=fct_relevel(algrel, "Extremely unreliable","Moderately unreliable","Weakly unreliable", "Neither reliable nor unreliable", "Weakly reliable", "Moderately reliable",
                                             "Extremely reliable"))
 
-rel_reorder<- algorithm_results %>% mutate(examrel=fct_relevel(examrel, "Extremely unreliable", "Moderately unreliable","Weakly unreliable","Neither reliable nor unreliable", "Weakly reliable", "Moderately reliable",
+rel_reorder<- rel_reorder %>% mutate(examrel=fct_relevel(examrel, "Extremely unreliable", "Moderately unreliable","Weakly unreliable","Neither reliable nor unreliable", "Weakly reliable", "Moderately reliable",
                                             "Extremely reliable"))
 
-rel_data<-data.frame(examiner=rel_reorder$examrel, algorithm=rel_reorder$algrel)
-rel_tab<-table(rel_data)
-rel_df<-as.data.frame(rel_tab)
-rel_df$algorithm <- factor(rel_df$algorithm, levels=
-                            c( "Extremely unreliable", "Moderately unreliable","Weakly unreliable","Neither reliable nor unreliable", "Weakly reliable", "Moderately reliable",
-                                            "Extremely reliable"))
+rel_data2 <- data.frame(
+  conclusion = rel_reorder$conclusion,
+  examiner = rel_reorder$examrel,
+  algorithm = rel_reorder$algrel
+)
 
-relplot<- ggparcoord(data=subset(rel_df, Freq != 0), columns=c("algorithm","examiner"), order=c(1,2,3,4,5,6,7), scale="globalminmax")+
-  geom_line(aes(linewidth=Freq, alpha=Freq))+ 
-  ggtitle("How reliable do you think the ____ \n evidence is, in this case?")+
-  facet_grid(drop=FALSE)
+rel_tab2 <- table(rel_data2)
+rel_df2 <- as.data.frame(rel_tab2)
+
+rel_df2 <- rel_df2 %>%
+  purrr::map(.f = function(x) rep(x, rel_df2$Freq)) %>%
+  as.data.frame() %>%
+  select(-Freq)
+
+relplot <- rel_df2 %>%
+  ggplot(aes(vars=vars(c(algorithm, examiner)))) +
+  geom_pcp_box(boxwidth=0.1, fill=NA) +
+  geom_pcp(aes(colour = conclusion), alpha = 0.5, 
+            boxwidth=0.1) +
+  scale_colour_manual(values = c("#FF8E00", "grey20", "#037AC7"), labels = conclusion_labs) +
+  guides(colour=guide_legend(override.aes = list(alpha=1))) +
+  theme_bw() +
+  ggtitle("How scientific do you think the ____\nevidence is, in this case?")
 
 
 grid.arrange(sciplot, relplot, ncol = 2)
@@ -1996,7 +2027,8 @@ Some participants switched between the two highest categories for the algorithm 
 #| message= FALSE,
 #| fig.width= 8,
 #| fig.height= 9,
-#| fig.cap = "Parallel Coordinate Plot for reliability, credibility, scientificity, and understanding"
+#| fig.cap = "Parallel Coordinate Plot for reliability, credibility, scientificity, and understanding",
+#| eval = FALSE
 
 algtestcred_reorder <- algorithm_results %>% mutate(conclusion = fct_relevel(conclusion, "NoMatch", "Inconclusive", "Match"))
 
@@ -2059,12 +2091,11 @@ testcred_df2 %>%
   theme_bw() +
   ggtitle("Comparing Strength of Evidence to Multiple Choice Guilt Answer")
 
-
 ```
 
-Figure \@ref(fig:allpcp) shows individual responses across all of the considered questions. 
-There were some individuals who selected the highest category for responses across the board, while others selected the highest response for all except their understanding of the algorithm. 
-In fact, algorithmic understanding seems to have the least consistent responses, based on the differences in the lines between algorithmic understanding and algorithmic scientificity. 
+<!-- Figure \@ref(fig:allpcp) shows individual responses across all of the considered questions.  -->
+<!-- There were some individuals who selected the highest category for responses across the board, while others selected the highest response for all except their understanding of the algorithm.  -->
+<!-- In fact, algorithmic understanding seems to have the least consistent responses, based on the differences in the lines between algorithmic understanding and algorithmic scientificity.  -->
 These coordinate plots indicate that individuals tended to choose the same categories for the algorithm and the examiner across variables, with most variation between categories resulting from individuals moving up or down a single category. 
 Relatively few individuals changed their response by more than one category, when comparing between the algorithm and the expert. 
 These results generally reflect the trends shown in the histograms in the previous section.
@@ -2121,7 +2152,7 @@ While the goal of this format was to ensure that participants focused on the bul
 In a courtroom setting, jurors are able to deliberate with each other before reaching a conclusion with regards to the case. 
 These deliberations tend to be evidence-driven, as opposed to majority rule [@bornsteinJuryDecisionMaking2011, p. 65]. 
 While the majority decision may be reflected in the final result, some studies suggest that juries tend toward leniency when there is not a definitive majority in a criminal trial [@maccounAsymmetricInfluenceMock1988]. 
-The act of deliberation may result in different evaluations for Likert scale questions of reliability/credibility or strength of evidence than individual thought, even if a difference in guilty verdict rates are not found after deliberation for this simple case style.  
+The act of deliberation may result in different evaluations for Likert scale questions of reliability/credibility or strength of evidence than individual thought, even if a difference in guilty verdict may not be found after deliberation for this simple case style.  
 
 There were several typos that were not corrected for approximately the first half of the participants. 
 For all scenarios, the firearms examiner was referred to as Alex Smith in the questions, whereas the name was Terry Smith throughout the testimony. 
@@ -2146,13 +2177,3 @@ We plan to develop a tool that can be used in testing courtroom scenarios, with 
 An additional response to the study that was recorded is participants' note sheets. 
 Many participants copied and pasted portions of the testimony into their note sheets for later reference.
 We plan to evaluate these note sheets, and develop a method for presenting the written notes alongside the testimony in order to produce a 'heat map' of the text that participants found relevant.
-
-
-
-
-
-
-
-
-
-
