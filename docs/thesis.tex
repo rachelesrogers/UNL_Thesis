@@ -23,46 +23,6 @@
 \newtheorem{cor}{Corollary}
 
 % Syntax highlighting #22
-  \usepackage{color}
-  \usepackage{fancyvrb}
-  \newcommand{\VerbBar}{|}
-  \newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-  % Add ',fontsize=\small' for more characters per line
-  \usepackage{framed}
-  \definecolor{shadecolor}{RGB}{248,248,248}
-  \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-  \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-  \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-  \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-  \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-  \newcommand{\BuiltInTok}[1]{#1}
-  \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-  \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-  \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-  \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-  \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-  \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-  \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-  \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-  \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-  \newcommand{\ExtensionTok}[1]{#1}
-  \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-  \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-  \newcommand{\ImportTok}[1]{#1}
-  \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-  \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-  \newcommand{\NormalTok}[1]{#1}
-  \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-  \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-  \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-  \newcommand{\RegionMarkerTok}[1]{#1}
-  \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-  \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-  \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-  \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-  \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-  \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 
 %% https://github.com/rstudio/rmarkdown/issues/1649
 \newlength{\cslhangindent}
@@ -841,12 +801,6 @@ The algorithm can briefly be described as follows:
   Lands are then aligned across bullets in order to compute an overall match score for the bullets, as in Figure \ref{fig:grid}.
 \end{enumerate}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{include\_graphics}\NormalTok{(}\AttributeTok{path =} \StringTok{"images/Test\_Fire\_F526.jpeg"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{figure}
 \includegraphics[width=\linewidth]{images/Test_Fire_F526} \caption{Diagonal correspondence (in orange) among lands indicate a match, as shown here. Image generated from Houston dataset by authors.}\label{fig:grid}
 \end{figure}
@@ -1500,7 +1454,7 @@ While the goal of this format was to ensure that participants focused on the bul
 In a courtroom setting, jurors are able to deliberate with each other before reaching a conclusion with regards to the case.
 These deliberations tend to be evidence-driven, as opposed to majority rule (Bornstein \& Greene, 2011, p. 65).
 While the majority decision may be reflected in the final result, some studies suggest that juries tend toward leniency when there is not a definitive majority in a criminal trial (MacCoun \& Kerr, 1988).
-The act of deliberation may result in different evaluations for Likert scale questions of reliability/credibility or strength of evidence than individual thought, even if a difference in guilty verdict rates are not found after deliberation for this simple case style.
+The act of deliberation may result in different evaluations for Likert scale questions of reliability/credibility or strength of evidence than individual thought, even if a difference in guilty verdict may not be found after deliberation for this simple case style.
 
 There were several typos that were not corrected for approximately the first half of the participants.
 For all scenarios, the firearms examiner was referred to as Alex Smith in the questions, whereas the name was Terry Smith throughout the testimony.
@@ -3909,7 +3863,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-03-10 23:45:28.495281.
+This version of the thesis was generated on 2024-03-11 09:34:56.155383.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -3924,7 +3878,7 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2024-03-10
+##  date     2024-03-11
 ##  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------
@@ -3932,7 +3886,7 @@ The computational environment that was used to generate this version is as follo
 ##    assertthat           0.2.1   2019-03-21 [1] CRAN (R 4.3.1)
 ##    bit                  4.0.5   2022-11-15 [1] CRAN (R 4.3.1)
 ##    bit64                4.0.5   2020-08-30 [1] CRAN (R 4.3.1)
-##    bookdown             0.37    2023-12-01 [1] CRAN (R 4.3.2)
+##    bookdown             0.38    2024-03-04 [1] CRAN (R 4.3.3)
 ##    cachem               1.0.8   2023-05-01 [1] CRAN (R 4.3.1)
 ##    cli                  3.6.2   2023-12-11 [1] CRAN (R 4.3.2)
 ##    colorspace           2.1-0   2023-01-23 [1] CRAN (R 4.3.1)
@@ -3957,8 +3911,8 @@ The computational environment that was used to generate this version is as follo
 ##    GGally             * 2.2.1   2024-02-14 [1] CRAN (R 4.3.2)
 ##    ggblend            * 0.1.0   2023-05-22 [1] CRAN (R 4.3.1)
 ##    ggmosaic           * 0.3.3   2021-02-23 [1] CRAN (R 4.3.1)
-##    ggpcp              * 0.1.0   2024-02-27 [1] Github (yaweige/ggpcp@acf7efd)
-##    ggplot2            * 3.4.4   2023-10-12 [1] CRAN (R 4.3.2)
+##    ggpcp              * 0.1.0   2024-03-11 [1] Github (yaweige/ggpcp@acf7efd)
+##    ggplot2            * 3.5.0   2024-02-23 [1] CRAN (R 4.3.3)
 ##    ggrepel            * 0.9.5   2024-01-10 [1] CRAN (R 4.3.2)
 ##    ggridges           * 0.5.6   2024-01-23 [1] CRAN (R 4.3.2)
 ##    ggstats              0.5.1   2023-11-21 [1] CRAN (R 4.3.2)
@@ -4010,10 +3964,10 @@ The computational environment that was used to generate this version is as follo
 ##    Rcpp                 1.0.12  2024-01-09 [1] CRAN (R 4.3.2)
 ##  D RcppParallel         5.1.7   2023-02-27 [1] CRAN (R 4.3.1)
 ##    readr              * 2.1.5   2024-01-10 [1] CRAN (R 4.3.2)
-##    readtext           * 0.90    2023-06-03 [1] CRAN (R 4.3.1)
+##    readtext           * 0.91    2024-02-23 [1] CRAN (R 4.3.3)
 ##    remotes              2.4.2.1 2023-07-18 [1] CRAN (R 4.3.1)
 ##    rlang                1.1.3   2024-01-10 [1] CRAN (R 4.3.2)
-##    rmarkdown            2.25    2023-09-18 [1] CRAN (R 4.3.1)
+##    rmarkdown            2.26    2024-03-05 [1] CRAN (R 4.3.3)
 ##    rstudioapi           0.15.0  2023-07-07 [1] CRAN (R 4.3.1)
 ##    scales             * 1.3.0   2023-11-28 [1] CRAN (R 4.3.2)
 ##    sessioninfo          1.2.2   2021-12-06 [1] CRAN (R 4.3.1)
@@ -4029,6 +3983,7 @@ The computational environment that was used to generate this version is as follo
 ##    tidyselect           1.2.0   2022-10-10 [1] CRAN (R 4.3.1)
 ##    tidyverse          * 2.0.0   2023-02-22 [1] CRAN (R 4.3.1)
 ##    timechange           0.3.0   2024-01-18 [1] CRAN (R 4.3.2)
+##    tinytex              0.49    2023-11-22 [1] CRAN (R 4.3.2)
 ##    tm                 * 0.7-11  2023-02-05 [1] CRAN (R 4.3.1)
 ##    tzdb                 0.4.0   2023-05-12 [1] CRAN (R 4.3.1)
 ##    urlchecker           1.0.1   2021-11-30 [1] CRAN (R 4.3.1)

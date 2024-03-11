@@ -15,7 +15,10 @@
 %% change fontsize of R code
 \let\oldShaded\Shaded
 \let\endoldShaded\endShaded
-\renewenvironment{Shaded}{\footnotesize\oldShaded}{\endoldShaded}
+\makeatletter
+\@ifundefined{Shaded}{
+}{\renewenvironment{Shaded}{\begin{kframe}}{\end{kframe}}}
+\makeatother
 
 %% change fontsize of output
 \let\oldverbatim\verbatim

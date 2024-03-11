@@ -118,7 +118,7 @@ The random forest consists of decision trees that consider a combination of vari
 The decisions of these trees are combined to produce the match score. 
 Lands are then aligned across bullets in order to compute an overall match score for the bullets, as in Figure \@ref(fig:grid).
 
-```{r grid, fig.cap="Diagonal correspondence (in orange) among lands indicate a match, as shown here. Image generated from Houston dataset by authors."}
+```{r grid, echo=FALSE, fig.cap="Diagonal correspondence (in orange) among lands indicate a match, as shown here. Image generated from Houston dataset by authors."}
 include_graphics(path = "images/Test_Fire_F526.jpeg")
 ```
 
