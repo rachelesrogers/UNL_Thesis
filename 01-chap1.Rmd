@@ -2107,9 +2107,9 @@ Many participants were concerned about the lawfulness of the arrest, and the lac
 Several also indicate that they have pre-conceived notions, either about algorithms or about firearms evidence.
 In particular, two comments were:
 
->"Random forest methods for machine learning and classification are not very robust.  They identify pictures of cats as hamburgers, for example.  Just use science."
+>"Random forest methods for machine learning and classification are not very robust.  They identify pictures of cats as hamburgers, for example.  Just use science. - Elimination, Algorithm, Demonstrative Evidence"
 
->"Firearm evidence seems a lot like hair evidence which was debunked but I don't know that to be fact. From what was stated in this testimony, it seems to be mostly reliable but I wouldn't say it is strongly scientific."
+>"Firearm evidence seems a lot like hair evidence which was debunked but I don't know that to be fact. From what was stated in this testimony, it seems to be mostly reliable but I wouldn't say it is strongly scientific. - Inconclusive, Algorithm, Demonstrative Evidence"
 
 The comments indicate that participants can have distrust for methods based on their previous ideas, which may not be factual.
 

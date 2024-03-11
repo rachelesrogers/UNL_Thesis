@@ -28,13 +28,13 @@ The transcript changes for the second study can be found in Appendix \@ref(study
 
 In the initial study, some participants were confused about \authorcol{the witness testimony:}
 
->\authorcol{"Very difficult for juror to understand and remember the scientific evidence."}
+>\authorcol{"Very difficult for juror to understand and remember the scientific evidence." - Identification, Algorithm, No Demonstrative Evidence}
 
 \authorcol{Other participants thought that the defendant was convicted, although this is not specified in the transcript:}
 
->\authorcol{"Going by what I read and reviewing my notes I see that the firearms evidence was inconclusive against R. Cole.}  *So I am baffled as to why he was convicted.* \authorcol{[emphasis added] Also I prefer more things like visual evidence via a good quality video camera. Or a whole group of people testifying against someone saying things like they saw, they heard, or they know someone is prone to commit certain crimes."}
+>\authorcol{"Going by what I read and reviewing my notes I see that the firearms evidence was inconclusive against R. Cole.}  *So I am baffled as to why he was convicted.* \authorcol{[emphasis added] Also I prefer more things like visual evidence via a good quality video camera. Or a whole group of people testifying against someone saying things like they saw, they heard, or they know someone is prone to commit certain crimes." - Inconclusive, Algorithm, No Demonstrative Evidence}
 
->\authorcol{"I would have like another firearms expert testify or a representative from that 9mm handgun manufacturer explain how and why each individual handgun are designed such that the lands and grooves create unique impressions on bullets for each gun. I do believe the firearms expert and his credibility.} *Further, the defendant would be basically convicted only on one evidence.* \authorcol{[emphasis added] Would have liked to read or know what was his alibi during that attempted robbery and if a search warrant issued to search for that ski mask. What about security cameras to determine any other physical identification. This case presentation was scant and focused too heavily on one piece of evidence and testimony."}
+>\authorcol{"I would have like another firearms expert testify or a representative from that 9mm handgun manufacturer explain how and why each individual handgun are designed such that the lands and grooves create unique impressions on bullets for each gun. I do believe the firearms expert and his credibility.} *Further, the defendant would be basically convicted only on one evidence.* \authorcol{[emphasis added] Would have liked to read or know what was his alibi during that attempted robbery and if a search warrant issued to search for that ski mask. What about security cameras to determine any other physical identification. This case presentation was scant and focused too heavily on one piece of evidence and testimony." - Identification, No Algorithm, No Demonstrative Evidence}
 
 The testimony transcript format did not clearly identify the speaker with each line, instead using "Q:" and "A:" in most cases, as shown in Appendix \@ref(study-2-changes).
 The lack of visual cues for \svp{matching text with the speaker} is not representative of the courtroom setting.
@@ -63,15 +63,7 @@ We also use unique identification throughout the database files in the form of P
 
 \authorcol{Individuals also indicated confusion with regards to the use of a partial testimony transcript:}
 
->\authorcol{"Thank you for conducting this study. Where's the defense in all of this? It would have been  helpful to know whether or not the defendant had an alibi, whether his firearm had in fact been recently fired, from a forensics perspective, whether there were any in-store or exterior or neighborhood cameras that picked up whoever discharged the firearm. Convenience stores nearly always have a height chart posted alongside the door but no one provided an approximate height or weight for the person who discharged the firearm. This was an interesting study. All the best to your research team in this and  your future endeavors. "}
-
->\authorcol{“It would be interesting to know if the prosecution would order a second
-testing of the gun with a different expert. Also why would the prosecution
-charge this man since it had no eyewitnesses or other evidence placing him at
-the scene of the robbery at the time of the robbery and since the gun found in
-the defendant was not a match to the bullet found at the scene. Charging him
-seems pointless as there’s virtually no evidence other than he owned a 9mm
-handgun.”}
+>\authorcol{"Thank you for conducting this study. Where's the defense in all of this? It would have been  helpful to know whether or not the defendant had an alibi, whether his firearm had in fact been recently fired, from a forensics perspective, whether there were any in-store or exterior or neighborhood cameras that picked up whoever discharged the firearm. Convenience stores nearly always have a height chart posted alongside the door but no one provided an approximate height or weight for the person who discharged the firearm. This was an interesting study. All the best to your research team in this and  your future endeavors. " - Inconclusive, No Algorithm, Demonstrative Evidence}
 
 \authorcol{Due to this confusion, an additional line is added to the study description to clarify that this is not the only evidence presented in the case.}
 
