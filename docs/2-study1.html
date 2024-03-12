@@ -254,12 +254,13 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="study1" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">CHAPTER 2</span> Jury Perception of Bullet Matching Algorithms and Demostrative Evidence<a href="2-study1.html#study1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p> <a href="index.html#litreview">1</a>, </p>
+<p>Due to the issues outlined in Chapter <a href="index.html#litreview">1</a>, we designed a study to investigate how potential jurors may perceive a bullet matching algorithm, when presented alongside a firearms examiner’s testimony, as well as the affect of demonstrative evidence.
+This study utilizes a testimony transcript to familiarize participants with bullet matching evidence for a case involving armed robbery, and participants are asked to make judgements on the guilt of the defendant, as well as the credibility of the witnesses and the reliability and scientificity of the evidence presented.</p>
 <div id="background" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Background<a href="2-study1.html#background" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="firearms-examiners" class="section level3 hasAnchor" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Firearms Examiners<a href="2-study1.html#firearms-examiners" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The foundational belief in bullet comparisons as a form of identifying evidence that guns can leave unique striation marks on a bullet as an artifact of the rifling process <span class="citation">(PCAST, 2016)</span>.
+<p>The foundational belief in bullet comparisons as a form of identifying evidence revolves around the idea that guns can leave unique striation marks on a bullet as an artifact of the rifling process <span class="citation">(PCAST, 2016)</span>.
 <!-- [@pcast, p. 104] -->
 Striation marks are left on portions of the bullets known as “lands”, due to contact with the rifling as the bullet is fired.
 These marks are compared by examiners across bullets in order to identify if bullets were fired from the same source.
@@ -299,6 +300,7 @@ Figure 2.2: Two aligned signatures for a known match. Image generated from Houst
 <ol start="3" style="list-style-type: decimal">
 <li>Traits, such as consecutively matching striae and depth of grooves, are then used in a random forest to produce a match score (ranging from 0 to 1) for the lands.
 The random forest consists of decision trees that consider a combination of variables and responses in order to predict if two signatures were created by the same gun.
+The decision trees in a random forest each consider a subset of variables and observations to decide whether or not the lands match.
 The decisions of these trees are combined to produce the match score.
 Lands are then aligned across bullets in order to compute an overall match score for the bullets, as in Figure <a href="2-study1.html#fig:grid">2.3</a>.</li>
 </ol>
@@ -334,22 +336,37 @@ In this study, potential jurors may encounter both the algorithm’s match score
 However, images may have an effect of making a scenario more believable, as demonstrated in a study by <span class="citation">Cardwell et al. (2016)</span> which involved “giving” or “taking” food from animals with or without images.
 Images are also mentioned as a factor that can influence how truthful individuals view statements in the courtroom - even if no new information is presented through the presence of the image <span class="citation">(Kellermann, 2013)</span>.
 Therefore, the use of images in a courtroom should be studied for an effect with regards to how subjects perceive the evidence presented - namely, if there is a difference in how reliable or credible they feel the experts are, based on the presence or absence of images.
-</p>
+Because the images are intended to aid only in interpretation, unbiased results would include an increase in understanding across all other conditions, while reliability and credibilty stay the same.
+However, based on previous research, it seems probable that the presence of images would increase the perceived reliability and credibility of the evidence and expert, respectively.</p>
 </div>
 </div>
 <div id="methods" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Methods<a href="2-study1.html#methods" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="study-format" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Study Format<a href="2-study1.html#study-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p> participants are presented with a short scenario based on <span class="citation">Garrett, Scurich, &amp; Crozier (2020)</span>: a bullet is the only evidence recovered from an attempted convenience store robbery, and is tested against a gun found in Richard Cole’s car in a routine traffic stop.
+<p>First, participants are presented with a short scenario based on <span class="citation">Garrett, Scurich, &amp; Crozier (2020)</span>: a bullet is the only evidence recovered from an attempted convenience store robbery, and is tested against a gun found in Richard Cole’s car in a routine traffic stop.
+Participants are informed that the store clerk was unable to identify the robber because they were wearing a ski mask, and that the testimony presented represented all relevant information.
+They were also advised that they would be unable to re-read testimony, and a notepad was provided for their convenience.
 Participants are then asked to read a transcript of mock court testimony, and rate their impression of the evidence presented, as well as their impression of the experts.
 This document included expert testimony, cross examination, and questions from the jury conveyed through the judge regarding error rates.
-</p>
-<p>The testimony was based on actual court testimony provided by forensics experts lawyers, and judges, shown in Appendix <a href="A-testimony-transcripts.html#testimony-transcripts">A</a>.</p>
-<p> <span class="citation">Garrett, Scurich, et al. (2020)</span>.
+The expert testified to their qualifications, as well as the process of bullet matching.
+They then described comparing the fired evidence to a test fire from the defendant’s gun, and the results of the comparison.
+When the algorithm was included, the firearms examiner also described the algorithm’s match score resulting from this comparison.
+Cross examination included questions regarding the ability to uniquely identify the source of the bullet, as well as the subjectivity of the comparison.</p>
+<p>When the algorithm was included, an algorithm expert then testified.
+They also listed their qualifications and involvement in the development of the algorithm.
+The expert would then describe the process for obtaining a match score (similar to the algorithm description in the previous section).
+They also spoke to the publication history of the algorithm, the code availability, and the algorithm’s applicability to the type of firearm considered in the case.
+Cross examination included questions on the newness of the algorithm, as well as subjective aspects of calibration, and limitations with respect to the types of bullets that it can evaluate.
+The testimony was based on actual court testimony provided by forensics experts lawyers, and judges, shown in Appendix <a href="A-testimony-transcripts.html#testimony-transcripts">A</a>.</p>
+<p>After reading the transcript, participants were directed to respond to some questions regarding the testimony.
+These questions were largely based on <span class="citation">Garrett, Scurich, et al. (2020)</span>.
+They were first given information about their responsibility as jurors to choose whether or not to convict, based on the ‘beyond reasonable doubt’ threshold.
+Participants were also asked to estimate the probability that the defendant committed the crime, and the probability that the gun was involved in the crime.
+These questions were followed by several Likert scales on the strength of evidence, the credibility of the examiners, reliability and scientificity of the evidence, and understanding of the procedures.
 Two attention check questions were asked, in order to ensure that participants were reading both the testimony and the subsequent questions.
 The first attention check asked participants to identify the caliber of bullet recovered from the crime scene, while the second attention check asked participants to select a specific value from a Likert scale.</p>
-<p>The study includes three variables: of the algorithm, of demonstrative evidence (images), and conclusion (identification, elimination, or inconclusive).
+<p>The study includes three independent variables: presence or absence of the algorithm, presence or absence of demonstrative evidence (images), and conclusion (identification, elimination, or inconclusive).
 In the case of the algorithm, two testimonies were presented: that of the firearms examiner (Terry Smith), and that of the algorithm developer (Adrian Jones).
 The firearms examiner presented the algorithm results for the case alongside their own analysis, and suggested that the algorithm’s results supported their conclusion.
 By presenting the algorithm results with the interpretation suggested by the firearms examiner, we hoped that potential jurors could use the firearms examiner’s explanation and conclusion to guide their understanding of the algorithm’s results.
@@ -364,6 +381,7 @@ This same format was used when asking participants about credibility and scienti
 <div id="prolific" class="section level3 hasAnchor" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Prolific<a href="2-study1.html#prolific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Participants were recruited using Prolific, an online survey-taking website.
+From the Prolific website, participants were directed to a link containing our survey, created using RShiny.
 We selected options to recruit a representative sample of individuals located in the United States, and asked that participants self-screen for jury eligibility before completing the survey.
 Jury eligibility was defined as US citizens over the age of majority in their state who had not been convicted of a felony, were not active law enforcement, military, emergency response, or a judge, and who did not have a disability that would prevent them from serving on a jury.
 They were also required to have normal or corrected to normal vision, due to the images used in the study.
@@ -390,9 +408,11 @@ Figure 2.5: Demographic Information
 </p>
 </div>
 <p>Of the 636 participants with Prolific ID’s who started the survey, there were 324 female participants, 307 male participants, and 5 non-binary participants.
+According to Prolific, these participants are a representative sample (in terms of age, sex and ethnicity, based on census data) of Prolific participants located in the United States.
 The median age was 45.
 Age and gender are shown in Figure <a href="2-study1.html#fig:demographics">2.5</a>.
 An age of 0.2 was excluded due to implausibility and lack of study completion.
+In two instances, participants reported being removed from the survey website prior to survey completion, which may have happened in other cases where the participants did not complete the survey.
 591 participants eligible for analysis completed the survey, and 569 participants correctly answered both attention check questions.
 The division of correct answers on the attention check questions are shown in Table <a href="2-study1.html#tab:attentioncheck">2.1</a>.
 These 569 participants were considered for the following analysis.</p>
@@ -428,7 +448,8 @@ Questions of credibility, reliability, and scientificity were assessed using a 7
 Understanding was ranked on a 5-point Likert scale (“I understood nothing” to “I understood everything”).
 Participants were also asked about uniqueness of firearm toolmarks, as a simple yes/no question.
 Strength of evidence was ranked on a 9-point Likert scale (“Not at all strong” to “Extremely strong”). The perceived frequency with which firearms examiners made mistakes was assessed on a 7-point Likert scale (“Never” to “Always”).<br />
-</p>
+Many of these response scales suffered from scale compression - individuals selected the top two categories on many of the Likert scales, indicating that participants overall believed in the credibility of the witnesses and the reliability and scientificity of the methods.
+Due to this issue, no statistical analysis was performed on this data.</p>
 </div>
 <div id="probability" class="section level3 hasAnchor" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> Probability<a href="2-study1.html#probability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -655,8 +676,7 @@ everything</strong></td>
 <p>Individuals were asked whether or not they thought that guns left unique markings on discharged bullets and casings after reviewing the testimony.
 Of the 569 responses, only 16 individuals indicated that they did not think guns left unique markings.
 These respondents were split across conditions.
-Thus, respondents in this study overwhelmingly believe in the uniqueness of markings on discharged bullets.
-<!-- Would responses be different if they were asked to evaluate uniqueness before reading the testimony? --></p>
+Thus, respondents in this study overwhelmingly believe in the uniqueness of markings on discharged bullets.</p>
 </div>
 <div id="strength" class="section level3 hasAnchor" number="2.3.9">
 <h3><span class="header-section-number">2.3.9</span> Strength<a href="2-study1.html#strength" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -667,7 +687,7 @@ Figure 2.19: Histogram of perceived strength of evidence against the defendant
 </p>
 </div>
 <p>Individuals were also asked to rate the strength of evidence, both against Richard Cole and against the gun.
-<span class="citation">Garrett, Scurich, et al. (2020)</span>.</p>
+Unlike questions of reliability, credibility, and scientificity, strength of evidence was measured on a 9-point Likert scale, without worded values for intermittent categories, following the procedure of <span class="citation">Garrett, Scurich, et al. (2020)</span>.</p>
 <p>When asked about the case against the defendant, shown in Figure <a href="2-study1.html#fig:strength">2.19</a>, there was a small difference in terms of the algorithm.
 When the examiner reached a elimination conclusion, individuals who also received the algorithm were more likely to select the lowest category (“Not at all strong”) compared to those who did not receive the algorithm.
 Alternatively, in the case of an inconclusive decision, individuals who did not receive the algorithm were more likely to select “Not at all strong” compared to those who did receive the algorithm.
@@ -803,6 +823,7 @@ In particular, two comments were:</p>
 The vast majority of participants selected the two highest categories for questions rating how credible, reliable, and scientific the expert/method was <span class="citation">Groves et al. (2009)</span>.
 This corresponds with <span class="citation">Garrett &amp; Mitchell (2013)</span>‘s study of fingerprint match language, where they did not find a significant difference in the participants’ feelings of guilt based on various match language.
 <span class="citation">Garrett &amp; Mitchell (2013)</span> hypothesized that this may relate to strong feelings reliability for fingerprint evidence, resulting in individuals viewing any match as automatically reliable (without the need for stronger language).
+In future studies, we will be evaluating different methods of response, aside from Likert scales, to study other formats that may yield less compressed results.
 People generally seemed to have less faith in inconclusive decisions.
 They understood the examiner’s comparison better than the algorithm comparison, which was expected given the statistical complexity of the algorithm procedure.
 In general, participants also found the algorithm to be more scientific than the examiner, when presented with both methods.
@@ -816,7 +837,9 @@ These limitations are also mentioned by <span class="citation">Garrett, Scurich,
 <p>Participants were limited to those who participate in online survey-taking websites.
 These participants may not be representative of the US population, due to differences in computer access or use, occupation, or other such factors.
 These factors may have an effect on study responses.
-<span class="citation">Abramson (2018)</span> </p>
+Another issue in representation results from the process of jury selection.
+Because individuals are not randomly approved for serving on a jury, the jury itself is unlikely to be composed of a representative sample of American citizens.
+<span class="citation">Abramson (2018)</span> argue that selection for jury duty does not result in a representative sample due to some courts’ reliance solely on voter registration records for contacting eligible jurors, as well as large non response and non deliverable issues that are more prevalent in African American and Hispanic communities when compared to non-Hispanic White communities.</p>
 <p>Testimony was presented in a written format, which is unlike the courtroom setting of spoken testimony, where the jurors can see the experts.
 However, the use of written testimony allowed for the use of gender-neutral names for the experts (Terry and Adrian), which may be more difficult to achieve in a courtroom or video setting.
 Potential jurors may also develop views regarding the reliability/credibility of the examiner that are dependent on external factors - such as appearance or speech - rather than based on the testimony itself.</p>
@@ -824,11 +847,14 @@ Potential jurors may also develop views regarding the reliability/credibility of
 This led to some confusion on the part of the “inconclusive” and “elimination” scenarios, where there did not appear to be relevant evidence for the prosecution.
 While the goal of this format was to ensure that participants focused on the bullet matching testimony (without the compounding influence of other witnesses or evidence), this would not be representative of courtroom testimony.</p>
 <p>In a courtroom setting, jurors are able to deliberate with each other before reaching a conclusion with regards to the case.
-These deliberations tend to be evidence-driven, as opposed to majority rule <span class="citation">(Bornstein &amp; Greene, 2011, p. 65)</span>.
+These deliberations tend to be evidence-driven, as opposed to majority rule <span class="citation">(Bornstein &amp; Greene, 2011)</span>.
+<!-- [@bornsteinJuryDecisionMaking2011, p. 65].  -->
 While the majority decision may be reflected in the final result, some studies suggest that juries tend toward leniency when there is not a definitive majority in a criminal trial <span class="citation">(MacCoun &amp; Kerr, 1988)</span>.
 The act of deliberation may result in different evaluations for Likert scale questions of reliability/credibility or strength of evidence than individual thought, even if a difference in guilty verdict may not be found after deliberation for this simple case style.</p>
 <p>There were several typos that were not corrected for approximately the first half of the participants.
 For all scenarios, the firearms examiner was referred to as Alex Smith in the questions, whereas the name was Terry Smith throughout the testimony.
+Several participants noted this discrepancy in their feedback on the survey, allowing us to fix the typo before all surveys were completed.
+There did not appear to be confusion due to the typo on the part of the participants.
 “Convenience” was also misspelled in one question.
 For elimination testimonies, the name “Alex Smith” also occurred in the cross examination.
 In the case of non-algorithm inconclusive testimonies, the question: “Can you describe the process of obtaining these test fired bullets?” was missing, but the response: “The test-fired bullets came from a test fire of the gun recovered from the traffic stop.” remained unchanged.

@@ -73,14 +73,14 @@ demographics <-
 
 ```
 
-\authorcol{Due to the issues outlined in Chapter} \@ref(litreview), \authorcol{we designed a study to investigate how potential jurors may perceive a bullet matching algorithm, when presented alongside a firearms examiner's testimony, as well as the affect of demonstrative evidence.
-This study utilizes a testimony transcript to familiarize participants with bullet matching evidence for a case involving armed robbery, and participants are asked to make judgements on the guilt of the defendant, as well as the credibility of the witnesses and the reliability and scientificity of the evidence presented.}
+Due to the issues outlined in Chapter \@ref(litreview), we designed a study to investigate how potential jurors may perceive a bullet matching algorithm, when presented alongside a firearms examiner's testimony, as well as the affect of demonstrative evidence.
+This study utilizes a testimony transcript to familiarize participants with bullet matching evidence for a case involving armed robbery, and participants are asked to make judgements on the guilt of the defendant, as well as the credibility of the witnesses and the reliability and scientificity of the evidence presented.
 
 ## Background
 
 ### Firearms Examiners
 
-The foundational belief in bullet comparisons as a form of identifying evidence \authorcol{revolves around the idea} that guns can leave unique striation marks on a bullet as an artifact of the rifling process [@pcast]. 
+The foundational belief in bullet comparisons as a form of identifying evidence revolves around the idea that guns can leave unique striation marks on a bullet as an artifact of the rifling process [@pcast]. 
 <!-- [@pcast, p. 104] -->
 Striation marks are left on portions of the bullets known as "lands", due to contact with the rifling as the bullet is fired. 
 These marks are compared by examiners across bullets in order to identify if bullets were fired from the same source. 
@@ -114,7 +114,7 @@ include_graphics(path = "images/F526_Match_Signatures.png")
 
 3. Traits, such as consecutively matching striae and depth of grooves, are then used in a random forest to produce a match score (ranging from 0 to 1) for the lands. 
 The random forest consists of decision trees that consider a combination of variables and responses in order to predict if two signatures were created by the same gun. 
-\authorcol{The decision trees in a random forest each consider a subset of variables and observations to decide whether or not the lands match.}
+The decision trees in a random forest each consider a subset of variables and observations to decide whether or not the lands match.
 The decisions of these trees are combined to produce the match score. 
 Lands are then aligned across bullets in order to compute an overall match score for the bullets, as in Figure \@ref(fig:grid).
 
@@ -131,7 +131,7 @@ The algorithm performed well for undamaged bullets, and was able to completely d
 
 ### Explainable Machine Learning - Previous Research
 
-Jurors' ability to interpret statistical methods and language is \authorcol{in doubt}; in a study conducted by @koehler2001 with regards to the probability of a random match in DNA evidence, they found that jurors had different interpretations when the probability was presented as 1 out of 1,000 versus 0.1 out of 100, where those presented with a decimal number were more likely to view the probability of a random match as smaller. 
+Jurors' ability to interpret statistical methods and language is in doubt; in a study conducted by @koehler2001 with regards to the probability of a random match in DNA evidence, they found that jurors had different interpretations when the probability was presented as 1 out of 1,000 versus 0.1 out of 100, where those presented with a decimal number were more likely to view the probability of a random match as smaller. 
 In another study, @garrettComparingCategoricalProbabilistic2018 asked jurors to evaluate evidence that used the following FRStat language, typically used in fingerprint analysis: "The probability of observing this amount of correspondence is approximately [XXX] times greater when the impressions are made by the same source rather than by different sources" [language from @DFSCLPInformation2018].
 When asked for the likelihood the defendant committed the crime when presented with the above FRStat language, participants did not provide significantly different likelihoods for values ranging from 10 times greater to 100,000 times greater. 
 This may demonstrate a lack of understanding when jurors are presented with numerical results for statistical evidence. 
@@ -148,39 +148,39 @@ Images are often used to assist individuals in understanding non-image informati
 However, images may have an effect of making a scenario more believable, as demonstrated in a study by @cardwellNonprobativePhotosRapidly2016 which involved "giving" or "taking" food from animals with or without images. 
 Images are also mentioned as a factor that can influence how truthful individuals view statements in the courtroom - even if no new information is presented through the presence of the image [@kellermannTrialAdvocacyTruthiness2013].
 Therefore, the use of images in a courtroom should be studied for an effect with regards to how subjects perceive the evidence presented - namely, if there is a difference in how reliable or credible they feel the experts are, based on the presence or absence of images.
-\authorcol{Because the images are intended to aid only in interpretation, unbiased results would include an increase in understanding across all other conditions, while reliability and credibilty stay the same.}
-\authorcol{However, based on previous research, it seems probable that the presence of images would increase the perceived reliability and credibility of the evidence and expert, respectively.}
+Because the images are intended to aid only in interpretation, unbiased results would include an increase in understanding across all other conditions, while reliability and credibilty stay the same.
+However, based on previous research, it seems probable that the presence of images would increase the perceived reliability and credibility of the evidence and expert, respectively.
 
 ## Methods
 
 ### Study Format
 
-\authorcol{First,} participants are presented with a short scenario based on @garrettMockJurorsEvaluation2020: a bullet is the only evidence recovered from an attempted convenience store robbery, and is tested against a gun found in Richard Cole's car in a routine traffic stop. 
-\authorcol{Participants are informed that the store clerk was unable to identify the robber because they were wearing a ski mask, and that the testimony presented represented all relevant information.}
-\authorcol{They were also advised that they would be unable to re-read testimony, and a notepad was provided for their convenience.}
+First, participants are presented with a short scenario based on @garrettMockJurorsEvaluation2020: a bullet is the only evidence recovered from an attempted convenience store robbery, and is tested against a gun found in Richard Cole's car in a routine traffic stop. 
+Participants are informed that the store clerk was unable to identify the robber because they were wearing a ski mask, and that the testimony presented represented all relevant information.
+They were also advised that they would be unable to re-read testimony, and a notepad was provided for their convenience.
 Participants are then asked to read a transcript of mock court testimony, and rate their impression of the evidence presented, as well as their impression of the experts. 
 This document included expert testimony, cross examination, and questions from the jury conveyed through the judge regarding error rates. 
-\authorcol{The expert testified to their qualificiations, as well as the process of bullet matching.}
-\authorcol{They then described comparing the fired evidence to a test fire from the defendant's gun, and the results of the comparison.}
-\authorcol{When the algorithm was included, the firearms examiner also described the algorithm's match score resulting from this comparison.}
-\authorcol{Cross examination included questions regarding the ability to uniquely identify the source of the bullet, as well as the subjectivity of the comparison.}
+The expert testified to their qualifications, as well as the process of bullet matching.
+They then described comparing the fired evidence to a test fire from the defendant's gun, and the results of the comparison.
+When the algorithm was included, the firearms examiner also described the algorithm's match score resulting from this comparison.
+Cross examination included questions regarding the ability to uniquely identify the source of the bullet, as well as the subjectivity of the comparison.
 
-\authorcol{When the algorithm was included, an algorithm expert then testified.
+When the algorithm was included, an algorithm expert then testified.
 They also listed their qualifications and involvement in the development of the algorithm.
 The expert would then describe the process for obtaining a match score (similar to the algorithm description in the previous section).
 They also spoke to the publication history of the algorithm, the code availability, and the algorithm's applicability to the type of firearm considered in the case.
-Cross examination included questions on the newness of the algorithm, as well as subjective aspects of calibration, and limitations with respect to the types of bullets that it can evaluate.}
+Cross examination included questions on the newness of the algorithm, as well as subjective aspects of calibration, and limitations with respect to the types of bullets that it can evaluate.
 The testimony was based on actual court testimony provided by forensics experts lawyers, and judges, shown in Appendix \@ref(testimony-transcripts).
 
-\authorcol{After reading the transcript, participants were directed to respond to some questions regarding the testimony.
-These questions were largely based on} @garrettMockJurorsEvaluation2020.
-\authorcol{They were first given information about their responsibility as jurors to choose whether or not to convict, based on the 'beyond reasonable doubt' threshold.}
-\authorcol{Participants were also asked to estimate the probability that the defendant committed the crime, and the probability that the gun was involved in the crime.}
-\authorcol{These questions were followed by several Likert scales on the strength of evidence, the credibility of the examiners, reliability and scientificity of the evidence, and understanding of the procedures.}
+After reading the transcript, participants were directed to respond to some questions regarding the testimony.
+These questions were largely based on @garrettMockJurorsEvaluation2020.
+They were first given information about their responsibility as jurors to choose whether or not to convict, based on the 'beyond reasonable doubt' threshold.
+Participants were also asked to estimate the probability that the defendant committed the crime, and the probability that the gun was involved in the crime.
+These questions were followed by several Likert scales on the strength of evidence, the credibility of the examiners, reliability and scientificity of the evidence, and understanding of the procedures.
 Two attention check questions were asked, in order to ensure that participants were reading both the testimony and the subsequent questions. 
 The first attention check asked participants to identify the caliber of bullet recovered from the crime scene, while the second attention check asked participants to select a specific value from a Likert scale.  
 
-The study includes three \authorcol{independent} variables: \authorcol{presence or absence} of the algorithm, \authorcol{presence or absence} of demonstrative evidence (images), and conclusion (identification, elimination, or inconclusive). 
+The study includes three independent variables: presence or absence of the algorithm, presence or absence of demonstrative evidence (images), and conclusion (identification, elimination, or inconclusive). 
 In the case of the algorithm, two testimonies were presented: that of the firearms examiner (Terry Smith), and that of the algorithm developer (Adrian Jones). 
 The firearms examiner presented the algorithm results for the case alongside their own analysis, and suggested that the algorithm's results supported their conclusion. 
 By presenting the algorithm results with the interpretation suggested by the firearms examiner, we hoped that potential jurors could use the firearms examiner's explanation and conclusion to guide their understanding of the algorithm's results. 
@@ -196,7 +196,7 @@ This same format was used when asking participants about credibility and scienti
 ### Prolific
 
 Participants were recruited using Prolific, an online survey-taking website. 
-\authorcol{From the Prolific website, participants were directed to a link containing our survey, created using RShiny.}
+From the Prolific website, participants were directed to a link containing our survey, created using RShiny.
 We selected options to recruit a representative sample of individuals located in the United States, and asked that participants self-screen for jury eligibility before completing the survey. 
 Jury eligibility was defined as US citizens over the age of majority in their state who had not been convicted of a felony, were not active law enforcement, military, emergency response, or a judge, and who did not have a disability that would prevent them from serving on a jury. 
 They were also required to have normal or corrected to normal vision, due to the images used in the study. 
@@ -295,11 +295,11 @@ ggplot(subset(demographics, !is.na(age) & age > 17), aes(x = gender, y=age)) +
 
 ```
 Of the `r dim(demographics)[1]` participants with Prolific ID's who started the survey, there were `r sum(demographics$gender=="Female")` female participants, `r sum(demographics$gender=="Male")` male participants, and `r sum(demographics$gender=="Other/non-binary")` non-binary participants.
-\authorcol{According to Prolific, these participants are a representative sample (in terms of age, sex and ethnicity, based on census data) of Prolific participants located in the United States.}
+According to Prolific, these participants are a representative sample (in terms of age, sex and ethnicity, based on census data) of Prolific participants located in the United States.
 The median age was `r median(demographics$age, na.rm=TRUE)`. 
 Age and gender are shown in Figure \@ref(fig:demographics).
 An age of 0.2 was excluded due to implausibility and lack of study completion.
-\authorcol{In two instances, participants reported being removed from the survey website prior to survey completion, which may have happened in other cases where the participants did not complete the survey.}
+In two instances, participants reported being removed from the survey website prior to survey completion, which may have happened in other cases where the participants did not complete the survey.
 `r dim(merged_results_allresponses)[1]` participants eligible for analysis completed the survey, and `r dim(merged_results)[1]` participants correctly answered both attention check questions.
 The division of correct answers on the attention check questions are shown in Table \@ref(tab:attentioncheck).
 These `r dim(merged_results)[1]` participants \authorcol{who answered both attention check questions correctly} were considered for the following analysis.
@@ -335,8 +335,8 @@ Questions of credibility, reliability, and scientificity were assessed using a 7
 Understanding was ranked on a 5-point Likert scale ("I understood nothing" to "I understood everything"). 
 Participants were also asked about uniqueness of firearm toolmarks, as a simple yes/no question. 
 Strength of evidence was ranked on a 9-point Likert scale ("Not at all strong" to "Extremely strong"). The perceived frequency with which firearms examiners made mistakes was assessed on a 7-point Likert scale ("Never" to "Always").  
-\authorcol{Many of these response scales suffered from scale compression - individuals selected the top two categories on many of the Likert scales, indicating that participants overall believed in the credibility of the witnesses and the reliability and scientificity of the methods.
-Due to this issue, no statistical analysis was performed on this data.}
+Many of these response scales suffered from scale compression - individuals selected the top two categories on many of the Likert scales, indicating that participants overall believed in the credibility of the witnesses and the reliability and scientificity of the methods.
+Due to this issue, no statistical analysis was performed on this data.
 
 ### Probability
 
@@ -1483,7 +1483,7 @@ Individuals were asked whether or not they thought that guns left unique marking
 Of the `r dim(merged_results)[1]` responses, only `r sum(merged_results$unique=="No")` individuals indicated that they did not think guns left unique markings. 
 These respondents were split across conditions. 
 Thus, respondents in this study overwhelmingly believe in the uniqueness of markings on discharged bullets. 
-<!-- Would responses be different if they were asked to evaluate uniqueness before reading the testimony? -->
+
 ```{r, eval=F, echo=F}
 
 table(merged_results$unique)
@@ -1535,7 +1535,7 @@ ggplot(subset(merged_results, !is.na(strength)), aes(x=strength, fill = algorith
 ```
 
 Individuals were also asked to rate the strength of evidence, both against Richard Cole and against the gun. 
-\authorcol{Unlike questions of reliability, credibility, and scientificity, strength of evidence was measured on a 9-point Likert scale, without worded values for intermittent categories, following the procedure of} @garrettMockJurorsEvaluation2020.
+Unlike questions of reliability, credibility, and scientificity, strength of evidence was measured on a 9-point Likert scale, without worded values for intermittent categories, following the procedure of @garrettMockJurorsEvaluation2020.
 
 When asked about the case against the defendant, shown in Figure \@ref(fig:strength), there was a small difference in terms of the algorithm. 
 When the examiner reached a elimination conclusion, individuals who also received the algorithm were more likely to select the lowest category ("Not at all strong") compared to those who did not receive the algorithm. 
@@ -2122,7 +2122,7 @@ As can be seen in most graphics, scale compression was an issue with this study.
 The vast majority of participants selected the two highest categories for questions rating how credible, reliable, and scientific the expert/method was\authorcol{, despite following the scale size and labeling recommendations of } @grovesSurveyMethodology2009. 
 This corresponds with @garrett2013's study of fingerprint match language, where they did not find a significant difference in the participants' feelings of guilt based on various match language.
 @garrett2013 hypothesized that this may relate to strong feelings reliability for fingerprint evidence, resulting in individuals viewing any match as automatically reliable (without the need for stronger language).
-\authorcol{In future studies, we will be evaluating different methods of response, aside from Likert scales, to study other formats that may yield less compressed results.}
+In future studies, we will be evaluating different methods of response, aside from Likert scales, to study other formats that may yield less compressed results.
 People generally seemed to have less faith in inconclusive decisions. 
 They understood the examiner's comparison better than the algorithm comparison, which was expected given the statistical complexity of the algorithm procedure. 
 In general, participants also found the algorithm to be more scientific than the examiner, when presented with both methods. 
@@ -2137,9 +2137,9 @@ These limitations are also mentioned by @garrettMockJurorsEvaluation2020.
 Participants were limited to those who participate in online survey-taking websites. 
 These participants may not be representative of the US population, due to differences in computer access or use, occupation, or other such factors. 
 These factors may have an effect on study responses.
-\authorcol{Another issue in representation results from the process of jury selection.}
-\authorcol{Because individuals are not randomly approved for serving on a jury, the jury itself is unlikely to be composed of a representative sample of American citizens.}
-@abramsonJurySelectionWeeds2018 \authorcol{argue that selection for jury duty does not result in a representative sample due to some courts' reliance solely on voter registration records for contacting eligible jurors, as well as large non response and non deliverable issues that are more prevalent in African American and Hispanic communities when compared to non-Hispanic White communities.}
+Another issue in representation results from the process of jury selection.
+Because individuals are not randomly approved for serving on a jury, the jury itself is unlikely to be composed of a representative sample of American citizens.
+@abramsonJurySelectionWeeds2018 argue that selection for jury duty does not result in a representative sample due to some courts' reliance solely on voter registration records for contacting eligible jurors, as well as large non response and non deliverable issues that are more prevalent in African American and Hispanic communities when compared to non-Hispanic White communities.
 
 Testimony was presented in a written format, which is unlike the courtroom setting of spoken testimony, where the jurors can see the experts.
 However, the use of written testimony allowed for the use of gender-neutral names for the experts (Terry and Adrian), which may be more difficult to achieve in a courtroom or video setting. 
@@ -2150,14 +2150,15 @@ This led to some confusion on the part of the "inconclusive" and "elimination" s
 While the goal of this format was to ensure that participants focused on the bullet matching testimony (without the compounding influence of other witnesses or evidence), this would not be representative of courtroom testimony.  
 
 In a courtroom setting, jurors are able to deliberate with each other before reaching a conclusion with regards to the case. 
-These deliberations tend to be evidence-driven, as opposed to majority rule [@bornsteinJuryDecisionMaking2011, p. 65]. 
+These deliberations tend to be evidence-driven, as opposed to majority rule [@bornsteinJuryDecisionMaking2011]. 
+<!-- [@bornsteinJuryDecisionMaking2011, p. 65].  -->
 While the majority decision may be reflected in the final result, some studies suggest that juries tend toward leniency when there is not a definitive majority in a criminal trial [@maccounAsymmetricInfluenceMock1988]. 
 The act of deliberation may result in different evaluations for Likert scale questions of reliability/credibility or strength of evidence than individual thought, even if a difference in guilty verdict may not be found after deliberation for this simple case style.  
 
 There were several typos that were not corrected for approximately the first half of the participants. 
 For all scenarios, the firearms examiner was referred to as Alex Smith in the questions, whereas the name was Terry Smith throughout the testimony. 
-\authorcol{Several participants noted this discrepancy in their feedback on the survey, allowing us to fix the typo before all surveys were completed.}
-\authorcol{There did not appear to be confusion due to the typo on the part of the participants.}
+Several participants noted this discrepancy in their feedback on the survey, allowing us to fix the typo before all surveys were completed.
+There did not appear to be confusion due to the typo on the part of the participants.
 "Convenience" was also misspelled in one question. 
 For elimination testimonies, the name "Alex Smith" also occurred in the cross examination.
 In the case of non-algorithm inconclusive testimonies, the question: "Can you describe the process of obtaining these test fired bullets?" was missing, but the response: "The test-fired bullets came from a test fire of the gun recovered from the traffic stop." remained unchanged. 
