@@ -43,10 +43,10 @@ I developed this method specifically for the cleaning of sequential notes.
 In this process, a previous page's notes are matched to the next page's notes in order to remove duplicate text.
 This is a form of pattern matching.
 In a reference to algorithmic detection of plagiarism in computer programs, @parker1989 describe an algorithm that uses the character differences in order to compare how similar programs are.
-Other algorithms \svp{discussed in} @parker1989 use code-specific features such as number of operators, lines of comments, and number of various loop statements.
-Because we are only concerned with the content of the notes, there is little information to be gained from formatting; \svp{a notable difference from the plagiarism detection problem}.
+Other algorithms discussed in @parker1989 use code-specific features such as number of operators, lines of comments, and number of various loop statements.
+Because we are only concerned with the content of the notes, there is little information to be gained from formatting: a notable difference from the plagiarism detection problem.
 
-There are \svp{many} examples of pattern matching in text analysis - such as @baeza-yates and @landau1988. 
+There are many examples of pattern matching in text analysis - such as @baeza-yates and @landau1988. 
 These papers rely on a set pattern to be found in the reference text, with a defined number of differences allowed between the pattern and the text. 
 According to @baeza-yates, many algorithmic methods have been developed to solve this problem, with allowances for mismatches between the reference text and the pattern.
 A similar allowance for differences is present in @landau1988, where differences are defined as either insertions, deletions, or substitutions.
@@ -115,13 +115,12 @@ In the process of note cleaning, this would be the string that is removed from t
 ```
 
 Methods for computing the longest common substring between two sequences have been used to compare biological sequences [@crochemore2017].
-Solutions for finding the longest common substring \svp{utilize either} the construction of a suffix tree [@charalampopoulos2021] or table [@landau1988].
+Solutions for finding the longest common substring utilize either the construction of a suffix tree [@charalampopoulos2021] or table [@landau1988].
 The suffix tree method is described by @gusfield1997; in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leaves consist of the string's terminal character: \$.
 <!-- This is used avoid recurrence with previous characters in the string. -->
 
 A solution implemented by @ptxqc in a CRAN R package constructs a matrix that records the length of a matching string at character $i$ for string 1 (in the $i$th row), and character $j$ for string 2 (in the $j$th column).
-Because \svp{an} R implementation \svp{is readily available}, \svp{this is the solution used} for this analysis, 
-\svp{even though} @ptxqc warns that this LCS method is inefficient, and meant to be used in small instances.
+Because an R implementation is readily available, this is the solution used for this analysis, even though @ptxqc warns that this LCS method is inefficient, and meant to be used in small instances.
 This method creates an empty matrix, where the number of rows correspond to the length of the first string, and the number of columns correspond to the length of the second string.
 Thus, the first cell would correspond to the first character of both strings, and so on.
 If the characters match and it is the first row or column, then the cell gets a value of 1.
@@ -176,7 +175,7 @@ Benny | Jur
 : Dataset of misspelled months (\#tab:months)
 
 We may then want to match the written months to their correctly spelled counterparts. 
-While 'stringdist_join' will give values for all matches between the two data sets, we can \svp{then identify} the month that is closest to the misspelled value.
+While 'stringdist_join' will give values for all matches between the two data sets, we can then identify the month that is closest to the misspelled value.
 
 ```{r, echo=FALSE,message=FALSE, warning=FALSE}
 
@@ -367,7 +366,7 @@ Note pages that corresponded to the questions (and not the testimony) were remov
 ### Data Cleaning
 
 In this study, participants were provided with a notepad to record information while reading through mock trial testimony.
-Because participants are provided with the same continuous notepad throughout the study, the database records a \svp{snapshot} of their notes when they advance to the next page\svp{, providing a cumulative set of notes over time}.
+Because participants are provided with the same continuous notepad throughout the study, the database records a snapshot of their notes when they advance to the next page, providing a cumulative set of notes over time.
 Table \@ref(tab:noteexample) is an example of what sequential notes may look like, taken from the second and third pages of a study participant's notes. 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -411,7 +410,7 @@ A generalized version of the functions used in this data cleaning are included i
 The FNC and LCS methods for sequential notepad cleaning were first tested on a subset of notes resulting from a jury perception survey.
 In order to compare the FNC and LCS methods described above, I manually cleaned a subset of the survey response notes to have a "correct" baseline with which to calculate error rates.
 This dataset consists of `r dim(comments)[1]` pages of 'notes' (including `r sum(comments$notes=="")` blanks) with 35 unique participants. 
-30 participants were randomly selected from the larger dataset \svp{to test the method's effectiveness}, while 5 participants were selected based on demonstrated issues with \svp{the existing} data cleaning \svp{process}. 
+30 participants were randomly selected from the larger dataset to test the method's effectiveness, while 5 participants were selected based on demonstrated issues with the existing data cleaning process. 
 The 5 selected participants included an individual who deleted almost all of the beginning notes; two individuals who pasted new notes in the middle of old notes; an individual who duplicated notes; and an individual who included the algorithm expert's trial confirmation as well as the forensic scientist's - duplicate text that should be included as the new notes.
 
 Table \@ref(tab:noteexample) shows two sequential note pages used in the method comparison dataset.
@@ -622,7 +621,7 @@ include_graphics(path = "images/collocationanalysis.jpg")
 
 Table \@ref(tab:fuzzyexam) demonstrates fuzzy matches on the testimony description text mentioned previously.
 With an edit distance of 1, it can be seen that these fuzzy matches are the result of simple typos - making it clear which transcript collocation the misspelled version corresponds to.
-While most collocation misspellings in the table only occur a single time (recorded via the "Count" column), the last collocation occurs twice - indicating that two individual note takers \svp{missed an} "l" \svp{in} "willfully".
+While most collocation misspellings in the table only occur a single time (recorded via the "Count" column), the last collocation occurs twice - indicating that two individual note takers missed an "l" in "willfully".
 The "Collocation Matches" column indicates if the participant's collocation matches with multiple collocations from the study - such as "Jur" in the example above.
 
 \newpage

@@ -276,9 +276,9 @@ I developed this method specifically for the cleaning of sequential notes.
 In this process, a previous page’s notes are matched to the next page’s notes in order to remove duplicate text.
 This is a form of pattern matching.
 In a reference to algorithmic detection of plagiarism in computer programs, <span class="citation">Parker &amp; Hamblen (1989)</span> describe an algorithm that uses the character differences in order to compare how similar programs are.
-Other algorithms <span class="citation">Parker &amp; Hamblen (1989)</span> use code-specific features such as number of operators, lines of comments, and number of various loop statements.
-Because we are only concerned with the content of the notes, there is little information to be gained from formatting; .</p>
-<p>There are examples of pattern matching in text analysis - such as <span class="citation">Baeza-Yates &amp; Gonnet (1992)</span> and <span class="citation">Landau &amp; Vishkin (1988)</span>.
+Other algorithms discussed in <span class="citation">Parker &amp; Hamblen (1989)</span> use code-specific features such as number of operators, lines of comments, and number of various loop statements.
+Because we are only concerned with the content of the notes, there is little information to be gained from formatting: a notable difference from the plagiarism detection problem.</p>
+<p>There are many examples of pattern matching in text analysis - such as <span class="citation">Baeza-Yates &amp; Gonnet (1992)</span> and <span class="citation">Landau &amp; Vishkin (1988)</span>.
 These papers rely on a set pattern to be found in the reference text, with a defined number of differences allowed between the pattern and the text.
 According to <span class="citation">Baeza-Yates &amp; Gonnet (1992)</span>, many algorithmic methods have been developed to solve this problem, with allowances for mismatches between the reference text and the pattern.
 A similar allowance for differences is present in <span class="citation">Landau &amp; Vishkin (1988)</span>, where differences are defined as either insertions, deletions, or substitutions.
@@ -361,12 +361,11 @@ Figure 3.1: Longest Common Substring Diagram
 </p>
 </div>
 <p>Methods for computing the longest common substring between two sequences have been used to compare biological sequences <span class="citation">(Crochemore, Iliopoulos, Langiu, &amp; Mignosi, 2017)</span>.
-Solutions for finding the longest common substring the construction of a suffix tree <span class="citation">(Charalampopoulos, Kociumaka, Pissis, &amp; Radoszewski, 2021)</span> or table <span class="citation">(Landau &amp; Vishkin, 1988)</span>.
+Solutions for finding the longest common substring utilize either the construction of a suffix tree <span class="citation">(Charalampopoulos, Kociumaka, Pissis, &amp; Radoszewski, 2021)</span> or table <span class="citation">(Landau &amp; Vishkin, 1988)</span>.
 The suffix tree method is described by <span class="citation">Gusfield (1997)</span>; in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leaves consist of the string’s terminal character: $.
 <!-- This is used avoid recurrence with previous characters in the string. --></p>
 <p>A solution implemented by <span class="citation">Bielow, Mastrobuoni, &amp; Kempa (2016)</span> in a CRAN R package constructs a matrix that records the length of a matching string at character <span class="math inline">\(i\)</span> for string 1 (in the <span class="math inline">\(i\)</span>th row), and character <span class="math inline">\(j\)</span> for string 2 (in the <span class="math inline">\(j\)</span>th column).
-Because R implementation , for this analysis,
-<span class="citation">Bielow et al. (2016)</span> warns that this LCS method is inefficient, and meant to be used in small instances.
+Because an R implementation is readily available, this is the solution used for this analysis, even though <span class="citation">Bielow et al. (2016)</span> warns that this LCS method is inefficient, and meant to be used in small instances.
 This method creates an empty matrix, where the number of rows correspond to the length of the first string, and the number of columns correspond to the length of the second string.
 Thus, the first cell would correspond to the first character of both strings, and so on.
 If the characters match and it is the first row or column, then the cell gets a value of 1.
@@ -574,7 +573,7 @@ This may result in a dataset like Table <a href="3-textcolor.html#tab:months">3.
 </tbody>
 </table>
 <p>We may then want to match the written months to their correctly spelled counterparts.
-While ‘stringdist_join’ will give values for all matches between the two data sets, we can the month that is closest to the misspelled value.</p>
+While ‘stringdist_join’ will give values for all matches between the two data sets, we can then identify the month that is closest to the misspelled value.</p>
 <table style="width:78%;">
 <caption><span id="tab:fuzzymonth">Table 3.4: </span> Fuzzy Match by Month</caption>
 <colgroup>
@@ -899,7 +898,7 @@ Note pages that corresponded to the questions (and not the testimony) were remov
 <div id="data-cleaning-1" class="section level3 hasAnchor" number="3.3.2">
 <h3><span class="header-section-number">3.3.2</span> Data Cleaning<a href="3-textcolor.html#data-cleaning-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In this study, participants were provided with a notepad to record information while reading through mock trial testimony.
-Because participants are provided with the same continuous notepad throughout the study, the database records a of their notes when they advance to the next page.
+Because participants are provided with the same continuous notepad throughout the study, the database records a snapshot of their notes when they advance to the next page, providing a cumulative set of notes over time.
 Table <a href="3-textcolor.html#tab:noteexample">3.8</a> is an example of what sequential notes may look like, taken from the second and third pages of a study participant’s notes.</p>
 <table>
 <caption><span id="tab:noteexample">Table 3.8: </span> Participant Note Example</caption>
@@ -933,7 +932,7 @@ A generalized version of the functions used in this data cleaning are included i
 <p>The FNC and LCS methods for sequential notepad cleaning were first tested on a subset of notes resulting from a jury perception survey.
 In order to compare the FNC and LCS methods described above, I manually cleaned a subset of the survey response notes to have a “correct” baseline with which to calculate error rates.
 This dataset consists of 561 pages of ‘notes’ (including 66 blanks) with 35 unique participants.
-30 participants were randomly selected from the larger dataset , while 5 participants were selected based on demonstrated issues with data cleaning .
+30 participants were randomly selected from the larger dataset to test the method’s effectiveness, while 5 participants were selected based on demonstrated issues with the existing data cleaning process.
 The 5 selected participants included an individual who deleted almost all of the beginning notes; two individuals who pasted new notes in the middle of old notes; an individual who duplicated notes; and an individual who included the algorithm expert’s trial confirmation as well as the forensic scientist’s - duplicate text that should be included as the new notes.</p>
 <p>Table <a href="3-textcolor.html#tab:noteexample">3.8</a> shows two sequential note pages used in the method comparison dataset.
 In this case, the FNC method could easily be applied; the page 2 notes perfectly align with the first part of the page 3 notes, resulting in an edit distance of 0 when comparing the first n characters of the third page.
@@ -1138,7 +1137,7 @@ Figure 3.5: Collocation Count for Page 2
 <h4><span class="header-section-number">3.3.3.1</span> Fuzzy Matching<a href="3-textcolor.html#fuzzy-matching-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Table <a href="#tab:fuzzyexam"><strong>??</strong></a> demonstrates fuzzy matches on the testimony description text mentioned previously.
 With an edit distance of 1, it can be seen that these fuzzy matches are the result of simple typos - making it clear which transcript collocation the misspelled version corresponds to.
-While most collocation misspellings in the table only occur a single time (recorded via the “Count” column), the last collocation occurs twice - indicating that two individual note takers “l” “willfully”.
+While most collocation misspellings in the table only occur a single time (recorded via the “Count” column), the last collocation occurs twice - indicating that two individual note takers missed an “l” in “willfully”.
 The “Collocation Matches” column indicates if the participant’s collocation matches with multiple collocations from the study - such as “Jur” in the example above.</p>
 <p>Interestingly, when considering the most distant fuzzy matches in Table <a href="#tab:fuzzyexamlarge"><strong>??</strong></a>, these phrases do not come from simple typos, but rather from a non-testimony title portion of the study: “Jury Perception of Trial Information, Presentation, and Demonstrative Evidence”, and may result from participants copying the entire web page into the note sheet.
 Two individuals copied this title into their notes, but on different pages of the testimony.

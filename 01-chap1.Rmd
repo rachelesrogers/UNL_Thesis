@@ -302,7 +302,7 @@ An age of 0.2 was excluded due to implausibility and lack of study completion.
 In two instances, participants reported being removed from the survey website prior to survey completion, which may have happened in other cases where the participants did not complete the survey.
 `r dim(merged_results_allresponses)[1]` participants eligible for analysis completed the survey, and `r dim(merged_results)[1]` participants correctly answered both attention check questions.
 The division of correct answers on the attention check questions are shown in Table \@ref(tab:attentioncheck).
-These `r dim(merged_results)[1]` participants \authorcol{who answered both attention check questions correctly} were considered for the following analysis.
+These `r dim(merged_results)[1]` participants who answered both attention check questions correctly were considered for the following analysis.
 
 ```{r}
 #| attentioncheck,
@@ -456,7 +456,7 @@ After reading the testimony, the participants were given the following question:
 "The State has the burden of proving beyond a reasonable doubt that the defendant is the person who committed the alleged crime. 
 If you are not convinced beyond a reasonable doubt that the defendant is the person who committed the alleged crime, you must find the defendant not guilty. 
 Would you convict this defendant, based on the evidence that you have heard?". 
-`r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="NoMatch")` out of `r sum(merged_results$conclusion=="NoMatch")` individuals in the elimination category, `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Inconclusive")` out of `r sum(merged_results$conclusion=="Inconclusive")` individuals in the inconclusive category, and `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match")` out of `r sum(merged_results$conclusion=="Match")` individuals in the identification category chose to convict, despite \authorcol{the fact that the bullet comparison testimony was the only evidence presented.} 
+`r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="NoMatch")` out of `r sum(merged_results$conclusion=="NoMatch")` individuals in the elimination category, `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Inconclusive")` out of `r sum(merged_results$conclusion=="Inconclusive")` individuals in the inconclusive category, and `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match")` out of `r sum(merged_results$conclusion=="Match")` individuals in the identification category chose to convict, despite the fact that the bullet comparison testimony was the only evidence presented. 
 As Figure \@ref(fig:probguilt) illustrates, across all categories individuals who chose to convict generally assigned a higher probability to Cole committing the crime than those who did not choose to convict. 
 The same general trend of higher probability values for those who chose to convict and lower probability values for those who chose not to convict is also seen for elimination and inconclusive conditions when discussing the probability that the gun was used in the crime. 
 However, in the case of the identification condition, those who did not convict gave a generally higher probability that the gun was used in the crime than the probability that Cole committed the crime, resulting in comparable values (albeit with more variability) to those who chose to convict.
@@ -1425,8 +1425,9 @@ ggplot(subset(algorithm_results,!is.na(algunder)),
   scale_x_discrete(labels=c('1\nI\nunderstood\nnothing', '2', '3', '4', '5\nI\nunderstood\neverything'))
 
 ```
-\authorcol{To investigate this potential relationship further, Table} \@ref(tab:undertb)
-\authorcol{was created. Because the counts are so small for the individual cells, the resemblence to a relationship based on conclusion is possibly due to random variation.}
+
+To investigate this potential relationship further, Table \@ref(tab:undertb) was created. Because the counts are so small for the individual cells, the resemblance to a relationship based on conclusion is possibly due to random variation.
+
 ```{r}
 #| echo= FALSE,
 #| message= FALSE,
@@ -2107,9 +2108,9 @@ Many participants were concerned about the lawfulness of the arrest, and the lac
 Several also indicate that they have pre-conceived notions, either about algorithms or about firearms evidence.
 In particular, two comments were:
 
->"Random forest methods for machine learning and classification are not very robust.  They identify pictures of cats as hamburgers, for example.  Just use science. - Elimination, Algorithm, Demonstrative Evidence"
+>"Random forest methods for machine learning and classification are not very robust.  They identify pictures of cats as hamburgers, for example.  Just use science." - Elimination, Algorithm, Demonstrative Evidence
 
->"Firearm evidence seems a lot like hair evidence which was debunked but I don't know that to be fact. From what was stated in this testimony, it seems to be mostly reliable but I wouldn't say it is strongly scientific. - Inconclusive, Algorithm, Demonstrative Evidence"
+>"Firearm evidence seems a lot like hair evidence which was debunked but I don't know that to be fact. From what was stated in this testimony, it seems to be mostly reliable but I wouldn't say it is strongly scientific." - Inconclusive, Algorithm, Demonstrative Evidence
 
 The comments indicate that participants can have distrust for methods based on their previous ideas, which may not be factual.
 
@@ -2119,7 +2120,7 @@ The comments indicate that participants can have distrust for methods based on t
 ### Summary of Results
 
 As can be seen in most graphics, scale compression was an issue with this study. 
-The vast majority of participants selected the two highest categories for questions rating how credible, reliable, and scientific the expert/method was\authorcol{, despite following the scale size and labeling recommendations of } @grovesSurveyMethodology2009. 
+The vast majority of participants selected the two highest categories for questions rating how credible, reliable, and scientific the expert/method was, despite following the scale size and labeling recommendations of @grovesSurveyMethodology2009. 
 This corresponds with @garrett2013's study of fingerprint match language, where they did not find a significant difference in the participants' feelings of guilt based on various match language.
 @garrett2013 hypothesized that this may relate to strong feelings reliability for fingerprint evidence, resulting in individuals viewing any match as automatically reliable (without the need for stronger language).
 In future studies, we will be evaluating different methods of response, aside from Likert scales, to study other formats that may yield less compressed results.
