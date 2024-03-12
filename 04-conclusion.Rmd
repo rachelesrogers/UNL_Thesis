@@ -5,25 +5,24 @@
 <!-- ## Introduction -->
 
 The initial goal of this research was to investigate how a bullet matching algorithm or demonstrative evidence may affect juror perception of the courtroom evidence and procedure.
-In the course of this investigation, we \authorcol{discovered two aspects of the testimony that we wished to update: speaker clarity and response type.}
-\authorcol{While the initial study responses suffered from scale compression, the participants' notepads acted as another source of information.}
+In the course of this investigation, we discovered two aspects of the testimony that we wished to update: speaker clarity and response type.
+While the initial study responses suffered from scale compression, the participants' notepads acted as another source of information.
 We designed a method for analyzing participant notes that were taken while reading through the testimony, to create a 'heatmap' of areas of text that participants found to be important.
 We also redesigned the study format to include cartoons and color-coded speech bubbles for clarity, and conducted a survey investigating response type.
-We investigated various response types, \authorcol{using a variety of methods, from betting to numeric chance scales.}
+We investigated various response types, using a variety of methods, from betting to numeric chance scales.
 
-\authorcol{The text analysis provided useful information on participant focus, especially when evaluating the testimony that was added in the response study. 
+The text analysis provided useful information on participant focus, especially when evaluating the testimony that was added in the response study. 
 These functions have been turned into packages, which are still in development.
-We plan to use these methods to conduct a case study using Wikipedia edit history.}
+We plan to use these methods to conduct a case study using Wikipedia edit history.
 
-\authorcol{The new study format was received favorably, based on participant comments.
-This survey format is designed to be made available to a wider audience for conducting studies of trial scenarios.
+This new survey format is designed to be made available to a wider audience for conducting studies of trial scenarios.
 In the future, we plan to conduct a study on perception of characteristics of the cartoon figures, to explore potential biases that may arise out of this format.
 Alongside the new study design, we discovered that, while individuals provided generally consistent answers across response type, they were more inconsistent when comparing numeric chance in terms of innocence, perhaps due to the reversal of format (all other questions were in terms of guilt).
 While Likert, probability and betting scales were not optimal for collecting data in this case, multiple choice chance scales with non-linear intervals allowed for more spread in participants' answers and demonstrated consistent understanding.
-Furthermore, asking participants their opinion of the guilt of the defendant alongside their conviction decision added nuance to their perception of the evidence.}
+Furthermore, asking participants their opinion of the guilt of the defendant alongside their conviction decision added nuance to their perception of the evidence.
 
 These diverging avenues of investigation will again merged for a final study (in progress).
-The new cartoon study format was well received by participants, the response type study indicates that phrasing questions in terms of chance (i.e. "1 chance in 10 that...") eliminated the scale compression seen in Likert scales, and the text analysis provides useful information about what participants found worth copying into their notes.
+The new cartoon study format was well received by participants, the response type study indicates that phrasing questions in terms of chance (i.e. "1 chance in 10 that...") reduced the scale compression seen in Likert scales, and the text analysis provides useful information about what participants found worth copying into their notes.
 <!-- \authorcol{While some scales can be rephrased in terms of chance, others, such as how scientific the approach is, were more difficult to reframe. -->
 <!-- These questions also suffered from scale compression, which may result from an issue of calibration. -->
 <!-- While a continuous scale would potentially alleviate the limiting effect of categories, the issue of calibration may still remain: individuals may still choose a cluster of high values on the continuous scale. -->

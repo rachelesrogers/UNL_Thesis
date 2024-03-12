@@ -261,34 +261,41 @@ div.csl-indent {
 <p>The results from the initial study found in Chapter <a href="2-study1.html#study1">2</a> call into question the use of Likert response scales when evaluating jury perception of firearms experts, as well as the use of a transcript testimony format.
 Responses pertaining to the credibility of the expert, as well as the reliability and scientificity of the evidence, suffered from scale compression when a Likert scale was used - participants indicated overall confidence in credibility, reliability, and scientificity by mainly selecting the two highest categories of each scale.
 This lack of variation in scale responses makes it difficult to discern potential differences between treatment conditions.
-Due to this difficulty, we conducted a follow-up study comparing various response types, in order to determine substitute questions that may result in a wider distribution of responses. </p>
-<p><span class="citation">Groves et al. (2009)</span>
-<span class="citation">Groves et al. (2009)</span> </p>
-<p>In investigating scale compression, we found that <span class="citation">United States Courts for the Ninth Circuit (2019)</span> suggests that the use of the term “expert” may result in jurors giving the testimony more weight, and </p>
+Due to this difficulty, we conducted a follow-up study comparing various response types, in order to determine substitute questions that may result in a wider distribution of responses.</p>
+<p>According to <span class="citation">Groves et al. (2009)</span>, an error in survey measurements may result from a difference between the construct that we wish to evaluate, and the measurement used to evaluate it.
+In this case, there is a disconnect between what we want to measure (participant’s perception of the witness/method’s abilities) and what we ended up measuring with Likert scales (reliability, credibility, and scientificity).
+This disconnect can be seen in the form of scale compression: due to the limited scale, we are unable to observe individuals’ true perceptions with regards to the witnesses and methods.
+<span class="citation">Groves et al. (2009)</span> uses the National Assessment of Educational Progress as an example of the difference between construct and measures: “when measuring the construct of mathematical abilities of 4th graders, the measures are sets of arithmetic problems” (50).
+The scale compression seen in our initial study would be equivalent to using the wrong set of arithmetic problems: if the problems are simple enough that almost all 4th graders receive a perfect score, then the true mathematical abilities of the 4th graders are not being evaluated.
+Similarly, the standard for being considered reliable, credible, and scientific as a court-approved witness or method is too easy to overcome.</p>
+<p>In investigating scale compression, we found that <span class="citation">United States Courts for the Ninth Circuit (2019)</span> suggests that the use of the term “expert” may result in jurors giving the testimony more weight, and suggests judges use the following jury instruction:</p>
 <blockquote>
-
+<p>“You [have heard] [are about to hear] testimony from [name] who [testified] [will testify] about [his] [her] opinions and the reasons for those opinions. This opinion testimony is allowed because of the specialized knowledge, skill, experience, training, or education of this witness.
+Such opinion testimony should be judged like any other testimony. You may accept it or reject it, and give it as much weight as you think it deserves, considering the witness’s knowledge, skill, experience, training, or education, the reasons given for the opinion, and all the other evidence in the case.”</p>
 </blockquote>
 <p>Additional cross examination testimony with regards to the firearms examiner’s inability to specifically tie the defendant to the crime scene is included as well, due to a lack of distinction in participants between evidence tying the firearm to the crime scene, and evidence tying the defendant to the crime scene.
 As in the initial study, these changes were directly related to trial transcripts or resources.
 The transcript changes for the second study can be found in Appendix <a href="B-study-2-changes.html#study-2-changes">B</a>.</p>
-<p>The testimony transcript format did not clearly identify the speaker with each line, instead using “Q:” and “A:” in most cases, as shown in Appendix <a href="B-study-2-changes.html#study-2-changes">B</a>.
-The lack of visual cues for is not representative of the courtroom setting.
+<p>The testimony transcript format used in the initial study did not clearly identify the speaker with each line, instead using “Q:” and “A:” in most cases, as shown in Appendix <a href="B-study-2-changes.html#study-2-changes">B</a>.
+The lack of visual cues for matching text with the speaker is not representative of the courtroom setting.
 The transcript format may also lend an air of impartiality to the witnesses due to the relatively unclear identity of the individual asking the questions.
-testimony where the prosecution called the witness to testify, instead beginning with the swearing in of the witness.
+In order to clarify, we also added testimony where the prosecution called the witness to testify, instead beginning with the swearing in of the witness.
 Due to this issue, we strove to develop a general tool that can be used in online courtroom studies to provide visual representation of relevant actors, making it easier to track speakers, and with versatility in terms of individual characteristics.
-<a href="4-study2.html#fig:testimonyformat">4.1</a>.</p>
+These changes are shown in Figure <a href="4-study2.html#fig:testimonyformat">4.1</a>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:testimonyformat"></span>
 <img src="images/Study2_Screenshot.jpg" alt="A screenshot of the layout of the second study." width="\linewidth" />
 <p class="caption">
 Figure 4.1: A screenshot of the layout of the second study.
 </p>
 </div>
-<p>In order to minimize the chance of confounding typos as seen in Study 1, we used one master file with all lines of testimony, labelled by the scenario in which the testimony occurs, .
-this format allows for more flexibility when implementing the R Shiny application.
-We also use unique identification throughout the database files in the form of Prolific ID’s and a random number assigned to the participant instead of relying on fingerprints, which resulted in technical difficulties in a preliminary run of this second study, so the demographics section can more easily be linked to the final results.</p>
+<p>In order to minimize the chance of confounding typos as seen in Study 1, we used one master file with all lines of testimony, labelled by the scenario in which the testimony occurs, which minimizes the need to change testimony in multiple locations.
+In addition, this format allows for more flexibility when implementing the R Shiny application.
+We also use unique identification throughout the database files in the form of Prolific ID’s and a random number assigned to the participant upon initial connection to the application instead of relying on browser-based fingerprints, which resulted in technical difficulties in a preliminary run of this second study, so the demographics section can more easily be linked to the final results.</p>
+<p>Individuals also indicated confusion with regards to the use of a partial testimony transcript:</p>
 <blockquote>
-
+<p>“…Where’s the defense in all of this? It would have been helpful to know whether or not the defendant had an alibi, whether his firearm had in fact been recently fired, from a forensics perspective, whether there were any in-store or exterior or neighborhood cameras that picked up whoever discharged the firearm. Convenience stores nearly always have a height chart posted alongside the door but no one provided an approximate height or weight for the person who discharged the firearm…” - Inconclusive, No Algorithm, Demonstrative Evidence</p>
 </blockquote>
+<p>Due to this confusion, an additional line is added to the study description indicating that this is not the only evidence presented in the case.</p>
 </div>
 <div id="study-visualization" class="section level3 hasAnchor" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> Study Visualization<a href="4-study2.html#study-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -303,10 +310,13 @@ These characters were drawn so that the clothes and heads can be interchanged, p
 One difficulty in including drawn figures with realistic skin tones and figures is the influence of perceived race or gender on participant judgments.
 <span class="citation">Stanley, Sokol-Hessner, Banaji, &amp; Phelps (2011)</span> found a relationship between implicit racial bias and the perceived trustworthiness of individuals based on images of black and white males.
 They also found that 80% of participants exhibited pro-white implicit bias.
-Because of this potential bias introduced by visual figures, we plan to conduct a follow-up study in order to determine how these figures are perceived .
+Because of this potential bias introduced by visual figures, we plan to conduct a follow-up study in order to determine how these figures are perceived as part of the validation of this set of figures for wider use.
 For the current study, the same figures are used consistently across all conditions to prevent a confounding effect.</p>
 <p>To investigate a which response type may be most informative for this study and to troubleshoot the use of figures and speech bubble format, we conducted a micro study using various response types.
-<a href="index.html#litreview">1</a> <a href="2-study1.html#study1">2</a> </p>
+As discussed in the Literature Review in Chapter <a href="index.html#litreview">1</a>, there are many issues with recording participant responses in a manner that best represents the construct of interest.
+While the question we followed in Chapter <a href="2-study1.html#study1">2</a> mainly aligns with the recommendations of these authors, in terms of the use of 7 and 9-point Likert scales with labelled categories, these scales failed to capture the underlying attitudes that we wished to address.
+Based on these recommendations, adding more categories to the Likert scales would not be recommended, leading us to search for other methods of response.
+However, participants may find the use of numerical scales to be difficult to use, so these scales must be investigated for consistency.</p>
 </div>
 </div>
 <div id="methods-1" class="section level2 hasAnchor" number="4.2">
@@ -315,9 +325,9 @@ For the current study, the same figures are used consistently across all conditi
 <h3><span class="header-section-number">4.2.1</span> Study Format<a href="4-study2.html#study-format-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Participants were presented with the same scenario described in Chapter <a href="2-study1.html#study1">2</a>: participants read a trial transcript regarding an attempted convenience store robbery, where the only evidence presented is a bullet comparison between the defendant’s gun and a bullet recovered from the scene of the crime (a scenario from <span class="citation">Garrett, Scurich, et al. (2020)</span>).
 In this case, however, the only factor that was changed was the conclusion of the firearms examiner: either an indentification or exclusion.
-In all conditions, the algorithm was absent and there were no images .
+In all conditions, the algorithm was absent and there were no images provided as demonstrative evidence during testimony.
 The testimony largely followed that of Chapter <a href="2-study1.html#study1">2</a>, aside from differences in the format and additional testimony described above and outlined in Appendix <a href="B-study-2-changes.html#study-2-changes">B</a>.
-In this case, it was also explicitly stated that the testimony did not reflect all evidence presented in the case, because in the exclusion condition there evidence to bring the case to trial.
+In this case, it was also explicitly stated that the testimony did not reflect all evidence presented in the case, because in the exclusion condition there is clearly insufficient evidence to bring the case to trial.
 Figure <a href="4-study2.html#fig:responsefigures">4.3</a> depicts the characters used in this study.
 Those speaking on behalf of the prosecution were coded with speech bubbles in warmer colors (red for the prosecutor and orange for the forensic scientist), while the defense was coded with a cooler color (purple), and the judge was coded as grey.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:responsefigures"></span>
@@ -327,7 +337,7 @@ Figure 4.3: Figures used in the response study. From left to right: the judge, f
 </p>
 </div>
 <p>At the end of the testimony, the participants were asked a variety of questions regarding the strength of evidence in the case.
-<a href="4-study2.html#fig:questions">4.4</a>.
+All questions asked in this study are shown in Figure <a href="4-study2.html#fig:questions">4.4</a>.
 Questions of probability, strength of evidence, and decision to convict were repeated from the Chapter <a href="2-study1.html#study1">2</a> study.
 Participants were asked to evaluate the probability that the defendant committed the crime, both with a visible probability scale (allowing the participants to select the exact probability integer) and with a non-visible scale (only the numbers of 0 and 100 were available on the extremes of the scale).
 The strength of evidence was a Likert scale with values from “Not at all strong” to “Extremely strong” with nine points.
@@ -346,11 +356,11 @@ One was in a multiple choice format, with extreme values of “Impossible to be 
 This format was taken from <span class="citation">Thompson &amp; Newman (2015)</span>’s study of DNA, which consisted of larger scaled values in the denominator (up to 1 in 10 million).
 The second question allowed participants to select both the numerator and denominator: “About ___ chance(s) in ___ that the defendant is (innocent/guilty)”, where participants were able to select to express the value as innocence or guilt (the default value was “innocent”).
 In the preliminary study, participants had to express chances that corresponded with their opinion on the defendant committing the crime, but this resulted in some scale confusion.
-In both cases, the numerator had to be less than or equal to the denominator, </p>
+In both cases, the numerator had to be less than or equal to the denominator, restricting the numerical result to the <span class="math inline">\([0,1]\)</span> range.</p>
 <p>Individuals who thought that the defendant was guilty were asked how much they were willing to bet that the defendant was guilty, if hypothetically researchers provided them with $50 and they would double their money if they were correct, and vice versa.
 A final new question was open ended, and asked participants to provide their opinion of the defendant.
 We first asked individuals to provide their opinion of the defendant, their conviction decision, and their personal opinion of the guilt of the defendant.
-All other questions were randomized the two probability questions and the two chance questions were not .</p>
+All other questions were randomized subject to the constraint that the two probability questions and the two chance questions were not adjacent.</p>
 </div>
 <div id="prolific-1" class="section level3 hasAnchor" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> Prolific<a href="4-study2.html#prolific-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -384,18 +394,20 @@ Age and gender are shown in Figure <a href="4-study2.html#fig:demographics2">4.6
 Individuals were asked a single attention check question with regards to the caliber of gun used in the attempted robbery.
 298 participants passed the attention check, meaning that only 4 participants failed the attention check, and will not be included in the analysis.
 There were 147 participants in the identification condition and 151 participants in the elimination condition who passed the attention check.
-We adjusted the probability of receiving each condition throughout the survey to ensure categories relatively equal.</p>
+We adjusted the probability of receiving each condition throughout the survey to ensure the number of participants across categories was relatively equal.</p>
 </div>
 <div id="questions-from-study-1" class="section level3 hasAnchor" number="4.3.2">
 <h3><span class="header-section-number">4.3.2</span> Questions from Study 1<a href="4-study2.html#questions-from-study-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There were some procedural changes made to this study compared to the original study that may influence results: namely, more detailed cross examination and the inclusion of jury instructions.
+These changes were made in order to reduce scale compression by providing a stronger defense and emphasizing the role of the expert witness as providing opinions.
 Another significant difference between the two studies is the time that has passed between the two studies.
 The first study was conducted in July 2022, while this study was conducted in January 2024.
 In this time, notoriety of firearms evidence has not remained the same - in this response study, a participant commented that they had recently read an article about the unreliability of firearms evidence:</p>
 <blockquote>
-
+<p>“Recently I have seen an article about a court decision that testimony about fired bullet comparisons have been shown to be unreliable. At least some convictions in that state based upon fired bullet comparisons have been overturned. I did not use that information in this case.” - Elimination</p>
 </blockquote>
-<p>More widespread criticism of firearms examination may lead to lower feelings of reliability.</p>
+<p>This is in part due to a number of high-profile court cases in jurisdictions around the country which have limited the presentation of firearms evidence or how expert witnesses may present evidence to ensure that witnesses do not overstate the scientific value of firearms comparisons.
+More widespread criticism of firearms examination may lead to lower feelings of reliability.</p>
 <p>In both studies, participants are asked if they would choose to convict, given the “beyond a reasonable doubt” threshold.
 In this study, 54.42% (or 80 out of 147) individuals who received the identification condition chose to convict, while 3.97% (or 6 out of 151) participants who received the elimination condition chose to convict.
 The conviction percentage for the identification condition in this study is slightly lower than the comparable condition in the original study (without the use of the algorithm and images): 61.82% (or 34 out of 55).
@@ -408,8 +420,8 @@ Figure 4.7: Microstudy Strength of Evidence
 </p>
 </div>
 <p>Figure <a href="4-study2.html#fig:strength2">4.7</a> shows participant responses to the strength of evidence in this study.
-in the elimination category tend to choose the smallest value for the strength of evidence (“Not at all strong”), while in the identification condition, individuals tend to distribute their views of the strength of evidence more evenly.
-This graph resembles the strength of evidence results from the initial study, shown in Figure <a href="2-study1.html#fig:strength">2.19</a>.
+Participants in the elimination category tend to choose the smallest value for the strength of evidence (“Not at all strong”), while in the identification condition, individuals tend to distribute their views of the strength of evidence more evenly.
+This graph resembles the strength of evidence results from the initial study, shown in Figure <a href="2-study1.html#fig:strength">2.20</a>.
 While not as dramatic as the scale compression for questions of reliability, credibility, and scientificity, the elimination results for strength of evidence do appear to show a scale limitation because individuals tended to overwhelmingly select the lowest category.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:prob2"></span>
 <img src="thesis_files/figure-html/prob2-1.png" alt="Probability Cole Committed Crime" width="\linewidth" />
@@ -417,7 +429,7 @@ While not as dramatic as the scale compression for questions of reliability, cre
 Figure 4.8: Probability Cole Committed Crime
 </p>
 </div>
-<p>Figure <a href="4-study2.html#fig:prob2">4.8</a> selected probabilities that the defendant committed the crime.
+<p>Figure <a href="4-study2.html#fig:prob2">4.8</a> shows participant-selected probabilities that the defendant committed the crime.
 For a single participant, their hidden probability selection was recorded incorrectly (carrying over a previous answer), I have removed this observation when performing analysis on the hidden probability scale.
 As in the case of the strength of evidence, the graph resembles the probability graph found in the initial study (Figure <a href="2-study1.html#fig:probalgorithm">2.6</a>), where there is a higher peak of extreme values for the elimination conditions than for the identification condition.
 When using a t-test to compare the mean visible probabilities for the identification and elimination condition to those comparable conditions of the initial study, there is not a significant difference for the identification condition, but is a significant difference in the elimination condition (p-values of 0.15 and 0.01, respectively).
@@ -444,6 +456,7 @@ Figure 4.9: Comparison of opinions of guilt and choice to convict
 If the participant thought the defendant was innocent, they were asked how much they would be willing to bet that the defendant was innocent, and vice versa.
 This figure indicates that most people who thought Cole was innocent in the elimination condition were willing to bet the full amount (84 out of 141 participants).
 It also appears that people tended to select values multiples of 5 (283 out of 298, with 8 additional individuals selecting 0).
+In follow-up studies, we will attempt to assess this in a more symmetric manner by allowing participants to bet more than $50; this should allow for a wider discrimination of the strength of participant opinion.
 Those in the identification condition selected less extreme values (for both those who thought the defendant was guilty and those who thought the defendant was innocent) than what is seen in those with the elimination condition who thought the defendant was innocent.
 In this way, the betting response is similar both to the strength of evidence response and the probability of committing the crime response.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:betting"></span>
@@ -479,8 +492,8 @@ These results are shown in Figure <a href="4-study2.html#fig:freelike">4.12</a>.
 As seen in previous response types, in the case of the elimination condition, individuals gave small values for the chance that the defendant had in fact committed the crime, resulting in a sharp peak.
 Alternatively, individuals were less extreme when they expressed their opinion as the chance that the defendant did not commit the crime in the elimination condition, even though the same sentiment is being expressed.
 In the case of the identification condition, those who expressed their opinions as either guilt or innocence gave similar results, resulting in symmetry between the two distributions.
-As shown in Figure <a href="4-study2.html#fig:opinionchanceplot">4.13</a>, those who thought the defendant was innocent were more likely to favor inputting chance values in terms of innocence(0.6312849%, or 113 out of 179), while those who thought the defendant was guilty were slightly less likely to express chance in terms of innocence (0.4621849% expressed their beliefs in terms of innocence, or 55 out of 119).
-This resulted in a significant difference between the two groups ( p-value of 0.006).</p>
+As shown in Figure <a href="4-study2.html#fig:opinionchanceplot">4.13</a>, those who thought the defendant was innocent were more likely to favor inputting chance values in terms of innocence(63.13%, or 113 out of 179), while those who thought the defendant was guilty were slightly less likely to express chance in terms of innocence (46.22% expressed their beliefs in terms of innocence, or 55 out of 119).
+This resulted in a significant difference between the two groups (Pearson’s chi-squared p-value of 0.006).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:opinionchanceplot"></span>
 <img src="thesis_files/figure-html/opinionchanceplot-1.png" alt="Moasiac plot of participants who chose to express chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant. The width of the bar corresponds to the number of participants per category." width="\linewidth" />
 <p class="caption">
@@ -499,15 +512,16 @@ If different question types result in responses that are inconsistent, it would 
 As mentioned in the Chapter <a href="index.html#litreview">1</a>, <span class="citation">Thompson &amp; Newman (2015)</span> suggest that individuals may struggle with the interpretation of likelihood scales, while chance scales were more consistent with Bayesian estimates.
 Other scales, such as how much a participant is willing to bet, may be highly subjective - depending their personal feel for risk, and betting hypothetical money may have different results than betting real money.
 Due to this potential difficulty in interpretation, response scales must be compared.
-<span class="citation">Schwarz (2010)</span>
-Because individuals may be influenced by the order of the questions (such as choosing a numeric chance value that aligns with their multiple choice selection), the order was randomized and recorded .</p>
+<span class="citation">Schwarz (2010)</span> indicate that order matters in partially-redundant questions, where participants may assume that later questions are asking about different facets than the initial question.
+Because individuals may be influenced by the order of the questions (such as choosing a numeric chance value that aligns with their multiple choice selection), the order was randomized and recorded so that we are averaging across any potential biasing effects due to question order.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:questorder"></span>
 <img src="thesis_files/figure-html/questorder-1.png" alt="Order of Study Questions" width="\linewidth" />
 <p class="caption">
 Figure 4.14: Order of Study Questions
 </p>
 </div>
-<p>Figure <a href="4-study2.html#fig:questorder">4.14</a> </p>
+<p>Figure <a href="4-study2.html#fig:questorder">4.14</a> depicts the order of the questions (the first three questions, conviction decision, comments on the defendant, and opinion of guilt, were not randomized).
+The page on which each question appeared seems to be fairly random, with roughly equal proportions.</p>
 <div id="consistency-with-opinion-of-guilt" class="section level4 hasAnchor" number="4.3.4.1">
 <h4><span class="header-section-number">4.3.4.1</span> Consistency with Opinion of Guilt<a href="4-study2.html#consistency-with-opinion-of-guilt" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:opinioncomp"></span>
@@ -518,7 +532,7 @@ Figure 4.15: Opinion of Guilt Consistency with Scales
 </div>
 <p>Perhaps the simplest question that we asked participants was whether or not they personally thought the defendant was guilty of committing the crime.
 This opinion can provide a baseline for participant understanding of response questions.
-If we set a threshold for opinion of guilt at a fifty-fifty chance (or 50% probability of committing the crime), we can compare whether or not participant responses are within the expected range of their opinion of guilt, as shown in Figure <a href="4-study2.html#fig:opinioncomp">4.15</a>.
+If we set a threshold for opinion of guilt at a fifty-fifty chance (or 50% probability of committing the crime), we can compare whether or not participant responses are within the expected range of their opinion of guilt, as shown in Figure <a href="4-study2.html#fig:opinioncomp">4.15</a> (there is a single missing value for the hidden probability).
 This figure demonstrates that most individuals were consistent in their opinion of guilt and their selected values for the defendant committing the crime: meaning that if the participant thought the defendant was guilty, they selected at or more than a 50% chance of guilt or a fifty-fifty chance, and vice versa.
 This consistency is especially low for the numeric chance question, with 14.43% of individuals providing inconsistent answers (compared to 4.7%, 5.05%, and 5.37% for visible probability, hidden probability, and multiple choice chance, respectively).
 Numeric chance can be broken into two categories, depending on if individuals chose to express numeric chance in terms of innocence or guilt.
@@ -672,7 +686,7 @@ The clustering of low chance of innocence and low probability of guilt shown in 
 The correlation between the probability and the chances of guilt is 0.91,
 while the correlation between the probability and the chances of innocence is -0.75.
 While there is a fairly strong correlation in the case of chances of guilt and probability, the correlation between the probability and the chances of innocence is weaker.
-This may be a result of confusion in the scale reversal of the chance of innocence scale, while the chance of guilt corresponds with expressing the probability of guilt.</p>
+This may be a result of confusion in the scale reversal of the chance of innocence scale, while the chance of guilt regularly corresponds with expressing the probability of guilt.</p>
 <!-- Figure \@ref(fig:likeconvict) demonstrates the relationship between chance, probability, and the decision to convict. -->
 <!-- Those who chose to convict tended to select high probabilities -->
 </div>
@@ -684,7 +698,7 @@ This may be a result of confusion in the scale reversal of the chance of innocen
 Figure 4.27: Plots of perceived strength of evidence and categorical likelihood
 </p>
 </div>
-<p>Figure <a href="4-study2.html#fig:coordstrcat">4.27</a> shows the relationship between individuals’ ratings of the strength of evidence, the categorical selection of the chance that the defendant committed the crime,
+<p>Figure <a href="4-study2.html#fig:coordstrcat">4.27</a> shows the relationship between individuals’ ratings of the strength of evidence, the categorical selection of the chance that the defendant committed the crime, and their assigned visible probability.
 While strength of evidence is on a 9-point Likert scale, the multiple choice chance scale has 11 values, giving participants more selection.
 On the y-axis, lower values correspond to weaker strength of evidence and a lower chance of committing the crime, while higher values correspond to stronger strength of evidence and a higher chance of committing the crime.
 In the case of the identification condition, there is a lack of equivalency between individuals’ choice of strength of evidnece and the chance the defendant committed the crime, indicating that participants do not uniformly assign the same chances of committing the crime to the same strength of evidence.
@@ -694,7 +708,9 @@ However, participant responses diverged in terms of the multiple choice chance t
 The most popular categories corresponding to the weakest level of evidence strength were “About 1 chance in 10,000” and “About 1 chance in 100”.
 Similar to the relationship between probability and chance discussed in the previous section, this graphical comparison indicates compression on the strength of evidence scale.
 The lowest strength of evidence category can be mapped to several different values for the chance that the defendant committed the crime.
-%.</p>
+Probability values in the elimination condition also converge upon lower values across several multiple choice chance categories.
+In the identification condition, most participants tended to select higher values.
+There is also a convergence to a probability of 50%.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:convictlike"></span>
 <img src="thesis_files/figure-html/convictlike-1.png" alt="Multiple Choice Chance and Conviction Choice" width="\linewidth" />
 <p class="caption">
@@ -746,6 +762,9 @@ There is no clear pattern to individuals who fell outside of these two extreme p
 The correlation is 0.58 in the case that the participants were asked to bet on if the defendant committed the crime, and -0.57 when participants were asked to bet on if the defendant did not commit the crime.
 These correlations are lower than both correlations between numeric chance and probability.
 Based on the graph, this may indicate that both the probability scale and the betting scale suffer from compression in the most extreme values, with little correspondence on the remainder of the scale.</p>
+</div>
+<div id="strength-and-probability-comparison" class="section level4 hasAnchor" number="4.3.4.6">
+<h4><span class="header-section-number">4.3.4.6</span> Strength and Probability Comparison<a href="4-study2.html#strength-and-probability-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><span class="citation">Mattijssen, Witteman, Berger, Brand, et al. (2020)</span> compared likelihood and strength of evidence ratings from 10 examiners who regularly used likelihood scales.
 While this sample size is rather small, they found that examiners tended to give higher verbal degrees of support than they should have, based on their likelihood ratio.
 A similar effect can be investigated in the potential jurors of this study, when asked to rate the strength of evidence in the case as compared to their perceived probability that the defendant committed the crime.</p>
@@ -833,146 +852,6 @@ Figure 4.39: Education and Consistent Numeric Chance Range
 </div>
 <p>There also doesn’t appear to be a relationship between individuals who select the corresponding range between multiple choice and numeric chance scales and education, as shown in Figure <a href="4-study2.html#fig:educrange">4.39</a>.
 This graphic demonstrates inconsistency in individuals choosing to express chance of innocence across the board.</p>
-<!-- #### Order of the Questions -->
-<!-- The order of the questions was assigned through the use of a random sampler, which was re-sampled if the questions of the chance or guilt or the questions regarding probability were placed side by side. -->
-<!-- This is because it is possible that the participants would be influenced by the values they chose on the first scale when choosing a value for the second scale. -->
-<!-- ```{r} -->
-<!-- #| echo= FALSE, -->
-<!-- #| eval= TRUE, -->
-<!-- #| warning= FALSE, -->
-<!-- #| message= FALSE -->
-<!-- microstudy_clean$first_chance <- NA -->
-<!-- microstudy_clean$first_probability<- NA -->
-<!-- microstudy_clean$freechance_position <- unlist(gregexpr("2", microstudy_clean$order)) -->
-<!-- microstudy_clean$fixedchance_position <- unlist(gregexpr("3", microstudy_clean$order)) -->
-<!-- microstudy_clean$probhide_position <- unlist(gregexpr("5", microstudy_clean$order)) -->
-<!-- microstudy_clean$probvis_position <- unlist(gregexpr("6", microstudy_clean$order)) -->
-<!-- microstudy_clean[microstudy_clean$freechance_position < microstudy_clean$fixedchance_position,]$first_chance <- "Numeric" -->
-<!-- microstudy_clean[microstudy_clean$freechance_position > microstudy_clean$fixedchance_position,]$first_chance <- "Multiple Choice" -->
-<!-- microstudy_clean[microstudy_clean$probhide_position < microstudy_clean$probvis_position,]$first_probability <- "Hidden" -->
-<!-- microstudy_clean[microstudy_clean$probhide_position > microstudy_clean$probvis_position,]$first_probability <- "Visible" -->
-<!-- ``` -->
-<!-- Figure \@ref(fig:chanceorder) shows the number of participants who received each condition. -->
-<!-- In the case of the non-match condition, the counts for each question category appears to be rather even. -->
-<!-- However, in the case of the match condition, there is a large discrepancy in which probability question individuals received first. -->
-<!-- There are 0 participants in the match condition who saw the visible probability question first, and 0 participants in the match condition who saw the hidden probability question first. -->
-<!-- This provides a difference of 0 participants. -->
-<!-- ```{r} -->
-<!-- #| chanceorder, -->
-<!-- #| fig.cap= "Order of Chance and Probability Questions", -->
-<!-- #| fig.width= 10, -->
-<!-- #| fig.height= 4, -->
-<!-- #| fig.align= "center", -->
-<!-- #| echo= FALSE, -->
-<!-- #| eval= TRUE, -->
-<!-- #| warning= FALSE, -->
-<!-- #| message= FALSE -->
-<!-- chanceplot <- ggplot(microstudy_clean) + -->
-<!--   geom_bar(aes(x=first_chance), position = position_dodge(preserve = "single")) + -->
-<!--   ggtitle("") + -->
-<!--   ylab("Count")+ -->
-<!--   xlab("First Chance Question")+ -->
-<!--   facet_grid(conclusion.x~.)+ -->
-<!--   scale_x_discrete(labels = wrap_format(10))+ -->
-<!--   theme_bw() -->
-<!-- probplot <- ggplot(microstudy_clean) + -->
-<!--   geom_bar(aes(x=first_probability), position = position_dodge(preserve = "single")) + -->
-<!--   ggtitle("") + -->
-<!--   ylab("Count")+ -->
-<!--   xlab("First Probability Question")+ -->
-<!--   facet_grid(conclusion.x~.)+ -->
-<!--   scale_x_discrete(labels = wrap_format(10))+ -->
-<!--   theme_bw() -->
-<!-- chanceplot + probplot -->
-<!-- ``` -->
-<!-- ```{r} -->
-<!-- #| echo= FALSE, -->
-<!-- #| eval= FALSE, -->
-<!-- #| warning= FALSE, -->
-<!-- #| message= FALSE -->
-<!-- ggplot(microstudy_clean) + -->
-<!--   geom_bar(aes(x=first_chance), position = position_dodge(preserve = "single")) + -->
-<!--   ggtitle("") + -->
-<!--   ylab("Count")+ -->
-<!--   xlab("First Chance Question")+ -->
-<!--   facet_grid(conclusion.x~first_probability)+ -->
-<!--   scale_x_discrete(labels = wrap_format(10))+ -->
-<!--   theme_bw() -->
-<!-- ``` -->
-<!-- ```{r} -->
-<!-- #| echo= FALSE, -->
-<!-- #| eval= FALSE, -->
-<!-- #| warning= FALSE, -->
-<!-- #| message= FALSE -->
-<!-- microstudy_clean$first_question <- substring(microstudy_clean$order, 1, 1) -->
-<!-- microstudy_clean$second_question <- substring(microstudy_clean$order, 2, 2) -->
-<!-- microstudy_clean$third_question <- substring(microstudy_clean$order, 3, 3) -->
-<!-- microstudy_clean$fourth_question <- substring(microstudy_clean$order, 4, 4) -->
-<!-- microstudy_clean$fifth_question <- substring(microstudy_clean$order, 5, 5) -->
-<!-- microstudy_clean$sixth_question <- substring(microstudy_clean$order, 6, 6) -->
-<!-- microstudy_clean$seventh_question <- substring(microstudy_clean$order, 7, 7) -->
-<!-- first <- ggplot(microstudy_clean) + -->
-<!--   geom_bar(aes(x=first_question), position = position_dodge(preserve = "single")) + -->
-<!--   ggtitle("") + -->
-<!--   ylab("Count")+ -->
-<!--   facet_grid(.~conclusion.x)+ -->
-<!--   theme_bw() -->
-<!-- second <- ggplot(microstudy_clean) + -->
-<!--   geom_bar(aes(x=second_question), position = position_dodge(preserve = "single")) + -->
-<!--   ggtitle("") + -->
-<!--   ylab("Count")+ -->
-<!--   facet_grid(.~conclusion.x)+ -->
-<!--   theme_bw() -->
-<!-- third <- ggplot(microstudy_clean) + -->
-<!--   geom_bar(aes(x=third_question), position = position_dodge(preserve = "single")) + -->
-<!--   ggtitle("") + -->
-<!--   ylab("Count")+ -->
-<!--   facet_grid(.~conclusion.x)+ -->
-<!--   theme_bw() -->
-<!-- fourth <- ggplot(microstudy_clean) + -->
-<!--   geom_bar(aes(x=fourth_question), position = position_dodge(preserve = "single")) + -->
-<!--   ggtitle("") + -->
-<!--   ylab("Count")+ -->
-<!--   facet_grid(.~conclusion.x)+ -->
-<!--   theme_bw() -->
-<!-- fifth <- ggplot(microstudy_clean) + -->
-<!--   geom_bar(aes(x=fifth_question), position = position_dodge(preserve = "single")) + -->
-<!--   ggtitle("") + -->
-<!--   ylab("Count")+ -->
-<!--   facet_grid(.~conclusion.x)+ -->
-<!--   theme_bw() -->
-<!-- sixth <- ggplot(microstudy_clean) + -->
-<!--   geom_bar(aes(x=sixth_question), position = position_dodge(preserve = "single")) + -->
-<!--   ggtitle("") + -->
-<!--   ylab("Count")+ -->
-<!--   facet_grid(.~conclusion.x)+ -->
-<!--   theme_bw() -->
-<!-- seventh <- ggplot(microstudy_clean) + -->
-<!--   geom_bar(aes(x=seventh_question), position = position_dodge(preserve = "single")) + -->
-<!--   ggtitle("") + -->
-<!--   ylab("Count")+ -->
-<!--   facet_grid(.~conclusion.x)+ -->
-<!--   theme_bw() -->
-<!-- first/second/third -->
-<!-- fourth/fifth/sixth/seventh -->
-<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$first_question)) -->
-<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$second_question)) -->
-<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$third_question)) -->
-<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$fourth_question)) -->
-<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$fifth_question)) -->
-<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$sixth_question)) -->
-<!-- chisq.test(table(microstudy_clean$first_chance, microstudy_clean$conclusion.x)) -->
-<!-- chisq.test(table(microstudy_clean$first_probability, microstudy_clean$conclusion.x)) -->
-<!-- #Significant difference in conclusion -->
-<!-- chisq.test(table(microstudy_clean$conclusion.x)) -->
-<!-- #borderline significant -->
-<!-- chisq.test(table(microstudy_clean$seventh_question, microstudy_clean$conclusion.x)) -->
-<!-- #Significant when only looking at the match condition - not true for other numbers -->
-<!-- # The betting question (4) and strength question (7) are less represented -->
-<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$seventh_question)) -->
-<!-- #borderline significant when only looking at the match condition -->
-<!-- chisq.test(table(microstudy_clean[microstudy_clean$conclusion.x=="Match",]$first_probability)) -->
-<!-- ``` -->
 </div>
 <div id="gun-comfort" class="section level4 hasAnchor" number="4.3.5.3">
 <h4><span class="header-section-number">4.3.5.3</span> Gun Comfort<a href="4-study2.html#gun-comfort" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -993,14 +872,20 @@ Figure 4.40: Gun Comfort and Conviction Comparison
 <p>While the notepad analysis for this study still needs to be conducted, analysis of preliminary results indicate that individuals were less likely to directly copy testimony compared to the first study.
 This may be due to the change in format - the use of speech bubbles breaks up the text, which may prevent highlighting the entire page of testimony.
 Due to this change, the length of the collocation may need to be shortened.
-</p>
+However, this change may encourage participants to only select relevant portions of the testimony, which would provide more insight from the collocation analysis.</p>
 <div id="note-cleaning" class="section level4 hasAnchor" number="4.3.6.1">
 <h4><span class="header-section-number">4.3.6.1</span> Note Cleaning<a href="4-study2.html#note-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>One complication in this dataset that was not present in the previous dataset was a missing page in the middle of participant notes.
+All participants had 14 pages of notes, aside from those who did not complete the survey.
+However, page numbers go from 4 to 18 - which should correspond to 15 pages of notes; though only one participant had a note page at both 4 and 18.
+This person was missing a number for page 17, resulting in the skipped page.
+In order to provide consistent notes for all participants, we shifted the page numbering to start at 4 and end at 18 for all individuals.
+Individuals having the same number of pages in their note pads indicates that the notes were likely recorded correctly, but there was an issue with the page counter.
+We hypothesize that this may occur when participants click the “Next” page button multiple times due to a delay in the webpage loading.
 In this case, based on slight modifications from the sequential cleaning functions mentioned in Chapter <a href="3-textcolor.html#textcolor">3</a>, the algorithm uses the last known page of previous notes for data cleaning.</p>
 <p>In this study, 198 individuals used the notepad at least once, resulting in 2413 pages of uncleaned notes.
 After data cleaning, there were 807 pages of notes, from 197 individuals.
-The one individual present in the uncleaned notes that is absent in the cleaned dataset only took notes on the description page prior to the trial transcript, so no transcript notes were present in their record.</p>
+The one individual present in the uncleaned notes that is absent in the cleaned dataset; this participant only took notes on the description page prior to the trial transcript, so no transcript notes were present in their record.</p>
 </div>
 <div id="notepad-analysis-1" class="section level4 hasAnchor" number="4.3.6.2">
 <h4><span class="header-section-number">4.3.6.2</span> Notepad Analysis<a href="4-study2.html#notepad-analysis-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1019,28 +904,27 @@ While the lack of notes on jury instructions may indicate that participants did 
 </div>
 <div id="participant-comments" class="section level3 hasAnchor" number="4.3.7">
 <h3><span class="header-section-number">4.3.7</span> Participant Comments<a href="4-study2.html#participant-comments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="C-select-comments.html#select-comments">C</a>.
-</p>
+<p>Participant comments are found in Appendix <a href="C-select-comments.html#select-comments">C</a>.
+Individuals still indicated confusion about the partial testimony, despite the added text clarifying that the testimony represented select evidence:</p>
 <blockquote>
-
+<p>“were you trying to trick the reader? the firearms ex. said that the gun did not match.” - Elimination</p>
 </blockquote>
 <blockquote>
-
+<p>“Seems highly unlikely that the DA would take this case to trial with ZERO eyewitness identification, the gun seized was NOT the gun that was used in the robbery, and the traffic stop has some constitutional issues.” - Elimination</p>
+</blockquote>
+<p>Both the visuals and the notepad received generally positive reviews:</p>
+<blockquote>
+<p>“The visuals of the conversation really helped me to focus in on the study. Also GREAT idea with the notepad, i tend to forget important information when im overloaded and it helps to be able to jot things down…” - Identification</p>
 </blockquote>
 <blockquote>
-
+<p>“I like the graphics that help to create the feeling of a court of examination.” - Identification</p>
+</blockquote>
+<p>However, one individual indicated some technical issues, while another did not appreciate the format:</p>
+<blockquote>
+<p>“The display was uncomfortable. I had to keep enlarging, then reducing the screen size even though I had a 24 inch screen.” - Identification</p>
 </blockquote>
 <blockquote>
-
-</blockquote>
-<blockquote>
-
-</blockquote>
-<blockquote>
-
-</blockquote>
-<blockquote>
-
+<p>“The cartoon presentation of the testimony was childish. And where is any testimony about the defendant’s guilty, i.e., alibi, alibi witnesses, etc.” - Identification</p>
 </blockquote>
 </div>
 </div>

@@ -25,6 +25,7 @@ fig:casesci
 fig:gensci
 fig:examsci
 fig:algsci
+fig:expunder
 fig:allunder
 tab:undertb
 fig:strength
@@ -180,6 +181,7 @@ numeric-and-multiple-choice-chance-comparison
 probability-and-chance-scale-comparison
 evidence-strength-and-chance
 hidden-and-visible-probability-comparison
+strength-and-probability-comparison
 demographic-comparison
 income
 education
