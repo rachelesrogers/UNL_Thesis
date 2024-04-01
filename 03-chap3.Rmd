@@ -910,8 +910,6 @@ ggplot(subset(clean_results_merged, chance_of=="guilty"), aes(x=chances_fixed))+
   scale_x_discrete(labels = wrap_format(10))+
   ylim(c(0,1))
 
-# Somehow 3 people got values over 1
-
 ```
 
 
