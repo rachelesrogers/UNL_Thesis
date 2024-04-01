@@ -12,8 +12,8 @@ abstract: |
 
 acknowledgments: |
   Thank you to all my people!
-# dedication: |
-#  Dedicated to
+dedication: |
+ Dedicated to my mom, who taught my first statistics course.
 # End of UNL thesis fields
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
