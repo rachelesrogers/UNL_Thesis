@@ -38,7 +38,7 @@ This method was developed and tested on a trial transcript study designed to ass
 ### Literature Review
 
 #### First N Character Method
-The First n Character (FNC) method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
+The First \authorcol{N} Character (FNC) method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
 I developed this method specifically for the cleaning of sequential notes.
 In this process, a previous page's notes are matched to the next page's notes in order to remove duplicate text.
 This is a form of pattern matching.
@@ -52,7 +52,7 @@ According to @baeza-yates, many algorithmic methods have been developed to solve
 A similar allowance for differences is present in @landau1988, where differences are defined as either insertions, deletions, or substitutions.
 This definition of differences is the same definition that is used in computing Levenshtein distance, also known as edit distance [@levenshtein].
 Levenshtein considered the issue of insertions, deletions, and substitutions with binary code.
-This concept has later been extended to include more extensive strings, as demonstrated by @konstantinidis2005.
+This concept \authorcol{w}as later extended to include more extensive strings, as demonstrated by @konstantinidis2005.
 The edit distance can be used to determine the extent of matching text when comparing two sequential note sheets, in order to identify if a portion of notes should be removed.
 
 | Word 1 | Word 2 | Transformation | Method | Edit Distance |
@@ -151,7 +151,7 @@ For indirect matches, such as typos, weights are applied to these fuzzy matches 
 While collocations traditionally refer to words that occur more frequently together - such as "white house"(@DefinitionCOLLOCATION2023), tools for collocation analysis helpfully provide the frequency of occurrence for strings of a specified length (@collocationpage). 
 
 Character differences can effectively be used to indicate similarity between participants' notes and the text transcript.
-This is useful in situation where individuals do not copy the notes directly.
+This is useful in situation\authorcol{s} where individuals do not copy the notes directly.
 In these cases, fuzzy matching can be used to find the transcript collocation that is the most similar to the participants' written notes.
 This approximate string matching allows for matching strings that do not correspond directly (@gusfield1997), which allows for matching up participants' inexact notes with the closest transcript collocation.
 
@@ -235,7 +235,7 @@ By allowing for some mismatch between the two pages, we can account for inexact 
 This method works well when participants take notes sequentially.
 In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
 When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
-The first n character method cannot appropriately clean these notes, as shown in Table \@ref(tab:issues).
+The \authorcol{F}irst \authorcol{N} \authorcol{C}haracter method cannot appropriately clean these notes, as shown in Table \@ref(tab:issues).
 
 #### Longest Common Substring (LCS) Method
 
@@ -247,7 +247,7 @@ Duplication | The cat ran up the tree | \textcolor{red}{The cat ran up the tree}
 
 : LCS Comparison for FNC Issues (\#tab:issues)
 
-The Longest Common Substring method is able to handle the issues found in the First n Character method, which is demonstrated in Table \@ref(tab:issues).
+The Longest Common Substring method is able to handle the issues found in the First \authorcol{N} Character method, which is demonstrated in Table \@ref(tab:issues).
 If notes are deleted, the LCS method can identify the substring from the previous notes, despite the large edit distance that would prevent removal in the FNC method.
 If new notes are inserted in the middle of previous notes, the FNC method would compare the Page 1's notes with the red text of the Page 2 notes shown in the second row, resulting in an edit distance that would prevent removal.
 With the LCS method, the first substring "The cat ran" could be identified and removed, then in a second iteration, the second substring of "up the tree" can also be removed, leaving only the new text.

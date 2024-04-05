@@ -2,25 +2,25 @@
 # UNL thesis fields
 title: "MEASURING JURY PERCEPTION OF EXPLAINABLE MACHINE LEARNING AND DEMONSTRATIVE EVIDENCE"
 author: "Rachel Edie Sparks Rogers"
-month: "March"
+month: "April"
 year: "2024"
 location: "Lincoln, Nebraska"
 major: "Statistics"
 adviser: "Susan Vanderplas"
 abstract: |
-  Subjective pattern comparison has been subject to increased scrutiny by the courts and by the general public, resulting in an increased interest in pattern comparison algorithms that provide quantitative assessments of similarity for use by forensic scientists. While these algorithms would mark an improvement over current subjective comparison methods, individuals without a statistical background may struggle with the statistical concepts and language necessary for describing algorithmic methods. If algorithms are to be used, examiners must be able to testify about their use in a way that is accessible to the jury. In a series of studies, we conduct an assessment of language and supporting visual aids which might be used to explain bullet matching algorithms. In the initial study, we encountered a response type calibration issue - individuals thought highly of the forensic witness and evidence regardless of experimental conditions, 'maxing out' Likert response scales and leaving us unable to tell if the conditions had any effect. While this study indicated that individuals overall found the testimony to be reliable, credible, and scientific, it did not readily provide information about our question of interest. Additional data from this study was found in the participants’ note pads.Through cleaning sequential notes and designing a method for highlighting study transcripts according to the frequency of collocations in participant notes, we can determining which portions of testimony participants found ‘noteworthy’.We also conducted a study on response types to determine the consistency of participant responses across response types, compare a variety of response types, and determine which response type may be appropriately calibrated for addressing the initial research question of jury perception of algorithms and demonstrative evidence. The response types used in this investigation include the participant's interpretation of the strength of evidence (Likert scale), conviction decision (binary), opinion of guilt (binary), willingness to bet on their opinion of guilt (numeric), probability of guilt (numeric), and chance of guilt/innocence (numeric or multiple choice). The note cleaning, text analysis, and testimony tools we developed throughout this series of experiments will benefit our future research in jury perception, as well as future transcript studies.
+  Subjective pattern comparison has been subject to increased scrutiny by the courts and by the general public, resulting in an increased interest in pattern comparison algorithms that provide quantitative assessments of similarity for use by forensic scientists. While these algorithms would mark an improvement over current subjective comparison methods, individuals without a statistical background may struggle with the statistical concepts and language necessary for describing algorithmic methods. If algorithms are to be used, examiners must be able to testify about their use in a way that is accessible to the jury. In a series of studies, we conduct an assessment of language and supporting visual aids which might be used to explain bullet matching algorithms. In the initial study, we encountered a response type calibration issue - individuals thought highly of the forensic witness and evidence regardless of experimental conditions, 'maxing out' Likert response scales and leaving us unable to tell if the conditions had any effect. While this study indicated that individuals overall found the testimony to be reliable, credible, and scientific, it did not readily provide information about our question of interest. Additional data from this study was found in the participants’ note pads. Through cleaning sequential notes and designing a method for highlighting study transcripts according to the frequency of collocations in participant notes, we can determine which portions of testimony participants found ‘noteworthy’. We also conducted a study on response types to determine the consistency of participant responses across response types, compare a variety of response types, and determine which response type may be appropriately calibrated for addressing the initial research question of jury perception of algorithms and demonstrative evidence. The response types used in this investigation include the participant's interpretation of the strength of evidence (Likert scale), conviction decision (binary), opinion of guilt (binary), willingness to bet on their opinion of guilt (numeric), probability of guilt (numeric), and chance of guilt/innocence (numeric or multiple choice). The note cleaning, text analysis, and testimony tools we developed throughout this series of experiments will benefit our future research in jury perception, as well as future transcript studies.
 
 acknowledgments: |
-  <!-- Thank you to my husband and partner, Richy Meleus. -->
-  <!-- Thank you to my family. -->
-  <!-- Thank you to my advisor, Dr. Susan VanderPlas. -->
-  <!-- Thank you to my graduate school mentors, Drs. Emily Robinson, Alison Kleffner, Jessica Hauschild, and Kelsey Karnik. -->
-  <!-- Thank you to my Master's program friends, Kory Heir and Eddie Gomez. -->
-  <!-- Thank you to my supervisory committee. -->
-  <!-- Thank you to my academic mentors. Drs. Kathy Hanford and Heike Hofmann. -->
-  <!-- Thank you to my academic community at the Center for Statistics and Applications in Forensic Evidence. -->
-
-  <!-- This work was funded (or partially funded) by the Center for Statistics and Applications in Forensic Evidence (CSAFE) through Cooperative Agreements 70NANB15H176 and 70NANB20H019 between NIST and Iowa State University, which includes activities carried out at Carnegie Mellon University, Duke University, University of California Irvine, University of Virginia, West Virginia University, University of Pennsylvania, Swarthmore College and University of Nebraska, Lincoln. -->
+  I owe my success to my academic community, family, friends and mentors.
+  I am deeply indebted to my advisor, Dr. Susan VanderPlas, for constantly encouraging me to grow both personally and academically. I could not have dreamt of a better advisor.
+  I would like to express my deep appreciation to my supervisory committee, Drs. Erin Blankenship, Kent Eskridge, and Ashley Votruba. Their guidance and support has been invaluable.
+  Members of the Center for Statistics and Applications in Forensic Evidence have also provided me with vital advice and encouragement over the years when working on this project, and I am thankful that I have been able to be a part of such a welcoming community.
+  I cannot begin to express my gratitude to my husband and partner, Richy Meleus, for his steadfast support. He has been by my side through all of the ups and downs of my post-secondary education. He also supplied his artistic talent to create courtroom cartoons for this work.
+  I am extremely grateful for my parents and siblings, who have always believed in me. In particular, I am thankful to my mom, Sally Sparks, for introducing me to the field of statistics.  I know that they are only a phone call away.
+  When I joined the Statistics Department at University of Nebraska-Lincoln, I was fortunate enough to make two great friends in my master's degree cohort, Eddie Gomez and Kory Heier. Their companionship was incredibly helpful in my first two years of graduate school.
+  I would also like to extend my gratitude to my graduate mentors, Drs. Emily Robinson, Alison Kleffner, Jessica Hauschild, and Kelsey Karnik. I know I can always look to them for support and advice, and they helped me in becoming a better statistician.
+  
+  This work was funded (or partially funded) by the Center for Statistics and Applications in Forensic Evidence (CSAFE) through Cooperative Agreements 70NANB15H176 and 70NANB20H019 between NIST and Iowa State University, which includes activities carried out at Carnegie Mellon University, Duke University, University of California Irvine, University of Virginia, West Virginia University, University of Pennsylvania, Swarthmore College and University of Nebraska, Lincoln.
 dedication: |
  Dedicated to my mom, who taught my first statistics course.
 # End of UNL thesis fields
@@ -162,7 +162,7 @@ include_graphics(path = "images/microscope.jpg")
 ```
 
 Firearms examiners use comparison microscopes, such as Figure \@ref(fig:microscope), to compare these striation marks between two bullets, shown in the top right of the figure.
-An early attempt to distinguish guns based on the rifling can be found in two issues of "The Saturday Evening Post" from 1925, in an article entitled “Fingerprinting Bullets", whose title demonstrates an acceptance of fingerprinting by the public that wouldn't considered foundationally valid by PCAST until an FBI black box study in 2011 [@pcast].
+An early attempt to distinguish guns based on the rifling can be found in two issues of "The Saturday Evening Post" from 1925, in an article entitled “Fingerprinting Bullets", whose title demonstrates an acceptance of fingerprinting by the public that wouldn't \authorcol{be} considered foundationally valid by PCAST \authorcol{(President's Council of Advisors on Science and Technology)} until an FBI black box study in 2011 [@pcast].
 <!-- [@pcast, 91]. -->
 Stout describes the wrongful conviction and subsequent exoneration of Stielow, who was accused of murder [@SaturdayEveningPost]. 
 At the trial where Stielow was found guilty, an expert for the prosecution stated that there were nine abnormalities on Stielow's gun that corresponded with marks on the fired bullet [@SaturdayEveningPost].
@@ -254,7 +254,7 @@ These reports also highlighted the lack of studies that produced accurate error 
 <!-- [@pcast, 104 - 112].  -->
 For example, @chapnick2021's report does not include inconclusive results as a potential source of error. 
 They reported three errors (false positives) in their study, and reported a false negative error rate of 0%, ignoring the wide range of inconclusive decisions.
-For participants from the United States and Canada, 38 of 491 comparisons were reported as inconclusive for known matches, while 254 of 693 comparisons were reported as inconclusive for know non-matches [@chapnick2021].
+For participants from the United States and Canada, 38 of 491 comparisons were reported as inconclusive for known matches, while 254 of 693 comparisons were reported as inconclusive for know\authorcol{n} non-matches [@chapnick2021].
 <!-- [@chapnick2021, 6]. -->
 The issues of error rate calculation are addressed by @hofmannTreatmentInconclusivesAFTE2021, particularly with regards to whether or not inconclusive decisions should be treated as errors in calculations. <!-- (325) --> 
 They suggest to not consider inconclusive decisions as errors for the calculation of examiner error rates, used in the lab setting; but to consider inconclusive decisions as errors for process error rates, used for determining if the evidence is relevant enough for judging the guilt of the suspect. <!-- (343) -->
@@ -396,7 +396,7 @@ This brings up a particularly salient point in jury trials - jurors should under
 
 In a combination of computerized results and human interpretation, @montani2019 suggest presenting the algorithm as a “second independent expert” whose comparison and conclusion can be compared to and presented alongside the examiner's.
 Supplementing the decision of the forensic expert with an algorithm would allow for verification of results in two independent methods.
-The three laboratory managers interviewed by @swoffordProbabilisticReportingAlgorithms2022 suggested using algorithms as a supplement to the forensic examiner <!---(p. 6)--->, similar to @montani2019’s suggestion. 
+The three laboratory managers interviewed by @swoffordProbabilisticReportingAlgorithms2022 suggested using algorithms as a supplement to the forensic examiner, similar to @montani2019’s suggestion. <!---(p. 6)--->
 
 The three prosecutors varied in their feelings of algorithms in the courtroom: one thought that they would add unnecessary complications, while two suggested that the algorithms may be useful for the forensic expert [@swoffordProbabilisticReportingAlgorithms2022]. 
 <!-- [@swoffordProbabilisticReportingAlgorithms2022, 8].  -->
@@ -404,14 +404,14 @@ The three defense attorneys, as well as the three judges, also supported the use
 <!-- [@swoffordProbabilisticReportingAlgorithms2022, 10-13].  -->
 Three academic scholars supported the use of algorithms, so long as the algorithms can be understood, have been validated, and do not include factors that may cause systematic biases [@swoffordProbabilisticReportingAlgorithms2022]. 
 <!-- [@swoffordProbabilisticReportingAlgorithms2022, 16].  -->
-@swoffordProbabilisticReportingAlgorithms2022's study demonstrates the variety of opinions on algorithm implementation throughout forensic science, although most support the use of algorithms. 
+@swoffordProbabilisticReportingAlgorithms2022 demonstrates the variety of opinions on algorithm implementation throughout forensic science, although most support the use of algorithms. 
 
 ### Reporting Quantitative Results
 
 Quantitative methods of examination can lead to quantitative results.
 In this case, the quantitative results are in the form of a match score, but in other cases, results may be presented as a likelihood ratio. 
 In many forensic science papers, there are two approaches that are commonly defined as using a "likelihood ratio" approach, although one is truly a Bayes Factor approach [@ommenProblemForensicScience2021].
-According to @ommenProblemForensicScience2021, the usual form of "likelihood ratios" in forensic science are written as $\frac{P(E|H_p)}{P(E|H_d)}$, where E is the evidence, $H_p$ is the prosecution's hypothesis, and $H_d$ is the defense's hypothesis; however, there are the methods differ in how $P$ is calculated. 
+According to @ommenProblemForensicScience2021, the usual form of "likelihood ratios" in forensic science are written as $\frac{P(E|H_p)}{P(E|H_d)}$, where E is the evidence, $H_p$ is the prosecution's hypothesis, and $H_d$ is the defense's hypothesis; however, there are \authorcol{two different} methods \authorcol{for calculating the probability,} $P$\authorcol{: either as a Bayes Factor or as a frequentist likelihood ratio}. 
 <!-- (pp. 348 - 349). -->
 @ommenProblemForensicScience2021 states that there is a relationship between the two approaches: "...the Bayes Factor is the expected value of the likelihood ratio function with respect to the posterior distribution of the parameters given the entire collection of evidence generated under the defense model." (p. 351).
 For the purposes of this literature review, the use of "likelihood ratio" reflects the source material, which in both cases relies on the equation $\frac{P(E|H_p)}{P(E|H_d)}$.
@@ -577,7 +577,7 @@ This indicates that 7, 9, or 10 point scales should be adequate for reliable res
 In addition, @decastellarnau2018 found that asking participants to respond to specific items (such as reliable - unreliable) is preferred over using a generalized agree - disagree scale in terms of measurement quality, cognitive effort, and bias. 
 
 Other methods have also been used to evaluate participant responses, such as asking participants to give a likelihood ratio, probability, or chance of guilt.
-@thompsonJurorsGiveAppropriate2013 asked participants rate the chance of guilt with values generally on a log 10 scale (ex. 1 in 100; 1 in 1,000); a middle value of a fifty-fifty chance; and extreme values of "Certain to be guilty" and "Impossible that he is guilty".
+@thompsonJurorsGiveAppropriate2013 asked participants \authorcol{to} rate the chance of guilt with values generally on a log 10 scale (ex. 1 in 100; 1 in 1,000); a middle value of a fifty-fifty chance; and extreme values of "Certain to be guilty" and "Impossible that he is guilty".
 They compared results from participants to Bayesian conditional probabilities based on provided likelihoods of a match and error rates in order to consider how much weight participants were giving DNA evidence.
 Their results mainly showed no significant difference between Bayesian and participant estimates (meaning that the estimates were "in the right ballpark"), with some conditions producing estimates either greater than or less than what was expected.
 

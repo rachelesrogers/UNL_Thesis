@@ -80,7 +80,7 @@ They also found that 80% of participants exhibited pro-white implicit bias.
 Because of this potential bias introduced by visual figures, we plan to conduct a follow-up study in order to determine how these figures are perceived as part of the validation of this set of figures for wider use.
 For the current study, the same figures are used consistently across all conditions to prevent a confounding effect.
 
-To investigate a which response type may be most informative for this study and to troubleshoot the use of figures and speech bubble format, we conducted a micro study using various response types. 
+To investigate which response type may be most informative for this study and to troubleshoot the use of figures and speech bubble format, we conducted a micro study using various response types. 
 As discussed in the Literature Review in Chapter \@ref(litreview), there are many issues with recording participant responses in a manner that best represents the construct of interest.
 While the question we followed in Chapter \@ref(study1) mainly aligns with the recommendations of these authors, in terms of the use of 7 and 9-point Likert scales with labelled categories, these scales failed to capture the underlying attitudes that we wished to address.
 Based on these recommendations, adding more categories to the Likert scales would not be recommended, leading us to search for other methods of response.
@@ -1267,7 +1267,7 @@ ggplot(clean_results_merged)+
 ```
 
 This inconsistency based on the scales is summarized in Figure \@ref(fig:correctrangemosaic).
-Here, individuals were classified asn selecting the a numeric chance value in the consistent range if their multiple choice selection was the closest option for their numeric value.
+Here, individuals were classified as selecting a numeric chance value in the consistent range if their multiple choice selection was the closest option for their numeric value.
 Those who chose to express numeric choice in terms of innocence were less likely to input a value corresponding to their multiple choice selection (`r round(correct_summary_df$Count[4]/(correct_summary_df$Count[4]+correct_summary_df$Count[3])*100, 2)`\% consistent, or `r correct_summary_df$Count[4]` out of `r correct_summary_df$Count[4]+correct_summary_df$Count[3]` consistent for chance of innocence, and `r round(correct_summary_df$Count[2]/(correct_summary_df$Count[2]+correct_summary_df$Count[1])*100, 2)`\% consistent, or `r correct_summary_df$Count[2]` out of `r correct_summary_df$Count[2]+correct_summary_df$Count[1]` consistent for chance of guilt).
 This represents a significant difference in consistent ranges based on how participants chose to express the numeric chance (p-value: `r round(correct_prop_test$p.value, 4)`).
 While only `r round(correct_summary_df$Count[2]/(correct_summary_df$Count[2]+correct_summary_df$Count[1])*100, 2)`\% of those expressing numeric chance in terms of guilt selected the closest multiple choice answer to their numeric chance value, based on Figures \@ref(fig:likecomp1scale) and \@ref(fig:likecomp1scalerev), many individuals were within the same region with their estimates, even if they could have chosen a better-fitting category.
@@ -1732,7 +1732,7 @@ ggplot(microstudy_clean, aes(x=betting,
 ```
 
 Figure \@ref(fig:probbet) compares the amount that individuals were willing to bet to their hidden probability that the defendant had/had not committed the crime.
-Whether the participants were betting on the guilt or innocence of the defendant depended on their personal opinion of guilt - those who thought the defendant was guilty bet on the defendant's guilt, while those who thought the defendant was innocence bet on the defendant's innocence.
+Whether the participants were betting on the guilt or innocence of the defendant depended on their personal opinion of guilt - those who thought the defendant was guilty bet on the defendant's guilt, while those who thought the defendant was innocenc\authorcol{t} bet on the defendant's innocence.
 Values are clustered at two points.
 For those who thought the defendant was innocent, they were willing to bet almost all of the \$50 and assigned a low probability to the defendant committing the crime.
 For those who thought the defendant was guilty, they were also willing to bet almost all of the \$50, but assigned a high probability to the defendant committing the crime.
@@ -1845,7 +1845,7 @@ ggplot(microstudy_clean, aes(x = income, y = visible_probability, fill = convict
 
 ```
 
-Bases on Figure \@ref(fig:convictsincome), some individuals in the match condition chose to convict across all income levels.
+Base\authorcol{d} on Figure \@ref(fig:convictsincome), some individuals in the match condition chose to convict across all income levels.
 There does not appear to be a clear trend between conviction choice and income.
 Several income brackets chose to convict over the choice not to convict, but these brackets are spread throughout the scale.
 In the case of the elimination condition, the individuals who did choose to convict came from different income brackets.
@@ -2419,11 +2419,11 @@ The addition of speech bubbles instead of a transcript format is one major diffe
 This, along with approximately half the sample size, may account for the low values found in this transcript.
 
 In this study, an additional questions were added to the cross examination regarding the subjectivity of the bullet comparison - namely, if another firearms examiner would use the same subjective criterion and reach the same conclusion.
-A few of the participants wrote the firearms examiner's answer in their notepad, indicating that they paid attention to this question.
+A few of the participants wrote the firearms examiner's answer in their notepad, indicating that they paid attention to this question, \authorcol{specifically in the identification condition}.
 On the other hand, participants did not appear to copy down the final jury instructions given by the judge - regarding the treatment of the algorithm examiner as any other witness.
 These changes represent two different types of information presentation.
 The discussion of other examiner's comparisons is aimed to be more informational - it describes the process of firearms comparison.
-The jury instructions, on the other hand, are aimed to be instructional - it it asks the reader to reflect on their own interpretation of the case.
+The jury instructions, on the other hand, are aimed to be instructional - it asks the reader to reflect on their own interpretation of the case.
 While the lack of notes on jury instructions may indicate that participants did not find them to be relevant, it may also be a product of a more reflective and less informative piece of testimony.
 
 ### Participant Comments

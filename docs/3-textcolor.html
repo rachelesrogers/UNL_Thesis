@@ -271,7 +271,7 @@ This method was developed and tested on a trial transcript study designed to ass
 <h3><span class="header-section-number">3.1.1</span> Literature Review<a href="3-textcolor.html#literature-review" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="first-n-character-method" class="section level4 hasAnchor" number="3.1.1.1">
 <h4><span class="header-section-number">3.1.1.1</span> First N Character Method<a href="3-textcolor.html#first-n-character-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The First n Character (FNC) method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
+<p>The First Character (FNC) method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
 I developed this method specifically for the cleaning of sequential notes.
 In this process, a previous page’s notes are matched to the next page’s notes in order to remove duplicate text.
 This is a form of pattern matching.
@@ -284,7 +284,7 @@ According to <span class="citation">Baeza-Yates &amp; Gonnet (1992)</span>, many
 A similar allowance for differences is present in <span class="citation">Landau &amp; Vishkin (1988)</span>, where differences are defined as either insertions, deletions, or substitutions.
 This definition of differences is the same definition that is used in computing Levenshtein distance, also known as edit distance <span class="citation">(Levenshtein, 1966)</span>.
 Levenshtein considered the issue of insertions, deletions, and substitutions with binary code.
-This concept has later been extended to include more extensive strings, as demonstrated by <span class="citation">Konstantinidis (2005)</span>.
+This concept as later extended to include more extensive strings, as demonstrated by <span class="citation">Konstantinidis (2005)</span>.
 The edit distance can be used to determine the extent of matching text when comparing two sequential note sheets, in order to identify if a portion of notes should be removed.</p>
 <table>
 <caption>Transformations used to calculate Edit Distance <span id="tab:edist">Table 3.1: </span></caption>
@@ -715,7 +715,7 @@ By allowing for some mismatch between the two pages, we can account for inexact 
 <p>This method works well when participants take notes sequentially.
 In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
 When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
-The first n character method cannot appropriately clean these notes, as shown in Table <a href="3-textcolor.html#tab:issues">3.6</a>.</p>
+The irst haracter method cannot appropriately clean these notes, as shown in Table <a href="3-textcolor.html#tab:issues">3.6</a>.</p>
 </div>
 <div id="longest-common-substring-lcs-method" class="section level4 hasAnchor" number="3.2.1.2">
 <h4><span class="header-section-number">3.2.1.2</span> Longest Common Substring (LCS) Method<a href="3-textcolor.html#longest-common-substring-lcs-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -761,7 +761,7 @@ The first n character method cannot appropriately clean these notes, as shown in
 </tr>
 </tbody>
 </table>
-<p>The Longest Common Substring method is able to handle the issues found in the First n Character method, which is demonstrated in Table <a href="3-textcolor.html#tab:issues">3.6</a>.
+<p>The Longest Common Substring method is able to handle the issues found in the First Character method, which is demonstrated in Table <a href="3-textcolor.html#tab:issues">3.6</a>.
 If notes are deleted, the LCS method can identify the substring from the previous notes, despite the large edit distance that would prevent removal in the FNC method.
 If new notes are inserted in the middle of previous notes, the FNC method would compare the Page 1’s notes with the red text of the Page 2 notes shown in the second row, resulting in an edit distance that would prevent removal.
 With the LCS method, the first substring “The cat ran” could be identified and removed, then in a second iteration, the second substring of “up the tree” can also be removed, leaving only the new text.

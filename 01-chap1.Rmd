@@ -73,7 +73,7 @@ demographics <-
 
 ```
 
-Due to the issues outlined in Chapter \@ref(litreview), we designed a study to investigate how potential jurors may perceive a bullet matching algorithm, when presented alongside a firearms examiner's testimony, as well as the affect of demonstrative evidence.
+Due to the issues outlined in Chapter \@ref(litreview), we designed a study to investigate how potential jurors may perceive a bullet matching algorithm, when presented alongside a firearms examiner's testimony, as well as the \authorcol{e}ffect of demonstrative evidence.
 This study utilizes a testimony transcript to familiarize participants with bullet matching evidence for a case involving armed robbery, and participants are asked to make judgements on the guilt of the defendant, as well as the credibility of the witnesses and the reliability and scientificity of the evidence presented.
 
 ## Background
@@ -517,7 +517,7 @@ grid.arrange(probplot, gunplot, ncol = 2)
 ### Credibility
 
 Through all conditions, the level of credibility remained approximately the same for both the firearms examiner and the algorithm expert. 
-As Figures \@ref(fig:cred) and \@ref(fig:algcred) demonstrates, "Extremely credible" was by far the most selected category for the firearms examiner and the algorithm expert, with some people selecting "Moderately credible", while the other categories quickly drop off in responses. 
+As Figures \@ref(fig:cred) and \@ref(fig:algcred) demonstrate, "Extremely credible" was by far the most selected category for the firearms examiner and the algorithm expert, with some people selecting "Moderately credible", while the other categories quickly drop off in responses. 
 This trend can be seen in most histograms resulting from this study (leading to a question of scale compression). 
 The lack of difference based on examiner decision, image, or algorithm (in the case of the firearms examiner) provides a hopeful indication that the credibility of expert witnesses is not necessarily swayed by the examiner's decision or the presence of images, when their written testimony remains the same.
 
