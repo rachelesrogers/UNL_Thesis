@@ -1617,17 +1617,6 @@ Methods for computing the longest common substring between two sequences have be
 Solutions for finding the longest common substring utilize either the construction of a suffix tree (Charalampopoulos, Kociumaka, Pissis, \& Radoszewski, 2021) or table (Landau \& Vishkin, 1988).
 The suffix tree method is described by Gusfield (1997); in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leaves consist of the string's terminal character: \$.
 
-A solution implemented by Bielow, Mastrobuoni, \& Kempa (2016) in a CRAN R package constructs a matrix that records the length of a matching string at character \(i\) for string 1 (in the \(i\)th row), and character \(j\) for string 2 (in the \(j\)th column).
-Because an R implementation is readily available, this is the solution used for this analysis, even though Bielow et al. (2016) warns that this LCS method is inefficient, and meant to be used in small instances.
-This method creates an empty matrix, where the number of rows correspond to the length of the first string, and the number of columns correspond to the length of the second string.
-Thus, the first cell would correspond to the first character of both strings, and so on.
-If the characters match and it is the first row or column, then the cell gets a value of 1.
-If the characters match and it is not the first row or column, the the cell receives the value of the (i-1,j-1) cell plus one.
-The first string's index for the substring of the longest length is saved.
-This process is shown in Table \ref{tab:dylcs}, with two strings: ``gratuitous'' and ``intuitive''.
-The diagonal of numbers in red indicate the longest substring, beginning and ending with `t'.
-Thus, ``tuit'' is identified as the LCS.
-
 \begin{longtable}[]{@{}lllllllllll@{}}
 \caption{Dynamic Programming for LCS \label{tab:dylcs}}\tabularnewline
 \toprule\noalign{}
@@ -1650,6 +1639,17 @@ i & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
 v & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
 e & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
 \end{longtable}
+
+A solution implemented by Bielow, Mastrobuoni, \& Kempa (2016) in a CRAN R package constructs a matrix that records the length of a matching string at character \(i\) for string 1 (in the \(i\)th row), and character \(j\) for string 2 (in the \(j\)th column).
+Because an R implementation is readily available, this is the solution used for this analysis, even though Bielow et al. (2016) warns that this LCS method is inefficient, and meant to be used in small instances.
+This method creates an empty matrix, where the number of rows correspond to the length of the first string, and the number of columns correspond to the length of the second string.
+Thus, the first cell would correspond to the first character of both strings, and so on.
+If the characters match and it is the first row or column, then the cell gets a value of 1.
+If the characters match and it is not the first row or column, the the cell receives the value of the (i-1,j-1) cell plus one.
+The first string's index for the substring of the longest length is saved.
+This process is shown in Table \ref{tab:dylcs}, with two strings: ``gratuitous'' and ``intuitive''.
+The diagonal of numbers in red indicate the longest substring, beginning and ending with `t'.
+Thus, ``tuit'' is identified as the LCS.
 
 \hypertarget{collocation-analysis-and-fuzzy-matching}{%
 \subsubsection{Collocation Analysis and Fuzzy Matching}\label{collocation-analysis-and-fuzzy-matching}}
@@ -3860,7 +3860,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-04-05 15:13:39.453244.
+This version of the thesis was generated on 2024-04-08 11:30:31.473308.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -3875,7 +3875,7 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2024-04-05
+##  date     2024-04-08
 ##  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------

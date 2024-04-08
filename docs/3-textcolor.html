@@ -364,16 +364,6 @@ Figure 3.1: Longest Common Substring Diagram
 Solutions for finding the longest common substring utilize either the construction of a suffix tree <span class="citation">(Charalampopoulos, Kociumaka, Pissis, &amp; Radoszewski, 2021)</span> or table <span class="citation">(Landau &amp; Vishkin, 1988)</span>.
 The suffix tree method is described by <span class="citation">Gusfield (1997)</span>; in short, each unique suffix of a string would contribute a new branch to the suffix tree, where leaves consist of the string’s terminal character: $.
 <!-- This is used avoid recurrence with previous characters in the string. --></p>
-<p>A solution implemented by <span class="citation">Bielow, Mastrobuoni, &amp; Kempa (2016)</span> in a CRAN R package constructs a matrix that records the length of a matching string at character <span class="math inline">\(i\)</span> for string 1 (in the <span class="math inline">\(i\)</span>th row), and character <span class="math inline">\(j\)</span> for string 2 (in the <span class="math inline">\(j\)</span>th column).
-Because an R implementation is readily available, this is the solution used for this analysis, even though <span class="citation">Bielow et al. (2016)</span> warns that this LCS method is inefficient, and meant to be used in small instances.
-This method creates an empty matrix, where the number of rows correspond to the length of the first string, and the number of columns correspond to the length of the second string.
-Thus, the first cell would correspond to the first character of both strings, and so on.
-If the characters match and it is the first row or column, then the cell gets a value of 1.
-If the characters match and it is not the first row or column, the the cell receives the value of the (i-1,j-1) cell plus one.
-The first string’s index for the substring of the longest length is saved.
-This process is shown in Table <a href="3-textcolor.html#tab:dylcs">3.2</a>, with two strings: “gratuitous” and “intuitive”.
-The diagonal of numbers in red indicate the longest substring, beginning and ending with ‘t’.
-Thus, “tuit” is identified as the LCS.</p>
 <table>
 <caption>Dynamic Programming for LCS <span id="tab:dylcs">Table 3.2: </span></caption>
 <thead>
@@ -511,6 +501,16 @@ Thus, “tuit” is identified as the LCS.</p>
 </tr>
 </tbody>
 </table>
+<p>A solution implemented by <span class="citation">Bielow, Mastrobuoni, &amp; Kempa (2016)</span> in a CRAN R package constructs a matrix that records the length of a matching string at character <span class="math inline">\(i\)</span> for string 1 (in the <span class="math inline">\(i\)</span>th row), and character <span class="math inline">\(j\)</span> for string 2 (in the <span class="math inline">\(j\)</span>th column).
+Because an R implementation is readily available, this is the solution used for this analysis, even though <span class="citation">Bielow et al. (2016)</span> warns that this LCS method is inefficient, and meant to be used in small instances.
+This method creates an empty matrix, where the number of rows correspond to the length of the first string, and the number of columns correspond to the length of the second string.
+Thus, the first cell would correspond to the first character of both strings, and so on.
+If the characters match and it is the first row or column, then the cell gets a value of 1.
+If the characters match and it is not the first row or column, the the cell receives the value of the (i-1,j-1) cell plus one.
+The first string’s index for the substring of the longest length is saved.
+This process is shown in Table <a href="3-textcolor.html#tab:dylcs">3.2</a>, with two strings: “gratuitous” and “intuitive”.
+The diagonal of numbers in red indicate the longest substring, beginning and ending with ‘t’.
+Thus, “tuit” is identified as the LCS.</p>
 </div>
 <div id="collocation-analysis-and-fuzzy-matching" class="section level4 hasAnchor" number="3.1.1.3">
 <h4><span class="header-section-number">3.1.1.3</span> Collocation Analysis and Fuzzy Matching<a href="3-textcolor.html#collocation-analysis-and-fuzzy-matching" class="anchor-section" aria-label="Anchor link to header"></a></h4>
