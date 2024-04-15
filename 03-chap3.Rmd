@@ -36,11 +36,13 @@ These changes are shown in Figure \@ref(fig:testimonyformat).
 ```{r}
 #| testimonyformat,
 #| fig.cap= "A screenshot of the layout of the second study.",
-#| fig.width= 7,
+#| fig.height= 12,
+#| fig.width=8,
 #| fig.align= "center",
 #| echo= FALSE,
 #| message= FALSE,
-#| warning= FALSE
+#| warning= FALSE,
+#| out.extra='angle=-90'
 
 library(knitr)
 include_graphics("images/Study2_Screenshot.jpg")
@@ -292,7 +294,7 @@ More widespread criticism of firearms examination may lead to lower feelings of 
 In both studies, participants are asked if they would choose to convict, given the "beyond a reasonable doubt" threshold.
 In this study, `r round(sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="Match")/sum(microstudy_clean$conclusion=="Match")*100, 2)`\% (or `r sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="Match")` out of `r sum(microstudy_clean$conclusion=="Match")`) individuals who received the identification condition chose to convict, while `r round(sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="NoMatch")/sum(microstudy_clean$conclusion=="NoMatch")*100, 2)`\% (or `r sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="NoMatch")` out of `r sum(microstudy_clean$conclusion=="NoMatch")`) participants who received the elimination condition chose to convict.
 The conviction percentage for the identification condition in this study is slightly lower than the comparable condition in the original study (without the use of the algorithm and images): `r round(sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")/sum(merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")*100, 2)`\% (or `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")` out of `r sum(merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")`).
-However, there is not a significant difference between studies (p-value `r round(match_convict_compare$p.value, 2)`).
+However, there is not a significant difference between studies (\authorcol{Pearson's chi-squared} p-value `r round(match_convict_compare$p.value, 2)`).
 None of the `r sum(merged_results$conclusion=="NoMatch" & merged_results$algorithm=="No" & merged_results$picture=="No")` individuals in the original study who received the elimination condition without the use of the algorithm or images chose to convict.
 
 ```{r}
@@ -376,13 +378,29 @@ nomatch_prob_ttest<-t.test(microstudy_clean[microstudy_clean$conclusion=="NoMatc
 
 ```
 
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+
+# prob_comparison <- microstudy_clean %>%
+#   select(conclusion, visible_probability, hidden_probability) %>%
+#   mutate(hidden_probability = as.numeric(hidden_probability)) %>%
+#   pivot_longer(!conclusion, names_to="probability_type", values_to="value")
+# 
+# hid_vis_test <- lm(value ~ conclusion*probability_type, data = prob_comparison)
+# Anova(hid_vis_test, type = "III") %>% pander(style = "grid",
+#          caption = "(\\#tab:hidvisprob) Type III ANOVA Table for Probability Values", justify = 'left')
+
+prob_compare<-t.test(microstudy_clean$visible_probability, as.numeric(microstudy_clean$hidden_probability), paired=TRUE, alternative="two.sided")
+
+```
+
 Figure \@ref(fig:prob2) shows participant-selected probabilities that the defendant committed the crime.
-For a single participant, their hidden probability selection was recorded incorrectly (carrying over a previous answer), I have removed this observation when performing analysis on the hidden probability scale.
+For a single participant, their \authorcol{selection of} hidden probability was recorded incorrectly (carrying over a previous answer), I have removed this observation when performing analysis on the hidden probability scale.
 As in the case of the strength of evidence, the graph resembles the probability graph found in the initial study (Figure \@ref(fig:probalgorithm)), where there is a higher peak of extreme values for the elimination conditions than for the identification condition.
 When using a t-test to compare the mean visible probabilities for the identification and elimination condition to those comparable conditions of the initial study, there is not a significant difference for the identification condition, but is a significant difference in the elimination condition (p-values of `r round(match_prob_ttest$p.value,2)` and `r round(nomatch_prob_ttest$p.value,2)`, respectively).
 The estimated mean is higher in this follow up study (`r round(nomatch_prob_ttest$estimate[1], 2)`\%) than the initial study (`r round(nomatch_prob_ttest$estimate[2], 2)`\%) in the elimination condition.
 For the identification condition, the estimated probabilities are `r round(match_prob_ttest$estimate[1], 2)`\% for the follow-up study and `r round(match_prob_ttest$estimate[2], 2)`\% for the initial study.
 In this study, the density curves for when the probability was visible or hidden remain similar.
+\authorcol{There is no significant difference between the hidden and visible probability scales, based on a paired t-test (p-value `r round(prob_compare$p.value, 2)`).}
 
 ### New Study Questions
 
