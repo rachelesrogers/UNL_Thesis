@@ -36,8 +36,7 @@ These changes are shown in Figure \@ref(fig:testimonyformat).
 ```{r}
 #| testimonyformat,
 #| fig.cap= "A screenshot of the layout of the second study.",
-#| fig.height= 12,
-#| fig.width=8,
+#| out.width= "100%",
 #| fig.align= "center",
 #| echo= FALSE,
 #| message= FALSE,
@@ -135,7 +134,7 @@ In terms of conviction, participants were reminded of the decision criterion of 
 ```{r}
 #| questions,
 #| fig.cap= "Questions asked in the Response Survey",
-#| fig.width= 9,
+#| out.width= "100%",
 #| fig.align= "center",
 #| echo= FALSE,
 #| message= FALSE,
