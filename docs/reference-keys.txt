@@ -11,6 +11,7 @@ fig:shoulder
 fig:signature
 fig:grid
 fig:completiontime
+tab:timetab
 fig:demographics
 tab:attentioncheck
 fig:probalgorithm

@@ -907,8 +907,57 @@ Individuals who did not include their Prolific identification number and an indi
 \caption{Completion Time by Condition for all unique fingerprints}\label{fig:completiontime}
 \end{figure}
 
-Figure \ref{fig:completiontime} depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints, or identification values (n=559), excluding 5 observations greater than 75 minutes.
-Those who received the algorithm condition took slightly more time on average than those who did not (median values of 19.134 minutes and 13.716 minutes, respectively). This is unsurprising, given the increased length of the algorithm condition.
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.4605}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1184}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.0789}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1447}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1579}}@{}}
+\caption{\label{tab:timetab} Type III ANOVA Table for Completion Times}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+~
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Sum Sq
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Df
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+F value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pr(\textgreater F)
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+~
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Sum Sq
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Df
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+F value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pr(\textgreater F)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{(Intercept)} & 12491 & 1 & 102.6 & 3.681e-22 \\
+\textbf{algorithm} & 1784 & 1 & 14.66 & 0.000144 \\
+\textbf{conclusion} & 99.98 & 2 & 0.4108 & 0.6633 \\
+\textbf{picture} & 0.7662 & 1 & 0.006296 & 0.9368 \\
+\textbf{algorithm:conclusion} & 179.1 & 2 & 0.7358 & 0.4796 \\
+\textbf{algorithm:picture} & 278.3 & 1 & 2.287 & 0.1311 \\
+\textbf{conclusion:picture} & 93.94 & 2 & 0.386 & 0.68 \\
+\textbf{algorithm:conclusion:picture} & 661 & 2 & 2.716 & 0.06707 \\
+\textbf{Residuals} & 64133 & 527 & NA & NA \\
+\end{longtable}
+
+Figure \ref{fig:completiontime} depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints, or identification values (n=\authorcol{539}), excluding 3 observations greater than 75 minutes.
+Those who received the algorithm condition took significantly more time on average than those who did not, as shown in Table \ref{tab:timetab} (median values of 18.91 minutes and 13.518 minutes, respectively).
+This is unsurprising, given the increased length of the algorithm condition.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -3863,7 +3912,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-04-15 11:09:37.316141.
+This version of the thesis was generated on 2024-04-15 12:17:11.448436.
 
 The computational environment that was used to generate this version is as follows:
 

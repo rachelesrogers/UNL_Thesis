@@ -21,6 +21,7 @@ library(patchwork)
 library(scales)
 library(tidyverse)
 library(car)
+library(pander)
 ```
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
@@ -225,14 +226,22 @@ scenarios <- merged_results_allresponses %>%
                                          algorithm, picture, time) %>%
   filter(clean_prints %in% single_fingerprint$Var1) %>% 
   dplyr::rename(finish_time = time)
-beginning_wend <- right_join(demographics, scenarios)
+
+demo_fingerprint <- table(demographics$clean_prints)
+demo_df <- data.frame(demo_fingerprint)
+demo_single <- demo_df %>% filter(Freq==1)
+
+demo_sub <- demographics %>% filter(clean_prints %in% demo_single$Var1) %>%
+  dplyr::rename(start_time = time)
+
+beginning_wend <- inner_join(demo_sub, scenarios)
 beginning_wend$total_time <- NA
-beginning_wend$total_time <- beginning_wend$finish_time - beginning_wend$time
+beginning_wend$total_time <- beginning_wend$finish_time - beginning_wend$start_time
 beginning_wend$total_time_minutes <- beginning_wend$total_time/60
 dim_g_75 <- beginning_wend %>% filter(total_time_minutes > 75) %>% dim()
 beginning_wend$truncated_minutes <- beginning_wend$total_time_minutes
 beginning_wend[beginning_wend$total_time_minutes > 75,]$truncated_minutes <- Inf
-# beginning_wend[beginning_wend$total_time < 0,]$total_time <- NA
+dim_l_0 <- beginning_wend %>% filter(total_time_minutes < 0) %>% dim()
 
 # median(beginning_wend[beginning_wend$algorithm=="Yes",]$total_time_minutes, na.rm=TRUE)
 # median(beginning_wend[beginning_wend$algorithm=="No",]$total_time_minutes, na.rm=TRUE)
@@ -257,14 +266,19 @@ hide<-dev.off()
 
 include_graphics(path = "images/completiontime.png")
 
-# summary(beginning_wend$total_time_minutes)
-# time.fit <- lm(total_time_minutes ~ algorithm+conclusion+picture, data = beginning_wend)
-# Anova(time.fit, type = "III")
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+time.fit <- lm(total_time_minutes ~ algorithm*conclusion*picture, data = beginning_wend)
+Anova(time.fit, type = "III") %>% pander(style = "grid",
+         caption = "(\\#tab:timetab) Type III ANOVA Table for Completion Times", justify = 'left')
 
 ```
-Figure \@ref(fig:completiontime) depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints, or identification values (n=`r dim(single_fingerprint)[1]`), excluding `r dim_g_75[1]` observations greater than 75 minutes. 
-Those who received the algorithm condition took slightly more time on average than those who did not (median values of `r  round(median(beginning_wend[beginning_wend$algorithm=="Yes",]$total_time_minutes, na.rm=TRUE), digits=3)` minutes and `r round(median(beginning_wend[beginning_wend$algorithm=="No",]$total_time_minutes, na.rm=TRUE), digits=3)` minutes, respectively). This is unsurprising, given the increased length of the algorithm condition.
 
+Figure \@ref(fig:completiontime) depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints, or identification values (n=\authorcol{`r dim(beginning_wend)[1]`}), excluding `r dim_g_75[1]` observations greater than 75 minutes. 
+Those who received the algorithm condition took significantly more time on average than those who did not, as shown in Table \@ref(tab:timetab) (median values of `r  round(median(beginning_wend[beginning_wend$algorithm=="Yes",]$total_time_minutes, na.rm=TRUE), digits=3)` minutes and `r round(median(beginning_wend[beginning_wend$algorithm=="No",]$total_time_minutes, na.rm=TRUE), digits=3)` minutes, respectively). 
+This is unsurprising, given the increased length of the algorithm condition.
 
 ## Results
 
