@@ -199,12 +199,13 @@ Dedicated to my mom, who taught my first statistics course.
 \begin{acknowledgments}
 I owe my success to my academic community, family, friends and mentors.
 I am deeply indebted to my advisor, Dr.~Susan VanderPlas, for constantly encouraging me to grow both personally and academically. I could not have dreamt of a better advisor.
-I would like to express my deep appreciation to my supervisory committee, Drs. Erin Blankenship, Kent Eskridge, and Ashley Votruba. Their guidance and support has been invaluable.
+I would like to express my deep appreciation to my supervisory committee, Dr.~Erin Blankenship, Dr.~Kent Eskridge, and Dr.~Ashley Votruba. Their guidance and support has been invaluable.
 Members of the Center for Statistics and Applications in Forensic Evidence have also provided me with vital advice and encouragement over the years when working on this project, and I am thankful that I have been able to be a part of such a welcoming community.
 I cannot begin to express my gratitude to my husband and partner, Richy Meleus, for his steadfast support. He has been by my side through all of the ups and downs of my post-secondary education. He also supplied his artistic talent to create courtroom cartoons for this work.
 I am extremely grateful for my parents and siblings, who have always believed in me. In particular, I am thankful to my mom, Sally Sparks, for introducing me to the field of statistics. I know that they are only a phone call away.
 When I joined the Statistics Department at University of Nebraska-Lincoln, I was fortunate enough to make two great friends in my master's degree cohort, Eddie Gomez and Kory Heier. Their companionship was incredibly helpful in my first two years of graduate school.
-I would also like to extend my gratitude to my graduate mentors, Drs. Emily Robinson, Alison Kleffner, Jessica Hauschild, and Kelsey Karnik. I know I can always look to them for support and advice, and they helped me in becoming a better statistician.
+I am incredibly thankful for my friends, Dr.~Emily Robinson and Dr.~Alison Kleffner, who have assisted me innumerous times throughout the years. I know that I can always look to them for support and advice.
+I would also like to extend my gratitude to my graduate mentors, Jessica Hauschild and Kelsey Karnik. Through their mentorship, they have made me a better statistician.
 
 This work was funded (or partially funded) by the Center for Statistics and Applications in Forensic Evidence (CSAFE) through Cooperative Agreements 70NANB15H176 and 70NANB20H019 between NIST and Iowa State University, which includes activities carried out at Carnegie Mellon University, Duke University, University of California Irvine, University of Virginia, West Virginia University, University of Pennsylvania, Swarthmore College and University of Nebraska, Lincoln.
 \end{acknowledgments}
@@ -463,7 +464,7 @@ They found that the interviewed prosecutors supported the use of match terms suc
 All participants felt that that examiner testimony should accurately reflect scientific limitations, although there was not a consensus on whether this practice was in fact followed in the courtroom - defense attorneys felt that the examiners usually do not uphold this expectation, while lab managers expressed frustration on the part of the court.
 The scale to which firearm evidence is used in the courtroom is rather contentious, and views may differ based on occupation.
 
-In general, individuals want to guarantee that the information presented in the courtroom is accurate and valid, without causing too much imbalance between the limitations and the categorical conclusion.
+In general, individuals want to guarantee that the information presented in the courtroom is \authorcol{correct} and valid, without causing too much imbalance between the limitations and the categorical conclusion.
 However, there isn't agreement on where the balancing point between these two factors are - somewhere between giving too much credit with a match of ``absolute certainty'', and introducing unfounded reasonable doubt by overstating the limitations.
 If accurate numerical information on error rates or an objective method of evaluation that can be described to the court were available, it may be possible to have factual statements of limitations and scope of evidence that both sides of the argument would find satisfactory.
 In an investigation on the effect of the inclusion of error rate on either voice or fingerprint evidence, Garrett, Crozier, \& Grady (2020) found that the inclusion of an error rate reduced convictions for fingerprint evidence presented categorically, but had no effect in the case of voice comparison (a less established science) or when the fingerprint comparison was presented as a likelihood ratio.
@@ -648,7 +649,7 @@ In an earlier study, Lichtenstein \& Newman (1967) asked individuals to assign n
 Martire, Kemp, Watkins, Sayle, \& Newell (2013) studied the use of a verbal scale similar to ENFSI (2016) in a courtroom setting, in the case of shoe print evidence.
 They found a ``weak evidence effect'', in which findings that provided ``weak support'' for the proposition that the defendant's shoe left the print resulted in decreased likelihood scores of guilt, compared to likelihood scores collected before the introduction of forensic evidence.
 Martire et al. (2013) did not find this trend when the evidence was presented numerically as a likelihood ratio; in this case, participants tended to think of the defendant as more guilty after hearing the forensic evidence (as expected).
-They did not, however find that the reverse was true: those who received ``weak support'' for the proposition that the defendant did not leave the shoe print resulted in increased likelihood scores in favor of innocence, as expected.
+They did not, however find that the reverse was true: those who received ``weak support'' for the proposition that the defendant did not leave the shoe print resulted in increased likelihood scores in favor of innocence.
 Martire et al. (2013) hypothesize that this demonstrates that the participants are engaging in a ``criminal justice perspective'' by weighting the evidence toward the defendant's innocence (since the burden of proof rests on the prosecution).
 This inconsistency of interpretation between the numerical scale and the verbal equivalent may act as evidence against implementation of a solely verbal scale.
 
@@ -891,7 +892,7 @@ This same format was used when asking participants about credibility and scienti
 
 Participants were recruited using Prolific, an online survey-taking website.
 From the Prolific website, participants were directed to a link containing our survey, created using R Shiny.
-We selected options to recruit a representative sample of individuals located in the United States, and asked that participants self-screen for jury eligibility before completing the survey.
+We selected options to recruit a representative sample\authorcol{, based on age, sex, and gender,} of individuals located in the United States, and asked that participants self-screen for jury eligibility before completing the survey.
 Jury eligibility was defined as US citizens over the age of majority in their state who had not been convicted of a felony, were not active law enforcement, military, emergency response, or a judge, and who did not have a disability that would prevent them from serving on a jury.
 They were also required to have normal or corrected to normal vision, due to the images used in the study.
 Participants were compensated with \$8.40 for completing the study, for an hourly compensation rate of about \$27.79 (median completion time of approximately 18 minutes).\\
@@ -953,6 +954,7 @@ Caliber Incorrect & 10 & 0\\
 \subsection{Overview}\label{overview}}
 
 Participants were asked a variety of questions in order to assess their thoughts and feelings on the case and the evidence presented.
+\authorcol{We used questions from} Garrett, Scurich, et al. (2020) \authorcol{concerning conviction decision, probability of the defendant committing the crime, attention checks, firearm identification mistake rate, if guns leave unique markings on bullets, if false conviction or false acquittal were worse, and Likert scales involving credibility, reliability, scientificity (how scientific individals thought the method was), strength of evidence.}
 Two questions related to probability: respondents were asked to provide a value for the probability that the gun was at the crime scene, and to provide a value for the probability that Richard Cole (the defendant) committed the crime.
 Another question asked participants if they would convict Cole, based on the evidence.
 Questions of credibility, reliability, and scientificity were assessed using a 7-point Likert scale (eg. ``Extremely unscientific'' to ``Extremely scientific'').
@@ -3860,7 +3862,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-04-08 11:30:31.473308.
+This version of the thesis was generated on 2024-04-15 09:11:35.349487.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -3875,7 +3877,7 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2024-04-08
+##  date     2024-04-15
 ##  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------

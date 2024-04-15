@@ -133,7 +133,7 @@ In terms of conviction, participants were reminded of the decision criterion of 
 ```{r}
 #| questions,
 #| fig.cap= "Questions asked in the Response Survey",
-#| fig.width= 7,
+#| fig.width= 9,
 #| fig.align= "center",
 #| echo= FALSE,
 #| message= FALSE,

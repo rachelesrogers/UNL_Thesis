@@ -197,7 +197,7 @@ This same format was used when asking participants about credibility and scienti
 
 Participants were recruited using Prolific, an online survey-taking website. 
 From the Prolific website, participants were directed to a link containing our survey, created using R Shiny.
-We selected options to recruit a representative sample of individuals located in the United States, and asked that participants self-screen for jury eligibility before completing the survey. 
+We selected options to recruit a representative sample\authorcol{, based on age, sex, and gender,} of individuals located in the United States, and asked that participants self-screen for jury eligibility before completing the survey. 
 Jury eligibility was defined as US citizens over the age of majority in their state who had not been convicted of a felony, were not active law enforcement, military, emergency response, or a judge, and who did not have a disability that would prevent them from serving on a jury. 
 They were also required to have normal or corrected to normal vision, due to the images used in the study. 
 Participants were compensated with \$8.40 for completing the study, for an hourly compensation rate of about \$27.79 (median completion time of approximately 18 minutes).  
@@ -329,6 +329,7 @@ kable(dem_table, caption="Attention Check Information")
 ### Overview
 
 Participants were asked a variety of questions in order to assess their thoughts and feelings on the case and the evidence presented. 
+\authorcol{We used questions from} @garrettMockJurorsEvaluation2020 \authorcol{concerning conviction decision, probability of the defendant committing the crime, attention checks, firearm identification mistake rate, if guns leave unique markings on bullets, if false conviction or false acquittal were worse, and Likert scales involving credibility, reliability, scientificity (how scientific individals thought the method was), strength of evidence.}
 Two questions related to probability: respondents were asked to provide a value for the probability that the gun was at the crime scene, and to provide a value for the probability that Richard Cole (the defendant) committed the crime. 
 Another question asked participants if they would convict Cole, based on the evidence. 
 Questions of credibility, reliability, and scientificity were assessed using a 7-point Likert scale (eg. "Extremely unscientific" to "Extremely scientific"). 
