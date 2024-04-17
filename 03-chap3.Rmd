@@ -40,11 +40,10 @@ These changes are shown in Figure \@ref(fig:testimonyformat).
 #| fig.align= "center",
 #| echo= FALSE,
 #| message= FALSE,
-#| warning= FALSE,
-#| out.extra='angle=-90'
+#| warning= FALSE
 
 library(knitr)
-include_graphics("images/Study2_Screenshot.jpg")
+include_graphics("images/Study2_Screenshot2.jpg")
 
 ```
 
