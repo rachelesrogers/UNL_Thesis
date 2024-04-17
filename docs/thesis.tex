@@ -956,8 +956,12 @@ Pr(\textgreater F)
 \end{longtable}
 
 Figure \ref{fig:completiontime} depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints, or identification values (n=\authorcol{539}), excluding 3 observations greater than 75 minutes.
-Those who received the algorithm condition took significantly more time on average than those who did not, as shown in Table \ref{tab:timetab} (median values of 18.91 minutes and 13.518 minutes, respectively).
+\authorcol{In several cases, there was repetition of electronic fingerprints, which were meant to serve as unique identifiers in the dataset.
+This limits the accuracy of information that requires linking several datasets - such as completion time information and correspondence between demographic information and results.
+This issue has been fixed in future studies through the use of a random number generator instead of electronic fingerprints.}
+Those who received the algorithm condition took more time on average than those who did not (median values of 18.91 minutes and 13.518 minutes, respectively).
 This is unsurprising, given the increased length of the algorithm condition.
+\authorcol{Table} \ref{tab:timetab} \authorcol{shows the ANOVA table of completion times, by experimental condition.}
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -3349,6 +3353,8 @@ In the future, we plan to conduct a study on perception of characteristics of th
 Alongside the new study design, we discovered that, while individuals provided generally consistent answers across response type, they were more inconsistent when comparing numeric chance in terms of innocence, perhaps due to the reversal of format (all other questions were in terms of guilt).
 While Likert, probability and betting scales were not optimal for collecting data in this case, multiple choice chance scales with non-linear intervals allowed for more spread in participants' answers and demonstrated consistent understanding.
 Furthermore, asking participants their opinion of the guilt of the defendant alongside their conviction decision added nuance to their perception of the evidence.
+\authorcol{In the future, we may also aim to establish test-retest reliability for these response types.
+Additionally, the validity of the study visualization method may also be verified by comparing responses from individuals given the same information in the transcript testimony format or the visualization format.}
 
 These diverging avenues of investigation will again merged for a final study (in progress).
 The new cartoon study format was well received by participants, the response type study indicates that phrasing questions in terms of chance (i.e.~``1 chance in 10 that\ldots{}'') reduced the scale compression seen in Likert scales, and the text analysis provides useful information about what participants found worth copying into their notes.
@@ -3921,7 +3927,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-04-17 13:31:12.765748.
+This version of the thesis was generated on 2024-04-17 14:45:27.228138.
 
 The computational environment that was used to generate this version is as follows:
 

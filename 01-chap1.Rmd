@@ -277,8 +277,12 @@ Anova(time.fit, type = "III") %>% pander(style = "grid",
 ```
 
 Figure \@ref(fig:completiontime) depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints, or identification values (n=\authorcol{`r dim(beginning_wend)[1]`}), excluding `r dim_g_75[1]` observations greater than 75 minutes. 
-Those who received the algorithm condition took significantly more time on average than those who did not, as shown in Table \@ref(tab:timetab) (median values of `r  round(median(beginning_wend[beginning_wend$algorithm=="Yes",]$total_time_minutes, na.rm=TRUE), digits=3)` minutes and `r round(median(beginning_wend[beginning_wend$algorithm=="No",]$total_time_minutes, na.rm=TRUE), digits=3)` minutes, respectively). 
+\authorcol{In several cases, there was repetition of electronic fingerprints, which were meant to serve as unique identifiers in the dataset.
+This limits the accuracy of information that requires linking several datasets - such as completion time information and correspondence between demographic information and results.
+This issue has been fixed in future studies through the use of a random number generator instead of electronic fingerprints.}
+Those who received the algorithm condition took more time on average than those who did not (median values of `r  round(median(beginning_wend[beginning_wend$algorithm=="Yes",]$total_time_minutes, na.rm=TRUE), digits=3)` minutes and `r round(median(beginning_wend[beginning_wend$algorithm=="No",]$total_time_minutes, na.rm=TRUE), digits=3)` minutes, respectively). 
 This is unsurprising, given the increased length of the algorithm condition.
+\authorcol{Table} \@ref(tab:timetab) \authorcol{shows the ANOVA table of completion times, by experimental condition.}
 
 ## Results
 
