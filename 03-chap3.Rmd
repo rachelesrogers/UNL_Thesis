@@ -124,14 +124,14 @@ grid.arrange(rasterGrob(judge),rasterGrob(forensic_science),
 ```
 
 At the end of the testimony, the participants were asked a variety of questions regarding the strength of evidence in the case.
-All questions asked in this study are shown in Figure \@ref(fig:questions).
+All questions asked in this study are shown in Figures \@ref(fig:questions1) and \@ref(fig:questions2).
 Questions of probability, strength of evidence, and decision to convict were repeated from the Chapter \@ref(study1) study.
 Participants were asked to evaluate the probability that the defendant committed the crime, both with a visible probability scale (allowing the participants to select the exact probability integer) and with a non-visible scale (only the numbers of 0 and 100 were available on the extremes of the scale).
 The strength of evidence was a Likert scale with values from "Not at all strong" to "Extremely strong" with nine points.
 In terms of conviction, participants were reminded of the decision criterion of "beyond a reasonable doubt" when making a decision in a criminal trial, and asked if they would choose to convict. 
 
 ```{r}
-#| questions,
+#| questions1,
 #| fig.cap= "Questions asked in the Response Survey",
 #| out.width= "100%",
 #| fig.align= "center",
@@ -139,7 +139,23 @@ In terms of conviction, participants were reminded of the decision criterion of 
 #| message= FALSE,
 #| warning= FALSE
 
-include_graphics("images/study_questions.jpg")
+
+include_graphics("images/study_questions1.jpg")
+
+```
+
+
+```{r}
+#| questions2,
+#| fig.cap= "Questions asked in the Response Survey",
+#| out.width= "100%",
+#| fig.align= "center",
+#| echo= FALSE,
+#| message= FALSE,
+#| warning= FALSE
+
+
+include_graphics("images/study_questions2.jpg")
 
 ```
 
