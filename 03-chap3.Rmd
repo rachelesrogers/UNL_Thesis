@@ -1612,7 +1612,7 @@ microstudy_pcp$`Evidence Strength` <-
 microstudy_pcp %>%
   ggplot(aes(vars=vars(c(6,5,1,4)))) +
   geom_pcp(aes(colour = Conclusion), boxwidth=0.6, alpha=0.9) +
-  geom_pcp_box(boxwidth=0.6, fill=NA) +
+  geom_pcp_box(boxwidth=0.6, fill="white", alpha=0.6) +
   scale_color_manual(values = c("seagreen", "grey80"), name="Conclusion",
                     labels=conclusion_labs) +
   guides(colour=guide_legend(override.aes = list(alpha=1))) +
