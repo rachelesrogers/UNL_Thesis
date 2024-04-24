@@ -271,7 +271,7 @@ This method was developed and tested on a trial transcript study designed to ass
 <h3><span class="header-section-number">3.1.1</span> Literature Review<a href="3-textcolor.html#literature-review" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="first-n-character-method" class="section level4 hasAnchor" number="3.1.1.1">
 <h4><span class="header-section-number">3.1.1.1</span> First N Character Method<a href="3-textcolor.html#first-n-character-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The First Character (FNC) method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
+<p>The First N Character (FNC) method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
 I developed this method specifically for the cleaning of sequential notes.
 In this process, a previous page’s notes are matched to the next page’s notes in order to remove duplicate text.
 This is a form of pattern matching.
@@ -284,7 +284,7 @@ According to <span class="citation">Baeza-Yates &amp; Gonnet (1992)</span>, many
 A similar allowance for differences is present in <span class="citation">Landau &amp; Vishkin (1988)</span>, where differences are defined as either insertions, deletions, or substitutions.
 This definition of differences is the same definition that is used in computing Levenshtein distance, also known as edit distance <span class="citation">(Levenshtein, 1966)</span>.
 Levenshtein considered the issue of insertions, deletions, and substitutions with binary code.
-This concept as later extended to include more extensive strings, as demonstrated by <span class="citation">Konstantinidis (2005)</span>.
+This concept was later extended to include more extensive strings, as demonstrated by <span class="citation">Konstantinidis (2005)</span>.
 The edit distance can be used to determine the extent of matching text when comparing two sequential note sheets, in order to identify if a portion of notes should be removed.</p>
 <table>
 <caption>Transformations used to calculate Edit Distance <span id="tab:edist">Table 3.1: </span></caption>
@@ -315,21 +315,21 @@ The edit distance can be used to determine the extent of matching text when comp
 <tr class="even">
 <td align="center">inveigh</td>
 <td align="center">neigh</td>
-<td align="center">neigh</td>
+<td align="center"><em>i</em>n<em>v</em>eigh</td>
 <td align="center">deletion</td>
 <td align="center">2</td>
 </tr>
 <tr class="odd">
 <td align="center">meow</td>
 <td align="center">homeowner</td>
-<td align="center">meow</td>
+<td align="center"><strong>ho</strong>meow<strong>ner</strong></td>
 <td align="center">insertion</td>
 <td align="center">5</td>
 </tr>
 <tr class="even">
 <td align="center">Shire</td>
 <td align="center">Shareholder</td>
-<td align="center">i → a + </td>
+<td align="center">i → a + <strong>holder</strong></td>
 <td align="center">substitution and insertion</td>
 <td align="center">7</td>
 </tr>
@@ -413,7 +413,7 @@ The suffix tree method is described by <span class="citation">Gusfield (1997)</s
 <td>0</td>
 <td>1</td>
 <td>0</td>
-<td></td>
+<td><strong>1</strong></td>
 <td>0</td>
 <td>0</td>
 <td>1</td>
@@ -427,7 +427,7 @@ The suffix tree method is described by <span class="citation">Gusfield (1997)</s
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td></td>
+<td><strong>2</strong></td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -441,7 +441,7 @@ The suffix tree method is described by <span class="citation">Gusfield (1997)</s
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td></td>
+<td><strong>3</strong></td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -455,7 +455,7 @@ The suffix tree method is described by <span class="citation">Gusfield (1997)</s
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td></td>
+<td><strong>4</strong></td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
@@ -509,7 +509,7 @@ If the characters match and it is the first row or column, then the cell gets a 
 If the characters match and it is not the first row or column, the the cell receives the value of the (i-1,j-1) cell plus one.
 The first string’s index for the substring of the longest length is saved.
 This process is shown in Table <a href="3-textcolor.html#tab:dylcs">3.2</a>, with two strings: “gratuitous” and “intuitive”.
-The diagonal of numbers in red indicate the longest substring, beginning and ending with ‘t’.
+The diagonal of numbers in bold indicate the longest substring, beginning and ending with ‘t’.
 Thus, “tuit” is identified as the LCS.</p>
 </div>
 <div id="collocation-analysis-and-fuzzy-matching" class="section level4 hasAnchor" number="3.1.1.3">
@@ -518,7 +518,7 @@ Thus, “tuit” is identified as the LCS.</p>
 For indirect matches, such as typos, weights are applied to these fuzzy matches to contribute to the total count.
 While collocations traditionally refer to words that occur more frequently together - such as “white house”(<span class="citation">Merriam-Webster (2023)</span>), tools for collocation analysis helpfully provide the frequency of occurrence for strings of a specified length (<span class="citation">Schweinberger (2022)</span>).</p>
 <p>Character differences can effectively be used to indicate similarity between participants’ notes and the text transcript.
-This is useful in situation where individuals do not copy the notes directly.
+This is useful in situations where individuals do not copy the notes directly.
 In these cases, fuzzy matching can be used to find the transcript collocation that is the most similar to the participants’ written notes.
 This approximate string matching allows for matching strings that do not correspond directly (<span class="citation">Gusfield (1997)</span>), which allows for matching up participants’ inexact notes with the closest transcript collocation.</p>
 <p>In order to perform fuzzy matching on the indirect collocations from participants’ notes, I used ‘stringdist_join’ from the ‘fuzzyjoin’ R package <span class="citation">(Robinson, 2020)</span>.
@@ -686,19 +686,19 @@ This method finds the closest transcript collocation to the written collocation.
 <tbody>
 <tr class="odd">
 <td>The cat ran</td>
-<td> up the tree</td>
+<td><strong>The cat ran</strong> up the tree</td>
 <td>0</td>
 <td>up the tree</td>
 </tr>
 <tr class="even">
 <td>The dog howled</td>
-<td> the tree</td>
+<td><strong>The cat ran up</strong> the tree</td>
 <td>9</td>
 <td>The cat ran up the tree</td>
 </tr>
 <tr class="odd">
 <td>The cat run</td>
-<td> up the tree</td>
+<td><strong>The cat ran</strong> up the tree</td>
 <td>1</td>
 <td>up the tree</td>
 </tr>
@@ -715,7 +715,7 @@ By allowing for some mismatch between the two pages, we can account for inexact 
 <p>This method works well when participants take notes sequentially.
 In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
 When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
-The irst haracter method cannot appropriately clean these notes, as shown in Table <a href="3-textcolor.html#tab:issues">3.6</a>.</p>
+The First N Character method cannot appropriately clean these notes, as shown in Table <a href="3-textcolor.html#tab:issues">3.6</a>.</p>
 </div>
 <div id="longest-common-substring-lcs-method" class="section level4 hasAnchor" number="3.2.1.2">
 <h4><span class="header-section-number">3.2.1.2</span> Longest Common Substring (LCS) Method<a href="3-textcolor.html#longest-common-substring-lcs-method" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -748,22 +748,22 @@ The irst haracter method cannot appropriately clean these notes, as shown in Tab
 <tr class="even">
 <td>Insertion</td>
 <td>The cat ran up the tree</td>
-<td> dog, up the tree</td>
+<td><strong>The cat ran, chased by a</strong> dog, up the tree</td>
 <td>(The cat ran)(up the tree)</td>
 <td>11</td>
 </tr>
 <tr class="odd">
 <td>Duplication</td>
 <td>The cat ran up the tree</td>
-<td> The cat ran up the tree</td>
+<td><strong>The cat ran up the tree</strong> The cat ran up the tree</td>
 <td>(The cat ran up the tree)(The cat ran up the tree)</td>
 <td>0</td>
 </tr>
 </tbody>
 </table>
-<p>The Longest Common Substring method is able to handle the issues found in the First Character method, which is demonstrated in Table <a href="3-textcolor.html#tab:issues">3.6</a>.
+<p>The Longest Common Substring method is able to handle the issues found in the First N Character method, which is demonstrated in Table <a href="3-textcolor.html#tab:issues">3.6</a>.
 If notes are deleted, the LCS method can identify the substring from the previous notes, despite the large edit distance that would prevent removal in the FNC method.
-If new notes are inserted in the middle of previous notes, the FNC method would compare the Page 1’s notes with the red text of the Page 2 notes shown in the second row, resulting in an edit distance that would prevent removal.
+If new notes are inserted in the middle of previous notes, the FNC method would compare the Page 1’s notes with the bold text of the Page 2 notes shown in the second row, resulting in an edit distance that would prevent removal.
 With the LCS method, the first substring “The cat ran” could be identified and removed, then in a second iteration, the second substring of “up the tree” can also be removed, leaving only the new text.
 In the case of duplication, the FNC method would be able to identify the first iteration of text that matches Page 1 and remove it; but it would not be able to identify the second occurrence of the text.
 As before, the LCS method would be able to identify both instances through two iterations, and remove all Page 1 text.

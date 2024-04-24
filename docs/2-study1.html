@@ -254,7 +254,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="study1" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">CHAPTER 2</span> Jury Perception of Bullet Matching Algorithms and Demostrative Evidence<a href="2-study1.html#study1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Due to the issues outlined in Chapter <a href="index.html#litreview">1</a>, we designed a study to investigate how potential jurors may perceive a bullet matching algorithm, when presented alongside a firearms examiner’s testimony, as well as the ffect of demonstrative evidence.
+<p>Due to the issues outlined in Chapter <a href="index.html#litreview">1</a>, we designed a study to investigate how potential jurors may perceive a bullet matching algorithm, when presented alongside a firearms examiner’s testimony, as well as the effect of demonstrative evidence.
 This study utilizes a testimony transcript to familiarize participants with bullet matching evidence for a case involving armed robbery, and participants are asked to make judgements on the guilt of the defendant, as well as the credibility of the witnesses and the reliability and scientificity of the evidence presented.</p>
 <div id="background" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Background<a href="2-study1.html#background" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -382,7 +382,7 @@ This same format was used when asking participants about credibility and scienti
 <h3><span class="header-section-number">2.2.2</span> Prolific<a href="2-study1.html#prolific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Participants were recruited using Prolific, an online survey-taking website.
 From the Prolific website, participants were directed to a link containing our survey, created using R Shiny.
-We selected options to recruit a representative sample of individuals located in the United States, and asked that participants self-screen for jury eligibility before completing the survey.
+We selected options to recruit a representative sample, based on age, sex, and gender, of individuals located in the United States, and asked that participants self-screen for jury eligibility before completing the survey.
 Jury eligibility was defined as US citizens over the age of majority in their state who had not been convicted of a felony, were not active law enforcement, military, emergency response, or a judge, and who did not have a disability that would prevent them from serving on a jury.
 They were also required to have normal or corrected to normal vision, due to the images used in the study.
 Participants were compensated with $8.40 for completing the study, for an hourly compensation rate of about $27.79 (median completion time of approximately 18 minutes).<br />
@@ -477,10 +477,13 @@ Figure 2.4: Completion Time by Condition for all unique fingerprints
 </tr>
 </tbody>
 </table>
-<p>Figure <a href="2-study1.html#fig:completiontime">2.4</a> depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints, or identification values (n=), excluding 3 observations greater than 75 minutes.
+<p>Figure <a href="2-study1.html#fig:completiontime">2.4</a> depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints, or identification values (n=539), excluding 3 observations greater than 75 minutes.
+In several cases, there was repititon of electronic fingerprints, which were meant to serve as unique identifiers in the dataset.
+This limits the accuracy of information that requires linking several datasets - such as completion time information and correspondence between demographic information and results.
+This issue has been fixed in future studies through the use of a random number generator instead of electronic fingerprints.
 Those who received the algorithm condition took more time on average than those who did not (median values of 18.91 minutes and 13.518 minutes, respectively).
 This is unsurprising, given the increased length of the algorithm condition.
-<a href="2-study1.html#tab:timetab">2.1</a> </p>
+Table <a href="2-study1.html#tab:timetab">2.1</a> shows the ANOVA table of completion times, by experimental condition.</p>
 </div>
 </div>
 <div id="results" class="section level2 hasAnchor" number="2.3">
@@ -528,7 +531,7 @@ These 569 participants who answered both attention check questions correctly wer
 <div id="overview" class="section level3 hasAnchor" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> Overview<a href="2-study1.html#overview" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Participants were asked a variety of questions in order to assess their thoughts and feelings on the case and the evidence presented.
-<span class="citation">Garrett, Scurich, et al. (2020)</span>
+We used questions from <span class="citation">Garrett, Scurich, et al. (2020)</span> concerning conviction decision, probability of the defendant committing the crime, attention checks, firearm identification mistake rate, if guns leave unique markings on bullets, if false conviction or false acquittal were worse, and Likert scales involving credibility, reliability, scientificity (how scientific individals thought the method was), strength of evidence.
 Two questions related to probability: respondents were asked to provide a value for the probability that the gun was at the crime scene, and to provide a value for the probability that Richard Cole (the defendant) committed the crime.
 Another question asked participants if they would convict Cole, based on the evidence.
 Questions of credibility, reliability, and scientificity were assessed using a 7-point Likert scale (eg. “Extremely unscientific” to “Extremely scientific”).
@@ -793,9 +796,9 @@ Figure 2.21: Histogram of perceived strength of evidence against the gun
 <p>When asked about the strength of evidence against the defendant’s gun, there was no real difference between those who received the algorithm and those who did not (Figure <a href="2-study1.html#fig:gunstrength">2.21</a>).
 The identification condition resulted in a more concentrated distribution at higher strength values than were seen for the strength of evidence against Cole.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:probstrength"></span>
-<img src="thesis_files/figure-html/probstrength-1.png" alt="Probabilities based on perceived strength of evidence." width="\linewidth" />
+<img src="thesis_files/figure-html/probstrength-1.png" alt="Probabilities based on perceived strength of evidence" width="\linewidth" />
 <p class="caption">
-Figure 2.22: Probabilities based on perceived strength of evidence.
+Figure 2.22: Probabilities based on perceived strength of evidence
 </p>
 </div>
 <p>In comparing how individuals scored strength of evidence and the probability that they assigned to Cole committing the crime and the gun being present at the crime scene, the results were largely consistent (Figure <a href="2-study1.html#fig:probstrength">2.22</a>).

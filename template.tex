@@ -132,12 +132,10 @@ $endif$
   \usepackage[setpagesize=false, % page size defined by xetex
               unicode=false, % unicode breaks when used with xetex
               xetex,
-              colorlinks=true,
-              linkcolor=blue]{hyperref}
+              colorlinks=false]{hyperref}
 \else
   \usepackage[unicode=true,
-              colorlinks=true,
-              linkcolor=blue]{hyperref}
+              colorlinks=false]{hyperref}
 \fi
 \hypersetup{breaklinks=true, pdfborder={0 0 0}}
 \setlength{\parindent}{20pt}
@@ -184,6 +182,7 @@ $endif$
 
 
 \begin{abstract}
+\raggedright
     $abstract$
 \end{abstract}
 
@@ -193,6 +192,7 @@ $endif$
 
 %% Optional
 \begin{dedication}
+\raggedright
 $dedication$
 \end{dedication}
 
@@ -200,6 +200,7 @@ $dedication$
 % Acknowledgments
 %%%%%%%%%%%%%%%%%%%
 \begin{acknowledgments}
+\raggedright
 $acknowledgments$
 \end{acknowledgments}
 %%%%%%%%%%%%%%%%%%%
@@ -226,7 +227,7 @@ $acknowledgments$
 % Start of the document
 %%%%%%%%%%%%%%%%%%%
 \mainmatter
-
+\raggedright
 
 $body$
 

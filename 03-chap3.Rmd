@@ -101,6 +101,7 @@ Those speaking on behalf of the prosecution were coded with speech bubbles in wa
 ```{r}
 #| responsefigures,
 #| fig.cap= "Figures used in the response study. From left to right: the judge, forensic scientist, prosecutor, and defense lawyer.",
+#| fig.scap= "Figures used in the response study.",
 #| fig.width= 7,
 #| fig.align= "center",
 #| echo= FALSE,
@@ -308,7 +309,7 @@ More widespread criticism of firearms examination may lead to lower feelings of 
 In both studies, participants are asked if they would choose to convict, given the "beyond a reasonable doubt" threshold.
 In this study, `r round(sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="Match")/sum(microstudy_clean$conclusion=="Match")*100, 2)`\% (or `r sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="Match")` out of `r sum(microstudy_clean$conclusion=="Match")`) individuals who received the identification condition chose to convict, while `r round(sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="NoMatch")/sum(microstudy_clean$conclusion=="NoMatch")*100, 2)`\% (or `r sum(microstudy_clean$convict=="Yes" & microstudy_clean$conclusion=="NoMatch")` out of `r sum(microstudy_clean$conclusion=="NoMatch")`) participants who received the elimination condition chose to convict.
 The conviction percentage for the identification condition in this study is slightly lower than the comparable condition in the original study (without the use of the algorithm and images): `r round(sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")/sum(merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")*100, 2)`\% (or `r sum(merged_results$guilty=="Yes" & merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")` out of `r sum(merged_results$conclusion=="Match" & merged_results$algorithm=="No" & merged_results$picture=="No")`).
-However, there is not a significant difference between studies (\authorcol{Pearson's chi-squared} p-value `r round(match_convict_compare$p.value, 2)`).
+However, there is not a significant difference between studies (Pearson's chi-squared p-value `r round(match_convict_compare$p.value, 2)`).
 None of the `r sum(merged_results$conclusion=="NoMatch" & merged_results$algorithm=="No" & merged_results$picture=="No")` individuals in the original study who received the elimination condition without the use of the algorithm or images chose to convict.
 
 ```{r}
@@ -408,13 +409,13 @@ prob_compare<-t.test(microstudy_clean$visible_probability, as.numeric(microstudy
 ```
 
 Figure \@ref(fig:prob2) shows participant-selected probabilities that the defendant committed the crime.
-For a single participant, their \authorcol{selection of} hidden probability was recorded incorrectly (carrying over a previous answer), I have removed this observation when performing analysis on the hidden probability scale.
+For a single participant, their selection of hidden probability was recorded incorrectly (carrying over a previous answer), I have removed this observation when performing analysis on the hidden probability scale.
 As in the case of the strength of evidence, the graph resembles the probability graph found in the initial study (Figure \@ref(fig:probalgorithm)), where there is a higher peak of extreme values for the elimination conditions than for the identification condition.
 When using a t-test to compare the mean visible probabilities for the identification and elimination condition to those comparable conditions of the initial study, there is not a significant difference for the identification condition, but is a significant difference in the elimination condition (p-values of `r round(match_prob_ttest$p.value,2)` and `r round(nomatch_prob_ttest$p.value,2)`, respectively).
 The estimated mean is higher in this follow up study (`r round(nomatch_prob_ttest$estimate[1], 2)`\%) than the initial study (`r round(nomatch_prob_ttest$estimate[2], 2)`\%) in the elimination condition.
 For the identification condition, the estimated probabilities are `r round(match_prob_ttest$estimate[1], 2)`\% for the follow-up study and `r round(match_prob_ttest$estimate[2], 2)`\% for the initial study.
 In this study, the density curves for when the probability was visible or hidden remain similar.
-\authorcol{There is no significant difference between the hidden and visible probability scales, based on a paired t-test (p-value `r round(prob_compare$p.value, 2)`).}
+There is no significant difference between the hidden and visible probability scales, based on a paired t-test (p-value `r round(prob_compare$p.value, 2)`).
 
 ### New Study Questions
 
@@ -602,6 +603,7 @@ This resulted in a significant difference between the two groups (Pearson's chi-
 ```{r}
 #| opinionchanceplot,
 #| fig.cap= "Moasiac plot of participants who chose to express chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant. The width of the bar corresponds to the number of participants per category.",
+#| fig.scap= "Moasiac plot of participants who chose to express chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant.",
 #| fig.width= 6,
 #| fig.height= 4,
 #| fig.align= "center",
@@ -1764,7 +1766,7 @@ ggplot(microstudy_clean, aes(x=betting,
 ```
 
 Figure \@ref(fig:probbet) compares the amount that individuals were willing to bet to their hidden probability that the defendant had/had not committed the crime.
-Whether the participants were betting on the guilt or innocence of the defendant depended on their personal opinion of guilt - those who thought the defendant was guilty bet on the defendant's guilt, while those who thought the defendant was innocenc\authorcol{t} bet on the defendant's innocence.
+Whether the participants were betting on the guilt or innocence of the defendant depended on their personal opinion of guilt - those who thought the defendant was guilty bet on the defendant's guilt, while those who thought the defendant was innocenct bet on the defendant's innocence.
 Values are clustered at two points.
 For those who thought the defendant was innocent, they were willing to bet almost all of the \$50 and assigned a low probability to the defendant committing the crime.
 For those who thought the defendant was guilty, they were also willing to bet almost all of the \$50, but assigned a high probability to the defendant committing the crime.
@@ -1877,7 +1879,7 @@ ggplot(microstudy_clean, aes(x = income, y = visible_probability, fill = convict
 
 ```
 
-Base\authorcol{d} on Figure \@ref(fig:convictsincome), some individuals in the match condition chose to convict across all income levels.
+Based on Figure \@ref(fig:convictsincome), some individuals in the match condition chose to convict across all income levels.
 There does not appear to be a clear trend between conviction choice and income.
 Several income brackets chose to convict over the choice not to convict, but these brackets are spread throughout the scale.
 In the case of the elimination condition, the individuals who did choose to convict came from different income brackets.
@@ -2451,7 +2453,7 @@ The addition of speech bubbles instead of a transcript format is one major diffe
 This, along with approximately half the sample size, may account for the low values found in this transcript.
 
 In this study, an additional questions were added to the cross examination regarding the subjectivity of the bullet comparison - namely, if another firearms examiner would use the same subjective criterion and reach the same conclusion.
-A few of the participants wrote the firearms examiner's answer in their notepad, indicating that they paid attention to this question, \authorcol{specifically in the identification condition}.
+A few of the participants wrote the firearms examiner's answer in their notepad, indicating that they paid attention to this question, specifically in the identification condition.
 On the other hand, participants did not appear to copy down the final jury instructions given by the judge - regarding the treatment of the algorithm examiner as any other witness.
 These changes represent two different types of information presentation.
 The discussion of other examiner's comparisons is aimed to be more informational - it describes the process of firearms comparison.

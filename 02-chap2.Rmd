@@ -38,7 +38,7 @@ This method was developed and tested on a trial transcript study designed to ass
 ### Literature Review
 
 #### First N Character Method
-The First \authorcol{N} Character (FNC) method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
+The First N Character (FNC) method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
 I developed this method specifically for the cleaning of sequential notes.
 In this process, a previous page's notes are matched to the next page's notes in order to remove duplicate text.
 This is a form of pattern matching.
@@ -52,15 +52,15 @@ According to @baeza-yates, many algorithmic methods have been developed to solve
 A similar allowance for differences is present in @landau1988, where differences are defined as either insertions, deletions, or substitutions.
 This definition of differences is the same definition that is used in computing Levenshtein distance, also known as edit distance [@levenshtein].
 Levenshtein considered the issue of insertions, deletions, and substitutions with binary code.
-This concept \authorcol{w}as later extended to include more extensive strings, as demonstrated by @konstantinidis2005.
+This concept was later extended to include more extensive strings, as demonstrated by @konstantinidis2005.
 The edit distance can be used to determine the extent of matching text when comparing two sequential note sheets, in order to identify if a portion of notes should be removed.
 
 | Word 1 | Word 2 | Transformation | Method | Edit Distance |
 |:-------:|:--------:|:----------------:|:--------:|:---------------:|
 | caw     | cow    | a &rarr; o    | substitution | 1 |
-| inveigh | neigh | \textcolor{gray}{i}n\textcolor{gray}{v}eigh | deletion | 2 |
-| meow | homeowner | \textcolor{red}{ho}meow\textcolor{red}{ner} | insertion | 5 |
-| Shire  |  Shareholder  |  i &rarr; a + \textcolor{red}{holder} | substitution and insertion | 7 |
+| inveigh | neigh | *i*n*v*eigh | deletion | 2 |
+| meow | homeowner | **ho**meow**ner** | insertion | 5 |
+| Shire  |  Shareholder  |  i &rarr; a + **holder** | substitution and insertion | 7 |
 
 : Transformations used to calculate Edit Distance (\#tab:edist)
 
@@ -123,10 +123,10 @@ _ | g | r | a | t | u | i | t | o | u | s
 --|---|---|---|---|---|---|---|---|---|---
 i | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0
 n | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0
-t | 0 | 1 | 0 | \textcolor{red}{1} | 0 | 0 | 1 | 0 | 0 | 0
-u | 0 | 0 | 0 | 0 | \textcolor{red}{2} | 0 | 0 | 0 | 1 | 0
-i | 0 | 0 | 0 | 0 | 0 | \textcolor{red}{3} | 0 | 0 | 0 | 0
-t | 0 | 0 | 0 | 1 | 0 | 0 | \textcolor{red}{4} | 0 | 0 | 0
+t | 0 | 1 | 0 | **1** | 0 | 0 | 1 | 0 | 0 | 0
+u | 0 | 0 | 0 | 0 | **2** | 0 | 0 | 0 | 1 | 0
+i | 0 | 0 | 0 | 0 | 0 | **3** | 0 | 0 | 0 | 0
+t | 0 | 0 | 0 | 1 | 0 | 0 | **4** | 0 | 0 | 0
 i | 0 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0
 v | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0
 e | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0
@@ -141,7 +141,7 @@ If the characters match and it is the first row or column, then the cell gets a 
 If the characters match and it is not the first row or column, the the cell receives the value of the (i-1,j-1) cell plus one.
 The first string's index for the substring of the longest length is saved.
 This process is shown in Table \@ref(tab:dylcs), with two strings: "gratuitous" and "intuitive".
-The diagonal of numbers in red indicate the longest substring, beginning and ending with 't'.
+The diagonal of numbers in bold indicate the longest substring, beginning and ending with 't'.
 Thus, "tuit" is identified as the LCS.
 
 #### Collocation Analysis and Fuzzy Matching
@@ -151,7 +151,7 @@ For indirect matches, such as typos, weights are applied to these fuzzy matches 
 While collocations traditionally refer to words that occur more frequently together - such as "white house"(@DefinitionCOLLOCATION2023), tools for collocation analysis helpfully provide the frequency of occurrence for strings of a specified length (@collocationpage). 
 
 Character differences can effectively be used to indicate similarity between participants' notes and the text transcript.
-This is useful in situation\authorcol{s} where individuals do not copy the notes directly.
+This is useful in situations where individuals do not copy the notes directly.
 In these cases, fuzzy matching can be used to find the transcript collocation that is the most similar to the participants' written notes.
 This approximate string matching allows for matching strings that do not correspond directly (@gusfield1997), which allows for matching up participants' inexact notes with the closest transcript collocation.
 
@@ -217,9 +217,9 @@ This method finds the closest transcript collocation to the written collocation.
 
 Page 1         | Page 2             | FNC Edit Distance | FNC Page 2 Results
 ---------------|--------------------|----------|--------------
-The cat ran | \textcolor{red}{The cat ran} up the tree | 0 | up the tree
-The dog howled | \textcolor{red}{The cat ran up} the tree | 9 | The cat ran up the tree
-The cat run | \textcolor{red}{The cat ran} up the tree | 1 | up the tree
+The cat ran | **The cat ran** up the tree | 0 | up the tree
+The dog howled | **The cat ran up** the tree | 9 | The cat ran up the tree
+The cat run | **The cat ran** up the tree | 1 | up the tree
 
 : FNC Demonstration with an edit distance threshold of 3 (\#tab:fncmethod)
 
@@ -235,21 +235,21 @@ By allowing for some mismatch between the two pages, we can account for inexact 
 This method works well when participants take notes sequentially.
 In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
 When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
-The \authorcol{F}irst \authorcol{N} \authorcol{C}haracter method cannot appropriately clean these notes, as shown in Table \@ref(tab:issues).
+The First N Character method cannot appropriately clean these notes, as shown in Table \@ref(tab:issues).
 
 #### Longest Common Substring (LCS) Method
 
 Issue | Page 1 | Page 2 | LCS | Edit Distance
 --------|--------|-----------|-----------|-------
 Deletion | The cat ran up the tree | The cat ran | The cat ran | 12
-Insertion | The cat ran up the tree | \textcolor{red}{The cat ran, chased by a} dog, up the tree | (The cat ran)(up the tree) | 11
-Duplication | The cat ran up the tree | \textcolor{red}{The cat ran up the tree} The cat ran up the tree | (The cat ran up the tree)(The cat ran up the tree) | 0
+Insertion | The cat ran up the tree | **The cat ran, chased by a** dog, up the tree | (The cat ran)(up the tree) | 11
+Duplication | The cat ran up the tree | **The cat ran up the tree** The cat ran up the tree | (The cat ran up the tree)(The cat ran up the tree) | 0
 
 : LCS Comparison for FNC Issues (\#tab:issues)
 
-The Longest Common Substring method is able to handle the issues found in the First \authorcol{N} Character method, which is demonstrated in Table \@ref(tab:issues).
+The Longest Common Substring method is able to handle the issues found in the First N Character method, which is demonstrated in Table \@ref(tab:issues).
 If notes are deleted, the LCS method can identify the substring from the previous notes, despite the large edit distance that would prevent removal in the FNC method.
-If new notes are inserted in the middle of previous notes, the FNC method would compare the Page 1's notes with the red text of the Page 2 notes shown in the second row, resulting in an edit distance that would prevent removal.
+If new notes are inserted in the middle of previous notes, the FNC method would compare the Page 1's notes with the bold text of the Page 2 notes shown in the second row, resulting in an edit distance that would prevent removal.
 With the LCS method, the first substring "The cat ran" could be identified and removed, then in a second iteration, the second substring of "up the tree" can also be removed, leaving only the new text.
 In the case of duplication, the FNC method would be able to identify the first iteration of text that matches Page 1 and remove it; but it would not be able to identify the second occurrence of the text.
 As before, the LCS method would be able to identify both instances through two iterations, and remove all Page 1 text.
@@ -624,6 +624,13 @@ With an edit distance of 1, it can be seen that these fuzzy matches are the resu
 While most collocation misspellings in the table only occur a single time (recorded via the "Count" column), the last collocation occurs twice - indicating that two individual note takers missed an "l" in "willfully".
 The "Collocation Matches" column indicates if the participant's collocation matches with multiple collocations from the study - such as "Jur" in the example above.
 
+Interestingly, when considering the most distant fuzzy matches in Table \@ref(tab:fuzzyexamlarge), these phrases do not come from simple typos, but rather from a non-testimony title portion of the study: "Jury Perception of Trial Information, Presentation, and Demonstrative Evidence", and may result from participants copying the entire web page into the note sheet.
+Two individuals copied this title into their notes, but on different pages of the testimony.
+The collocations in Table \@ref(tab:fuzzyexamlarge) correspond to the individual who copied the title on the second page of the testimony.
+Because these phrases do not noticeably correspond to the transcript collocations, as shown in their larger edit distance, they are given less weight.
+In this case, we also see that the participant collocation of "perception of trial information presentation" was an equal edit distance from two collocations, based on the "Collocation Matches" value.
+Thus, the weight would be adjusted accordingly due to the presence of two close matches.
+
 \newpage
 \begin{landscape}
 
@@ -718,13 +725,6 @@ reduced_fuzzy_matches %>%
 
 \end{landscape}
 
-Interestingly, when considering the most distant fuzzy matches in Table \@ref(tab:fuzzyexamlarge), these phrases do not come from simple typos, but rather from a non-testimony title portion of the study: "Jury Perception of Trial Information, Presentation, and Demonstrative Evidence", and may result from participants copying the entire web page into the note sheet.
-Two individuals copied this title into their notes, but on different pages of the testimony.
-The collocations in Table \@ref(tab:fuzzyexamlarge) correspond to the individual who copied the title on the second page of the testimony.
-Because these phrases do not noticeably correspond to the transcript collocations, as shown in their larger edit distance, they are given less weight.
-In this case, we also see that the participant collocation of "perception of trial information presentation" was an equal edit distance from two collocations, based on the "Collocation Matches" value.
-Thus, the weight would be adjusted accordingly due to the presence of two close matches.
-
 #### Standardization
 
 The courtroom transcript testimony comes from a 2x2x3 factorial design (presence or absence of images, presence or absence of the algorithm, and the conclusion: identification, inconclusive, or elimination).
@@ -756,7 +756,7 @@ include_graphics(path = "images/weightedcollocationanalysis.jpg")
 ```
 
 ### Final Output
-This final note analysis, which includes fuzzy matching, can be found at https://rachelesrogers.github.io/Presentations/Collocations/Collocation%20Comment%20Analysis%20Cleaned.html.
+This final note analysis, which includes fuzzy matching, can be found at  https://rachelesrogers.github.io/Presentations/Collocations/Collocation%20Comment%20Analysis%20Cleaned.html.
 In visually comparing the highlighted transcripts for fuzzy matches to those without fuzzy matching, the results appear to be fairly similar. 
 While the fuzzy matching did increase the frequency number, the overall trends remained the same for the dataset.
 This can be seen in Table \@ref(tab:nonfuzzycount).

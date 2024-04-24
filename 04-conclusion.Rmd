@@ -20,10 +20,10 @@ In the future, we plan to conduct a study on perception of characteristics of th
 Alongside the new study design, we discovered that, while individuals provided generally consistent answers across response type, they were more inconsistent when comparing numeric chance in terms of innocence, perhaps due to the reversal of format (all other questions were in terms of guilt).
 While Likert, probability and betting scales were not optimal for collecting data in this case, multiple choice chance scales with non-linear intervals allowed for more spread in participants' answers and demonstrated consistent understanding.
 Furthermore, asking participants their opinion of the guilt of the defendant alongside their conviction decision added nuance to their perception of the evidence.
-\authorcol{In the future, we may also aim to establish test-retest reliability for these response types.
-Additionally, the validity of the study visualization method may also be verified by comparing responses from individuals given the same information in the transcript testimony format or the visualization format.}
+In the future, we may also aim to establish test-retest reliability for these response types.
+Additionally, the validity of the study visualization method may also be verified by comparing responses from individuals given the same information in the transcript testimony format or the visualization format.
 
-These diverging avenues of investigation will again merged for a final study (in progress).
+These diverging avenues of investigation will again merged for a final study.
 The new cartoon study format was well received by participants, the response type study indicates that phrasing questions in terms of chance (i.e. "1 chance in 10 that...") reduced the scale compression seen in Likert scales, and the text analysis provides useful information about what participants found worth copying into their notes.
 <!-- \authorcol{While some scales can be rephrased in terms of chance, others, such as how scientific the approach is, were more difficult to reframe. -->
 <!-- These questions also suffered from scale compression, which may result from an issue of calibration. -->

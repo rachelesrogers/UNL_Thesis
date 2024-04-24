@@ -129,12 +129,10 @@
   \usepackage[setpagesize=false, % page size defined by xetex
               unicode=false, % unicode breaks when used with xetex
               xetex,
-              colorlinks=true,
-              linkcolor=blue]{hyperref}
+              colorlinks=false]{hyperref}
 \else
   \usepackage[unicode=true,
-              colorlinks=true,
-              linkcolor=blue]{hyperref}
+              colorlinks=false]{hyperref}
 \fi
 \hypersetup{breaklinks=true, pdfborder={0 0 0}}
 \setlength{\parindent}{20pt}
@@ -181,6 +179,7 @@
 
 
 \begin{abstract}
+\raggedright
     Subjective pattern comparison has been subject to increased scrutiny by the courts and by the general public, resulting in an increased interest in pattern comparison algorithms that provide quantitative assessments of similarity for use by forensic scientists. While these algorithms would mark an improvement over current subjective comparison methods, individuals without a statistical background may struggle with the statistical concepts and language necessary for describing algorithmic methods. If algorithms are to be used, examiners must be able to testify about their use in a way that is accessible to the jury. In a series of studies, we conduct an assessment of language and supporting visual aids which might be used to explain bullet matching algorithms. In the initial study, we encountered a response type calibration issue - individuals thought highly of the forensic witness and evidence regardless of experimental conditions, `maxing out' Likert response scales and leaving us unable to tell if the conditions had any effect. While this study indicated that individuals overall found the testimony to be reliable, credible, and scientific, it did not readily provide information about our question of interest. Additional data from this study was found in the participants' note pads. Through cleaning sequential notes and designing a method for highlighting study transcripts according to the frequency of collocations in participant notes, we can determine which portions of testimony participants found `noteworthy'. We also conducted a study on response types to determine the consistency of participant responses across response types, compare a variety of response types, and determine which response type may be appropriately calibrated for addressing the initial research question of jury perception of algorithms and demonstrative evidence. The response types used in this investigation include the participant's interpretation of the strength of evidence (Likert scale), conviction decision (binary), opinion of guilt (binary), willingness to bet on their opinion of guilt (numeric), probability of guilt (numeric), and chance of guilt/innocence (numeric or multiple choice). The note cleaning, text analysis, and testimony tools we developed throughout this series of experiments will benefit our future research in jury perception, as well as future transcript studies.
 \end{abstract}
 
@@ -190,6 +189,7 @@
 
 %% Optional
 \begin{dedication}
+\raggedright
 Dedicated to my mom, who taught my first statistics course.
 \end{dedication}
 
@@ -197,15 +197,24 @@ Dedicated to my mom, who taught my first statistics course.
 % Acknowledgments
 %%%%%%%%%%%%%%%%%%%
 \begin{acknowledgments}
+\raggedright
 I owe my success to my academic community, family, friends and mentors.
-I am deeply indebted to my advisor, Dr.~Susan VanderPlas, for constantly encouraging me to grow both personally and academically. I could not have dreamt of a better advisor.
+
+I am deeply indebted to my advisor, Dr.~Susan VanderPlas, for constantly encouraging me to grow both personally and academically. I could not have asked for a better advisor.
+
 I would like to express my deep appreciation to my supervisory committee, Dr.~Erin Blankenship, Dr.~Kent Eskridge, and Dr.~Ashley Votruba. Their guidance and support has been invaluable.
+
 Members of the Center for Statistics and Applications in Forensic Evidence have also provided me with vital advice and encouragement over the years when working on this project, and I am thankful that I have been able to be a part of such a welcoming community.
+
 I cannot begin to express my gratitude to my husband and partner, Richy Meleus, for his steadfast support. He has been by my side through all of the ups and downs of my post-secondary education. He also supplied his artistic talent to create courtroom cartoons for this work.
-I am extremely grateful for my parents and siblings, who have always believed in me. In particular, I am thankful to my mom, Sally Sparks, for introducing me to the field of statistics. I know that they are only a phone call away.
-When I joined the Statistics Department at University of Nebraska-Lincoln, I was fortunate enough to make two great friends in my master's degree cohort, Eddie Gomez and Kory Heier. Their companionship was incredibly helpful in my first two years of graduate school.
+
+I am extremely grateful for my parents (Jeff Rogers an Sally Sparks) and siblings (Dylan and Betty Rogers), who have always believed in me. In particular, I am thankful to my mom for introducing me to the field of statistics. I know that they are only a phone call away.
+
+When I joined the Statistics Department at University of Nebraska-Lincoln, I was fortunate enough to make two great friends in my master's degree cohort, Eddie Gomez and Kory Heier. Their companionship was incredibly helpful in my first two years of graduate school. I also appreciate my friend and classmate Sarah Aurit for her support and encouragement.
+
 I am incredibly thankful for my friends, Dr.~Emily Robinson and Dr.~Alison Kleffner, who have assisted me innumerous times throughout the years. I know that I can always look to them for support and advice.
-I would also like to extend my gratitude to my graduate mentors, Jessica Hauschild and Kelsey Karnik. Through their mentorship, they have made me a better statistician.
+
+I would also like to extend my gratitude to my graduate mentors, Dr.~Jessica Hauschild and Dr.~Kelsey Karnik. Through their mentorship, I have become a better statistician.
 
 This work was funded (or partially funded) by the Center for Statistics and Applications in Forensic Evidence (CSAFE) through Cooperative Agreements 70NANB15H176 and 70NANB20H019 between NIST and Iowa State University, which includes activities carried out at Carnegie Mellon University, Duke University, University of California Irvine, University of Virginia, West Virginia University, University of Pennsylvania, Swarthmore College and University of Nebraska, Lincoln.
 \end{acknowledgments}
@@ -233,7 +242,7 @@ This work was funded (or partially funded) by the Center for Statistics and Appl
 % Start of the document
 %%%%%%%%%%%%%%%%%%%
 \mainmatter
-
+\raggedright
 
 \hypertarget{litreview}{%
 \chapter{Literature Review}\label{litreview}}
@@ -264,7 +273,7 @@ Striation marks are created on the bullet as it travels down the barrel due to r
 
 }
 
-\caption{Image of bullet structure. 1 indicates the bullet, 2 indicates the cartridge casing, 3 indicates the powder, 4 indicates the head of the cartridge casing, and 5 indicates the primer. Glrx (2021).}\label{fig:structure}
+\caption{Image of bullet structure.}\label{fig:structure}
 \end{figure}
 
 The practice of bullet matching is based on the concept that rifling in a gun barrel can produce uniquely identifying marks on bullets fired from the gun, due to random variation (PCAST, 2016).
@@ -277,7 +286,7 @@ The raised areas are known as lands, while the depressed areas are known as groo
 
 }
 
-\caption{Cross section of a gun. The rifling is the spiral pattern of lands (raised portions) and grooves (indented portions). baku13 (2005).}\label{fig:rifling}
+\caption[Cross section of a gun.]{Cross section of a gun. The rifling is the spiral pattern of lands (raised portions) and grooves (indented portions). baku13 (2005).}\label{fig:rifling}
 \end{figure}
 
 When a bullet is fired, it travels down the gun barrel and marks from the rifling are scratched into the bullet's surface.
@@ -289,7 +298,7 @@ This results in indented areas that correspond to the land impressions, as shown
 
 }
 
-\caption{Fired bullet. Indented portion correspond to the gun lands. Gremi-ch (2009).}\label{fig:fired}
+\caption{Fired bullet}\label{fig:fired}
 \end{figure}
 
 The diagram in Figure \ref{fig:fireddiagram} from Hare et al. (2017) demonstrates the structure of these land and groove impressions on a bullet.
@@ -301,7 +310,7 @@ As there are multiple lands on a gun barrel, this results in multiple land impre
 
 }
 
-\caption{Diagram of a fired bullet. Hare et al. (2017).}\label{fig:fireddiagram}
+\caption{Diagram of a fired bullet.}\label{fig:fireddiagram}
 \end{figure}
 
 Striation marks, or scratches in the bullet surface caused by the rifling, can be seen on these land impressions, as shown in Figure \ref{fig:firedland} (provided by Hare et al. (2017)).
@@ -313,7 +322,7 @@ Firearms examiners can compare these striation marks across bullets in order to 
 
 }
 
-\caption{Side view of a fired bullet, demonstrating striation marks on the bullet's lands. Hare et al. (2017).}\label{fig:firedland}
+\caption{Side view of a fired bullet, demonstrating striation marks on the bullet's lands.}\label{fig:firedland}
 \end{figure}
 
 \begin{figure}
@@ -326,7 +335,7 @@ Firearms examiners can compare these striation marks across bullets in order to 
 \end{figure}
 
 Firearms examiners use comparison microscopes, such as Figure \ref{fig:microscope}, to compare these striation marks between two bullets, shown in the top right of the figure.
-An early attempt to distinguish guns based on the rifling can be found in two issues of ``The Saturday Evening Post'' from 1925, in an article entitled ``Fingerprinting Bullets'', whose title demonstrates an acceptance of fingerprinting by the public that wouldn't \authorcol{be} considered foundationally valid by PCAST \authorcol{(President's Council of Advisors on Science and Technology)} until an FBI black box study in 2011 (PCAST, 2016).
+An early attempt to distinguish guns based on the rifling can be found in two issues of ``The Saturday Evening Post'' from 1925, in an article entitled ``Fingerprinting Bullets'', whose title demonstrates an acceptance of fingerprinting by the public that wouldn't be considered foundationally valid by PCAST (President's Council of Advisors on Science and Technology) until an FBI black box study in 2011 (PCAST, 2016).
 Stout describes the wrongful conviction and subsequent exoneration of Stielow, who was accused of murder (Stout, 1925a).
 At the trial where Stielow was found guilty, an expert for the prosecution stated that there were nine abnormalities on Stielow's gun that corresponded with marks on the fired bullet (Stout, 1925a).
 It was later established that the bullet found at the crime scene indicated the gun was missing a land -- leaving a distinctive pattern -- while the alleged gun showed no such evidence; the alleged gun also showed evidence of not being fired in more than 3 years (Stout, 1925a).
@@ -405,7 +414,7 @@ PCAST (2016) states the importance of the development of an objective method for
 These reports also highlighted the lack of studies that produced accurate error rates due to several issues, such as the reporting of inconclusive decisions as well as simple design issues (PCAST, 2016).
 For example, Chapnick et al. (2021)'s report does not include inconclusive results as a potential source of error.
 They reported three errors (false positives) in their study, and reported a false negative error rate of 0\%, ignoring the wide range of inconclusive decisions.
-For participants from the United States and Canada, 38 of 491 comparisons were reported as inconclusive for known matches, while 254 of 693 comparisons were reported as inconclusive for know\authorcol{n} non-matches (Chapnick et al., 2021).
+For participants from the United States and Canada, 38 of 491 comparisons were reported as inconclusive for known matches, while 254 of 693 comparisons were reported as inconclusive for known non-matches (Chapnick et al., 2021).
 The issues of error rate calculation are addressed by Hofmann, Vanderplas, \& Carriquiry (2021), particularly with regards to whether or not inconclusive decisions should be treated as errors in calculations.
 They suggest to not consider inconclusive decisions as errors for the calculation of examiner error rates, used in the lab setting; but to consider inconclusive decisions as errors for process error rates, used for determining if the evidence is relevant enough for judging the guilt of the suspect.
 This distinction would allow an examiner to report an inconclusive finding without a negative reflection on their work, as inconclusive decisions are sometimes necessary.
@@ -464,7 +473,7 @@ They found that the interviewed prosecutors supported the use of match terms suc
 All participants felt that that examiner testimony should accurately reflect scientific limitations, although there was not a consensus on whether this practice was in fact followed in the courtroom - defense attorneys felt that the examiners usually do not uphold this expectation, while lab managers expressed frustration on the part of the court.
 The scale to which firearm evidence is used in the courtroom is rather contentious, and views may differ based on occupation.
 
-In general, individuals want to guarantee that the information presented in the courtroom is \authorcol{correct} and valid, without causing too much imbalance between the limitations and the categorical conclusion.
+In general, individuals want to guarantee that the information presented in the courtroom is correct and valid, without causing too much imbalance between the limitations and the categorical conclusion.
 However, there isn't agreement on where the balancing point between these two factors are - somewhere between giving too much credit with a match of ``absolute certainty'', and introducing unfounded reasonable doubt by overstating the limitations.
 If accurate numerical information on error rates or an objective method of evaluation that can be described to the court were available, it may be possible to have factual statements of limitations and scope of evidence that both sides of the argument would find satisfactory.
 In an investigation on the effect of the inclusion of error rate on either voice or fingerprint evidence, Garrett, Crozier, \& Grady (2020) found that the inclusion of an error rate reduced convictions for fingerprint evidence presented categorically, but had no effect in the case of voice comparison (a less established science) or when the fingerprint comparison was presented as a likelihood ratio.
@@ -512,7 +521,7 @@ This algorithm can be described as follows:
 
 }
 
-\caption{Left image depicts two matching signatures, while the right image depicts two non-matching signatures. Generated by the author.}\label{fig:signaturecompare}
+\caption[Left image depicts two matching signatures, while the right image depicts two non-matching signatures.]{Left image depicts two matching signatures, while the right image depicts two non-matching signatures. Generated by the author.}\label{fig:signaturecompare}
 \end{figure}
 
 \begin{itemize}
@@ -529,7 +538,7 @@ This algorithm can be described as follows:
 
 }
 
-\caption{Left image depicts two matching bullets (indicated by high land-to-land match scores in a diagonal formation), while the right image depicts two non-matching bullets. Generated by the author,}\label{fig:gridcompare}
+\caption[Left image depicts two matching bullets, while the right image depicts two non-matching bullets.]{Left image depicts two matching bullets (indicated by high land-to-land match scores in a diagonal formation), while the right image depicts two non-matching bullets. Generated by the author.}\label{fig:gridcompare}
 \end{figure}
 
 In multiple tests, it was found that the algorithm is able to successfully distinguish between known matches and known non-matches without the use of an inconclusive decision (Vanderplas, Nally, Klep, Cadevall, \& Hofmann, 2020).
@@ -559,7 +568,7 @@ Swofford \& Champod (2022) demonstrates the variety of opinions on algorithm imp
 Quantitative methods of examination can lead to quantitative results.
 In this case, the quantitative results are in the form of a match score, but in other cases, results may be presented as a likelihood ratio.
 In many forensic science papers, there are two approaches that are commonly defined as using a ``likelihood ratio'' approach, although one is truly a Bayes Factor approach (Ommen \& Saunders, 2021).
-According to Ommen \& Saunders (2021), the usual form of ``likelihood ratios'' in forensic science are written as \(\frac{P(E|H_p)}{P(E|H_d)}\), where E is the evidence, \(H_p\) is the prosecution's hypothesis, and \(H_d\) is the defense's hypothesis; however, there are \authorcol{two different} methods \authorcol{for calculating the probability,} \(P\)\authorcol{: either as a Bayes Factor or as a frequentist likelihood ratio}.
+According to Ommen \& Saunders (2021), the usual form of ``likelihood ratios'' in forensic science are written as \(\frac{P(E|H_p)}{P(E|H_d)}\), where E is the evidence, \(H_p\) is the prosecution's hypothesis, and \(H_d\) is the defense's hypothesis; however, there are two different methods for calculating the probability, \(P\): either as a Bayes Factor or as a frequentist likelihood ratio.
 Ommen \& Saunders (2021) states that there is a relationship between the two approaches: ``\ldots the Bayes Factor is the expected value of the likelihood ratio function with respect to the posterior distribution of the parameters given the entire collection of evidence generated under the defense model.'' (p.~351).
 For the purposes of this literature review, the use of ``likelihood ratio'' reflects the source material, which in both cases relies on the equation \(\frac{P(E|H_p)}{P(E|H_d)}\).
 
@@ -723,7 +732,7 @@ This indicates that 7, 9, or 10 point scales should be adequate for reliable res
 In addition, DeCastellarnau (2018) found that asking participants to respond to specific items (such as reliable - unreliable) is preferred over using a generalized agree - disagree scale in terms of measurement quality, cognitive effort, and bias.
 
 Other methods have also been used to evaluate participant responses, such as asking participants to give a likelihood ratio, probability, or chance of guilt.
-Thompson, Kaasa, \& Peterson (2013) asked participants \authorcol{to} rate the chance of guilt with values generally on a log 10 scale (ex. 1 in 100; 1 in 1,000); a middle value of a fifty-fifty chance; and extreme values of ``Certain to be guilty'' and ``Impossible that he is guilty''.
+Thompson, Kaasa, \& Peterson (2013) asked participants to rate the chance of guilt with values generally on a log 10 scale (ex. 1 in 100; 1 in 1,000); a middle value of a fifty-fifty chance; and extreme values of ``Certain to be guilty'' and ``Impossible that he is guilty''.
 They compared results from participants to Bayesian conditional probabilities based on provided likelihoods of a match and error rates in order to consider how much weight participants were giving DNA evidence.
 Their results mainly showed no significant difference between Bayesian and participant estimates (meaning that the estimates were ``in the right ballpark''), with some conditions producing estimates either greater than or less than what was expected.
 
@@ -751,7 +760,7 @@ These methods must, however, be explained in a manner that is understandable to 
 \hypertarget{study1}{%
 \chapter{Jury Perception of Bullet Matching Algorithms and Demostrative Evidence}\label{study1}}
 
-Due to the issues outlined in Chapter \ref{litreview}, we designed a study to investigate how potential jurors may perceive a bullet matching algorithm, when presented alongside a firearms examiner's testimony, as well as the \authorcol{e}ffect of demonstrative evidence.
+Due to the issues outlined in Chapter \ref{litreview}, we designed a study to investigate how potential jurors may perceive a bullet matching algorithm, when presented alongside a firearms examiner's testimony, as well as the effect of demonstrative evidence.
 This study utilizes a testimony transcript to familiarize participants with bullet matching evidence for a case involving armed robbery, and participants are asked to make judgements on the guilt of the defendant, as well as the credibility of the witnesses and the reliability and scientificity of the evidence presented.
 
 \hypertarget{background}{%
@@ -784,7 +793,7 @@ The algorithm can briefly be described as follows:
 \end{enumerate}
 
 \begin{figure}
-\includegraphics[width=\linewidth]{images/shoulder} \caption{The land is shown in the center. Shoulders are shown outside of the vertical lines. Hare et al. (2017)}\label{fig:shoulder}
+\includegraphics[width=\linewidth]{images/shoulder} \caption[The land is shown in the center]{The land is shown in the center. Shoulders are shown outside of the vertical lines. Hare et al. (2017)}\label{fig:shoulder}
 \end{figure}
 
 \begin{enumerate}
@@ -797,7 +806,7 @@ The algorithm can briefly be described as follows:
 \end{enumerate}
 
 \begin{figure}
-\includegraphics[width=\linewidth]{images/F526_Match_Signatures} \caption{Two aligned signatures for a known match. Image generated from Houston dataset by authors.}\label{fig:signature}
+\includegraphics[width=\linewidth]{images/F526_Match_Signatures} \caption[Two aligned signatures for a known match]{Two aligned signatures for a known match. Image generated from Houston dataset by authors.}\label{fig:signature}
 \end{figure}
 
 \begin{enumerate}
@@ -813,7 +822,7 @@ The algorithm can briefly be described as follows:
 \end{enumerate}
 
 \begin{figure}
-\includegraphics[width=\linewidth]{images/Test_Fire_F526} \caption{Diagonal correspondence (in orange) among lands indicate a match, as shown here. Image generated from Houston dataset by authors.}\label{fig:grid}
+\includegraphics[width=\linewidth]{images/Test_Fire_F526} \caption[Diagonal correspondence (in orange) among lands indicate a match.]{Diagonal correspondence (in orange) among lands indicate a match, as shown here. Image generated from Houston dataset by authors.}\label{fig:grid}
 \end{figure}
 
 This algorithm was trained on Hamby's Consecutively Rifled Ruger Barrel Study data sets 252 and 173 (Vanderplas et al., 2020), and the final random forest was able to correctly predict all matches and non-matches (Hare et al., 2017).
@@ -892,7 +901,7 @@ This same format was used when asking participants about credibility and scienti
 
 Participants were recruited using Prolific, an online survey-taking website.
 From the Prolific website, participants were directed to a link containing our survey, created using R Shiny.
-We selected options to recruit a representative sample\authorcol{, based on age, sex, and gender,} of individuals located in the United States, and asked that participants self-screen for jury eligibility before completing the survey.
+We selected options to recruit a representative sample, based on age, sex, and gender, of individuals located in the United States, and asked that participants self-screen for jury eligibility before completing the survey.
 Jury eligibility was defined as US citizens over the age of majority in their state who had not been convicted of a felony, were not active law enforcement, military, emergency response, or a judge, and who did not have a disability that would prevent them from serving on a jury.
 They were also required to have normal or corrected to normal vision, due to the images used in the study.
 Participants were compensated with \$8.40 for completing the study, for an hourly compensation rate of about \$27.79 (median completion time of approximately 18 minutes).\\
@@ -955,13 +964,13 @@ Pr(\textgreater F)
 \textbf{Residuals} & 64133 & 527 & NA & NA \\
 \end{longtable}
 
-Figure \ref{fig:completiontime} depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints, or identification values (n=\authorcol{539}), excluding 3 observations greater than 75 minutes.
-\authorcol{In several cases, there was repetition of electronic fingerprints, which were meant to serve as unique identifiers in the dataset.
+Figure \ref{fig:completiontime} depicts completion times (from completion of the demographics information to the end of the survey) by conditions for unique fingerprints, or identification values (n=539), excluding 3 observations greater than 75 minutes.
+In several cases, there was repititon of electronic fingerprints, which were meant to serve as unique identifiers in the dataset.
 This limits the accuracy of information that requires linking several datasets - such as completion time information and correspondence between demographic information and results.
-This issue has been fixed in future studies through the use of a random number generator instead of electronic fingerprints.}
+This issue has been fixed in future studies through the use of a random number generator instead of electronic fingerprints.
 Those who received the algorithm condition took more time on average than those who did not (median values of 18.91 minutes and 13.518 minutes, respectively).
 This is unsurprising, given the increased length of the algorithm condition.
-\authorcol{Table} \ref{tab:timetab} \authorcol{shows the ANOVA table of completion times, by experimental condition.}
+Table \ref{tab:timetab} shows the ANOVA table of completion times, by experimental condition.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -1007,7 +1016,7 @@ Caliber Incorrect & 10 & 0\\
 \subsection{Overview}\label{overview}}
 
 Participants were asked a variety of questions in order to assess their thoughts and feelings on the case and the evidence presented.
-\authorcol{We used questions from} Garrett, Scurich, et al. (2020) \authorcol{concerning conviction decision, probability of the defendant committing the crime, attention checks, firearm identification mistake rate, if guns leave unique markings on bullets, if false conviction or false acquittal were worse, and Likert scales involving credibility, reliability, scientificity (how scientific individals thought the method was), strength of evidence.}
+We used questions from Garrett, Scurich, et al. (2020) concerning conviction decision, probability of the defendant committing the crime, attention checks, firearm identification mistake rate, if guns leave unique markings on bullets, if false conviction or false acquittal were worse, and Likert scales involving credibility, reliability, scientificity (how scientific individals thought the method was), strength of evidence.
 Two questions related to probability: respondents were asked to provide a value for the probability that the gun was at the crime scene, and to provide a value for the probability that Richard Cole (the defendant) committed the crime.
 Another question asked participants if they would convict Cole, based on the evidence.
 Questions of credibility, reliability, and scientificity were assessed using a 7-point Likert scale (eg. ``Extremely unscientific'' to ``Extremely scientific'').
@@ -1033,7 +1042,7 @@ The inconclusive decision resulted in a more spread out distribution that is pra
 
 }
 
-\caption{Probability the gun was used in the crime, or that Cole committed the crime. Black lines indicate bullet match scores for the algorithm.}\label{fig:probalgorithm}
+\caption[Probability the gun was used in the crime, or that Cole committed the crime.]{Probability the gun was used in the crime, or that Cole committed the crime. Black lines indicate bullet match scores for the algorithm.}\label{fig:probalgorithm}
 \end{figure}
 
 For both Cole and the gun, values are slightly more concentrated toward the lower end of the scale when the algorithm is absent for the elimination condition, and the inconclusive decision produced similar densities across both algorithm conditions.
@@ -1343,7 +1352,7 @@ The identification condition resulted in a more concentrated distribution at hig
 
 }
 
-\caption{Probabilities based on perceived strength of evidence.}\label{fig:probstrength}
+\caption{Probabilities based on perceived strength of evidence}\label{fig:probstrength}
 \end{figure}
 
 In comparing how individuals scored strength of evidence and the probability that they assigned to Cole committing the crime and the gun being present at the crime scene, the results were largely consistent (Figure \ref{fig:probstrength}).
@@ -1577,7 +1586,7 @@ This method was developed and tested on a trial transcript study designed to ass
 \hypertarget{first-n-character-method}{%
 \subsubsection{First N Character Method}\label{first-n-character-method}}
 
-The First \authorcol{N} Character (FNC) method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
+The First N Character (FNC) method relies on the concept of edit distance for matching and removing previous notes from sequential study documents.
 I developed this method specifically for the cleaning of sequential notes.
 In this process, a previous page's notes are matched to the next page's notes in order to remove duplicate text.
 This is a form of pattern matching.
@@ -1591,7 +1600,7 @@ According to Baeza-Yates \& Gonnet (1992), many algorithmic methods have been de
 A similar allowance for differences is present in Landau \& Vishkin (1988), where differences are defined as either insertions, deletions, or substitutions.
 This definition of differences is the same definition that is used in computing Levenshtein distance, also known as edit distance (Levenshtein, 1966).
 Levenshtein considered the issue of insertions, deletions, and substitutions with binary code.
-This concept \authorcol{w}as later extended to include more extensive strings, as demonstrated by Konstantinidis (2005).
+This concept was later extended to include more extensive strings, as demonstrated by Konstantinidis (2005).
 The edit distance can be used to determine the extent of matching text when comparing two sequential note sheets, in order to identify if a portion of notes should be removed.
 
 \begin{longtable}[]{@{}
@@ -1632,9 +1641,9 @@ Edit Distance
 \bottomrule\noalign{}
 \endlastfoot
 caw & cow & a → o & substitution & 1 \\
-inveigh & neigh & \textcolor{gray}{i}n\textcolor{gray}{v}eigh & deletion & 2 \\
-meow & homeowner & \textcolor{red}{ho}meow\textcolor{red}{ner} & insertion & 5 \\
-Shire & Shareholder & i → a + \textcolor{red}{holder} & substitution and insertion & 7 \\
+inveigh & neigh & \emph{i}n\emph{v}eigh & deletion & 2 \\
+meow & homeowner & \textbf{ho}meow\textbf{ner} & insertion & 5 \\
+Shire & Shareholder & i → a + \textbf{holder} & substitution and insertion & 7 \\
 \end{longtable}
 
 The edit distance is the number of characters that would need to be changed in order to transform the first string into the second string.
@@ -1686,10 +1695,10 @@ The suffix tree method is described by Gusfield (1997); in short, each unique su
 \endlastfoot
 i & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
 n & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-t & 0 & 1 & 0 & \textcolor{red}{1} & 0 & 0 & 1 & 0 & 0 & 0 \\
-u & 0 & 0 & 0 & 0 & \textcolor{red}{2} & 0 & 0 & 0 & 1 & 0 \\
-i & 0 & 0 & 0 & 0 & 0 & \textcolor{red}{3} & 0 & 0 & 0 & 0 \\
-t & 0 & 0 & 0 & 1 & 0 & 0 & \textcolor{red}{4} & 0 & 0 & 0 \\
+t & 0 & 1 & 0 & \textbf{1} & 0 & 0 & 1 & 0 & 0 & 0 \\
+u & 0 & 0 & 0 & 0 & \textbf{2} & 0 & 0 & 0 & 1 & 0 \\
+i & 0 & 0 & 0 & 0 & 0 & \textbf{3} & 0 & 0 & 0 & 0 \\
+t & 0 & 0 & 0 & 1 & 0 & 0 & \textbf{4} & 0 & 0 & 0 \\
 i & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
 v & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
 e & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
@@ -1703,7 +1712,7 @@ If the characters match and it is the first row or column, then the cell gets a 
 If the characters match and it is not the first row or column, the the cell receives the value of the (i-1,j-1) cell plus one.
 The first string's index for the substring of the longest length is saved.
 This process is shown in Table \ref{tab:dylcs}, with two strings: ``gratuitous'' and ``intuitive''.
-The diagonal of numbers in red indicate the longest substring, beginning and ending with `t'.
+The diagonal of numbers in bold indicate the longest substring, beginning and ending with `t'.
 Thus, ``tuit'' is identified as the LCS.
 
 \hypertarget{collocation-analysis-and-fuzzy-matching}{%
@@ -1714,7 +1723,7 @@ For indirect matches, such as typos, weights are applied to these fuzzy matches 
 While collocations traditionally refer to words that occur more frequently together - such as ``white house''(Merriam-Webster (2023)), tools for collocation analysis helpfully provide the frequency of occurrence for strings of a specified length (Schweinberger (2022)).
 
 Character differences can effectively be used to indicate similarity between participants' notes and the text transcript.
-This is useful in situation\authorcol{s} where individuals do not copy the notes directly.
+This is useful in situations where individuals do not copy the notes directly.
 In these cases, fuzzy matching can be used to find the transcript collocation that is the most similar to the participants' written notes.
 This approximate string matching allows for matching strings that do not correspond directly (Gusfield (1997)), which allows for matching up participants' inexact notes with the closest transcript collocation.
 
@@ -1840,9 +1849,9 @@ FNC Page 2 Results
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-The cat ran & \textcolor{red}{The cat ran} up the tree & 0 & up the tree \\
-The dog howled & \textcolor{red}{The cat ran up} the tree & 9 & The cat ran up the tree \\
-The cat run & \textcolor{red}{The cat ran} up the tree & 1 & up the tree \\
+The cat ran & \textbf{The cat ran} up the tree & 0 & up the tree \\
+The dog howled & \textbf{The cat ran up} the tree & 9 & The cat ran up the tree \\
+The cat run & \textbf{The cat ran} up the tree & 1 & up the tree \\
 \end{longtable}
 
 In scenarios such as those shown in Table \ref{tab:fncmethod}, a straightforward method for note cleaning would be to measure the length of the page 1 notes (n), and compare the previous notes to the first n characters in the page 2 notes (shown in red) via edit distance.
@@ -1857,7 +1866,7 @@ By allowing for some mismatch between the two pages, we can account for inexact 
 This method works well when participants take notes sequentially.
 In some instances, however, participants will delete portions of their previous notes, add new notes either before or in the middle of their old notes, or duplicate their old notes.
 When participants delete a portion of their notes or add new notes before/in the middle of their old notes, the edit distance between the old and new notes could be large.
-The \authorcol{F}irst \authorcol{N} \authorcol{C}haracter method cannot appropriately clean these notes, as shown in Table \ref{tab:issues}.
+The First N Character method cannot appropriately clean these notes, as shown in Table \ref{tab:issues}.
 
 \hypertarget{longest-common-substring-lcs-method}{%
 \subsubsection{Longest Common Substring (LCS) Method}\label{longest-common-substring-lcs-method}}
@@ -1900,13 +1909,13 @@ Edit Distance
 \bottomrule\noalign{}
 \endlastfoot
 Deletion & The cat ran up the tree & The cat ran & The cat ran & 12 \\
-Insertion & The cat ran up the tree & \textcolor{red}{The cat ran, chased by a} dog, up the tree & (The cat ran)(up the tree) & 11 \\
-Duplication & The cat ran up the tree & \textcolor{red}{The cat ran up the tree} The cat ran up the tree & (The cat ran up the tree)(The cat ran up the tree) & 0 \\
+Insertion & The cat ran up the tree & \textbf{The cat ran, chased by a} dog, up the tree & (The cat ran)(up the tree) & 11 \\
+Duplication & The cat ran up the tree & \textbf{The cat ran up the tree} The cat ran up the tree & (The cat ran up the tree)(The cat ran up the tree) & 0 \\
 \end{longtable}
 
-The Longest Common Substring method is able to handle the issues found in the First \authorcol{N} Character method, which is demonstrated in Table \ref{tab:issues}.
+The Longest Common Substring method is able to handle the issues found in the First N Character method, which is demonstrated in Table \ref{tab:issues}.
 If notes are deleted, the LCS method can identify the substring from the previous notes, despite the large edit distance that would prevent removal in the FNC method.
-If new notes are inserted in the middle of previous notes, the FNC method would compare the Page 1's notes with the red text of the Page 2 notes shown in the second row, resulting in an edit distance that would prevent removal.
+If new notes are inserted in the middle of previous notes, the FNC method would compare the Page 1's notes with the bold text of the Page 2 notes shown in the second row, resulting in an edit distance that would prevent removal.
 With the LCS method, the first substring ``The cat ran'' could be identified and removed, then in a second iteration, the second substring of ``up the tree'' can also be removed, leaving only the new text.
 In the case of duplication, the FNC method would be able to identify the first iteration of text that matches Page 1 and remove it; but it would not be able to identify the second occurrence of the text.
 As before, the LCS method would be able to identify both instances through two iterations, and remove all Page 1 text.
@@ -2244,6 +2253,13 @@ With an edit distance of 1, it can be seen that these fuzzy matches are the resu
 While most collocation misspellings in the table only occur a single time (recorded via the ``Count'' column), the last collocation occurs twice - indicating that two individual note takers missed an ``l'' in ``willfully''.
 The ``Collocation Matches'' column indicates if the participant's collocation matches with multiple collocations from the study - such as ``Jur'' in the example above.
 
+Interestingly, when considering the most distant fuzzy matches in Table \ref{tab:fuzzyexamlarge}, these phrases do not come from simple typos, but rather from a non-testimony title portion of the study: ``Jury Perception of Trial Information, Presentation, and Demonstrative Evidence'', and may result from participants copying the entire web page into the note sheet.
+Two individuals copied this title into their notes, but on different pages of the testimony.
+The collocations in Table \ref{tab:fuzzyexamlarge} correspond to the individual who copied the title on the second page of the testimony.
+Because these phrases do not noticeably correspond to the transcript collocations, as shown in their larger edit distance, they are given less weight.
+In this case, we also see that the participant collocation of ``perception of trial information presentation'' was an equal edit distance from two collocations, based on the ``Collocation Matches'' value.
+Thus, the weight would be adjusted accordingly due to the presence of two close matches.
+
 \newpage
 \begin{landscape}
 
@@ -2356,13 +2372,6 @@ presentation & 29 & 1 & 2\\
 \end{table}
 
 \end{landscape}
-
-Interestingly, when considering the most distant fuzzy matches in Table \ref{tab:fuzzyexamlarge}, these phrases do not come from simple typos, but rather from a non-testimony title portion of the study: ``Jury Perception of Trial Information, Presentation, and Demonstrative Evidence'', and may result from participants copying the entire web page into the note sheet.
-Two individuals copied this title into their notes, but on different pages of the testimony.
-The collocations in Table \ref{tab:fuzzyexamlarge} correspond to the individual who copied the title on the second page of the testimony.
-Because these phrases do not noticeably correspond to the transcript collocations, as shown in their larger edit distance, they are given less weight.
-In this case, we also see that the participant collocation of ``perception of trial information presentation'' was an equal edit distance from two collocations, based on the ``Collocation Matches'' value.
-Thus, the weight would be adjusted accordingly due to the presence of two close matches.
 
 \hypertarget{standardization-1}{%
 \subsubsection{Standardization}\label{standardization-1}}
@@ -2556,7 +2565,7 @@ Those speaking on behalf of the prosecution were coded with speech bubbles in wa
 
 }
 
-\caption{Figures used in the response study. From left to right: the judge, forensic scientist, prosecutor, and defense lawyer.}\label{fig:responsefigures}
+\caption[Figures used in the response study.]{Figures used in the response study. From left to right: the judge, forensic scientist, prosecutor, and defense lawyer.}\label{fig:responsefigures}
 \end{figure}
 
 At the end of the testimony, the participants were asked a variety of questions regarding the strength of evidence in the case.
@@ -2661,7 +2670,7 @@ More widespread criticism of firearms examination may lead to lower feelings of 
 In both studies, participants are asked if they would choose to convict, given the ``beyond a reasonable doubt'' threshold.
 In this study, 54.42\% (or 80 out of 147) individuals who received the identification condition chose to convict, while 3.97\% (or 6 out of 151) participants who received the elimination condition chose to convict.
 The conviction percentage for the identification condition in this study is slightly lower than the comparable condition in the original study (without the use of the algorithm and images): 61.82\% (or 34 out of 55).
-However, there is not a significant difference between studies (\authorcol{Pearson's chi-squared} p-value 0.43).
+However, there is not a significant difference between studies (Pearson's chi-squared p-value 0.43).
 None of the 49 individuals in the original study who received the elimination condition without the use of the algorithm or images chose to convict.
 
 \begin{figure}
@@ -2688,13 +2697,13 @@ While not as dramatic as the scale compression for questions of reliability, cre
 \end{figure}
 
 Figure \ref{fig:prob2} shows participant-selected probabilities that the defendant committed the crime.
-For a single participant, their \authorcol{selection of} hidden probability was recorded incorrectly (carrying over a previous answer), I have removed this observation when performing analysis on the hidden probability scale.
+For a single participant, their selection of hidden probability was recorded incorrectly (carrying over a previous answer), I have removed this observation when performing analysis on the hidden probability scale.
 As in the case of the strength of evidence, the graph resembles the probability graph found in the initial study (Figure \ref{fig:probalgorithm}), where there is a higher peak of extreme values for the elimination conditions than for the identification condition.
 When using a t-test to compare the mean visible probabilities for the identification and elimination condition to those comparable conditions of the initial study, there is not a significant difference for the identification condition, but is a significant difference in the elimination condition (p-values of 0.15 and 0.01, respectively).
 The estimated mean is higher in this follow up study (16.57\%) than the initial study (9.98\%) in the elimination condition.
 For the identification condition, the estimated probabilities are 74.52\% for the follow-up study and 79.78\% for the initial study.
 In this study, the density curves for when the probability was visible or hidden remain similar.
-\authorcol{There is no significant difference between the hidden and visible probability scales, based on a paired t-test (p-value 0.73).}
+There is no significant difference between the hidden and visible probability scales, based on a paired t-test (p-value 0.73).
 
 \hypertarget{new-study-questions}{%
 \subsection{New Study Questions}\label{new-study-questions}}
@@ -2776,7 +2785,7 @@ This resulted in a significant difference between the two groups (Pearson's chi-
 
 }
 
-\caption{Moasiac plot of participants who chose to express chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant. The width of the bar corresponds to the number of participants per category.}\label{fig:opinionchanceplot}
+\caption[Moasiac plot of participants who chose to express chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant.]{Moasiac plot of participants who chose to express chance in terms of guilt or innocence, based on their opinion of the guilt of the defendant. The width of the bar corresponds to the number of participants per category.}\label{fig:opinionchanceplot}
 \end{figure}
 
 \hypertarget{scale-comparison}{%
@@ -3101,7 +3110,7 @@ The correlation between the probabilities is 0.98, indicating a strong relations
 \end{figure}
 
 Figure \ref{fig:probbet} compares the amount that individuals were willing to bet to their hidden probability that the defendant had/had not committed the crime.
-Whether the participants were betting on the guilt or innocence of the defendant depended on their personal opinion of guilt - those who thought the defendant was guilty bet on the defendant's guilt, while those who thought the defendant was innocenc\authorcol{t} bet on the defendant's innocence.
+Whether the participants were betting on the guilt or innocence of the defendant depended on their personal opinion of guilt - those who thought the defendant was guilty bet on the defendant's guilt, while those who thought the defendant was innocenct bet on the defendant's innocence.
 Values are clustered at two points.
 For those who thought the defendant was innocent, they were willing to bet almost all of the \$50 and assigned a low probability to the defendant committing the crime.
 For those who thought the defendant was guilty, they were also willing to bet almost all of the \$50, but assigned a high probability to the defendant committing the crime.
@@ -3151,7 +3160,7 @@ There does not appear to be a relationship between the two variables.
 \caption{Income and Probability Comparison}\label{fig:probincome}
 \end{figure}
 
-Base\authorcol{d} on Figure \ref{fig:convictsincome}, some individuals in the match condition chose to convict across all income levels.
+Based on Figure \ref{fig:convictsincome}, some individuals in the match condition chose to convict across all income levels.
 There does not appear to be a clear trend between conviction choice and income.
 Several income brackets chose to convict over the choice not to convict, but these brackets are spread throughout the scale.
 In the case of the elimination condition, the individuals who did choose to convict came from different income brackets.
@@ -3284,7 +3293,7 @@ The addition of speech bubbles instead of a transcript format is one major diffe
 This, along with approximately half the sample size, may account for the low values found in this transcript.
 
 In this study, an additional questions were added to the cross examination regarding the subjectivity of the bullet comparison - namely, if another firearms examiner would use the same subjective criterion and reach the same conclusion.
-A few of the participants wrote the firearms examiner's answer in their notepad, indicating that they paid attention to this question, \authorcol{specifically in the identification condition}.
+A few of the participants wrote the firearms examiner's answer in their notepad, indicating that they paid attention to this question, specifically in the identification condition.
 On the other hand, participants did not appear to copy down the final jury instructions given by the judge - regarding the treatment of the algorithm examiner as any other witness.
 These changes represent two different types of information presentation.
 The discussion of other examiner's comparisons is aimed to be more informational - it describes the process of firearms comparison.
@@ -3353,10 +3362,10 @@ In the future, we plan to conduct a study on perception of characteristics of th
 Alongside the new study design, we discovered that, while individuals provided generally consistent answers across response type, they were more inconsistent when comparing numeric chance in terms of innocence, perhaps due to the reversal of format (all other questions were in terms of guilt).
 While Likert, probability and betting scales were not optimal for collecting data in this case, multiple choice chance scales with non-linear intervals allowed for more spread in participants' answers and demonstrated consistent understanding.
 Furthermore, asking participants their opinion of the guilt of the defendant alongside their conviction decision added nuance to their perception of the evidence.
-\authorcol{In the future, we may also aim to establish test-retest reliability for these response types.
-Additionally, the validity of the study visualization method may also be verified by comparing responses from individuals given the same information in the transcript testimony format or the visualization format.}
+In the future, we may also aim to establish test-retest reliability for these response types.
+Additionally, the validity of the study visualization method may also be verified by comparing responses from individuals given the same information in the transcript testimony format or the visualization format.
 
-These diverging avenues of investigation will again merged for a final study (in progress).
+These diverging avenues of investigation will again merged for a final study.
 The new cartoon study format was well received by participants, the response type study indicates that phrasing questions in terms of chance (i.e.~``1 chance in 10 that\ldots{}'') reduced the scale compression seen in Likert scales, and the text analysis provides useful information about what participants found worth copying into their notes.
 In consolidating the information learned from these sub-studies, we will return to the initial study with significant changes designed to assist in elucidating the relationship between the inclusion of an algorithm in courtroom testimony and juror perception.
 
@@ -3927,7 +3936,7 @@ This document was typeset using the XeTeX typesetting system, and the \href{http
 
 The source files for this thesis, along with all the data files, have been organised into an R repository, which is available at \url{https://github.com/rachelesrogers/UNL_Thesis}.
 
-This version of the thesis was generated on 2024-04-17 14:45:27.228138.
+This version of the thesis was generated on 2024-04-24 13:12:33.03367.
 
 The computational environment that was used to generate this version is as follows:
 
@@ -3942,7 +3951,7 @@ The computational environment that was used to generate this version is as follo
 ##  collate  English_United States.utf8
 ##  ctype    English_United States.utf8
 ##  tz       America/Chicago
-##  date     2024-04-17
+##  date     2024-04-24
 ##  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## - Packages -----------------------------------------------

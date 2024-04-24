@@ -12,14 +12,22 @@ abstract: |
 
 acknowledgments: |
   I owe my success to my academic community, family, friends and mentors.
-  I am deeply indebted to my advisor, Dr. Susan VanderPlas, for constantly encouraging me to grow both personally and academically. I could not have dreamt of a better advisor.
+  
+  I am deeply indebted to my advisor, Dr. Susan VanderPlas, for constantly encouraging me to grow both personally and academically. I could not have asked for a better advisor.
+  
   I would like to express my deep appreciation to my supervisory committee, Dr. Erin Blankenship, Dr. Kent Eskridge, and Dr. Ashley Votruba. Their guidance and support has been invaluable.
+  
   Members of the Center for Statistics and Applications in Forensic Evidence have also provided me with vital advice and encouragement over the years when working on this project, and I am thankful that I have been able to be a part of such a welcoming community.
+  
   I cannot begin to express my gratitude to my husband and partner, Richy Meleus, for his steadfast support. He has been by my side through all of the ups and downs of my post-secondary education. He also supplied his artistic talent to create courtroom cartoons for this work.
-  I am extremely grateful for my parents and siblings, who have always believed in me. In particular, I am thankful to my mom, Sally Sparks, for introducing me to the field of statistics.  I know that they are only a phone call away.
-  When I joined the Statistics Department at University of Nebraska-Lincoln, I was fortunate enough to make two great friends in my master's degree cohort, Eddie Gomez and Kory Heier. Their companionship was incredibly helpful in my first two years of graduate school.
+  
+  I am extremely grateful for my parents (Jeff Rogers an Sally Sparks) and siblings (Dylan and Betty Rogers), who have always believed in me. In particular, I am thankful to my mom for introducing me to the field of statistics.  I know that they are only a phone call away.
+  
+  When I joined the Statistics Department at University of Nebraska-Lincoln, I was fortunate enough to make two great friends in my master's degree cohort, Eddie Gomez and Kory Heier. Their companionship was incredibly helpful in my first two years of graduate school. I also appreciate my friend and classmate Sarah Aurit for her support and encouragement.
+  
   I am incredibly thankful for my friends, Dr. Emily Robinson and Dr. Alison Kleffner, who have assisted me innumerous times throughout the years. I know that I can always look to them for support and advice.
-  I would also like to extend my gratitude to my graduate mentors, Jessica Hauschild and Kelsey Karnik. Through their mentorship, they have made me a better statistician.
+  
+  I would also like to extend my gratitude to my graduate mentors, Dr. Jessica Hauschild and Dr. Kelsey Karnik. Through their mentorship, I have become a better statistician.
   
   This work was funded (or partially funded) by the Center for Statistics and Applications in Forensic Evidence (CSAFE) through Cooperative Agreements 70NANB15H176 and 70NANB20H019 between NIST and Iowa State University, which includes activities carried out at Carnegie Mellon University, Duke University, University of California Irvine, University of Virginia, West Virginia University, University of Pennsylvania, Swarthmore College and University of Nebraska, Lincoln.
 dedication: |
@@ -37,6 +45,8 @@ output:
     style: style.css
 #  huskydown::thesis_word: default
 #  huskydown::thesis_epub: default
+urlcolor: black
+linkcolor: black
 bibliography: bib/thesis.bib
 # Download your specific bibliography database file and refer to it in the line above.
 csl: bib/apa.csl
@@ -124,7 +134,7 @@ However, we must also establish that jurors can treat the evidence with appropri
 In firearms evidence, there are two pieces of fired evidence that may be evaluated: the cartridge casing and the bullet itself. 
 The structure of the bullet is shown in Figure \@ref(fig:structure) [@glrx].
 Striation marks are created on the bullet as it travels down the barrel due to rifling, defects, and impurities [@hare2017automatic], while the head of the cartridge casing is marked by the breech face (a part of the gun located at the head of the cartridge case when firing [@FirearmToolmarkIdentificationa]) and aperture sheer (created by the movement of the cartridge case against the hole in the breech face for the firing pin [@cartridgeproc]) [@chapnick2021].
-```{r structure, echo=FALSE, fig.cap="Image of bullet structure. 1 indicates the bullet, 2 indicates the cartridge casing, 3 indicates the powder, 4 indicates the head of the cartridge casing, and 5 indicates the primer. Glrx (2021).", out.width="50%", fig.align="center"}
+```{r structure, echo=FALSE, fig.cap="Image of bullet structure. 1 indicates the bullet, 2 indicates the cartridge casing, 3 indicates the powder, 4 indicates the head of the cartridge casing, and 5 indicates the primer. Glrx (2021).", fig.cap="Image of bullet structure.", out.width="50%", fig.align="center"}
 include_graphics(path = "images/Cartridge_cross_section.png")
 ```
 
@@ -133,28 +143,28 @@ The practice of bullet matching is based on the concept that rifling in a gun ba
 Rifling is defined as the spiral ridges in a gun barrel that stabilize the bullet, as shown in Figure \@ref(fig:rifling) [@105mmTank2005].
 The raised areas are known as lands, while the depressed areas are known as grooves.
 
-```{r rifling, echo=FALSE, fig.cap="Cross section of a gun. The rifling is the spiral pattern of lands (raised portions) and grooves (indented portions). baku13 (2005).", out.width="50%", fig.align="center"}
+```{r rifling, echo=FALSE, fig.cap="Cross section of a gun. The rifling is the spiral pattern of lands (raised portions) and grooves (indented portions). baku13 (2005).", fig.scap="Cross section of a gun.", out.width="50%", fig.align="center"}
 include_graphics(path = "images/rifling.jpg")
 ```
 
 When a bullet is fired, it travels down the gun barrel and marks from the rifling are scratched into the bullet's surface.
 This results in indented areas that correspond to the land impressions, as shown in Figure \@ref(fig:fired) [@gremi].
 
-```{r fired, echo=FALSE, fig.cap="Fired bullet. Indented portion correspond to the gun lands. Gremi-ch (2009).", out.width="50%", fig.align="center"}
+```{r fired, echo=FALSE, fig.cap="Fired bullet. Indented portion correspond to the gun lands. Gremi-ch (2009).", fig.cap="Fired bullet", out.width="50%", fig.align="center"}
 include_graphics(path = "images/fired_bullet.jpg")
 ```
 
 The diagram in Figure \@ref(fig:fireddiagram) from @hare2017automatic demonstrates the structure of these land and groove impressions on a bullet.
 As there are multiple lands on a gun barrel, this results in multiple land impressions on a fired bullet.
 
-```{r fireddiagram, echo=FALSE, fig.cap="Diagram of a fired bullet. Hare et al. (2017).", out.width="50%", fig.align="center"}
+```{r fireddiagram, echo=FALSE, fig.cap="Diagram of a fired bullet. Hare et al. (2017).", fig.cap="Diagram of a fired bullet.", out.width="50%", fig.align="center"}
 include_graphics(path = "images/bulletdiagram.jpg")
 ```
 
 Striation marks, or scratches in the bullet surface caused by the rifling, can be seen on these land impressions, as shown in Figure \@ref(fig:firedland) (provided by @hare2017automatic). 
 Firearms examiners can compare these striation marks across bullets in order to determine if they were fired from the same gun.
 
-```{r firedland, echo=FALSE, fig.cap="Side view of a fired bullet, demonstrating striation marks on the bullet's lands. Hare et al. (2017).", out.width="50%", fig.align="center"}
+```{r firedland, echo=FALSE, fig.cap="Side view of a fired bullet, demonstrating striation marks on the bullet's lands. Hare et al. (2017).", fig.cap="Side view of a fired bullet, demonstrating striation marks on the bullet's lands.", out.width="50%", fig.align="center"}
 include_graphics(path = "images/bulletland.jpg")
 ```
 
@@ -163,7 +173,7 @@ include_graphics(path = "images/microscope.jpg")
 ```
 
 Firearms examiners use comparison microscopes, such as Figure \@ref(fig:microscope), to compare these striation marks between two bullets, shown in the top right of the figure.
-An early attempt to distinguish guns based on the rifling can be found in two issues of "The Saturday Evening Post" from 1925, in an article entitled “Fingerprinting Bullets", whose title demonstrates an acceptance of fingerprinting by the public that wouldn't \authorcol{be} considered foundationally valid by PCAST \authorcol{(President's Council of Advisors on Science and Technology)} until an FBI black box study in 2011 [@pcast].
+An early attempt to distinguish guns based on the rifling can be found in two issues of "The Saturday Evening Post" from 1925, in an article entitled “Fingerprinting Bullets", whose title demonstrates an acceptance of fingerprinting by the public that wouldn't be considered foundationally valid by PCAST (President's Council of Advisors on Science and Technology) until an FBI black box study in 2011 [@pcast].
 <!-- [@pcast, 91]. -->
 Stout describes the wrongful conviction and subsequent exoneration of Stielow, who was accused of murder [@SaturdayEveningPost]. 
 At the trial where Stielow was found guilty, an expert for the prosecution stated that there were nine abnormalities on Stielow's gun that corresponded with marks on the fired bullet [@SaturdayEveningPost].
@@ -255,7 +265,7 @@ These reports also highlighted the lack of studies that produced accurate error 
 <!-- [@pcast, 104 - 112].  -->
 For example, @chapnick2021's report does not include inconclusive results as a potential source of error. 
 They reported three errors (false positives) in their study, and reported a false negative error rate of 0%, ignoring the wide range of inconclusive decisions.
-For participants from the United States and Canada, 38 of 491 comparisons were reported as inconclusive for known matches, while 254 of 693 comparisons were reported as inconclusive for know\authorcol{n} non-matches [@chapnick2021].
+For participants from the United States and Canada, 38 of 491 comparisons were reported as inconclusive for known matches, while 254 of 693 comparisons were reported as inconclusive for known non-matches [@chapnick2021].
 <!-- [@chapnick2021, 6]. -->
 The issues of error rate calculation are addressed by @hofmannTreatmentInconclusivesAFTE2021, particularly with regards to whether or not inconclusive decisions should be treated as errors in calculations. <!-- (325) --> 
 They suggest to not consider inconclusive decisions as errors for the calculation of examiner error rates, used in the lab setting; but to consider inconclusive decisions as errors for process error rates, used for determining if the evidence is relevant enough for judging the guilt of the suspect. <!-- (343) -->
@@ -327,7 +337,7 @@ All participants felt that that examiner testimony should accurately reflect sci
 <!-- (p. 19). -->
 The scale to which firearm evidence is used in the courtroom is rather contentious, and views may differ based on occupation.
 
-In general, individuals want to guarantee that the information presented in the courtroom is \authorcol{correct} and valid, without causing too much imbalance between the limitations and the categorical conclusion.
+In general, individuals want to guarantee that the information presented in the courtroom is correct and valid, without causing too much imbalance between the limitations and the categorical conclusion.
 However, there isn't agreement on where the balancing point between these two factors are - somewhere between giving too much credit with a match of "absolute certainty", and introducing unfounded reasonable doubt by overstating the limitations.
 If accurate numerical information on error rates or an objective method of evaluation that can be described to the court were available, it may be possible to have factual statements of limitations and scope of evidence that both sides of the argument would find satisfactory. 
 In an investigation on the effect of the inclusion of error rate on either voice or fingerprint evidence, @garrettErrorRatesLikelihood2020 found that the inclusion of an error rate reduced convictions for fingerprint evidence presented categorically, but had no effect in the case of voice comparison (a less established science) or when the fingerprint comparison was presented as a likelihood ratio.
@@ -368,7 +378,7 @@ What is left is the bullet land’s signature (which will show the peaks and val
 
 * The two signatures are compared using a variety of attributes, such as consecutively matching striae and the relative height of the peaks/valleys, as shown in Figure \@ref(fig:signaturecompare).
 
-```{r signaturecompare, echo=FALSE, fig.cap="Left image depicts two matching signatures, while the right image depicts two non-matching signatures. Generated by the author.", fig.align="center", fig.show="hold", out.width="49%"}
+```{r signaturecompare, echo=FALSE, fig.cap="Left image depicts two matching signatures, while the right image depicts two non-matching signatures. Generated by the author.", fig.scap="Left image depicts two matching signatures, while the right image depicts two non-matching signatures.", fig.align="center", fig.show="hold", out.width="49%"}
 
 include_graphics(path = c("images/Match_Signatures.jpg", "images/K995_NoMatch_Signatures.jpg"))
 ```
@@ -377,7 +387,7 @@ include_graphics(path = c("images/Match_Signatures.jpg", "images/K995_NoMatch_Si
 * Lands are then aligned across the bullet for the maximal random forest score, and these values are averaged together to produce the match score for the bullet.
 Figure \@ref(fig:gridcompare) shows two grids of land match scores computed in two different bullet comparisons.
 
-```{r gridcompare, echo=FALSE, fig.cap="Left image depicts two matching bullets (indicated by high land-to-land match scores in a diagonal formation), while the right image depicts two non-matching bullets. Generated by the author,", fig.align="center", fig.show="hold", out.width="49%"}
+```{r gridcompare, echo=FALSE, fig.cap="Left image depicts two matching bullets (indicated by high land-to-land match scores in a diagonal formation), while the right image depicts two non-matching bullets. Generated by the author.", fig.scap="Left image depicts two matching bullets, while the right image depicts two non-matching bullets.", fig.align="center", fig.show="hold", out.width="49%"}
 
 include_graphics(path = c("images/F526_Match_SingleGrid.png", "images/K995_NoMatch_SingleGrid.png"))
 ```
@@ -412,7 +422,7 @@ Three academic scholars supported the use of algorithms, so long as the algorith
 Quantitative methods of examination can lead to quantitative results.
 In this case, the quantitative results are in the form of a match score, but in other cases, results may be presented as a likelihood ratio. 
 In many forensic science papers, there are two approaches that are commonly defined as using a "likelihood ratio" approach, although one is truly a Bayes Factor approach [@ommenProblemForensicScience2021].
-According to @ommenProblemForensicScience2021, the usual form of "likelihood ratios" in forensic science are written as $\frac{P(E|H_p)}{P(E|H_d)}$, where E is the evidence, $H_p$ is the prosecution's hypothesis, and $H_d$ is the defense's hypothesis; however, there are \authorcol{two different} methods \authorcol{for calculating the probability,} $P$\authorcol{: either as a Bayes Factor or as a frequentist likelihood ratio}. 
+According to @ommenProblemForensicScience2021, the usual form of "likelihood ratios" in forensic science are written as $\frac{P(E|H_p)}{P(E|H_d)}$, where E is the evidence, $H_p$ is the prosecution's hypothesis, and $H_d$ is the defense's hypothesis; however, there are two different methods for calculating the probability, $P$: either as a Bayes Factor or as a frequentist likelihood ratio. 
 <!-- (pp. 348 - 349). -->
 @ommenProblemForensicScience2021 states that there is a relationship between the two approaches: "...the Bayes Factor is the expected value of the likelihood ratio function with respect to the posterior distribution of the parameters given the entire collection of evidence generated under the defense model." (p. 351).
 For the purposes of this literature review, the use of "likelihood ratio" reflects the source material, which in both cases relies on the equation $\frac{P(E|H_p)}{P(E|H_d)}$.
@@ -578,7 +588,7 @@ This indicates that 7, 9, or 10 point scales should be adequate for reliable res
 In addition, @decastellarnau2018 found that asking participants to respond to specific items (such as reliable - unreliable) is preferred over using a generalized agree - disagree scale in terms of measurement quality, cognitive effort, and bias. 
 
 Other methods have also been used to evaluate participant responses, such as asking participants to give a likelihood ratio, probability, or chance of guilt.
-@thompsonJurorsGiveAppropriate2013 asked participants \authorcol{to} rate the chance of guilt with values generally on a log 10 scale (ex. 1 in 100; 1 in 1,000); a middle value of a fifty-fifty chance; and extreme values of "Certain to be guilty" and "Impossible that he is guilty".
+@thompsonJurorsGiveAppropriate2013 asked participants to rate the chance of guilt with values generally on a log 10 scale (ex. 1 in 100; 1 in 1,000); a middle value of a fifty-fifty chance; and extreme values of "Certain to be guilty" and "Impossible that he is guilty".
 They compared results from participants to Bayesian conditional probabilities based on provided likelihoods of a match and error rates in order to consider how much weight participants were giving DNA evidence.
 Their results mainly showed no significant difference between Bayesian and participant estimates (meaning that the estimates were "in the right ballpark"), with some conditions producing estimates either greater than or less than what was expected.
 
